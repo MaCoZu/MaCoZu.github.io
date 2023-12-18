@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Science Portfolio - Marco Zausch</title>
+
+  <!-- Roboto font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
+
+  <!-- app css  -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+
+
+<body class="flex flex-col min-h-screen dark:bg-zinc-500">
+
+  <!-- Header section -->
+  <header class="sticky top-0 bg-white opacity-90 text-white z-10">
+
+    <!-- NavBar  -->
+    <nav
+      class="flex-no-wrap relative flex w-full items-center justify-between bg-transparent py-2 shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4"
+      data-te-navbar-ref>
+      <div class="lg:container mx-auto flex w-full flex-wrap items-center justify-between px-3">
+
+        <!-- Collapsible navigation container -->
+        <div class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
+          id="navbarSupportedContent1" data-te-collapse-item>
+
+          <!-- Logo -->
+          <a class="mb-4 ml-10 mr-5 mt-3 flex items-center hover:scale-150 text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:mb-0 lg:mt-0"
+            href="index.html">
+            <img src="img/mz_logo.png" style="height: 40px" alt="MZ Logo" loading="lazy" />
+          </a>
+
+          <!-- Right navigation links -->
+          <ul class="list-style-none ml-auto flex flex-col pl-0 lg:flex-row" data-te-navbar-nav-ref>
+
+
+            <!-- Projects link -->
+            <div class="relative" data-te-dropdown-ref>
+              <a class="hidden-arrow mr-4 flex items-center text-neutral-600 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+                href="#" id="dropdownMenuButton1" role="button" data-te-dropdown-toggle-ref aria-expanded="false">
+                Projects
+              </a>
+
+              <ul
+                class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-transparent bg-clip-padding text-left text-base dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                aria-labelledby="dropdownMenuButton1" data-te-dropdown-menu-ref>
+                <li>
+                  <a class="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-beige active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                    href="#" data-te-dropdown-item-ref>NLP</a>
+                </li>
+                <li>
+                  <a class="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-beige active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                    href="#" data-te-dropdown-item-ref>Articles</a>
+                </li>
+                <li>
+                  <a class="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-beige active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                    href="#" data-te-dropdown-item-ref>Dashboards</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- About Me -->
+            <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+              <a class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+                href="test.html" data-te-nav-link-ref>About Me</a>
+            </li>
+
+            <!-- Contact -->
+            <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+              <a class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+                href="contact.html" data-te-nav-link-ref>Contact</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  </header>
+
+  <section id="contact" class="grid grid-cols-3 gap-8 m-10">
+
+    <!-- phone picture  -->
+    <div>
+      <div>
+        <img src="img/phony.jpg" alt="phone" style="height: 350px;">
+      </div>
+    </div>
+
+
+    <div>
+    </div>
+
+
+    <!-- drawer init and show -->
+    <div class="text-center">
+      <button
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        type="button" data-drawer-target="drawer-contact" data-drawer-show="drawer-contact"
+        aria-controls="drawer-contact">
+        Show contact form
+      </button>
+    </div>
+
+    <!-- drawer component -->
+    <div id="drawer-contact"
+      class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 dark:bg-gray-800"
+      tabindex="-1" aria-labelledby="drawer-contact-label">
+      <h5 id="drawer-label"
+        class="inline-flex items-center mb-6 text-base font-semibold text-gray-500 uppercase dark:text-gray-400"><svg
+          class="w-4 h-4 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+          viewBox="0 0 20 16">
+          <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
+          <path
+            d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
+        </svg>Contact us</h5>
+      <button type="button" data-drawer-hide="drawer-contact" aria-controls="drawer-contact"
+        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white">
+        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+        </svg>
+        <span class="sr-only">Close menu</span>
+      </button>
+      <form class="mb-6">
+        <div class="mb-6">
+          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+          <input type="email" id="email"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="name@company.com" required>
+        </div>
+        <div class="mb-6">
+          <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subject</label>
+          <input type="text" id="subject"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Let us know how we can help you" required>
+        </div>
+        <div class="mb-6">
+          <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
+          <textarea id="message" rows="4"
+            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Your message..."></textarea>
+        </div>
+        <button type="submit"
+          class="text-white bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 block">Send
+          message</button>
+      </form>
+      <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+        <a href="#" class="hover:underline">info@company.com</a>
+      </p>
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        <a href="#" class="hover:underline">212-456-7890</a>
+      </p>
+    </div>
+
+  </section>
+
+  <!-- footer  -->
+  <footer class="bottom-0 pt-3 mt-auto bg-neutral-300 w-full text-white dark:bg-neutral-600">
+
+    <div class="container flex py-1.5  pb-3 justify-end items-center">
+      <!-- LinkedIn symbol -->
+      <a href="https://www.linkedin.com/in/marcozausch/" target="_blank"
+        class="mr-9 text-neutral-800 dark:text-neutral-200">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+        </svg>
+      </a>
+
+      <!-- GitHub symbol -->
+      <a href="https://github.com/MaCoZu" target="_blank" class="mr-9 text-neutral-800 dark:text-neutral-200">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+        </svg>
+      </a>
+
+      <!-- @ symbol -->
+      <a href="contact.html" class="text-neutral-800 dark:text-neutral-200">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2"
+          stroke="currentColor">
+          <path stroke-linecap="round"
+            d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- impressum section -->
+    <div id="copyright"
+      class="bg-neutral-400 text-neutral-500 dark:bg-neutral-700 dark:text-neutral-200 text-center relative">
+      <p class="inline-block cursor-pointer hover:underline">Impressum</p>
+      <div id="impressum" class="absolute w-full mt-2 py-20 bg-neutral-100 shadow-md rounded-md hidden">
+        <p class="my-4 text-lg font-bold text-center text-gray-500">
+          Marco Zausch <br>
+          Mail: marcozausch@posteo.de <br>
+          USt-IdNr.: 65 824 091 139
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+</body>
+
+</html>

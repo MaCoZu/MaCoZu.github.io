@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>From Scatter to Regression Line</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/mz_black_bg.png" type="image/x-icon" />
+
+    <!-- !!!deutscher server -->
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css" /> -->
+
+    <!-- css  -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- mathjax  -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+          }
+        });
+      </script>
+
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <!-- Custom styles -->
+    <style>
+        .font-merri {
+            font-family: 'Merriweather', serif;
+        }
+
+        .font-lato {
+            font-family: "Lato", sans-serif;
+        }
+
+        .font-robo {
+            font-family: "Roboto", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+    <!-- Header section -->
+    <header class="sticky top-0 bg-white text-white z-10">
+        <nav class="flex-no-wrap relative flex w-full items-center justify-between bg-transparent py-2 shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4"
+            data-te-navbar-ref>
+            <div class="lg:container mx-auto flex w-full flex-wrap items-center justify-between px-3">
+
+                <!-- Collapsible navigation container -->
+                <div class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
+                    id="navbarSupportedContent1" data-te-collapse-item>
+
+                    <!-- Logo -->
+                    <a class="mb-4 ml-2 mr-5 mt-3 flex items-center hover:scale-150 text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:mb-0 lg:mt-0"
+                        href="index.html">
+                        <img src="img/mz_logo.png" style="height: 40px" alt="MZ Logo" loading="lazy" />
+                    </a>
+    </header>
+
+    <!-- Main content -->
+    <main class="flex-grow flex items-center justify-center px-4 py-20">
+        <article class="prose prose-lg font-merri lg:max-w-5xl" style="max-width: 900px; text-align: justify;">
+            <h1 >From Scatter Plot to Regression Line</h1>
+
+            <section>
+                <h2 id="introduction">Introduction</h2>
+                <p>Most of us have come across a scatter plot that displays a series of observations on
+                    a Cartesian coordinate system where the two dimensions ($x$ and $y$) represent features of our
+                    interest. Despite its simplicity, a scatter plot offers valuable insights. At a glance, we can
+                    determine the range of values, clusters, and outliers. Often, a likely association between the
+                    two features becomes apparent, and we can even imagine a line that models and extends
+                    the general trend the scatter plot points out.
+                </p>
+
+                </div>
+
+                <figure class="flex flex-col justify-center items-center">
+                    <div>
+                        <iframe src="plots/simple_scatter.html" title="Simple Scatter Plot" height="500" width="700"
+                            scrolling="no" allowfullscreen loading="lazy" seamless></iframe>
+                    </div>
+                    <figcaption class="text-neutral-600 dark:text-neutral-400">
+                        We see the ranges of height and weight of eighteen year old persons. <br>
+                        And the two features seem positively correlated.
+                    </figcaption>
+                </figure>
+                <p>Whether you're attempting to find a third point by interpolating linearly between two
+                    known points or using a complex neural network for prediction, the concept of regression
+                    is always present in the background. This article will work out the regression line from a
+                    two-dimensional scatter plot in an intuitive way. Once we have a firm understanding of this process
+                    more advanced concepts will be easier to grasp. </p>
+            </section>
+
+            <section>
+                <h2 id="graph of averages">Graph of Averages</h2>
+                <p>
+                    In the scatter plot above showing the height and weight of 18-year-old persons, you
+                    might have spotted a trend and a possible line describing the cloud of dots. With a simple trick,
+                    we can fabricate a satisfyingly accurate line. Namely, we can group our observations along the
+                    $x$-axis, calculate the group averages $\bar y_i$, map them on the cloud, and draw a line through
+                    them, voilà, there is our <b>graph of averages</b>.
+                </p>
+
+                <figure class="flex flex-col justify-center items-center">
+                    <div>
+                        <iframe src="plots/graph_of_avg.html" title="Simple Scatter Plot" height="500" width="700"
+                            scrolling="no" allowfullscreen loading="lazy" seamless></iframe>
+                    </div>
+                    <figcaption class="text-neutral-600 dark:text-neutral-400">
+                        Change the number of groups to see how the Graph of Averages reacts.
+                    </figcaption>
+                </figure>
+
+                <p>
+                    The information of the scatter was condensed into a few dots. As shown in the plotted
+                    graph, larger groups yield a smoother curve but sacrifice a lot of information. On the other hand,
+                    smaller groups
+                    preserve more information, making the graph more sensitive to variations in the data.
+                    This is
+                    commonly referred to as the bias-variance trade-off or generalization versus overfitting
+                    problem
+                    when assessing (regression) models.
+                </p>
+                <p>
+                    While the graph of averages may seem like a reasonable summarization of the relationship
+                    between the
+                    variables, it is essentially just a series of dots connected by a line without any
+                    functional
+                    expression. To construct a function for this graph, one would have to piece it together,
+                    line by
+                    line, from dot to dot. If we were to extract an estimate $\hat{y}$ from this
+                    hypothetical graph, it
+                    would require a linear interpolation along the line of the relevant $x$ segment of that
+                    graph, which
+                    is not what we're looking for.
+
+                </p>
+            </section>
+            <section>
+                <h2 id="SD Line">Standard Deviation Line</h2>
+                <p>
+                    Another method to summarize the information stored in a scatter plot is by finding the
+                    averages of
+                    your variables and their standard deviations $s_{x}$ and $s_y$. The two averages mark
+                    the <em>point
+                        of
+                        averages</em> ($\bar{x}, \bar{y}$), which sits in the middle of the cloud of
+                    observations. The
+                    standard
+                    deviation is the most commonly used measure of the spread and is equal to the square
+                    root of the
+                    variance $s^2$. Often you'll see variance written like this $\sigma^2$ and standard
+                    deviation as
+                    $\sigma$ which signify population parameters, that describe the whole population.
+                    Normally, however,
+                    only a sample is available, and measures obtained from samples are called (sample)
+                    statistics.
+                    Henceforth, I will refer to sample statistics and use their symbols since we usually
+                    work with
+                    sample data.
+                </p>
+
+                <p>
+                    The standard deviation of $X$ can be thought of as a “typical” distance of the
+                    observations $x_i$
+                    from its mean, $\bar{x}$. Like the variance, the standard deviation is always a positive
+                    number and
+                    penalizes large deviations from the mean by squaring the errors.
+
+                    $$s_{x} = \sqrt{\frac{\sum_{i=1}^{n}(x_i - \bar{x})^2}{n-1}}$$
+
+                    The point of averages ($\bar{x}, \bar{y}$) and the standard deviations $s_{x}$ and $s_y$
+                    help us
+                    understand where the middle of all observations lies and what the typical deviation from
+                    that point
+                    is. By starting from the point of averages, we can draw a line that has a slope of
+                    $\frac{s_y}{s_x}$. Each step of one $s_x$ (typical deviation from $\bar{x}$) along the
+                    x-axis is
+                    then associated with one step of $s_y$ (typical deviation from $\bar{y}$) on the
+                    $y$-axis. This line
+                    is referred to as the standard deviation line (or <em>SD Line</em> for short).
+                </p>
+
+                <figure class="flex justify-center items-center">
+                    <div>
+                        <img src="img/sd_new.png" alt="SD Line">
+                    </div>
+                    <figcaption class="text-neutral-600 dark:text-neutral-400">
+
+                    </figcaption>
+                </figure>
+
+                <p>But this is a pretty rough measure. Remember that standard deviation is the average
+                    deviation
+                    from the mean and is calculated independently from the other variable. By combining the
+                    two
+                    standard deviations in a slope we only get a very general sense of the joint behavior of
+                    the
+                    two variables.
+                </p>
+                <p>Additionally, the direction of the line is missing. In the plot above I have identified a
+                    positive correlation with a view to the scatter plot and drawn SD Line accordingly. But
+                    If
+                    the actual line was downward-sloping, the ratio $\frac{s_y}{s_x}$ would still be
+                    positive,
+                    as the standard deviations are always positive. In any way, we would like to have
+                    mathematical proof of the correlation and its direction.
+                </p>
+                <p>The correlation coefficient will help us to gain a more detailed understanding of the
+                    joint
+                    movement of the variables and to quantify the direction of the correlation.
+                </p>
+
+            </section>
+            <section>
+                <h2>Pearson's Correlation</h2>
+                <p>
+                    Pearson's correlation coefficient is the most widely used measure of correlation, which
+                    indicates the linear relationship between two observed phenomena. This coefficient is
+                    unitless, allowing the examination of a relationship between values that cannot be
+                    expressed
+                    in the same units, such as height and weight.
+
+                </p>
+                <p>
+                    The correlation coefficient, $r$, measures the strength and direction of the linear
+                    relationship between two variables. It takes values between $-1$ and $1$, where the sign
+                    indicates the direction of the relationship and the number indicates the strength of the
+                    association. A positive $r$ value means that as one variable increases, the other also
+                    increases, while a negative $r$ value means that as one variable increases, the other
+                    decreases.
+                </p>
+
+                <figure class="flex justify-center items-center">
+                    <div>
+                        <img src="img/corrcoeff.svg" alt="Correlation coefficients">
+                    </div>
+                    <figcaption class="text-neutral-600 dark:text-neutral-400">
+
+                    </figcaption>
+                </figure>
+
+
+                <p>
+                    The limitation to linear relationships means that Pearson's correlation coefficient
+                    would be
+                    around zero for a random heap of dots (first subplot) as well as for a perfect quadratic
+                    relationship (U-shaped subplot). Therefore, a low correlation coefficient should not be
+                    mistaken
+                    for independence of the variables. To be on the safe side plot your data and make sure
+                    it is
+                    monotonic (steadily increasing or decreasing), otherwise, the correlation coefficient
+                    may not be
+                    meaningful.
+                </p>
+
+                <p>
+                    Another thing to keep in mind is that correlation measures association between
+                    variables, but
+                    association does not necessarily indicate causation. Correlation can be due to pure
+                    coincidence
+                    or a third, hidden factor (also known as a confounder) that independently affects the
+                    observed
+                    variables.
+                </p>
+
+                <p>
+                    Let's have a look at the formula of Pearson's correlation coefficient to understand what
+                    it
+                    does. In the numerator and denominator the observations deviations from the point of
+                    averages
+                    are used.
+                    $$r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i -
+                    \bar{x})^{2} \sum_{i=1}^{n}(y_i - \bar{y})^{2}}}$$
+
+                    The interesting part is happening in the numerator. Let's say we have an observation
+                    ($x_{i},
+                    y_i$) that is to the right ($x_i &gt; \bar{x}$) and above the point of averages ($y_i
+                    &gt;
+                    \bar{y}$).
+                </p>
+
+                <p>
+                    For this observation, we would multiply two positive values $(x_i - \bar{x})(y_i -
+                    \bar{y})$
+                    yielding once again a positive value. Now take an observation to the left ($x_i &lt;
+                    \bar{x}$)
+                    and
+                    below ($y_i &lt; \bar{y}$) the point of averages, both the deviations from the means are
+                    negative
+                    but due to the negation of the minus sign by multiplication the result of $(x_i -
+                    \bar{x})(y_i - \bar{y})$ is positive too.
+                </p>
+
+                <p>
+                    When we have observations in the lower-left and upper-right quadrants, the numerator of
+                    our
+                    equation is positive. Conversely, when we have observations in the upper-left and
+                    lower-right
+                    corners, the numerator is negative. The denominator standardizes the squared values in
+                    the
+                    numerator, which limits the resulting coefficient to a range of values between $-1$ and
+                    $1$.
+                    Imagine you have about the same number of observations sitting in positive and negative
+                    quadrants in the plot below, their effect would cancel out and the correlation
+                    coefficient
+                    amounts to approximately zero. This is why Pearson's correlation coefficient only works
+                    with
+                    linear relationships.
+                </p>
+
+                <figure class="flex justify-center items-center">
+                    <div>
+                        <img src="img/correlation_quadrants.png" alt="Correlation quadrants">
+                    </div>
+                    <figcaption class="text-neutral-600 dark:text-neutral-400">
+
+                    </figcaption>
+                </figure>
+
+                <p>
+                    Perhaps you can now see why a positive correlation coefficient is obtained when the
+                    majority
+                    of observations are clustered in the lower-left and upper-right corners, while a
+                    negative
+                    coefficient is obtained for observations in the upper-left and lower-right areas.
+                </p>
+
+                <p>
+                    The correlation coefficients formula can also be written as:$$r=\frac{s_{x y}}{s_xs_{y}}
+                    $$where $s_{x y}=\frac{1}{n-1} \sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})$ is the
+                    <em>sample covariance</em> which measures the joint variability of $x$ and $y$ while
+                    $s_x$
+                    and
+                    $s_{y}$ are the respective standard deviations that normalize the covariance. The
+                    correlation
+                    coefficient can thus be understood as a normalized version of the covariance.
+                </p>
+
+                <h2>Notable qualities of $r$</h2>
+                <p></p>
+                <ol>
+                    <li>The coefficient $r$ measures linear association in relation to standard deviations.
+                    </li>
+                    <li>The sign indicates the direction of the association and the value its strength.</li>
+                    <li>The correlation coefﬁcient is a unitless number. It is not affected by:
+                        <ul>
+                            <li>Interchanging the two variables.</li>
+                            <li>Changes of scale: Adding the same number to one variable or multiplying all
+                                its
+                                values
+                                by the same
+                                positive number only changes the variable's scale and does not affect $r$.
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+                <h2 id="regression-method">Regression Method</h2>
+                <p>The abovementioned qualities of Pearson's coefficient have interesting implications.
+                    Firstly, the
+                    relative nature of the coefficient enables comparison between datasets of varying
+                    scales.
+                    Secondly, it provides the direction of the relationship with mathematical proof.
+                    Finally, the
+                    value of $r$ provides detailed information about the joint behavior of the two
+                    variables. The
+                    slope of ($\frac{s_y}{s_{x}}$) only contains insufficient info on joint behavior. But by
+                    adjusting the slope of the SD Line with the correlation coefficient we obtain the proper
+                    slope
+                    of the regression line.<br />
+                    $$r*\frac{s_y}{s_{x}}$$<br />
+                    A line with this adjusted slope does only change by a certain percentage of the
+                    'typical'
+                    deviations from the point of averages. The sign tells us if the variables move in the
+                    same
+                    direction (upward-sloping, positive sign) or in opposing directions (downward-sloping,
+                    negative
+                    sign). Combining the slope of the SD Line and the correlation coefficient is called the
+                    regression method in contrast to the more common method of arriving at a regression
+                    parameter
+                    namely the method of least squares.
+                </p>
+                <figure class="flex justify-center items-center">
+                    <div>
+                        <iframe src="plots/correlation_coeff_interact.html" title="correlation interact" width="700"
+                            height="500" scrolling="no" allowfullscreen loading="lazy" seamless></iframe>
+                    </div>
+                    <figcaption class="text-neutral-600 dark:text-neutral-400">
+
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section>
+                <h2>Method of Least Squares</h2>
+                <p>It is common to express the regression line using the following formula:<br />
+                    $$\hat{y}=\hat\beta_0+\hat\beta_{1}x+\epsilon$$<br />
+                    To draw this line, we start from the intercept $\hat\beta_0$ --the point where the line
+                    crosses
+                    the $y$-axis -- and then extend the line by moving along the slope of $\hat\beta_1$ for
+                    every
+                    increment of $x$. Here, the slope $\hat\beta_1$ is the same as the one from the
+                    regression
+                    method but now derived through the method of least squares.</p>
+                <p>The symbols' hats above signify that they are estimates. The function's right-hand side
+                    consists
+                    of two estimates ($\hat\beta_0, \hat\beta_{1}$), and thus, the outcome $\hat{y}$ is also
+                    an
+                    estimator for the observed value of $y$. We can evaluate our estimates by measuring how
+                    far they
+                    deviate from the actual values. The epsilon ($\epsilon$) in the formula represents the
+                    combined
+                    deviation of our estimates from the actual values. The so-called error term $\epsilon$
+                    can be
+                    understood as the impact of all unaccounted factors in the regression model.
+                </p>
+                <p>For one specific estimate we calculate the individual error $\epsilon_i$ as the
+                    discrepancy
+                    between the predicted value $\hat{y_i}$ and its actual observed value $y_i$ as:<br />
+                    $$(y_{i} - \hat{y_i}) = \left[y_{i} - (\hat\beta_0+\hat\beta_{1}x_i)\right]$$
+                    If you're attempting to fit a straight line to the data, the errors (of prediction) are
+                    the vertical
+                    distances between the observed and estimated values. In other words, they are the
+                    distances between
+                    the dots and the line in the plot below.</p>
+
+                <figure class="flex justify-center items-center">
+                    <div>
+                        <img src="img/reg_line.png" alt="Errors of prediction" style="width: 700px; height: 500px;">
+                    </div>
+                    <figcaption class="text-neutral-600 dark:text-neutral-400">
+
+                    </figcaption>
+                </figure>
+
+                <p>The general idea behind the method of least squares is to minimize the overall errors
+                    between estimates and observations. Therefore the sum of the squared errors (SSE) is minimized.
+
+                    $$min\left\{\sum[y_i-(\hat\beta_0+\hat\beta_{1}x_i)]^2\right\}$$
+
+                <p>Taking the squared errors has two benefits. First of all if we minimize the sum of
+                    un-squared errors we might find multiple minima, but it can be shown that there is one (and only
+                    one) line for which the SSE is a minimum. More specifically it transforms the minimization problem
+                    into a convex optimization problem, allowing for the use of derivatives to determine optimal
+                    parameters. Secondly squaring errors accentuates larger deviations, this can potentially
+                    prevent overfitting but also lead to over-simplification (generalization versus overfitting).
+                </p>
+                <p>By optimizing the above function we find the quantities of $\hat\beta_0$ and
+                    $\hat\beta_{1}$ that
+                    yield the least square error. </p>
+                <p>In math it looks like this:<br />
+                    $$\text{Find }\min_{\beta_{0}, \,\beta_1} Q(\beta_{0}, \,\beta_1), \quad\quad \text{for
+                    }
+                    Q(\beta_{0},\,\beta_1) = \sum (y_i - (\beta_0 + \beta_1 x_i))^2$$
+                    $$\frac{\partial Q(\beta_{0}, \beta_1)}{\beta_{0}}\quad \rightarrow \quad
+                    \hat\beta_{0}=\bar{y}-\hat{\beta_1}\bar{x}$$
+                    $$\frac{\partial Q(\beta_{0}, \beta_1)}{\beta_{1}}\quad \rightarrow \quad \hat{\beta_1}=
+                    \frac{\sum
+                    (x_i - \bar{x})(y_i - \bar{y})}{\sum (x_i - \bar{x})^{2}} = \frac{s_{x y}}{s_x^2}$$
+                    <br />
+                <p> They are called the least squares estimates of the population parameters $\beta_0$ and
+                    $\beta_1$,
+                    and the prediction equation $\hat{y}=\hat\beta_0+\hat\beta_{1}x+\epsilon$ is called the
+                    least
+                    squares line.</p>
+                <p> I have said before that this slope of $\hat\beta_1$ is the same as the one worked out by
+                    combining the slope of the SD Line and the correlation coefficient. Here is how they're
+                    connected in symbols:<br />
+                    $$\hat\beta_1=r \frac{s_y}{s_{x}}=\frac{s_{x y}}{s_{x}\thinspace
+                    s_{y}}\,\frac{s_y}{s_{x}} =\frac{s_{x y}}{s_{x}^2}$$<br />
+                    where $r$ is the correlation coefficient, $s_x$ and $s_y$ are the sample standard
+                    deviations,
+                    $s_{xy}$ the sample covariance and $s_x$ is the sample variance of $x$. </p>
+                </p>
+                <p>Let's see how we find the intercept $\hat\beta_0$. <br />
+                    $$\hat\beta_{0}=\bar{y}-\hat{\beta_1}\bar{x}$$<br />
+                    It's pretty straightforward, once we have the slope of the regression line we can walk from the
+                    point of averages ($\bar x, \, \bar y$) along the regression line towards the point where it
+                    intersects with the $y$-axis ($x=0$) this is our intercept $\hat\beta_0$.
+                </p>
+                <figure class="flex justify-center items-center">
+                    <div>
+                        <img src="img/intercept.png" alt="Intercept" style="width: 700px; height: 500px;">
+                    </div>
+                    <figcaption class="text-neutral-600 dark:text-neutral-400">
+
+                    </figcaption>
+                </figure>
+
+            </section>
+
+        </article>
+    </main>
+
+    <!--Footer container-->
+    <footer class="bottom-0 pt-3 mt-auto bg-neutral-300 w-full text-white dark:bg-neutral-600">
+    
+        <div class="container flex py-1.5  pb-3 justify-end items-center">
+          <!-- LinkedIn symbol -->
+          <a href="https://www.linkedin.com/in/marcozausch/" target="_blank" class="mr-9 text-neutral-800 dark:text-neutral-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+            </svg>
+          </a>
+    
+          <!-- GitHub symbol -->
+          <a href="https://github.com/MaCoZu" target="_blank" class="mr-9 text-neutral-800 dark:text-neutral-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+          </a>
+    
+          <!-- @ symbol -->
+          <a href="contact.html" class="text-neutral-800 dark:text-neutral-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor">
+              <path stroke-linecap="round"
+                d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
+            </svg>
+          </a>
+        </div>
+    
+        <!-- Copyright section -->
+        <div id="copyright"
+          class="bg-neutral-400 text-neutral-500 dark:bg-neutral-700 dark:text-neutral-200 text-center relative">
+          <p class="inline-block cursor-pointer hover:underline">Impressum</p>
+          <div id="impressum" class="absolute w-full mt-2 py-20 bg-neutral-100 shadow-md rounded-md hidden">
+            <p class="my-4 text-lg font-bold text-center text-gray-500">
+              Marco Zausch <br>
+              Mail: marcozausch@posteo.de <br>
+              USt-IdNr.: 65 824 091 139
+            </p>
+          </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="../node_modules/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <script type="module" src="../src/main.js"></script>
+</body>
+
+</html>
