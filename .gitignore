@@ -1,3 +1,10 @@
+node_modules
+docs_old
+dist
+dist-ssr
+*.local
+public
+
 # Logs
 logs
 *.log
@@ -7,11 +14,6 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-# dist
-dist-ssr
-*.local
-public/
 
 # Editor directories and files
 .vscode/*

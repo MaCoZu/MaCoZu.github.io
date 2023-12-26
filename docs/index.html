@@ -11,9 +11,9 @@
   <link rel="icon" href="img/mz_black_bg.png" type="image/x-icon" />
 
   <!-- Roboto font -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
 
-  
+  <!-- css  -->
+
   <style>
     #copyright {
       cursor: pointer;
@@ -25,12 +25,31 @@
       display: block;
       transform: translateY(-100%);
     }
+
+    .font-roboto {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .font-merri {
+      font-family: 'Merriweather', serif;
+    }
+
+    .font-pop {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .font-lora {
+      font-family: 'Lora', sans-serif;
+    }
+    .font-mserrat {
+      font-family: 'Montserrat', sans-serif;
+    }
   </style>
-  <script type="module" crossorigin src="./assets/index-MRkK_-iZ.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-NwK-2QfP.css">
+  <script type="module" crossorigin src="/assets/index-UK7JbMhB.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-8GMuyt7R.css">
 </head>
 
-<body class="flex flex-col min-h-screen dark:bg-zinc-500">
+<body class="font-mserrat flex flex-col min-h-screen dark:bg-zinc-500">
 
   <!-- Header section -->
   <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
@@ -66,19 +85,19 @@
             <div id="dropdownNavbar"
               class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
               <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
-                <li>
+                <!-- <li>
                   <a href="#"
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Bureau
                     Bot</a>
-                </li>
+                </li> -->
                 <li>
                   <a href="scatterplot_to_reg.html"
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Articles</a>
                 </li>
-                <li>
-                  <a href="#"
+                <!-- <li>
+                  <a href="gallery.html"
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Visualizations</a>
-                </li>
+                </li> -->
               </ul>
             </div>
           </li>
@@ -86,19 +105,19 @@
           <!-- Contact  -->
           <li>
             <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              data-drawer-target="drawer-right-example" data-drawer-show="drawer-right-example" aria-controls="drawer-right-example"
-              data-drawer-placement="right">
+              data-drawer-target="drawer-right-example" data-drawer-show="drawer-right-example"
+              aria-controls="drawer-right-example" data-drawer-placement="right">
               Contact
             </a>
           </li>
 
 
-          <!-- About Me  -->
+          <!-- About Me 
           <li>
             <a href="#"
               class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
               aria-current="page">About Me</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -214,8 +233,9 @@
 
     <section id="cards" class="min-h-screen mx-20 flex items-center justify-center mb-5">
       <div class="grid-cols-1 sm:grid md:grid-cols-3 gap-8 mx-30">
+
         <!-- BUREAU BOT CARD  -->
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <!-- <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <a href="#">
             <div class="mt-2 flex justify-center relative overflow-hidden bg-cover bg-no-repeat">
               <img class="rounded-t-lg" src="img/bureau_bot_afa.png" style="width: 200px; height: 200px;" alt="" />
@@ -227,7 +247,7 @@
             </a>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">A chat bot that makes bureaucracy a breeze.</p>
           </div>
-        </div>
+        </div> -->
 
         <!-- SCATTER PLOT CARD  -->
         <div class="max-w-sm  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -244,26 +264,26 @@
               </h5>
             </a>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Tracing the evolution of the regresion line from a simple scatter plot.
+              Tracing the evolution of the regression line from a simple scatter plot.
             </p>
           </div>
         </div>
 
         <!-- VISUALIZATIONS CARD  -->
-        <div class="max-w-sm  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <!-- <div class="max-w-sm  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <a href="#">
             <div class="mt-2 flex justify-center relative overflow-hidden bg-cover bg-no-repeat">
               <img class="rounded-t-lg" src="img/Pairplot_new.png" style="width: 280px; height: 200px;" alt="" />
             </div>
           </a>
           <div class="p-5">
-            <a href="#">
+            <a href="gallery.html">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Viz Gallery</h5>
             </a>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">A buffet of vivid visualizations, picturesque
               plots and dancing digits.</p>
           </div>
-        </div>
+        </div> -->
 
 
       </div>
@@ -281,7 +301,6 @@
             class="hover:underline">Marco Zausch</a>. All Rights Reserved.
         </span>
         <div class="flex mt-4 sm:justify-center sm:mt-0">
-
           <a href="https://github.com/MaCoZu" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
               viewBox="0 0 20 20">
@@ -294,7 +313,8 @@
 
           <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-              viewBox="0 0 512 512">
+              viewBox="0 0 512 512" data-drawer-target="drawer-right-example" data-drawer-show="drawer-right-example"
+              aria-controls="drawer-right-example" data-drawer-placement="right">
               <path fill-rule="evenodd"
                 d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
             </svg>
