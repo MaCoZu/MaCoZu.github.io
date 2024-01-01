@@ -13,10 +13,6 @@
     <!-- alpine  -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <!-- font awsome  -->
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
-
     <!-- mathjax  -->
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
@@ -29,6 +25,9 @@
 
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
+
+    <script type="module" crossorigin src="./assets/index-1BJ05-mz.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-vKvgTmtA.css">
 
     <title>Document</title>
 
@@ -766,24 +765,24 @@
 
     <script type="module" src="main.js"></script>
     <script type="module" src="script.js"></script>
-<script>
-    let height = window.innerHeight - 85;
+    <script>
+        let height = window.innerHeight - 85;
 
-    function moveDown() {
-        window.scrollBy({
-            top: height,
-            behavior: 'smooth'
-        });
-    }
+        function moveDown() {
+            window.scrollBy({
+                top: height,
+                behavior: 'smooth'
+            });
+        }
 
-    function moveUp() {
-        window.scrollBy({
-            top: -height,
-            behavior: 'smooth'
-        });
-    }
+        function moveUp() {
+            window.scrollBy({
+                top: -height,
+                behavior: 'smooth'
+            });
+        }
 
-</script>
+    </script>
 </body>
 
 </html>
