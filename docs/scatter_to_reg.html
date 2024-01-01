@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../font.css">
+
+    <!-- alpine  -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- font awsome  -->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+
+    <!-- mathjax  -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+          }
+        });
+      </script>
+
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <title>Document</title>
+
+    <style>
+        [x-cloak] {
+            display: none;
+        }
+
+        .filter-white {
+            filter:
+                invert(100%)
+        }
+
+        .font-roboto {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .font-merri {
+            font-family: 'Merriweather', serif;
+        }
+
+        .font-pop {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .font-lora {
+            font-family: 'Lora', sans-serif;
+        }
+
+        .font-mserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+
+<body class=" dark:text-white dark:bg-gray-900">
+    <!-- alpine container  -->
+    <div x-data="{ modalOpen: false, modalOpen2: false, isOpen: false }" @click.away="modalOpen = false">
+
+        <!-- nav bar  -->
+        <nav class="text-lg bg-white dark:bg-gray-900">
+            <div class="container mx-auto flex justify-between items-center px-6 py-6">
+                <div class="flex items-center justify-between">
+                    <a href="index.html">
+                        <img id="logo" class="w-auto h-7 fill-current md:h-14 hover:scale-150" src="img/MZ.svg"
+                            alt="MZ Logo" />
+                    </a>
+                </div>
+        </nav>
+
+
+
+
+
+        <aside
+            class="mr-12 fixed top-1/2 right-0 transform -translate-y-1/2 flex flex-col items-center w-16 h-1/2 py-8 overflow-y-auto bg-white dark:bg-gray-900 dark:border-gray-700">
+            <nav class="flex flex-col flex-1 space-y-8 items-center justify-center">
+
+                <a type="button" onclick="moveUp()" id="arrow-up"
+                    class="text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 384 512">
+                        <path
+                            d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
+                    </svg>
+
+                </a>
+                <a type="button" onclick="moveDown()" id="arrow-down"
+                    class="text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 384 512">
+                        <path
+                            d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+                    </svg>
+                </a>
+
+                <a class=""></a>
+
+                <a href="index.html"
+                    class="text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 576 512">
+                        <path
+                            d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
+                    </svg>
+                </a>
+
+                <a @click="modalOpen = !modalOpen;" @click.away="modalOpen = false"
+                    class="pl-6 text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400"
+                    aria-label="Contact">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="10 0 576 512">
+                        <path
+                            d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
+                    </svg>
+                </a>
+
+        </aside>
+
+        <!-- Contact Modal  -->
+        <div id="modal-container" class="relative flex justify-center">
+            <div x-show="modalOpen || modalOpen2" class="fixed inset-0 z-10 overflow-y-auto bg-black bg-opacity-50"
+                x-transition:enter="transition duration-100 ease-out"
+                x-transition:enter-start="translate-y-4 opacity-0 sm:translate-y-0 sm:scale-95"
+                x-transition:enter-end="translate-y-0 opacity-100 sm:scale-100"
+                x-transition:leave="transition duration-100 ease-in"
+                x-transition:leave-start="translate-y-0 opacity-100 sm:scale-100"
+                x-transition:leave-end="translate-y-4 opacity-0 sm:translate-y-0 sm:scale-95"
+                class="fixed inset-0 z-10 overflow-y-auto" aria-labelledby="modal-title" role="dialog"
+                aria-modal="true">
+
+                <div class="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+                    <div
+                        class="xl:max-w-6xl relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl rtl:text-right dark:bg-gray-900 sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+                        <div>
+                            <div class="mt-2 text-center">
+
+                                <!-- get in touch -->
+                                <section class="bg-white dark:bg-gray-900">
+                                    <div class="container px-6 py-12 mx-auto">
+                                        <div class="text-center">
+                                            <p
+                                                class="text-lg text-blue-600 font-semiboldsemi-bold border-blue-600 dark:text-blue-400">
+                                                Contact me</p>
+
+
+                                            <h1
+                                                class="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-white">
+                                                Get in touch</h1>
+
+                                            <p class="mt-3 text-gray-500 dark:text-gray-400">I'm looking forward hearing
+                                                from you</p>
+                                        </div>
+
+                                        <!-- email  -->
+                                        <div class="grid grid-cols-1 gap-12 mt-10 md:grid-cols-2 lg:grid-cols-3">
+                                            <div class="flex flex-col items-center justify-center text-center">
+                                                <span
+                                                    class="p-2.5 text-blue-500 rounded-full bg-blue-100/80 dark:bg-blue-200">
+                                                    <img src="img/envelope-solid.svg" fill="none" stroke-width="1.5"
+                                                        stroke="currentColor" class="w-6 h-6">
+                                                    </img>
+                                                </span>
+
+                                                <h2 class="mt-4 text-lg font-medium text-gray-800 dark:text-white">Email
+                                                </h2>
+                                                <p
+                                                    class="mt-2 text-blue-600 border-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">
+                                                    marcozausch@posteo.de
+                                                </p>
+                                            </div>
+
+
+                                            <!-- Linkedin  -->
+                                            <a href="https://www.linkedin.com/in/marcozausch/">
+                                                <div class="flex flex-col items-center justify-center text-center">
+                                                    <span
+                                                        class="p-2.5 text-blue-500 rounded-full bg-blue-100/80 dark:bg-blue-200">
+                                                        <img src="img/linkedin.svg" fill="none" stroke-width="1.5"
+                                                            stroke="currentColor" class="w-6 h-6">
+                                                        </img>
+                                                    </span>
+
+                                                    <h2 class="mt-4 text-lg font-medium text-gray-800 dark:text-white">
+                                                        LinkedIn
+                                                    </h2>
+                                                    <p
+                                                        class="mt-2 text-blue-600 border-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">
+
+                                                        linkedin.com/in/marcozausch</p>
+                                                </div>
+                                            </a>
+
+                                            <!-- phone  -->
+                                            <div class="flex flex-col items-center justify-center text-center">
+                                                <span
+                                                    class="flex items-center gap-3 p-2.5 text-blue-500 rounded-full bg-blue-100/80 dark:bg-blue-200">
+                                                    <img src="img/whatsapp.svg" fill="none" stroke-width="1.5"
+                                                        stroke="currentColor" class="w-6 h-6">
+                                                    </img>
+                                                    <img src="img/telegram.svg" fill="none" stroke-width="1.5"
+                                                        stroke="currentColor" class="w-6 h-6">
+                                                    </img>
+                                                    <img src="img/signal-messenger.svg" fill="none" stroke-width="1.5"
+                                                        stroke="currentColor" class="w-6 h-6">
+                                                    </img>
+                                                </span>
+
+                                                <h2 class="mt-4 text-lg font-medium text-gray-800 dark:text-white">
+                                                    Messenger
+                                                </h2>
+                                                <p
+                                                    class="mt-2 text-blue-600 border-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">
+
+                                                    +49 15736896555</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <main class="flex justify-center items-center min-h-screen py-20">
+            <article id="article" class="w-3/4 p-6 prose prose-2xl prose-stone dark:prose-invert text-justify"
+                style="font-family: Montserra;">
+                <h1 class="text-left">From Scatter Plot to <br> Regression Line</h1>
+                <section>
+                    <h2 id="introduction">Introduction</h2>
+                    <!-- table of contents  -->
+                    <div class="float-none md:float-right">
+                        <div class="border rounded-lg w-fit pl-4 pr-4 pb-0 pt-0 ml-6 mt-2 mb-1 shadow-sm z-40">
+                            <p class="text-lg font-bold text-left border-b border-gray-300">Contents</p>
+                            <ul class="text-base list-none text-left pl-0 ">
+                                <li><a href="#introduction">Introduction</a>
+                                <li><a href="#graph_of_averages">Graph of Averages</a>
+                                <li><a href="#SD_Line">Standard Deviation Line</a>
+                                <li><a href="#correlation_coeff">Pearson's Correlation</a>
+                                <li><a href="#r_qualities">Notable qualities of $r$</a>
+                                <li><a href="#regression_method">Regression Method</a>
+                                <li><a href="#OLS">Method of Least Squares</a>
+                            </ul>
+                        </div>
+                    </div>
+                    <p>A scatter plot displays a series of observations on a Cartesian coordinate system where the two
+                        dimensions ($x$ and $y$) represent features of our interest. Despite its simplicity, a scatter
+                        plot offers valuable insights. At a glance, we can determine the range of values, clusters, and
+                        outliers. Often, a likely association between the two features becomes apparent, and maybe we
+                        can even imagine a line that models and extends the general trend the scatter plot points out.
+                    </p>
+
+
+                    <p>The visual characteristics of the scatterplot played a crucial role in the development of the
+                        regression line. When Sir Francis Galton (in the early 19th century) plotted the heights of
+                        parents
+                        against the heights of their offspring, he noticed that taller parents tended to have taller
+                        children, and shorter parents tended to have shorter children, but the heights of the
+                        children
+                        tended to move closer to the average height of the population. Galton called this phenomenon
+                        "regression towards mediocrity", where extreme values (either tall or short) move closer to
+                        the
+                        average in subsequent generations.
+                    </p>
+
+
+
+                    <figure class="flex justify-center items-center">
+                        <div>
+                            <img src="img/galton.png" alt="SD Line">
+                        </div>
+                        <figcaption class="text-neutral-600 dark:text-neutral-400">
+
+                        </figcaption>
+                    </figure>
+
+                    <p>Regression is a cornerstone in statistics and a core concept in modern machine learning,
+                        whether you're attempting to find a third point by interpolating linearly between two known
+                        points
+                        or using a complex neural network for prediction, regression is always present in the
+                        background.
+                        This article will work out the regression line from a two-dimensional scatter plot in an
+                        intuitive
+                        way. Once we have a firm understanding of this process more advanced concepts will be easier to
+                        grasp. </p>
+                </section>
+
+                <!-- graph of averages  -->
+                <section>
+                    <h2 id="graph_of_averages">Graph of Averages</h2>
+
+                    <p>In the scatter plot above showing the average height of parents and their children, you might
+                        have spotted a trend and a possible line describing the cloud of dots. With a simple trick, we
+                        can fabricate a satisfyingly accurate line. Namely, we can group our observations along the
+                        $x$-axis, calculate the group averages $\bar y_i$, map them on the cloud, and draw a line
+                        through them, voilà, there is our <strong>graph of averages</strong>.
+                    </p>
+
+                    <figure class="flex flex-col justify-center items-center">
+                        <div>
+                            <iframe src="plots/graph_of_avg.html" title="Simple Scatter Plot" height="500" width="700"
+                                scrolling="no" allowfullscreen loading="lazy" seamless></iframe>
+                        </div>
+                        <figcaption class="text-neutral-600 dark:text-neutral-400">
+                            Change the number of groups to see how the Graph of Averages reacts.
+                        </figcaption>
+                    </figure>
+
+                    <p>
+                        The information of the scatter was condensed into a few dots. As shown in the plotted
+                        graph, larger groups yield a smoother curve but sacrifice a lot of information. On the other
+                        hand,
+                        smaller groups
+                        preserve more information, making the graph more sensitive to variations in the data.
+                        This is
+                        commonly referred to as the bias-variance trade-off or generalization versus overfitting
+                        problem
+                        when assessing (regression) models.
+                    </p>
+                    <p>
+                        While the graph of averages may seem like a reasonable summarization of the relationship
+                        between the
+                        variables, it is essentially just a series of dots connected by a line without any
+                        functional
+                        expression. To construct a function for this graph, one would have to piece it together,
+                        line by
+                        line, from dot to dot. If we were to extract an estimate $\hat{y}$ from this
+                        hypothetical graph, it
+                        would require a linear interpolation along the line of the relevant $x$ segment of that
+                        graph, which
+                        is not what we're looking for.
+
+                    </p>
+                </section>
+                <!-- sd line  -->
+                <section>
+                    <h2 id="SD_Line">Standard Deviation Line</h2>
+                    <p>
+                        Another method to summarize the information stored in a scatter plot is by finding the
+                        averages of
+                        your variables and their standard deviations $s_{x}$ and $s_y$. The two averages mark
+                        the <em>point
+                            of
+                            averages</em> ($\bar{x}, \bar{y}$), which sits in the middle of the cloud of
+                        observations. The standard deviation is the most commonly used measure of the spread and is
+                        equal to
+                        the square
+                        root of the variance $s^2$. Often you'll see variance written like this $\sigma^2$ and standard
+                        deviation as $\sigma$ which signify population parameters, that describe the whole population.
+                        Normally, however,
+                        only a sample is available, and measures obtained from samples are called (sample)
+                        statistics.
+                        Henceforth, I will refer to sample statistics and use their symbols since we usually
+                        work with
+                        sample data.
+                    </p>
+
+                    <p>
+                        The standard deviation of $X$ can be thought of as a “typical” distance of the
+                        observations $x_i$
+                        from its mean, $\bar{x}$. Like the variance, the standard deviation is always a positive
+                        number and
+                        penalizes large deviations from the mean by squaring the errors.
+
+                        $$s_{x} = \sqrt{\frac{\sum_{i=1}^{n}(x_i - \bar{x})^2}{n-1}}$$
+
+                        The point of averages ($\bar{x}, \bar{y}$) and the standard deviations $s_{x}$ and $s_y$
+                        help us
+                        understand where the middle of all observations lies and what the typical deviation from
+                        that point
+                        is. By starting from the point of averages, we can draw a line that has a slope of
+                        $\frac{s_y}{s_x}$. Each step of one $s_x$ (typical deviation from $\bar{x}$) along the
+                        x-axis is
+                        then associated with one step of $s_y$ (typical deviation from $\bar{y}$) on the
+                        $y$-axis. This line
+                        is referred to as the standard deviation line (or <em>SD Line</em> for short).
+                    </p>
+
+                    <figure class="flex justify-center items-center">
+                        <div>
+                            <img src="img/sd_new.png" alt="SD Line">
+                        </div>
+                        <figcaption class="text-neutral-600 dark:text-neutral-400">
+
+                        </figcaption>
+                    </figure>
+
+                    <p>But this is a pretty rough measure. Remember that standard deviation is the average
+                        deviation
+                        from the mean and is calculated independently from the other variable. By combining the
+                        two
+                        standard deviations in a slope we only get a very general sense of the joint behavior of
+                        the
+                        two variables.
+                    </p>
+                    <p>Additionally, the direction of the line is missing. In the plot above I have identified a
+                        positive correlation with a view to the scatter plot and drawn SD Line accordingly. But
+                        If
+                        the actual line was downward-sloping, the ratio $\frac{s_y}{s_x}$ would still be
+                        positive,
+                        as the standard deviations are always positive. In any way, we would like to have
+                        mathematical proof of the correlation and its direction.
+                    </p>
+                    <p>The correlation coefficient will help us to gain a more detailed understanding of the
+                        joint
+                        movement of the variables and to quantify the direction of the correlation.
+                    </p>
+
+                </section>
+
+                <!-- correlation  -->
+                <section>
+                    <h2 id="correlation_coeff">Pearson's Correlation</h2>
+                    <p>
+                        Pearson's correlation coefficient is the most widely used measure of correlation, which
+                        indicates the linear relationship between two observed phenomena. This coefficient is
+                        unitless, allowing the examination of a relationship between values that cannot be
+                        expressed
+                        in the same units, such as height and weight.
+
+                    </p>
+                    <p>
+                        The correlation coefficient, $r$, measures the strength and direction of the linear
+                        relationship between two variables. It takes values between $-1$ and $1$, where the sign
+                        indicates the direction of the relationship and the number indicates the strength of the
+                        association. A positive $r$ value means that as one variable increases, the other also
+                        increases, while a negative $r$ value means that as one variable increases, the other
+                        decreases.
+                    </p>
+
+                    <figure class="flex justify-center items-center">
+                        <div>
+                            <img src="img/corrcoeff.svg" alt="Correlation coefficients">
+                        </div>
+                        <figcaption class="text-neutral-600 dark:text-neutral-400">
+
+                        </figcaption>
+                    </figure>
+
+
+                    <p>
+                        The limitation to linear relationships means that Pearson's correlation coefficient
+                        would be
+                        around zero for a random heap of dots (first subplot) as well as for a perfect quadratic
+                        relationship (U-shaped subplot). Therefore, a low correlation coefficient should not be
+                        mistaken
+                        for independence of the variables. To be on the safe side plot your data and make sure
+                        it is
+                        monotonic (steadily increasing or decreasing), otherwise, the correlation coefficient
+                        may not be
+                        meaningful.
+                    </p>
+
+                    <p>
+                        Another thing to keep in mind is that correlation measures association between
+                        variables, but
+                        association does not necessarily indicate causation. Correlation can be due to pure
+                        coincidence
+                        or a third, hidden factor (also known as a confounder) that independently affects the
+                        observed
+                        variables.
+                    </p>
+
+                    <p>Let's have a look at the formula of Pearson's correlation coefficient to understand what it does.
+                        In both the numerator and denominator we calculate the deviations from the mean. The denominator
+                        looks crowded but you can safely disregard it as the standardizing factor.<br />
+                        $$r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i -
+                        \bar{x})^{2} \sum_{i=1}^{n}(y_i - \bar{y})^{2}}} $$<br />
+                        The interesting part is happening in the numerator. Let's say we have an observation ($x_{i},
+                        y_i$) that is to the right ($x_i&gt;\bar{x}$) and above the point of averages
+                        ($y_i&gt;\bar{y}$). </p>
+                    <p>For this observation, we would multiply two positive values $(x_i - \bar{x})(y_i - \bar{y})$
+                        yielding once again a positive value. Now take an observation to the left ($x_i&lt;\bar{x}$) and
+                        below ($y_i&lt;\bar{y}$) the point of averages, both the deviations from the means are negative
+                        but due to the negation of the minus sign by multiplication the result of $(x_i - \bar{x})(y_i -
+                        \bar{y})$ is positive again. </p>
+
+                    <p>
+                        When we have observations in the lower-left and upper-right quadrants, the numerator of
+                        our equation is positive. Conversely, when we have observations in the upper-left and
+                        lower-right
+                        corners, the numerator is negative. The denominator standardizes the squared values in
+                        the
+                        numerator, which limits the resulting coefficient to a range of values between $-1$ and
+                        $1$.
+                        Imagine you have about the same number of observations sitting in positive and negative
+                        quadrants in the plot below, their effect would cancel out and the correlation
+                        coefficient
+                        amounts to approximately zero. This is why Pearson's correlation coefficient only works
+                        with
+                        linear relationships.
+                    </p>
+
+                    <figure class="flex justify-center items-center">
+                        <div>
+                            <img src="img/correlation_quadrants.png" alt="Correlation quadrants">
+                        </div>
+                        <figcaption class="text-neutral-600 dark:text-neutral-400">
+
+                        </figcaption>
+                    </figure>
+
+                    <p>
+                        Perhaps you can now see why a positive correlation coefficient is obtained when the
+                        majority
+                        of observations are clustered in the lower-left and upper-right corners, while a
+                        negative
+                        coefficient is obtained for observations in the upper-left and lower-right areas.
+                    </p>
+
+                    <p>
+                        The correlation coefficients formula can also be written as:$$r=\frac{s_{x y}}{s_xs_{y}}
+                        $$where $s_{x y}=\frac{1}{n-1} \sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})$ is the
+                        <em>sample covariance</em> which measures the joint variability of $x$ and $y$ while
+                        $s_x$
+                        and
+                        $s_{y}$ are the respective standard deviations that normalize the covariance. The
+                        correlation
+                        coefficient can thus be understood as a normalized version of the covariance.
+                    </p>
+                </section>
+                <!-- qualites of r  -->
+                <section>
+                    <h2 id="r_qualities">Notable qualities of $r$</h2>
+                    <p></p>
+                    <ol>
+                        <li>The coefficient $r$ measures linear association in relation to standard deviations.
+                        </li>
+                        <li>The sign indicates the direction of the association and the value its strength.</li>
+                        <li>The correlation coefﬁcient is a unitless number. It is not affected by:
+                            <ul>
+                                <li>Interchanging the two variables.</li>
+                                <li>Changes of scale: Adding the same number to one variable or multiplying all
+                                    its
+                                    values
+                                    by the same
+                                    positive number only changes the variable's scale and does not affect $r$.
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </section>
+                <!-- regression method  -->
+                <section>
+                    <h2 id="regression_method">Regression Method</h2>
+                    <p>The abovementioned qualities of Pearson's coefficient have interesting implications.
+                        Firstly, the
+                        relative nature of the coefficient enables comparison between datasets of varying
+                        scales.
+                        Secondly, it provides the direction of the relationship with mathematical proof.
+                        Finally, the
+                        value of $r$ provides detailed information about the joint behavior of the two
+                        variables. The
+                        slope of ($\frac{s_y}{s_{x}}$) only contains insufficient info on joint behavior. But by
+                        adjusting the slope of the SD Line with the correlation coefficient we obtain the proper
+                        slope
+                        of the regression line.<br />
+                        $$r*\frac{s_y}{s_{x}}$$<br />
+                        A line with this adjusted slope does only change by a certain percentage of the
+                        'typical'
+                        deviations from the point of averages. The sign tells us if the variables move in the
+                        same
+                        direction (upward-sloping, positive sign) or in opposing directions (downward-sloping,
+                        negative
+                        sign). Combining the slope of the SD Line and the correlation coefficient is called the
+                        regression method in contrast to the more common method of arriving at a regression
+                        parameter
+                        namely the method of least squares.
+                    </p>
+                    <figure class="flex justify-center items-center">
+                        <div>
+                            <iframe src="plots/correlation_coeff_interact.html" title="correlation interact" width="700"
+                                height="500" scrolling="no" allowfullscreen loading="lazy" seamless></iframe>
+                        </div>
+                        <figcaption class="text-neutral-600 dark:text-neutral-400">
+
+                        </figcaption>
+                    </figure>
+                </section>
+                <!-- OLS  -->
+                <section>
+                    <h2 id="OLS">Method of Least Squares</h2>
+                    <p>It is common to express the regression line using the following formula:<br />
+                        $$\hat{y}=\hat\beta_0+\hat\beta_{1}x+\epsilon$$<br />
+                        To draw this line, we start from the intercept $\hat\beta_0$ &mdash; the point where the line
+                        crosses
+                        the $y$-axis &mdash; and then extend the line by moving along the slope of $\hat\beta_1$ for
+                        every
+                        increment of $x$. Here, the slope $\hat\beta_1$ is the same as the one from the
+                        regression
+                        method but now derived through the method of least squares.</p>
+                    <p>The symbols' hats above signify that they are estimates. The function's right-hand side
+                        consists
+                        of two estimates ($\hat\beta_0, \hat\beta_{1}$), and thus, the outcome $\hat{y}$ is also
+                        an
+                        estimator for the observed value of $y$. We can evaluate our estimates by measuring how
+                        far they
+                        deviate from the actual values. The epsilon ($\epsilon$) in the formula represents the
+                        combined
+                        deviation of our estimates from the actual values. The so-called error term $\epsilon$
+                        can be
+                        understood as the impact of all unaccounted factors in the regression model.
+                    </p>
+                    <p>For one specific estimate we calculate the individual error $\epsilon_i$ as the
+                        discrepancy
+                        between the predicted value $\hat{y_i}$ and its actual observed value $y_i$ as:<br />
+                        $$(y_{i} - \hat{y_i}) = \left[y_{i} - (\hat\beta_0+\hat\beta_{1}x_i)\right]$$
+                        If you're attempting to fit a straight line to the data, the errors (of prediction) are
+                        the vertical
+                        distances between the observed and estimated values. In other words, they are the
+                        distances between
+                        the dots and the line in the plot below.</p>
+
+                    <figure class="flex justify-center items-center">
+                        <div>
+                            <img src="img/reg_line.png" alt="Errors of prediction" style="width: 700px; height: 500px;">
+                        </div>
+                        <figcaption class="text-neutral-600 dark:text-neutral-400">
+
+                        </figcaption>
+                    </figure>
+
+                    <p>The general idea behind the method of least squares is to minimize the overall errors
+                        between estimates and observations. Therefore the sum of the squared errors (SSE) is minimized.
+
+                        $$min\left\{\sum[y_i-(\hat\beta_0+\hat\beta_{1}x_i)]^2\right\}$$
+
+                    <p>Taking the squared errors has two benefits. First of all if we minimize the sum of
+                        un-squared errors we might find multiple minima, but it can be shown that there is one (and only
+                        one) line for which the SSE is a minimum. More specifically it transforms the minimization
+                        problem
+                        into a convex optimization problem, allowing for the use of derivatives to determine optimal
+                        parameters. Secondly squaring errors accentuates larger deviations, this can potentially
+                        prevent overfitting but also lead to over-simplification (generalization versus overfitting).
+                    </p>
+                    <p>By optimizing the above function we find the quantities of $\hat\beta_0$ and
+                        $\hat\beta_{1}$ that
+                        yield the least square error. </p>
+                    <p>In math it looks like this:<br />
+                        $$\text{Find }\min_{\beta_{0}, \,\beta_1} Q(\beta_{0}, \,\beta_1), \quad\quad \text{for
+                        }
+                        Q(\beta_{0},\,\beta_1) = \sum (y_i - (\beta_0 + \beta_1 x_i))^2$$
+                        $$\frac{\partial Q(\beta_{0}, \beta_1)}{\beta_{0}}\quad \rightarrow \quad
+                        \hat\beta_{0}=\bar{y}-\hat{\beta_1}\bar{x}$$
+                        $$\frac{\partial Q(\beta_{0}, \beta_1)}{\beta_{1}}\quad \rightarrow \quad \hat{\beta_1}=
+                        \frac{\sum
+                        (x_i - \bar{x})(y_i - \bar{y})}{\sum (x_i - \bar{x})^{2}} = \frac{s_{x y}}{s_x^2}$$
+                        <br />
+                    <p> They are called the least squares estimates of the population parameters $\beta_0$ and
+                        $\beta_1$,
+                        and the prediction equation $\hat{y}=\hat\beta_0+\hat\beta_{1}x+\epsilon$ is called the
+                        least
+                        squares line.</p>
+                    <p> I have said before that this slope of $\hat\beta_1$ is the same as the one worked out by
+                        combining the slope of the SD Line and the correlation coefficient. Here is how they're
+                        connected in symbols:<br />
+                        $$\hat\beta_1=r \frac{s_y}{s_{x}}=\frac{s_{x y}}{s_{x}\thinspace
+                        s_{y}}\,\frac{s_y}{s_{x}} =\frac{s_{x y}}{s_{x}^2}$$<br />
+                        where $r$ is the correlation coefficient, $s_x$ and $s_y$ are the sample standard
+                        deviations,
+                        $s_{xy}$ the sample covariance and $s_x$ is the sample variance of $x$. </p>
+                    </p>
+                    <p>Let's see how we find the intercept $\hat\beta_0$. <br />
+                        $$\hat\beta_{0}=\bar{y}-\hat{\beta_1}\bar{x}$$<br />
+                        It's pretty straightforward, once we have the slope of the regression line we can walk from the
+                        point of averages ($\bar x, \, \bar y$) along the regression line towards the point where it
+                        intersects with the $y$-axis ($x=0$) this is our intercept $\hat\beta_0$.
+                    </p>
+                    <figure class="flex justify-center items-center">
+                        <div>
+                            <img src="img/intercept.png" alt="Intercept" style="width: 700px; height: 500px;">
+                        </div>
+                        <figcaption class="text-neutral-600 dark:text-neutral-400">
+
+                        </figcaption>
+                    </figure>
+
+                </section>
+
+            </article>
+        </main>
+
+        <!-- footer  -->
+        <footer id="footer" class="bg-white dark:bg-gray-900">
+            <div
+                class="container flex flex-col items-center justify-between p-6 mx-auto space-y-4 sm:space-y-0 sm:flex-row">
+
+
+                <img id="logo2" class="h-6 md:mb-2 fill-current md:h-10" src="img/MZ.svg" alt="MZ Logo" />
+
+
+                <!-- home button & up arrow  -->
+                <div class="flex mt-4 sm:justify-center sm:mt-0">
+                    <a href="index.html"
+                        class="text-gray-500 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 ms-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 576 512">
+                            <path
+                                d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
+                        </svg>
+                    </a>
+
+                    <a href="#top"
+                        class="text-gray-500 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 ms-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 384 512">
+                            <path
+                                d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
+                        </svg>
+                    </a>
+                </div>
+
+
+
+                <div class="flex items-center justify-center">
+
+                    <button @click="modalOpen2 = !modalOpen2;" @click.away="modalOpen2 = false">
+                        <a href="#"
+                            class="text-gray-500 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                            aria-label="Contact">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 512 512">
+                                <path
+                                    d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
+                            </svg>
+                        </a>
+                    </button>
+
+
+                    <a href="https://www.linkedin.com/in/marcozausch"
+                        class="text-gray-500 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 ms-5"
+                        aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 512 512">
+                            <path
+                                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
+                        </svg>
+                    </a>
+
+
+                    <a href="https://github.com/MaCoZu"
+                        class="text-gray-500 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 ms-5"
+                        aria-label="Github">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 512 512">
+                            <path
+                                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+                        </svg>
+                    </a>
+
+                </div>
+
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="main.js"></script>
+    <script type="module" src="script.js"></script>
+<script>
+    let height = window.innerHeight - 85;
+
+    function moveDown() {
+        window.scrollBy({
+            top: height,
+            behavior: 'smooth'
+        });
+    }
+
+    function moveUp() {
+        window.scrollBy({
+            top: -height,
+            behavior: 'smooth'
+        });
+    }
+
+</script>
+</body>
+
+</html>
