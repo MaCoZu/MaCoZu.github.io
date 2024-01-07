@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Fonts -->
+    <link rel="stylesheet" href="./font.css">
 
     <style>
         [x-cloak] {
@@ -17,31 +19,28 @@
         }
 
         .font-roboto {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Roboto';
         }
 
         .font-merri {
-            font-family: 'Merriweather', serif;
+            font-family: 'Merriweather';
         }
 
         .font-pop {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins';
         }
 
         .font-lora {
-            font-family: 'Lora', sans-serif;
+            font-family: 'Lora';
         }
 
         .font-mserrat {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Montserrat';
         }
     </style>
 
-    <script type="module" crossorigin src="./assets/index-1BJ05-mz.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-vKvgTmtA.css">
-
-    <!-- Fonts -->
-    <link rel="stylesheet" href="../font.css">
+    <script type="module" crossorigin src="./assets/index-pWWeEJn1.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-38beQlMQ.css">
 
     <!-- alpine  -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -60,7 +59,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
 
-    <title>Document</title>
+    <title>Scatter Plot to Regression Line</title>
 
 </head>
 
@@ -79,15 +78,11 @@
                 </div>
         </nav>
 
-
-
-
-
         <aside
-            class="mr-12 fixed top-1/2 right-0 transform -translate-y-1/2 flex flex-col items-center w-16 h-1/2 py-8 overflow-y-auto bg-white dark:bg-gray-900 dark:border-gray-700">
+            class="mr-12 fixed top-1/2 right-0 transform -translate-y-1/2 flex flex-col items-center w-16 py-8 overflow-y-auto bg-white dark:bg-gray-900 dark:border-gray-700">
             <nav class="flex flex-col flex-1 space-y-8 items-center justify-center">
 
-                <a type="button" onclick="moveUp()" id="arrow-up"
+                <a type="button" id="arrow-up"
                     class="text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 384 512">
                         <path
@@ -95,11 +90,21 @@
                     </svg>
 
                 </a>
-                <a type="button" onclick="moveDown()" id="arrow-down"
+                <a type="button" id="arrow-down"
                     class="text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 384 512">
                         <path
                             d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+                    </svg>
+                </a>
+
+                <a class=""></a>
+
+                <a type="button" id="font-select"
+                    class="text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 448 512">
+                        <path
+                            d="M254 52.8C249.3 40.3 237.3 32 224 32s-25.3 8.3-30 20.8L57.8 416H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32h-1.8l18-48H303.8l18 48H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H390.2L254 52.8zM279.8 304H168.2L224 155.1 279.8 304z" />
                     </svg>
                 </a>
 
@@ -146,13 +151,8 @@
 
                                 <!-- get in touch -->
                                 <section class="bg-white dark:bg-gray-900">
-                                    <div class="container px-6 py-12 mx-auto">
+                                    <div class="container px-6 py-4 md:py-4 mx-auto">
                                         <div class="text-center">
-                                            <p
-                                                class="text-lg text-blue-600 font-semiboldsemi-bold border-blue-600 dark:text-blue-400">
-                                                Contact me</p>
-
-
                                             <h1
                                                 class="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-white">
                                                 Get in touch</h1>
@@ -221,12 +221,36 @@
                                                 <p
                                                     class="mt-2 text-blue-600 border-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">
 
-                                                    +49 15736896555</p>
+                                                    +49 1573 6896 555</p>
                                             </div>
 
                                         </div>
                                     </div>
                                 </section>
+                                <section>
+                                    <section class="bg-white dark:bg-gray-900">
+                                        <div class="container px-6 py-6 mx-auto">
+                                            <div class="text-center">
+                                                <h1
+                                                    class="mt-2 text-xl font-semibold text-gray-800 md:text-2xl dark:text-white">
+                                                    Impressum</h1>
+                                                <p class="mt-2 text-gray-500 dark:text-gray-400">
+                                                    <a>Data Science</a>
+                                                    <a class="mx-2">|</a>
+                                                    <a>Business Analysis</a>
+                                                    <a class="mx-2">|</a>
+                                                    <a>Data Journalism</a>
+                                                </p>
+                                                <p class="mt-2 text-gray-500 dark:text-gray-400">
+                                                    <a>Marco Zausch</a>
+                                                    <a class="mx-2">|</a>
+                                                    <a>Steuer Id.: 65824091139</a>
+                                                    <a class="mx-2">|</a>
+                                                    <a>FA Wedding, Berlin</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </section>
                             </div>
                         </div>
 
@@ -238,8 +262,7 @@
 
         <!-- Main content -->
         <main class="flex justify-center items-center min-h-screen py-20">
-            <article id="article" class="w-3/4 p-6 prose prose-2xl prose-stone dark:prose-invert text-justify"
-                style="font-family: Montserra;">
+            <article id="article" class="w-1/2 p-6 prose prose-xl prose-stone dark:prose-invert text-justify">
                 <h1 class="text-left">From Scatter Plot to <br> Regression Line</h1>
                 <section>
                     <h2 id="introduction">Introduction</h2>
@@ -764,26 +787,8 @@
         </footer>
     </div>
 
-    <script type="module" src="main.js"></script>
-    <script type="module" src="script.js"></script>
-    <script>
-        let height = window.innerHeight - 85;
-
-        function moveDown() {
-            window.scrollBy({
-                top: height,
-                behavior: 'smooth'
-            });
-        }
-
-        function moveUp() {
-            window.scrollBy({
-                top: -height,
-                behavior: 'smooth'
-            });
-        }
-
-    </script>
+    <script type="module" src="../main.js"></script>
+    <script type="module" src="../script.js"></script>
 </body>
 
 </html>
