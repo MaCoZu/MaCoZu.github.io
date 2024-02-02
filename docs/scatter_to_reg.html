@@ -5,42 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="./font.css">
-
     <style>
         [x-cloak] {
             display: none !important;
         }
 
-        .filter-white {
-            filter:
-                invert(100%)
-        }
-
         .font-roboto {
-            font-family: 'Roboto';
+            font-family: 'Roboto', sans-serif;
         }
 
         .font-merri {
-            font-family: 'Merriweather';
+            font-family: 'Merriweather', serif;
         }
 
         .font-pop {
-            font-family: 'Poppins';
+            font-family: 'Poppins', sans-serif;
         }
 
         .font-lora {
-            font-family: 'Lora';
+            font-family: 'Lora', sans-serif;
         }
 
         .font-mserrat {
-            font-family: 'Montserrat';
+            font-family: 'Montserrat', sans-serif;
         }
     </style>
 
-    <script type="module" crossorigin src="./assets/index-pWWeEJn1.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-38beQlMQ.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="./font.css">
 
     <!-- alpine  -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -59,7 +53,10 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
 
-    <title>MZ - Scatter Plot to Regression Line</title>
+    <script type="module" crossorigin src="./assets/index-RaoGAkWk.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-oLE9MNja.css">
+
+    <title>Scatter Plot to Regression Line</title>
 
 </head>
 
@@ -79,52 +76,35 @@
         </nav>
 
         <aside
-            class="mr-12 fixed top-1/2 right-0 transform -translate-y-1/2 flex flex-col items-center w-16 py-8 overflow-y-auto bg-white dark:bg-gray-900 dark:border-gray-700">
+            class="right-0 w-1/6 py-8 fixed top-1/2 transform -translate-y-1/2 flex flex-col items-center overflow-y-auto bg-white dark:bg-gray-900 dark:border-gray-700">
             <nav class="flex flex-col flex-1 space-y-8 items-center justify-center">
-
-                <a type="button" id="arrow-up"
-                    class="text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 384 512">
-                        <path
-                            d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
-                    </svg>
-
+                <a type="button" id="chevron-up">
+                    <span
+                        class="icon-[heroicons-outline--chevron-up] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
                 </a>
-                <a type="button" id="arrow-down"
-                    class="text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 384 512">
-                        <path
-                            d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
-                    </svg>
+
+                <a type="button" id="chevron-down">
+                    <span
+                        class="icon-[heroicons-outline--chevron-down] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
                 </a>
 
                 <a class=""></a>
 
-                <a type="button" id="font-select"
-                    class="text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 448 512">
-                        <path
-                            d="M254 52.8C249.3 40.3 237.3 32 224 32s-25.3 8.3-30 20.8L57.8 416H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32h-1.8l18-48H303.8l18 48H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H390.2L254 52.8zM279.8 304H168.2L224 155.1 279.8 304z" />
-                    </svg>
+                <a id="font-select" data-tooltip-placement="left">
+                    <span
+                        class="icon-[fa6-solid--font] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
                 </a>
 
                 <a class=""></a>
 
-                <a href="index.html"
-                    class="text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 576 512">
-                        <path
-                            d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
-                    </svg>
+                <a type="button" href="#top" id="chevron-up-double">
+                    <span
+                        class="icon-[heroicons-outline--chevron-double-up] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
                 </a>
 
-                <a @click="modalOpen = !modalOpen;" @click.away="modalOpen = false"
-                    class="pl-6 text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400"
-                    aria-label="Contact">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="10 0 576 512">
-                        <path
-                            d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
-                    </svg>
+                <a type="button" href="#footer" id="chevron-down-double">
+                    <span
+                        class="icon-[heroicons-outline--chevron-double-down] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
                 </a>
 
         </aside>
@@ -141,128 +121,102 @@
                 class="fixed inset-0 z-10 overflow-y-auto" aria-labelledby="modal-title" role="dialog"
                 aria-modal="true">
 
-                <div class="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+                <div class="flex items-end justify-center min-h-screen px-4 text-center sm:block sm:p-0">
                     <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
                     <div
-                        class="xl:max-w-6xl relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl rtl:text-right dark:bg-gray-900 sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+                        class="xl:max-w-6xl relative inline-block px-4 py-12 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl rtl:text-right dark:bg-gray-900 sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
                         <div>
-                            <div class="mt-2 text-center">
+                            <div class="my-12 text-center">
 
                                 <!-- get in touch -->
-                                <section class="bg-white dark:bg-gray-900">
-                                    <div class="container px-6 py-4 md:py-4 mx-auto">
-                                        <div class="text-center">
-                                            <h1
-                                                class="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-white">
-                                                Get in touch</h1>
+                                <div class="container px-6 py-12 mb-4 md:py-4 mx-auto">
+                                    <div class="text-center">
+                                        <h1
+                                            class="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-white">
+                                            Get in touch</h1>
 
-                                            <p class="mt-3 text-gray-500 dark:text-gray-400">I'm looking forward hearing
-                                                from you</p>
+                                        <p class="mt-3 text-gray-500 dark:text-gray-400">I'm looking forward hearing
+                                            from you</p>
+                                    </div>
+
+                                    <!-- email  -->
+                                    <div class="grid grid-cols-1 gap-12 mt-16 md:grid-cols-2 lg:grid-cols-3">
+                                        <div class="flex flex-col items-center justify-center text-center">
+                                            <span
+                                                class="p-2.5 text-blue-500 rounded-full bg-blue-100/80 dark:bg-blue-200">
+                                                <img src="img/envelope-solid.svg" fill="none" stroke-width="1.5"
+                                                    stroke="currentColor" class="w-6 h-6">
+                                                </img>
+                                            </span>
+
+                                            <h2 class="mt-4 text-lg font-medium text-gray-800 dark:text-white">Email
+                                            </h2>
+                                            <p
+                                                class="mt-2 text-blue-600 border-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">
+                                                <a href="mailto:marcozausch@posteo.de">marcozausch@posteo.de</a>
+                                            </p>
                                         </div>
 
-                                        <!-- email  -->
-                                        <div class="grid grid-cols-1 gap-12 mt-10 md:grid-cols-2 lg:grid-cols-3">
+
+                                        <!-- Linkedin  -->
+                                        <a href="https://www.linkedin.com/in/marcozausch/">
                                             <div class="flex flex-col items-center justify-center text-center">
                                                 <span
                                                     class="p-2.5 text-blue-500 rounded-full bg-blue-100/80 dark:bg-blue-200">
-                                                    <img src="img/envelope-solid.svg" fill="none" stroke-width="1.5"
-                                                        stroke="currentColor" class="w-6 h-6">
-                                                    </img>
-                                                </span>
-
-                                                <h2 class="mt-4 text-lg font-medium text-gray-800 dark:text-white">Email
-                                                </h2>
-                                                <p
-                                                class="mt-2 text-blue-600 border-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">
-                                                <a href="mailto:marcozausch@posteo.de">marcozausch@posteo.de</a> 
-                                            </p>
-                                            </div>
-
-
-                                            <!-- Linkedin  -->
-                                            <a href="https://www.linkedin.com/in/marcozausch/">
-                                                <div class="flex flex-col items-center justify-center text-center">
-                                                    <span
-                                                        class="p-2.5 text-blue-500 rounded-full bg-blue-100/80 dark:bg-blue-200">
-                                                        <img src="img/linkedin.svg" fill="none" stroke-width="1.5"
-                                                            stroke="currentColor" class="w-6 h-6">
-                                                        </img>
-                                                    </span>
-
-                                                    <h2 class="mt-4 text-lg font-medium text-gray-800 dark:text-white">
-                                                        LinkedIn
-                                                    </h2>
-                                                    <p
-                                                        class="mt-2 text-blue-600 border-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">
-
-                                                        linkedin.com/in/marcozausch</p>
-                                                </div>
-                                            </a>
-
-                                            <!-- phone  -->
-                                            <div class="flex flex-col items-center justify-center text-center">
-                                                <span
-                                                    class="flex items-center gap-3 p-2.5 text-blue-500 rounded-full bg-blue-100/80 dark:bg-blue-200">
-                                                    <img src="img/whatsapp.svg" fill="none" stroke-width="1.5"
-                                                        stroke="currentColor" class="w-6 h-6">
-                                                    </img>
-                                                    <img src="img/telegram.svg" fill="none" stroke-width="1.5"
-                                                        stroke="currentColor" class="w-6 h-6">
-                                                    </img>
-                                                    <img src="img/signal-messenger.svg" fill="none" stroke-width="1.5"
+                                                    <img src="img/linkedin.svg" fill="none" stroke-width="1.5"
                                                         stroke="currentColor" class="w-6 h-6">
                                                     </img>
                                                 </span>
 
                                                 <h2 class="mt-4 text-lg font-medium text-gray-800 dark:text-white">
-                                                    Messenger
+                                                    LinkedIn
                                                 </h2>
                                                 <p
                                                     class="mt-2 text-blue-600 border-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">
 
-                                                    +49 1573 6896 555</p>
+                                                    linkedin.com/in/marcozausch</p>
                                             </div>
+                                        </a>
 
+                                        <!-- phone  -->
+                                        <div class="flex flex-col items-center justify-center text-center">
+                                            <span
+                                                class="flex items-center gap-3 p-2.5 text-blue-500 rounded-full bg-blue-100/80 dark:bg-blue-200">
+                                                <img src="img/whatsapp.svg" fill="none" stroke-width="1.5"
+                                                    stroke="currentColor" class="w-6 h-6">
+                                                </img>
+                                                <img src="img/telegram.svg" fill="none" stroke-width="1.5"
+                                                    stroke="currentColor" class="w-6 h-6">
+                                                </img>
+                                                <img src="img/signal-messenger.svg" fill="none" stroke-width="1.5"
+                                                    stroke="currentColor" class="w-6 h-6">
+                                                </img>
+                                            </span>
+
+                                            <h2 class="mt-4 text-lg font-medium text-gray-800 dark:text-white">
+                                                Messenger
+                                            </h2>
+                                            <p
+                                                class="mt-2 text-blue-600 border-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">
+
+                                                +49 1573 6896 555</p>
                                         </div>
                                     </div>
-                                </section>
-                                <section>
-                                    <section class="bg-white dark:bg-gray-900">
-                                        <div class="container px-6 py-6 mx-auto">
-                                            <div class="text-center">
-                                                <h1
-                                                    class="mt-2 text-xl font-semibold text-gray-800 md:text-2xl dark:text-white">
-                                                    Impressum</h1>
-                                                <p class="mt-2 text-gray-500 dark:text-gray-400">
-                                                    <a>Data Science</a>
-                                                    <a class="mx-2">|</a>
-                                                    <a>Business Analysis</a>
-                                                    <a class="mx-2">|</a>
-                                                    <a>Data Journalism</a>
-                                                </p>
-                                                <p class="mt-2 text-gray-500 dark:text-gray-400">
-                                                    <a>Marco Zausch</a>
-                                                    <a class="mx-2">|</a>
-                                                    <a>Steuer Id.: 65824091139</a>
-                                                    <a class="mx-2">|</a>
-                                                    <a>FA Wedding, Berlin</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </section>
+                                </div>
                             </div>
                         </div>
 
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
 
         <!-- Main content -->
         <main class="flex justify-center items-center min-h-screen py-20">
-            <article id="article" class="w-1/2 p-6 prose prose-xl prose-stone dark:prose-invert text-justify">
+            <article id="article"
+                class="w-1/2 max-w-full p-6 prose prose-xl prose-stone dark:prose-invert text-justify">
                 <h1 class="text-left">From Scatter Plot to <br> Regression Line</h1>
                 <section>
                     <h2 id="introduction">Introduction</h2>
@@ -721,68 +675,44 @@
         <!-- footer  -->
         <footer id="footer" class="bg-white dark:bg-gray-900">
             <div
-                class="container flex flex-col items-center justify-between p-6 mx-auto space-y-4 sm:space-y-0 sm:flex-row">
+                class="container flex flex-col items-baseline justify-between p-6 mx-auto space-y-4 sm:space-y-0 sm:flex-row">
+
+                <img id="logo2" class="h-6 md:mb-2 fill-current md:h-10 " src="img/MZ.svg" alt="MZ Logo" />
 
 
-                <img id="logo2" class="h-6 md:mb-2 fill-current md:h-10" src="img/MZ.svg" alt="MZ Logo" />
+                <p class="text-sm text-gray-500 dark:text-gray-300 ">
+                    <a href="" class="hover:text-blue-400 dark:hover:text-blue-400 ms-5">Impressum</a>
+                    <a class="mx-2">|</a>
+                    <a href="public/privacy_policy.html" class="hover:text-blue-400 dark:hover:text-blue-400">Privacy
+                        Policy</a>
 
-
-                <!-- home button & up arrow  -->
-                <div class="flex mt-4 sm:justify-center sm:mt-0">
-                    <a href="index.html"
-                        class="text-gray-500 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 ms-5">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 576 512">
-                            <path
-                                d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
-                        </svg>
-                    </a>
-
-                    <a href="#top"
-                        class="text-gray-500 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 ms-5">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 384 512">
-                            <path
-                                d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
-                        </svg>
-                    </a>
-                </div>
-
-
+                </p>
 
                 <div class="flex items-center justify-center">
+                    <a href="../index.html" aria-label="LinkedIn">
+                        <span
+                            class="icon-[fa6-solid--house] fill-current w-6 h-6 text-gray-500 dark:text-gray-300 hover:text-blue-400 dark:hover:text-blue-400 ms-5"></span>
+                    </a>
 
                     <button @click="modalOpen2 = !modalOpen2;" @click.away="modalOpen2 = false">
-                        <a href="#"
-                            class="text-gray-500 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-                            aria-label="Contact">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 512 512">
-                                <path
-                                    d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
-                            </svg>
+                        <a aria-label="Contact">
+                            <span
+                                class="icon-[fa6-solid--envelope] fill-current w-6 h-6 text-gray-500 dark:text-gray-300 hover:text-blue-400 dark:hover:text-blue-400 ms-5"></span>
                         </a>
                     </button>
 
 
-                    <a href="https://www.linkedin.com/in/marcozausch"
-                        class="text-gray-500 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 ms-5"
-                        aria-label="LinkedIn">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 512 512">
-                            <path
-                                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
-                        </svg>
+                    <a href="https://www.linkedin.com/in/marcozausch" aria-label="LinkedIn">
+                        <span
+                            class="icon-[fa6-brands--linkedin] fill-current w-6 h-6 text-gray-500 dark:text-gray-300 hover:text-blue-400 dark:hover:text-blue-400 ms-5"></span>
                     </a>
 
-
-                    <a href="https://github.com/MaCoZu"
-                        class="text-gray-500 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 ms-5"
-                        aria-label="Github">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 512 512">
-                            <path
-                                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
-                        </svg>
+                    <a href="https://github.com/MaCoZu" aria-label="Github">
+                        <span
+                            class="icon-[fa6-brands--github] fill-current w-6 h-6 text-gray-500 dark:text-gray-300 hover:text-blue-400 dark:hover:text-blue-400 ms-5"></span>
                     </a>
 
                 </div>
-
             </div>
         </footer>
     </div>
