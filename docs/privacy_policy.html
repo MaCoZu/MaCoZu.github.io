@@ -5,17 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .font-roboto {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .font-merri {
+            font-family: 'Merriweather', serif;
+        }
+
+        .font-pop {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .font-lora {
+            font-family: 'Lora', sans-serif;
+        }
+
+        .font-mserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+
     <!-- Favicon -->
     <link rel="icon" href="img/mz_black_bg.png" type="image/x-icon" />
 
     <!-- css  -->
     <link rel="stylesheet" href="../style.css">
 
+    <!-- Fonts -->
+    <link rel="stylesheet" href="./font.css">
+
+    <script type="module" crossorigin src="./assets/index-lU0vTl1d.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-PpS7UuZT.css">
+
     <!-- alpine  -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <script type="module" crossorigin src="./assets/index-RaoGAkWk.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-oLE9MNja.css">
 
     <title>Privacy Policy</title>
 </head>
@@ -28,12 +58,49 @@
         <nav class="text-lg bg-white dark:bg-gray-900">
             <div class="container mx-auto flex justify-between items-center px-6 py-6">
                 <div class="flex items-center justify-between">
-                    <a href="./index.html">
+                    <a href="index.html">
                         <img id="logo" class="w-auto h-7 fill-current md:h-14 hover:scale-150" src="img/MZ.svg"
                             alt="MZ Logo" />
                     </a>
                 </div>
         </nav>
+
+
+        <aside
+            class="right-0 w-1/6 py-8 fixed top-1/2 transform -translate-y-1/2 flex flex-col items-center overflow-y-auto bg-white dark:bg-gray-900 dark:border-gray-700">
+            <nav class="flex flex-col flex-1 space-y-8 items-center justify-center">
+                <a type="button" id="chevron-up">
+                    <span
+                        class="icon-[heroicons-outline--chevron-up] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
+                </a>
+
+                <a type="button" id="chevron-down">
+                    <span
+                        class="icon-[heroicons-outline--chevron-down] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
+                </a>
+
+                <a class=""></a>
+
+                <a id="font-select" data-tooltip-placement="left">
+                    <span
+                        class="icon-[fa6-solid--font] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
+                </a>
+
+                <a class=""></a>
+
+                <a type="button" href="#top" id="chevron-up-double">
+                    <span
+                        class="icon-[heroicons-outline--chevron-double-up] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
+                </a>
+
+                <a type="button" href="#footer" id="chevron-down-double">
+                    <span
+                        class="icon-[heroicons-outline--chevron-double-down] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
+                </a>
+
+        </aside>
+
+
 
         <!-- Contact Modal  -->
         <div id="modal-container" class="relative flex justify-center">
@@ -142,25 +209,10 @@
             </div>
         </div>
 
-        <!-- english deutsch select   -->
-        <div class="flex justify-center items-center pt-10">
-            <div
-                class="flex overflow-x-auto overflow-y-hidden border-b border-gray-200 whitespace-nowrap dark:border-gray-700">
-                <button id="dsgvo_deutsch"
-                    class="inline-flex items-center h-10 px-4 -mb-px text-sm text-center text-gray-700 bg-transparent border-b-2 border-transparent sm:text-base dark:text-white whitespace-nowrap cursor-base focus:outline-none hover:border-gray-400">
-                    Deutsch
-                </button>
-                <a class="mx-10 text-white"> </a>
-
-                <button id="dsgvo_english"
-                    class="inline-flex items-center h-10 px-4 -mb-px text-sm text-center text-blue-600 bg-transparent border-b-2 border-blue-500 sm:text-base dark:border-blue-400 dark:text-blue-300 whitespace-nowrap focus:outline-none">
-                    English
-                </button>
-            </div>
-        </div>
+    
 
         <main class="flex justify-center items-center min-h-screen py-20">
-            <article id="datenschutzerklärung"
+            <article id="article"
                 class="w-3/5 max-w-none p-6 prose prose-lg prose-stone dark:prose-invert text-justify">
                 <h1 class="text-left text-4xl">Datenschutzerklärung</h1>
                 <div class="columns-2">
@@ -176,7 +228,7 @@
                         </p>
                         <br />
 
-                        <p>Meine zusätzlichen Kontaktdaten finden Sie im <a href="./impressum.html">Impressum</a>.
+                        <p>Meine zusätzlichen Kontaktdaten finden Sie im <a href="impressum.html">Impressum</a>.
 
                         </p>
                         <br />
@@ -542,15 +594,15 @@
 
 
                 <p class="text-sm text-gray-500 dark:text-gray-300 ">
-                    <a href="impressum.html" class="hover:text-blue-400 dark:hover:text-blue-400 ms-5">Impressum</a>
+                    <a href="./impressum.html" class="hover:text-blue-400 dark:hover:text-blue-400 ms-5">Impressum</a>
                     <a class="mx-2">|</a>
-                    <a href="privacy_policy.html" class="hover:text-blue-400 dark:hover:text-blue-400">Privacy
+                    <a href="./privacy_policy.html" class="hover:text-blue-400 dark:hover:text-blue-400">Privacy
                         Policy</a>
 
                 </p>
 
                 <div class="flex items-center justify-center">
-                    <a href="./index.html" aria-label="LinkedIn">
+                    <a href="../index.html" aria-label="LinkedIn">
                         <span
                             class="icon-[fa6-solid--house] fill-current w-6 h-6 text-gray-500 dark:text-gray-300 hover:text-blue-400 dark:hover:text-blue-400 ms-5"></span>
                     </a>
