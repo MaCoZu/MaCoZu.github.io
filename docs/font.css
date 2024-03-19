@@ -1,92 +1,46 @@
-/* roboto-regular - latin */
 @font-face {
     font-display: swap; 
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    src: url('./fonts/roboto-v30-latin-regular.woff2') format('woff2'); 
+    src: url('./fonts/Roboto-Regular.woff2') format('woff2'); 
   }
   
-  /* roboto-500 - latin */
-  @font-face {
-    font-display: swap; 
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    src: url('./fonts/roboto-v30-latin-500.woff2') format('woff2'); 
-  }
 
-  /* merriweather-regular - latin */
 @font-face {
     font-display: swap; 
     font-family: 'Merriweather';
     font-style: normal;
     font-weight: 400;
-    src: url('./fonts/merriweather-v30-latin-regular.woff2') format('woff2'); 
+    src: url('./fonts/merriweather-regular.woff2') format('woff2'); 
   }
   
-  /* merriweather-700 - latin */
-  @font-face {
-    font-display: swap; 
-    font-family: 'Merriweather';
-    font-style: normal;
-    font-weight: 700;
-    src: url('./fonts/merriweather-v30-latin-700.woff2') format('woff2'); 
-  }
 
-  /* poppins-regular - latin */
 @font-face {
     font-display: swap; 
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    src: url('./fonts/poppins-v20-latin-regular.woff2') format('woff2'); 
+    src: url('./fonts/Poppins-Regular.woff2') format('woff2'); 
   }
   
-  /* poppins-700 - latin */
-  @font-face {
-    font-display: swap; 
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    src: url('./fonts/poppins-v20-latin-700.woff2') format('woff2'); 
-  }
-  
-  
-  /* lora-regular - latin */
-@font-face {
-    font-display: swap; 
-    font-family: 'Lora';
-    font-style: normal;
-    font-weight: 400;
-    src: url('./fonts/lora-v32-latin-regular.woff2') format('woff2'); 
-  }
-  
-  /* lora-700 - latin */
-  @font-face {
-    font-display: swap; 
-    font-family: 'Lora';
-    font-style: normal;
-    font-weight: 700;
-    src: url('./fonts/lora-v32-latin-700.woff2') format('woff2'); 
-  }
 
-  /* montserrat-regular - latin */
 @font-face {
     font-display: swap; 
-    font-family: 'Montserrat';
+    font-family: 'Lora';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/montserrat-v26-latin-regular.woff2') format('woff2'); 
+    src: url('./fonts/Lora-Variable.woff2') format('woff2'); 
   }
   
-  /* montserrat-700 - latin */
-  @font-face {
-    font-display: swap; 
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 700;
-    src: url('../fonts/montserrat-v26-latin-700.woff2') format('woff2'); 
-  }
+
+@font-face {
+  font-family: 'Ledger';
+  src: url('./fonts/Ledger-Regular.woff2') format('woff');
+}
   
+@font-face {
+  font-family: 'Signika';
+  src: url('./fonts/Signika-Variable.woff2') format('woff');
+}
   
