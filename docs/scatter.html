@@ -59,7 +59,7 @@
 
 
     <title>Scatter to Regression</title>
-    
+
     <!-- Fonts -->
     <link rel="stylesheet" href="./font.css">
     <!-- css & scripts  -->
@@ -752,41 +752,36 @@
                     deviations of the observations from this point. </p>
             </section>
 
-             <!-- Interpretation -->
-             <section>
+            <!-- Interpretation -->
+            <section>
                 <h2 id="interpretation">Interpretation</h2>
                 <p>Interpreting the estimated parameters depends on the units of our variables. If we are inferring
                     weight (pounds) from height (inches), we would say for every one-inch increase in height our
                     model suggests a weight increases by $\beta_1$ pounds. </p>
 
-                    <div class="">
-                        <img class="" src="img/scatter_reg/weight-height_intercept.png"
-                            alt="Interpretation Intercept"
-                            style="max-width:300px; float:right; margin:16px 0 4px 20px;">
-                    </div>
-                    <div>
-                        <p> The intercept $\beta_0$ is more obscure. It represents the value of the response
-                            variable
-                            when
-                            the explanatory variable is zero. In the example of height and weight $\beta_0$ represents
-                            the
-                            weight of someone that is zero inches tall. The regression equation of the data to the right
-                            is
-                            $\hat{y}=-106+3.43x$, this says a person of zero inches weights $-106$ pounds, a very
-                            peculiar
-                            person indeed. Obviously the intercept does not make always sense.</p>
-                        <p>When we talked about predictions in the terminology chapter, I advised against straying too
-                            far from the available data to make predictions outside of the range of values you actually
-                            observed. Trying to find the weight of a person who is zero inches tall should explain why
-                            this it is not a good idea. The intercept is mostly a mathematical tool for in drawing a
-                            line. Estimates of $\hat{y}$ are most plausible around the center of your observations,
-                            beyond the range of observed values the meaningfulness of the estimates diminishes quickly.
-                        </p>
-                    </div>
-                        <p>Looking again at the concrete example of $\hat{y}=-106+3.43x$, we can say that with each
-                            additional inch of height, a person's weight increases by $3.43$ pounds, on average. As long
-                            as we stay close to our observed range of values for the explanatory variable, in this case
-                            between $[63.43, 73.90]$.</p>
+                <div class="">
+                    <img class="" src="img/scatter_reg/weight-height_intercept.png" alt="Interpretation Intercept"
+                        style="max-width:300px; float:right; margin:16px 0 4px 20px;">
+                </div>
+                <div>
+                    <p>The intercept $\beta_0$ is more obscure. It represents the value of the response variable
+                        when the explanatory variable is zero. In the height and weight example, $\beta_0$
+                        represents the weight of someone who is zero inches tall. The regression equation in the
+                        graph on the right is $\hat{y}=-106+3.43x$, from the formula alone one would say "a person
+                        of zero inches has a weight of $-106$ pounds", a very peculiar person indeed. Obviously, the
+                        intercept makes no sense if our explanatory variable is unreasonable.</p>
+                    <p>When we talked about predictions in the terminology chapter, I advised against straying too
+                        far from the available data to make predictions outside of the range of values you actually
+                        observed. Trying to find the weight of a person who is zero inches tall should explain why
+                        this it is not a good idea. The intercept is mostly a mathematical tool for in drawing a
+                        line. Estimates of $\hat{y}$ are most plausible around the center of your observations,
+                        beyond the range of observed values the meaningfulness of the estimates diminishes quickly.
+                    </p>
+                </div>
+                <p>Looking again at the concrete example of $\hat{y}=-106+3.43x$, we can say that with each
+                    additional inch of height, a person's weight increases by $3.43$ pounds, on average. As long
+                    as we stay close to our observed range of values for the explanatory variable, in this case
+                    between $[63.43, 73.90]$.</p>
             </section>
 
             <!-- summary  -->
