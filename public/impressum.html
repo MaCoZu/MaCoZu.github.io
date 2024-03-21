@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="./img/logo/logo1.svg" type="image/x-icon" />
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .font-roboto {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .font-merri {
+            font-family: 'Merriweather', serif;
+        }
+
+        .font-pop {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .font-lora {
+            font-family: 'Lora', sans-serif;
+        }
+
+        .font-mserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .font-chomsky {
+            font-family: 'Chomsky', serif;
+        }
+
+        .font-karnak {
+            font-family: 'karnak', serif;
+        }
+
+        .font-abril {
+            font-family: 'abril', serif;
+        }
+
+        .font-georgia {
+            font-family: 'georgia', serif;
+        }
+
+        .font-futura {
+            font-family: 'futura', serif;
+        }
+    </style>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../font.css">
+
+    <!-- css  -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- mathjax  -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+          }
+        });
+      </script>
+
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+    <title>Scatter to Regression</title>
+
+</head>
+
+<body class="font-pop bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
+
+
+    <!-- new navbar -->
+    <nav class="mx-20 container content-between justify-between mt-6">
+        <div class="">
+            <div class="antialiase">
+                <div class="py-2">
+                    <div x-data="{ open: true }"
+                        class="flex flex-col justify-between items-center md:flex-row md:px-6 lg:px-8 xl:px-0">
+                        <div class="flex flex-row items-center">
+                            <a href="../index.html">
+                                <img id="logo" class="w-full h-8 pe-6 sm:h-8 fill-current dark:filter-white"
+                                    src="./img/logo/logo5.svg" alt="">
+                            </a>
+                            <a href="../index.html"
+                                class="text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                                Marco Zausch</a>
+                            <button class="rounded-lg mr-4 md:hidden focus:outline-none focus:shadow-outline"
+                                @click="open = !open">
+                                <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+                                    <path x-show="!open" fill-rule="evenodd"
+                                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                                        clip-rule="evenodd"></path>
+                                    <path x-show="open" fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <nav :class="{'flex': open, 'hidden': !open}"
+                            class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
+                            <a class="px-4 py-0 pt-1 text-lg  text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                                href="#">Blog</a>
+                            <a class="px-4 py-0 pt-1 text-lg  text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                                href="#">Portfolio</a>
+                            <a class="px-4 py-0 pt-1 text-lg  text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                                href="#">About</a>
+                            <a class="px-4 py-0 pt-1 text-lg text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                                href="#">Contact</a>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <main class="flex justify-center items-center min-h-screen py-20">
+        <article id="" class="w-3/5 max-w-none p-6 prose prose-lg prose-stone dark:prose-invert text-justify">
+            <h1 class="text-center text-4xl">Impressum</h1>
+            <div class="grid grid-cols-2 gap-4 justify-items-center">
+                <div class="text-left">
+                    <h3 class="">Verantwortlicher:</h3>
+                    <p>Marco Zausch</p>
+
+                    <h3 class="text-left">Profession:</h3>
+                    <p>
+                        Economics <br>
+                        Business Analytics <br>
+                        Data Science <br>
+                    </p>
+                </div>
+
+                <div class="text-right">
+                    <h3 class="" id="verantwortlicher">Email:</h3>
+                    <a href="mailto:marcozausch@posteo.de">marcozausch@posteo.de</a>
+
+                    <h3 class="" id="phone">
+                        <span class="mr-2 icon-[fa6-solid--phone] fill-current w-7 h-7 text-gray-500 dark:text-gray-300 "></span>
+                        <span class="mr-2  icon-[fa6-brands--whatsapp] fill-current w-7 h-7 text-gray-500 dark:text-gray-300 "></span>
+                        <span class="mr-2  icon-[fa6-brands--telegram] fill-current w-7 h-7 text-gray-500 dark:text-gray-300 "></span>
+                        <span class="icon-[fa6-brands--signal-messenger] fill-current w-7 h-7 text-gray-500 dark:text-gray-300 "></span></h3>
+
+                    <a href="mailto:marcozausch@posteo.de">+49 1573 6896 555</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- divider  -->
+    <hr class="mx-20 border-gray-200 dark:border-gray-700">
+
+    <!-- footer  -->
+    <div id="footer" class="mx-20">
+        <div class="flex justify-between items-center">
+
+            <!-- Logo and Name  -->
+            <div class="w-1/4">
+                <div class="flex justify-between items-center">
+                    <div class="py-5 flex gap-3 items-center">
+                        <a href="index.html">
+                            <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo5.svg"
+                                alt="">
+                            <div class="">
+                                <p
+                                    class="pb-3 text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                                    Marco</p>
+                                <p
+                                    class="text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                                    Zausch</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="w-3/4 flex justify-between items-start">
+            <!-- CONTACT ME  -->
+            <div class="p-5">
+                <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
+                <a class="my-3 flex items-center gap-3" href="/#">
+                    <span class="icon-[fa6-brands--whatsapp] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 "></span>
+                    <span class="icon-[fa6-brands--telegram] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 "></span>
+                    <span class="icon-[fa6-brands--signal-messenger] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 "></span>
+                     +49 1573 6896 555 </a>
+                <a class="flex items-center gap-3 my-3 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                    href="mailto:marcozausch@posteo.de"><span
+                    class="icon-[fa6-solid--envelope] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"></span> marcozausch@posteo.de</a>
+            </div>
+
+            <!-- WORK  -->
+            <div class="p-5">
+                <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
+
+                <p class="my-3 flex items-center gap-3">
+                    <a href="https://www.linkedin.com/in/marcozausch" aria-label="LinkedIn">
+                        <span
+                            class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"></span>
+                    </a>
+                    <a class="block hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                        href="https://www.linkedin.com/in/marcozausch">Linked In</a>
+                </p>
+
+                <p class="my-3 flex items-center gap-3">
+                    <a href="https://github.com/MaCoZu" aria-label="Github">
+                        <span
+                            class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"></span>
+                    </a>
+                    <a class="block hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                        href="https://github.com/MaCoZu">Github
+                </p>
+            </div>
+
+            <!-- RESSOURCES -->
+            <div class="p-5">
+                <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Resources</div>
+                <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-fuchsia-400" href="/#">Statistics </a>
+                <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-fuchsia-400" href="/#">Tutorials </a>
+            </div>
+
+            <!-- LEGAL  -->
+            <div class="p-5">
+                <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400 ">Legal</div>
+                <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                    href="./impressum.html">Impressum
+                </a>
+                <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                    href="./privacypolicy.html">Privacy Policy
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module" src="../main.js"></script>
+    <script type="module" src="../script.js"></script>
+</body>
+
+</html>
