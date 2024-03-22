@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/logo/logo1.svg" type="image/x-icon" />
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+      .font-roboto {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .font-merri {
+            font-family: 'Merriweather', serif;
+        }
+
+        .font-pop {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .font-lora {
+            font-family: 'Lora', sans-serif;
+        }
+
+        .font-ledger {
+            font-family: 'Ledger', sans-serif;
+        }
+
+        .font-signika {
+            font-family: 'Signika', sans-serif;
+        }
+    </style>
+
+    <title>Privacy Policy</title>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="./font.css">
+
+    <!-- css & scripts  -->
+    <script type="module" crossorigin src="./assets/index-TKs6Ahue.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Knfixus7.css">
+</head>
+
+<body class="font-pop bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
+
+
+    <!-- new navbar -->
+    <nav class="mx-20 container content-between justify-between mt-6">
+        <div class="">
+            <div class="antialiase">
+                <div class="py-2">
+                    <div x-data="{ open: true }"
+                        class="flex flex-col justify-between items-center md:flex-row md:px-6 lg:px-8 xl:px-0">
+                        <div class="flex flex-row items-center">
+                            <a href="./index.html">
+                                <img id="logo" class="w-full h-8 pe-6 sm:h-8 fill-current dark:filter-white"
+                                    src="./img/logo/logo5.svg" alt="">
+                            </a>
+                            <a href="./index.html"
+                                class="text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                                Marco Zausch</a>
+                            <button class="rounded-lg mr-4 md:hidden focus:outline-none focus:shadow-outline"
+                                @click="open = !open">
+                                <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+                                    <path x-show="!open" fill-rule="evenodd"
+                                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                                        clip-rule="evenodd"></path>
+                                    <path x-show="open" fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <nav :class="{'flex': open, 'hidden': !open}"
+                            class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
+                            <a class="px-4 py-0 pt-1 text-lg  text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                                href="#">Blog</a>
+                            <a class="px-4 py-0 pt-1 text-lg  text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                                href="#">Portfolio</a>
+                            <a class="px-4 py-0 pt-1 text-lg  text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                                href="#">About</a>
+                            <a class="px-4 py-0 pt-1 text-lg text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                                href="#">Contact</a>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <aside
+        class="right-0 w-1/6 py-8 fixed top-1/2 transform -translate-y-1/2 flex flex-col items-center overflow-y-auto bg-white dark:bg-gray-900 dark:border-gray-700">
+        <nav class="flex flex-col flex-1 space-y-8 items-center justify-center">
+            <a type="button" id="chevron-up">
+                <span
+                    class="icon-[heroicons-outline--chevron-up] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
+            </a>
+
+            <a type="button" id="chevron-down">
+                <span
+                    class="icon-[heroicons-outline--chevron-down] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
+            </a>
+
+            <a class=""></a>
+
+            <a id="font-select" data-tooltip-placement="left">
+                <span
+                    class="icon-[fa6-solid--font] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
+            </a>
+
+            <a class=""></a>
+
+            <a type="button" href="#top" id="chevron-up-double">
+                <span
+                    class="icon-[heroicons-outline--chevron-double-up] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
+            </a>
+
+            <a type="button" href="#footer" id="chevron-down-double">
+                <span
+                    class="icon-[heroicons-outline--chevron-double-down] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
+            </a>
+
+    </aside>
+
+    <main class="flex justify-center items-center min-h-screen py-20">
+        <article id="article" class="w-3/5 max-w-none p-6 prose prose-xl prose-stone dark:prose-invert text-justify">
+            <h1 class="text-left text-4xl">Datenschutzerklärung</h1>
+            <div class="columns-2">
+                <div class="text-left">
+                    <h2 class="text-left" id="verantwortlicher">Verantwortlicher </h2>
+                    <p>für die Datenverarbeitung dieser Website im Sinne der Datenschutz-Grundverordnung (DSGVO)
+                        ist:</p>
+                    <br />
+
+                    <p>Marco Zausch<br /><br />
+
+                        <a href="mailto:marcozausch@posteo.de">marcozausch@posteo.de</a>
+                    </p>
+                    <br />
+
+                    <p>Meine zusätzlichen Kontaktdaten finden Sie im <a href="impressum.html">Impressum</a>.
+
+                    </p>
+                    <br />
+                    <br />
+                </div>
+
+                <!-- table of contents  -->
+                <div class="float-right">
+                    <div class="border rounded-lg pl-4 pr-4 pb-0 pt-0 ml-6 mt-16 mb-1 shadow-sm z-40">
+                        <p class="text-lg font-bold text-left border-b border-gray-300">Inhaltsverzeichnis</p>
+                        <ul class="text-base list-none text-left pl-0 ">
+                            <li><a href="#verantwortlicher">Verantwortlicher</a>
+                            <li><a href="#kurzfassung">Kurzfassung</a>
+                            <li><a href="#grundlegendes">Grundlegendes</a>
+                            <li><a href="#hosting">Web Hoster: GitHub</a>
+                            <li><a href="#allgemeines">Allgemeines zum Datenschutz</a>
+                            <li><a href="#externe-links">Externe Links</a>
+                            <li><a href="#fonts">Google Fonts</a>
+                            <li><a href="#cookies">Cookies</a>
+                            <li><a href="#kontaktdaten">Umgang mit Kontaktdaten</a>
+                            <li><a href="#nutzerrechte">Rechte des Nutzers</a>
+                            <li><a href="#dsgvo">Was ist die DSGVO?</a>
+                            <li><a href="#was_ist_datenschutzerklärung">Was ist eine Datenschutzerklärung</a>
+                            <li><a href="#personenbezogene-daten">Personenbezogene Daten</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <h2 class="text-left" id="kurzfassung">Das Wichtigste in Kürze</h2>
+            <ul class="text-left">
+                <li>Als Betreiber dieser Website bin ich laut Datenschutzgrundverordnung (DSGVO)
+                    verpflichtet
+                    die Besucher meiner Website über die Verarbeitung ihrer personenbezogenen Daten
+                    aufzuklären.
+                </li>
+                <li>Diese Website verzichtet so weit wie möglich auf das Sammeln, Speichern, Verarbeiten und
+                    Weitergeben ihrer personenbezogenen Daten.</li>
+                <li>Diese Website verwendet <strong>keine Cookies</strong>.</li>
+                <li>Schriftarten und Icons sind lokal eingebunden. Daher fließen <strong>keine</strong>
+                    personenbezogenen
+                    Daten an etwaige Dienstanbieter (Google Fonts etc.) ab.</li>
+                <li>Auch verwendet ich <strong>keine Website-Analysetools</strong> wie Google Analytics, die
+                    den
+                    Datenverkehr auf dieser Website protokollieren.</li>
+                <li>Es werden auf dieser Website <strong>keine Social-Media Buttons</strong> verwendet,
+                    wodurch
+                    personenbezogenen Daten zu den Servern der Social-Media Unternehmen abfließen würden.
+                </li>
+                <li><strong>Externe Links</strong> sind unterstrichen und mit einem Icon <i
+                        class="icon-[ei--external-link] w-6 h-6 -m-1" aria-hidden="true"></i>
+                    <strong>gekennzeichent</strong>. Interne Links sind lediglich unterstrichen.
+                    Ich übernehme keine Haftung für Inhalte und die Verarbeitung ihrer personenbezogenen Daten bei
+                    der verlinkten
+                    Website.
+                </li>
+                <li>Jedoch achte ich streng darauf, dass die Linkziele thematisch relevant und
+                    vertrauenswürdig
+                    sind und rechtlich unbedenkliche Inhalte vorhalten. </li>
+                <li>Diese Website beinhaltet zwei externe Links zu meinen Github Repository und meinem
+                    LinkedIn Profil, die mit den entsprechenden Icons gesondert gekennzeichnet sind.</li>
+                <li> Diese Website wird von GitHub gehostet, bei dem Besuch meiner Website werden <a
+                        href="https://docs.github.com/de/pages/getting-started-with-github-pages/about-github-pages#data-collection">
+                        personenbezogene Daten (IP Adresse und evt. Browserdaten) an den Webhoster
+                        übermittelt</a><i class="icon-[ei--external-link] w-6 h-6 -m-0.5" aria-hidden="true"></i>, das
+                    kann ich leider nicht verhindern. </li>
+            </ul>
+            <h2 class="text-left" id="grundlegendes">Grundlegendes</h2>
+            <p>Diese Datenschutzerklärung soll die Nutzer dieser Website über die Art, den Umfang und den
+                Zweck
+                der Erhebung und Verwendung personenbezogener Daten durch den Websitebetreiber (Marco
+                Zausch)
+                informieren.</p>
+            <p>Der Websitebetreiber nimmt Ihren Datenschutz sehr ernst und behandelt Ihre personenbezogenen
+                Daten vertraulich und entsprechend der gesetzlichen Vorschriften. Da durch neue Technologien
+                und
+                die ständige Weiterentwicklung dieser Webseite Änderungen an dieser Datenschutzerklärung
+                vorgenommen werden können, empfehlen wir Ihnen sich die Datenschutzerklärung in regelmäßigen
+                Abständen wieder durchzulesen.</p>
+            <p>Definitionen der verwendeten Begriffe (z.B. “personenbezogene Daten” oder “Verarbeitung”)
+                finden
+                Sie in Art. 4 <a href="https://www.datenschutz.org/dsgvo/">DSGVO</a><i
+                    class="icon-[ei--external-link] w-6 h-6 -m-0.5" aria-hidden="true"></i>.</p>
+            <h2 class="text-left" id="hosting">Web Hosting: Github Pages</h2>
+            <p>Diese Website wird auf dem Server von GitHub Pages gehostet. Bei dem Besuch meiner Website
+                wird
+                die <a
+                    href="https://docs.github.com/de/pages/getting-started-with-github-pages/about-github-pages#data-collection">IP
+                    Adresse des Besuchers bei GitHub protokolliert und gespeichert</a><i
+                    class="icon-[ei--external-link] w-6 h-6 -m-0.5" aria-hidden="true"></i>.<br />
+                Dies geschieht "aus Sicherheitszwecken", wie GitHub versichert. Die Speicherung der Daten
+                geschieht ungeachtet der Tatsache ob der Besucher meiner Website Nutzer von GitHub ist oder
+                nicht. </p>
+            <p>Für weitere Informationen die vom Webhoster GitHub bei dem Besuch dieser Seite erhoben
+                werden,
+                verweise ich auf die <a
+                    href="https://docs.github.com/de/site-policy/privacy-policies/github-privacy-statement">GitHub-Datenschutzerklärung</a><i
+                    class="icon-[ei--external-link] w-6 h-6 -m-0.5" aria-hidden="true"></i>.
+            </p>
+            <p>Datenverantwortlicher für Personen außerhalb Nordamerikas ist GitHub&nbsp;B.V.</p>
+            <p>GitHub ist ein US amerikanisches Unternehmen und die USA gelten im Sinne der DSGVO als
+                unsicheres
+                Drittland, das keinen EU konformen Datenschutz gewährleistet.</p>
+            <h2 class="text-left" id="allgemeines">Allgemeines zu
+                IP Speicherung, Logfiles und unsichere Drittländer (USA):</h2>
+            <p>Üblicherweise werden nicht nur IP-Adressen gespeichert sonder sogenannte Server-Logfiles
+                angelegt, </p>
+            <ul class="text-left">
+                <li>Mittels <strong>Logfiles</strong> können Websitebetreiber die
+                    <strong>Aktivitäten</strong>
+                    auf Ihren Seiten nachvollziehen und <strong>Fehler</strong> ausfindig machen.
+                </li>
+                <li>Logfiles speichern die IP-Adresse, den verwendeten Browser und das genutzte System eines
+                    Seitenbesuchers. </li>
+                <li>Logfiles dürfen nicht zur <strong>Auswertung der Verhaltensweisen</strong> genutzt und
+                    nicht
+                    mit anderen gesammelten Daten in <strong>Verbindung</strong> gebracht werden.</li>
+            </ul>
+            <p>Der Websitebetreiber bzw. Seitenprovider erhebt Daten über Zugriffe auf die Seite und
+                speichert
+                folgende Daten in den „Server-Logfiles“:</p>
+            <ul class="text-left">
+                <li>Besuchte Website</li>
+                <li>Uhrzeit zum Zeitpunkt des Zugriffes</li>
+                <li>Menge der gesendeten Daten in Byte</li>
+                <li>Quelle/Verweis, von welchem Sie auf die Seite gelangten</li>
+                <li>Verwendeter Browser</li>
+                <li>Verwendetes Betriebssystem</li>
+                <li>Verwendete IP-Adresse <em>(ggf.: in anonymisierter Form)</em></li>
+            </ul>
+            <p>GitHub ist ein amerikanisches Unternehmen. Nach dem <a
+                    href="https://ec.europa.eu/info/law/law-topic/data-protection/international-dimension-data-protection/adequacy-decisions_de">Angemessenheitsbeschluss
+                    der Europäischen Kommission</a><i class="icon-[ei--external-link] w-6 h-6 -m-0.5"
+                    aria-hidden="true"></i> gelten die <strong>USA</strong> als <strong>unsicheres
+                    Drittland</strong> für den Datenschutz. </p>
+            <p>Das heißt nach EU Standards haben die USA keinen adäquaten Datenschutz. Diese Beurteilung ist
+                auf ein Urteil des EuGH vom 16 Juli 2020 („Schrems II“) zurückzuführen, bei dem das zuvor
+                geltende Privacy Shield Abkommen gekippt wurde. Zur Begründung wurden unter anderem folgende Punkte
+                vorgebracht:</p>
+            <ul class="text-left">
+                <li>Privacy Shield benachteilige europäische Nutzer, so der EuGH</li>
+                <li>Überwachungsgesetze (Patriot Act etc.), die nach dem 11. September 2001 erlassen wurden,
+                    erlauben Spionage von europäischen Nutzern</li>
+                <li>Der Ombudsmannmechanismus, durch den US-Organisationen greifbar werden sollen für
+                    europäische Nutzer, funktioniert nicht gut genug </li>
+            </ul>
+            <h2 class="text-left" id="externe-links">Externe Links</h2>
+            <p>Sollten sie einen externen Link auf dieser Website öffnen fließen Verkehrsdaten und darunter
+                vor
+                allem die IP-Adresse des Besuchers an den Betreiber der Seite des Links. Das ist insofern
+                kritisch als die Server vieler Websites in den USA stehen. Die USA gelten im Sinne der DSGVO
+                jedoch als unsicheres Drittland mit unzureichendem Datenschutz (Patriot Act etc.). </p>
+            <p>Ich habe Externe Links als solche <strong>mit einem kleinen Icon<i
+                        class="icon-[ei--external-link] w-6 h-6 -m-0.5" aria-hidden="true"></i>
+                    gekennzeichnet</strong>.
+                Sofern
+                sie diesen folgen sollten sich bewusst sein, dass Sie den sicheren Hafen meiner Website
+                verlassen und sich in das potenziell gefährliche Meer des World Wide Web begeben, wo Sie
+                ihre
+                persönlichen Daten unersättlichen Datenkraken und unseriösen Business Haien zum Fraß
+                vorwerfen.
+            </p>
+            <p>Als Website Betreiber bin ich verpflichtet die Inhalte auf verlinkten Websites auf ihre
+                Rechtssicherheit überprüfen. Ich bemühe mich lediglich vertrauenswürdige, thematisch
+                relevante
+                und rechtlich unbedenkliche Websites zu verlinken.</p>
+            <p>Ich übernehme keine Haftung für die Datenverarbeitung beim Linkziel und allgemein gilt:<br />
+                Sofern ein rechtsverletzender Inhalt auf einer verlinkten Website nicht deutlich erkennbar
+                ist
+                und Ich keine Kenntnis von der Rechtswidrigkeit habe, bin Ich als Linksetzender von der
+                Haftung
+                ausgeschlossen. In einem solchen Fall ist der Betreiber der externen Website verantwortlich
+                für
+                die Rechtsverletzung.</p>
+            <h2 class="text-left" id="fonts">Google Fonts &amp; Icons</h2>
+            <p>Oft werden Daten automatisch von Dritten gesammelt dessen Dienste auf einer Website
+                eingebunden
+                sind: so können durch das Einbinden von Google Fonts, Social-Media-Buttons und Icons Daten
+                an
+                die Unternehmen abfließen, welche diese Dienste anbieten.</p>
+            <p>Diese Website verwendet <strong>keine Social-Media-Buttons</strong>.</p>
+            <p><strong>Schriftarten und Icons</strong> auf meiner Website sind <strong>lokal eingebunden und
+                    werden auf meinem Server gehostet</strong>. Somit findet kein Datenabfluss an Dritte
+                (Google) über diesen Kanal statt. </p>
+            <h2 id="cookies">Cookies</h2>
+            <p>Diese Seite verwendet keine Cookies. Ich erkläre kurz was Cookies sind und warum ich auf diese
+                verzichte. Cookies sind kleine Textdateien die eine Website in ihrem Browserverlauf speichert um
+                bei einem erneuten Besuch dieser Website einige Informationen über Ihren letzten Besuch
+                bereitzuhalten. Da Cookies -- die Informationen über ihr Surfverhalten beinhalten -- auf den
+                entsprechenden Servern der Seitenbetreiber teils Jahre gespeichert werden können, stellen Cookies
+                einen nicht unerheblichen Eingriff in die Privatsphäre dar. Der Bundesgerichtshof (BGH) hat 2020
+                geurteilt, dass die Nutzer der Speicherung von Cookies <strong>aktiv, freiwillig und nach
+                    vorheriger Informierung</strong> zustimmen müssen. Ausnahmen stellen technisch notwendige
+                Cookies u.a. sogenannte Session-Cookies dar. Daher poppen auf Websites, die Cookies verwenden
+                Hinweis-Texte auf, wobei ein ausdrückliches Einverständnis zur Speicherung von Cookies vom Nutzer
+                abgefragt wird. Sollte die Möglichkeit Cookies abzulehnen fehlen, <strong>widerspricht</strong>
+                dies den EU-Richtlinien bezüglich Cookies und Datenschutz. Sie sollten solche
+                Websites meiden. </p>
+            <p>Ich verzichte auf Cookies und empfehle Ihnen Cookies generell abzulehnen und diese zusätzlich nach dem
+                Schließen des Browsers automatisch zu löschen. Die entsprechende Funktion finden sie in
+                den Sicherheitseinstellungen ihres Browsers. Bei Firefox finden sie diese unter: <br>
+                <code>Einstellungen &gt; Datenschutz &amp; Sicherheit &gt; Cookies und Website-Daten</code>.
+            </p>
+
+            <h2 class="text-left" id="kontaktdaten"><strong>Umgang mit Kontaktdaten</strong></h2>
+            <p>Nehmen Sie mit mir als Websitebetreiber durch die angebotenen Kontaktmöglichkeiten Verbindung
+                auf, werden Ihre Angaben nur gespeichert, um Ihrer Anfrage bearbeiten und beantworten zu
+                können.
+                Ohne Ihre Einwilligung werden diese Daten nicht an Dritte weitergegeben. Wenn sie die
+                Löschung
+                ihrer Kontaktdaten erwünschen teilen sie mir ihren Wunsch per Email mit: <br>
+                <strong>marcozausch@posteo.de</strong>.
+            </p>
+            <h2 class="text-left" id="nutzerrechte">Rechte des Nutzers</h2>
+            <p>Sie haben als Nutzer das Recht, auf Antrag eine kostenlose Auskunft darüber zu erhalten,
+                welche
+                personenbezogenen Daten über Sie gespeichert wurden. Sie haben außerdem das Recht auf
+                Berichtigung falscher Daten und auf die Verarbeitungseinschränkung oder Löschung Ihrer
+                personenbezogenen Daten. Falls zutreffend, können Sie auch Ihr Recht auf <a
+                    href="https://www.datenschutz.org/datenportabilitaet/">Datenportabilität</a><i
+                    class="icon-[ei--external-link] w-6 h-6 -m-0.5" aria-hidden="true"></i> geltend
+                machen.
+                Sollten Sie annehmen, dass Ihre Daten unrechtmäßig verarbeitet wurden, können Sie eine
+                Beschwerde bei der zuständigen Aufsichtsbehörde einreichen.</p>
+            <h3 id="löschung-von-daten">Löschung von Daten</h3>
+            <p>Sofern Ihr Wunsch nicht mit einer gesetzlichen Pflicht zur Aufbewahrung von Daten (z. B. <a
+                    href="https://www.datenschutz.org/vorratsdatenspeicherung/">Vorratsdatenspeicherung</a><i
+                    class="icon-[ei--external-link] w-6 h-6 -m-0.5" aria-hidden="true"></i>)
+                kollidiert, haben Sie ein Anrecht auf Löschung Ihrer Daten. Von uns gespeicherte Daten
+                werden,
+                sollten sie für ihre Zweckbestimmung nicht mehr vonnöten sein und es keine gesetzlichen
+                Aufbewahrungsfristen geben, gelöscht. Falls eine Löschung nicht durchgeführt werden kann, da
+                die
+                Daten für zulässige gesetzliche Zwecke erforderlich sind, erfolgt eine Einschränkung der
+                Datenverarbeitung. In diesem Fall werden die Daten gesperrt und nicht für andere Zwecke
+                verarbeitet.</p>
+            <h3 id="widerspruchsrecht">Widerspruchsrecht</h3>
+            <p>Nutzer dieser Webseite können von ihrem Widerspruchsrecht Gebrauch machen und der
+                Verarbeitung
+                ihrer personenbezogenen Daten zu jeder Zeit widersprechen.</p>
+            <p>Wenn Sie eine Berichtigung, Sperrung, Löschung oder Auskunft über die zu Ihrer Person
+                gespeicherten personenbezogenen Daten wünschen oder Fragen bzgl. der Erhebung, Verarbeitung
+                oder
+                Verwendung Ihrer personenbezogenen Daten haben oder erteilte Einwilligungen widerrufen
+                möchten,
+                wenden Sie sich bitte an folgende E-Mail-Adresse: <a
+                    href="&#109;a&#105;&#x6c;&#x74;&#111;:ma&#114;&#x63;&#111;&#122;&#x61;&#x75;&#x73;&#x63;&#104;&#x40;&#x70;&#x6f;&#115;&#116;e&#x6f;&#46;&#100;&#101;">&#x6d;&#x61;&#x72;&#x63;&#111;&#x7a;&#x61;&#117;&#115;&#99;&#104;&#x40;&#x70;&#111;&#115;t&#101;&#111;&#46;&#100;&#x65;</a>
+            </p>
+            <h3 id="umgang-mit-kommentaren-und-beiträgen">Umgang mit Kommentaren und Beiträgen</h3>
+            <p>Hinterlassen Sie auf dieser Website einen Beitrag oder Kommentar, wird Ihre IP-Adresse
+                gespeichert. Dies erfolgt aufgrund unserer berechtigten Interessen im Sinne des Art. 6 Abs.
+                1
+                lit. f. DSGVO und dient der Sicherheit von uns als Websitebetreiber: Denn sollte Ihr
+                Kommentar
+                gegen geltendes Recht verstoßen, können wir dafür belangt werden, weshalb wir ein Interesse
+                an
+                der Identität des Kommentar- bzw. Beitragsautors haben.</p>
+            <h2 class="text-left" class="text-left" id="berliner-beauftragte-für-datenschutz-und-informationsfreiheit">
+                Berliner
+                Beauftragte für
+                Datenschutz und Informationsfreiheit</h2>
+            <ul>
+                <li>
+                    <p>Alt-Moabit 59-61 <br />
+                        10555 Berlin <br />
+                        Eingang: Alt-Moabit 60 </p>
+                </li>
+                <li>
+                    <p>Tel.: <a href="tel:+4930138890">+49 30 13889-0</a></p>
+                </li>
+                <li>
+                    <p>Fax: +49 30 2155050</p>
+                </li>
+                <li>
+                    <p>E-Mail: <a href="mailto:mailbox@datenschutz-berlin.de">mailbox@datenschutz-berlin.de</a>
+                    </p>
+                </li>
+            </ul>
+            <h2 class="text-left" id="dsgvo">Was ist die DSGVO?</h2>
+            <p>Die <a
+                    href="http://eur-lex.europa.eu/legal-content/DE/TXT/PDF/?uri=CELEX:32016R0679&from=EN">Datenschutzgrundverordnung</a><i
+                    class="icon-[ei--external-link] w-6 h-6 -m-0.5" aria-hidden="true"></i>
+                ist ein EU-Gesetz, welches neue Standards für den Datenschutz in der Europäischen Union
+                setzt.
+                Diese ist seit dem 25. Mai 2018 endgültig für alle Pflicht. Im Grunde werden in der neuen
+                Datenschutzgrundverordnung alle Prozesse und Anforderungen an das Datenschutzmanagement von
+                Unternehmen geregelt. </p>
+            <p>Die DSGVO <strong>betrifft alle Unternehmen</strong>, <strong>die personenbezogene Daten von
+                    Mitarbeitern oder Kunden erfassen und speichern</strong>. Darunter fallen
+                mittelständische
+                Unternehmen mit eigenem Newsletter genauso wie Agenturen, Onlineshops, Hoster und
+                Freelancer,
+                die zum Beispiel Nutzer-Tracking auf ihrer Website betreiben.</p>
+            <p>Für die rechtmäßige Verarbeitung personenbezogener Daten ist eine Rechtsgrundlage gemäß DSGVO
+                oder eine Einwilligungserklärung der betroffenen Personen notwendig. Dies trifft
+                hauptsächlich
+                im Datenverkehr im Internet zu.</p>
+            <h2 class="text-left" id="was_ist_datenschutzerklärung">Was ist eine Datenschutzerklärung</h2>
+            <p>Eine <strong>Datenschutzerklärung</strong> (auch auf Englisch <strong>Privacy Policy</strong>
+                genannt) umschreibt Maßnahmen, die eine Organisation ergreift, um die Privatsphäre ihres
+                Kunden
+                oder Benutzers zu wahren. Besonders schützenswert sind hierbei erhobene personenbezogene
+                Daten.
+                Personenbezogene Daten können beispielsweise Name, E-Mail-Adresse und die Anschrift sein.
+            </p>
+            <p>Darüber hinaus wird üblicherweise dargelegt, wie diese Daten gesammelt, genutzt und ob sie
+                gegebenenfalls an Dritte weitergegeben werden. Geregelt werden also z.B. persönliche
+                Informationen (Name, Anschrift usw.), Social Media (Facebook, Twitter usw.), Zahlungen
+                (PayPal,
+                Klarna), Registrierungen, Newsletter, Datenanalyse und Cookies.</p>
+            <h2 class="text-left" id="personenbezogene-daten">Personenbezogene Daten</h2>
+            <p>Hierunter versteht man landläufig alle Daten, die dazu geeignet sind, eine Identität
+                festzustellen. Allerdings zählen zu diesen Daten auch solche, die einer Person anhaften. Als
+                solche definiert die <strong>DSGVO in Art. 4</strong> ebenfalls alle Angaben, welche die
+                <strong>persönlichen oder sachlichen Verhältnisse einer natürlichen Person</strong>
+                betreffen.
+                <strong>Besondere Kategorien personenbezogener Daten</strong> sind in Art. 9 der DSGVO
+                erfasst
+                (Gesundheitsdaten, Religionszugehörigkeit usf.).
+            </p>
+            <p>In Artikel 4 Abs.1 der Datenschutzgrundverordnung werden personenbezogene Daten so
+                beschrieben:
+            </p>
+            <blockquote>
+                <ol>
+                    <li>„personenbezogene Daten“ alle Informationen, die sich auf eine identifizierte oder
+                        identifizierbare natürliche Person (im Folgenden „betroffene Person“) beziehen; als
+                        identifizierbar wird eine natürliche Person angesehen, die direkt oder indirekt,
+                        insbesondere mittels Zuordnung zu einer Kennung wie einem Namen, zu einer
+                        Kennnummer, zu
+                        Standortdaten, zu einer Online-Kennung oder zu einem oder mehreren besonderen
+                        Merkmalen,
+                        die Ausdruck der physischen, physiologischen, genetischen, psychischen,
+                        wirtschaftlichen, kulturellen oder sozialen Identität dieser natürlichen Person
+                        sind,
+                        identifiziert werden kann;</li>
+                </ol>
+            </blockquote>
+            <p>Bei jedem Aufruf einer Webseite über einen Browser wird die IP-Adresse des Nutzers, also
+                dessen
+                <strong>Netzwerkadresse</strong>, an die aufgerufene Webseite übertragen. Außerdem können
+                weitere Metadaten oder (technische) Verkehrsdaten abfließen, wie zum Beispiel Angaben zum
+                verwendeten Browser und Betriebssystem Diese Daten werden auch für das Fingerprinting
+                genutzt.
+            </p>
+            <p>Jeder Website Hoster – also jenes Unternehmen, welches den Webspace für die Website zur Verfügung
+                stellt – sammelt ein ein <strong>Mindestmaß an Informationen</strong> über seine Besucher
+                (IP-Adresse, benutzter Browser, Verweildauer), damit ist der <strong>Aufruf einer Webseite immer ein
+                    DSGVO-relevanter Vorgang</strong>.
+            </p>
+        </article>
+    </main>
+
+    <!-- divider  -->
+    <hr class="mx-20 border-gray-200 dark:border-gray-700">
+
+    <!-- footer  -->
+    <div id="footer" class="mx-20">
+        <div class="flex justify-between items-center">
+
+            <!-- Logo and Name  -->
+            <div class="w-1/4">
+                <div class="flex justify-between items-center">
+                    <div class="py-5 flex gap-3 items-center">
+                        <a href="index.html">
+                            <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo5.svg"
+                                alt="">
+                            <div class="">
+                                <p
+                                    class="pb-3 text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                                    Marco</p>
+                                <p
+                                    class="text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                                    Zausch</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="w-3/4 flex justify-between items-start">
+            <!-- CONTACT ME  -->
+            <div class="p-5">
+                <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
+                <a class="my-3 flex items-center gap-3" href="/#">
+                    <span class="icon-[fa6-brands--whatsapp] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 "></span>
+                    <span class="icon-[fa6-brands--telegram] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 "></span>
+                    <span class="icon-[fa6-brands--signal-messenger] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 "></span>
+                     +49 1573 6896 555 </a>
+                <a class="flex items-center gap-3 my-3 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                    href="mailto:marcozausch@posteo.de"><span
+                    class="icon-[fa6-solid--envelope] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"></span> marcozausch@posteo.de</a>
+            </div>
+
+            <!-- WORK  -->
+            <div class="p-5">
+                <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
+
+                <p class="my-3 flex items-center gap-3">
+                    <a href="https://www.linkedin.com/in/marcozausch" aria-label="LinkedIn">
+                        <span
+                            class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"></span>
+                    </a>
+                    <a class="block hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                        href="https://www.linkedin.com/in/marcozausch">Linked In</a>
+                </p>
+
+                <p class="my-3 flex items-center gap-3">
+                    <a href="https://github.com/MaCoZu" aria-label="Github">
+                        <span
+                            class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"></span>
+                    </a>
+                    <a class="block hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                        href="https://github.com/MaCoZu">Github
+                </p>
+            </div>
+
+            <!-- RESSOURCES -->
+            <div class="p-5">
+                <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Resources</div>
+                <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-fuchsia-400" href="/#">Statistics </a>
+                <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-fuchsia-400" href="/#">Tutorials </a>
+            </div>
+
+            <!-- LEGAL  -->
+            <div class="p-5">
+                <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400 ">Legal</div>
+                <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                    href="./impressum.html">Impressum
+                </a>
+                <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                    href="./privacypolicy.html">Privacy Policy
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="./script.js"></script>
+</body>
+
+</html>
