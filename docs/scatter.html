@@ -62,61 +62,66 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="./font.css">
-    <!-- css & scripts  -->
-    <script type="module" crossorigin src="./assets/index-TKs6Ahue.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-Knfixus7.css">
 
+
+    <script type="module" crossorigin src="./assets/index--k-FJG8Q.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-MRPT5kEg.css">
 </head>
 
 <body class="font-pop bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
 
-    <!-- new navbar -->
-    <nav class="mx-20 container content-between justify-between mt-6">
-        <div class="">
-            <div class="antialiase">
-                <div class="py-2">
-                    <div x-data="{ open: true }"
-                        class="flex flex-col justify-between items-center md:flex-row md:px-6 lg:px-8 xl:px-0">
-                        <div class="flex flex-row items-center">
-                            <a href="./index.html">
-                                <img id="logo" class="w-full h-8 pe-6 sm:h-8 fill-current dark:filter-white"
-                                    src="./img/logo/logo5.svg" alt="">
-                            </a>
-                            <a href="./index.html"
-                                class="text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                                Marco Zausch</a>
-                            <button class="rounded-lg mr-4 md:hidden focus:outline-none focus:shadow-outline"
-                                @click="open = !open">
-                                <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
-                                    <path x-show="!open" fill-rule="evenodd"
-                                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-                                        clip-rule="evenodd"></path>
-                                    <path x-show="open" fill-rule="evenodd"
-                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <nav :class="{'flex': open, 'hidden': !open}"
-                            class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
-                            <a class="px-4 py-0 pt-1 text-lg  text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
-                                href="#">Blog</a>
-                            <a class="px-4 py-0 pt-1 text-lg  text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
-                                href="#">Portfolio</a>
-                            <a class="px-4 py-0 pt-1 text-lg  text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
-                                href="#">About</a>
-                            <a class="px-4 py-0 pt-1 text-lg text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
-                                href="#">Contact</a>
+    <!-- navbar -->
+    <nav x-data="{ isOpen: false }" class="relative ">
+        <div class="container mx-auto md:mx-20 px-6 md:px-0 py-4 md:flex md:justify-between md:items-center">
+            <div class="flex items-center justify-between">
 
-                        </nav>
-                    </div>
+                <!-- logo + name  -->
+                <div class="flex items-center">
+                    <a class="mr-auto" href="index.html">
+                        <img id="logo" class="w-full h-8 pe-6 sm:h-8 fill-current dark:filter-white"
+                            src="./img/logo/logo5.svg" alt="">
+                    </a>
+                    <a class="hidden md:inline-block text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline ml-2"
+                        href="index.html">Marco Zausch</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex lg:hidden">
+                    <button x-cloak @click="isOpen = !isOpen" type="button"
+                        class="hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none"
+                        aria-label="toggle menu">
+                        <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+                        </svg>
+
+                        <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+            <div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']"
+                class="absolute inset-x-0 z-20 w-full px-6 py-12 transition-all duration-300 ease-in-out bg-white dark:bg-gray-900 md:mt-0 md:px-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center">
+                <div class="flex flex-col md:flex-row md:mx-0">
+                    <a class="px-4 py-0 pt-1 text-lg  text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-sky-300"
+                        href="#">Blog</a>
+                    <a class="px-4 py-0 pt-1 text-lg  text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-sky-300"
+                        href="#">Portfolio</a>
+                    <a class="px-4 py-0 pt-1 text-lg  text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-sky-300"
+                        href="#">About</a>
+                    <a class="px-4 py-0 pt-1 text-lg text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-sky-300"
+                        href="#">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <aside
-        class="right-0 w-1/6 py-8 fixed top-1/2 transform -translate-y-1/2 flex flex-col items-center overflow-y-auto bg-white dark:bg-gray-900 dark:border-gray-700">
+        class="hidden md:block right-0 w-1/6 py-8 fixed top-1/2 transform -translate-y-1/2 flex-col items-center overflow-y-auto bg-white dark:bg-gray-900 dark:border-gray-700">
         <nav class="flex flex-col flex-1 space-y-8 items-center justify-center">
             <a type="button" id="chevron-up">
                 <span
@@ -152,14 +157,13 @@
     <!-- Main content -->
     <main class="flex justify-center items-center min-h-screen pt-20">
         <article id="article"
-            class="w-1/2 max-w-full p-6 prose prose-xl prose-stone leading-10 dark:prose-invert text-justify">
+            class="w-5/6 px-1 prose-sm md:w-1/2 max-w-full prose md:prose-xl prose-stone text-justify leading-10 dark:prose-invert">
 
             <!-- title  -->
             <h1 class="text-left leading-snug">From Scatterplot to Regression Line</h1>
 
             <!-- intro -->
             <section>
-                <h2 id="intro">Intro</h2>
                 <!-- table of contents  -->
                 <div class="float-none md:float-right">
                     <div class="border rounded-lg w-fit pl-4 pr-4 pb-0 pt-0 ml-6 mt-2 mb-1 shadow-sm z-40">
@@ -181,12 +185,13 @@
                         </ul>
                     </div>
                 </div>
+                <h2 id="intro">Intro</h2>
                 <p>This text explains simple linear regression analysis for those with a basic understanding of
                     statistics. We will develop a regression model step-by-step and learn about its components. </p>
-                <p>Simple linear regression is an excellent introduction to the topic of “statistical inference”.
-                    While there are other methods of doing statistical inference, that can’t be covered here,
-                    enganging with regression allows us to discuss some crucial concepts of statistics and models
-                    that make predictions. </p>
+                <p>Simple linear regression is an excellent introduction to the topic of “statistical inference”. While
+                    there are other methods of doing statistical inference, looking at regression allows us to discuss
+                    some key concepts of statistics and models that make predictions in general. What is discussed here
+                    acts as a stepping stone to more advanced regression and other inference methods.</p>
                 <p>Techniques of inference or prediction have become a noticeable part of modern life and it is
                     useful to have some knowledge of them. However, discussing these topics requires specific
                     vocabulary, which I will introduce as we go along. Before we begin, however, some ambiguities
@@ -326,27 +331,26 @@
             <!-- scatterplot  -->
             <section>
                 <h2 id="scatterplot">The Scatterplot</h2>
-                <p>In the beginning there was the scatterplot. When Sir Francis Galton (1822 - 1911) plotted the
-                    height of parents against the height of their offspring, he noticed that taller parents where
-                    tended to have taller children and shorter parents tended to have shorter children in general.
-                    There was a correlation between the height of the children and their parents. But he also
-                    noticed that the children of parents with extreme characteristics tended to move closer to the
-                    average over time. Galton called this phenomenon “regression toward mediocrity”. </p>
-                <p>Looking at Galton's data we can observe “regression toward mediocrity” as a correlation that is
-                    positive but less than $1:1$ since tall parents have slightly shorter children and short parents
-                    have taller children on the average. </p>
-
-
+                <p>In the beginning there was the scatterplot. When Sir Francis Galton (1822 - 1911) plotted the height
+                    of parents against the height of their adult children, he noticed the tendency for tall (or short)
+                    parents to have tall (or short) children, but the children were not as tall (or short), on average,
+                    as their parents. So while there was correlation between the height of children and their parents,
+                    children also balanced out the extreme characteristics of the parents. Galton called this phenomenon
+                    “regression toward mediocrity”.
+                </p>
+                <p>
+                    Looking at Galton's data we can see how the average heights of adult
+                    children tend to “regress” to the mean of the population. The 45° Line suggests a $1:1$ association
+                    in the height of children and parents, in contrast the Regression Line is flatter reflecting the
+                    regress of extremes.</p>
                 <figure class="flex flex-col justify-center items-center">
                     <div class="w-[80%] hover:scale-125">
-                        <img src="img/scatter_reg/galton2.png" alt="Correlation coefficients">
+                        <img src="img/scatter_reg/galton1.png" alt="Correlation coefficients">
                     </div>
                     <figcaption
                         class="mx-5 mt-10 font-sm tracking-tight leading-2 text-neutral-600 dark:text-neutral-400">
-                        Galton's data suggests that children are, on average, taller than or at least the same height as
-                        their parents. This relationship is depicted by the 45° line in violet. The regression line we
-                        will calculate indicates a weaker relationship between the average height of parents and their
-                        offspring.
+                        The regression line indicates a weaker than $1:1$ relationship between the average
+                        height of parents and their offspring.
                     </figcaption>
                 </figure>
 
@@ -360,10 +364,10 @@
                     mean. <br />
                     2) Extreme observations are likely to be followed by less extreme ones. (On average,
                     extremes do not survive)</p>
-                <p>From a simple scatter plot alone we can read many things. We see the range of values, the
-                    spread of observations, the single and joint mean of the variables, and the characteristics
-                    of the relationship between them: direction, strength (tight or dispersed), and degree
-                    (constant, linear, quadratic, etc.).</p>
+                <p>From a simple scatter plot alone we can read many things. We see the range of values, the spread of
+                    observations, the single and joint mean of the variables, and maybe even some characteristics of the
+                    relationship between them like direction, strength (tight or dispersed data points), and degree
+                    (linear, non-linear).</p>
                 <p>Let us quickly determine these things quickly to understand how the regression line is
                     derived from them. </p>
             </section>
@@ -758,8 +762,9 @@
                 <p>Interpreting the estimated parameters depends on the units of our variables. If we are inferring
                     weight (pounds) from height (inches), we would say for every one-inch increase in height our
                     model suggests a weight increases by $\beta_1$ pounds. </p>
+
                 <div>
-                    <img src="img/scatter_reg/intercept2.png" alt="Interpretation Intercept"
+                    <img src="img/scatter_reg/weight-height_intercept.png" alt="Interpretation Intercept"
                         style="max-width:300px; float:right; margin:16px 0 4px 20px;">
                 </div>
                 <div>
@@ -778,9 +783,9 @@
                     </p>
                 </div>
                 <p>Looking again at the concrete example of $\hat{y}=-106+3.43x$, we can say that with each
-                    additional inch of height, a person's weight increases by $3.43$ pounds, on average. As long
-                    as we stay close to our observed range of values for the explanatory variable, in this case
-                    between $[63.43, 73.90]$ inches.</p>
+                    additional inch of height, a person's weight increases by $3.43$ pounds, on average. As long as
+                    we stay close to our observed range of values for the explanatory variable, in this case between
+                    $63.43$ and $73.90$ inches.</p>
             </section>
 
             <!-- summary  -->
@@ -792,7 +797,8 @@
                     <li>A simple linear regression quantifies the effect of an explanatory variable on a response
                         variable, assuming a linear relationship between them.</li>
                     <li>The problem can be stated as an optimization problem, with the goal of minimizing the sum of
-                        squared errors (SSE) between true labels and estimates. $$\min_{\beta_{0}, \,\beta_1} \,(SSE) =
+                        squared errors $(SSE)$ between true labels and estimates. $$\min_{\beta_{0}, \,\beta_1} \,(SSE)
+                        =
                         \min_{\beta_{0}, \,\beta_1} \left\{\sum (y_{i} - \hat{y}_i)^2 \right\} = \min_{\beta_{0},
                         \,\beta_1} \left\{\sum[y_i-(\hat\beta_0+\hat\beta_{1}x_i)]^2\right\}$$
                     </li>
@@ -823,20 +829,21 @@
         </article>
     </main>
 
-    <!-- divider  -->
-    <hr class="mx-20 mt-40 border-gray-200 dark:border-gray-700">
-
     <!-- footer  -->
-    <div id="footer" class="mx-20">
-        <div class="flex justify-between items-center">
+    <hr class="mx-20 mt-10 border-gray-200 dark:border-gray-700">
+    
+    <footer id="footer" class="bg-white dark:bg-gray-900">
+        <div class="container px-6 py-4 mx-auto md:mx-20 md:px-0">
+            <div class="grid grid-cols-1 gap-4 justify-between mt-5 md:grid-cols-6">
 
-            <!-- Logo and Name  -->
-            <div class="w-1/4">
-                <div class="flex justify-between items-center">
-                    <div class="py-5 flex gap-3 items-center">
-                        <a href="index.html">
-                            <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo5.svg"
-                                alt="">
+                <!-- Logo and Name  -->
+                <div class="col-span-2 hidden sm:block">
+                    <div class="flex justify-between items-center">
+                        <div class="flex gap-3 items-center">
+                            <a>
+                                <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo5.svg"
+                                    alt="">
+                            </a>
                             <div class="">
                                 <p
                                     class="pb-3 text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
@@ -844,66 +851,68 @@
                                 <p
                                     class="text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
                                     Zausch</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-span-4 justify-between md:flex">
+                    <!-- CONTACT ME  -->
+                    <div class="py-3 md:py-0">
+                        <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
+                        <a class="flex items-center gap-3 my-3 hover:text-fuchsia-600 dark:hover:text-sky-300"
+                            href="mailto:marcozausch@posteo.de">
+                            marcozausch@posteo.de</a>
+                    </div>
+
+                    <!-- WORK  -->
+                    <div class="py-3 md:py-0">
+                        <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
+
+                        <p class="my-3 flex items-center gap-3">
+                            <a href="https://www.linkedin.com/in/marcozausch" aria-label="LinkedIn">
+                                <span
+                                    class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-sky-300"></span>
+                            </a>
+                            <a class="block hover:text-fuchsia-600 dark:hover:text-sky-300"
+                                href="https://www.linkedin.com/in/marcozausch">Linked In</a>
+                        </p>
+
+                        <p class="my-3 flex items-center gap-3">
+                            <a href="https://github.com/MaCoZu" aria-label="Github">
+                                <span
+                                    class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-sky-300"></span>
+                            </a>
+                            <a class="block hover:text-fuchsia-600 dark:hover:text-sky-300"
+                                href="https://github.com/MaCoZu">Github
+                            </a>
+                        </p>
+                    </div>
+
+                    <!-- RESSOURCES -->
+                    <div class="py-3 md:py-0">
+                        <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Resources</div>
+                        <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300" href="/#">Statistics </a>
+                        <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300" href="/#">Tutorials </a>
+                    </div>
+
+                    <!-- LEGAL  -->
+                    <div class="py-3 md:py-0">
+                        <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400 ">Legal</div>
+                        <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300"
+                            href="./impressum.html">Impressum
+                        </a>
+                        <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300"
+                            href="./privacypolicy.html">Privacy Policy
                         </a>
                     </div>
                 </div>
             </div>
         </div>
+    </footer>
 
-
-        <div class="w-3/4 flex justify-between items-start">
-            <!-- CONTACT ME  -->
-            <div class="p-5">
-                <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
-                <a class="flex items-center gap-3 my-3 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
-                    href="mailto:marcozausch@posteo.de"><span
-                        class="icon-[fa6-solid--envelope] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"></span>
-                    marcozausch@posteo.de</a>
-            </div>
-
-            <!-- WORK  -->
-            <div class="p-5">
-                <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
-
-                <p class="my-3 flex items-center gap-3">
-                    <a href="https://www.linkedin.com/in/marcozausch" aria-label="LinkedIn">
-                        <span
-                            class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"></span>
-                    </a>
-                    <a class="block hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
-                        href="https://www.linkedin.com/in/marcozausch">Linked In</a>
-                </p>
-
-                <p class="my-3 flex items-center gap-3">
-                    <a href="https://github.com/MaCoZu" aria-label="Github">
-                        <span
-                            class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"></span>
-                    </a>
-                    <a class="block hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
-                        href="https://github.com/MaCoZu">Github
-                </p>
-            </div>
-
-            <!-- RESSOURCES -->
-            <div class="p-5">
-                <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Resources</div>
-                <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-fuchsia-400" href="/#">Statistics </a>
-                <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-fuchsia-400" href="/#">Tutorials </a>
-            </div>
-
-            <!-- LEGAL  -->
-            <div class="p-5">
-                <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400 ">Legal</div>
-                <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
-                    href="./impressum.html">Impressum
-                </a>
-                <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
-                    href="./privacypolicy.html">Privacy Policy
-                </a>
-            </div>
-        </div>
-
-    </div>
+    <script type="module" src="../main.js"></script>
+    <script type="module" src="../script.js"></script>
 </body>
 
 </html>
