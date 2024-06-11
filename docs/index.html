@@ -2,263 +2,250 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <!-- Favicon -->
-    <link rel="icon" href="./img/logo/logo4.svg" type="image/x-icon" />
+  <!-- Favicon -->
+  <link rel="icon" href="./img/logo/logo_weiß.svg" type="image/x-icon" />
 
-    <style>
-        [x-cloak] {
-            display: none !important;
-        }
+  <style>
+    [x-cloak] {
+      display: none !important;
+    }
 
-        .font-roboto {
-            font-family: 'Roboto', sans-serif;
-        }
+    .font-roboto {
+      font-family: 'Roboto', sans-serif;
+    }
 
-        /* for Marco Zausch Logo  */
-        .font-merri {
-            font-family: 'Merriweather', serif;
-        }
+    /* for Marco Zausch Logo  */
+    .font-merri {
+      font-family: 'Merriweather', serif;
+    }
 
-        /* standard font  */
-        .font-pop {
-            font-family: 'Poppins', sans-serif;
-        }
+    /* standard font  */
+    .font-pop {
+      font-family: 'Poppins', sans-serif;
+    }
 
-        /* standard font  */
-        .font-ledger {
-            font-family: 'Ledger', sans-serif;
-        }
-    </style>
+    /* standard font  */
+    .font-ledger {
+      font-family: 'Ledger', sans-serif;
+    }
 
-    <title>Zausch Portfolio</title>
+    /* standard font  */
+    .font-bebas {
+      font-family: 'Bebas', sans-serif;
+    }
+  </style>
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="./font.css">
 
+  <title>Zausch Portfolio</title>
 
-    <script type="module" crossorigin src="./assets/index--k-FJG8Q.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-MRPT5kEg.css">
+  <script type="module" crossorigin src="./assets/index-CmbN1yMK.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-C2dMhhTC.css">
 </head>
 
 <body class="font-pop bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
 
-    <!-- navbar -->
-    <nav x-data="{ isOpen: false }" class="relative ">
-        <div class="container mx-auto md:mx-20 px-6 md:px-0 md:py-0 md:flex md:justify-between md:items-center">
-            <div class="flex items-center justify-between">
+  <!-- navbar -->
+  <nav x-data="{ isOpen: false }" class="relative ">
+    <div class="container mx-auto mt-8 md:mt-8 md:mx-20 px-6 md:px-0 md:flex md:justify-between md:items-center">
+      <div class="flex items-center justify-between">
 
-                <!-- logo + name  -->
-                <div class="flex items-center">
-                    <a class="mr-auto" href="index-new.html">
-                        <img id="logo" class="w-full h-8 pe-6 sm:h-8 fill-current dark:filter-white"
-                            src="./img/logo/logo5.svg" alt="">
-                    </a>
-                    <a class="hidden md:inline-block text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline ml-2"
-                        href="index-new.html">Marco Zausch</a>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="flex lg:hidden">
-                    <button x-cloak @click="isOpen = !isOpen" type="button"
-                        class="hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none"
-                        aria-label="toggle menu">
-                        <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
-                        </svg>
-
-                        <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
-            <div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']"
-                class="absolute inset-x-0 z-20 w-full px-6 py-12 transition-all duration-300 ease-in-out bg-white dark:bg-gray-900 md:mt-0 md:px-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center">
-                <div class="flex flex-col md:flex-row md:mx-0">
-                    <a class="px-4 py-0 pt-1 text-lg  text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-sky-300"
-                        href="#">Blog</a>
-                    <a class="px-4 py-0 pt-1 text-lg  text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-sky-300"
-                        href="#">Portfolio</a>
-                    <a class="px-4 py-0 pt-1 text-lg  text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-sky-300"
-                        href="#">About</a>
-                    <a class="px-4 py-0 pt-1 text-lg text-slate-700 dark:text-gray-400 hover:text-fuchsia-600 dark:hover:text-sky-300"
-                        href="#">Contact</a>
-                </div>
-            </div>
+        <!-- logo + name  -->
+        <div class="flex items-center mr-auto">
+          <div class="mr-auto">
+            <img id="logo" class="w-full mr-auto h-8 pe-6 sm:h-8 fill-current dark:filter-white" src="./img/logo/logo.svg"
+              alt="logo">
+          </div>
+          <div class="hidden md:inline-block text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline ml-2"
+            href="">Marco Zausch</div>
         </div>
-    </nav>
 
-    <!-- new blog  -->
-    <section class="bg-white dark:bg-gray-900">
-        <div class="container px-6 py-10 mx-auto md:mx-20  md:px-0">
+        <!-- Mobile menu button -->
+        <div class="flex md:hidden">
+          <button x-cloak @click="isOpen = !isOpen" type="button"
+            class="hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none" aria-label="toggle menu">
+            <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+            </svg>
 
-
-            <div class="grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
-                <!-- scatter  -->
-                <div>
-                    <a href="scatter.html">
-                        <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80"
-                            src="https://source.unsplash.com/ip7GFn5JqX8" alt="">
-
-                        <div class="mt-8">
-                            <span class="text-violet-700 dark:text-amber-400 uppercase">statistics</span>
-
-                            <h1
-                                class="mt-4 text-xl font-ledger capitalize font-semibold tracking-wide text-gray-800 dark:text-white">
-                                from scatter plot to regression line
-                            </h1>
-
-                            <p class="mt-2 text-gray-500 dark:text-gray-400">
-                                All the components of regression analysis are introduced in this step-by-step
-                                development of a simple linear regression line from a scatterplot.
-                            </p>
-
-                            <div class="flex items-center justify-end mt-4">
-                                <p class="text-gray-500 dark:text-gray-300">March 16, 2024</p>
-                            </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- construction 1  -->
-            <div>
-                <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80"
-                    src="https://source.unsplash.com/PqRvLsjD_TU" alt="">
-
-                <div class="mt-8">
-                    <span class="text-violet-700 dark:text-amber-400 uppercase">work in progress</span>
-
-                    <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">
-                        All the features you want to know</h1>
-
-                    <p class="mt-2 text-gray-500 dark:text-gray-400">
-                        See you later. sit amet consectetur adipisicing elit. Nam est asperiores vel, ab animi
-                        recusandae nulla veritatis id tempore sapiente
-                    </p>
-
-                    <div class="flex items-center justify-end mt-4">
-                        <p class="text-gray-500 dark:text-gray-300">Under way, 2024</p>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- construction 2  -->
-            <div>
-                <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80"
-                    src="https://images.unsplash.com/photo-1597534458220-9fb4969f2df5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
-                    alt="">
-
-                <div class="mt-8">
-                    <span class="text-violet-700 dark:text-amber-400 uppercase">category</span>
-
-                    <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">
-                        Which services you get from Meraki UI
-                    </h1>
-
-                    <p class="mt-2 text-gray-500 dark:text-gray-400">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam est asperiores vel, ab animi
-                        recusandae nulla veritatis id tempore sapiente
-                    </p>
-
-                    <div class="flex items-center justify-end mt-4">
-                        <p class="text-gray-500 dark:text-gray-300">Soon in 2024</p>
-                    </div>
-                </div>
-            </div>
+            <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
+      </div>
+
+
+    </div>
+  </nav>
+
+  <!-- new blog  -->
+  <section class="bg-white dark:bg-gray-900">
+    <div class="container px-6 mt-8 md:mb-32 md:mt-20 mx-auto md:mx-20 md:px-0">
+    <h1 class="text-4xl font-bebas font-semibold my-10 tracking-[8px] text-center">Latest Projects</h1>
+
+
+      <div class="grid grid-cols-1 gap-24 md:gap-14 md:grid-cols-2 xl:grid-cols-3">
+
+        <!-- scatter  -->
+        <div>
+          <a href="scatter.html">
+            <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80"
+              src="./img/foto/stats.png" alt="">
+
+            <div class="mt-8">
+              <span class="text-indigo-700 dark:text-amber-400 uppercase">statistics</span>
+
+              <h1 class="mt-4 text-xl capitalize font-semibold tracking-wide text-gray-800 dark:text-white">
+                from scatter plot to regression line
+              </h1>
+
+              <p class="mt-2 text-gray-500 dark:text-gray-300">
+                All the components of regression analysis are introduced in this step-by-step
+                development of a simple linear regression line from a scatterplot.
+              </p>
+
+              <div class="flex items-center justify-end mt-4">
+                <p class="text-gray-500 dark:text-gray-300">March 16, 2024</p>
+              </div>
+          </a>
         </div>
-    </section>
+      </div>
+
+      <!-- construction 1  -->
+      <div>
+        <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80"
+          src="./img/foto/construxtion hat.png" alt="">
+
+        <div class="mt-8">
+          <span class="text-indigo-700 dark:text-amber-400 uppercase">work in progress</span>
+
+          <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">
+            All the features you want to know</h1>
+
+          <p class="mt-2 text-gray-400 dark:text-gray-300">
+            See you later. sit amet consectetur adipisicing elit. Nam est asperiores vel, ab animi
+            recusandae nulla veritatis id tempore sapiente
+          </p>
+
+          <div class="flex items-center justify-end mt-4">
+            <p class="text-gray-500 dark:text-gray-300">Under way, 2024</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- construction 2  -->
+      <div>
+        <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80"
+          src="./img/foto/construction drone shot.png"
+          alt="">
+
+        <div class="mt-8">
+          <span class="text-indigo-700 dark:text-amber-400 uppercase">category</span>
+
+          <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">
+            Which services you get from Meraki UI
+          </h1>
+
+          <p class="mt-2 text-gray-500 dark:text-gray-300">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam est asperiores vel, ab animi
+            recusandae nulla veritatis id tempore sapiente
+          </p>
+
+          <div class="flex items-center justify-end mt-4">
+            <p class="text-gray-500 dark:text-gray-300">Soon in 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
 
 
-    <!-- footer  -->
-    <hr class="mx-20 mt-10 border-gray-200 dark:border-gray-700">
-    <footer class="bg-white dark:bg-gray-900">
-        <div class="container px-6 py-4 mx-auto md:mx-20 md:px-0">
-            <div class="grid grid-cols-1 gap-4 justify-between mt-5 md:grid-cols-6">
+  <!-- footer  -->
+  <hr class="mx-20 mt-10 border-gray-200 dark:border-gray-700">
+  <footer class="bg-white dark:bg-gray-900">
+    <div class="container px-6 py-4 mx-auto md:mx-20 md:px-0">
+      <div class="grid grid-cols-1 gap-4 justify-between mt-5 md:grid-cols-12">
 
-                <!-- Logo and Name  -->
-                <div class="col-span-2 hidden sm:block">
-                    <div class="flex justify-between items-center">
-                        <div class="flex gap-3 items-center">
-                            <a>
-                                <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo5.svg"
-                                    alt="">
-                            </a>
-                            <div class="">
-                                <p
-                                    class="pb-3 text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                                    Marco</p>
-                                <p
-                                    class="text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                                    Zausch</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-span-4 justify-between md:flex">
-                    <!-- CONTACT ME  -->
-                    <div class="py-3 md:py-0">
-                        <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
-                        <a class="flex items-center gap-3 my-3 hover:text-fuchsia-600 dark:hover:text-sky-300"
-                            href="mailto:marcozausch@posteo.de">
-                            marcozausch@posteo.de</a>
-                    </div>
-
-                    <!-- WORK  -->
-                    <div class="py-3 md:py-0">
-                        <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
-
-                        <p class="my-3 flex items-center gap-3">
-                            <a href="https://www.linkedin.com/in/marcozausch" aria-label="LinkedIn">
-                                <span
-                                    class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-sky-300"></span>
-                            </a>
-                            <a class="block hover:text-fuchsia-600 dark:hover:text-sky-300"
-                                href="https://www.linkedin.com/in/marcozausch">Linked In</a>
-                        </p>
-
-                        <p class="my-3 flex items-center gap-3">
-                            <a href="https://github.com/MaCoZu" aria-label="Github">
-                                <span
-                                    class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-sky-300"></span>
-                            </a>
-                            <a class="block hover:text-fuchsia-600 dark:hover:text-sky-300"
-                                href="https://github.com/MaCoZu">Github
-                            </a>
-                        </p>
-                    </div>
-
-                    <!-- RESSOURCES -->
-                    <div class="py-3 md:py-0">
-                        <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Resources</div>
-                        <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300" href="/#">Statistics </a>
-                        <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300" href="/#">Tutorials </a>
-                    </div>
-
-                    <!-- LEGAL  -->
-                    <div class="py-3 md:py-0">
-                        <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400 ">Legal</div>
-                        <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300"
-                            href="./impressum.html">Impressum
-                        </a>
-                        <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300"
-                            href="./privacypolicy.html">Privacy Policy
-                        </a>
-                    </div>
-                </div>
+        <!-- Logo and Name  -->
+        <div class="col-span-4 hidden sm:block">
+          <div class="flex justify-between items-center">
+            <div class="flex gap-3 items-center">
+              <a>
+                <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="">
+              </a>
+              <div class="">
+                <p
+                  class="pb-3 text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                  Marco</p>
+                <p
+                  class="text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                  Zausch</p>
+              </div>
             </div>
+          </div>
         </div>
-    </footer>
+
+        <div class="col-span-8 justify-between md:flex">
+
+          <!-- CONTACT ME  -->
+          <div class="py-3 md:py-0">
+            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
+            <a class="flex items-center gap-3 my-3 hover:text-indigo-400 dark:hover:text-sky-300"
+              href="mailto:marcozausch@posteo.de">
+              marcozausch@posteo.de</a>
+          </div>
+
+          <!-- WORK  -->
+          <div class="py-3 md:py-0">
+            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
+
+            <p class="my-3 flex items-center gap-3">
+              <a href="https://www.linkedin.com/in/marcozausch" aria-label="LinkedIn">
+                <span
+                  class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
+              </a>
+              <a class="block hover:text-indigo-400 dark:hover:text-sky-300"
+                href="https://www.linkedin.com/in/marcozausch">Linked In</a>
+            </p>
+
+            <p class="my-3 flex items-center gap-3">
+              <a href="https://github.com/MaCoZu" aria-label="Github">
+                <span
+                  class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
+              </a>
+              <a class="block hover:text-indigo-400 dark:hover:text-sky-300" href="https://github.com/MaCoZu">Github
+              </a>
+            </p>
+          </div>
+
+          <!-- RESSOURCES -->
+          <div class="py-3 md:py-0">
+            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Resources</div>
+            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="/#">Statistics </a>
+            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="/#">Tutorials </a>
+          </div>
+
+          <!-- LEGAL  -->
+          <div class="py-3 md:py-0">
+            <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400 ">Legal</div>
+            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./impressum.html">Impressum
+            </a>
+            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./privacypolicy.html">Privacy
+              Policy
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 
 
