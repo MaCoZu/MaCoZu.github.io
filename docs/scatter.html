@@ -357,31 +357,31 @@
           derived from them. </p>
       </section>
 
-      <!-- spread  -->
-      <section>
-        <h2 id="spread">Spread</h2>
-        <p>Spread is a measure of variability of the observations around the center, usually the arithmetic
-          mean.</p>
-        <p>One such measure of spread is the <strong>range</strong>, which is simply the largest measurement
-          minus the smallest, and while it gives us an idea of the size of the numbers we're talking
-          about, it doesn't tell us what's going on in between those boundaries. </p>
-        <p>The sample <strong>variance</strong> is more useful, it tells us about the deviations of the
-          observations from the mean $(x_i -\bar{x})$. To compute the sample variance, the deviations are
-          squared, summed, and divided by $(n-1)$, large deviations are emphasized by squaring while
-          negative numbers are removed. Squaring has the additional advantage that negative and positive
-          deviations do not cancel each other out. <br />
-          $$s = \frac{\sum_{i=1}^{n}(x_i - \bar{x})}{n-1}$$<br />
-          The variance now tells us how the data is spread out within the limits set by the range. Of two
-          samples with the same range and mean, the one with the greater variance consists of data that is
-          more spread out, while the other is relatively more clustered around the mean.</p>
-        <p>However, squaring the variances leads to odd units, if we work with $\$$ we get $\$^2$. As a
-          result, one often sees the sample <strong>standard deviation</strong> $s$, which is the square
-          root of the variance. The standard deviation gets rid of the squared units, but inherits the
-          advantages of the variance, namely counting positive and negative deviations equally and
-          emphasizing large deviations. The standard deviation can be thought of as a "typical" distance
-          of the observations $x_i$ from their mean, $\bar{x}$. <br />
-          $$s=\sqrt{s}$$</p>
-      </section>
+     <!-- spread  -->
+     <section>
+      <h2 id="spread">Spread</h2>
+      <p>Spread is a measure of variability of the observations around the center, usually the arithmetic
+        mean.</p>
+      <p>One such measure of spread is the <strong>range</strong>, which is simply the largest measurement
+        minus the smallest, and while it gives us an idea of the size of the numbers we're talking
+        about, it doesn't tell us what's going on in between those boundaries. </p>
+      <p>The sample <strong>variance</strong> $s$ is more useful, it tells us about the deviations of the
+        observations from the mean $(x_i -\bar{x})$. To compute the sample variance, the deviations are
+        squared, summed, and divided by $(n-1)$, large deviations are emphasized by squaring while
+        negative numbers are removed. Squaring has the additional advantage that negative and positive
+        deviations do not cancel each other out. <br />
+        $$s = \frac{\sum_{i=1}^{n}(x_i - \bar{x})^2}{n-1}$$<br />
+        The variance now tells us how the data is spread out within the limits set by the range. Of two
+        samples with the same range and mean, the one with the greater variance consists of data that is
+        more spread out, while the other is relatively more clustered around the mean.</p>
+      <p>However, squaring the variances leads to odd units, if we work with dollar as a unit we get $dollar^2$. As a
+        result, one often sees the sample <strong>standard deviation</strong> $s$, which is the square
+        root of the variance. The standard deviation gets rid of the squared units, but inherits the
+        advantages of the variance, namely counting positive and negative deviations equally and
+        emphasizing large deviations. The standard deviation can be thought of as a "typical" distance
+        of the observations $x_i$ from their mean, $\bar{x}$. <br />
+        $$s=\sqrt{s}$$</p>
+     </section>
 
       <!-- averages  -->
       <section>
