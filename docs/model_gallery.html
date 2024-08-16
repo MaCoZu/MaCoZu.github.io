@@ -145,9 +145,9 @@
             <div class="w-6 h-1 mb-3 -rotate-45 bg-white rounded-lg"></div>
             <div class="w-6 h-1 rotate-45 bg-white rounded-lg"></div>
         </label>
-
-
-        <div id="sidebar_model" class="fixed top-0 right-0 z-50 w-64 h-full transition-all duration-500 transform translate-x-full bg-white shadow-lg peer-checked:translate-x-0" >
+    
+    
+        <div id="sidebar_model" class="fixed top-0 right-0 z-50 w-64 h-full transition-all duration-500 transform translate-x-full bg-white dark:bg-gray-900 shadow-lg peer-checked:translate-x-0" >
             <div class="px-6 py-4">
                 <h1 class="text-3xl font-merri font-semibold pt-6 pb-10">Models</h1>
                 <ul class="text-lg font-light mt-4">
@@ -157,152 +157,155 @@
                 </ul>
             </div>
         </div>
-    </div>
-
-    <main id="main-content" class="container mx-auto md:mx-20 my-32 flex justify-center items-center min-h-screen">
-        <div class="container divide-y-2 divide-solid max-w-full w-5/6 md:w-max prose prose-stone prose-sm md:prose-xl text-justify leading-5 md:leading-10 dark:prose-invert">
-
-        <!-- logistic growth  -->
-        <div id="logistic-growth" class="z-0">
-            <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Logistic Growth</h2>
-            <div class="grid md:grid-cols-2 py-6 h-fit overflow-visible">
-                    <div class="md:col-span-1 px-1">
-                        <p>The logistic model is a common model used to describe population growth. Motivated by Malthus different scholars refined and adjusted the formulation of his exponential population growth model. In particular by introducing an upper limit, usually called carrying capacity $K$, which is the maximum population size that an environment can sustain indefinitely.</p>
-                        <p>The rate at which the population grows is denominated with $r$, it is the difference between birth rate and death rate. From the current population size $N$ and the carrying capacity $K$ we can constructed a death or reduction rate $(1-\frac{N}{K})$. This term reflects the limits of growth due to the competition for resources.</p>
+        </div>
+    
+        <main id="main-content" class="container mx-auto md:mx-20 my-32 flex justify-center items-center min-h-screen">
+            <div class="container divide-y-2 divide-solid max-w-full prose prose-stone prose-lg md:prose-xl text-justify leading-5 md:leading-10 dark:prose-invert">
+    
+            <!-- logistic growth  -->
+            <div id="logistic-growth" class="z-0">
+                <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Logistic Growth</h2>
+                <div class="grid md:grid-cols-2 py-6 px-8 md:px-0 h-fit overflow-visible">
+                    <div class="md:col-span-1">
+                        <p>The logistic model is a common model used to describe population growth. Motivated by Thomas Malthus thoughts about demography, different scholars formulated a simple population growth model featuring a term that slows down growth as the population size approaches the maximum of creatures an environment can sustain indefinitely. This upper limit is called carrying capacity $K$, the current population size is denoted with $N$, the growth rate $r$ represents the difference between birth and death rate.</p>
+    
+                        <p>The term that slows down growth is a factor that becomes smaller as $N$ grows. It reflects the limits of growth due to the competition for resources.</p>
+    
                         <p>$$\frac{dN}{dt} = rN \left(1 - \frac{N}{K}\right)$$</p>
-                        <p>When the population $N$ is small it will grow exponentially since the reduction factor $(1-\frac{N}{K})$ has no impact, but with increasing population size $N$ the reduction factor reduces growth until $N=K$. Here the reduction factor is zero and the population reached its limit in the carrying capacity. </p>
+    
+                        <p>When the population $N$ is small it will grow exponentially since the reduction factor $(1-\frac{N}{K})$ has no impact, but with increasing population size the reduction factor reduces growth more and more until $N=K$. Here the reduction factor is zero and the population size reached its limit in the carrying capacity.   </p>
                     </div>
-
-            <div class="col-span-1 flex justify-center items-center relative h-fit">
-                <iframe  class="w-full" src="./plots/model_gallery/logistic_growth.html" sandbox="allow-same-origin allow-scripts" height="600" width="900"
+    
+                    <div class="col-span-1 flex md:mt-8 justify-center items-center relative h-fit">
+                        <iframe  class="w-full md:pl-10" src="./plots/model_gallery/logistic_growth.html" sandbox="allow-same-origin allow-scripts" height="600" width="900"
+                            scrolling="no" seamless="seamless" frameborder="0" title="logistic map">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- logistic map  -->
+            <div id="logistic-map" class="z-0">
+                <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Logistic Map</h2>
+                <div class="grid md:grid-cols-2 py-6 px-8 md:px-0 h-fit overflow-visible">
+                        <div class="md:col-span-1">
+                            <p>The logistic map is simplified version of a logistic (population) growth model with the effects birth rate and death rate combined into one number, called $R$. While population size is replaced by a related concept, called “fraction of carrying capacity,” denominated $x$. $$x_{t}=R\times (1-x_t)$$The logistic map equation is completely deterministic, every $x_t$ maps onto one and only one value of $x_t+1$. Still a change in the tenth and higher decimal places of $x_0$ — a quite likely limitation for many experimental observations — can make $x_t$ unpredictable at $t\gtrapprox 30$. </p>
+                            <p>The map might fall into a fixed point (e.g. $R=2, x_0=0.5$), a fixed cycle/oscillation (e.g. $R=3.1, x_0.2$), or chaos. Fixed points and fixed cycles are called “attractors” since any initial condition will eventually be attracted to it. When $R$ increases the trajectories fluctuate more and more, between $R=3.4$ and $R=3.5$ the system oscillates among four different values, with growing $R$ the values the system oscillates between double fast until they are infinite at approximately $R=3.569946$. Before this point the logistic map was roughly predictable, afterwards the values of $x$ become chaotic. And very small changes in $x_0$ lead to widely diverging trajectories.</p>
+                            <p>You can observe this “sensitive dependence on initial conditions” by setting $R \approx 4$ and trying different $x_0$ with small variations, say $x_0=0.2$ and $x_0=0.2000001$. The two trajectories of these values will start off very close to one another but after around 30 iterations they begin to diverge significantly, and soon after there is no correlation between them.</p>
+                            <p>The corollary is this: since we can never know the initial conditions of $x_0$ to infinitely many decimal places <strong>perfect prediction is impossible</strong>. </p>
+                        </div>
+    
+            <div class="col-span-1 flex md:mt-8 justify-center items-center relative h-fit">
+                <iframe  class="w-full" src="./plots/model_gallery/logistic_map.html" sandbox="allow-same-origin allow-scripts" height="600" width="900"
                     scrolling="no" seamless="seamless" frameborder="0" title="logistic map">
                 </iframe>
             </div>
-            </div>
         </div>
-
-        <!-- logistic map  -->
-        <div id="logistic-map" class="z-0">
-            <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Logistic Map</h2>
-            <div class="grid md:grid-cols-2 py-6 h-fit overflow-visible">
-                    <div class="md:col-span-1 px-1">
-                        <p>The logistic map is simplified version of a logistic (population) growth model with the effects birth rate and death rate combined into one number, called $R$. While population size is replaced by a related concept, called “fraction of carrying capacity,” denominated $x$. $$x_{t}=R\times (1-x_t)$$The logistic map equation is completely deterministic, every $x_t$ maps onto one and only one value of $x_t+1$. Still a change in the tenth and higher decimal places of $x_0$ — a quite likely limitation for many experimental observations — can make $x_t$ unpredictable at $t\gtrapprox 30$. </p>
-                        <p>The map might fall into a fixed point (e.g. $R=2, x_0=0.5$), a fixed cycle/oscillation (e.g. $R=3.1, x_0.2$), or chaos. Fixed points and fixed cycles are called “attractors” since any initial condition will eventually be attracted to it. When $R$ increases the trajectories fluctuate more and more, between $R=3.4$ and $R=3.5$ the system oscillates among four different values, with growing $R$ the values the system oscillates between double fast until they are infinite at approximately $R=3.569946$. Before this point the logistic map was roughly predictable, afterwards the values of $x$ become chaotic. And very small changes in $x_0$ lead to widely diverging trajectories.</p>
-                        <p>You can observe this “sensitive dependence on initial conditions” by setting $R \approx 4$ and trying different $x_0$ with small variations, say $x_0=0.2$ and $x_0=0.2000001$. The two trajectories of these values will start off very close to one another but after around 30 iterations they begin to diverge significantly, and soon after there is no correlation between them.</p>
-                        <p>The corollary is this: since we can never know the initial conditions of $x_0$ to infinitely many decimal places <strong>perfect prediction is impossible</strong>. </p>
+            </div>
+    
+            <!-- standard normal distribution  -->
+            <div id="std-norm" class="z-0">
+                <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Standard Normal Distribution</h2>
+    
+                <!-- section 1 -->
+                <div class="grid md:grid-cols-2 py-6 px-8 md:px-0 h-fit overflow-visible">
+                    <!-- text  -->
+                    <div class="md:col-span-1">
+                        <p>All kinds of variables in natural and social sciences are (approximately) normally distributed. Height, birth weight, reading ability, job satisfaction, or test scores are just a few examples of such variables. Because normally distributed variables are so common, many statistical tests are designed for them.</p>
+                        <p>In a normal distribution, data is symmetrically distributed, clustered in the middle and tapering off as they go further away from the center, forming a bell shaped curve.</p>
+                        <p>They have very recognizable characteristics:</p>
+                        <ul>
+                        <li>The mean, median and mode are exactly (perfect symmetry) the same.</li>
+                        <li>Half the values fall below the mean and half above the mean.</li>
+                        <li>They can be described by the mean $\mu$ and the standard deviation $\sigma$.</li>
+                        </ul>
+                        <p>Every normal distribution can be stretched, squeezed and/or shifted to become a standard normal distribution, with $\mu=0$ and $\sigma=1$. Standardization simplifies calculations and comparisons across different datasets, making it a valuable tool in data analysis and hypothesis testing.</p>
+                        <p>You can observe the effects of standardization in the interactive graph by playing with the parameters $\mu$ and $\sigma$. Mathematically you arrive at the standard normal distribution when each data point is transformed into a standardized $z$-score with the formula: <br />
+                        $$z=(\frac{{x - \mu}}{{\sigma}})$$<br />
+                        For example if you have a dataset with a mean $\mu_x = 5.0$ and standard deviation $\sigma_x=3.09$,  $z$-scores are as follows:</p>
                     </div>
-
-        <div class="col-span-1 flex justify-center items-center relative h-fit">
-            <iframe  class="w-full" src="./plots/model_gallery/logistic_map.html" sandbox="allow-same-origin allow-scripts" height="600" width="900"
-                scrolling="no" seamless="seamless" frameborder="0" title="logistic map">
-            </iframe>
-        </div>
-    </div>
-        </div>
-
-        <!-- standard normal distribution  -->
-        <div id="std-norm" class="z-0">
-            <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Standard Normal Distribution</h2>
-
-            <!-- section 1 -->
-            <div class="grid md:grid-cols-2 py-6 h-fit overflow-visible">
-                <!-- text  -->
-                <div class="md:col-span-1 px-1">
-                    <p>All kinds of variables in natural and social sciences are (approximately) normally distributed. Height, birth weight, reading ability, job satisfaction, or test scores are just a few examples of such variables. Because normally distributed variables are so common, many statistical tests are designed for them.</p>
-                    <p>In a normal distribution, data is symmetrically distributed, clustered in the middle and tapering off as they go further away from the center, forming a bell shaped curve.</p>
-                    <p>They have very recognizable characteristics:</p>
-                    <ul>
-                    <li>The mean, median and mode are exactly (perfect symmetry) the same.</li>
-                    <li>Half the values fall below the mean and half above the mean.</li>
-                    <li>They can be described by the mean $\mu$ and the standard deviation $\sigma$.</li>
-                    </ul>
-                    <p>Every normal distribution can be stretched, squeezed and/or shifted to become a standard normal distribution, with $\mu=0$ and $\sigma=1$. Standardization simplifies calculations and comparisons across different datasets, making it a valuable tool in data analysis and hypothesis testing.</p>
-                    <p>You can observe the effects of standardization in the interactive graph by playing with the parameters $\mu$ and $\sigma$. Mathematically you arrive at the standard normal distribution when each data point is transformed into a standardized $z$-score with the formula: <br />
-                    $$z=(\frac{{x - \mu}}{{\sigma}})$$<br />
-                    For example if you have a dataset with a mean $\mu_x = 5.0$ and standard deviation $\sigma_x=3.09$,  $z$-scores are as follows:</p>
+    
+                    <!-- figure  -->
+                    <div class="col-span-1 flex md:mt-8 justify-center items-center relative h-fit">
+                        <iframe  class="w-full" src="./plots/model_gallery/standard_normal_distribution.html" sandbox="allow-same-origin allow-scripts" height="600" width="900"
+                            scrolling="no" seamless="seamless" frameborder="0" title="standard_normal_distribution">
+                        </iframe>
+                    </div>
                 </div>
-
-                <!-- figure  -->
-                <div class="col-span-1 flex justify-center items-center relative h-fit">
-                    <iframe  class="w-full" src="./plots/model_gallery/standard_normal_distribution.html" sandbox="allow-same-origin allow-scripts" height="600" width="900"
-                        scrolling="no" seamless="seamless" frameborder="0" title="standard_normal_distribution">
-                    </iframe>
-                </div>
-            </div>
-
-            <!-- section 2 -->
-            <div class="grid grid-cols-1 md:grid-cols-3 md:gap-14 md:mt-4 h-fit">
-                <table class="md:col-span-1">
-                    <thead>
-                    <tr>
-                    <th id="x">x</th>
-                    <th id="z">z</th>
-                    <th id="p-value">p-value</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                    <td>0</td>
-                    <td>-1.62</td>
-                    <td>0.053</td>
-                    </tr>
-                    <tr>
-                    <td>2</td>
-                    <td>-0.97</td>
-                    <td>0.166</td>
-                    </tr>
-                    <tr>
-                    <td>2</td>
-                    <td>-0.97</td>
-                    <td>0.166</td>
-                    </tr>
-                    <tr>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0.5</td>
-                    </tr>
-                    <tr>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0.5</td>
-                    </tr>
-                    <tr>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0.5</td>
-                    </tr>
-                    <tr>
-                    <td>8</td>
-                    <td>0.97</td>
-                    <td>0.83</td>
-                    </tr>
-                    <tr>
-                    <td>8</td>
-                    <td>0.97</td>
-                    <td>0.83</td>
-                    </tr>
-                    <tr>
-                    <td>10</td>
-                    <td>1.62</td>
-                    <td>0.95</td>
-                    </tr>
-                </tbody>
-                </table>
-
-                <div class="md:col-span-2 px-1 prose-sm max-w-full prose md:prose-xl prose-stone text-justify leading-10 dark:prose-invert">
-                    <p>You can see that the mean of $x$ became zero and each data point $x$ is now expressed as the difference from $\mu_x$ in units of the standard deviation $\sigma_x$, this is the $z$-score.</p>
-                    <p>Each $z$-score is associated with a probability, or $p$-value, that tells you the likelihood of values occurring below that $z$-score: $P(x&lt;8)=0.83\%$. </p>
-                    <p>With the p-values you can also determine how likely it is that random variable in the distribution is greater than 10:<br />
-                    $P(x&gt;10)= (1-0.95)=0.05\%$</p>
-                    <p>or the probability of a variable greater than 2 but below 10<br />
-                    $P(2&lt;x&lt;10) = (0.95 - 0.166)=0.78\%$</p>
-                    <p>Another convenient feature of the standard normal distribution is that it follows the <em>empirical rule</em>, also known as the <strong>68-95-99.7 rule</strong>. Approximately 68% of the data falls within one standard deviation of the mean, about 95% falls within two standard deviations, and around 99.7% falls within three standard deviations.</p>
-                    <p>Because the standard normal distribution makes calculating probabilities easy, the probabilities of other distributions can be approximated with it, if certain conditions are met.</p>
+    
+                <!-- section 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 px-8 md:px-0 md:gap-14 md:mt-4 h-fit">
+                    <table class="md:col-span-1">
+                        <thead>
+                        <tr>
+                        <th id="x">x</th>
+                        <th id="z">z</th>
+                        <th id="p-value">p-value</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                        <td>0</td>
+                        <td>-1.62</td>
+                        <td>0.053</td>
+                        </tr>
+                        <tr>
+                        <td>2</td>
+                        <td>-0.97</td>
+                        <td>0.166</td>
+                        </tr>
+                        <tr>
+                        <td>2</td>
+                        <td>-0.97</td>
+                        <td>0.166</td>
+                        </tr>
+                        <tr>
+                        <td>5</td>
+                        <td>0</td>
+                        <td>0.5</td>
+                        </tr>
+                        <tr>
+                        <td>5</td>
+                        <td>0</td>
+                        <td>0.5</td>
+                        </tr>
+                        <tr>
+                        <td>5</td>
+                        <td>0</td>
+                        <td>0.5</td>
+                        </tr>
+                        <tr>
+                        <td>8</td>
+                        <td>0.97</td>
+                        <td>0.83</td>
+                        </tr>
+                        <tr>
+                        <td>8</td>
+                        <td>0.97</td>
+                        <td>0.83</td>
+                        </tr>
+                        <tr>
+                        <td>10</td>
+                        <td>1.62</td>
+                        <td>0.95</td>
+                        </tr>
+                    </tbody>
+                    </table>
+    
+                    <div class="md:col-span-2 py-6 h-fit overflow-visible">
+                        <p>You can see that the mean of $x$ became zero and each data point $x$ is now expressed as the difference from $\mu_x$ in units of the standard deviation $\sigma_x$, this is the $z$-score.</p>
+                        <p>Each $z$-score is associated with a probability, or $p$-value, that tells you the likelihood of values occurring below that $z$-score: $P(x&lt;8)=0.83\%$. </p>
+                        <p>With the p-values you can also determine how likely it is that random variable in the distribution is greater than 10:<br />
+                        $P(x&gt;10)= (1-0.95)=0.05\%$</p>
+                        <p>or the probability of a variable greater than 2 but below 10<br />
+                        $P(2&lt;x&lt;10) = (0.95 - 0.166)=0.78\%$</p>
+                        <p>Another convenient feature of the standard normal distribution is that it follows the <em>empirical rule</em>, also known as the <strong>68-95-99.7 rule</strong>. Approximately 68% of the data falls within one standard deviation of the mean, about 95% falls within two standard deviations, and around 99.7% falls within three standard deviations.</p>
+                        <p>Because the standard normal distribution makes calculating probabilities easy, the probabilities of other distributions can be approximated with it, if certain conditions are met.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-    </main>
+    
+        </main>
 
     <!-- footer  -->
     <hr class="mx-20 mt-10 border-gray-200 dark:border-gray-700">
