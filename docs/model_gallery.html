@@ -3,11 +3,10 @@
 
 <head>
     <meta charset="utf-8">
+    <title>Logistic Map</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
-    <title>Logistic Map</title>
 
     <!-- Favicon -->
     <link rel="icon" href="./img/logo/logo_weiß.svg" type="image/x-icon" />
@@ -75,6 +74,9 @@
         }
     </style>
 
+    <script type="module" crossorigin src="./assets/index.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index.css">
+
     <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.5.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.5.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.5.1.min.js"></script>
@@ -95,8 +97,9 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
 
-    <script type="module" crossorigin src="./assets/index.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index.css">
+    <!-- flowbite  -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+
 
 </head>
 
@@ -108,12 +111,14 @@
             <div class="flex items-center justify-between">
 
                 <!-- logo + name  -->
-                <a href="./index.html">
+                <a href="index.html">
                     <div class="flex items-center mr-auto">
                         <div class="mr-auto">
                             <img id="logo" class="w-full mr-auto h-8 pe-6 sm:h-8 fill-current dark:filter-white"
                                 src="./img/logo/logo.svg" alt="logo">
                         </div>
+                        <!-- <div class="hidden md:inline-block text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline ml-2"
+            href="">Marco Zausch</div> -->
                     </div>
                 </a>
 
@@ -137,47 +142,82 @@
         </div>
     </nav>
 
-
     <!-- drawer  -->
     <div class="flex z-50">
         <input type="checkbox" id="drawer-toggle" class="relative sr-only peer z-50" checked>
-        <label for="drawer-toggle" class="fixed z-50 top-1/2 right-0 inline-block p-4 transition-all duration-500 bg-indigo-300 rounded-lg peer-checked:rotate-180 peer-checked:right-64">
+        <label for="drawer-toggle" class="fixed z-30 top-1/2 right-0 inline-block p-4 transition-all duration-500 bg-indigo-300 rounded-lg peer-checked:rotate-180 peer-checked:right-64">
             <div class="w-6 h-1 mb-3 -rotate-45 bg-white rounded-lg"></div>
             <div class="w-6 h-1 rotate-45 bg-white rounded-lg"></div>
         </label>
     
     
-        <div id="sidebar_model" class="fixed top-0 right-0 z-50 w-64 h-full transition-all duration-500 transform translate-x-full bg-white dark:bg-gray-900 shadow-lg peer-checked:translate-x-0" >
+        <div id="sidebar_model" class="fixed top-0 right-0 z-50 w-64 h-full transition-all duration-500 transform translate-x-full bg-white dark:bg-gray-800 shadow-lg peer-checked:translate-x-0" >
             <div class="px-6 py-4">
                 <h1 class="text-3xl font-merri font-semibold pt-6 pb-10">Models</h1>
                 <ul class="text-lg font-light mt-4">
+                    <li class="mb-2"><a href="#confusion" class="block hover:text-indigo-400">Confusion Matrix</a></li>
                     <li class="mb-2"><a href="#logistic-growth" class="block hover:text-indigo-400">Logistic Growth</a></li>
                     <li class="mb-2"><a href="#logistic-map" class="block hover:text-indigo-400">Logistic Map</a></li>
                     <li class="mb-2"><a href="#std-norm" class="block hover:text-indigo-400">Standard Normal</a></li>
                 </ul>
             </div>
         </div>
-        </div>
-    
-        <main id="main-content" class="container mx-auto md:mx-20 my-32 flex justify-center items-center min-h-screen">
-            <div class="container divide-y-2 divide-solid max-w-full prose prose-stone prose-lg md:prose-xl text-justify leading-5 md:leading-10 dark:prose-invert">
+    </div>
+
+    <main id="main-content" class="container mx-auto md:mx-20 my-32 flex justify-center items-center min-h-screen">
+        <div class="container divide-y-2 divide-solid max-w-full prose prose-stone prose-lg md:prose-xl text-justify leading-5 md:leading-10 dark:prose-invert">
+
+            <!-- confusion matrix  -->
+            <div id="confusion" class="z-0">
+                <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Confusion Matrix</h2>
+                <!-- text  -->
+                <div class="grid md:grid-cols-2 py-6 gap-6 divide-x md:px-0 h-full overflow-visible ">
+                    <div class="md:col-span-1">
+                    <p>When we predict something – be it with a machine learning algorithm or a disease test – we would like to know the performance of our tool, since we will almost certainly have some erroneous predictions. </p>
+                    <p>Predictions can fall in four categories:</p>
+                    <ul>
+                    <li>Something is correctly identified as being positive, this is called a <strong>true-positive (TP)</strong>. A Corona rapid test showing positive while you actually have Corona is an example for a true-positive.  </li>
+                    <li>Or the test correctly predicts something to be negative (the test is negative and you do not have the disease). This is a <strong>true-negative (TN)</strong>.</li>
+                    <li>Erroneous predictions may find something to be positive while it is not, this is a <strong>false-positive (FP)</strong>.</li>
+                    <li>Or recognize something to be negative while it is actually positive, a <strong>false-negative (FN)</strong>.</li>
+                    </ul>
+                    
+                </div>
+
+                <!-- matrix  -->
+                <div class="flex col-span-1 md:mt-14 justify-center items-center relative h-lvh min-h-screen overflow-visible">
+                    <iframe class="w-full" loading="lazy" src="./plots/model_gallery/confusion_matrix.html" sandbox="allow-same-origin allow-scripts"
+                            scrolling="no" seamless="seamless" frameborder="0" title="confusion_matrix"
+                            onload="resizeIframe(this)">
+                    </iframe>
+                </div>
+            </div>
+
+                <div class="py-6 px-8 md:pt-0 md:px-48 h-full overflow-visible">
+                    <p>As to the performance of our tool, the first question we might ask is “<em>how many correct predictions did we get overall</em>?”. The <strong>Accuracy</strong> measure answers this question as the percentage of correct predictions out of all instances. But accuracy has a problem with imbalanced datasets, consider data with $95$ infected and $5$ non-infected samples, our test could classify all samples as infected and still boast an accuracy of $95\%$. </p>
+                    <p>You could also claim that the test recognized $100\%$ of the infections, and the corresponding measure is <strong>Sensitivity</strong> (aka <strong>Recall</strong>), which is the proportion of correctly predicted positives out of all actual positive instances. Sensitivity warns you about false-negatives but not about false-positives.</p>
+                    <p>But what if the treatment of the infection is very dangerous and you can’t afford to detect infections that are not actually there? Then you want to look at <strong>Specificity</strong>, which measures the proportion of correctly predicted negative instances out of all actual negative instances. And the test above with high accuracy and even higher sensitivity renders useless, since it spotted $0\%$ of true-negatives.</p>
+                    <p>Another measure called <strong>Precision</strong> tells you “<em>how many of the cases predicted as positive where actually positive</em>”. Precision (as Specificity) is interesting if false-positives are of concern but focuses on the positive predictions. Precision and Specificity hold no information of false-negatives and you have to look at Sensitivity if you worry about them.</p>
+                    <p>Since all those measure have flaws there is measures compounded from the ones above. The <strong>$\mathbf{F_1}$-score</strong> is the harmonic mean of precision and sensitivity and represents their impact evenly. It gives you an overall assessment of the tools performance even with imbalanced data. But since precision and sensitivity are symmetrically weighted the $F_1$-score is sometimes further adjusted with different weights to precision and sensitivity to fit the purpose of your test. The $F_1$-score also ignores true-negatives something <strong>Youden's J statistic</strong> corrects this by combining sensitivity and specificity. Tests  with the same $J$-value give the same proportion of total misclassified results. But Youden's J doesn’t tell you where the misclassification happen, as as very different values of sensitivity or specificity can yield the same $J$-value. One measure that is considered a good measure even for very imbalanced data is <strong>Matthews Correlation Coefficient (MCC)</strong>. It is equivalent to the chi-square statistic for a $2\times2$ contingency table and produces a high score only if the predictions obtained good results in all of the four confusion matrix categories proportionally both to the size of positive elements and the size of negative elements in the dataset.</p>
+                    <p>Since this is all very confusing you should play with the interactive matrix, test the edge cases and the behaviour of the measures until you have a precise and accurate understanding of the specifics of this sensitive concept. </p>
+                </div>
+            </div>
+            
     
             <!-- logistic growth  -->
             <div id="logistic-growth" class="z-0">
                 <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Logistic Growth</h2>
-                <div class="grid md:grid-cols-2 py-6 px-8 md:px-0 h-fit overflow-visible">
+                <div class="grid md:grid-cols-2 py-6 px-8 md:px-0 gap-2 h-fit overflow-visible">
                     <div class="md:col-span-1">
-                        <p>The logistic model is a common model used to describe population growth. Motivated by Thomas Malthus thoughts about demography, different scholars formulated a simple population growth model featuring a term that slows down growth as the population size approaches the maximum of creatures an environment can sustain indefinitely. This upper limit is called carrying capacity $K$, the current population size is denoted with $N$, the growth rate $r$ represents the difference between birth and death rate.</p>
-    
-                        <p>The term that slows down growth is a factor that becomes smaller as $N$ grows. It reflects the limits of growth due to the competition for resources.</p>
-    
-                        <p>$$\frac{dN}{dt} = rN \left(1 - \frac{N}{K}\right)$$</p>
-    
-                        <p>When the population $N$ is small it will grow exponentially since the reduction factor $(1-\frac{N}{K})$ has no impact, but with increasing population size the reduction factor reduces growth more and more until $N=K$. Here the reduction factor is zero and the population size reached its limit in the carrying capacity.   </p>
+                        <p>The logistic model is a common model used to describe population growth. Scholars have put Thomas Malthus ideas about demography in a simple formula that captures the basic assumption that humanity, with higher quality of life, will grow exponentially until food production hits a limit and population size will stagnate at a sustainable level. Today we know that a long lifespan and low mortality<br />
+                        goes hand in hand with low fertility. Malthus was wrong concerning humans but the model is still useful for all kinds of problems where resources are limited.</p>
+                        <p>In the model the current population $N$, instead of just growing at a certain rate $r$ with each time step $t$, is also faced with a resource limit also called carrying capacity $K$, which is the maximum of individuals the environment can sustain indefinitely. <br />
+                        $$\frac{dN}{dt} = rN \left(1 - \frac{N}{K}\right)$$<br />
+                        Each time the population size $N$ increases, the factor in parentheses shrinks and slows down population growth. With increasing population size the resource factor reduces growth more and more until $N=K$. The factor becomes zero and population size reached its limit in the carrying capacity $K$.</p>
                     </div>
     
                     <div class="col-span-1 flex md:mt-8 justify-center items-center relative h-fit">
-                        <iframe  class="w-full md:pl-10" src="./plots/model_gallery/logistic_growth.html" sandbox="allow-same-origin allow-scripts" height="600" width="900"
+                        <iframe class="w-full md:pl-10" loading="lazy" src="./plots/model_gallery/logistic_growth.html" sandbox="allow-same-origin allow-scripts" height="600" width="900"
                             scrolling="no" seamless="seamless" frameborder="0" title="logistic map">
                         </iframe>
                     </div>
@@ -187,7 +227,7 @@
             <!-- logistic map  -->
             <div id="logistic-map" class="z-0">
                 <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Logistic Map</h2>
-                <div class="grid md:grid-cols-2 py-6 px-8 md:px-0 h-fit overflow-visible">
+                <div class="grid md:grid-cols-2 py-6 px-8 gap-6 md:px-0 h-fit overflow-visible">
                         <div class="md:col-span-1">
                             <p>The logistic map is simplified version of a logistic (population) growth model with the effects birth rate and death rate combined into one number, called $R$. While population size is replaced by a related concept, called “fraction of carrying capacity,” denominated $x$. $$x_{t}=R\times (1-x_t)$$The logistic map equation is completely deterministic, every $x_t$ maps onto one and only one value of $x_t+1$. Still a change in the tenth and higher decimal places of $x_0$ — a quite likely limitation for many experimental observations — can make $x_t$ unpredictable at $t\gtrapprox 30$. </p>
                             <p>The map might fall into a fixed point (e.g. $R=2, x_0=0.5$), a fixed cycle/oscillation (e.g. $R=3.1, x_0.2$), or chaos. Fixed points and fixed cycles are called “attractors” since any initial condition will eventually be attracted to it. When $R$ increases the trajectories fluctuate more and more, between $R=3.4$ and $R=3.5$ the system oscillates among four different values, with growing $R$ the values the system oscillates between double fast until they are infinite at approximately $R=3.569946$. Before this point the logistic map was roughly predictable, afterwards the values of $x$ become chaotic. And very small changes in $x_0$ lead to widely diverging trajectories.</p>
@@ -196,7 +236,7 @@
                         </div>
     
             <div class="col-span-1 flex md:mt-8 justify-center items-center relative h-fit">
-                <iframe  class="w-full" src="./plots/model_gallery/logistic_map.html" sandbox="allow-same-origin allow-scripts" height="600" width="900"
+                <iframe  class="w-full" loading="lazy" src="./plots/model_gallery/logistic_map.html" sandbox="allow-same-origin allow-scripts" height="600" width="900"
                     scrolling="no" seamless="seamless" frameborder="0" title="logistic map">
                 </iframe>
             </div>
@@ -208,7 +248,7 @@
                 <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Standard Normal Distribution</h2>
     
                 <!-- section 1 -->
-                <div class="grid md:grid-cols-2 py-6 px-8 md:px-0 h-fit overflow-visible">
+                <div class="grid md:grid-cols-2 py-6 px-8 gap-6 md:px-0 h-fit overflow-visible">
                     <!-- text  -->
                     <div class="md:col-span-1">
                         <p>All kinds of variables in natural and social sciences are (approximately) normally distributed. Height, birth weight, reading ability, job satisfaction, or test scores are just a few examples of such variables. Because normally distributed variables are so common, many statistical tests are designed for them.</p>
@@ -227,7 +267,7 @@
     
                     <!-- figure  -->
                     <div class="col-span-1 flex md:mt-8 justify-center items-center relative h-fit">
-                        <iframe  class="w-full" src="./plots/model_gallery/standard_normal_distribution.html" sandbox="allow-same-origin allow-scripts" height="600" width="900"
+                        <iframe  class="w-full" loading="lazy" src="./plots/model_gallery/standard_normal_distribution.html" sandbox="allow-same-origin allow-scripts" height="600" width="900"
                             scrolling="no" seamless="seamless" frameborder="0" title="standard_normal_distribution">
                         </iframe>
                     </div>
@@ -304,8 +344,10 @@
                     </div>
                 </div>
             </div>
-    
-        </main>
+
+        </div>
+
+    </main>
 
     <!-- footer  -->
     <hr class="mx-20 mt-10 border-gray-200 dark:border-gray-700">
@@ -391,7 +433,13 @@
     </footer>
 
 
+    <script type="module" src="../main.js"></script>
+    <script type="module" src="../script.js"></script>
+
     <script>
+        function resizeIframe(iframe) {
+            iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+            }
         // Close the drawer when clicking outside
         document.getElementById('main-content').addEventListener('click', function() {
             document.getElementById('drawer-toggle').checked = false;
@@ -413,6 +461,9 @@
             });
         });
     </script>
+
+    <!-- flowbite  -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 
 
 

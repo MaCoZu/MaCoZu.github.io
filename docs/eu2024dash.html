@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <title>EU2014 Dashboard</title>
-
     <!-- Favicon -->
     <link rel="icon" href="./img/logo/logo_weiß.svg" type="image/x-icon" />
 
@@ -57,11 +55,9 @@
         }
     </style>
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="../font.css">
-
     <!-- css  -->
-    <link rel="stylesheet" href="../style.css">
+    <script type="module" crossorigin src="./assets/index.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index.css">
 
     <!-- mathjax  -->
     <script type="text/x-mathjax-config">
@@ -77,17 +73,16 @@
     </script>
 
 
-
-    <script type="module" crossorigin src="./assets/index.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index.css">
+    <title>EU Elections 2024 Dashboard</title>
 
 </head>
 
 <body class="font-pop bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
+  
   <!-- navbar -->
   <nav x-data="{ isOpen: false }" class="relative ">
-      <div class="container mx-auto mt-8 md:mt-8 md:mx-20 px-6 md:px-0 md:flex md:justify-between md:items-center">
-        <div class="flex items-center justify-between">
+    <div class="container mx-auto mt-8 md:mt-8 md:mx-20 px-6 md:px-0 md:flex md:justify-between md:items-center">
+      <div class="flex items-center justify-between">
 
           <!-- logo + name  -->
           <a href="index.html">
@@ -96,59 +91,63 @@
               <img id="logo" class="w-full mr-auto h-8 pe-6 sm:h-8 fill-current dark:filter-white" src="./img/logo/logo.svg"
                 alt="logo">
             </div>
-            <!-- <div class="hidden md:inline-block text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline ml-2"
-              href="">Marco Zausch</div> -->
+            
           </div>
         </a>
 
-          <!-- Mobile menu button -->
-          <div class="flex md:hidden">
-            <button x-cloak @click="isOpen = !isOpen" type="button"
-              class="hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none" aria-label="toggle menu">
-              <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
-              </svg>
+        <!-- Mobile menu button -->
+        <div class="flex md:hidden">
+          <button x-cloak @click="isOpen = !isOpen" type="button"
+            class="hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none" aria-label="toggle menu">
+            <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+            </svg>
 
-              <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
+            <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
-
-
       </div>
+
+
+    </div>
   </nav>
 
-  <main class="px-6 mt-8 md:mb-32 md:mt-20 mx-auto md:mx-20 md:px-0">
-    <div class="w-full text-center items-center place-content-center object-center mx-auto">
-    <div class='tableauPlaceholder' id='viz1718977126621' style='position: relative'><noscript><a href='#'><img
-            alt='EU2024 '
-            src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;EU&#47;EU2024&#47;EU2024&#47;1_rss.png'
-            style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
-        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-        <param name='embed_code_version' value='3' />
-        <param name='site_root' value='' />
-        <param name='name' value='EU2024&#47;EU2024' />
-        <param name='tabs' value='no' />
-        <param name='toolbar' value='yes' />
-        <param name='static_image'
-          value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;EU&#47;EU2024&#47;EU2024&#47;1.png' />
-        <param name='animate_transition' value='yes' />
-        <param name='display_static_image' value='yes' />
-        <param name='display_spinner' value='yes' />
-        <param name='display_overlay' value='yes' />
-        <param name='display_count' value='yes' />
-        <param name='language' value='en-US' />
-        <param name='filter' value='publish=yes' />
-      </object></div>
-    <script
-      type='text/javascript'> var divElement = document.getElementById('viz1718977126621'); var vizElement = divElement.getElementsByTagName('object')[0]; if (divElement.offsetWidth > 800) { vizElement.style.width = '1300px'; vizElement.style.height = '927px'; } else if (divElement.offsetWidth > 500) { vizElement.style.width = '1300px'; vizElement.style.height = '927px'; } else { vizElement.style.width = '100%'; vizElement.style.height = '1927px'; } var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+  <main class="max-w-screen-xl mx-auto mt-8 md:mt-20 md:mb-32">
 
-      </div>
-    </main>
+    <div class='tableauPlaceholder min-w-full object-contain' id='viz1718977126621' style='position: relative'>
+      <noscript>
+        <a href='#'>
+          <img alt='EU2024 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;EU&#47;EU2024&#47;EU2024&#47;1_rss.png' style='border: none;' />
+        </a>
+        </noscript>
+          <object class='tableauViz' style='display:none'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+            <param name='embed_code_version' value='3' />
+            <param name='site_root' value='' />
+            <param name='name' value='EU2024&#47;EU2024' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image'
+              value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;EU&#47;EU2024&#47;EU2024&#47;1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en-US' />
+            <param name='filter' value='publish=yes' />
+          </object>
+    </div>
+
+    <script
+      type='text/javascript'> var divElement = document.getElementById('viz1718977126621'); var vizElement = divElement.getElementsByTagName('object')[0]; if (divElement.offsetWidth > 800) { vizElement.style.width = '1300px'; vizElement.style.height = '927px'; } else if (divElement.offsetWidth > 500) { vizElement.style.width = '1300px'; vizElement.style.height = '927px'; } else { vizElement.style.width = '100%'; vizElement.style.height = '1927px'; } var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+    </script>
+
+  </main>
 
 
   <!-- footer  -->
@@ -229,6 +228,9 @@
       </div>
     </div>
   </footer>
+
+  <script type="module" src="../main.js"></script>
+  <script type="module" src="../script.js"></script>
 </body>
 
 </html>

@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-  <title>Zausch Portfolio</title>
-
   <!-- Favicon -->
   <link rel="icon" href="./img/logo/logo_weiß.svg" type="image/x-icon" />
 
@@ -16,34 +14,37 @@
       display: none !important;
     }
 
-    .font-roboto {
-      font-family: 'Roboto', sans-serif;
-    }
-
-    /* for Marco Zausch Logo  */
+    /* Logo  */
     .font-merri {
       font-family: 'Merriweather', serif;
     }
 
-    /* standard font  */
+    /* Standard */
     .font-pop {
       font-family: 'Poppins', sans-serif;
     }
 
-    /* standard font  */
+    /* Roboto  */
+    .font-roboto {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    /* Ledger  */
     .font-ledger {
       font-family: 'Ledger', sans-serif;
     }
 
-    /* standard font  */
+    /* Bebas Heading  */
     .font-bebas {
       font-family: 'Bebas', sans-serif;
     }
   </style>
 
-  <script type="module" crossorigin src="./assets/index.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index.css">
-  
+<script type="module" crossorigin src="./assets/index.js"></script>
+<link rel="stylesheet" crossorigin href="./assets/index.css">
+
+<title>Zausch Portfolio</title>
+
 </head>
 
 <body class="font-pop bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
@@ -85,7 +86,7 @@
     </div>
   </nav>
 
-  <!-- new blog  -->
+  <!-- main -->
   <section class="bg-white dark:bg-gray-900">
     <div class="container px-6 mt-8 md:mb-32 md:mt-20 mx-auto md:mx-20 md:px-0">
       <h1 class="text-4xl font-bebas font-semibold my-10 tracking-[8px] text-center">Latest Projects</h1>
@@ -96,7 +97,8 @@
         <!-- scatter  -->
         <div>
           <a href="scatter.html">
-            <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="./img/foto/stats.png" alt="">
+            <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="./img/foto/stats.png"
+              alt="">
 
             <div class="mt-8">
               <span class="text-indigo-700 dark:text-amber-400 uppercase">statistics</span>
@@ -119,8 +121,9 @@
 
       <!-- EU Elections Dashboard  -->
       <div>
-        <a href="./eu2024dash.html">
-          <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="./img/foto/elections.jpg" alt="">
+        <a href="public/eu2024dash.html">
+          <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="./img/foto/elections.jpg"
+            alt="">
 
           <div class="mt-8">
             <span class="text-indigo-700 dark:text-amber-400 uppercase">dashboard</span>
@@ -139,10 +142,9 @@
         </a>
       </div>
 
-
       <!-- Model Gallery  -->
       <div>
-        <a href="./model_gallery.html">
+        <a href="model_gallery.html">
           <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80"
             src="./img/foto/model_museeum.jpg" alt="">
 
@@ -154,7 +156,7 @@
             </h1>
 
             <p class="mt-2 text-gray-500 dark:text-gray-300">
-              Models from all walks of life. Should I meet an interesting one on my strolls in the sciences, I'll invite her to my little gallery.
+              Models from all walks of life. If I meet an interesting model on my strolls in the social or natural sciences, I'll invite her to my little gallery of interactive graphs.
             </p>
 
             <div class="flex items-center justify-end mt-4">
@@ -162,6 +164,8 @@
             </div>
         </a>
       </div>
+    </div>
+    </div>
     </div>
   </section>
 
@@ -248,6 +252,8 @@
 
 
 
+  <script type="module" src="./main.js"></script>
+  <script type="module" src="./script.js"></script>
 </body>
 
 </html>
