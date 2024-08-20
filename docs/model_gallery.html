@@ -207,11 +207,12 @@
                 <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Logistic Growth</h2>
                 <div class="grid md:grid-cols-2 py-6 px-8 md:px-0 gap-2 h-fit overflow-visible">
                     <div class="md:col-span-1">
-                        <p>The logistic model is a common model used to describe population growth. Scholars have put Thomas Malthus ideas about demography in a simple formula that captures the basic assumption that humanity, with higher quality of life, will grow exponentially until food production hits a limit and population size will stagnate at a sustainable level. Today we know that a long lifespan and low mortality<br />
+                        <p>The logistic model is a common model used to describe population growth. Scholars have put Thomas Malthus ideas about demography in a simple formula that captures the basic assumption that humanity, with higher quality of life, will grow exponentially until food production hits a limit and population size will stagnate at a sustainable level. Today we know that a long lifespan and low mortality
                         goes hand in hand with low fertility. Malthus was wrong concerning humans but the model is still useful for all kinds of problems where resources are limited.</p>
-                        <p>In the model the current population $N$, instead of just growing at a certain rate $r$ with each time step $t$, is also faced with a resource limit also called carrying capacity $K$, which is the maximum of individuals the environment can sustain indefinitely. <br />
+                        <p>In the model the current population $N$, instead of just growing at a certain rate $r$ at each time step $t$, is faced with a resource limit called carrying capacity $K$, which is the maximum of individuals the environment can sustain indefinitely. <br />
                         $$\frac{dN}{dt} = rN \left(1 - \frac{N}{K}\right)$$<br />
-                        Each time the population size $N$ increases, the factor in parentheses shrinks and slows down population growth. With increasing population size the resource factor reduces growth more and more until $N=K$. The factor becomes zero and population size reached its limit in the carrying capacity $K$.</p>
+                        Every time the population size $N$ increases, $N$ is shrinking the factor in parentheses and thereby slowing down population growth. The larger $N$ becomes the slower it will grow in the next iteration until $N=K$. When the factor in parentheses is zero population size reached a plateau in the carrying capacity $K$. This trajectory produces the typical S-shaped curve of the logistic function, initially soaring and eventually flatting out.
+                        </p>
                     </div>
     
                     <div class="col-span-1 flex md:mt-8 justify-center items-center relative h-fit">
