@@ -169,7 +169,7 @@
             <div id="confusion" class="z-0">
                 <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Confusion Matrix</h2>
                 <!-- text  -->
-                <div class="grid md:grid-cols-2 divide-x h-full overflow-visible ">
+                <div class="grid md:grid-cols-2 gap-8 divide-x h-full overflow-visible ">
                     <div class="md:col-span-1 py-6 px-8 gap-6 md:px-0">
                     <p>When we predict something – be it with a machine learning algorithm or a disease test – we would like to know the performance of our tool, since we will almost certainly have some erroneous predictions. </p>
                     <p>Predictions can fall in four categories:</p>
@@ -183,8 +183,8 @@
                 </div>
 
                 <!-- matrix  -->
-                <div class="flex col-span-1 md:mt-14 justify-center items-center relative h-lvh min-h-screen overflow-visible">
-                    <iframe class="w-full" loading="lazy" src="./plots/model_gallery/confusion_matrix.html" sandbox="allow-same-origin allow-scripts"
+                <div class="flex col-span-1 md:mt-14 justify-center items-center relative h-lvh min-h-screen">
+                    <iframe class="w-full " loading="lazy" src="./plots/model_gallery/confusion_matrix.html" sandbox="allow-same-origin allow-scripts"
                             scrolling="no" seamless="seamless" frameborder="0" title="confusion_matrix"
                             onload="resizeIframe(this)">
                     </iframe>
