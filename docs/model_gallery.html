@@ -247,21 +247,12 @@
                 <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Standard Normal Distribution</h2>
     
                 <!-- section 1 -->
-                <div class="grid md:grid-cols-2 py-6 px-8 gap-6 md:px-0 h-fit overflow-visible">
+                <div class="grid md:grid-cols-2 pt-6 pb-0 px-8 gap-6 md:px-0 h-fit overflow-visible">
                     <!-- text  -->
                     <div class="md:col-span-1">
                         <p>All kinds of variables in natural and social sciences are (approximately) normally distributed. Height, birth weight, reading ability, job satisfaction, or test scores are just a few examples of such variables. Because normally distributed variables are so common, many statistical tests are designed for them.</p>
-                        <p>In a normal distribution, data is symmetrically distributed, clustered in the middle and tapering off as they go further away from the center, forming a bell shaped curve.</p>
-                        <p>They have very recognizable characteristics:</p>
-                        <ul>
-                        <li>The mean, median and mode are exactly (perfect symmetry) the same.</li>
-                        <li>Half the values fall below the mean and half above the mean.</li>
-                        <li>They can be described by the mean $\mu$ and the standard deviation $\sigma$.</li>
-                        </ul>
-                        <p>Every normal distribution can be stretched, squeezed and/or shifted to become a standard normal distribution, with $\mu=0$ and $\sigma=1$. Standardization simplifies calculations and comparisons across different datasets, making it a valuable tool in data analysis and hypothesis testing.</p>
-                        <p>You can observe the effects of standardization in the interactive graph by playing with the parameters $\mu$ and $\sigma$. Mathematically you arrive at the standard normal distribution when each data point is transformed into a standardized $z$-score with the formula: <br />
-                        $$z=(\frac{{x - \mu}}{{\sigma}})$$<br />
-                        For example if you have a dataset with a mean $\mu_x = 5.0$ and standard deviation $\sigma_x=3.09$,  $z$-scores are as follows:</p>
+                        <p>In a normal distribution data is clustered in the middle and tapering off as they go further away from the center, forming a bell shaped curve. Such a bell shaped curve has very convenient characteristics. Its measures of central tendency – mean, median, and mode – fall in one place. This place splits the dataset cleanly in the middle where half of the values fall below and the other half above the mean. </p>
+                        
                     </div>
     
                     <!-- figure  -->
@@ -271,9 +262,19 @@
                         </iframe>
                     </div>
                 </div>
+
+                <div class="py-6 px-8 md:pt-0 md:px-48 h-full overflow-visible">
+                    <p>When we know the mean $\mu$ and the standard deviation $\sigma$, which is the average amount by which observations deviate on either side from the mean, we can immediately tell that 68% of your observations will fall within the range of two standard deviations centered at $\mu$. Provided that the variables are independent and have limited variance. 95% of the data lies within four standard deviations and 99.7% within six $\sigma$ above $\mu$. That is two or three standard deviations below and above the mean. This is called the $\mathbf{68-95-99.7}$ rule or <strong>empirical rule</strong> and if you have $\mu=100$ and $\sigma=15$ you know instantly that 95% of your data points will be found in the range $[70, 130]$. </p>
+
+                    <p>In business companies try to reduce the deviation, of some critical parts or services, from their perfect quality to a minimum. That is to say, that they strive to make the range of variability ($\sigma$) around $\mu$ (perfect quality) as small as possible. For example Motorola aspired to improve its manufacturing and business processes, that deviations from perfect quality become so small, that everything within six standard deviations could be rendered functional, and defects happen only in 3.4 per million opportunities, that is they lie outside six $\sigma$ to either side of the mean. The method is coined <strong>Six Sigma</strong>, due to the name of the symbol for standard deviations $\sigma$.</p>
+                    <p>Normal distributions can be applied even to variables that are not normally distributed, with the help of the <strong>central limit theorem (CLT).</strong> The CLT says that when you repeatedly sample from independent and identically distributed (other than normally distributed) random variables, and take the arithmetic mean of every sample, these sample means will closely approximate a normal distribution. Thereby statistical methods that work for normal distributions can be applicable to many problems involving other types of distributions.</p>
+                    <p>Once you have $\mu$ and $\sigma$ you can find the probability of any data point $x$ to appear in the distribution with the help of the <strong>Probability Density Function (PDF)</strong> But more commonly it is asked, how likely is it to see values below or above some point $x$, and the <strong>Cumulative Distribution Function (CDF)</strong> answers this.</p>
+                    <p>Furthermore any normal distribution can be simplified into a standardized form with $\mu=0$ and $\sigma=1$. It can also be said that every normal distribution is a version of the standard normal distribution, whose domain has been stretched by $\sigma$ and shifted by $\mu$. By playing with the interactive graph, you can inspect the form of some normal distributions with different $\mu$ and $\sigma$ or visualize the effects of the transformation from normal to standard normal.</p>
+                </div>
+
     
                 <!-- section 2 -->
-                <div class="grid grid-cols-1 md:grid-cols-3 px-8 md:px-0 md:gap-14 md:mt-4 h-fit">
+                <div class="grid grid-cols-1 md:grid-cols-3 px-8 md:px-0 md:gap-14 md:mt-0 h-fit">
                     <table class="md:col-span-1">
                         <thead>
                         <tr>
@@ -331,15 +332,13 @@
                     </tbody>
                     </table>
     
-                    <div class="md:col-span-2 py-6 h-fit overflow-visible">
+                    <div class="md:col-span-2 pb-6 h-fit overflow-visible">
+                        <p>Once you have a standard normal distribution you’re looking for the probabilities of $\mathbf{z}$-<strong>scores</strong>, which are nothing else then standardized $x$ observations. <br />
+                        $$z=(\frac{{x - \mu}}{{\sigma}})$$<br />
+                        For example if you have a dataset with a mean $\mu_x = 5.0$ and standard deviation $\sigma_x=3.09$, $z$-scores are as follows:</p>
+
                         <p>You can see that the mean of $x$ became zero and each data point $x$ is now expressed as the difference from $\mu_x$ in units of the standard deviation $\sigma_x$, this is the $z$-score.</p>
-                        <p>Each $z$-score is associated with a probability, or $p$-value, that tells you the likelihood of values occurring below that $z$-score: $P(x&lt;8)=0.83\%$. </p>
-                        <p>With the p-values you can also determine how likely it is that random variable in the distribution is greater than 10:<br />
-                        $P(x&gt;10)= (1-0.95)=0.05\%$</p>
-                        <p>or the probability of a variable greater than 2 but below 10<br />
-                        $P(2&lt;x&lt;10) = (0.95 - 0.166)=0.78\%$</p>
-                        <p>Another convenient feature of the standard normal distribution is that it follows the <em>empirical rule</em>, also known as the <strong>68-95-99.7 rule</strong>. Approximately 68% of the data falls within one standard deviation of the mean, about 95% falls within two standard deviations, and around 99.7% falls within three standard deviations.</p>
-                        <p>Because the standard normal distribution makes calculating probabilities easy, the probabilities of other distributions can be approximated with it, if certain conditions are met.</p>
+                        <p>Each $z$-score is associated with a probability, or $\mathbf{p}$<strong>-value</strong>, that tells you the likelihood of values occurring below that $z$-score: <br /> $P(x\leq8)=P(z\leq0.97)=0.83\%$. <br /> With the p-values you can also determine how likely it is that random variable in the distribution is greater than 10:<br /> $P(x\leq10)=P(z\leq1.62) = (1-0.95)=0.05\%$ <br /> or the probability of a variable greater than 2 but below 10: <br /> $P(2&lt;x&lt;10) = (0.95 - 0.166)=0.78\%$.</p>
                     </div>
                 </div>
             </div>
