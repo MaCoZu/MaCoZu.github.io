@@ -1,0 +1,90 @@
+@import './font.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Import font CSS */
+/* @import url('font.css'); */
+
+/* scrolling smooth instead of abruptly  */
+html {
+    scroll-behavior: smooth;
+}
+
+/* switch color of logo  */
+.filter-white {
+    filter:
+        invert(100%)
+}
+
+/* tool tip for font select  */
+#font-select:hover:before {
+    /* Display the data-font attribute as the content */
+    content: attr(data-font);
+    position: absolute;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 3px;
+    margin-top: 40px;
+    white-space: nowrap;
+}
+
+/* This creates the counter  */
+body {
+    counter-reset: cb_counter_var;
+}
+
+/* This increments the counter value and defines
+  the displayed content  */
+sup::after {
+    counter-increment: cb_counter_var;
+    content: counter(cb_counter_var);
+}
+
+/* This initially hides the footnote (i.e. span)  */
+input[type=checkbox]~span {
+    display: none;
+}
+
+/* This styles the footnote text which appears
+  when the label is clicked  */
+input[type=checkbox]:checked~span {
+    display: inline;
+    font-size: 85%;
+    line-height: 80%;
+    letter-spacing: 1px;
+    font-family: monospace;
+    color: mix(#000, text-color, 30%);
+    cursor: default;
+}
+
+/* This permanently hides the checkbox  */
+input[type=checkbox] {
+    display: none;
+}
+
+/* This styles the footnote label to appear
+  like a hyperlink  */
+input[type=checkbox]~label {
+    display: inline;
+    cursor: pointer;
+    color: link-color;
+    text-decoration: underline;
+}
+
+/* This styles the footnote label when the mouse
+  hovers over it */
+input[type=checkbox]~label:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: red;
+}
+
+/* This styles the footnote label after it is clicked */
+input[type=checkbox]:checked~label {
+    color: red;
+    text-decoration: none;
+}

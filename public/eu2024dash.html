@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="./img/logo/logo_weiß.svg" type="image/x-icon" />
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .font-roboto {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .font-merri {
+            font-family: 'Merriweather', serif;
+        }
+
+        .font-pop {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .font-lora {
+            font-family: 'Lora', sans-serif;
+        }
+
+        .font-mserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .font-chomsky {
+            font-family: 'Chomsky', serif;
+        }
+
+        .font-karnak {
+            font-family: 'karnak', serif;
+        }
+
+        .font-abril {
+            font-family: 'abril', serif;
+        }
+
+        .font-georgia {
+            font-family: 'georgia', serif;
+        }
+
+        .font-futura {
+            font-family: 'futura', serif;
+        }
+    </style>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../font.css">
+
+    <!-- css  -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- mathjax  -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+          }
+        });
+      </script>
+
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+    <title>EU Elections 2024 Dashboard</title>
+
+</head>
+
+<body class="font-pop bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
+  
+  <!-- navbar -->
+  <nav x-data="{ isOpen: false }" class="relative ">
+    <div class="container mx-auto mt-8 md:mt-8 md:mx-20 px-6 md:px-0 md:flex md:justify-between md:items-center">
+      <div class="flex items-center justify-between">
+
+          <!-- logo + name  -->
+          <a href="index.html">
+          <div class="flex items-center mr-auto">
+            <div class="mr-auto">
+              <img id="logo" class="w-full mr-auto h-8 pe-6 sm:h-8 fill-current dark:filter-white" src="./img/logo/logo.svg"
+                alt="logo">
+            </div>
+            
+          </div>
+        </a>
+
+        <!-- Mobile menu button -->
+        <div class="flex md:hidden">
+          <button x-cloak @click="isOpen = !isOpen" type="button"
+            class="hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none" aria-label="toggle menu">
+            <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+            </svg>
+
+            <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+
+    </div>
+  </nav>
+
+  <main class="max-w-screen-xl mx-auto mt-8 md:mt-20 md:mb-32">
+
+    <div class='tableauPlaceholder min-w-full object-contain' id='viz1718977126621' style='position: relative'>
+      <noscript>
+        <a href='#'>
+          <img alt='EU2024 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;EU&#47;EU2024&#47;EU2024&#47;1_rss.png' style='border: none;' />
+        </a>
+        </noscript>
+          <object class='tableauViz' style='display:none'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+            <param name='embed_code_version' value='3' />
+            <param name='site_root' value='' />
+            <param name='name' value='EU2024&#47;EU2024' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image'
+              value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;EU&#47;EU2024&#47;EU2024&#47;1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en-US' />
+            <param name='filter' value='publish=yes' />
+          </object>
+    </div>
+
+    <script
+      type='text/javascript'> var divElement = document.getElementById('viz1718977126621'); var vizElement = divElement.getElementsByTagName('object')[0]; if (divElement.offsetWidth > 800) { vizElement.style.width = '1300px'; vizElement.style.height = '927px'; } else if (divElement.offsetWidth > 500) { vizElement.style.width = '1300px'; vizElement.style.height = '927px'; } else { vizElement.style.width = '100%'; vizElement.style.height = '1927px'; } var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+    </script>
+
+  </main>
+
+
+  <!-- footer  -->
+  <hr class="mx-20 mt-10 border-gray-200 dark:border-gray-700">
+  <footer id="footer" class="bg-white dark:bg-gray-900">
+    <div class="container px-6 py-4 mx-auto md:mx-20 md:px-0">
+      <div class="grid grid-cols-1 gap-4 justify-between mt-5 md:grid-cols-6">
+
+        <!-- Logo and Name  -->
+        <div class="col-span-2 hidden sm:block">
+          <div class="flex justify-between items-center">
+            <div class="flex gap-3 items-center">
+              <a href="index.html">
+                <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="">
+
+              <div class="">
+                <p
+                  class="pb-3 text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                  Marco</p>
+                <p
+                  class="text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                  Zausch</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-span-4 justify-between md:flex">
+          <!-- CONTACT ME  -->
+          <div class="py-3 md:py-0">
+            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
+            <a class="flex items-center gap-3 my-3 hover:text-fuchsia-600 dark:hover:text-sky-300"
+              href="mailto:marcozausch@posteo.de">
+              marcozausch@posteo.de</a>
+          </div>
+
+          <!-- WORK  -->
+          <div class="py-3 md:py-0">
+            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
+
+            <p class="my-3 flex items-center gap-3">
+              <a href="https://www.linkedin.com/in/marcozausch" target="_blank" aria-label="LinkedIn">
+                <span
+                  class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-sky-300"></span>
+              </a>
+              <a class="block hover:text-fuchsia-600 dark:hover:text-sky-300"
+                href="https://www.linkedin.com/in/marcozausch" target="_blank">Linked In</a>
+            </p>
+
+            <p class="my-3 flex items-center gap-3">
+              <a href="https://github.com/MaCoZu" target="_blank" aria-label="Github">
+                <span
+                  class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-sky-300"></span>
+              </a>
+              <a class="block hover:text-fuchsia-600 dark:hover:text-sky-300" href="https://github.com/MaCoZu" target="_blank">Github
+              </a>
+            </p>
+          </div>
+
+          <!-- RESSOURCES -->
+          <div class="py-3 md:py-0">
+            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Resources</div>
+            <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300" href="/#">Statistics </a>
+            <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300" href="/#">Tutorials </a>
+          </div>
+
+          <!-- LEGAL  -->
+          <div class="py-3 md:py-0">
+            <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400 ">Legal</div>
+            <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300" href="./impressum.html">Impressum
+            </a>
+            <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300" href="./privacypolicy.html">Privacy
+              Policy
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../main.js"></script>
+  <script type="module" src="../script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "MaCoZu.github.cio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@iconify/tailwind": "^1.1.2",
+    "@tailwindcss/typography": "^0.4.1",
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.2",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^2.0.4",
+    "vite": "^5.4.2"
+  },
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^6.0.0",
+    "@iconify/json": "^2.2.213"
+  }
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schelling's Segregation Model</title>
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem; /* Space between input and percent sign */
+            }
+
+        .input-wrapper input {
+            background-color: inherit; /* Matches the background of the page */
+            color: inherit; /* Matches the text color of the page */
+            border: 1px solid rgba(0, 0, 0, 0.2); /* Subtle border */
+            border-radius: 0.375rem; /* Rounded corners */
+            padding: 0.01rem 0.01rem 0.01rem 0.01rem; 
+            text-align: center; /* Center text horizontally */
+            height: 1.5rem; /* Ensure consistent height */
+            width: 2.5rem;
+        }
+        
+        .font-pop {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .font-roboto {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        
+        .btn {
+            @apply font-bold mx-3 py-1.5 px-3 rounded cursor-pointer bg-slate-500 text-white dark:bg-slate-300 dark:text-slate-800 hover:bg-slate-600 dark:hover:bg-slate-200;
+        }
+
+    </style>
+
+    <!-- css  -->
+    <link rel="stylesheet" href="../../../style.css">
+
+</head>
+
+<body class="font-roboto flex flex-col min-h-fit content-center items-center bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
+    
+    <div class="pb-2">
+        <div class="flex items-center pb-3">
+            <div class="input-wrapper text-xl">
+                <label class="font-semibold" for="threshold">Preference Threshold:</label>
+                <input type="number" id="threshold" value="30" min="0" max="100">
+                <span class="percent-sign">%</span>
+            </div>
+        </div>
+ 
+        <div class="my-2 justify-evenly">
+            <button class="btn" onclick="runModel()">Run Model</button>
+            <button class="btn" onclick="resetGrid()">Reset</button>
+        </div>
+    </div>
+
+    <canvas class="" id="board" width="400" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('board');
+        const ctx = canvas.getContext('2d');
+        const size = 32; // 32x32 grid
+        const cellSize = canvas.width / size;
+        let grid = [];
+        const numPeriods = 10;
+        const red = '#FFD700'
+        const blue = '#4B0082'
+        function initializeGrid() {
+            grid = [];
+            for (let i = 0; i < size; i++) {
+                grid[i] = [];
+                for (let j = 0; j < size; j++) {
+                    grid[i][j] = Math.random() < 0.5 ? red : blue;
+                }
+            }
+            drawGrid();
+        }
+
+        function drawGrid() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < size; i++) {
+                for (let j = 0; j < size; j++) {
+                    ctx.fillStyle = grid[i][j];
+                    ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                    ctx.strokeRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                }
+            }
+        }
+
+        function countNeighbors(x, y, color) {
+            let count = 0;
+            let total = 0;
+            for (let i = -1; i <= 1; i++) {
+                for (let j = -1; j <= 1; j++) {
+                    if (i === 0 && j === 0) continue; // Skip the current cell
+                    const nx = x + i;
+                    const ny = y + j;
+                    if (nx >= 0 && nx < size && ny >= 0 && ny < size) {
+                        total++;
+                        if (grid[nx][ny] === color) {
+                            count++;
+                        }
+                    }
+                }
+            }
+            return total === 0 ? 0 : count / total;
+        }
+
+        function moveAgent(x, y) {
+            const color = grid[x][y];
+            let foundNewLocation = false;
+            for (let i = 0; i < size && !foundNewLocation; i++) {
+                for (let j = 0; j < size && !foundNewLocation; j++) {
+                    if (grid[i][j] === color) continue;
+                    const neighborRatio = countNeighbors(i, j, color);
+                    const threshold = document.getElementById('threshold').value / 100;
+                    if (neighborRatio >= threshold) {
+                        grid[i][j] = color;
+                        grid[x][y] = grid[i][j] === red ? blue : red;
+                        foundNewLocation = true;
+                    }
+                }
+            }
+        }
+
+        function runModel() {
+            for (let p = 0; p < numPeriods; p++) {
+                const moves = [];
+                for (let i = 0; i < size; i++) {
+                    for (let j = 0; j < size; j++) {
+                        const color = grid[i][j];
+                        const neighborRatio = countNeighbors(i, j, color);
+                        const threshold = document.getElementById('threshold').value / 100;
+                        if (neighborRatio < threshold) {
+                            moves.push({ x: i, y: j });
+                        }
+                    }
+                }
+                moves.forEach(move => moveAgent(move.x, move.y));
+            }
+            drawGrid();
+        }
+
+        function resetGrid() {
+            initializeGrid();
+        }
+
+        // Initialize the grid when the page loads
+        window.onload = initializeGrid;
+    </script>
+
+    <!-- <div class="prose prose-stone leading-6 dark:prose-invert font-pop content-center items-center mx-24 mt-6 text-base">
+        <a href="https://visualize-it.github.io/schelling_model/simulation.html" target="_blank">Here<i
+            class="icon-[ei--external-link] w-6 h-6 -m-0.5" aria-hidden="true"></i></a> 
+        you can find a much better animation of Schelling's Model made by Chandan Relekar.
+    </div> -->
+
+    <script type="module" src="../../../main.js"></script>
+    <script type="module" src="../../../script.js"></script>
+</body>
+</html>
