@@ -6,36 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
- <!-- Favicon -->
- <link rel="icon" href="./img/logo/logo_weiß.svg" type="image/x-icon" />
+  <!-- Favicon -->
+  <link rel="icon" href="./img/logo/logo_weiß.svg" type="image/x-icon" />
 
   <style>
     [x-cloak] {
       display: none !important;
     }
 
-    .font-roboto {
-      font-family: 'Roboto', sans-serif;
-    }
-
-    .font-merri {
-      font-family: 'Merriweather', serif;
-    }
-
+    /* MENU */
     .font-pop {
       font-family: 'Poppins', sans-serif;
     }
 
-    .font-lora {
-      font-family: 'Lora', sans-serif;
+    /* TEXT */
+    .font-literata {
+      font-family: 'Literata', serif;
     }
 
-    .font-ledger {
-      font-family: 'Ledger', sans-serif;
-    }
-
-    .font-signika {
-      font-family: 'Signika', sans-serif;
+    /* HIGHLIGHT  */
+    .font-bebas {
+      font-family: 'Bebas', sans-serif;
     }
   </style>
 
@@ -64,80 +55,58 @@
 
 
   <!-- navbar -->
-  <nav x-data="{ isOpen: false }" class="relative ">
-    <div class="container mx-auto mt-8 md:mt-8 md:mx-20 px-6 md:px-0 md:flex md:justify-between md:items-center">
-      <div class="flex items-center justify-between">
-
-        <!-- logo + name  -->
-        <a href="index.html">
-          <div class="flex items-center mr-auto">
-            <div class="mr-auto">
-              <img id="logo" class="w-full mr-auto h-8 pe-6 sm:h-8 fill-current dark:filter-white" src="./img/logo/logo.svg"
-                alt="logo">
-            </div>
-            <div class="hidden md:inline-block text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline ml-2"
-              href="">Marco Zausch</div>
-          </div>
+  <nav x-data="{ isOpen: false }" class="relative uppercase">
+    <div class="container mx-auto mt-8 md:mt-8 md:mx-20 px-0 md:flex md:justify-between md:items-center">
+      <div class="flex items-center justify-between w-full">
+        <!-- Logo + Name -->
+        <a href="index.html" class="flex items-center">
+          <img id="logo" class="h-8 sm:h-8 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="logo">
         </a>
 
-        <!-- Mobile menu button -->
-        <div class="flex md:hidden">
-          <button x-cloak @click="isOpen = !isOpen" type="button"
-            class="hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none" aria-label="toggle menu">
+        <!-- Menu Button (Right Aligned) -->
+        <button @click="isOpen = !isOpen" class="flex md:hidden focus:outline-none ml-auto">
+          <div class="w-6 h-6 relative">
             <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
             </svg>
-
             <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
-          </button>
+          </div>
+        </button>
+
+        <!-- Desktop Menu (Right Aligned) -->
+        <div class="hidden md:flex ml-auto items-center">
+          <ul class="md:flex gap-8 text-xl tracking-tight ">
+            <div><a class="hover:text-indigo-400 mr-4" href="index.html">Home</a></div>
+            <!-- <div><a class="hover:text-indigo-400 mr-4" href="">Contact</a></div> -->
+            <div><a class="hover:text-indigo-400 mr-4" href="impressum.html">Impressum</a></div>
+          </ul>
         </div>
       </div>
 
+      <!-- Mobile Menu -->
+      <div x-show="isOpen" x-transition:enter="transform ease-out duration-300 transition-translate-opacity"
+        x-transition:enter-start="translate-y-10 opacity-0" x-transition:enter-end="translate-y-0 opacity-100"
+        x-transition:leave="transform ease-in duration-300 transition-translate-opacity"
+        x-transition:leave-start="translate-y-0 opacity-100" x-transition:leave-end="translate-y-10 opacity-0"
+        class="lg:hidden absolute top-16 right-0 pr-4 z-10 w-1/2 h-screen">
 
+        <ul class="p-3 space-y-2 text-lg">
+          <li><a class="hover:text-indigo-400" href="index.html">Home</a></li>
+          <!-- <li><a class="hover:text-indigo-400" href="#">Contact</a></li> -->
+          <li><a class="hover:text-indigo-400" href="impressum.html">Impressum</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
-  <aside
-    class="hidden md:block right-0 w-1/6 py-8 fixed top-1/2 transform -translate-y-1/2 flex-col items-center overflow-y-auto bg-white dark:bg-gray-900 dark:border-gray-700">
-    <nav class="flex flex-col flex-1 space-y-8 items-center justify-center">
-      <a type="button" id="chevron-up">
-        <span
-          class="icon-[heroicons-outline--chevron-up] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
-      </a>
-
-      <a type="button" id="chevron-down">
-        <span
-          class="icon-[heroicons-outline--chevron-down] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
-      </a>
-
-      <a class=""></a>
-
-      <a id="font-select" data-tooltip-placement="left">
-        <span
-          class="icon-[fa6-solid--font] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
-      </a>
-
-      <a class=""></a>
-
-      <a type="button" href="#top" id="chevron-up-double">
-        <span
-          class="icon-[heroicons-outline--chevron-double-up] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
-      </a>
-
-      <a type="button" href="#footer" id="chevron-down-double">
-        <span
-          class="icon-[heroicons-outline--chevron-double-down] w-8 h-8 fill-current text-gray-500 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 ms-5"></span>
-      </a>
-
-  </aside>
 
   <main class="flex justify-center items-center min-h-screen py-20">
     <article id="article"
-      class="prose w-5/6 md:w-1/2 px-1 prose-sm max-w-full md:prose-xl prose-stone text-justify leading-10 dark:prose-invert">
+      class="prose font-literata w-5/6 md:w-1/2 px-1 prose-sm max-w-full md:prose-xl prose-stone text-justify leading-10 dark:prose-invert">
       <h1 class="text-left text-2xl md:text-4xl">Datenschutzerklärung</h1>
       <div class="md:columns-2">
         <div class="text-left">
@@ -509,84 +478,87 @@
 
   <!-- footer  -->
   <hr class="mx-20 mt-10 border-gray-200 dark:border-gray-700">
-
-  <footer id="footer" class="bg-white dark:bg-gray-900">
+  <footer class="bg-white dark:bg-gray-900">
     <div class="container px-6 py-4 mx-auto md:mx-20 md:px-0">
-      <div class="grid grid-cols-1 gap-4 justify-between mt-5 md:grid-cols-6">
+      <div class="grid grid-cols-1 gap-4 justify-between mt-5 md:grid-cols-12">
 
         <!-- Logo and Name  -->
-        <div class="col-span-2 hidden sm:block">
+        <div class="col-span-4 hidden sm:block">
           <div class="flex justify-between items-center">
             <div class="flex gap-3 items-center">
-              <a href="index.html">
+              <a>
                 <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="">
-
-                <div class="">
-                  <p
-                    class="pb-3 text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                    Marco</p>
-                  <p
-                    class="text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                    Zausch</p>
               </a>
+              <div class="">
+                <p
+                  class="pb-3 text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                  Marco</p>
+                <p
+                  class="text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                  Zausch</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-span-4 justify-between md:flex">
-        <!-- CONTACT ME  -->
-        <div class="py-3 md:py-0">
-          <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
-          <a class="flex items-center gap-3 my-3 hover:text-fuchsia-600 dark:hover:text-sky-300"
-            href="mailto:marcozausch@posteo.de">
-            marcozausch@posteo.de</a>
-        </div>
+        <div class="col-span-8 justify-between md:flex">
 
-        <!-- WORK  -->
-        <div class="py-3 md:py-0">
-          <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
+          <!-- CONTACT ME  -->
+          <div class="py-3 md:py-0">
+            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
+            <a id="mlink" class="flex items-center gap-3 my-3 hover:text-indigo-400 dark:hover:text-sky-300"
+              href="#">Email</a>
+          </div>
 
-          <p class="my-3 flex items-center gap-3">
-            <a href="https://www.linkedin.com/in/marcozausch" target="_blank" aria-label="LinkedIn">
-              <span
-                class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-sky-300"></span>
+          <!-- WORK  -->
+          <div class="py-3 md:py-0">
+            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
+
+            <p class="my-3 flex items-center gap-3">
+              <a href="https://www.linkedin.com/in/marcozausch" aria-label="LinkedIn">
+                <span
+                  class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
+              </a>
+              <a class="block hover:text-indigo-400 dark:hover:text-sky-300"
+                href="https://www.linkedin.com/in/marcozausch">Linked In</a>
+            </p>
+
+            <p class="my-3 flex items-center gap-3">
+              <a href="https://github.com/MaCoZu" aria-label="Github">
+                <span
+                  class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
+              </a>
+              <a class="block hover:text-indigo-400 dark:hover:text-sky-300" href="https://github.com/MaCoZu">Github
+              </a>
+            </p>
+          </div>
+
+
+          <!-- LEGAL  -->
+          <div class="py-3 md:py-0">
+            <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400 ">Legal</div>
+            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./impressum.html">Impressum
             </a>
-            <a class="block hover:text-fuchsia-600 dark:hover:text-sky-300"
-              href="https://www.linkedin.com/in/marcozausch" target="_blank">Linked In</a>
-          </p>
-
-          <p class="my-3 flex items-center gap-3">
-            <a href="https://github.com/MaCoZu" target="_blank" aria-label="Github">
-              <span
-                class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-sky-300"></span>
+            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./privacypolicy.html">Privacy
+              Policy
             </a>
-            <a class="block hover:text-fuchsia-600 dark:hover:text-sky-300" href="https://github.com/MaCoZu"
-              target="_blank">Github
-            </a>
-          </p>
-        </div>
-
-        <!-- RESSOURCES -->
-        <div class="py-3 md:py-0">
-          <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Resources</div>
-          <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300" href="/#">Statistics </a>
-          <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300" href="/#">Tutorials </a>
-        </div>
-
-        <!-- LEGAL  -->
-        <div class="py-3 md:py-0">
-          <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400 ">Legal</div>
-          <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300" href="./impressum.html">Impressum
-          </a>
-          <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300" href="./privacypolicy.html">Privacy
-            Policy
-          </a>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   </footer>
+
+  <script>
+    /* 1. define variables */
+    var me = "marcozausch";
+    var place = "posteo.de";
+
+    /* 2. find email link to replace */
+    var elink = document.getElementById("mlink");
+
+    /* 3. replace link href with variables  */
+    elink.href = `mailto:${me}@${place}`;
+  </script>
 
 
   <script type="module" src="../main.js"></script>

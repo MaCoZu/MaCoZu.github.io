@@ -7,6 +7,22 @@
   src: url('./fonts/Merriweather-Regular.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'Literata';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/Literata-Medium.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Literata';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/Literata-MediumItalic.ttf') format('ttf');
+}
+
 /* Standard font */
 @font-face {
   font-family: 'Poppins';
