@@ -259,12 +259,12 @@
             </p>
           </div>
 
-          <!-- RESSOURCES -->
+          <!-- RESSOURCES
           <div class="py-3 md:py-0">
             <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Resources</div>
             <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="/#">Statistics </a>
             <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="/#">Tutorials </a>
-          </div>
+          </div> -->
 
           <!-- LEGAL  -->
           <div class="py-3 md:py-0">
@@ -281,27 +281,6 @@
   </footer>
 
   <script>
-    const modalbg = document.getElementById('modal-bg');
-    const modalSwitch = document.getElementById('modal-switch');
-    const modalBox = document.getElementById('modal-box');
-    const modalClose = document.getElementById('modal-close');
-    modalbg.addEventListener("click", function() {
-      modalBox.classList.add('hidden')
-      modalbg.classList.add('hidden')
-    });
-    modalSwitch.addEventListener("click", function() {
-      modalBox.classList.remove('hidden')
-      modalbg.classList.remove('hidden')
-    });
-    modalClose.addEventListener("click", function() {
-      modalBox.classList.remove('hidden')
-      modalbg.classList.remove('hidden')
-    });
-
-
-
-
-
     /* 1. define variables */
     var me = "marcozausch";
     var place = "posteo.de";
@@ -311,6 +290,24 @@
 
     /* 3. replace link href with variables  */
     elink.href = `mailto:${me}@${place}`;
+
+
+    const modalbg = document.getElementById('modal-bg');
+    const modalSwitch = document.getElementById('modal-switch');
+    const modalBox = document.getElementById('modal-box');
+    const modalClose = document.getElementById('modal-close');
+    modalbg.addEventListener("click", function () {
+      modalBox.classList.add('hidden')
+      modalbg.classList.add('hidden')
+    });
+    modalSwitch.addEventListener("click", function () {
+      modalBox.classList.remove('hidden')
+      modalbg.classList.remove('hidden')
+    });
+    modalClose.addEventListener("click", function () {
+      modalBox.classList.remove('hidden')
+      modalbg.classList.remove('hidden')
+    });
   </script>
 
 
