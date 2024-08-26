@@ -25,6 +25,6 @@ lerna-debug.log*
 node_modules/
 web_dubois/
 dist/
-docs/
 docs2/
 docs1/
+old/
