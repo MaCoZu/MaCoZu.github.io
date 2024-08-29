@@ -17,7 +17,7 @@ update node if that doesn't suffice, n is a package that manages node versions
 sudo npm install -g n
 sudo n lts
 sudo n latest
-n prune
+sudo n prune
 ```
 
 
@@ -26,6 +26,10 @@ go to a new folder for the project run this command - choose `vanilla` and `Java
 
 `npm create vite@latest`
 
+You can also directly specify the project name and the template you want to use via additional command line options.
+And use . for the project name to scaffold in the current directory.
+`npm create vite@latest . -- --template vanilla`
+
 
 run these commands
 
@@ -33,11 +37,11 @@ run these commands
 
 `npx tailwindcss init -p`
 
-change the postcss.config.js & tailwind.config.js to .cjs
+change the postcss.config.js & tailwind.config.js to cjs
 
 `postcss.config.cjs`
 
-`tailwind.config.cjs`
+`tailwind.config.mjs`
 
 add this in your postcss.config.cjs
 ```
@@ -67,7 +71,7 @@ module.exports = {
 }
 ```
 
-delete everthing in the main.css and replace with the following
+# delete everything in the main.css and replace with the following
 
 ```
 @tailwind base;
@@ -76,8 +80,8 @@ delete everthing in the main.css and replace with the following
 ```
 
 
-link the .css file in your index.html
-`<link rel="stylesheet" href="main.css" />`
+# link the .css file in your index.html
+`<link rel="stylesheet" href="style.css" />`
 
 
 

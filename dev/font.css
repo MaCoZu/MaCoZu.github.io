@@ -1,4 +1,60 @@
-/* Logo Font*/
+/* MENU FONT */
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./fonts/Poppins-Regular.woff2') format('woff2');
+}
+
+/* HIGHLIGHTS */
+@font-face {
+  font-family: 'Bebas';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./fonts/Bebas.woff2') format('woff2');
+}
+
+ /* TEXT  */
+@font-face{
+  font-family:Literata;
+  display:swap;
+  font-weight:300;
+  font-style:normal;
+  src:url(../fonts/Literata-Light.ttf) format("truetype")
+}
+
+@font-face{
+  font-family:Literata;
+  display:swap;
+  font-weight:300;
+  font-style:italic;
+  src:url(../fonts/Literata-LightItalic.ttf) format("truetype")
+}
+@font-face{
+  font-family:Literata;
+  display:swap;
+  font-weight:400;
+  font-style:normal;
+  src:url(../fonts/Literata-Light.ttf) format("truetype")
+}
+
+@font-face{
+  font-family:Literata;
+  display:swap;
+  font-weight:400;
+  font-style:italic;
+  src:url(../fonts/Literata-LightItalic.ttf) format("truetype")
+}
+
+@font-face{
+  font-family:Literata;
+  display:swap;
+  font-weight:600;
+  font-style:normal;
+  src:url(../fonts/Literata-SemiBold.ttf) format("truetype")
+}
+
+ /* EXTRA  */
 @font-face {
   font-family: 'Merriweather';
   display: swap;
@@ -7,37 +63,14 @@
   src: url('./fonts/Merriweather-Regular.woff2') format('woff2');
 }
 
+/* Ledger  */
 @font-face {
-  font-family: 'Literata';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('./fonts/Literata-Medium.ttf') format('ttf');
-}
-
-@font-face {
-  font-family: 'Literata';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url('./fonts/Literata-MediumItalic.ttf') format('ttf');
-}
-
-/* Standard font */
-@font-face {
-  font-family: 'Poppins';
-  font-weight: 400;
-  font-style: normal;
-  src: url('./fonts/Poppins-Regular.woff2') format('woff2');
-}
-
-/* Headings */
-@font-face {
-  font-family: 'Bebas';
+  font-family: 'Ledger';
   font-weight: normal;
   font-style: normal;
-  src: url('./fonts/Bebas.woff2') format('woff2');
+  src: url('./fonts/Ledger-Regular.woff2') format('woff2');
 }
+
 
 /* Roboto */
 @font-face {
@@ -63,12 +96,6 @@
   src: url('./fonts/Signika-Variable.woff2') format('woff2');
 }
 
-/* Ledger  */
-@font-face {
-  font-family: 'Ledger';
-  font-weight: normal;
-  font-style: normal;
-  src: url('./fonts/Ledger-Regular.woff2') format('woff2');
-}
+
 
 

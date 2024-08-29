@@ -3,13 +3,18 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* Import font CSS */
 /* @import url('font.css'); */
 
 /* scrolling smooth instead of abruptly  */
 html {
     scroll-behavior: smooth;
+}
+
+div.vtext {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    text-decoration: none !important;
 }
 
 /* switch color of logo  */

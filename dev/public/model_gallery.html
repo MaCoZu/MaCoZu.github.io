@@ -12,65 +12,48 @@
     <link rel="icon" href="./img/logo/logo_weiß.svg" type="image/x-icon" />
 
     <style>
-         .scroll-margin {
-            scroll-margin-top: 100px; /* Adjust the value to the desired offset */
-        }
-
-        .heading-padding {
-            padding-top: 100px; /* Adjust this value to match the offset */
-        }
-
-        table { width: 100%; }
-        /* th { padding: 10px;} */
-        /* tr { line-height: 16px;} */
-        tbody td { text-align: center; }
-
-        td:nth-child(odd), th:nth-child(odd) {
-            background-color: #f9eed9;
-        }
-
         [x-cloak] {
             display: none !important;
         }
 
-        .font-roboto {
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .font-merri {
-            font-family: 'Merriweather', serif;
-        }
-
+        /* MENU */
         .font-pop {
             font-family: 'Poppins', sans-serif;
         }
 
-        .font-lora {
-            font-family: 'Lora', sans-serif;
+        /* TEXT */
+        .font-literata {
+            font-family: 'Literata', serif;
         }
 
-        .font-mserrat {
-            font-family: 'Montserrat', sans-serif;
+        /* HIGHLIGHT  */
+        .font-bebas {
+            font-family: 'Bebas', sans-serif;
         }
 
-        .font-chomsky {
-            font-family: 'Chomsky', serif;
+        .scroll-margin {
+            scroll-margin-top: 100px;
+            /* Adjust the value to the desired offset */
         }
 
-        .font-karnak {
-            font-family: 'karnak', serif;
+        .heading-padding {
+            padding-top: 100px;
+            /* Adjust this value to match the offset */
         }
 
-        .font-abril {
-            font-family: 'abril', serif;
+        table {
+            width: 100%;
         }
 
-        .font-georgia {
-            font-family: 'georgia', serif;
+        /* th { padding: 10px;} */
+        /* tr { line-height: 16px;} */
+        tbody td {
+            text-align: center;
         }
 
-        .font-futura {
-            font-family: 'futura', serif;
+        td:nth-child(odd),
+        th:nth-child(odd) {
+            background-color: #f9eed9;
         }
     </style>
 
@@ -103,40 +86,53 @@
 </head>
 
 <body class="font-pop bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
-    
-    <!-- navbar -->
-    <nav x-data="{ isOpen: false }" class="relative ">
-        <div class="container mx-auto mt-8 md:mt-8 md:mx-20 px-6 md:px-0 md:flex md:justify-between md:items-center">
-            <div class="flex items-center justify-between">
 
-                <!-- logo + name  -->
-                <a href="index.html">
-                    <div class="flex items-center mr-auto">
-                        <div class="mr-auto">
-                            <img id="logo" class="w-full mr-auto h-8 pe-6 sm:h-8 fill-current dark:filter-white"
-                                src="./img/logo/logo.svg" alt="logo">
-                        </div>
-                        <!-- <div class="hidden md:inline-block text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline ml-2"
-            href="">Marco Zausch</div> -->
-                    </div>
+    <!-- navbar -->
+    <nav x-data="{ isOpen: false }" class="relative uppercase">
+        <div class="container mx-auto md:mx-20 px-6 md:px-0 mt-8 md:mt-8 md:flex md:justify-between md:items-center">
+            <div class="flex items-center justify-between w-full">
+                <!-- Logo + Name -->
+                <a href="index.html" class="flex items-center">
+                    <img id="logo" class="h-8 sm:h-8 fill-current dark:filter-white" src="./img/logo/logo.svg"
+                        alt="logo">
                 </a>
 
-                <!-- Mobile menu button -->
-                <div class="flex md:hidden">
-                    <button x-cloak @click="isOpen = !isOpen" type="button"
-                        class="hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none"
-                        aria-label="toggle menu">
+                <!-- Menu Button (Right Aligned) -->
+                <button @click="isOpen = !isOpen" class="flex md:hidden focus:outline-none ml-auto">
+                    <div class="w-6 h-6 relative">
                         <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
                         </svg>
-
                         <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
-                    </button>
+                    </div>
+                </button>
+
+                <!-- Desktop Menu (Right Aligned) -->
+                <div class="hidden md:flex ml-auto items-center">
+                    <ul class="md:flex gap-8 text-xl tracking-tight ">
+                        <div><a class="hover:text-indigo-400 mr-4" href="index.html">Home</a></div>
+                        <!-- <div><a class="hover:text-indigo-400 mr-4" href="">Contact</a></div> -->
+                        <div><a class="hover:text-indigo-400 mr-4" href="impressum.html">Impressum</a></div>
+                    </ul>
                 </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div x-show="isOpen" x-transition:enter="transform ease-out duration-300 transition-translate-opacity"
+                x-transition:enter-start="translate-y-10 opacity-0" x-transition:enter-end="translate-y-0 opacity-100"
+                x-transition:leave="transform ease-in duration-300 transition-translate-opacity"
+                x-transition:leave-start="translate-y-0 opacity-100" x-transition:leave-end="translate-y-10 opacity-0"
+                class="lg:hidden absolute top-16 right-0 pr-4 z-10 w-1/2 h-screen">
+
+                <ul class="p-3 space-y-2 text-lg">
+                    <li><a class="hover:text-indigo-400" href="index.html">Home</a></li>
+                    <!-- <li><a class="hover:text-indigo-400" href="#">Contact</a></li> -->
+                    <li><a class="hover:text-indigo-400" href="impressum.html">Impressum</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -144,239 +140,408 @@
     <!-- drawer  -->
     <div class="flex z-50">
         <input type="checkbox" id="drawer-toggle" class="relative sr-only peer z-50" checked>
-        <label for="drawer-toggle" class="fixed z-30 top-1/2 right-0 inline-block p-4 transition-all duration-500 bg-indigo-300 rounded-lg peer-checked:rotate-180 peer-checked:right-64">
-            <div class="w-6 h-1 mb-3 -rotate-45 bg-white rounded-lg"></div>
-            <div class="w-6 h-1 rotate-45 bg-white rounded-lg"></div>
+        <label for="drawer-toggle"
+            class="fixed z-30 top-1/2 right-0 inline-block p-2 transition-all duration-200 bg-indigo-400 rounded-lg peer-checked:right-84 peer-checked:hidden">
+            <div
+                class="vtext no-underline hover:text-indigo-400 tracking-widest font-bebas flex justify-center items-center">
+                Models</div>
+                <div>
+                    <img id="longarrow" class="dark:filter-white" src="./img/icons/angle-left-solid.svg"
+                    alt="longarrow">
+                </div>
         </label>
-    
-    
-        <div id="sidebar_model" class="fixed top-0 right-0 z-50 w-64 h-full transition-all duration-500 transform translate-x-full bg-white dark:bg-gray-800 shadow-lg peer-checked:translate-x-0" >
+
+
+        <div id="sidebar_model"
+            class="fixed top-0 right-0 z-50 w-64 h-full transition-all duration-500 transform translate-x-full bg-white dark:bg-gray-900 shadow-lg peer-checked:translate-x-0">
             <div class="px-6 py-4">
-                <h1 class="text-3xl font-merri font-semibold pt-6 pb-10">Models</h1>
-                <ul class="text-lg font-light mt-4">
+                <div class="pr-6 py-6 flex justify-between items-center">
+                    <h1 class="text-3xl font-bebas font-semibold">Models</h1>
+                    <label for="drawer-toggle" class="cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-black dark:text-white" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </label>
+                </div>
+                <ul class="text-xl font-roboto mt-4">
                     <li class="mb-2"><a href="#segregation" class="block hover:text-indigo-400">Segregation</a></li>
-                    <li class="mb-2"><a href="#confusion" class="block hover:text-indigo-400">Confusion Matrix</a></li>
-                    <li class="mb-2"><a href="#logistic-growth" class="block hover:text-indigo-400">Logistic Growth</a></li>
-                    <li class="mb-2"><a href="#logistic-map" class="block hover:text-indigo-400">Logistic Map</a></li>
-                    <li class="mb-2"><a href="#std-norm" class="block hover:text-indigo-400">Normal Distribution</a></li>
+                    <li class="mt-1"><a href="#confusion" class="block hover:text-indigo-400"> Confusion Matrix</a></li>
+                    <li class="mt-1"><a href="#logistic-growth" class="block hover:text-indigo-400"> Logistic Growth</a>
+                    </li>
+                    <li class="mt-1"><a href="#logistic-map" class="block hover:text-indigo-400"> Logistic Map</a></li>
+                    <li class="mt-1"><a href="#std-norm" class="block hover:text-indigo-400">Standard Normal</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <main id="main-content" class="container mx-auto md:mx-20 my-32 flex justify-center items-center min-h-screen">
-        <div class="container divide-y-2 divide-solid max-w-full prose prose-stone prose-lg md:prose-xl text-justify leading-5 md:leading-10 dark:prose-invert">
+    <main id="main-content" class="container mx-auto md:mx-20 mt-8 flex justify-center items-center min-h-screen">
+        <div
+            class="container font-literata divide-y-2 divide-solid max-w-full prose prose-stone prose-lg md:prose-xl md:text-justify text-pretty leading-8 md:leading-10 dark:prose-invert">
 
 
             <!-- segregation  -->
             <div id="segregation" class="z-0">
-                <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Schelling's Segregation Model</h2>
+                <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Schelling's Segregation
+                    Model</h2>
                 <div class="grid md:grid-cols-2 py-6 px-8 md:px-0 gap-2 h-fit overflow-visible">
                     <div class="md:col-span-1">
-                        <p>The <strong>Schelling Model of Segregation</strong> explains how individual preferences can lead to large-scale patterns in a society. It was developed by economist Thomas Schelling in the 1970s to demonstrate how even a mild inclination for living near similar neighbors can lead to significant segregation. </p>
-                        <p>Each agent's decision is based on a local view — agents only care about their immediate neighbors, not the overall city — but still the quite reasonable preference to be around people like themselves can cause a complete segregation at the macro level. By this mechanism large areas become dominated by one group, even if no individual agent strongly prefers to live in a homogeneous neighborhood.</p>
-                        <p>This can be modeled on a grid where each cell represents an agent that has eight neighbors and is happy as long as a certain number of neighbors is similar to themselves but moves as soon as she feels there is too many neighbors that are different. Moving continues until all agents are satisfied with their neighborhood.</p>
-                        <p>Funny things happen in this simple setup. The mild preferences of agents to live near like-minded people can cause other people to move too and start an avalanche of relocations or tipping point that changes everything. Segregation is an example of an emergent phenomenon – it arises from the collective behavior of individuals, that had no intention to create a segregated society. </p>
-                        <p>For measuring segregation, a simple measure often used is the <strong>Dissimilarity Index</strong>. It quantifies the difference in distribution of two groups (e.g., different racial or ethnic groups) across neighborhoods within a city or region.</p>
-                        <p>The index ranges between 1 for complete segregation or 0 for perfect integration:$$D = \frac{1}{2} \sum_{i=1}^{n} \left| \frac{a_i}{A} - \frac{b_i}{B} \right|$$Where:</p>
+                        <p>The <strong>Schelling Model of Segregation</strong> explains how individual preferences can
+                            lead to large-scale patterns in a society. It was developed by economist Thomas Schelling in
+                            the 1970s to demonstrate how even a mild inclination for living near similar neighbors can
+                            lead to significant segregation. </p>
+                        <p>Each agent's decision is based on a local view — agents only care about their immediate
+                            neighbors, not the overall city — but still the quite reasonable preference to be around
+                            people like themselves can cause a complete segregation at the macro level. By this
+                            mechanism large areas become dominated by one group, even if no individual agent strongly
+                            prefers to live in a homogeneous neighborhood.</p>
+                        <p>This can be modeled on a grid where each cell represents an agent that has eight neighbors
+                            and is happy as long as a certain number of neighbors is similar to themselves but moves as
+                            soon as she feels there is too many neighbors that are different. Moving continues until all
+                            agents are satisfied with their neighborhood.</p>
+                        <p>Funny things happen in this simple setup. The mild preferences of agents to live near
+                            like-minded people can cause other people to move too and start an avalanche of relocations
+                            or tipping point that changes everything. Segregation is an example of an emergent
+                            phenomenon – it arises from the collective behavior of individuals, that had no intention to
+                            create a segregated society. </p>
+                        <p>For measuring segregation, a simple measure often used is the <strong>Dissimilarity
+                                Index</strong>. It quantifies the difference in distribution of two groups (e.g.,
+                            different racial or ethnic groups) across neighborhoods within a city or region.</p>
+                        <p>The index ranges between 1 for complete segregation or 0 for perfect integration:$$D =
+                            \frac{1}{2} \sum_{i=1}^{n} \left| \frac{a_i}{A} - \frac{b_i}{B} \right|$$Where:</p>
                         <ul>
-                        <li>$n$ = Number of neighborhoods</li>
-                        <li>$a_i$ = Population of group A in neighborhood $i$</li>
-                        <li>$b_i$ = Population of group B in neighborhood $i$</li>
-                        <li>$A$ = Total population of group A across all neighborhoods</li>
-                        <li>$B$ = Total population of group B across all neighborhoods</li>
+                            <li>$n$ = Number of neighborhoods</li>
+                            <li>$a_i$ = Population of group A in neighborhood $i$</li>
+                            <li>$b_i$ = Population of group B in neighborhood $i$</li>
+                            <li>$A$ = Total population of group A across all neighborhoods</li>
+                            <li>$B$ = Total population of group B across all neighborhoods</li>
                         </ul>
-                        <p>Imagine we have two neighborhoods and they’re very segregated with $90\%$ Asian and $10\%$ British people in one neighborhood and $10\%$ Asian and $90\%$ British in the other neighborhood. This gives us a Dissimilarity Index of $0.8$. If Asian people were just 40% in one neighborhood and 60% in the other it  would yield much lesser dissimilarity: $$D = \frac{1}{2}\left(|0.4-0.6| + |0.6-0.4| \right)=0.2$$Segregation is a plight for the people and democracy as well as a breeding ground for populism and racism but what is interesting here for the lofty view of scientists, is the emergence of macro patterns arising from individual narrow decisions. </p>
+                        <p>Imagine we have two neighborhoods and they’re very segregated with $90\%$ Asian and $10\%$
+                            British people in one neighborhood and $10\%$ Asian and $90\%$ British in the other
+                            neighborhood. This gives us a Dissimilarity Index of $0.8$. If Asian people were just 40% in
+                            one neighborhood and 60% in the other it would yield much lesser dissimilarity: $$D =
+                            \frac{1}{2}\left(|0.4-0.6| + |0.6-0.4| \right)=0.2$$Segregation is a plight for the people
+                            and democracy as well as a breeding ground for populism and racism but what is interesting
+                            here for the lofty view of scientists, is the emergence of macro patterns arising from
+                            individual narrow decisions. </p>
                     </div>
 
                     <div class="col-span-1 md:mt-6 justify-center items-center relative h-fit">
-                        <iframe class="w-full md:pl-10" loading="lazy" src="./plots/model_gallery/segregation.html" sandbox="allow-same-origin allow-scripts" height="600" width="900"
-                            scrolling="no" seamless="seamless" frameborder="0" title="logistic map">
+                        <iframe class="w-full md:pl-10" loading="lazy" src="./plots/model_gallery/segregation.html"
+                            sandbox="allow-same-origin allow-scripts" height="600" width="900" scrolling="no"
+                            seamless="seamless" frameborder="0" title="logistic map">
                         </iframe>
-                        
+
                         <div class="mx-auto md:mx-20 text-base">
-                            <a href="https://visualize-it.github.io/schelling_model/simulation.html" target="_blank">Here<i
-                                class="icon-[ei--external-link] w-6 h-6 -m-0.5" aria-hidden="true"></i></a> 
+                            <a href="https://visualize-it.github.io/schelling_model/simulation.html"
+                                target="_blank">Here<i class="icon-[ei--external-link] w-6 h-6 -m-0.5"
+                                    aria-hidden="true"></i></a>
                             you can find a much better animation of Schelling's Model made by Chandan Relekar.
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
 
             <!-- confusion matrix  -->
             <div id="confusion" class="z-0">
-                <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Confusion Matrix</h2>
-                <!-- text  -->
-                <div class="grid md:grid-cols-2 py-6 gap-6 divide-x md:px-0 h-full overflow-visible ">
-                    <div class="md:col-span-1">
-                    <p>When we predict something – be it with a machine learning algorithm or a disease test – we would like to know the performance of our tool, since we will almost certainly have some erroneous predictions. </p>
-                    <p>Predictions can fall in four categories:</p>
-                    <ul>
-                    <li>Something is correctly identified as being positive, this is called a <strong>true-positive (TP)</strong>. A Corona rapid test showing positive while you actually have Corona is an example for a true-positive.  </li>
-                    <li>Or the test correctly predicts something to be negative (the test is negative and you do not have the disease). This is a <strong>true-negative (TN)</strong>.</li>
-                    <li>Erroneous predictions may find something to be positive while it is not, this is a <strong>false-positive (FP)</strong>.</li>
-                    <li>Or recognize something to be negative while it is actually positive, a <strong>false-negative (FN)</strong>.</li>
-                    </ul>
-                    
-                </div>
+                <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Confusion Matrix</h2>
 
-                <!-- matrix  -->
-                <div class="flex col-span-1 md:mt-14 justify-center items-center relative h-lvh min-h-screen">
-                    <iframe class="w-full" loading="lazy" src="./plots/model_gallery/confusion_matrix.html" sandbox="allow-same-origin allow-scripts"
-                            scrolling="no" seamless="seamless" frameborder="0" title="confusion_matrix"
-                            onload="resizeIframe(this)">
-                    </iframe>
+                <!-- text  -->
+                <div class="grid md:grid-cols-2 gap-8 divide-x h-full overflow-visible ">
+                    <div class="md:col-span-1 py-6 px-8 gap-6 md:px-0">
+                        <p>When we predict something – be it with a machine learning algorithm or a disease test – we
+                            would like to know the performance of our tool, since we will almost certainly have some
+                            erroneous predictions. </p>
+                        <p>Predictions can fall in four categories:</p>
+                        <ul>
+                            <li>Something is correctly identified as being positive, this is called a
+                                <strong>true-positive (TP)</strong>. A Corona rapid test showing positive while you
+                                actually have Corona is an example for a true-positive.
+                            </li>
+                            <li>Or the test correctly predicts something to be negative (the test is negative and you do
+                                not have the disease). This is a <strong>true-negative (TN)</strong>.</li>
+                            <li>Erroneous predictions may find something to be positive while it is not, this is a
+                                <strong>false-positive (FP)</strong>.
+                            </li>
+                            <li>Or recognize something to be negative while it is actually positive, a
+                                <strong>false-negative (FN)</strong>.
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <!-- matrix  -->
+                    <div class="flex col-span-1 md:mt-14 justify-center items-center relative h-lvh min-h-screen">
+                        <iframe class="w-full " loading="lazy" src="./plots/model_gallery/confusion_matrix.html"
+                            sandbox="allow-same-origin allow-scripts" scrolling="no" seamless="seamless" frameborder="0"
+                            title="confusion_matrix" onload="resizeIframe(this)">
+                        </iframe>
+                    </div>
                 </div>
-            </div>
 
                 <div class="py-6 px-8 md:pt-0 md:px-48 h-full overflow-visible">
-                    <p>As to the performance of our tool, the first question we might ask is “<em>how many correct predictions did we get overall</em>?”. The <strong>Accuracy</strong> measure answers this question as the percentage of correct predictions out of all instances. But accuracy has a problem with imbalanced datasets, consider data with $95$ infected and $5$ non-infected samples, our test could classify all samples as infected and still boast an accuracy of $95\%$. </p>
-                    <p>You could also claim that the test recognized $100\%$ of the infections, and the corresponding measure is <strong>Sensitivity</strong> (aka <strong>Recall</strong>), which is the proportion of correctly predicted positives out of all actual positive instances. Sensitivity warns you about false-negatives but not about false-positives.</p>
-                    <p>But what if the treatment of the infection is very dangerous and you can’t afford to detect infections that are not actually there? Then you want to look at <strong>Specificity</strong>, which measures the proportion of correctly predicted negative instances out of all actual negative instances. And the test above with high accuracy and even higher sensitivity renders useless, since it spotted $0\%$ of the negative samples.</p>
-                    <p>Another measure called <strong>Precision</strong> tells you “<em>how many of the cases predicted as positive where actually positive</em>”. Another measure called **Precision** tells you “*how many of the cases predicted as positive where actually positive*”. Precision is interesting if false-positives are costly. While Precision and Specificity help us a void false-positives they hold no information of false-negatives and you have to look at Sensitivity if you worry about them.</p>
-                    <p>Since all those measure have flaws there is measures compounded from the ones above. The <strong>$\mathbf{F_1}$-score</strong> is the harmonic mean of precision and sensitivity and represents their impact evenly. It gives you an overall assessment of the tool's performance even with imbalanced data. But since precision and sensitivity are symmetrically weighted the $F_1$-score is sometimes further adjusted with different weights attached to precision and/or sensitivity befitting the purpose of your test. Moreover the $F_1$-score ignores true-negatives something <strong>Youden's J statistic</strong> corrects this by combining sensitivity and specificity. Tests with the same $J$-value give the same proportion of total misclassified results. But Youden's J doesn’t tell you in which category the the misclassifications happen, as very different values of sensitivity or specificity may yield the same $J$-value. One measure that is considered suitable even for very imbalanced data is <strong>Matthews Correlation Coefficient (MCC)</strong>. The coefficient is equivalent to the chi-square statistic for a $2\times2$ contingency table and produces a high score only if the predictions obtained good results in all of the four categories of the confusion matrix proportionally both to the size of positive elements and the size of negative elements in the dataset.</p>
-                    <p>Since this is all very confusing you should play with the interactive matrix, test the edge cases and the behaviour of the measures until you have a precise and accurate understanding of the specifics of this sensitive concept. </p>
+                    <p>As to the performance of our tool, the first question we might ask is “<em>how many correct
+                            predictions did we get overall</em>?”. The <strong>Accuracy</strong> measure answers this
+                        question as the percentage of correct predictions out of all instances. But accuracy has a
+                        problem with imbalanced datasets, consider data with $95$ infected and $5$ non-infected samples,
+                        our test could classify all samples as infected and still boast an accuracy of $95\%$.</p>
+                    <p>You could also claim that the test recognized $100\%$ of the infections, and the corresponding
+                        measure is <strong>Sensitivity</strong> (aka <strong>Recall</strong>), which is the proportion
+                        of correctly predicted positives out of all actual positive instances. Sensitivity warns you
+                        about false-negatives but not about false-positives.</p>
+                    <p>But what if the treatment of the infection is very dangerous and you can’t afford to detect
+                        infections that are not actually there? Then you want to look at <strong>Specificity</strong>,
+                        which measures the proportion of correctly predicted negative instances out of all actual
+                        negative instances. And the test above with high accuracy and even higher sensitivity renders
+                        useless, since it spotted $0\%$ of the non-infected (negative) samples.</p>
+                    <p>Another measure called <strong>Precision</strong> tells you “<em>how many of the cases predicted
+                            as positive where actually positive</em>”. Precision is interesting if false-positives are
+                        costly. While Precision and Specificity help us a void false-positives they hold no information
+                        of false-negatives and you have to look at Sensitivity if you worry about them.</p>
+                    <p>Since all those measure have flaws there is measures compounded from the ones above. The
+                        <strong>$\mathbf{F_1}$-score</strong> is the harmonic mean of precision and sensitivity and
+                        represents their impact evenly. It gives you an overall assessment of the tool's performance
+                        even with imbalanced data. But since precision and sensitivity are symmetrically weighted the
+                        $F_1$-score is sometimes further adjusted with different weights attached to precision and/or
+                        sensitivity befitting the purpose of your test. Moreover the $F_1$-score ignores true-negatives
+                        something <strong>Youden's J statistic</strong> corrects this by combining sensitivity and
+                        specificity. Tests with the same $J$-value give the same proportion of total misclassified
+                        results. But Youden's J doesn’t tell you in which category the the misclassifications happen, as
+                        very different values of sensitivity or specificity may yield the same $J$-value. One measure
+                        that is considered suitable even for very imbalanced data is <strong>Matthews Correlation
+                            Coefficient (MCC)</strong>. The coefficient is equivalent to the chi-square statistic for a
+                        $2\times2$ contingency table and produces a high score only if the predictions obtained good
+                        results in all of the four categories of the confusion matrix proportionally both to the size of
+                        positive elements and the size of negative elements in the dataset.
+                    </p>
+                    <p>Since this is all very confusing you should play with the interactive matrix, test the edge cases
+                        and the behaviour of the measures until you have a precise and accurate understanding of the
+                        specifics of this sensitive concept. </p>
                 </div>
             </div>
-            
-    
+
+
             <!-- logistic growth  -->
             <div id="logistic-growth" class="z-0">
-                <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Logistic Growth</h2>
+                <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Logistic Growth</h2>
                 <div class="grid md:grid-cols-2 py-6 px-8 md:px-0 gap-2 h-fit overflow-visible">
                     <div class="md:col-span-1">
-                        <p>The logistic model is a common model used to describe population growth. Scholars have put Thomas Malthus ideas about demography in a simple formula that captures the basic assumption that humanity, with higher quality of life, will grow exponentially until food production hits a limit and population size will stagnate at a sustainable level. Today we know that a long lifespan and low mortality
-                        goes hand in hand with low fertility. Malthus was wrong concerning humans but the model is still useful for all kinds of problems where resources are limited.</p>
-                        <p>In the model the current population $N$, instead of just growing at a certain rate $r$ at each time step $t$, is faced with a resource limit called carrying capacity $K$, which is the maximum of individuals the environment can sustain indefinitely. <br />
-                        $$\frac{dN}{dt} = rN \left(1 - \frac{N}{K}\right)$$<br />
-                        Every time the population size $N$ increases, $N$ is shrinking the factor in parentheses and thereby slowing down population growth. The larger $N$ becomes the slower it will grow in the next iteration until $N=K$. When the factor in parentheses is zero population size reached a plateau in the carrying capacity $K$. This trajectory produces the typical S-shaped curve of the logistic function, initially soaring and eventually flatting out.
+                        <p>The logistic growth is a common model used to describe population growth. Scholars have put
+                            Thomas Malthus ideas about demography in a simple formula that captures the basic assumption
+                            that humanity, with higher quality of life, will grow exponentially until food production
+                            hits a limit and population size will stagnate at a sustainable level. Today we know that a
+                            long lifespan and low mortality
+                            goes hand in hand with low fertility. Malthus was wrong concerning humans but the model is
+                            still useful for all kinds of problems where resources are limited.</p>
+                        <p>In the model the current population $N$, instead of just growing at a certain rate $r$ at
+                            each time step $t$, is faced with a resource limit called carrying capacity $K$, which is
+                            the maximum of individuals the environment can sustain indefinitely. <br />
+                            $$\frac{dN}{dt} = rN \left(1 - \frac{N}{K}\right)$$<br />
+                            Every time the population size $N$ increases, $N$ is shrinking the factor in parentheses and
+                            thereby slowing down population growth. The larger $N$ becomes the slower it will grow in
+                            the next iteration until $N=K$. When the factor in parentheses is zero population size
+                            reached a plateau in the carrying capacity $K$. This trajectory produces the typical
+                            S-shaped curve of the logistic function, initially soaring and eventually flatting out.
                         </p>
                     </div>
-    
+
                     <div class="col-span-1 flex md:mt-8 justify-center items-center relative h-fit">
-                        <iframe class="w-full md:pl-10" loading="lazy" src="./plots/model_gallery/logistic_growth.html" sandbox="allow-same-origin allow-scripts" height="600" width="900"
-                            scrolling="no" seamless="seamless" frameborder="0" title="logistic map">
+                        <iframe class="w-full md:pl-10" loading="lazy" src="./plots/model_gallery/logistic_growth.html"
+                            sandbox="allow-same-origin allow-scripts" height="600" width="900" scrolling="no"
+                            seamless="seamless" frameborder="0" title="logistic map">
                         </iframe>
                     </div>
                 </div>
             </div>
-    
+
             <!-- logistic map  -->
             <div id="logistic-map" class="z-0">
-                <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Logistic Map</h2>
+                <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Logistic Map</h2>
                 <div class="grid md:grid-cols-2 py-6 px-8 gap-6 md:px-0 h-fit overflow-visible">
-                        <div class="md:col-span-1">
-                            <p>The logistic map is simplified version of a logistic (population) growth model with the effects birth rate and death rate combined into one number, called $R$. While population size is replaced by a related concept, called “fraction of carrying capacity,” denominated $x$. $$x_{t}=R\times (1-x_t)$$The logistic map equation is completely deterministic, every $x_t$ maps onto one and only one value of $x_t+1$. Still a change in the tenth and higher decimal places of $x_0$ — a quite likely limitation for many experimental observations — can make $x_t$ unpredictable at $t\gtrapprox 30$. </p>
-                            <p>The map might fall into a fixed point (e.g. $R=2, x_0=0.5$), a fixed cycle/oscillation (e.g. $R=3.1, x_0.2$), or chaos. Fixed points and fixed cycles are called “attractors” since any initial condition will eventually be attracted to it. When $R$ increases the trajectories fluctuate more and more, between $R=3.4$ and $R=3.5$ the system oscillates among four different values, with growing $R$ the values the system oscillates between double fast until they are infinite at approximately $R=3.569946$. Before this point the logistic map was roughly predictable, afterwards the values of $x$ become chaotic. And very small changes in $x_0$ lead to widely diverging trajectories.</p>
-                            <p>You can observe this “sensitive dependence on initial conditions” by setting $R \approx 4$ and trying different $x_0$ with small variations, say $x_0=0.2$ and $x_0=0.2000001$. The two trajectories of these values will start off very close to one another but after around 30 iterations they begin to diverge significantly, and soon after there is no correlation between them.</p>
-                            <p>The corollary is this: since we can never know the initial conditions of $x_0$ to infinitely many decimal places <strong>perfect prediction is impossible</strong>. </p>
-                        </div>
-    
-            <div class="col-span-1 flex md:mt-8 justify-center items-center relative h-fit">
-                <iframe  class="w-full" loading="lazy" src="./plots/model_gallery/logistic_map.html" sandbox="allow-same-origin allow-scripts" height="600" width="900"
-                    scrolling="no" seamless="seamless" frameborder="0" title="logistic map">
-                </iframe>
+                    <div class="md:col-span-1">
+                        <p>The logistic map is simplified version of a logistic (population) growth model with the
+                            effects birth rate and death rate combined into one number, called $R$. While population
+                            size is replaced by a related concept, called “fraction of carrying capacity,” denominated
+                            $x$. $$x_{t}=R\times (1-x_t)$$The logistic map equation is completely deterministic, every
+                            $x_t$ maps onto one and only one value of $x_t+1$. Still a change in the tenth and higher
+                            decimal places of $x_0$ — a quite likely limitation for many experimental observations — can
+                            make $x_t$ unpredictable at $t\gtrapprox 30$. </p>
+                        <p>The map might fall into a fixed point (e.g. $R=2, x_0=0.5$), a fixed cycle/oscillation (e.g.
+                            $R=3.1, x_0.2$), or chaos. Fixed points and fixed cycles are called “attractors” since any
+                            initial condition will eventually be attracted to it. When $R$ increases the trajectories
+                            fluctuate more and more, between $R=3.4$ and $R=3.5$ the system oscillates among four
+                            different values, with growing $R$ the values the system oscillates between double fast
+                            until they are infinite at approximately $R=3.569946$. Before this point the logistic map
+                            was roughly predictable, afterwards the values of $x$ become chaotic. And very small changes
+                            in $x_0$ lead to widely diverging trajectories.</p>
+                        <p>You can observe this “sensitive dependence on initial conditions” by setting $R \approx 4$
+                            and trying different $x_0$ with small variations, say $x_0=0.2$ and $x_0=0.2000001$. The two
+                            trajectories of these values will start off very close to one another but after around 30
+                            iterations they begin to diverge significantly, and soon after there is no correlation
+                            between them.</p>
+                        <p>The corollary is this: since we can never know the initial conditions of $x_0$ to infinitely
+                            many decimal places <strong>perfect prediction is impossible</strong>. </p>
+                    </div>
+
+                    <div class="col-span-1 flex md:mt-8 justify-center items-center relative h-fit">
+                        <iframe class="w-full" loading="lazy" src="./plots/model_gallery/logistic_map.html"
+                            sandbox="allow-same-origin allow-scripts" height="600" width="900" scrolling="no"
+                            seamless="seamless" frameborder="0" title="logistic map">
+                        </iframe>
+                    </div>
+                </div>
             </div>
-        </div>
-            </div>
-    
-              <!-- standard normal distribution  -->
+
+            <!-- standard normal distribution  -->
             <div id="std-norm" class="z-0">
-                <h2 class="mt-8 md:mt-10 text-center font-merri font-semibold tracking-wider">Standard Normal Distribution</h2>
-    
+                <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Standard Normal
+                    Distribution</h2>
+
                 <!-- section 1 -->
                 <div class="grid md:grid-cols-2 pt-6 pb-0 px-8 gap-6 md:px-0 h-fit overflow-visible">
                     <!-- text  -->
                     <div class="md:col-span-1">
-                        <p>All kinds of variables in natural and social sciences are (approximately) normally distributed. Height, birth weight, reading ability, job satisfaction, or test scores are just a few examples of such variables. Because normally distributed variables are so common, many statistical tests are designed for them.</p>
-                        <p>In a normal distribution data is clustered in the middle and tapering off as they go further away from the center, forming a bell shaped curve. Such a bell shaped curve has very convenient characteristics. Its measures of central tendency – mean, median, and mode – fall in one place. This place splits the dataset cleanly in the middle where half of the values fall below and the other half above the mean. </p>
-                        
+                        <p>All kinds of variables in natural and social sciences are (approximately) normally
+                            distributed. Height, birth weight, reading ability, job satisfaction, or test scores are
+                            just a few examples of such variables. Because normally distributed variables are so common,
+                            many statistical tests are designed for them.</p>
+                        <p>In a normal distribution data is clustered in the middle and tapering off as they go further
+                            away from the center, forming a bell shaped curve. Such a bell shaped curve has very
+                            convenient characteristics. Its measures of central tendency – mean, median, and mode – fall
+                            in one place. This place splits the dataset cleanly in the middle where half of the values
+                            fall below and the other half above the mean. </p>
+
                     </div>
-    
+
                     <!-- figure  -->
                     <div class="col-span-1 flex md:mt-8 justify-center items-center relative h-fit">
-                        <iframe  class="w-full" loading="lazy" src="./plots/model_gallery/standard_normal_distribution.html" sandbox="allow-same-origin allow-scripts" height="600" width="900"
-                            scrolling="no" seamless="seamless" frameborder="0" title="standard_normal_distribution">
+                        <iframe class="w-full" loading="lazy"
+                            src="./plots/model_gallery/standard_normal_distribution.html"
+                            sandbox="allow-same-origin allow-scripts" height="600" width="900" scrolling="no"
+                            seamless="seamless" frameborder="0" title="standard_normal_distribution">
                         </iframe>
                     </div>
                 </div>
 
                 <div class="py-6 px-8 md:pt-0 md:px-48 h-full overflow-visible">
-                    <p>When we know the mean $\mu$ and the standard deviation $\sigma$, which is the average amount by which observations deviate on either side from the mean, we can immediately tell that 68% of your observations will fall within the range of two standard deviations centered at $\mu$. Provided that the variables are independent and have limited variance. 95% of the data lies within four standard deviations and 99.7% within six $\sigma$ above $\mu$. That is two or three standard deviations below and above the mean. This is called the $\mathbf{68-95-99.7}$ rule or <strong>empirical rule</strong> and if you have $\mu=100$ and $\sigma=15$ you know instantly that 95% of your data points will be found in the range $[70, 130]$. </p>
+                    <p>When we know the mean $\mu$ and the standard deviation $\sigma$, which is the average amount by
+                        which observations deviate on either side from the mean, we can immediately tell that 68% of
+                        your observations will fall within the range of two standard deviations centered at $\mu$.
+                        Provided that the variables are independent and have limited variance. 95% of the data lies
+                        within four standard deviations and 99.7% within six $\sigma$ above $\mu$. That is two or three
+                        standard deviations below and above the mean. This is called the $\mathbf{68-95-99.7}$ rule or
+                        <strong>empirical rule</strong> and if you have $\mu=100$ and $\sigma=15$ you know instantly
+                        that 95% of your data points will be found in the range $[70, 130]$.
+                    </p>
 
-                    <p>In business companies try to reduce the deviation, of some critical parts or services, from their perfect quality to a minimum. That is to say, that they strive to make the range of variability ($\sigma$) around $\mu$ (perfect quality) as small as possible. For example Motorola aspired to improve its manufacturing and business processes, that deviations from perfect quality become so small, that everything within six standard deviations could be rendered functional, and defects happen only in 3.4 per million opportunities, that is they lie outside six $\sigma$ to either side of the mean. The method is coined <strong>Six Sigma</strong>, due to the name of the symbol for standard deviations $\sigma$.</p>
-                    <p>Normal distributions can be applied even to variables that are not normally distributed, with the help of the <strong>central limit theorem (CLT).</strong> The CLT says that when you repeatedly sample from independent and identically distributed (other than normally distributed) random variables, and take the arithmetic mean of every sample, these sample means will closely approximate a normal distribution. Thereby statistical methods that work for normal distributions can be applicable to many problems involving other types of distributions.</p>
-                    <p>Once you have $\mu$ and $\sigma$ you can find the probability of any data point $x$ to appear in the distribution with the help of the <strong>Probability Density Function (PDF)</strong>. But more commonly we’ll ask, how likely is it to see values below or above some point $x$, and the <strong>Cumulative Distribution Function (CDF)</strong> answers this question.</p>
-                    <p>Furthermore any normal distribution can be simplified into a standardized form with $\mu=0$ and $\sigma=1$. It can also be said that every normal distribution is a version of the standard normal distribution, whose domain has been stretched by $\sigma$ and shifted by $\mu$. By playing with the interactive graph, you can inspect the form of some normal distributions with different $\mu$ and $\sigma$ or visualize the effects of the transformation from normal to standard normal.</p>
+                    <p>In business companies try to reduce the deviation, of some critical parts or services, from their
+                        perfect quality to a minimum. In terms of the normal distribution, they strive to make the range
+                        of variability ($\sigma$) around $\mu$ (perfect quality) as small as possible. </p>
+                    <p>For example Motorola aspires to improve its manufacturing and business processes, through quality
+                        control that defects only happen in 3.4 per million opportunities. The methods to achieve this
+                        goal, where coined <strong>Six Sigma</strong> and are now widely implemented by other companies.
+                        Sigma is the name of the symbol $\sigma$ for standard deviations, and the goal is to make
+                        $\sigma$, so small that any product, within six standard deviations to both sides of the mean
+                        (prefect quality) can be rendered good enough.</p>
+
+                    <p>Normal distributions can be applied even to variables that are not normally distributed, with the
+                        help of the <strong>central limit theorem (CLT).</strong> The CLT says that when you repeatedly
+                        sample from independent and identically distributed (other than normally distributed) random
+                        variables, and take the arithmetic mean of every sample, these sample means will closely
+                        approximate a normal distribution. Thereby statistical methods that work for normal
+                        distributions can be applicable to many problems involving other types of distributions.</p>
+                    <p>Once you have $\mu$ and $\sigma$ you can find the probability of any data point $x$ to appear in
+                        the distribution with the help of the <strong>Probability Density Function (PDF)</strong>. But
+                        more commonly we’ll ask, how likely is it to see values below or above some point $x$, and the
+                        <strong>Cumulative Distribution Function (CDF)</strong> answers this question.
+                    </p>
+                    <p>Furthermore any normal distribution can be simplified into a standardized form with $\mu=0$ and
+                        $\sigma=1$. It can also be said that every normal distribution is a version of the standard
+                        normal distribution, whose domain has been stretched by $\sigma$ and shifted by $\mu$. By
+                        playing with the interactive graph, you can inspect the form of some normal distributions with
+                        different $\mu$ and $\sigma$ or visualize the effects of the transformation from normal to
+                        standard normal.</p>
                 </div>
 
-    
+
                 <!-- section 2 -->
                 <div class="grid grid-cols-1 md:grid-cols-3 px-8 md:px-0 md:gap-14 md:mt-0 h-fit">
                     <table class="md:col-span-1">
                         <thead>
-                        <tr>
-                        <th id="x">x</th>
-                        <th id="z">z</th>
-                        <th id="p-value">p-value</th>
-                        </tr>
+                            <tr>
+                                <th id="x">x</th>
+                                <th id="z">z</th>
+                                <th id="p-value">p-value</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                        <td>0</td>
-                        <td>-1.62</td>
-                        <td>0.053</td>
-                        </tr>
-                        <tr>
-                        <td>2</td>
-                        <td>-0.97</td>
-                        <td>0.166</td>
-                        </tr>
-                        <tr>
-                        <td>2</td>
-                        <td>-0.97</td>
-                        <td>0.166</td>
-                        </tr>
-                        <tr>
-                        <td>5</td>
-                        <td>0</td>
-                        <td>0.5</td>
-                        </tr>
-                        <tr>
-                        <td>5</td>
-                        <td>0</td>
-                        <td>0.5</td>
-                        </tr>
-                        <tr>
-                        <td>5</td>
-                        <td>0</td>
-                        <td>0.5</td>
-                        </tr>
-                        <tr>
-                        <td>8</td>
-                        <td>0.97</td>
-                        <td>0.83</td>
-                        </tr>
-                        <tr>
-                        <td>8</td>
-                        <td>0.97</td>
-                        <td>0.83</td>
-                        </tr>
-                        <tr>
-                        <td>10</td>
-                        <td>1.62</td>
-                        <td>0.95</td>
-                        </tr>
-                    </tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>-1.62</td>
+                                <td>0.053</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>-0.97</td>
+                                <td>0.166</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>-0.97</td>
+                                <td>0.166</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>0</td>
+                                <td>0.5</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>0</td>
+                                <td>0.5</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>0</td>
+                                <td>0.5</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>0.97</td>
+                                <td>0.83</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>0.97</td>
+                                <td>0.83</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>1.62</td>
+                                <td>0.95</td>
+                            </tr>
+                        </tbody>
                     </table>
-    
-                    <div class="md:col-span-2 pb-6 h-fit overflow-visible">
-                        <p>Once you have a standard normal distribution you’re looking for the probabilities of $\mathbf{z}$-<strong>scores</strong>, which are nothing else then standardized $x$ observations. <br />
-                        $$z=(\frac{{x - \mu}}{{\sigma}})$$
-                        For a dataset with a mean $\mu_x = 5.0$ and standard deviation $\sigma_x=3.09$, you can see the $x$ value and their corresponding $z$-scores in the table.</p>
 
-                        <p>After the standardization the mean of $x$ corresponds with a $z$-score $= 0$. Each $z$-score is associated with a probability, or $\mathbf{p}$<strong>-value</strong>, that tells you the likelihood of values occurring below that $z$-score: <br /> $P(x\leqslant 8)=P(z\leqslant 0.97)=0.83\%$. <br /> With the p-values you can also determine how likely it is that random variable in the distribution is greater than 10:<br /> $P(x\geqslant 10)=P(z\geqslant 1.62) = (1-0.95)=0.05\%$ <br /> or the probability of a variable greater than 2 but below 10: <br /> $P(2\leqslant x \leqslant 10) = (0.95 - 0.166)=0.78\%$.</p>
+                    <div class="md:col-span-2 pb-6 h-fit overflow-visible">
+                        <p>Once you have a standard normal distribution you’re looking for the probabilities of
+                            $\mathbf{z}$-<strong>scores</strong>, which are nothing else then standardized $x$
+                            observations. <br />
+                            $$z=(\frac{{x - \mu}}{{\sigma}})$$
+                            For a dataset with a mean $\mu_x = 5.0$ and standard deviation $\sigma_x=3.09$, you can see
+                            the $x$ values and their corresponding $z$-scores in the table.</p>
+
+                        <p>After the standardization the mean of $x$ corresponds with a $z$-score $= 0$. Each $z$-score
+                            is associated with a probability, or $\mathbf{p}$<strong>-value</strong>, that tells you the
+                            likelihood of values occurring below that $z$-score: <br /> $P(x\leqslant 8) =P(z\leqslant
+                            0.97) =0.83\%$.<br /> With the p-values you can also determine how likely it is that random
+                            variable in the distribution is greater than 10:<br /> $P(x\geqslant 10)=P(z\geqslant 1.62)
+                            \\ = (1-0.95)=0.05\%$ <br /> or the probability of a variable greater than 2 but below 10:
+                            <br /> $P(2\leqslant x \leqslant 10) \\ = (0.95 - 0.166)=0.78\%$.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -475,23 +640,23 @@
     <script>
         function resizeIframe(iframe) {
             iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-            }
+        }
         // Close the drawer when clicking outside
-        document.getElementById('main-content').addEventListener('click', function() {
+        document.getElementById('main-content').addEventListener('click', function () {
             document.getElementById('drawer-toggle').checked = false;
         });
-    
+
         // Close the drawer when clicking on a sidebar link
-        document.querySelectorAll('#sidebar_model a').forEach(function(link) {
-            link.addEventListener('click', function() {
+        document.querySelectorAll('#sidebar_model a').forEach(function (link) {
+            link.addEventListener('click', function () {
                 document.getElementById('drawer-toggle').checked = false;
             });
         });
-    
+
         // Close the drawer when clicking on an iframe
-        document.querySelectorAll('iframe').forEach(function(iframe) {
-            iframe.addEventListener('load', function() {
-                iframe.contentWindow.addEventListener('click', function() {
+        document.querySelectorAll('iframe').forEach(function (iframe) {
+            iframe.addEventListener('load', function () {
+                iframe.contentWindow.addEventListener('click', function () {
                     document.getElementById('drawer-toggle').checked = false;
                 });
             });
