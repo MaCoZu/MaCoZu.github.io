@@ -298,28 +298,54 @@
                 <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Logistic Map</h2>
                 <div class="grid md:grid-cols-2 py-6 px-8 gap-6 md:px-0 h-fit overflow-visible">
                     <div class="md:col-span-1">
-                        <p>The logistic map is simplified version of a logistic (population) growth model with the
-                            effects birth rate and death rate combined into one number, called $R$. While population
-                            size is replaced by a related concept, called “fraction of carrying capacity,” denominated
-                            $x$. $$x_{t}=R\times (1-x_t)$$The logistic map equation is completely deterministic, every
-                            $x_t$ maps onto one and only one value of $x_{t+1}$. Still a change in the tenth and higher
-                            decimal places of $x_0$ — a quite likely limitation for many experimental observations — can
-                            make $x_t$ unpredictable at $t\gtrapprox 30$. </p>
-                        <p>The map might fall into a fixed point (e.g. $R=2, x_0=0.5$), a fixed cycle/oscillation (e.g.
-                            $R=3.1, x_0.2$), or chaos. Fixed points and fixed cycles are called “attractors” since any
-                            initial condition will eventually be attracted to it. When $R$ increases the trajectories
-                            fluctuate more and more, between $R=3.4$ and $R=3.5$ the system oscillates among four
-                            different values, with growing $R$ the values the system oscillates between double fast
-                            until they are infinite at approximately $R=3.569946$. Before this point the logistic map
-                            was roughly predictable, afterwards the values of $x$ become chaotic. And very small changes
-                            in $x_0$ lead to widely diverging trajectories.</p>
-                        <p>You can observe this “sensitive dependence on initial conditions” by setting $R \approx 4$
-                            and trying different $x_0$ with small variations, say $x_0=0.2$ and $x_0=0.2000001$. The two
-                            trajectories of these values will start off very close to one another but after around 30
-                            iterations they begin to diverge significantly, and soon after there is no correlation
-                            between them.</p>
-                        <p>The corollary is this: since we can never know the initial conditions of $x_0$ to infinitely
-                            many decimal places <strong>perfect prediction is impossible</strong>. </p>
+                        <p>The logistic map is a mathematical model used to describe how populations change over
+                            time in a constrained environment. It is particularly famous for demonstrating how
+                            simple rules can lead to complex and even chaotic behavior.</p>
+                        <p>Populations size $x_{t}$ is is given as a fraction of the maximum population an
+                            environment can sustain, called “<em>fraction of carrying capacity</em>”. $R$ is the
+                            growth rate, which influences how quickly the population grows.<br />
+                            $$x_{n+1}​=Rx_n​(1−x_n​)$$<br />
+                            With different values of $R$ the model exhibits population stabilization at a certain
+                            size ($1&ltR<3$), or oscillations and cycles ($3&ltR&lt3.57$) and even unpredictable chaotic
+                                behavior ($3>3.57$), although the model is deterministically, that is every $x_{t}$
+                                maps to one $x_{t+1}$. </p>
+                        <p>Stabilization reflects real-world scenarios where populations grow until they reach a
+                            sustainable level. Oscillations and cycles may represent predator-prey dynamics or
+                            seasonal population changes. The value or set of values a populations settles into it
+                            fluctuates between are called <strong>attractors</strong>, which represent the long-term
+                            behavior of the system. </p>
+                        <p>With high values of $R$ fluctuations become unpredictably chaotic after about 30
+                            iterations. This illustrates how sensitive ecosystems can be to small changes in initial
+                            conditions $x_{n}$. It is an example of the <strong>butterfly effect</strong>, a
+                            metaphor how tiny things can change the world or how a butterfly flapping its wings can
+                            set off a tornado. The concept of trifles becoming earth-shattereing events was around
+                            for some time when Edward Lorenz (1917–2008) known as the founder of modern chaos
+                            theory, placed it onto a quantitative base.</p>
+                        <figure class="quote">
+                            <blockquote>
+                                <p>You could not remove a single grain of sand from its place without thereby … changing
+                                    something throughout all parts of the immeasurable whole.
+                            </blockquote>
+                            <figcaption>
+                                &mdash; Fichte, <cite>Vocation of Man (1800)</cite></figcaption>
+                        </figure>
+                        <p>Lorenz was a meteorologist and messing around with a computer model of weather patterns
+                            in 1961 he noticed that very small rounding errors in his simulation compounded to
+                            produce large effects in the long-run. The prevailing view at the time was that minor
+                            discrepancies in the initial conditions would result in comparable forecast
+                            trajectories. If Lorenz was right most weather predictions and for that matter any
+                            prediction was garbage, because even a model as simple as the logistic map formula is so
+                            “<em>sensitive to initial conditions</em>” that the smallest rounding error will
+                            eventually dominate the solution.</p>
+                        <p>You can look for attractors with $R<3.57$ and different values of $x_t$, or discover the so
+                                called <strong>deterministic chaos</strong> with $R>3.57$. In the latter region
+                                tiny changes of the initial $x_t$ in the sixth decimal place generate wildly
+                                differing trajectories in later periods. Even though the trajectories are fully
+                                determined by the equation above, the sensitivity to initial conditions implies: no
+                                matter how accurate our measurements get, no matter how fast our computers become,
+                                we will never be able to predict the likelihood of weather or anything else beyond a
+                                modest time horizon.
+                            </p>
                     </div>
 
                     <div class="col-span-1 flex md:mt-8 justify-center items-center relative h-fit">
