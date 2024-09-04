@@ -1,7 +1,0 @@
-<svg width=300 height=200 style="border: 2px solid #ccc">
-  <path 
-    d='M150,20 L110,100 L150, 180'
-    style="stroke: #000; fill:none; stroke-width: 6px"
-    stroke-linecap= "round">
-  </path>
-</svg>

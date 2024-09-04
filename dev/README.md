@@ -54,7 +54,7 @@ module.exports = {
 ```
 
 
-update the contents to be scanned in your tailwind.config.cjs <br>
+update the contents to be scanned in your tailwind.config.mjs <br>
 because index.html stays in root/ the path to scan is ./ other ressource go to public/
 
 ```
