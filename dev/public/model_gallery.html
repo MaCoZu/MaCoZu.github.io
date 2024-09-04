@@ -141,19 +141,24 @@
     <div class="flex z-50">
         <input type="checkbox" id="drawer-toggle" class="relative sr-only peer z-50" checked>
         <label for="drawer-toggle"
-            class="fixed z-30 top-1/2 right-0 inline-block p-2 transition-all duration-200 bg-indigo-400 rounded-lg peer-checked:right-84 peer-checked:hidden">
-            <!-- <div
-                class="vtext no-underline hover:text-indigo-400 tracking-widest font-bebas flex justify-center items-center">
-                Models
-            </div> -->
+            class="fixed z-30 top-1/2 right-0 inline-block p-2 transition-all duration-200 rounded-lg peer-checked:right-84 peer-checked:hidden">
             <div>
-                <img id="longarrow" class="dark:filter-white" src="./img/icons/open_drawer.svg" alt="">
+                <svg class="w-10 h-10 md:w-full md:h-full dark:text-white" width="50" height="100" viewBox="0 0 50 100" xmlns="http://www.w3.org/2000/svg">
+                    <path 
+                      d="M10 10 H40 M10 20 H40 M10 30 H40"
+                      style="stroke: #CCC; fill:none; stroke-width: 4px"
+                      stroke-opacity="0.7"
+                      stroke-linecap= "round">
+                    </path>
+                  </svg>
+                <!-- <img id="longarrow" class="dark:filter-white" src="./icons/open_drawer.svg" alt=""> -->
             </div>
+          
         </label>
 
 
         <div id="sidebar_model"
-            class="fixed top-0 right-0 z-50 w-64 h-full transition-all duration-500 transform translate-x-full bg-white dark:bg-gray-900 shadow-lg peer-checked:translate-x-0">
+            class="fixed top-0 right-0 z-50 w-64 h-full transition-all duration-500 transform translate-x-full bg-white dark:bg-gray-800 shadow-lg peer-checked:translate-x-0">
             <div class="px-6 py-4">
                 <div class="pr-6 py-6 flex justify-between items-center">
                     <h1 class="text-3xl font-bebas font-semibold">Models</h1>
@@ -238,7 +243,7 @@
                             <a href="https://visualize-it.github.io/schelling_model/simulation.html"
                                 target="_blank">Here<i class="icon-[ei--external-link] w-6 h-6 -m-0.5"
                                     aria-hidden="true"></i></a>
-                            you can find a much better animation of Schelling's Model made by Chandan Relekar.
+                                    &nbsp;you can find a much better animation of Schelling's Model made by Chandan Relekar.
                         </div>
 
                     </div>
