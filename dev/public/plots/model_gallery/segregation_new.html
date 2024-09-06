@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schelling's Segregation Model</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+            /* Chrome, Safari, Edge, Opera */
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        background-color: #ffffff;
+        color: #333333;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+    }
+
+    .controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .input-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+    }
+
+    .input-wrapper input {
+        background-color: inherit;
+        color: inherit;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 0.375rem;
+        padding: 0.01rem 0.01rem 0.01rem 0.01rem;
+        text-align: center;
+        height: 1.5rem;
+        width: 2.5rem;
+    }
+
+    .btn {
+        font-weight: bold;
+        margin: 0 0.75rem;
+        padding: 0.375rem 0.75rem;
+        cursor: pointer;
+        background-color: #cbd5e0;
+        color: #2d3748;
+        border: none;
+        border-radius: 0.375rem;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #a0aec0;
+    }
+
+    #visualization {
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+    }
+
+    .cell {
+        stroke: #fff;
+        stroke-width: 1px;
+        transition: all 0.3s;
+    }
+
+    .metrics {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 400px;
+        margin-top: 20px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .btn {
+            background-color: #4a5568;
+            color: #e2e8f0;
+        }
+
+        .btn:hover {
+            background-color: #2d3748;
+        }
+
+        .input-wrapper input {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+    }
+    </style>
+</head>
+
+<body
+    class="font-roboto flex flex-col min-h-fit content-center items-center bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
+    <!-- <h1>Schelling's Segregation Model</h1> -->
+    <div class="controls">
+        <div class="input-wrapper" style="padding-bottom: 15px; font-size: large;">
+            <label class="font-semibold" for="threshold">Preference Threshold:</label>
+            <input type="number" id="threshold" value="30" min="0" max="100">
+            <span class="percent-sign">%</span>
+        </div>
+        <div class="flex my-2 justify-around">
+            <button class="btn" onclick="runModel()">Run Model</button>
+            <button class="btn" onclick="resetGrid()">Reset</button>
+        </div>
+    </div>
+    <div id="visualization"></div>
+    <div class="metrics">
+        <!-- <div id="happiness-index">Happiness Index: <span id="happiness-value">0</span>%</div>
+        <div id="dissimilarity-index">Dissimilarity Index: <span id="dissimilarity-value">0</span></div> -->
+    </div>
+    <script>
+        const width = 400;
+        const height = 400;
+        const size = 32;
+        const cellSize = width / size;
+
+        let grid = [];
+        const red = '#FFD700';
+        const blue = '#4B0082';
+
+        const svg = d3.select("#visualization")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        function initializeGrid() {
+            grid = [];
+            for (let i = 0; i < size; i++) {
+                grid[i] = [];
+                for (let j = 0; j < size; j++) {
+                    grid[i][j] = Math.random() < 0.5 ? red : blue;
+                }
+            }
+            drawGrid();
+            updateIndices();
+        }
+
+        function drawGrid() {
+            svg.selectAll("rect")
+                .data(grid.flat())
+                .join("rect")
+                .attr("x", (d, i) => (i % size) * cellSize)
+                .attr("y", (d, i) => Math.floor(i / size) * cellSize)
+                .attr("width", cellSize)
+                .attr("height", cellSize)
+                .attr("fill", d => d)
+                .attr("class", "cell");
+        }
+
+        function countNeighbors(x, y, color) {
+            let count = 0;
+            let total = 0;
+            for (let i = -1; i <= 1; i++) {
+                for (let j = -1; j <= 1; j++) {
+                    if (i === 0 && j === 0) continue;
+                    const nx = (x + i + size) % size;
+                    const ny = (y + j + size) % size;
+                    total++;
+                    if (grid[nx][ny] === color) {
+                        count++;
+                    }
+                }
+            }
+            return total === 0 ? 0 : count / total;
+        }
+
+        function moveAgent(x, y) {
+            const color = grid[x][y];
+            let foundNewLocation = false;
+            for (let i = 0; i < size && !foundNewLocation; i++) {
+                for (let j = 0; j < size && !foundNewLocation; j++) {
+                    if (grid[i][j] === color) continue;
+                    const neighborRatio = countNeighbors(i, j, color);
+                    const threshold = document.getElementById('threshold').value / 100;
+                    if (neighborRatio >= threshold) {
+                        const oldColor = grid[i][j];
+                        grid[i][j] = color;
+                        grid[x][y] = oldColor;
+                        animateMove(x, y, i, j, color, oldColor);
+                        foundNewLocation = true;
+                    }
+                }
+            }
+            return foundNewLocation;
+        }
+
+        function animateMove(fromX, fromY, toX, toY, color, oldColor) {
+            const fromCell = svg.select(`rect[x="${fromX * cellSize}"][y="${fromY * cellSize}"]`);
+            const toCell = svg.select(`rect[x="${toX * cellSize}"][y="${toY * cellSize}"]`);
+
+            fromCell.transition()
+                .duration(800)
+                .attr("fill", oldColor);
+
+            toCell.transition()
+                .duration(500)
+                .attr("fill", color);
+        }
+
+        function runModel() {
+            const threshold = document.getElementById('threshold').value / 100;
+            let moves = 0;
+            for (let i = 0; i < size; i++) {
+                for (let j = 0; j < size; j++) {
+                    const color = grid[i][j];
+                    const neighborRatio = countNeighbors(i, j, color);
+                    if (neighborRatio < threshold) {
+                        if (moveAgent(i, j)) {
+                            moves++;
+                        }
+                    }
+                }
+            }
+            updateIndices();
+            if (moves > 0) {
+                setTimeout(runModel, 600);
+            }
+        }
+
+        function calculateHappinessIndex() {
+            let happyAgents = 0;
+            const threshold = document.getElementById('threshold').value / 100;
+            for (let i = 0; i < size; i++) {
+                for (let j = 0; j < size; j++) {
+                    const color = grid[i][j];
+                    const neighborRatio = countNeighbors(i, j, color);
+                    if (neighborRatio >= threshold) {
+                        happyAgents++;
+                    }
+                }
+            }
+            return (happyAgents / (size * size)) * 100;
+        }
+
+        // function calculateDissimilarityIndex() {
+        //     let totalRed = 0;
+        //     let totalBlue = 0;
+        //     let dissimilarity = 0;
+
+        //     for (let i = 0; i < size; i++) {
+        //         for (let j = 0; j < size; j++) {
+        //             if (grid[i][j] === red) {
+        //                 totalRed++;
+        //             } else {
+        //                 totalBlue++;
+        //             }
+        //         }
+        //     }
+
+        //     for (let i = 0; i < size; i++) {
+        //         for (let j = 0; j < size; j++) {
+        //             const redNeighbors = countNeighbors(i, j, red) * 8;
+        //             const blueNeighbors = countNeighbors(i, j, blue) * 8;
+        //             dissimilarity += Math.abs(redNeighbors / totalRed - blueNeighbors / totalBlue);
+        //         }
+        //     }
+
+        //     return dissimilarity / (2 * size * size);
+        // }
+
+        // function calculateDissimilarityIndex() {
+        //     let totalRed = 0;
+        //     let totalBlue = 0;
+        //     let dissimilarity = 0;
+
+        //     // Count total red and blue inhabitants
+        //     for (let i = 0; i < size; i++) {
+        //         for (let j = 0; j < size; j++) {
+        //             if (grid[i][j] === red) {
+        //                 totalRed++;
+        //             } else if (grid[i][j] === blue) {
+        //                 totalBlue++;
+        //             }
+        //         }
+        //     }
+
+        //     // Dissimilarity calculation
+        //     for (let i = 0; i < size; i++) {
+        //         for (let j = 0; j < size; j++) {
+        //             const redNeighbors = countNeighbors(i, j, red);
+        //             const blueNeighbors = countNeighbors(i, j, blue);
+
+        //             // Proportional contribution to dissimilarity
+        //             const totalNeighbors = redNeighbors + blueNeighbors;
+        //             if (totalNeighbors > 0) {
+        //                 const proportionRed = redNeighbors / totalNeighbors;
+        //                 const proportionBlue = blueNeighbors / totalNeighbors;
+        //                 dissimilarity += Math.abs(proportionRed - (totalRed / (totalRed + totalBlue))) +
+        //                                  Math.abs(proportionBlue - (totalBlue / (totalRed + totalBlue)));
+        //             }
+        //         }
+        //     }
+
+        //     // Normalize dissimilarity index
+        //     return dissimilarity / (2); // Normalize against the maximum possible dissimilarity (which is 2)
+        // }
+
+        // function updateIndices() {
+        //     const happinessIndex = calculateHappinessIndex();
+        //     const dissimilarityIndex = calculateDissimilarityIndex();
+        //     document.getElementById('happiness-value').textContent = happinessIndex.toFixed(2);
+        //     document.getElementById('dissimilarity-value').textContent = dissimilarityIndex.toFixed(4);
+        // }
+
+        function resetGrid() {
+            initializeGrid();
+        }
+
+        // Initialize the grid when the page loads
+        window.onload = initializeGrid;
+
+    </script>
+    <script type="module" src="../../../main.js"></script>
+    <script type="module" src="../../../script.js"></script>
+</body>
+
+</html>
