@@ -160,7 +160,7 @@
   <!-- Main content -->
   <main class="flex justify-center items-center min-h-screen my-20">
     <article id="article"
-      class="w-5/6 px-1 prose-sm font-literata md:w-1/2 max-w-full prose md:prose-xl prose-stone text-justify leading-10 dark:prose-invert">
+      class="w-5/6 px-1 prose-sm font-literata md:w-1/2 max-w-full prose md:prose-xl prose-stone text-pretty leading-10 dark:prose-invert">
 
       <!-- title  -->
       <h1 class="text-left leading-snug">From Scatterplot to Regression Line</h1>
@@ -168,7 +168,7 @@
       <!-- intro -->
       <section>
         <!-- table of contents  -->
-        <div class="float-none md:float-right">
+        <div class="float-none md:float-right md:mt-8">
           <div class="border rounded-lg w-fit pl-4 pr-4 pb-0 pt-0 ml-6 mt-2 mb-1 shadow-sm z-40">
             <p class="text-lg font-bold text-left border-b border-gray-300">Contents</p>
             <ul class="text-base list-none text-left pl-0 ">
@@ -189,78 +189,65 @@
           </div>
         </div>
         <h2 id="intro">Intro</h2>
-        <p>This text explains simple linear regression analysis for those with a basic understanding of
-          statistics. We will develop a regression model step-by-step and learn about its components. </p>
-        <p>Simple linear regression is an excellent introduction to the topic of “statistical inference”. While
-          there are other methods of doing statistical inference, looking at regression allows us to discuss
-          some key concepts of statistics and models that make predictions in general. What is discussed here
-          acts as a stepping stone to more advanced regression and other inference methods.</p>
-        <p>Techniques of inference or prediction have become a noticeable part of modern life and it is
-          useful to have some knowledge of them. However, discussing these topics requires specific
-          vocabulary, which I will introduce as we go along. Before we begin, however, some ambiguities
-          and terms should be clarified.</p>
+        <p>Techniques of inference or prediction have become an integral part of modern life, from weather forecasting,
+          traffic management systems, economic projections and the constant monitoring of smart devices, statistics is
+          not just observing our behavior it’s driving it. I think its a good idea to have some understanding of the
+          nuts and bolts of the machinery behind this process. </p>
+        <p>We’ll develop a simple linear regression step by step as it is an excellent introduction to the topic of
+          “statistical inference”. A host of smaller statistical ideas reach a first point of culmination in a simple
+          regression line, and hopefully you’ll see how even the most intricate machine learning model is build on those
+          basic components.</p>
       </section>
 
       <!-- terminology  -->
       <section>
         <h2 id="terminology">Terminology</h2>
-        <p>Mathematics is a language in itself, it maybe precise but not always clear. Different authors use
-          different symbols, the same thing can have many synonyms, or vice versa, one word can have
-          different meanings. I'll do my best to keep the math to a minimum and extract the essentials,
-          otherwise I'll choose the most commonly used symbols, clarify any synonyms/homonyms and such.
-        </p>
-        <p>Here is the basic vocabulary we need.</p>
-        <p>Regression is a branch of <strong>statistical inference</strong>, which refers to the process of
-          drawing conclusions about a population based on sample of that population. Linear regression is
-          a type of “<strong>frequentist inference</strong>” method that focuses on the frequency or
-          probability of observed events. However, Bayesian or Likelihood Inference and Bootstrap methods
-          exist too. </p>
-        <p>I also mentioned <strong>predictions</strong> which are sometimes used interchangeably with
-          <strong>forecasts</strong> but do have different meanings in certain fields.
-          From what I could <a
-            href="https://stats.stackexchange.com/questions/65287/difference-between-forecast-and-prediction">gather</a><i
-            class="icon-[ei--external-link] w-6 h-6 -m-0.5" aria-hidden="true"></i>,
-          forecasting involves predicting future events, often using time-series analysis.
-          This assumes that forecasting is a type of prediction that deals with future events, while simple
-          “prediction” is limited to the sample data and does not extend to the future. In demography and
-          climate science the term <strong>projection</strong>, refers to a forecast based on a specific
-          scenario.
-        </p>
-        <p>I will use the term prediction throughout the text since we are not working with time. However, I
-          will not be so strict as to limit a "prediction" to the sample data. I still consider an estimate
-          beyond the range of the sample data to be a prediction. Although it is advisable not to stray too
-          far from the available data, the prediction may no longer make sense, and we'll see why.</p>
-        <p><strong>Simple regression</strong> describes the relationship between an <em>independent</em>
-          (explanatory) variable and a single <em>dependent variable</em> (response). The relationship is
-          often assumed to be linear, and the equation of a <em>simple linear regression</em> is:
-          $$y=β_0+β_1x+ε$$<br />
+        <p>Mathematics is a language in itself, it may be precise but not always unambiguous. So let’s clarify some
+          terms first.</p>
+        <p>Regression is a branch of <strong>statistical inference</strong>, which refers to the process of drawing
+          conclusions about a population based on a sample of that population. Linear regression is a
+          <strong>frequentist inference</strong> method based on the frequency of events in repeated experiments. </p>
+        <p>Frequentism can be contrasted with <strong>theoretical probability</strong> – that is purely mathematical
+          like the probability of getting tails when flipping a coin – or <strong>Bayesianism</strong> which
+          incorporates subjective beliefs about the probability of an event and updates prior beliefs with observed
+          data.</p>
+        <p><strong>Prediction</strong> is often used interchangeably with <strong>forecast</strong>, but the words have
+          different meanings in certain fields. Forecast specifically refers to future events while predictions can be
+          about past, present, or future events. And then there is different interpretations of theses terms. For
+          example in seismology a prediction of an earthquake specifies some exact future time and place, whereas a
+          forecast is more vague and only states the likelihood of an earthquake in a certain region over a certain
+          period of time. In demography and climate science, the term <strong>projection</strong>, refers to a future
+          development under certain conditions (<strong>scenarios</strong>). </p>
+        <p>I will use the term prediction throughout the text, since we’re not concern with the future for now.
+          Furthermore, simple regression is not apt to look far in the future, this may require complex factors like
+          seasonality, trends, and external variables. Thus, with simple regression it is generally a good idea to stay
+          close to your observed data beyond which predictions quickly looses their significance.</p>
+        <p><strong>Simple regression</strong> describes the relationship between an <em>independent</em> (explanatory)
+          variable and a single <em>dependent variable</em> (response). The relationship is (often) assumed to be
+          linear, and the equation of a <em>simple linear regression</em> is: $$y=β_0+β_1x+ε \tag{1}$$<br />
           Where: <br />
           $y=$ response, the quantity to be estimated or modeled.<br />
           $x=$ explanatory variable, the known input to the model, used as a predictor of $y$.<br />
-          $b_0$ (beta zero) $=$ $y$-<strong>intercept</strong> of the line, that is, the point at which
-          the line <br />
+          $\beta_0$ (beta zero) $=$ $y$-<strong>intercept</strong> of the line, that is, the point at which the line
           intercepts or cuts through the $y$-axis<br />
-          $b_1$ (beta one) = <strong>Slope</strong> of the line, i.e. the change (amount of increase or
-          <br />
-          decrease) of $y$ for every 1-unit increase in $x$.<br />
-          $\varepsilon=$ Random error component, adds an allowance for error in the prediction.
-        </p>
-        <p>By the end of this text, we'll arrive at an equation that has little hats on some symbols,
-          indicating that the symbols below them are <strong>estimates</strong> of the true but unknown
-          parameters.<br />
-          $$\hat{y}=\hat\beta_0+\hat\beta_{1}x$$In this equation, the error term $ε$ is missing, the reason
-          being that in the process of finding an estimate of the first equation, we are specifically
-          minimizing the errors, where the sum of errors becomes zero $\sum ε_i =0$, the uncertainty in the
-          predictions is still represented by the hats, telling us that we're dealing with estimates. </p>
-        <p><strong>Linear regression</strong> extends simple regression to include multiple explanatory
-          variables and aims to estimate the linear relationship between these predictors and a single
-          response.<br />
+          $\beta_1$ (beta one) = <strong>Slope</strong> of the line, i.e. the change (amount of increase or decrease) of
+          $y$ for every unit increase in $x$.<br />
+          $\varepsilon=$ Random error component, adds an allowance for error in the prediction.</p>
+        <p>By the end of this text, we'll arrive at an equation that has little hats on some symbols, indicating that
+          the symbols below them are <strong>estimates</strong> of the underlying but unknown parameters. The population
+          parameters thereby become so called <strong>sample statistics</strong>.<br />
+          $$\hat{y}=\hat\beta_0+\hat\beta_{1}x \tag{2}$$ In this equation, the error term $ε$ is missing, the reason
+          being that in the process of finding estimates for the parameters in equation $(1)$, we are specifically
+          minimizing the errors, where the sum of errors becomes zero $\sum ε_{i} =0$, the uncertainty in the
+            predictions is still represented by the little hats above the sample statistics ($\hat\beta_0,
+            \hat\beta{1})$, signifying that the estimates are erroneous. </p>
+        <p><strong>Multiple linear regression</strong> extends simple regression to include many explanatory variables
+          and aims to estimate the linear relationship between these predictors and a single response.<br />
           $$y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_kx_k + ε$$</p>
         <p>There are many synonyms for the independent and dependent variables. I have introduced you to
-          <strong>explanatory and response variable</strong>, which I find more expressive because the
-          explanatory variable explains how the other variable responds. Also, e$x$planatory has the
-          symbol $x$ in it, which denotes that variable in the formula.
-        </p>
+          <strong>explanatory and response variable</strong>, which I find most expressive because the explanatory
+          variable <em>explains</em> how the other variable <em>responds</em>. Also, the e$x$planatory has the symbol
+          $x$ in it, which denotes its variables in the formula.</p>
         <p>The explanatory and response variables are <strong>characteristics</strong> of
           <strong>observational units</strong> (person, thing, transaction, or event), that we measured,
           observed or polled from a <strong>sample</strong> (subset) of a <strong>population</strong>
@@ -270,40 +257,15 @@
           the entire population. <strong>Inferring</strong> something from the known (sample) about the
           unknown (the rest of the population) is the main reason for doing statistics in the first place.
         </p>
-        <p>Since we’re mostly dealing with samples I will use the <strong>sample “statistics”</strong>
-          instead of <strong>population “parameters”</strong>. Sample statistics are approximations of the
-          corresponding population parameters. Often they’re computed by dividing them by $(n-1)$ instead
-          of just $n$. This so-called <strong>Bessel's correction</strong>, is done to give the
-          approximated population parameter more variability than our sample might reflect. We are being
-          conservative here and saying that what we measured is probably biased, and the whole population
-          certainly shows more variability than we see in our sample</p>
-        <p>The <strong>direction of the dependency</strong> is not always clear, e.g. we could try to
-          explain success as an outcome of a personality trait, but the reverse could also be
-          investigated. In such a case we have to decide what makes more sense, what effect we want to
-          study, what is influencing and what is being influenced.</p>
-        <p><strong>Sampling aka. data collection</strong> is of utmost importance for statistics, most of
-          what’s wrong with statistics comes from error-prone data collection.<br />
-          I will shamefully shorten the topic for now and just say that each subgroup (e.g. population
-          strata, generation etc.) of the population should have an equal chance of being included in the
-          sample and the sample should be a good representation of the larger population. This is called a
-          <strong>simple random sample</strong>. Here, the requirement for a representative sample is met
-          by randomly selecting statistical units, often assisted by a random number generator, to avoid
-          introducing <strong>selection bias</strong>. Examples of selection bias include:
-        </p>
-        <ul>
-          <li>Surveying only Western college students for <a
-              href="https://www.scientificamerican.com/podcast/episode/psychology-studies-biased-toward-we-10-08-07/">psychological
-              studies</a><i class="icon-[ei--external-link] w-6 h-6 -m-0.5" aria-hidden="true"></i> and
-            attributing the findings to the broader population or even all of
-            humanity. Also called <em>volunteer bias</em>.</li>
-          <li><em>Publication bias</em>, where academic research is only published if significant findings
-            are made. Shifting publications in favor of positive results.</li>
-          <li>Or when the media neglects journalistic standards of neutrality and objectivity, in favor of
-            certain worldviews and cultures, or worse, <a
-              href="https://en.wikipedia.org/wiki/Manufacturing_Consent">pandering to particular
-              ideologies</a><i class="icon-[ei--external-link] w-6 h-6 -m-0.5" aria-hidden="true"></i>,
-            aka <em>media bias</em>. </li>
-        </ul>
+        <p>Since we’re mostly dealing with samples, we’ll work with <strong>sample “statistics”</strong> instead of <strong>population “parameters”</strong>. Sample statistics are approximations of the corresponding population parameters. They’re often computed by dividing them by $(n-1)$ from an estimate. This so-called <strong>Bessel's correction</strong>, adds some variability to our sample statistic making it more realistic. The rationale is that we assume our sample is biased in some way, and the entire population certainly shows more variability then our meager sample reflects, so as good conservative statisticians we set the record straight.</p>
+        
+        <p><strong>Sampling aka. Data collection</strong> is of utmost importance for statistics and most of what’s wrong with statistics comes from error-prone data collection. A good representative sample should give any strata of society an equal change of inclusion in the sample by randomized selection and avoiding bias. Which for many reasons is often not realized. </p>
+          <p>Examples of biased selection include:</p>
+          <ul>
+          <li>Surveying only Western college students known as <strong>WEIRD</strong> (<strong>W</strong>estern, <strong>E</strong>ducated, <strong>I</strong>ndustrialized, <strong>R</strong>ich and <strong>D</strong>emocratic) people for <a href="https://www.scientificamerican.com/podcast/episode/psychology-studies-biased-toward-we-10-08-07/">psychological studies</a> and attributing the findings to the broader population or even all of humanity. Also called <em>volunteer bias</em>.</li>
+          <li><em>Publication bias</em>, where academic research is only published if significant findings are made. Shifting publications in favor of positive results.</li>
+          <li>Or when the media neglects journalistic standards of neutrality and objectivity, in favor of certain worldviews and cultures, or worse, <a href="https://en.wikipedia.org/wiki/Manufacturing_Consent">pandering to particular ideologies</a>, aka <em>media bias</em>. </li>
+          </ul>
         <p>Terminology can get messy when we talk about machine learning, as old concepts get new names to
           better fit the context. Here are the main vocabulary shifts between statistics and machine
           learning. </p>
