@@ -143,17 +143,15 @@
         <label for="drawer-toggle"
             class="fixed z-30 top-1/2 right-0 inline-block p-2 transition-all duration-200 rounded-lg peer-checked:right-84 peer-checked:hidden">
             <div>
-                <svg class="w-10 h-10 md:w-full md:h-full dark:text-white" width="50" height="100" viewBox="0 0 50 100" xmlns="http://www.w3.org/2000/svg">
-                    <path 
-                      d="M10 10 H40 M10 20 H40 M10 30 H40"
-                      style="stroke: #CCC; fill:none; stroke-width: 4px"
-                      stroke-opacity="0.7"
-                      stroke-linecap= "round">
+                <svg class="w-10 h-10 md:w-full md:h-full dark:text-white" width="50" height="100" viewBox="0 0 50 100"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 10 H40 M10 20 H40 M10 30 H40" style="stroke: #CCC; fill:none; stroke-width: 4px"
+                        stroke-opacity="0.7" stroke-linecap="round">
                     </path>
-                  </svg>
+                </svg>
                 <!-- <img id="longarrow" class="dark:filter-white" src="./icons/open_drawer.svg" alt=""> -->
             </div>
-          
+
         </label>
 
 
@@ -243,7 +241,7 @@
                             <a href="https://visualize-it.github.io/schelling_model/simulation.html"
                                 target="_blank">Here<i class="icon-[ei--external-link] w-6 h-6 -m-0.5"
                                     aria-hidden="true"></i></a>
-                                    &nbsp;you can find a much better animation of Schelling's Model made by Chandan Relekar.
+                            &nbsp;you can find a much better animation of Schelling's Model made by Chandan Relekar.
                         </div>
 
                     </div>
@@ -255,7 +253,7 @@
                 <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Confusion Matrix</h2>
 
                 <!-- text  -->
-                <div class="grid md:grid-cols-2 gap-8 divide-x h-full overflow-visible ">
+                <div class="grid md:grid-cols-2 gap-8 divide-x h-full overflow-visible">
                     <div class="md:col-span-1 py-6 px-8 gap-6 md:px-0">
                         <p>When we predict something – be it with a machine learning algorithm or a disease test – we
                             would like to know the performance of our tool, since we will almost certainly have some
@@ -365,8 +363,8 @@
             <!-- logistic map  -->
             <div id="logistic-map" class="z-0">
                 <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Logistic Map</h2>
-                <div class="grid md:grid-cols-2 py-6 px-8 gap-6 md:px-0 h-fit overflow-visible">
-                    <div class="md:col-span-1">
+                <div class="grid md:grid-cols-2 gap-8 h-full overflow-visible">
+                    <div>
                         <p>The logistic map is a mathematical model used to describe how populations change over time in
                             a constrained environment. It is particularly famous for demonstrating how simple rules can
                             lead to complex and even chaotic behavior.</p>
@@ -375,54 +373,60 @@
                             influences how quickly the population grows.<br />
                             $$x_{n+1}​=Rx_n​(1−x_n​)$$<br />
                             With different values of $R$ the model exhibits population stabilization at a certain size
-                            ($1&ltR&lt3$), or oscillations and cycles ($3&ltR&lt3.57$) and even unpredictable chaotic behavior
-                                ($3&lt3.57$), although the model is deterministically, that is every $x_{t}$ maps to one
-                                $x_{t+1}$.</p>
+                            ($1&ltR&lt3$), or oscillations and cycles ($3&ltR&lt3.57$) and even unpredictable chaotic
+                            behavior
+                            ($R&lt3.57$), although the model is deterministically, that is every $x_{t}$ maps to one
+                            $x_{t+1}$.</p>
                         <p>Stabilization reflects real-world scenarios where populations grow until they reach a
                             sustainable level. Oscillations and cycles may represent predator-prey dynamics or seasonal
                             population changes. The value or set of values a populations settles into it fluctuates
                             between are called <strong>attractors</strong>, which represent the long-term behavior of
                             the system. </p>
-                        <p>With high values of $R$ fluctuations become unpredictably chaotic after about 30 iterations.
-                            This illustrates how sensitive ecosystems can be to small changes in initial conditions
-                            $x_{n}$. It is an example of the <strong>butterfly effect</strong>, a metaphor how tiny
-                            things can change the world or how a butterfly flapping its wings can set off a tornado. The
-                            concept of trifles becoming earth-shattereing events was around for some time when Edward
-                            Lorenz (1917–2008) known as the founder of modern chaos theory, placed it onto a
-                            quantitative base.</p>
-                        <figure class="quote">
-                            <blockquote>
-                                <p>You could not remove a single grain of sand from its place without thereby … changing
-                                    something throughout all parts of the immeasurable whole.
-                            </blockquote>
-                            <figcaption>
-                                &mdash; Fichte, <cite>Vocation of Man (1800)</cite></figcaption>
-                        </figure>
-                        </p>
-                        <p>Lorenz was a meteorologist and messing around with a computer model of weather patterns in
-                            1961 he noticed that very small rounding errors in his simulation compounded to produce
-                            large changes in the long-run. The prevailing view at the time was that minor discrepancies
-                            in the initial conditions would result in comparable forecast trajectories. When Lorenz was
-                            right most weather and other models are garbage, because they’re so “<em>sensitive to
-                                initial conditions</em>” that the smallest rounding error in the model will eventually
-                            dominate the solution.</p>
-                        <p>You can look for attractors with $R<3.57$ and different values of $x_t$, or discover the so
-                                called <strong>deterministic chaos</strong> with $R>3.57$. Here changes of $x_t$ in the
-                                sixth decimal place generate wildly differing trajectories in the later periods. Even
-                                though the trajectory is fully determined by the equation above, the sensitivity to
-                                initial conditions means: no matter how accurate our measurements get, no matter how
-                                fast our computers become, we will never be able to predict the likelihood the weather
-                                or population size beyond a modest time horizon.</p>
                     </div>
 
-                    <div class="col-span-1 flex md:mt-8 justify-center items-center relative h-fit">
-                        <iframe class="w-full" loading="lazy" src="./plots/model_gallery/logistic_map.html"
+                    <div class="col-span-1 flex md:mt-6 justify-center items-center relative h-fit">
+                        <iframe class="w-full" loading="lazy" src="./plots/model_gallery/logistic_map_d3.html"
                             sandbox="allow-same-origin allow-scripts" height="600" width="900" scrolling="no"
                             seamless="seamless" frameborder="0" title="logistic map">
                         </iframe>
                     </div>
                 </div>
+
+                <div class="py-6 px-8 md:pt-0 md:px-80 h-full overflow-visible">
+                    <p>With high values of $R$ fluctuations become unpredictably chaotic after about 30 iterations.
+                        This illustrates how sensitive ecosystems can be to small changes in initial conditions
+                        $x_{n}$. It is an example of the <strong>butterfly effect</strong>, a metaphor how tiny
+                        things can change the world or how a butterfly flapping its wings can set off a tornado. The
+                        concept of trifles becoming earth-shattereing events was around for some time when Edward
+                        Lorenz (1917–2008) known as the founder of modern chaos theory, placed it onto a
+                        quantitative base.</p>
+                    <figure class="quote">
+                        <blockquote>
+                            <p>You could not remove a single grain of sand from its place without thereby … changing
+                                something throughout all parts of the immeasurable whole.
+                        </blockquote>
+                        <figcaption>
+                            &mdash; Fichte, <cite>Vocation of Man (1800)</cite></figcaption>
+                    </figure>
+                    </p>
+                    <p>Lorenz was a meteorologist and messing around with a computer model of weather patterns in
+                        1961 he noticed that very small rounding errors in his simulation compounded to produce
+                        large changes in the long-run. The prevailing view at the time was that minor discrepancies
+                        in the initial conditions would result in comparable forecast trajectories. When Lorenz was
+                        right most weather and other models are garbage, because they’re so “<em>sensitive to
+                        initial conditions</em>” that the smallest rounding error in the model will eventually
+                        dominate the solution.</p>
+                    <p>You can look for attractors with $R &lt 3.57$ and different values of $x_t$, or discover the so
+                            called <strong>deterministic chaos</strong> with $R>3.57$. Here changes of $x_t$ in the
+                            sixth decimal place generate wildly differing trajectories in the later periods. Even
+                            though the trajectory is fully determined by the equation above, the sensitivity to
+                            initial conditions means: no matter how accurate our measurements get, no matter how
+                            fast our computers become, we will never be able to predict the likelihood the weather
+                            or population size beyond a modest time horizon.</p>
+                </div>
+
             </div>
+
 
             <!-- standard normal distribution  -->
             <div id="std-norm" class="z-0">
@@ -446,11 +450,10 @@
                     </div>
 
                     <!-- figure  -->
-                    <div class="col-span-1 flex md:mt-8 justify-center items-center relative h-fit">
-                        <iframe class="w-full" loading="lazy"
-                            src="./plots/model_gallery/standard_normal_distribution.html"
-                            sandbox="allow-same-origin allow-scripts" height="600" width="900" scrolling="no"
-                            seamless="seamless" frameborder="0" title="standard_normal_distribution">
+                    <div class="col-span-1 flex md:mt-6 justify-center items-center relative h-fit">
+                        <iframe class="w-full" loading="lazy" src="./plots/model_gallery/normal_distribution.html"
+                            sandbox="allow-same-origin allow-scripts" height="550" width="800" scrolling="no"
+                            seamless="seamless" frameborder="0" title="normal_distribution">
                         </iframe>
                     </div>
                 </div>
