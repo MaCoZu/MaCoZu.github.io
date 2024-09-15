@@ -54,12 +54,12 @@
 
 </head>
 
-<body class="font-pop bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
+<body class="font-pop bg-white mx-auto md:mx-20 px-6 md:px-0 text-gray-700 dark:bg-gray-900 dark:text-gray-200">
 
 
    <!-- navbar -->
    <nav x-data="{ isOpen: false }" class="relative ">
-    <div class="container mx-auto mt-8 md:mt-8 md:mx-20 px-6 md:px-0 md:flex md:justify-between md:items-center">
+    <div class="container mt-8 md:mt-8 md:flex md:justify-between md:items-center">
       <div class="flex items-center justify-between">
 
         <!-- logo + name  -->
@@ -69,8 +69,6 @@
             <img id="logo" class="w-full mr-auto h-8 pe-6 sm:h-8 fill-current dark:filter-white" src="./img/logo/logo.svg"
               alt="logo">
           </div>
-          <div class="hidden md:inline-block text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline ml-2"
-            href="">Marco Zausch</div>
         </div>
       </a>
 
@@ -122,84 +120,83 @@
 
 
   <!-- footer  -->
-  <hr class="mx-20 mt-10 border-gray-200 dark:border-gray-700">
+  <hr class="mt-10 border-gray-200 dark:border-gray-700">
+  <footer class="bg-white dark:bg-gray-900">
+    <div class="container">
 
-  <footer id="footer" class="bg-white dark:bg-gray-900">
-    <div class="container px-6 py-4 mx-auto md:mx-20 md:px-0">
-      <div class="grid grid-cols-1 gap-4 justify-between mt-5 md:grid-cols-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
 
-        <!-- Logo and Name  -->
-        <div class="col-span-2 hidden sm:block">
-          <div class="flex justify-between items-center">
-            <div class="flex gap-3 items-center">
-              <a href="index.html">
-                <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="">
-
-              <div class="">
-                <p
-                  class="pb-3 text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                  Marco</p>
-                <p
-                  class="text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                  Zausch</p>
+        <div class="">
+          <!-- Logo and Name  -->
+          <div class="hidden sm:block">
+            <div class="flex justify-between items-center">
+              <div class="flex gap-3 items-center">
+                <a>
+                  <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="">
                 </a>
+                <div class="">
+                  <p
+                    class="pb-3 text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                    Marco</p>
+                  <p
+                    class="text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                    Zausch</p>
+                </div>
               </div>
             </div>
           </div>
+
+
         </div>
 
-        <div class="col-span-4 justify-between md:flex">
-          <!-- CONTACT ME  -->
-          <div class="py-3 md:py-0">
+        <div class="flex flex-col sm:flex-row sm:gap-24 justify-between">
+  
+          <!-- CONTACT ME -->
+          <div class="py-3 md:py-0 flex-1">
             <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
-            <a class="flex items-center gap-3 my-3 hover:text-fuchsia-600 dark:hover:text-sky-300"
-              href="mailto:marcozausch@posteo.de">
-              marcozausch@posteo.de</a>
+            <a id="mlink" class="flex items-center gap-3 my-3 hover:text-indigo-400 dark:hover:text-sky-300" href="#">Email</a>
           </div>
-
-          <!-- WORK  -->
-          <div class="py-3 md:py-0">
+        
+          <!-- WORK -->
+          <div class="py-3 md:py-0 flex-1">
             <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
-
             <p class="my-3 flex items-center gap-3">
-              <a href="https://www.linkedin.com/in/marcozausch" target="_blank" aria-label="LinkedIn">
-                <span
-                  class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-sky-300"></span>
+              <a href="https://www.linkedin.com/in/marcozausch" aria-label="LinkedIn">
+                <span class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
               </a>
-              <a class="block hover:text-fuchsia-600 dark:hover:text-sky-300"
-                href="https://www.linkedin.com/in/marcozausch" target="_blank">Linked In</a>
+              <a class="block hover:text-indigo-400 dark:hover:text-sky-300" href="https://www.linkedin.com/in/marcozausch">LinkedIn</a>
             </p>
-
             <p class="my-3 flex items-center gap-3">
-              <a href="https://github.com/MaCoZu" target="_blank" aria-label="Github">
-                <span
-                  class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-sky-300"></span>
+              <a href="https://github.com/MaCoZu" aria-label="Github">
+                <span class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
               </a>
-              <a class="block hover:text-fuchsia-600 dark:hover:text-sky-300" href="https://github.com/MaCoZu" target="_blank">Github
-              </a>
+              <a class="block hover:text-indigo-400 dark:hover:text-sky-300" href="https://github.com/MaCoZu">Github</a>
             </p>
           </div>
-
-          <!-- RESSOURCES -->
-          <div class="py-3 md:py-0">
-            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Resources</div>
-            <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300" href="/#">Statistics </a>
-            <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300" href="/#">Tutorials </a>
-          </div>
-
-          <!-- LEGAL  -->
-          <div class="py-3 md:py-0">
-            <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400 ">Legal</div>
-            <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300" href="./impressum.html">Impressum
-            </a>
-            <a class="my-3 block hover:text-fuchsia-600 dark:hover:text-sky-300" href="./privacypolicy.html">Privacy
-              Policy
-            </a>
+        
+          <!-- LEGAL -->
+          <div class="py-3 md:py-0 flex-1">
+            <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400">Legal</div>
+            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./impressum.html">Impressum</a>
+            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./privacypolicy.html">Privacy Policy</a>
           </div>
         </div>
       </div>
+
     </div>
   </footer>
+
+  <script>
+    /* 1. define variables */
+    var me = "marcozausch";
+    var place = "posteo.de";
+
+    /* 2. find email link to replace */
+    var elink = document.getElementById("mlink");
+
+    /* 3. replace link href with variables  */
+    elink.href = `mailto:${me}@${place}`;
+  </script>
 
     <script type="module" src="../main.js"></script>
     <script type="module" src="../script.js"></script>

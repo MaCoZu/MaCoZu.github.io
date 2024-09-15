@@ -1,31 +1,56 @@
 import './font.css';
 
 
+/* 1. define variables */
+var me = "marcozausch";
+var place = "posteo.de";
+
+/* 2. find email link to replace */
+var elink = document.getElementById("mlink");
+
+/* 3. replace link href with variables  */
+elink.href = `mailto:${me}@${place}`;
+
+
 // Function to check if dark mode is enabled
 function isDarkMode() {
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 }
 
-// Function to update the logo based on dark mode
-function updateLogoColor() {
-    const elements = ['logo', 'logo2'];
+// Function to update the logo and external link icons based on dark mode
+function updateElementsColor() {
+    const elementIds = ['logo', 'logo2'];
+    const elementClasses = ['external-link-icon'];
 
-    for (const elementId of elements) {
+    for (const elementId of elementIds) {
         const element = document.getElementById(elementId);
-        if (isDarkMode()) {
-            element.classList.add('filter-white'); // Add the filter-white class in dark mode
-        } else {
-            element.classList.remove('filter-white'); // Remove the filter-white class if not in dark mode
+        if (element) {
+            if (isDarkMode()) {
+                element.classList.add('filter-white');
+            } else {
+                element.classList.remove('filter-white');
+            }
+        }
+    }
+
+    for (const className of elementClasses) {
+        const elements = document.getElementsByClassName(className);
+        for (const element of elements) {
+            if (isDarkMode()) {
+                element.classList.add('filter-white');
+            } else {
+                element.classList.remove('filter-white');
+            }
         }
     }
 }
 
 // Call the function initially
-updateLogoColor();
+updateElementsColor();
 
 // Listen for changes in color scheme preference
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    updateLogoColor();
+    updateElementsColor();
 });
 
 
