@@ -16,13 +16,16 @@
             align-items: center;
         }
 
-        
         @media (prefers-color-scheme: dark) {
             body {
                 background-color: rgb(17 24 39);
                 color: rgb(229 231 235);
-                
             }
+        }
+
+        #graph {
+            width: 100%;
+            height: 400px;
         }
 
         .controls {
@@ -31,27 +34,21 @@
             justify-content: space-around;
             width: 100%;
             max-width: 800px;
-            margin-top: 20px;
+            margin-top: 4px;
         }
 
         .control {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 10px;
-        }
-
-        .values {
-            margin-top: 20px;
-            font-size: 16px;
+            margin: 5px;
         }
     </style>
-    <!-- css  -->
     <link rel="stylesheet" href="../style.css">
 </head>
 
 <body class="flex flex-col h-fit w-fit content-center items-center bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
-    <div class="" id="graph"></div>
+    <div id="graph"></div>
     <div class="controls">
         <div class="control">
             <label for="mean">Mean:</label>
@@ -69,41 +66,34 @@
             <span id="skewnessValue">0</span>
         </div>
     </div>
-    <div class="values">
-    </div>
 
     <script>
         // Set up the SVG
-        const width = 750;
-        const height = 400;
         const margin = { top: 20, right: 20, bottom: 30, left: 50 };
+        let width = 750 - margin.left - margin.right;
+        let height = 400 - margin.top - margin.bottom;
 
         const svg = d3.select("#graph")
             .append("svg")
-            .attr("width", width)
-            .attr("height", height);
-
-        const g = svg.append("g")
+            .attr("preserveAspectRatio", "xMidYMid meet")
+            .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+            .append("g")
             .attr("transform", `translate(${margin.left},${margin.top})`);
 
         // Set up scales
-        const x = d3.scaleLinear()
-            .domain([-10, 10])
-            .range([0, width - margin.left - margin.right]);
-
-        const y = d3.scaleLinear()
-            .range([height - margin.top - margin.bottom, 0]);
+        const x = d3.scaleLinear().range([0, width]);
+        const y = d3.scaleLinear().range([height, 0]);
 
         // Add axes
-        const xAxis = g.append("g")
-            .attr("transform", `translate(0,${height - margin.top - margin.bottom})`)
-            .call(d3.axisBottom(x));
+        const xAxis = svg.append("g")
+            .attr("class", "x-axis")
+            .attr("transform", `translate(0,${height})`);
 
-        const yAxis = g.append("g")
-            .call(d3.axisLeft(y));
+        const yAxis = svg.append("g")
+            .attr("class", "y-axis");
 
         // Add line
-        const line = g.append("path")
+        const line = svg.append("path")
             .attr("fill", "none")
             .attr("stroke", "steelblue")
             .attr("stroke-width", 3);
@@ -137,7 +127,6 @@
             return sign * y;
         }
 
-
         // Update the graph
         function updateGraph() {
             const mean = parseFloat(d3.select("#mean").property("value"));
@@ -150,35 +139,13 @@
                 y: skewedNormalPDF(x, mean, stdDev, skewness)
             }));
 
-            // Update y scale
-            // Calculate tick values manually
-            const yMax = d3.max(data, d => d.y);
-            const tickStep = yMax / (5 - 1);
-            const tickValues = d3.range(0, yMax + tickStep, tickStep);
-            
-            // Update y-axis with fixed tick values
+            // Update scales
+            x.domain([-10, 10]);
             y.domain([0, d3.max(data, d => d.y)]);
-            yAxis.call(d3.axisLeft(y).tickValues(tickValues));
 
-            // Calculate kurtosis
-            // function calculateKurtosis(data, mean, stdDev, skewness) {
-            //     const n = data.length;
-
-            // Calculate the fourth power of differences based on the 'y' values
-            // const fourthPowerDiffs = data.map(item => Math.pow((item.y - mean) / stdDev, 4));
-            // const sumFourthPowerDiffs = fourthPowerDiffs.reduce((sum, value) => sum + value, 0);
-
-            // This calculates the excess kurtosis
-            // return ((n * (n + 1)) / ((n - 1) * (n - 2) * (n - 3))) * sumFourthPowerDiffs -
-            //     (3 * Math.pow(n - 1, 2)) / ((n - 2) * (n - 3));
-            // }
-
-            // Update display values
-            d3.select("#meanValue").text(mean.toFixed(2));
-            d3.select("#stdDevValue").text(stdDev.toFixed(2));
-            d3.select("#skewnessValue").text(skewness.toFixed(2));
-            // d3.select("#kurtosisValue").text(calculateKurtosis(data, mean, stdDev, skewness).toFixed(2));
-
+            // Update axes
+            xAxis.call(d3.axisBottom(x));
+            yAxis.call(d3.axisLeft(y));
 
             // Update line
             line.datum(data)
@@ -186,6 +153,11 @@
                     .x(d => x(d.x))
                     .y(d => y(d.y))
                 );
+
+            // Update display values
+            d3.select("#meanValue").text(mean.toFixed(2));
+            d3.select("#stdDevValue").text(stdDev.toFixed(2));
+            d3.select("#skewnessValue").text(skewness.toFixed(2));
         }
 
         // Set up event listeners
@@ -193,11 +165,32 @@
         d3.select("#stdDev").on("input", updateGraph);
         d3.select("#skewness").on("input", updateGraph);
 
+        // Resize function
+        function resizeGraph() {
+            const graphElement = document.getElementById("graph");
+            width = graphElement.clientWidth - margin.left - margin.right;
+            height = graphElement.clientHeight - margin.top - margin.bottom;
+
+            svg.attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`);
+
+            x.range([0, width]);
+            y.range([height, 0]);
+
+            xAxis.attr("transform", `translate(0,${height})`);
+
+            updateGraph();
+        }
+
+        // Add resize event listener
+        window.addEventListener('resize', resizeGraph);
+
         // Initial graph update
         updateGraph();
+        resizeGraph();
+
+        // Notify parent window that content is loaded
+        window.parent.postMessage('normal-distribution-loaded', '*');
     </script>
-    <script type="module" src="../main.js"></script>
-    <script type="module" src="../script.js"></script>
 </body>
 
 </html>
