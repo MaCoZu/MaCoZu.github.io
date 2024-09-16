@@ -144,8 +144,8 @@
             y.domain([0, d3.max(data, d => d.y)]);
 
             // Update axes
-            xAxis.call(d3.axisBottom(x));
-            yAxis.call(d3.axisLeft(y));
+            xAxis.call(d3.axisBottom(x).tickSize(8).tickPadding(15));
+            yAxis.call(d3.axisLeft(y).tickSize(8).tickPadding(8));
 
             // Update line
             line.datum(data)
