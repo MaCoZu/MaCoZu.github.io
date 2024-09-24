@@ -3,26 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import font CSS */
-/* @import url('font.css'); */
-
-#cssTable td
-{
-    text-align: center; 
-    vertical-align: middle;
-}
-
-td:nth-child(odd),
-th:nth-child(odd) {
-    background-color: #efd2d2;
-    color: #000000;
-}
-td:nth-child(even),
-th:nth-child(even) {
-    background-color: #e38888;
-    color: #000000;
-}
-
 /* scrolling smooth instead of abruptly  */
 html {
     scroll-behavior: smooth;

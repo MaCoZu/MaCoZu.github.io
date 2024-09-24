@@ -12,6 +12,7 @@ node_modules/
 public/img/
 dist
 dist-ssr
+public/plots/d3/
 
 # pages 
 web_dubbois_stats.html
