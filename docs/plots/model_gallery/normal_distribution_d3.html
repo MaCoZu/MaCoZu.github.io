@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normal Distribution</title>
+    <script src="./d3.v7.js"></script>
+    <style>
+        body {
+            font-family: Poppins, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: rgb(17 24 39);
+                color: rgb(229 231 235);
+            }
+        }
+
+        #graph {
+            width: 100%;
+            height: 400px;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 4px;
+        }
+
+        .control {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 5px;
+        }
+    </style>
+    <!-- css  -->
+    <script type="module" crossorigin src="../../assets/index.js"></script>
+    <link rel="stylesheet" crossorigin href="../../assets/index.css">
+</head>
+
+<body class="flex flex-col h-fit w-fit content-center items-center bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
+    <div id="graph"></div>
+    <div class="controls">
+        <div class="control">
+            <label for="mean">Mean:</label>
+            <input type="range" id="mean" min="-5" max="5" step="0.1" value="0">
+            <span id="meanValue">0</span>
+        </div>
+        <div class="control">
+            <label for="stdDev">Standard Deviation:</label>
+            <input type="range" id="stdDev" min="0.5" max="6" step="0.1" value="1">
+            <span id="stdDevValue">1</span>
+        </div>
+        <div class="control">
+            <label for="skewness">Skewness:</label>
+            <input type="range" id="skewness" min="-10" max="10" step="0.1" value="0">
+            <span id="skewnessValue">0</span>
+        </div>
+    </div>
+
+    <script>
+        // Set up the SVG
+        const margin = { top: 20, right: 20, bottom: 30, left: 50 };
+        let width = 750 - margin.left - margin.right;
+        let height = 400 - margin.top - margin.bottom;
+
+        const svg = d3.select("#graph")
+            .append("svg")
+            .attr("preserveAspectRatio", "xMidYMid meet")
+            .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // Set up scales
+        const x = d3.scaleLinear().range([0, width]);
+        const y = d3.scaleLinear().range([height, 0]);
+
+        // Add axes
+        const xAxis = svg.append("g")
+            .attr("class", "x-axis")
+            .attr("transform", `translate(0,${height})`);
+
+        const yAxis = svg.append("g")
+            .attr("class", "y-axis");
+
+        // Add line
+        const line = svg.append("path")
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 3);
+
+        // Normal distribution function
+        function normalPDF(x, mean, stdDev) {
+            return (1 / (stdDev * Math.sqrt(2 * Math.PI))) *
+                Math.exp(-0.5 * Math.pow((x - mean) / stdDev, 2));
+        }
+
+        // Skewed normal distribution function
+        function skewedNormalPDF(x, mean, stdDev, skewness) {
+            const t = (x - mean) / stdDev;
+            const normPDF = normalPDF(x, mean, stdDev);
+            const skewTerm = 1 + erf(skewness * t / Math.sqrt(2));
+            return 2 * normPDF * skewTerm;
+        }
+
+        // Error function (erf) approximation
+        function erf(x) {
+            const sign = (x >= 0) ? 1 : -1;
+            x = Math.abs(x);
+            const a1 = 0.254829592;
+            const a2 = -0.284496736;
+            const a3 = 1.421413741;
+            const a4 = -1.453152027;
+            const a5 = 1.061405429;
+            const p = 0.3275911;
+            const t = 1.0 / (1.0 + p * x);
+            const y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
+            return sign * y;
+        }
+
+        // Update the graph
+        function updateGraph() {
+            const mean = parseFloat(d3.select("#mean").property("value"));
+            const stdDev = parseFloat(d3.select("#stdDev").property("value"));
+            const skewness = parseFloat(d3.select("#skewness").property("value"));
+
+            // Generate data points
+            const data = d3.range(-10, 10, 0.1).map(x => ({
+                x: x,
+                y: skewedNormalPDF(x, mean, stdDev, skewness)
+            }));
+
+            // Update scales
+            x.domain([-10, 10]);
+            y.domain([0, d3.max(data, d => d.y)]);
+
+            // Update axes
+            xAxis.call(d3.axisBottom(x).tickSize(8).tickPadding(15));
+            yAxis.call(d3.axisLeft(y).tickSize(8).tickPadding(8));
+
+            // Update line
+            line.datum(data)
+                .attr("d", d3.line()
+                    .x(d => x(d.x))
+                    .y(d => y(d.y))
+                );
+
+            // Update display values
+            d3.select("#meanValue").text(mean.toFixed(2));
+            d3.select("#stdDevValue").text(stdDev.toFixed(2));
+            d3.select("#skewnessValue").text(skewness.toFixed(2));
+        }
+
+        // Set up event listeners
+        d3.select("#mean").on("input", updateGraph);
+        d3.select("#stdDev").on("input", updateGraph);
+        d3.select("#skewness").on("input", updateGraph);
+
+        // Resize function
+        function resizeGraph() {
+            const graphElement = document.getElementById("graph");
+            width = graphElement.clientWidth - margin.left - margin.right;
+            height = graphElement.clientHeight - margin.top - margin.bottom;
+
+            svg.attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`);
+
+            x.range([0, width]);
+            y.range([height, 0]);
+
+            xAxis.attr("transform", `translate(0,${height})`);
+
+            updateGraph();
+        }
+
+        // Add resize event listener
+        window.addEventListener('resize', resizeGraph);
+
+        // Initial graph update
+        updateGraph();
+        resizeGraph();
+
+        // Notify parent window that content is loaded
+        window.parent.postMessage('normal-distribution-loaded', '*');
+    </script>
+</body>
+
+</html>

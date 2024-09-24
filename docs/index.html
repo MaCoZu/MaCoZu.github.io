@@ -10,10 +10,13 @@
   <link rel="icon" href="./img/logo/logo_weiß.svg" type="image/x-icon" />
 
   <style>
+     @media (prefers-color-scheme: dark) {
+      #envelope { color: #fff; };
+    }
+
     [x-cloak] {
       display: none !important;
     }
-
 
     /* MENU */
     .font-pop {
@@ -29,35 +32,19 @@
     .font-bebas {
       font-family: 'Bebas', sans-serif;
     }
-
-    /* Logo  */
-    .font-merri {
-      font-family: 'Merriweather', serif;
-    }
-
-    /* Roboto  */
-    .font-roboto {
-      font-family: 'Roboto', sans-serif;
-    }
-
-    /* Ledger  */
-    .font-ledger {
-      font-family: 'Ledger', sans-serif;
-    }
   </style>
-
-  <script type="module" crossorigin src="./assets/index.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index.css">
 
   <title>Zausch Portfolio</title>
 
+  <script type="module" crossorigin src="./assets/index.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index.css">
 </head>
 
-<body class="font-pop bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
+<body class="font-pop mx-auto md:mx-20 bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
 
   <!-- navbar -->
   <nav x-data="{ isOpen: false }" class="relative uppercase">
-    <div class="container mx-auto md:mx-20 px-6 md:px-0 mt-8 md:mt-8 md:flex md:justify-between md:items-center">
+    <div class="container px-6 md:px-0 mt-8 md:mt-8 md:flex md:justify-between md:items-center">
       <div class="flex items-center justify-between w-full">
         <!-- Logo + Name -->
         <a href="index.html" class="flex items-center">
@@ -115,97 +102,137 @@
 
   <!-- main -->
   <section class="bg-white dark:bg-gray-900">
-    <div class="container mx-auto md:mx-20 px-6 md:px-0 mt-8 md:mb-32 md:mt-20 md:px-0">
+    <div class="container px-6 md:px-0 mt-8 md:mb-32 md:mt-20">
       <h1 class="text-4xl font-bebas font-semibold my-10 tracking-[8px] text-center">Latest Projects</h1>
 
 
       <div class="grid grid-cols-1 gap-24 md:gap-14 md:grid-cols-2 xl:grid-cols-3">
 
-        <!-- Model Gallery  -->
-        <div>
-          <a href="model_gallery.html">
-            <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="./img/foto/model_museeum.jpg"
-              alt="">
+        <!-- Happy and Sustainable? -->
+        <div class="relative flex flex-col border rounded border-gray-400 dark:border-gray-600">
+          <a href="happy_sustainable.html">
+            <div class="relative w-full aspect-video">
+              <img class="w-full h-64 lg:h-80 object-cover rounded" src="./img/foto/forest.jpg" alt="forest"
+                loading="lazy">
+              <div
+                class="absolute rounded bottom-0 left-0 right-0 p-4 bg-white bg-opacity-80 dark:bg-gray-800 dark:bg-opacity-80 text-gray-800 dark:text-white">
+                <h2 class="text-xl font-literata font-semibold">Happy and Sustainable?</h2>
+                <p class="font-semibold text-sm text-cyan-800 dark:text-amber-500 my-2">Chart</p>
+                <p class="text-pretty">
+                  Happiness, health, CO2 emissions and income for all countries in one big bad bubble chart.
+                </p>
+                <div class="flex items-center justify-end mt-4">
+                  <p class="text-gray-600 dark:text-gray-400">September 2024</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
 
-            <div class="mt-8">
-              <span class="text-indigo-700 dark:text-amber-400 uppercase">Math & More</span>
 
-              <h1
-                class="mt-4 font-literata text-xl capitalize font-semibold tracking-wide text-gray-800 dark:text-white">
-                Model Gallery
-              </h1>
+        <!-- World Bank Commander  -->
+        <div class="relative flex flex-col border rounded border-gray-400 dark:border-gray-600">
+          <a href="https://world-bankcommander.onrender.com/">
+            <div class="relative w-full aspect-video">
+              <img class="w-full h-64 lg:h-80 object-cover rounded" src="./img/foto/control_room.jpg" alt="forest"
+                loading="lazy">
+              <div
+                class="absolute rounded bottom-0 left-0 right-0 p-4 bg-white bg-opacity-80 dark:bg-gray-800 dark:bg-opacity-80 text-gray-800 dark:text-white">
+                <h2 class="text-xl font-literata font-semibold">World Bank Commander</h2>
+                <p class="font-semibold text-sm text-cyan-800 dark:text-amber-500 my-2">Economics</p>
+                <p class="text-pretty">
+                  Following this link
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="1.1em" height="1.1em"
+                    fill="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"
+                    style="display:inline-flex; vertical-align:text-bottom; transform:translateY(-0.4em);">
+                    <path
+                      d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                  </svg>
+                  you'll find a dashboard to view all world bank indicies neatly arranged.
+                </p>
+                <div class="flex items-center justify-end mt-4">
+                  <p class="text-gray-600 dark:text-gray-400">September 2024</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
 
-              <p class="mt-2 font-literata text-lg text-gray-500 dark:text-gray-300">
-                Models from all walks of life. If I meet an interesting model on my strolls in the social or natural
-                sciences, I'll invite her to my little gallery.
-              </p>
-
-              <div class="flex items-center justify-end mt-4">
-                <p class="text-gray-500 dark:text-gray-300">August 2024</p>
+        <!-- Model Gllery  -->
+        <div class="relative flex flex-col border rounded border-gray-400 dark:border-gray-600">
+          <a href="model_gallery.html" class="">
+            <div class="relative w-full aspect-video ">
+              <img class="w-full h-64 lg:h-80 object-cover rounded" src="./img/foto/model_museeum.jpg" alt="forest"
+                loading="lazy">
+              <div
+                class="absolute rounded bottom-0 left-0 right-0 p-4 bg-white bg-opacity-80 dark:bg-gray-800 dark:bg-opacity-80 text-gray-800 dark:text-white">
+                <h2 class="text-xl font-literata font-semibold">Model Gallery</h2>
+                <p class="font-semibold text-sm text-cyan-800 dark:text-amber-500 my-2">Math & More</p>
+                <p class="text-pretty">
+                  Short introductions of different models accompanied by interactive visualizations.
+                </p>
+                <div class="flex items-center justify-end mt-4">
+                  <p class="text-gray-600 dark:text-gray-400">August 2024</p>
+                </div>
               </div>
             </div>
           </a>
         </div>
 
         <!-- EU Elections Dashboard  -->
-        <div>
-          <a href="eu2024dash.html">
-            <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="./img/foto/elections.jpg"
-              alt="">
-
-            <div class="mt-8">
-              <span class="text-indigo-700 dark:text-amber-400 uppercase">dashboard</span>
-
-              <h1
-                class="mt-4 font-literata text-xl capitalize font-semibold tracking-wide text-gray-800 dark:text-white">
-                EU 2024 Elections in Germany</h1>
-
-              <p class="mt-2 font-literata text-lg text-gray-500 dark:text-gray-300">
-                A Tableau dashboard showing all German parties and their election results at state and district level.
-                You
-                may find your parties sweet or weak spots.</br>
-              </p>
-
-              <div class="flex items-center justify-end mt-4">
-                <p class="text-gray-500 dark:text-gray-300">June 2024</p>
+        <div class="relative flex flex-col border rounded border-gray-400 dark:border-gray-600">
+          <a href="eu2024dash.html" class="">
+            <div class="relative w-full aspect-video ">
+              <img class="w-full h-64 lg:h-80 object-cover rounded" src="./img/foto/elections.jpg" alt="forest"
+                loading="lazy">
+              <div
+                class="absolute rounded bottom-0 left-0 right-0 p-4 bg-white bg-opacity-80 dark:bg-gray-800 dark:bg-opacity-80 text-gray-800 dark:text-white">
+                <h2 class="text-xl font-literata font-semibold">EU Elections Dashboard</h2>
+                <p class="font-semibold text-sm text-cyan-800 dark:text-amber-500 my-2">Tableau</p>
+                <p class="text-pretty">
+                  A Tableau dashboard showing all German parties and their election results at state and district level.
+                </p>
+                <div class="flex items-center justify-end mt-4">
+                  <p class="text-gray-600 dark:text-gray-400">June 2024</p>
+                </div>
               </div>
             </div>
           </a>
         </div>
 
-        <!-- scatter  -->
-        <div>
-          <a href="scatter.html">
-            <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="./img/foto/stats.png" alt="">
-
-            <div class="mt-8">
-              <span class="text-indigo-700 dark:text-amber-400 uppercase">statistics</span>
-
-              <h1
-                class="mt-4 text-xl font-literata capitalize font-semibold tracking-wide text-gray-800 dark:text-white">
-                from scatter to line
-              </h1>
-
-              <p class="mt-2 font-literata text-lg text-gray-500 dark:text-gray-300">
-                All the components of regression analysis are introduced in this step-by-step
-                development of a simple linear regression line from a scatterplot.
-              </p>
-
-              <div class="flex items-center justify-end mt-4">
-                <p class="text-gray-500 dark:text-gray-300">March 2024</p>
+        <!-- Scatter -->
+        <div class="relative flex flex-col border rounded border-gray-400 dark:border-gray-600">
+          <a href="scatter.html" class="">
+            <div class="relative w-full aspect-video ">
+              <img class="w-full h-64 lg:h-80 object-cover rounded" src="./img/foto/stats.png" alt="forest"
+                loading="lazy">
+              <div
+                class="absolute rounded bottom-0 left-0 right-0 p-4 bg-white bg-opacity-80 dark:bg-gray-800 dark:bg-opacity-80 text-gray-800 dark:text-white">
+                <h2 class="text-xl font-literata font-semibold">From Scatter to Line</h2>
+                <p class="font-semibold text-sm text-cyan-800 dark:text-amber-500 my-2">Statistics</p>
+                <p class="text-pretty">
+                  We build a regression line coming from a scatter plot and introduce many important statistical
+                  concepts on the way.
+                </p>
+                <div class="flex items-center justify-end mt-4">
+                  <p class="text-gray-600 dark:text-gray-400">March 2024</p>
+                </div>
               </div>
             </div>
           </a>
         </div>
+
 
       </div>
+    </div>
   </section>
 
 
   <!-- footer  -->
-  <hr class="mx-20 mt-10 border-gray-200 dark:border-gray-700">
+  <hr class="mt-10 border-gray-200 dark:border-gray-700">
   <footer class="bg-white dark:bg-gray-900">
-    <div class="container px-6 py-4 mx-auto md:mx-20 md:px-0">
+    <div class="container">
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
 
@@ -215,14 +242,14 @@
             <div class="flex justify-between items-center">
               <div class="flex gap-3 items-center">
                 <a>
-                  <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="">
+                  <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="logo2">
                 </a>
                 <div class="">
                   <p
-                    class="pb-3 text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                    class="pb-3 text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
                     Marco</p>
                   <p
-                    class="text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                    class="text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
                     Zausch</p>
                 </div>
               </div>
@@ -233,41 +260,44 @@
         </div>
 
         <div class="flex flex-col sm:flex-row sm:gap-24 justify-between">
-  
+
           <!-- CONTACT ME -->
-          <div class="py-3 md:py-0 flex-1">
-            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
-            <a id="mlink" class="flex items-center gap-3 my-3 hover:text-indigo-400 dark:hover:text-sky-300" href="#">Email</a>
+          <div class="py-2 md:py-0 flex-1">
+            <div class="text-sm uppercase font-medium">Contact Me</div>
+            <div class="flex items-center gap-3 my-2">
+            <img src="img/icons/envelope-solid.svg" class="w-4 h-4" id="envelope"/>
+            <a class="hover:text-indigo-400 dark:hover:text-sky-300" id="mlink" href="#mlink">Email</a>
+            </div>
           </div>
-        
+
+
           <!-- WORK -->
-          <div class="py-3 md:py-0 flex-1">
-            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
-            <p class="my-3 flex items-center gap-3">
-              <a href="https://www.linkedin.com/in/marcozausch" aria-label="LinkedIn">
-                <span class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
-              </a>
-              <a class="block hover:text-indigo-400 dark:hover:text-sky-300" href="https://www.linkedin.com/in/marcozausch">LinkedIn</a>
+          <div class="py-2 md:py-0 flex-1">
+            <div class="text-sm uppercase font-medium">Work</div>
+
+            <p class="mt-2 flex items-center">
+                <div class="flex items-center gap-3" aria-label="LinkedIn">
+                <img src="img/icons/linkedin.svg" class="w-4 h-4 dark:filter-white" id="linkedin">
+                <a href="https://www.linkedin.com/in/marcozausch" class="hover:text-indigo-400 dark:hover:text-sky-300">LinkedIn</a>
+                </div>
             </p>
-            <p class="my-3 flex items-center gap-3">
-              <a href="https://github.com/MaCoZu" aria-label="Github">
-                <span class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
-              </a>
-              <a class="block hover:text-indigo-400 dark:hover:text-sky-300" href="https://github.com/MaCoZu">Github</a>
+
+            <p class="mt-2 flex items-center">
+              <div class="flex items-center gap-3" aria-label="github">
+                <img src="img/icons/github.svg" class="w-4 h-4 dark:filter-white" id="github">
+                <a href="https://github.com/MaCoZu" class="hover:text-indigo-400 dark:hover:text-sky-300" aria-label="Github">Github</a>
+              </div>
             </p>
           </div>
-        
+
           <!-- LEGAL -->
-          <div class="py-3 md:py-0 flex-1">
+          <div class="py-2 md:py-0 flex-1">
             <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400">Legal</div>
-            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./impressum.html">Impressum</a>
-            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./privacypolicy.html">Privacy Policy</a>
+            <a class="my-2 block hover:text-indigo-400 dark:hover:text-sky-300" href="./impressum.html">Impressum</a>
+            <a class="my-2 block hover:text-indigo-400 dark:hover:text-sky-300" href="./privacypolicy.html">Privacy
+              Policy</a>
           </div>
-        
         </div>
-        
-
-
       </div>
 
     </div>
@@ -304,8 +334,6 @@
   </script>
 
 
-  <script type="module" src="./main.js"></script>
-  <script type="module" src="./script.js"></script>
 </body>
 
 </html>

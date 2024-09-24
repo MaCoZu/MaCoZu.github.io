@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Logistic Growth Model</title>
+  <script src="./d3.v7.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: rgb(17 24 39);
+        color: rgb(229 231 235);
+      }
+
+      .axis-label {
+        fill: #fff;
+      }
+    }
+
+    .sliders-container {
+      display: flex;
+      justify-items: center;
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      /* width: 100%;
+      max-width: 800px;
+      margin-top: 4px; */
+    }
+
+
+    .slider-column {
+      display: flex;
+      flex-direction: column;
+      /* Stack sliders in a column */
+      gap: 20px;
+      /* Add spacing between sliders in each column */
+    }
+
+    .slider {
+      display: flex;
+      flex-direction: column;
+      /* Align label and input vertically */
+    }
+
+    .slider label {
+      margin-bottom: 5px;
+      /* Space between label and slider */
+    }
+
+    .slider input[type="range"] {
+      width: 200px;
+      /* Set a width for sliders */
+    }
+  </style>
+
+  <!-- css  -->
+  <script type="module" crossorigin src="./assets/index.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index.css">
+
+  <!-- mathjax  -->
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          messageStyle: "normal",
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              processEscapes: true
+              }
+          });
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
+</head>
+
+
+
+
+<body class="flex flex-col h-fit w-fit content-center items-center bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
+
+  <!-- SVG Container for graph -->
+  <svg id="logistic-growth-graph"></svg>
+
+  <!-- Sliders for parameters -->
+  <div class="sliders-container">
+    <div class="slider-column items-center">
+      <div class="slider">
+        <label>Initial Population (N_0): <span id="initial-pop-label">10</span></label>
+        <input type="range" id="initial-pop" min="1" max="100" value="10" step="1" />
+      </div>
+
+      <div class="slider">
+        <label>Carrying Capacity (K): <span id="carrying-cap-label">100</span></label>
+        <input type="range" id="carrying-cap" min="10" max="200" value="100" step="1" />
+      </div>
+    </div>
+
+    <div class="slider-column">
+      <div class="slider">
+        <label>Growth Rate (R): <span id="growth-rate-label">0.1</span></label>
+        <input type="range" id="growth-rate" min="0.01" max="1" value="0.1" step="0.01" />
+      </div>
+
+      <div class="slider">
+        <label>Iterations (t): <span id="iterations-label">50</span></label>
+        <input type="range" id="iterations" min="10" max="100" value="50" step="1" />
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+   const margin = {top: 40, right: 30, bottom: 80, left: 60};
+let width = 700 - margin.left - margin.right;
+let height = 500 - margin.top - margin.bottom;
+
+// Graph area
+const svg = d3
+  .select("#logistic-growth-graph")
+  .attr("width", width)
+  .attr("height", height)
+  .append("g")
+  .attr("transform", `translate(${margin.left},${margin.top})`);
+
+const graphWidth = width - margin.left - margin.right;
+const graphHeight = height - margin.top - margin.bottom;
+
+const xScale = d3.scaleLinear().range([0, graphWidth]);
+const yScale = d3.scaleLinear().range([graphHeight, 0]);
+
+const xAxis = svg.append("g").attr("transform", `translate(0,${graphHeight})`);
+const yAxisPopulation = svg.append("g");
+
+// Line generators for population size and population growth
+const populationLine = d3
+  .line()
+  .x((d, i) => xScale(i))
+  .y(d => yScale(d.N));
+
+const growthLine = d3
+  .line()
+  .x((d, i) => xScale(i))
+  .y(d => yScale(d.growth));
+
+// Color for population and growth
+const colorPopulation = "steelblue";
+const colorGrowth = "tomato";
+
+// Initial slider values
+let N_0 = 10, K = 100, R = 0.1, iterations = 50;
+
+// Update the graph whenever a slider changes
+function updateGraph() {
+  const data = computeLogisticGrowth(N_0, K, R, iterations);
+
+  xScale.domain([0, iterations]);
+
+  // Dynamically adjust y-scale to handle wide divergence
+  const minYValue = Math.min(d3.min(data, d => d.N), d3.min(data, d => d.growth));
+  const maxYValue = Math.max(d3.max(data, d => d.N), d3.max(data, d => d.growth));
+  yScale.domain([Math.min(0, minYValue), maxYValue]);
+
+  // Update axes
+  xAxis.call(d3.axisBottom(xScale));
+  yAxisPopulation.call(d3.axisLeft(yScale));
+
+  // Bind data and draw population line
+  const populationPath = svg.selectAll(".population-line").data([data]);
+
+  populationPath
+    .enter()
+    .append("path")
+    .attr("class", "population-line")
+    .merge(populationPath)
+    .attr("d", populationLine)
+    .attr("fill", "none")
+    .attr("stroke", colorPopulation)
+    .attr("stroke-width", 2);
+
+  populationPath.exit().remove();
+
+  // Bind data and draw growth line
+  const growthPath = svg.selectAll(".growth-line").data([data]);
+
+  growthPath
+    .enter()
+    .append("path")
+    .attr("class", "growth-line")
+    .merge(growthPath)
+    .attr("d", growthLine)
+    .attr("fill", "none")
+    .attr("stroke", colorGrowth)
+    .attr("stroke-width", 2)
+    .style("stroke-dasharray", "5,5"); // Dashed line for growth rate
+
+  growthPath.exit().remove();
+}
+
+// Logistic growth function calculation
+function computeLogisticGrowth(N_0, K, R, iterations) {
+  let data = [];
+  let N = N_0;
+
+  for (let t = 0; t <= iterations; t++) {
+    let growth = R * N * (1 - N / K);
+    data.push({ N: N, growth: growth });
+    N += growth;
+  }
+
+  return data;
+}
+
+// Update the slider labels and graph when a slider changes
+d3.select("#initial-pop").on("input", function () {
+  N_0 = +this.value;
+  d3.select("#initial-pop-label").text(N_0);
+  updateGraph();
+});
+
+d3.select("#carrying-cap").on("input", function () {
+  K = +this.value;
+  d3.select("#carrying-cap-label").text(K);
+  updateGraph();
+});
+
+d3.select("#growth-rate").on("input", function () {
+  R = +this.value;
+  d3.select("#growth-rate-label").text(R);
+  updateGraph();
+});
+
+d3.select("#iterations").on("input", function () {
+  iterations = +this.value;
+  d3.select("#iterations-label").text(iterations);
+  updateGraph();
+});
+
+// Initial rendering of the graph
+updateGraph();
+
+
+  </script>
+
+  <script type="module" src="../main.js"></script>
+  <script type="module" src="../script.js"></script>
+</body>
+
+</html>

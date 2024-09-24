@@ -10,6 +10,13 @@
   <link rel="icon" href="img/logo/logo_weiß.svg" type="image/x-icon" />
 
   <style>
+    #logo{ filter: invert(100%) }
+    #logo2{ filter: invert(100%) }
+
+    [x-cloak] {
+      display: none !important;
+    }
+
     /* MENU */
     .font-pop {
       font-family: 'Poppins', sans-serif;
@@ -25,17 +32,16 @@
       font-family: 'Bebas', sans-serif;
     }
 
-    [x-cloak] {
-      display: none !important;
-    }
-
-    /* EXTRA FONTS  */
     .font-roboto {
       font-family: 'Roboto', normal;
     }
 
     .font-merri {
       font-family: 'Merriweather', serif;
+    }
+
+    .font-pop {
+      font-family: 'Poppins', sans-serif;
     }
 
     .font-lora {
@@ -51,8 +57,9 @@
     }
   </style>
 
-  <script type="module" crossorigin src="./assets/index.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index.css">
+   <!-- css  -->
+   <script type="module" crossorigin src="./assets/index.js"></script>
+   <link rel="stylesheet" crossorigin href="./assets/index.css">
 
   <!-- mathjax  -->
   <script type="text/x-mathjax-config">
@@ -72,54 +79,43 @@
 
 </head>
 
-<body class="font-pop bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
+<body class="font-pop bg-white mx-auto md:mx-20 px-6 md:px-0 text-gray-700 dark:bg-gray-900 dark:text-gray-200">
 
   <!-- navbar -->
-  <nav x-data="{ isOpen: false }" class="relative uppercase">
-    <div class="container mx-auto md:mx-20 px-6 md:px-0 mt-8 md:mt-8 md:flex md:justify-between md:items-center">
+  <nav x-data="{ isOpen: false }" class="relative ">
+    <div class="container mt-8 md:mt-8  md:flex md:justify-between md:items-center">
       <div class="flex items-center justify-between w-full">
-        <!-- Logo + Name -->
+        <!-- Logo -->
         <a href="index.html" class="flex items-center">
-          <img id="logo" class="h-8 sm:h-8 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="logo">
+            <img id="logo" class="h-8 sm:h-8 fill-current dark:filter-white" src="./img/logo/logo.svg"
+                alt="logo">
         </a>
 
         <!-- Menu Button (Right Aligned) -->
         <button @click="isOpen = !isOpen" class="flex md:hidden focus:outline-none ml-auto">
-          <div class="w-6 h-6 relative">
-            <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
-            </svg>
-            <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </div>
+            <div class="w-6 h-6 relative">
+                <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+                </svg>
+                <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </div>
         </button>
 
         <!-- Desktop Menu (Right Aligned) -->
         <div class="hidden md:flex ml-auto items-center">
-          <ul class="md:flex gap-8 text-xl tracking-tight ">
-            <div><a class="hover:text-indigo-400 mr-4" href="index.html">Home</a></div>
-            <!-- <div><a class="hover:text-indigo-400 mr-4" href="">Contact</a></div> -->
-            <div><a class="hover:text-indigo-400 mr-4" href="impressum.html">Impressum</a></div>
-          </ul>
+            <ul class="md:flex gap-8 text-sm tracking-tight ">
+                <div><a class="hover:text-indigo-400 mr-4" href="index.html">Home</a></div>
+                <!-- <div><a class="hover:text-indigo-400 mr-4" href="">Contact</a></div> -->
+                <div><a class="hover:text-indigo-400 mr-4" href="impressum.html">Impressum</a></div>
+            </ul>
         </div>
-      </div>
+    </div>
 
-      <!-- Mobile Menu -->
-      <div x-show="isOpen" x-transition:enter="transform ease-out duration-300 transition-translate-opacity"
-        x-transition:enter-start="translate-y-10 opacity-0" x-transition:enter-end="translate-y-0 opacity-100"
-        x-transition:leave="transform ease-in duration-300 transition-translate-opacity"
-        x-transition:leave-start="translate-y-0 opacity-100" x-transition:leave-end="translate-y-10 opacity-0"
-        class="lg:hidden absolute top-16 right-0 pr-4 z-10 w-1/2 h-screen">
 
-        <ul class="p-3 space-y-2 text-lg">
-          <li><a class="hover:text-indigo-400" href="index.html">Home</a></li>
-          <!-- <li><a class="hover:text-indigo-400" href="#">Contact</a></li> -->
-          <li><a class="hover:text-indigo-400" href="impressum.html">Impressum</a></li>
-        </ul>
-      </div>
     </div>
   </nav>
 
@@ -157,10 +153,59 @@
 
   </aside>
 
+  <!-- drawer  -->
+  <div class="flex z-50">
+    <div id="drawer-toggle"
+      class="fixed z-30 top-1/2 right-0 inline-block p-2 transition-all duration-200 rounded-lg cursor-pointer">
+      <svg class="w-10 h-10 md:w-full md:h-full dark:text-white" width="50" height="100" viewBox="0 0 50 100"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 10 H40 M10 20 H40 M10 30 H40" style="stroke: #CCC; fill:none; stroke-width: 4px"
+          stroke-opacity="0.7" stroke-linecap="round">
+        </path>
+      </svg>
+    </div>
+
+    <div id="sidebar_model"
+      class="fixed top-0 right-0 z-50 w-64 h-full transition-all duration-500 transform translate-x-full bg-white dark:bg-gray-800 shadow-lg">
+      <div class="px-6 py-4">
+        <div class="pr-6 py-6 flex justify-between items-center">
+          <h1 class="text-3xl font-bebas font-semibold">Contents</h1>
+          <!-- <div id="drawer-close" class="cursor-pointer">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-black dark:text-white" fill="none"
+                          viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                  </div> -->
+        </div>
+        <ul class="text-lg font-roboto mt-4">
+          <li class="mt-1"><a href="#intro" class="block hover:text-indigo-400">Introduction</a></li>
+          <li class="mt-1"><a href="#terminology" class="block hover:text-indigo-400">Terminology</a></li>
+          <li class="mt-1"><a href="#scatterplot" class="block hover:text-indigo-400">The Scatterplot</a></li>
+          <li class="mt-1"><a href="#spread" class="block hover:text-indigo-400">Spread</a></li>
+          <li class="mt-1"><a href="#averages" class="block hover:text-indigo-400">Averages</a></li>
+          <li class="mt-1"><a href="#goa" class="block hover:text-indigo-400">Point &amp; Graph of Averages</a></li>
+          <li class="mt-1"><a href="#sdline" class="block hover:text-indigo-400">Standard Deviation Line</a></li>
+          <li class="mt-1"><a href="#correlation" class="block hover:text-indigo-400">Pearson's Correlation</a></li>
+          <li class="mt-1"><a href="#regression_method" class="block hover:text-indigo-400">Regression Method</a></li>
+          <li class="mt-1"><a href="#OLS" class="block hover:text-indigo-400">Method of Least Squares</a></li>
+          <li class="mt-1"><a href="#interpretation" class="block hover:text-indigo-400">Interpretation</a></li>
+          <li class="mt-1"><a href="#summary" class="block hover:text-indigo-400">Summary</a></li>
+          <li class="mt-1"><a href="#sources" class="block hover:text-indigo-400">Sources</a></li>
+        </ul>
+        <div class="text-xs fixed bottom-10 flex row">
+          <a href="index.html" class="flex items-center">
+              <img id="logo2" class="h-8 sm:h-8 fill-current dark:filter-white" src="./img/logo/logo.svg"
+                  alt="logo">
+          </a>
+      </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Main content -->
   <main class="flex justify-center items-center min-h-screen my-20">
     <article id="article"
-      class="w-5/6 px-1 prose-sm font-literata md:w-1/2 max-w-full prose md:prose-xl prose-stone text-pretty leading-10 dark:prose-invert">
+      class="w-5/6 px-1 font-literata md:w-1/2 max-w-full prose md:prose-xl prose-stone text-pretty leading-10 dark:prose-invert">
 
       <!-- title  -->
       <h1 class="text-left leading-snug">From Scatterplot to Regression Line</h1>
@@ -206,7 +251,8 @@
           terms first.</p>
         <p>Regression is a branch of <strong>statistical inference</strong>, which refers to the process of drawing
           conclusions about a population based on a sample of that population. Linear regression is a
-          <strong>frequentist inference</strong> method based on the frequency of events in repeated experiments. </p>
+          <strong>frequentist inference</strong> method based on the frequency of events in repeated experiments.
+        </p>
         <p>Frequentism can be contrasted with <strong>theoretical probability</strong> – that is purely mathematical
           like the probability of getting tails when flipping a coin – or <strong>Bayesianism</strong> which
           incorporates subjective beliefs about the probability of an event and updates prior beliefs with observed
@@ -217,7 +263,7 @@
           example in seismology a prediction of an earthquake specifies some exact future time and place, whereas a
           forecast is more vague and only states the likelihood of an earthquake in a certain region over a certain
           period of time. In demography and climate science, the term <strong>projection</strong>, refers to a future
-          development under certain conditions (<strong>scenarios</strong>). </p>
+          development under certain conditions (<strong>scenario</strong>). </p>
         <p>I will use the term prediction throughout the text, since we’re not concern with the future for now.
           Furthermore, simple regression is not apt to look far in the future, this may require complex factors like
           seasonality, trends, and external variables. Thus, with simple regression it is generally a good idea to stay
@@ -235,19 +281,20 @@
           $\varepsilon=$ Random error component, adds an allowance for error in the prediction.</p>
         <p>By the end of this text, we'll arrive at an equation that has little hats on some symbols, indicating that
           the symbols below them are <strong>estimates</strong> of the underlying but unknown parameters. The population
-          parameters thereby become so called <strong>sample statistics</strong>.<br />
-          $$\hat{y}=\hat\beta_0+\hat\beta_{1}x \tag{2}$$ In this equation, the error term $ε$ is missing, the reason
-          being that in the process of finding estimates for the parameters in equation $(1)$, we are specifically
-          minimizing the errors, where the sum of errors becomes zero $\sum ε_{i} =0$, the uncertainty in the
-            predictions is still represented by the little hats above the sample statistics ($\hat\beta_0,
-            \hat\beta{1})$, signifying that the estimates are erroneous. </p>
+          parameters thereby become so-called <strong>sample statistics</strong>.<br />
+          $$\hat{y}=\hat\beta_0+\hat\beta_{1}x \tag{2}$$ In this equation, the error term $ε$ is missing, because by
+          finding the estimates of the parameters from equation $(1)$ we specifically minimized the errors, so that the
+          sum of errors becomes zero $\sum ε_i =0$. But estimators are not the real population parameters and the
+          remaining uncertainty is signified by little hats above our sample statistics ($\hat\beta_0, \hat\beta_{1})$.
+        </p>
         <p><strong>Multiple linear regression</strong> extends simple regression to include many explanatory variables
           and aims to estimate the linear relationship between these predictors and a single response.<br />
           $$y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_kx_k + ε$$</p>
         <p>There are many synonyms for the independent and dependent variables. I have introduced you to
           <strong>explanatory and response variable</strong>, which I find most expressive because the explanatory
           variable <em>explains</em> how the other variable <em>responds</em>. Also, the e$x$planatory has the symbol
-          $x$ in it, which denotes its variables in the formula.</p>
+          $x$ in it, which denotes its variables in the formula.
+        </p>
         <p>The explanatory and response variables are <strong>characteristics</strong> of
           <strong>observational units</strong> (person, thing, transaction, or event), that we measured,
           observed or polled from a <strong>sample</strong> (subset) of a <strong>population</strong>
@@ -257,15 +304,34 @@
           the entire population. <strong>Inferring</strong> something from the known (sample) about the
           unknown (the rest of the population) is the main reason for doing statistics in the first place.
         </p>
-        <p>Since we’re mostly dealing with samples, we’ll work with <strong>sample “statistics”</strong> instead of <strong>population “parameters”</strong>. Sample statistics are approximations of the corresponding population parameters. They’re often computed by dividing them by $(n-1)$ from an estimate. This so-called <strong>Bessel's correction</strong>, adds some variability to our sample statistic making it more realistic. The rationale is that we assume our sample is biased in some way, and the entire population certainly shows more variability then our meager sample reflects, so as good conservative statisticians we set the record straight.</p>
-        
-        <p><strong>Sampling aka. Data collection</strong> is of utmost importance for statistics and most of what’s wrong with statistics comes from error-prone data collection. A good representative sample should give any strata of society an equal change of inclusion in the sample by randomized selection and avoiding bias. Which for many reasons is often not realized. </p>
-          <p>Examples of biased selection include:</p>
-          <ul>
-          <li>Surveying only Western college students known as <strong>WEIRD</strong> (<strong>W</strong>estern, <strong>E</strong>ducated, <strong>I</strong>ndustrialized, <strong>R</strong>ich and <strong>D</strong>emocratic) people for <a href="https://www.scientificamerican.com/podcast/episode/psychology-studies-biased-toward-we-10-08-07/">psychological studies</a> and attributing the findings to the broader population or even all of humanity. Also called <em>volunteer bias</em>.</li>
-          <li><em>Publication bias</em>, where academic research is only published if significant findings are made. Shifting publications in favor of positive results.</li>
-          <li>Or when the media neglects journalistic standards of neutrality and objectivity, in favor of certain worldviews and cultures, or worse, <a href="https://en.wikipedia.org/wiki/Manufacturing_Consent">pandering to particular ideologies</a>, aka <em>media bias</em>. </li>
-          </ul>
+        <p>Since we’re working with samples, we arrive at <strong>sample “statistics”</strong> which are approximations
+          of the true but unknown <strong>population “parameters”</strong>. Sample statistics are often computed by
+          dividing them by $(n-1)$ instead of just dividing by $n$. For example the <em>unbiased</em> sample variance is
+          calculated with:<br />
+          $$s^{2}= \frac{1}{n-1}\sum\limits_{i=1}(x_i-\bar{x})$$<br />
+          Dividing sample statistics by $(n-1)$ is called <strong>Bessel's correction</strong>. The idea is that samples
+          of data seldom represent the whole spectrum of variability in the population, by dividing a little less the
+          variance becomes a bit bigger and hopefully more realistic.</p>
+
+        <p><strong>Sampling aka. Data collection</strong> is of utmost importance for statistics and most of what’s
+          wrong with statistics comes from error-prone data collection. A good representative sample should give any
+          characteristic in a population or any strata of society an equal change of inclusion in the sample by
+          randomized selection and avoiding bias. Which for many reasons is often not realized. </p>
+        <p>Infamous examples of biased selection include:</p>
+        <ul>
+          <li>Surveying only Western college students known as <strong>WEIRD</strong> (<strong>W</strong>estern,
+            <strong>E</strong>ducated, <strong>I</strong>ndustrialized, <strong>R</strong>ich and
+            <strong>D</strong>emocratic) people for <a
+              href="https://www.scientificamerican.com/podcast/episode/psychology-studies-biased-toward-we-10-08-07/">psychological
+              studies</a> and attributing the findings to the broader population or even all of humanity. Also called
+            <em>volunteer bias</em>.
+          </li>
+          <li><em>Publication bias</em>, where academic research is only published if significant findings are made.
+            Shifting publications in favor of positive results.</li>
+          <li>Or when the media neglects journalistic standards of neutrality and objectivity, in favor of certain
+            worldviews and cultures, or worse, <a href="https://en.wikipedia.org/wiki/Manufacturing_Consent">pandering
+              to particular ideologies</a>, aka <em>media bias</em>. </li>
+        </ul>
         <p>Terminology can get messy when we talk about machine learning, as old concepts get new names to
           better fit the context. Here are the main vocabulary shifts between statistics and machine
           learning. </p>
@@ -296,18 +362,16 @@
       <!-- scatterplot  -->
       <section>
         <h2 id="scatterplot">The Scatterplot</h2>
-        <p>In the beginning there was the scatterplot. When Sir Francis Galton (1822 - 1911) plotted the height
-          of parents against the height of their adult children, he noticed the tendency for tall (or short)
-          parents to have tall (or short) children, but the children were not as tall (or short), on average,
-          as their parents. So while there was correlation between the height of children and their parents,
-          children also balanced out the extreme characteristics of the parents. Galton called this phenomenon
-          “regression toward mediocrity”.
-        </p>
-        <p>
-          Looking at Galton's data we can see how the average heights of adult
-          children tend to “regress” to the mean of the population. The 45° Line suggests a $1:1$ association
-          in the height of children and parents, in contrast the Regression Line is flatter reflecting the
-          regress of extremes.</p>
+        <p>In the beginning there was the scatterplot. When Sir Francis Galton (1822 – 1911) plotted the height of
+          parents against the height of their adult children, he noticed the tendency for tall parents to have tall
+          children, but the children were not as tall, on average, as their parents. The same was true for short
+          parents, their children were generally shorter but not as short as them, on average. So while the height of
+          parents and their children is correlated (behaves similar), the extreme characteristics of parents are not
+          amplified by their children but dampened. Galton called this phenomenon “regression toward mediocrity”.
+          Looking at Galton’s data we can see how the average heights of adult children tend to <em>regress</em> to the
+          population average. The $45°$ Line suggests a $1:1$ association in the height of children and parents, in
+          contrast the Regression Line, derived from the data, shows a weaker correlation and reflects the regress of
+          extremes.</p>
         <figure class="flex flex-col justify-center items-center">
           <div class="w-[80%] hover:scale-125">
             <img src="img/scatter_reg/galton1.png" alt="Correlation coefficients">
@@ -318,20 +382,18 @@
           </figcaption>
         </figure>
 
-        <p>The graph would also look similar today (100 years later), even if people had become taller due
-          to improved health conditions, but the distribution of observations around the mean would remain
-          proportional. Otherwise, if children of tall parents became taller and children of short parents
-          became shorter on average, the spread of observations would become wider and wider, and the
-          world would become a place of dwarfs and giants.</p>
-        <p>From Galton's discovery we have learned that: <br />
-          1) Repeated measurements made on the same subject show random fluctuations around a true
-          mean. <br />
-          2) Extreme observations are likely to be followed by less extreme ones. (On average,
-          extremes do not survive)</p>
-        <p>From a simple scatter plot alone we can read many things. We see the range of values, the spread of
-          observations, the single and joint mean of the variables, and maybe even some characteristics of the
-          relationship between them like direction, strength (tight or dispersed data points), and degree
-          (linear, non-linear).</p>
+        <p>The graph looks the same 100 years later. Even if people have become taller in general, the proportions stay
+          the same. If extremes did not sand off and children developed the characteristics of their parents further and
+          further, we’d live in a world of dwarfs and giants, and many other oddities.</p>
+        <p>From Galton's discovery we have learned that: </p>
+        <ul>
+          <li>Repeated measurements fluctuate around a true mean.</li>
+          <li>Extremes are do not survive.</li>
+        </ul>
+        <p>Just looking at a scatterplot the practiced eye can see different things. For example the <em>range</em> of
+          values, the <em>spread</em> of observations, the <em>single, and joint mean</em> of the variables, and maybe
+          even some characteristics of the relationship between them like <em>direction</em> and <em>strength</em>
+          (tight or dispersed data points), and degree (linear, non-linear).</p>
         <p>Let us quickly determine these things quickly to understand how the regression line is
           derived from them. </p>
       </section>
@@ -339,27 +401,19 @@
       <!-- spread  -->
       <section>
         <h2 id="spread">Spread</h2>
-        <p>Spread is a measure of variability of the observations around the center, usually the arithmetic
-          mean.</p>
-        <p>One such measure of spread is the <strong>range</strong>, which is simply the largest measurement
-          minus the smallest, and while it gives us an idea of the size of the numbers we're talking
-          about, it doesn't tell us what's going on in between those boundaries. </p>
-        <p>The sample <strong>variance</strong> $s$ is more useful, it tells us about the deviations of the
-          observations from the mean $(x_i -\bar{x})$. To compute the sample variance, the deviations are
-          squared, summed, and divided by $(n-1)$, large deviations are emphasized by squaring while
-          negative numbers are removed. Squaring has the additional advantage that negative and positive
-          deviations do not cancel each other out. <br />
-          $$s = \frac{\sum_{i=1}^{n}(x_i - \bar{x})^2}{n-1}$$<br />
-          The variance now tells us how the data is spread out within the limits set by the range. Of two
-          samples with the same range and mean, the one with the greater variance consists of data that is
-          more spread out, while the other is relatively more clustered around the mean.</p>
-        <p>However, squaring the variances leads to odd units, if we work with dollar as a unit we get $dollar^2$. As a
-          result, one often sees the sample <strong>standard deviation</strong> $s$, which is the square
-          root of the variance. The standard deviation gets rid of the squared units, but inherits the
-          advantages of the variance, namely counting positive and negative deviations equally and
-          emphasizing large deviations. The standard deviation can be thought of as a "typical" distance
-          of the observations $x_i$ from their mean, $\bar{x}$. <br />
-          $$s=\sqrt{s}$$</p>
+        <p>Spread is a measure of variability of the observations around the center, usually the arithmetic mean.</p>
+        <p>The simplest measure of spread is the <strong>range</strong>, which is the largest measurement minus the
+          smallest. With the range we know which numbers we’re talking about, but we get no sense of what is going on
+          between the boundaries.</p>
+        <p>The sample <strong>variance</strong> is more useful in that regard. As a measure of dispersion it gives us a
+          sense of how far a set of numbers is spread out from their average value. A small variance indicates that most
+          data points are clustered around the average value while high variance is a sign of data that is strewn around
+          widely. $$s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2$$By squaring deviations become absolute values,
+          thereby they do not cancel each other out, and big differences get amplified. </p>
+        <p>However, squaring the deviations leads to odd units, if we work with $\$$ we get $\$^2$. By taking the square
+          root of the variance we arrive at the <strong>standard deviation $s$</strong>, which inherits the advantages
+          of the variance but has comprehensible units. $$s=\sqrt{s^2}$$The standard deviation can be thought of as a
+          “typical” distance of the observations $x_i$ from their mean, $\bar{x}$. </p>
       </section>
 
       <!-- averages  -->
@@ -794,81 +848,79 @@
   </main>
 
   <!-- footer  -->
-  <hr class="mx-20 mt-10 border-gray-200 dark:border-gray-700">
-
+  <hr class="mt-10 border-gray-200 dark:border-gray-700">
   <footer class="bg-white dark:bg-gray-900">
-    <div class="container px-6 py-4 mx-auto md:mx-20 md:px-0">
-      <div class="grid grid-cols-1 gap-4 justify-between mt-5 md:grid-cols-12">
+    <div class="container">
 
-        <!-- Logo and Name  -->
-        <div class="col-span-4 hidden sm:block">
-          <div class="flex justify-between items-center">
-            <div class="flex gap-3 items-center">
-              <a>
-                <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="">
-              </a>
-              <div class="">
-                <p
-                  class="pb-3 text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                  Marco</p>
-                <p
-                  class="text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                  Zausch</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+
+        <div class="">
+          <!-- Logo and Name  -->
+          <div class="hidden sm:block">
+            <div class="flex justify-between items-center">
+              <div class="flex gap-3 items-center">
+                <a>
+                  <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="logo2">
+                </a>
+                <div class="">
+                  <p
+                    class="pb-3 text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                    Marco</p>
+                  <p
+                    class="text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                    Zausch</p>
+                </div>
               </div>
             </div>
           </div>
+
+
         </div>
 
-        <div class="col-span-8 justify-between md:flex">
+        <div class="flex flex-col sm:flex-row sm:gap-24 justify-between">
 
-          <!-- CONTACT ME  -->
-          <div class="py-3 md:py-0">
-            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
-            <a id="mlink" class="flex items-center gap-3 my-3 hover:text-indigo-400 dark:hover:text-sky-300"
-              href="#">Email</a>
+          <!-- CONTACT ME -->
+          <div class="py-3 md:py-0 flex-1">
+            <div class="text-sm uppercase font-medium">Contact Me</div>
+            <div class="flex items-center gap-3 my-3">
+            <svg xmlns="http://www.w3.org/2000/svg" id="envelope" height="18" width="18" viewBox="0 0 512 512"><path opacity="1" fill="#1E3050" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+            <a class="hover:text-indigo-400 dark:hover:text-sky-300" id="mlink" href="#mlink">Email</a>
+            </div>
           </div>
 
-          <!-- WORK  -->
-          <div class="py-3 md:py-0">
-            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
 
-            <p class="my-3 flex items-center gap-3">
-              <a href="https://www.linkedin.com/in/marcozausch" aria-label="LinkedIn">
-                <span
-                  class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
-              </a>
-              <a class="block hover:text-indigo-400 dark:hover:text-sky-300"
-                href="https://www.linkedin.com/in/marcozausch">Linked In</a>
+          <!-- WORK -->
+          <div class="py-3 md:py-0 flex-1">
+            <div class="text-sm uppercase font-medium">Work</div>
+            <p class="mt-3 flex items-center">
+                <div class="flex items-center gap-3" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" id="linkedin" height="18" width="18" viewBox="0 0 448 512">
+                  <path opacity="1" fill="#1E3050"
+                    d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
+                </svg>
+                <a  href="https://www.linkedin.com/in/marcozausch">LinkedIn</a>
+                </div>
             </p>
-
-            <p class="my-3 flex items-center gap-3">
-              <a href="https://github.com/MaCoZu" aria-label="Github">
-                <span
-                  class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
-              </a>
-              <a class="block hover:text-indigo-400 dark:hover:text-sky-300" href="https://github.com/MaCoZu">Github
-              </a>
+            <p class="mt-3 flex items-center gap-3">
+              <a href="https://github.com/MaCoZu"
+                class="flex items-center gap-3 hover:text-indigo-400 dark:hover:text-sky-300" aria-label="Github">
+                <svg xmlns="http://www.w3.org/2000/svg" id="github" height="18" width="18" viewBox="0 0 496 512">
+                  <path opacity="1" fill="#1E3050"
+                    d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+                </svg>Github</a>
             </p>
           </div>
 
-          <!-- RESSOURCES -->
-          <!-- <div class="py-3 md:py-0">
-            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Resources</div>
-            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="/#">Statistics </a>
-            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="/#">Tutorials </a>
-          </div> -->
-
-          <!-- LEGAL  -->
-          <div class="py-3 md:py-0">
-            <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400 ">Legal</div>
-            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./impressum.html">Impressum
-            </a>
+          <!-- LEGAL -->
+          <div class="py-3 md:py-0 flex-1">
+            <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400">Legal</div>
+            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./impressum.html">Impressum</a>
             <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./privacypolicy.html">Privacy
-              Policy
-            </a>
+              Policy</a>
           </div>
         </div>
       </div>
+
     </div>
   </footer>
 
@@ -882,6 +934,58 @@
 
     /* 3. replace link href with variables  */
     elink.href = `mailto:${me}@${place}`;
+
+    const drawerToggle = document.getElementById('drawer-toggle');
+    const sidebar = document.getElementById('sidebar_model');
+    const drawerClose = document.getElementById('drawer-close');
+    let timeoutId;
+
+    // Open drawer on hover over the toggle
+    drawerToggle.addEventListener('mouseenter', () => {
+      clearTimeout(timeoutId);
+      sidebar.classList.remove('translate-x-full');
+    });
+
+    // Close drawer on mouse leave with delay
+    sidebar.addEventListener('mouseleave', () => {
+      timeoutId = setTimeout(() => {
+        sidebar.classList.add('translate-x-full');
+      }, 300); // Delay before closing
+    });
+
+    // Close drawer when clicking X on sidebar
+    drawerClose.addEventListener('click', () => {
+      sidebar.classList.add('translate-x-full');
+    });
+
+    // Close the drawer when clicking outside (on the main content)
+    document.addEventListener('click', (e) => {
+      if (!sidebar.contains(e.target) && !drawerToggle.contains(e.target)) {
+        sidebar.classList.add('translate-x-full');
+      }
+    });
+
+    // Close the drawer when clicking on sidebar links
+    document.querySelectorAll('#sidebar_model a').forEach((link) => {
+      link.addEventListener('click', () => {
+        sidebar.classList.add('translate-x-full');
+      });
+    });
+
+    // Close the drawer when interacting with iframes
+    document.querySelectorAll('iframe').forEach((iframe) => {
+      iframe.addEventListener('load', () => {
+        iframe.contentWindow.addEventListener('click', () => {
+          sidebar.classList.add('translate-x-full');
+        });
+      });
+    });
+
+
+
+    function resizeIframe(iframe) {
+      iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+    }
   </script>
 
   <script type="module" src="../main.js"></script>
