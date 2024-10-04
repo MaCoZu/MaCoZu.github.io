@@ -10,19 +10,10 @@
   <link rel="icon" href="img/logo/logo_weiß.svg" type="image/x-icon" />
 
   <style>
-    /* .filter-icon { filter: none; } */
-    .filter-icon {
-      /* Dark mode: Adjust the icon to match rgb(229, 231, 235) */
-      filter: invert(86%) sepia(4%) saturate(0%) hue-rotate(210deg) brightness(98%) contrast(89%);
-    }
-
-    #logo {
-      filter: invert(100%)
-    }
-
-    #logo2 {
-      filter: invert(100%)
-    }
+    /* Apply smooth scrolling behavior */
+    /* .smooth-scroll {
+            scroll-behavior: smooth;
+        } */
 
     [x-cloak] {
       display: none !important;
@@ -66,9 +57,17 @@
     .font-signika {
       font-family: 'Signika', sans-serif;
     }
+
+    /* New styles for sticky navbar */
+    .sticky-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
   </style>
 
-  <!-- css  -->
   <script type="module" crossorigin src="./assets/index.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index.css">
 
@@ -92,40 +91,71 @@
 
 <body class="font-pop bg-white mx-auto md:mx-20 px-6 md:px-0 text-gray-700 dark:bg-gray-900 dark:text-gray-200">
 
-  <!-- navbar -->
-  <nav x-data="{ isOpen: false }" class="relative ">
-    <div class="container mt-8 md:mt-8  md:flex md:justify-between md:items-center">
-      <div class="flex items-center justify-between w-full">
+  <!-- new nav bar  -->
+  <nav x-data="{ isOpen: false, showSearch: false }"
+    class="sticky-nav sticky md:relative top-0 left-0 right-0 dark:bg-gray-900 dark:text-gray-200 z-50"
+    @click.away="isOpen = false">
+    <div class="container px-4 py-2 md:py-3 mx-auto">
+      <div class="flex items-center justify-between">
         <!-- Logo -->
         <a href="index.html" class="flex items-center">
           <img id="logo" class="h-8 sm:h-8 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="logo">
         </a>
-
-        <!-- Menu Button (Right Aligned) -->
-        <button @click="isOpen = !isOpen" class="flex md:hidden focus:outline-none ml-auto">
-          <div class="w-6 h-6 relative">
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button @click="isOpen = !isOpen"
+            class="p-2 text-gray-400 rounded-md hover:text-indigo-500 focus:outline-none focus:text-gray-200"
+            aria-label="toggle menu">
             <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
             <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
+          </button>
+        </div>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex md:items-center">
+          <div class="flex flex-row md:mx-6">
+            <a class="text-sm font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="index.html">Home</a>
+            <a class="text-sm font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="impressum.html">Impressum</a>
           </div>
-        </button>
-
-        <!-- Desktop Menu (Right Aligned) -->
-        <div class="hidden md:flex ml-auto items-center">
-          <ul class="md:flex gap-8 text-sm tracking-tight ">
-            <div><a class="hover:text-indigo-400 mr-4" href="index.html">Home</a></div>
-            <!-- <div><a class="hover:text-indigo-400 mr-4" href="">Contact</a></div> -->
-            <div><a class="hover:text-indigo-400 mr-4" href="impressum.html">Impressum</a></div>
-          </ul>
         </div>
       </div>
 
+      <!-- Mobile Menu (Dropdown) -->
+      <div x-show="isOpen"
+        class="absolute right-0 mt-2 py-2 w-56 dark:bg-gray-800 dark:text-gray-200 rounded-md shadow-xl z-20"
+        x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform scale-90"
+        x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100 transform scale-100"
+        x-transition:leave-end="opacity-0 transform scale-90">
 
+        <a href="#intro" class="block px-4 py-1 text-sm text-gray-200 hover:text-indigo-500">Introduction</a>
+        <a href="#terminology" class="block px-4 py-1 text-sm text-gray-200 hover:text-indigo-500">Terminology</a>
+        <a href="#scatterplot" class="block px-4 py-1 text-sm text-gray-200 hover:text-indigo-500">The Scatterplot</a>
+        <a href="#spread" class="block px-4 py-1 text-sm text-gray-200 hover:text-indigo-500">Spread</a>
+        <a href="#averages" class="block px-4 py-1 text-sm text-gray-200 hover:text-indigo-500">Averages</a>
+        <a href="#goa" class="block px-4 py-1 text-sm text-gray-200 hover:text-indigo-500">Point &amp; Graph of
+          Averages</a>
+        <a href="#sdline" class="block px-4 py-1 text-sm text-gray-200 hover:text-indigo-500">Standard Deviation
+          Line</a>
+        <a href="#correlation" class="block px-4 py-1 text-sm text-gray-200 hover:text-indigo-500">Pearson's
+          Correlation</a>
+        <a href="#regression_method" class="block px-4 py-1 text-sm text-gray-200 hover:text-indigo-500">Regression
+          Method</a>
+        <a href="#OLS" class="block px-4 py-1 text-sm text-gray-200 hover:text-indigo-500">Method of Least Squares</a>
+        <a href="#interpretation" class="block px-4 py-1 text-sm text-gray-200 hover:text-indigo-500">Interpretation</a>
+        <a href="#summary" class="block px-4 py-1 text-sm text-gray-200 hover:text-indigo-500">Summary</a>
+        <a href="#sources" class="block px-4 py-1 text-sm text-gray-200 hover:text-indigo-500">Sources</a>
+
+        <hr class="my-2 mx-auto w-40 self-center solid z-40">
+
+        <a href="index.html" class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">Home</a>
+        <a href="impressum.html" class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">Impressum</a>
+      </div>
     </div>
   </nav>
 
@@ -164,7 +194,7 @@
   </aside>
 
   <!-- drawer  -->
-  <div class="flex z-50">
+  <div class="hidden md:flex z-50">
     <div id="drawer-toggle"
       class="fixed z-30 top-1/2 right-0 inline-block p-2 transition-all duration-200 rounded-lg cursor-pointer">
       <svg class="w-10 h-10 md:w-full md:h-full dark:text-white" width="50" height="100" viewBox="0 0 50 100"
@@ -212,9 +242,9 @@
   </div>
 
   <!-- Main content -->
-  <main class="flex justify-center items-center min-h-screen my-20">
+  <main class="flex justify-center items-center min-h-screen my-20 px-0">
     <article id="article"
-      class="w-5/6 px-1 font-literata md:w-1/2 max-w-full prose md:prose-xl prose-stone text-pretty leading-10 dark:prose-invert">
+      class="w-5/6 font-literata md:w-1/2 max-w-full prose md:prose-xl prose-stone text-pretty leading-10 dark:prose-invert">
 
       <!-- title  -->
       <h1 class="text-left leading-snug">From Scatterplot to Regression Line</h1>
@@ -242,7 +272,7 @@
             </ul>
           </div>
         </div>
-        <h2 id="intro">Intro</h2>
+        <h2 id="intro" class="scroll-mt-16 md:scroll-mt-10">Intro</h2>
         <p>Techniques of inference or prediction have become an integral part of modern life, from weather forecasting,
           traffic management systems, economic projections and the constant monitoring of smart devices, statistics is
           not just observing our behavior it’s driving it. I think its a good idea to have some understanding of the
@@ -255,7 +285,7 @@
 
       <!-- terminology  -->
       <section>
-        <h2 id="terminology">Terminology</h2>
+        <h2 id="terminology" class="scroll-mt-16 md:scroll-mt-10">Terminology</h2>
         <p>Mathematics is a language in itself, it may be precise but not always unambiguous. So let’s clarify some
           terms first.</p>
         <p>Regression is a branch of <strong>statistical inference</strong>, which refers to the process of drawing
@@ -370,7 +400,7 @@
 
       <!-- scatterplot  -->
       <section>
-        <h2 id="scatterplot">The Scatterplot</h2>
+        <h2 id="scatterplot" class="scroll-mt-16 md:scroll-mt-10">The Scatterplot</h2>
         <p>In the beginning there was the scatterplot. When Sir Francis Galton (1822 – 1911) plotted the height of
           parents against the height of their adult children, he noticed the tendency for tall parents to have tall
           children, but the children were not as tall, on average, as their parents. The same was true for short
@@ -409,7 +439,7 @@
 
       <!-- spread  -->
       <section>
-        <h2 id="spread">Spread</h2>
+        <h2 id="spread" class="scroll-mt-16 md:scroll-mt-10">Spread</h2>
         <p>Spread is a measure of variability of the observations around the center, usually the arithmetic mean.</p>
         <p>The simplest measure of spread is the <strong>range</strong>, which is the largest measurement minus the
           smallest. With the range we know which numbers we’re talking about, but we get no sense of what is going on
@@ -427,7 +457,7 @@
 
       <!-- averages  -->
       <section>
-        <h2 id="averages">Averages</h2>
+        <h2 id="averages" class="scroll-mt-16 md:scroll-mt-10">Averages</h2>
         <p>I have suggested the (arithmetic) mean as the point around which our data is spread. But there
           are other "measures of central tendency" to identify the center of a sample. </p>
         <p>For example, the <strong>mode</strong>, which is the most frequent value, or the
@@ -459,7 +489,7 @@
 
       <!-- point & graph of averages  -->
       <section>
-        <h2 id="goa">Point &amp; Graph of Averages</h2>
+        <h2 id="goa" class="scroll-mt-16 md:scroll-mt-10">Point &amp; Graph of Averages</h2>
         <p>In regression we’re interested in the joint behavior of two and more variables. In the case of
           two variables we want to know how the explanatory variable $x$ describes the response $y$, or at
           least we try to find out if there is a meaningful relationship between them. </p>
@@ -517,7 +547,7 @@
 
       <!-- sd line  -->
       <section>
-        <h2 id="sdline">Standard Deviation Line</h2>
+        <h2 id="sdline" class="scroll-mt-16 md:scroll-mt-10">Standard Deviation Line</h2>
         <p>Now we have the pieces to construct a first functional description of the data. With the point of
           averages, indicating the center of the data points and the standard deviations $s_{x}$ and $s_y$
           of both dimensions, we’re able to construct a linear relationship between the two variables,
@@ -549,7 +579,7 @@
 
       <!-- correlation  -->
       <section>
-        <h2 id="correlation">Pearson's Correlation</h2>
+        <h2 id="correlation" class="scroll-mt-16 md:scroll-mt-10">Pearson's Correlation</h2>
         <p>Pearson's correlation coefficient, assists the SD-Line with a direction of the relationship and
           it does so by examining the joint behavior of the variables at the level of individual data
           points. </p>
@@ -634,7 +664,7 @@
 
       <!-- regression method  -->
       <section>
-        <h2 id="regression_method">Regression Method</h2>
+        <h2 id="regression_method" class="scroll-mt-16 md:scroll-mt-10">Regression Method</h2>
         <p>By adjusting the slope of the SD Line with the correlation coefficient we obtain the correct
           slope of the regression line.<br />
           $$r*\frac{s_y}{s_{x}}$$<br />
@@ -680,7 +710,7 @@
 
       <!-- OLS  -->
       <section>
-        <h2 id="OLS">Method of Least Squares</h2>
+        <h2 id="OLS" class="scroll-mt-16 md:scroll-mt-10">Method of Least Squares</h2>
         <p>This method approaches the problem directly by minimizing the errors $(y_i -\hat{y}_i)$. The method
           is best
           illustrated graphically. In the figure below we see the same dataset twice with different
@@ -785,7 +815,7 @@
 
       <!-- Interpretation -->
       <section>
-        <h2 id="interpretation">Interpretation</h2>
+        <h2 id="interpretation" class="scroll-mt-16 md:scroll-mt-10">Interpretation</h2>
         <p>Interpreting the estimated parameters depends on the units of our variables. If we are inferring
           weight (pounds) from height (inches), we would say for every one-inch increase in height our
           model suggests a weight increases by $\beta_1$ pounds. </p>
@@ -817,7 +847,7 @@
 
       <!-- summary  -->
       <section>
-        <h2 id="summary">Summary</h2>
+        <h2 id="summary" class="scroll-mt-16 md:scroll-mt-10">Summary</h2>
         <p>We have all our pieces together for a regression model that is ready to predict an event by
           providing the model with an input. Let’s recapture the essentials. </p>
         <ul>
@@ -844,7 +874,7 @@
 
       <!-- sources  -->
       <section class="tracking-tight leading-7">
-        <h2 id="sources">Sources</h2>
+        <h2 id="sources" class="scroll-mt-16 md:scroll-mt-10">Sources</h2>
         <p>McClave, J. T., Benson, P. G., &amp; Sincich, T. (2018). <em>Statistics for business and
             economics</em> (Thirteenth edition, global edition). Pearson.</p>
         <p>Freedman, D., Pisani, R., &amp; Purves, R. (2007). <em>Statistics</em> (International student
@@ -869,7 +899,7 @@
             <div class="flex justify-between items-center">
               <div class="flex gap-3 items-center">
                 <a>
-                  <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="logo2">
+                  <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="">
                 </a>
                 <div class="">
                   <p
@@ -889,41 +919,37 @@
         <div class="flex flex-col sm:flex-row sm:gap-24 justify-between">
 
           <!-- CONTACT ME -->
-          <div class="py-2 md:py-0 flex-1">
-            <div class="text-sm uppercase font-medium">Contact Me</div>
-            <div class="flex items-center gap-3 my-2">
-              <img src="img/icons/envelope-solid.svg" class="w-5 h-5 filter-icon" id="envelope" />
-              <a class="hover:text-indigo-400 dark:hover:text-sky-300" id="mlink" href="#mlink">Email</a>
-            </div>
+          <div class="py-3 md:py-0 flex-1">
+            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
+            <a id="mlink" class="flex items-center gap-3 my-3 hover:text-indigo-400 dark:hover:text-sky-300"
+              href="#">Email</a>
           </div>
 
-
           <!-- WORK -->
-          <div class="py-2 md:py-0 flex-1">
-            <div class="text-sm uppercase font-medium">Work</div>
-
-            <p class="mt-2 flex items-center">
-            <div class="flex items-center gap-3" aria-label="LinkedIn">
-              <img src="img/icons/linkedin.svg" class="w-5 h-5 filter-icon" id="linkedin">
-              <a href="https://www.linkedin.com/in/marcozausch"
-                class="hover:text-indigo-400 dark:hover:text-sky-300">LinkedIn</a>
-            </div>
+          <div class="py-3 md:py-0 flex-1">
+            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
+            <p class="my-3 flex items-center gap-3">
+              <a href="https://www.linkedin.com/in/marcozausch" aria-label="LinkedIn">
+                <span
+                  class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
+              </a>
+              <a class="block hover:text-indigo-400 dark:hover:text-sky-300"
+                href="https://www.linkedin.com/in/marcozausch">LinkedIn</a>
             </p>
-
-            <p class="mt-2 flex items-center">
-            <div class="flex items-center gap-3" aria-label="github">
-              <img src="img/icons/github.svg" class="w-5 h-5 filter-icon" id="github">
-              <a href="https://github.com/MaCoZu" class="hover:text-indigo-400 dark:hover:text-sky-300"
-                aria-label="Github">Github</a>
-            </div>
+            <p class="my-3 flex items-center gap-3">
+              <a href="https://github.com/MaCoZu" aria-label="Github">
+                <span
+                  class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
+              </a>
+              <a class="block hover:text-indigo-400 dark:hover:text-sky-300" href="https://github.com/MaCoZu">Github</a>
             </p>
           </div>
 
           <!-- LEGAL -->
-          <div class="py-2 md:py-0 flex-1">
+          <div class="py-3 md:py-0 flex-1">
             <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400">Legal</div>
-            <a class="my-2 block hover:text-indigo-400 dark:hover:text-sky-300" href="./impressum.html">Impressum</a>
-            <a class="my-2 block hover:text-indigo-400 dark:hover:text-sky-300" href="./privacypolicy.html">Privacy
+            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./impressum.html">Impressum</a>
+            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./privacypolicy.html">Privacy
               Policy</a>
           </div>
         </div>
