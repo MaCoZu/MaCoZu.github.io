@@ -286,76 +286,84 @@
       <!-- terminology  -->
       <section>
         <h2 id="terminology" class="scroll-mt-16 md:scroll-mt-10">Terminology</h2>
-        <p>Mathematics is a language in itself, it may be precise but not always unambiguous. So let’s clarify some
-          terms first.</p>
-        <p>Regression is a branch of <strong>statistical inference</strong>, which refers to the process of drawing
-          conclusions about a population based on a sample of that population. Linear regression is a
-          <strong>frequentist inference</strong> method based on the frequency of events in repeated experiments.
-        </p>
-        <p>Frequentism can be contrasted with <strong>theoretical probability</strong> – that is purely mathematical
-          like the probability of getting tails when flipping a coin – or <strong>Bayesianism</strong> which
-          incorporates subjective beliefs about the probability of an event and updates prior beliefs with observed
-          data.</p>
-        <p><strong>Prediction</strong> is often used interchangeably with <strong>forecast</strong>, but the words have
-          different meanings in certain fields. Forecast specifically refers to future events while predictions can be
-          about past, present, or future events. And then there is different interpretations of theses terms. For
-          example in seismology a prediction of an earthquake specifies some exact future time and place, whereas a
-          forecast is more vague and only states the likelihood of an earthquake in a certain region over a certain
-          period of time. In demography and climate science, the term <strong>projection</strong>, refers to a future
-          development under certain conditions (<strong>scenario</strong>). </p>
-        <p>I will use the term prediction throughout the text, since we’re not concern with the future for now.
-          Furthermore, simple regression is not apt to look far in the future, this may require complex factors like
-          seasonality, trends, and external variables. Thus, with simple regression it is generally a good idea to stay
-          close to your observed data beyond which predictions quickly looses their significance.</p>
-        <p><strong>Simple regression</strong> describes the relationship between an <em>independent</em> (explanatory)
-          variable and a single <em>dependent variable</em> (response). The relationship is (often) assumed to be
-          linear, and the equation of a <em>simple linear regression</em> is: $$y=β_0+β_1x+ε \tag{1}$$<br />
-          Where: <br />
-          $y=$ response, the quantity to be estimated or modeled.<br />
-          $x=$ explanatory variable, the known input to the model, used as a predictor of $y$.<br />
-          $\beta_0$ (beta zero) $=$ $y$-<strong>intercept</strong> of the line, that is, the point at which the line
-          intercepts or cuts through the $y$-axis<br />
-          $\beta_1$ (beta one) = <strong>Slope</strong> of the line, i.e. the change (amount of increase or decrease) of
-          $y$ for every unit increase in $x$.<br />
-          $\varepsilon=$ Random error component, adds an allowance for error in the prediction.</p>
-        <p>By the end of this text, we'll arrive at an equation that has little hats on some symbols, indicating that
-          the symbols below them are <strong>estimates</strong> of the underlying but unknown parameters. The population
-          parameters thereby become so-called <strong>sample statistics</strong>.<br />
-          $$\hat{y}=\hat\beta_0+\hat\beta_{1}x \tag{2}$$ In this equation, the error term $ε$ is missing, because by
-          finding the estimates of the parameters from equation $(1)$ we specifically minimized the errors, so that the
-          sum of errors becomes zero $\sum ε_i =0$. But estimators are not the real population parameters and the
-          remaining uncertainty is signified by little hats above our sample statistics ($\hat\beta_0, \hat\beta_{1})$.
-        </p>
-        <p><strong>Multiple linear regression</strong> extends simple regression to include many explanatory variables
-          and aims to estimate the linear relationship between these predictors and a single response.<br />
-          $$y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_kx_k + ε$$</p>
-        <p>There are many synonyms for the independent and dependent variables. I have introduced you to
-          <strong>explanatory and response variable</strong>, which I find most expressive because the explanatory
-          variable <em>explains</em> how the other variable <em>responds</em>. Also, the e$x$planatory has the symbol
-          $x$ in it, which denotes its variables in the formula.
-        </p>
-        <p>The explanatory and response variables are <strong>characteristics</strong> of
-          <strong>observational units</strong> (person, thing, transaction, or event), that we measured,
-          observed or polled from a <strong>sample</strong> (subset) of a <strong>population</strong>
-          (entirety of observational units of interest).
-        </p>
-        <p>In statistics we're almost always dealing with a sample because we rarely get information from
-          the entire population. <strong>Inferring</strong> something from the known (sample) about the
-          unknown (the rest of the population) is the main reason for doing statistics in the first place.
-        </p>
-        <p>Since we’re working with samples, we arrive at <strong>sample “statistics”</strong> which are approximations
-          of the true but unknown <strong>population “parameters”</strong>. Sample statistics are often computed by
-          dividing them by $(n-1)$ instead of just dividing by $n$. For example the <em>unbiased</em> sample variance is
-          calculated with:<br />
-          $$s^{2}= \frac{1}{n-1}\sum\limits_{i=1}(x_i-\bar{x})$$<br />
-          Dividing sample statistics by $(n-1)$ is called <strong>Bessel's correction</strong>. The idea is that samples
-          of data seldom represent the whole spectrum of variability in the population, by dividing a little less the
-          variance becomes a bit bigger and hopefully more realistic.</p>
+        <!-- directives:[] -->
+        <div id="content">
+          <p>Mathematics is a language in itself, it may be precise but not always unambiguous. So let’s clarify some
+            terms first.</p>
+          <p>Regression is a branch of <strong>statistical inference</strong>, which refers to the process of drawing
+            conclusions about a population based on a sample of that population. Linear regression is a
+            <strong>frequentist inference</strong> method, that means we’re inferring something from counting the
+            occurrence of past events or in repeated experiments.
+          </p>
+          <p>Frequentists methods or Frequentism can be contrasted with <strong>theoretical probability</strong>, which
+            is the mathematical probability that our knowledge of the physical world suggests as logical. For example,
+            getting tails, when flipping a fair coin, has the theoretical probaility of $0.5$ . Another view on
+            probability is <strong>Bayesianism</strong>, which incorporates subjective beliefs about an event and
+            updates a prior belief (probability) in light of the observed evidence into a posterior probability.</p>
+          <p><strong>Prediction</strong> is often used interchangeably with <strong>forecast</strong>, but the terms
+            have different meanings in certain fields. Forecast specifically refer to future events while predictions
+            can be about past, present, or future events. There’s still different interpretations of predictions and
+            forecasts. For example in seismology a prediction of an earthquake specifies some exact future time and
+            place, whereas a forecast is more vague and only states the likelihood of an earthquake in a certain region
+            over a certain period of time. In demography and climate science, the term <strong>projection</strong>,
+            refers to a future development in specified <strong>scenario</strong>. </p>
+          <p>I will use the term prediction throughout the text, since we’re not concerned with the future for now.
+            Besides, simple regression is not apt to look too far in the future. Forecasting often requires complex
+            factors like seasonality, trends, and external variables. In general with simple regression, it is a good
+            idea to stay close to the observed data, beyond which predictions quickly loose their meaningfulness. </p>
+          <p><strong>Simple regression</strong> describes the relationship between an <em>independent</em> (explanatory)
+            variable and a single <em>dependent variable</em> (response). In the simple case the relationship is assumed
+            to be linear, and the equation of a <em>simple linear regression</em> is: $$y=β_0+β_1x+ε \tag{1}$$
+            Where: <br />
+            $y$: <em>response</em> is the quantity to be estimated or “modeled”.<br />
+            $x$: <em>explanatory</em> variable is the known input to the model, used to explain $y$.<br />
+            $\beta_0$ (<em>beta zero</em>): $y$-<strong>intercept</strong>, that is, the point at which the regression
+            line intercepts or cuts through the $y$-axis<br />
+            $\beta_1$ (<em>beta one</em>): <em>Slope</em> of the line, i.e. the change (amount of increase or decrease)
+            of $y$ for every unit increase in $x$.<br />
+            $\varepsilon$: Random error component. The difference between the usually unknown true value from the
+            population and the predicted value $\varepsilon=y - \hat{y}$ </p>
+          <p>There are many synonyms for the independent and dependent variables. I have introduced you to
+            <strong>explanatory and response variable</strong>, which I find most expressive because the explanatory
+            variable <em>explains</em> how the other variable <em>responds</em>. Also, “e$x$planatory” has the symbol
+            $x$ in it, which denotes its variables in the formula.
+          </p>
+          <p>The explanatory and response variables are <strong>characteristics</strong> of <strong>observational
+              units</strong> (person, thing, transaction, or event), that we measured, observed or polled from a
+            <strong>sample</strong> (subset) of a <strong>population</strong> (entirety of observational units of
+            interest).
+          </p>
+          <p>In statistics we're almost always dealing with a sample because we rarely have information about the
+            entire population. <strong>Inferring</strong> something from the known (sample) about the unknown rest (of
+            the population) is the reason for doing statistics in the first place.</p>
+          <p>Since we’re working with samples, we arrive at <strong>“sample statistics”</strong> which are
+            approximations of the true but unknown <strong>“population parameters”</strong>. Sample statistics are
+            often computed by dividing them by $(n-1)$ instead of just dividing by $n$. For example the sample
+            variance is calculated with:</p>
+          $$s^{2}= \frac{1}{n-1}\sum\limits_{i=1}(x_i-\bar{x})^2$$
+          <p>Dividing sample statistics by $(\it{n-1})$ is called <strong>Bessel's correction</strong>. The idea is
+            that samples of data seldom represent the whole spectrum of variability in the whole population, by
+            dividing the sample variance with a little less then $n$ it becomes a bit bigger and hopefully more
+            realistic or <em>unbiased</em> as it is usually called.</p>
+          <p>By the end of this text, we'll arrive at an equation that has little <strong>hats</strong> on some
+            symbols, indicating that the symbols below them are sample statistics and mere <strong>estimates</strong>
+            of the underlying but unknown population parameters.$$\hat{y}=\hat\beta_0+\hat\beta_{1}x \tag{2}$$ You may
+            ask were the error term $ε$ from equation $(1)$ has gone in equation $(2)$. In short the method of finding
+            estimates rests on minimizing the error, which is to say that we create a function for a line that best
+            fits the observations. But the error is still present, it just dissolved in the uncertainty in our sample
+            statistics (approximations of the real parameters) and that’s what the little hats stand for. </p>
 
-        <p><strong>Sampling aka. Data collection</strong> is of utmost importance for statistics and most of what’s
-          wrong with statistics comes from error-prone data collection. A good representative sample should give any
-          characteristic in a population or any strata of society an equal change of inclusion in the sample by
-          randomized selection and avoiding bias. Which for many reasons is often not realized. </p>
+          <p><strong>Multiple linear regression</strong> extends simple regression to include many explanatory variables
+            and aims to estimate the linear relationship between these predictors and a single response.<br />
+            $$y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_kx_k + ε$$
+            Complex regressions are of course more interesting but the interaction between and the
+            behavior the terms can become confusing. Thus its recommended to have a good grasp of the basics which are
+            better learned on the simple case.</p>
+          <p><strong>Sampling aka. Data collection</strong> is of utmost importance for statistics and most of what’s
+            wrong with statistics comes from error-prone data collection. A good representative sample should give any
+            characteristic in a population or any strata of society an equal change of inclusion in the sample by
+            randomized selection and avoiding bias. Which for many reasons is often not realized. </p>
+        </div>
         <p>Infamous examples of biased selection include:</p>
         <ul>
           <li>Surveying only Western college students known as <strong>WEIRD</strong> (<strong>W</strong>estern,
@@ -371,31 +379,32 @@
             worldviews and cultures, or worse, <a href="https://en.wikipedia.org/wiki/Manufacturing_Consent">pandering
               to particular ideologies</a>, aka <em>media bias</em>. </li>
         </ul>
-        <p>Terminology can get messy when we talk about machine learning, as old concepts get new names to
-          better fit the context. Here are the main vocabulary shifts between statistics and machine
-          learning. </p>
-        <ul>
-          <li>A sample becomes a <strong>dataset</strong>.</li>
-          <li>Explanatory (independent) variables ($x$) become <strong>features</strong>. </li>
-          <li>Predictor (dependent) variable ($y$) becomes <strong>target variable</strong> or
-            <strong>label</strong>.
-          </li>
-        </ul>
-        <p><strong>After we have built a model</strong> and put it into practice, we feed an
-          <strong>input</strong> $x$ to the model and expect an <strong>output</strong> – an estimate of $y$ –
-          denoted by
-          $\hat{y}$.
-        </p>
-        <p>To evaluate the quality of the model, we can compare the estimate $\hat{y}$ with the <strong>true
-            label</strong> $y$. The difference between the true label and the output is called the
-          <strong>error</strong>.
-        </p>
-        <p>$$error=(y-\hat{y})$$</p>
-        <p>Similar but not to be confused with the errors are <strong>deviations</strong>. A deviation is
-          the difference between an observed value and a measure of central tendency (such as the mean or
-          median). Deviations are typically used to understand the <strong>variability</strong> within a
-          dataset.</p>
-        <p>$$deviation=(y-\bar{y})$$ Now we’re good to go.</p>
+        <!-- directives:[] -->
+        <div id="content">
+          <p>Terminology can get messy when we talk about machine learning, as old concepts get new names to better fit
+            the context. Here are the main vocabulary shifts between statistics and machine learning. </p>
+          <ul>
+            <li>A sample becomes a <strong>dataset</strong>.</li>
+            <li>Explanatory (independent) variables $(x)$ become <strong>features</strong>. </li>
+            <li>Predictor (dependent) variable $(y)$ becomes <strong>target variable</strong> or <strong>label</strong>.
+            </li>
+            <li>Datasets are divided into training and test sets. <br />
+              To build a model on the training set and the evaluate it on the test set.</li>
+          </ul>
+          <p><strong>After we have built a model</strong> and put it into practice, we feed an <strong>input</strong>
+            $x$ to the model and expect an output – an estimate of $y$ denoted by $\hat{y}$.</p>
+          <p>To evaluate the quality of the model, we can take an $x$ from the test set and compare the models estimate
+            $\hat{y}$ with the <strong>observed label</strong> $y$, from the test set. $$residual=(y_{obs}-\hat{y})$$In
+            machine learning difference between the observed label and the estimate is often called
+            <strong>error</strong>. Which leads to confusion because the error is a theoretical discrepancy between the
+            true and unknown label and the models prediction. In statistical textbooks $(y_{obs}-\hat{y})$ is correctly
+            called an <em>residual</em> while in machine learning literature this is called error throughout.
+          </p>
+          <p>Similar but not to be confused with the residuals are <strong>deviations</strong>. A deviation is the
+            difference between an observed value and a measure of central tendency (such as the mean or median).
+            Deviations are typically used to understand the <strong>variability</strong> within a dataset.<br />
+            $$deviation=(y-\bar{y})$$ Now we’re good to go.</p>
+        </div>
       </section>
 
       <!-- scatterplot  -->
