@@ -5,16 +5,40 @@
   <meta charset="UTF-8" />
   <title>Logistic Growth Model</title>
   <script src="./d3.v7.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
+    /* Chrome, Safari, Edge, Opera */
+    input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
     body {
-      font-family: Arial, sans-serif;
-    }
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #ffffff;
+            color: #333333;
+        }
 
     @media (prefers-color-scheme: dark) {
       body {
         background-color: rgb(17 24 39);
         color: rgb(229 231 235);
       }
+
+      text {
+                fill: #fff;
+            }
 
       .axis-label {
         fill: #fff;
@@ -83,8 +107,8 @@
   <svg id="logistic-growth-graph"></svg>
 
   <!-- Sliders for parameters -->
-  <div class="sliders-container">
-    <div class="slider-column items-center">
+  <div class="sliders-container gap-x-14">
+    <div class="slider-column items-center ">
       <div class="slider">
         <label>Initial Population (N_0): <span id="initial-pop-label">10</span></label>
         <input type="range" id="initial-pop" min="1" max="100" value="10" step="1" />
@@ -110,8 +134,8 @@
   </div>
 
 
-  <script>
-   const margin = {top: 40, right: 30, bottom: 80, left: 60};
+<script>
+const margin = {top: 40, right: 30, bottom: 80, left: 60};
 let width = 700 - margin.left - margin.right;
 let height = 500 - margin.top - margin.bottom;
 
@@ -146,6 +170,36 @@ const growthLine = d3
 // Color for population and growth
 const colorPopulation = "steelblue";
 const colorGrowth = "tomato";
+
+// Legend setup
+const legend = svg.append("g")
+    .attr("class", "legend")
+    .attr("transform", `translate(${width - 250}, ${100})`); // Adjust position as needed
+
+// Data for legend with line styles
+const legendData = [
+    { label: "Population", color: colorPopulation, style: "solid" },
+    { label: "Growth Rate", color: colorGrowth, style: "dashed" }
+];
+
+// Add legend items with matching line styles
+legendData.forEach((item, i) => {
+    legend.append("line")
+        .attr("x1", 0)
+        .attr("y1", i * 20 + 5)  // Center the line vertically for each item
+        .attr("x2", 30)
+        .attr("y2", i * 20 + 5)
+        .attr("stroke", item.color)
+        .attr("stroke-width", 2)
+        .style("stroke-dasharray", item.style === "dashed" ? "5,5" : "0"); // Apply dashed style if specified
+
+    legend.append("text")
+        .attr("x", 40)
+        .attr("y", i * 20 + 8)
+        .text(item.label)
+        .style("font-size", "14px")
+        .attr("alignment-center", "middle");
+});
 
 // Initial slider values
 let N_0 = 10, K = 100, R = 0.1, iterations = 50;
