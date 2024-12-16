@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="./img/logo/logo_weiß.svg" type="image/x-icon" />
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        /* MENU */
+        .font-pop {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* TEXT */
+        .font-literata {
+            font-family: 'Literata', serif;
+        }
+
+        /* HIGHLIGHT  */
+        .font-bebas {
+            font-family: 'Bebas', sans-serif;
+        }
+
+        /* HIGHLIGHT  */
+        .font-ledger {
+            font-family: 'Ledger', sans-serif;
+        }
+
+        /* HIGHLIGHT  */
+        .font-signika {
+            font-family: 'Signika', sans-serif;
+        }
+
+        .font-lora {
+            font-family: 'Lora', sans-serif;
+        }
+    </style>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../font.css">
+
+    <!-- css  -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- mathjax  -->
+    <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                    messageStyle: "normal",
+                    tex2jax: {
+                        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                        processEscapes: true
+                        }
+                    });
+              </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+
+    <link rel="stylesheet" href="">
+    <title>Zausch Writing</title>
+</head>
+
+
+
+<body class="font-pop mx-auto md:mx-20 bg-white dark:bg-gray-900  text-gray-700 dark:text-gray-200 ">
+
+
+    <!-- NAV BAR -->
+    <nav x-data="{ isOpen: false, showSearch: false }"
+        class="sticky md:relative top-0 left-0 right-0 dark:bg-gray-900 dark:text-gray-200 z-50"
+        @click.away="isOpen = false">
+        <div class="container px-4 py-2 md:py-3 mx-auto">
+            <div class="flex items-center justify-between">
+
+                <!-- LOGO -->
+                <a href="index.html" class="flex items-center">
+                    <img id="logo" class="h-8 sm:h-8 fill-current dark:filter-white" src="./img/logo/logo.svg"
+                        alt="logo">
+                </a>
+
+                <!-- MOBILE MENU -->
+                <div class="md:hidden">
+                    <button @click="isOpen = !isOpen"
+                        class="p-2 text-gray-400 rounded-md hover:text-indigo-500 focus:outline-none focus:text-gray-200"
+                        aria-label="toggle menu">
+                        <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- DESKTOP MENU -->
+                <div class="hidden md:flex md:items-center">
+                    <div class="flex flex-row md:mx-6">
+                        <a class="text-sm font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="index.html">Home</a>
+                        <a class="text-sm font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+                            href="index.html">Writing</a>
+                        <a class="text-sm font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+                            href="impressum.html">Impressum</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Menu (Dropdown) -->
+            <div x-show="isOpen"
+                class="absolute right-0 mt-2 py-2 w-48 dark:bg-gray-800 dark:text-gray-200 rounded-md shadow-xl z-20"
+                x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 transform scale-90"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                x-transition:leave="transition ease-in duration-200"
+                x-transition:leave-start="opacity-100 transform scale-100"
+                x-transition:leave-end="opacity-0 transform scale-90">
+                <a href="#charts" class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">Charts</a>
+                <a href="#wbc" class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">World Bank
+                    Commander</a>
+                <a href="#model-gallery" class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">Model
+                    Gallery</a>
+                <a href="#eu-election-dash" class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">EU
+                    Elections
+                    Dashboard</a>
+                <a href="#scatter-article" class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">Scatter
+                    to
+                    Line</a>
+
+                <hr class="my-2 mx-auto w-40 self-center solid">
+                <a href="index.html" class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">Home</a>
+                <a href="impressum.html"
+                    class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">Impressum</a>
+            </div>
+        </div>
+    </nav>
+    <div class="h-20"></div>
+
+
+    <main class="mx-4 md:mx-80">
+
+        <div class="max-w-full text-pretty">
+
+            <!-- MODEL GALLERY -->
+            <div class="container mx-auto py-10 font-lora text-xl w-full box-border">
+                <div class="">
+                    <a href="./model_gallery.html">
+                        <!-- Title -->
+                        <h1 class="text-2xl font-semibold font-pop pb-3">Model Gallery</h1>
+                    </a>
+
+                    <!-- Text Content -->
+                    <div class="items-start">
+                        <p class="text-pretty font-merri leading-8">
+                            A collection of short introductions to different models from the realm of AI, complexity
+                            science, economics etc. This was motivated by a nice course by Scott E. Page, the plan to
+                            develope my popular science writing skills and to learn JavaScript at the same time.
+                        </p>
+                        <p class="text-right font-pop text-lg pt-2 text-gray-500">Updated: August 2024</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Horizontal Ruler -->
+            <div class="flex justify-center my-5">
+                <hr class="w-1/2 border-gray-400">
+            </div>
+
+            <!-- Ingredients of Regression -->
+            <div class="container mx-auto py-10 font-lora text-xl w-full box-border">
+                <div class="">
+                    <a href="./TwitterAnalysis/01_tweet_times.html">
+                        <!-- Title -->
+                        <h1 class="text-2xl font-semibold font-pop pb-3">From Scatter to Line</h1>
+                    </a>
+
+                    <!-- Text Content -->
+                    <div class="items-start">
+                        <p class="text-pretty font-merri leading-8">
+                            I investigate the regression line a bit deeper and found a more intuitive way of describing
+                            the evolution of a line from scattered dots. Usually a regression line is calculated
+                            with minimizing errors. But the natural approach of working out a simple regression line
+                            from data points is to hang a standard deviation line on the point of averages ($\bar{x}$,
+                            $\bar{y}$)
+                            and adjust it with the correlation coefficient.
+                        </p>
+                        <p class="text-right font-pop text-lg pt-2 text-gray-500">March 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+
+
+    <!-- footer  -->
+    <hr class="mt-20 border-gray-200 dark:border-gray-700">
+    <footer class="bg-white dark:bg-gray-900">
+        <div class="container">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+
+                <div class="">
+                    <!-- Logo and Name  -->
+                    <div class="hidden sm:block">
+                        <div class="flex justify-between items-center">
+                            <div class="flex gap-3 items-center">
+                                <a>
+                                    <img id="logo2" class="h-16 fill-current dark:filter-white"
+                                        src="./img/logo/logo.svg" alt="">
+                                </a>
+                                <div class="">
+                                    <p
+                                        class="pb-3 text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                                        Marco</p>
+                                    <p
+                                        class="text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                                        Zausch</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:gap-24 justify-between">
+
+                    <!-- CONTACT ME -->
+                    <div class="py-3 md:py-0 flex-1">
+                        <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
+                        <a id="mlink" class="flex items-center gap-3 my-3 hover:text-indigo-400 dark:hover:text-sky-300"
+                            href="#">Email</a>
+                    </div>
+
+                    <!-- WORK -->
+                    <div class="py-3 md:py-0 flex-1">
+                        <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
+                        <p class="my-3 flex items-center gap-3">
+                            <a href="https://www.linkedin.com/in/marcozausch" aria-label="LinkedIn">
+                                <span
+                                    class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
+                            </a>
+                            <a class="block hover:text-indigo-400 dark:hover:text-sky-300"
+                                href="https://www.linkedin.com/in/marcozausch">LinkedIn</a>
+                        </p>
+                        <p class="my-3 flex items-center gap-3">
+                            <a href="https://github.com/MaCoZu" aria-label="Github">
+                                <span
+                                    class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
+                            </a>
+                            <a class="block hover:text-indigo-400 dark:hover:text-sky-300"
+                                href="https://github.com/MaCoZu">Github</a>
+                        </p>
+                    </div>
+
+                    <!-- LEGAL -->
+                    <div class="py-3 md:py-0 flex-1">
+                        <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400">Legal</div>
+                        <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300"
+                            href="./impressum.html">Impressum</a>
+                        <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300"
+                            href="./privacypolicy.html">Privacy
+                            Policy</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        /* 1. define variables */
+        var me = "marcozausch";
+        var place = "posteo.de";
+
+        /* 2. find email link to replace */
+        var elink = document.getElementById("mlink");
+
+        /* 3. replace link href with variables  */
+        elink.href = `mailto:${me}@${place}`;
+
+
+        const modalbg = document.getElementById('modal-bg');
+        const modalSwitch = document.getElementById('modal-switch');
+        const modalBox = document.getElementById('modal-box');
+        const modalClose = document.getElementById('modal-close');
+        modalbg.addEventListener("click", function () {
+            modalBox.classList.add('hidden')
+            modalbg.classList.add('hidden')
+        });
+        modalSwitch.addEventListener("click", function () {
+            modalBox.classList.remove('hidden')
+            modalbg.classList.remove('hidden')
+        });
+        modalClose.addEventListener("click", function () {
+            modalBox.classList.remove('hidden')
+            modalbg.classList.remove('hidden')
+        });
+    </script>
+
+
+
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="./script.js"></script>
+</body>
+
+</html>
+
+</html>

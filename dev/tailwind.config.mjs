@@ -8,10 +8,15 @@ export default {
     "./*.{html, js, cjs}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      filter: {
+        white: 'brightness(0) invert(1)', // Turns an SVG/image white
+      },
+    },
   },
   plugins: [
-    require('@tailwindcss/typography')
+    require('@tailwindcss/typography'),
+    require('tailwindcss-filters'),
   ],
 }
 

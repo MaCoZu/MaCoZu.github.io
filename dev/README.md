@@ -216,3 +216,28 @@ rename the dist/ folder from before into docs/ and copy it into the main branch 
 your page should be online shortly after under
 
 https://your_github_name.github.io
+
+
+# Troubleshoot
+
+## check node version
+`node -v`
+
+## install nvm -  a version manager for node.js
+```shell
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# upgrade to the latest stable version
+nvm install stable
+nvm use stable
+```
+
+## Reinstall npm globally
+
+```shell
+# If upgrading Node.js doesn't resolve the issue, try reinstalling npm globally.
+npm install -g npm
+````

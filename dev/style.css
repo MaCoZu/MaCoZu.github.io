@@ -20,6 +20,12 @@ div.vtext {
         invert(100%)
 }
 
+/* .filter-icon { filter: none; } */
+.filter-icon {
+    /* Dark mode: Adjust the icon to match rgb(229, 231, 235) */
+    filter: invert(86%) sepia(4%) saturate(0%) hue-rotate(210deg) brightness(98%) contrast(89%);
+}
+
 /* tool tip for font select  */
 #font-select:hover:before {
     /* Display the data-font attribute as the content */

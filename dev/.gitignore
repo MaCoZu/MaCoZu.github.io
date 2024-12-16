@@ -13,6 +13,7 @@ public/img/
 dist
 dist-ssr
 public/plots/d3/
+public/fonts/
 
 # pages 
 web_dubbois_stats.html

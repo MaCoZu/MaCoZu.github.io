@@ -54,6 +54,42 @@
   src:url(../fonts/Literata-SemiBold.ttf) format("truetype")
 }
 
+  /* lora-regular - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/lora-v32-latin-regular.woff2') format('woff2');
+  }
+
+/* lora-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./fonts/lora-v32-latin-700.woff2') format('woff2');
+}
+
+/* Chomsky */
+@font-face {
+  font-family: 'Chomsky';
+  src: url('./fonts/Chomsky.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bevan';
+  src: url('./fonts/Bevan.woff2') format('woff');
+}
+
+@font-face {
+  font-family: 'Work';
+  src: url('./fonts/WorkSans-Light.ttf') format('ttf');
+}
+
  /* EXTRA  */
 @font-face {
   font-family: 'Merriweather';
@@ -70,7 +106,6 @@
   font-style: normal;
   src: url('./fonts/Ledger-Regular.woff2') format('woff2');
 }
-
 
 /* Roboto */
 @font-face {

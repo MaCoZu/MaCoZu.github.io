@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="./img/logo/logo_weiß.svg" type="image/x-icon" />
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        /* MENU */
+        .font-pop {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* TEXT */
+        .font-literata {
+            font-family: 'Literata', serif;
+        }
+
+        /* HIGHLIGHT  */
+        .font-bebas {
+            font-family: 'Bebas', sans-serif;
+        }
+
+        /* HIGHLIGHT  */
+        .font-ledger {
+            font-family: 'Ledger', sans-serif;
+        }
+
+        /* HIGHLIGHT  */
+        .font-signika {
+            font-family: 'Signika', sans-serif;
+        }
+
+        .font-lora {
+            font-family: 'Lora', sans-serif;
+        }
+
+        .font-chomsky {
+            font-family: 'Chomsky', serif;
+        }
+
+        .font-bevan {
+            font-family: 'Bevan', serif;
+        }
+
+        .font-work {
+            font-family: 'Work', sans-serif;
+        }
+    </style>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../font.css">
+
+    <!-- css  -->
+    <link rel="stylesheet" href="../style.css">
+
+    <link rel="stylesheet" href="">
+    <title>Zausch Portfolio</title>
+</head>
+
+
+
+<body class="font-lora bg-white text-black ">
+
+
+    <!-- NAV BAR -->
+    <nav x-data="{ isOpen: false }" class="sticks md:relative top-0 left-0 right-0 border-b-2  z-50"
+        @click.away="isOpen = false">
+        <div class="container mx-auto py-2 md:py-1">
+            <!-- Navbar Grid -->
+            <div class="grid grid-cols-3 items-center md:mx-[10.5rem]">
+
+                <!-- LOGO -->
+                <a href="index.html" class="flex items-center">
+                    <img id="logo" class="h-6 sm:h-6" src="./img/logo/logo.svg" alt="logo">
+                </a>
+
+                <!-- THE PART TIME CRIMES -->
+                <h1 class="hidden md:block text-center col-start-2 font-chomsky md:text-[1.5rem] text-black ">
+                    The Part Time Crimes
+                </h1>
+
+                <h1
+                    class="md:hidden tracking-widest text-center col-start-2 font-chomsky text-[1.5rem] text-black dark:text-gray-200">
+                    PTC
+                </h1>
+
+                <!-- MOBILE MENU BUTTON -->
+                <div class="flex justify-end md:hidden">
+                    <button @click="isOpen = !isOpen"
+                        class="p-2 text-gray-500 rounded-md hover:text-indigo-500 focus:outline-none">
+                        <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- DESKTOP MENU -->
+                <div class="hidden md:flex justify-end col-start-3">
+                    <div class="flex space-x-6 font-work uppercase  text-[10px]">
+                        <a class="font-medium hover:text-indigo-700" href="index.html">Data</a>
+                        <a class="font-medium hover:text-indigo-700" href="overview_writing.html">Writing</a>
+                        <a class="font-medium hover:text-indigo-700" href="overview_writing.html">Design</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MOBILE MENU (Dropdown) -->
+            <div x-show="isOpen" x-transition class="mt-2 py-2 w-full rounded-md shadow-md bg-white">
+                <a href="#charts"
+                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-indigo-500">Data</a>
+                <a href="#wbc"
+                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-indigo-500">Writing</a>
+
+                <hr class="my-2 border-gray-300 dark:border-gray-700">
+                <a href="index.html"
+                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-indigo-500">Home</a>
+                <a href="impressum.html"
+                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-indigo-500">Impressum</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="mx-auto md:mx-[10.5rem]">
+        <div class="mt-[3.6rem]">
+            <h1 class="text-2xl md:text-[2.4rem] font-bevan font-semibold">World Noise</h1>
+        </div>
+
+        <!-- Photograhpy | Text | Illustration  -->
+        <div
+            class="mt-3 font-work text-[10px] uppercase tracking-wider justify-between md:justify-start 
+            border-t-[0.5px] border-t-gray-300 border-b-[2px] border-b-black ">
+            <div class="my-[0.2rem]">
+                <a class="hover:text-indigo-700" href="">Illustration</a>
+                <a class="mx-4 text-gray-400">|</a>
+                <a class="hover:text-indigo-700" href="">Photograhpy</a>
+                <a class="mx-4 text-gray-400">|</a>
+                <a class="hover:text-indigo-700" href="">Text</a>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-4 mt-6 divide-x-[1px] divide-gray-300">
+
+            <!-- column 1 -->
+            <div class="md:col-span-5 pr-0">
+                <img class="w-full md:object-contain" src="./img/NYE 2025.png" alt="imaginary gatherings">
+
+                <div class="mt-3 rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
+                    <div class="">
+
+                        <a href="./imaginary_people.html"
+                            class="font-lora block font-bold text-2xl mb-2 transition duration-300 ease-in-out">
+                            New Years's Eve in Wedding.</a>
+                        <p class="font-lora mt-2 text-[18px]">
+                            The loveliest Forro venue in Berlin will be ablaze in gold, dotted with glowing cheeks and
+                            sparkling eyes, this last night in 2024.
+                        </p>
+                    </div>
+                    <div class="mt-2 text-gray-500  font-work text-sm">
+                        Invitation made with BING IMAGE CREATOR and INKSCAPE.
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- column 2 -->
+            <div class="md:col-span-4 md:pl-4">
+                <div class="">
+                    <a href="#">
+                        <div class="h-40 bg-cover text-center overflow-hidden"
+                            style="background-image: url('https://api.time.com/wp-content/uploads/2020/07/president-trump-coronavirus-election.jpg?quality=85&amp;w=364&amp;h=204&amp;crop=1')"
+                            title="Woman holding a mug">
+                        </div>
+                    </a>
+                    <a href="noise_canceling.html"
+                        class="font-lora block font-bold text-2xl mt-3 mb-2 hover:text-indigo-600 dark:hover:text-gray-400 transition duration-300 ease-in-out">
+                        The Cultural Technique of Canceling Noise.</a>
+                    <p class="font-georgia mt-2">When noise becomes the culture, canceling is paramount.
+                    </p>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 md:pl-4">
+                <div class="">
+                    <a href="./poems.html">
+                        <img class="w-full h-96 object-cover" src="./img/hardboiled dicks cut.png"
+                            alt="imaginary gatherings">
+                    </a>
+                    <a href="poems.html"
+                        class="font-lora block font-bold text-2xl mt-3 mb-2 hover:text-indigo-600 dark:hover:text-gray-400 transition duration-300 ease-in-out">
+                        Hard-boild Cojones.</a>
+                    <p class="font-georgia mt-2">"I needed a drink, I needed a lot of life insurance, I needed a
+                        vacation, I
+                        needed a home in the country. What I had was a coat, a hat and a gun."
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- footer  -->
+    <hr class="mt-20 border-gray-200 mx-auto md:mx-[10.5rem]">
+
+    <footer class="bg-white mx-auto md:mx-[10.5rem] font-work">
+        <div class="container">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+
+                <!-- Logo and Name  -->
+                <div class="">
+                    <div class="hidden sm:block">
+                        <div class="flex justify-between items-center">
+                            <div class="flex gap-3 items-center">
+                                <a>
+                                    <img id="logo2" class="h-16 fill-current" src="./img/logo/logo.svg" alt="">
+                                </a>
+                                <div class="">
+                                    <p
+                                        class="pb-3 text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                                        Marco</p>
+                                    <p
+                                        class="text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                                        Zausch</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:gap-24 md:justify-between ">
+
+                    <!-- CONTACT ME -->
+                    <div class="py-2 md:py-0 flex-1">
+                        <div class="text-sm uppercase font-medium">Contact Me</div>
+                        <div class="flex items-center gap-3 my-2">
+                            <img src="img/icons/envelope-solid.svg" class="w-5 h-5" id="envelope" />
+                            <a class="hover:text-indigo-700" id="mlink" href="#mlink">Email</a>
+                        </div>
+                    </div>
+
+
+                    <!-- WORK -->
+                    <div class="py-2 md:py-0 flex-1">
+                        <div class="text-sm uppercase font-medium">Work</div>
+
+                        <p class="mt-2 flex items-center">
+                        <div class="flex items-center gap-3" aria-label="LinkedIn">
+                            <img src="img/icons/linkedin.svg" class="w-5 h-5" id="linkedin">
+                            <a href="https://www.linkedin.com/in/marcozausch"
+                                class="hover:text-indigo-700">LinkedIn</a>
+                        </div>
+                        </p>
+
+                        <p class="mt-2 flex items-center">
+                        <div class="flex items-center gap-3" aria-label="github">
+                            <img src="img/icons/github.svg" class="w-5 h-5" id="github">
+                            <a href="https://github.com/MaCoZu" class="hover:text-indigo-700"
+                                aria-label="Github">Github</a>
+                        </div>
+                        </p>
+                    </div>
+
+                    <!-- LEGAL -->
+                    <div class="py-3 md:py-0 flex-1">
+                        <div class="text-sm uppercase font-medium ">Legal</div>
+                        <a class="my-3 block hover:text-indigo-700"
+                            href="./impressum.html">Impressum</a>
+                        <a class="my-3 block hover:text-indigo-700"
+                            href="./privacypolicy.html">Privacy
+                            Policy</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        /* 1. define variables */
+        var me = "marcozausch";
+        var place = "posteo.de";
+
+        /* 2. find email link to replace */
+        var elink = document.getElementById("mlink");
+
+        /* 3. replace link href with variables  */
+        elink.href = `mailto:${me}@${place}`;
+
+
+        const modalbg = document.getElementById('modal-bg');
+        const modalSwitch = document.getElementById('modal-switch');
+        const modalBox = document.getElementById('modal-box');
+        const modalClose = document.getElementById('modal-close');
+        modalbg.addEventListener("click", function () {
+            modalBox.classList.add('hidden')
+            modalbg.classList.add('hidden')
+        });
+        modalSwitch.addEventListener("click", function () {
+            modalBox.classList.remove('hidden')
+            modalbg.classList.remove('hidden')
+        });
+        modalClose.addEventListener("click", function () {
+            modalBox.classList.remove('hidden')
+            modalbg.classList.remove('hidden')
+        });
+    </script>
+
+
+
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="./script.js"></script>
+</body>
+
+</html>
+
+</html>
