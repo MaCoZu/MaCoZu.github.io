@@ -100,24 +100,33 @@
 
 </head>
 
-<body class="font-pop bg-white mx-auto md:mx-20 px-6 md:px-0 text-gray-700 dark:bg-gray-900 dark:text-gray-200">
+<body class="font-work bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
 
-    <!-- new nav bar  -->
-    <nav x-data="{ isOpen: false, showSearch: false }"
-        class="sticky md:relative top-0 left-0 right-0 dark:bg-gray-900 dark:text-gray-200 z-50"
+
+    <!-- NAV BAR -->
+    <nav x-data="{ isOpen: false }"
+        class="sticks md:relative h-[4rem] md:h-[2.7rem] top-0 left-0 right-0 border-b-0  z-50"
         @click.away="isOpen = false">
-        <div class="container px-4 py-2 md:py-3 mx-auto">
-            <div class="flex items-center justify-between">
-                <!-- Logo -->
+        <div class="container mx-auto py-2 md:py-1">
+            <!-- Navbar Grid -->
+            <div class="grid grid-cols-3 items-center md:mx-[10.5rem] py-[6px]">
+
+                <!-- LOGO -->
                 <a href="index.html" class="flex items-center">
-                    <img id="logo" class="h-8 sm:h-8 fill-current dark:filter-white" src="./img/logo/logo.svg"
-                        alt="logo">
+                    <img id="logo" class="h-6 sm:h-6" src="./img/logo/logo.svg" alt="logo">
                 </a>
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
+
+                <!-- THE PART TIME CRIMES -->
+
+                <h1
+                    class="md:hidden tracking-widest text-center col-start-2 font-chomsky text-[1.5rem] text-black dark:text-gray-200">
+                    PTC
+                </h1>
+
+                <!-- MOBILE MENU BUTTON -->
+                <div class="flex justify-end md:hidden">
                     <button @click="isOpen = !isOpen"
-                        class="p-2 text-gray-400 rounded-md hover:text-indigo-500 focus:outline-none focus:text-gray-200"
-                        aria-label="toggle menu">
+                        class="p-2 text-gray-500 rounded-md hover:text-indigo-500 focus:outline-none">
                         <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -128,40 +137,29 @@
                         </svg>
                     </button>
                 </div>
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex md:items-center">
-                    <div class="flex flex-row md:mx-6">
-                        <a class="text-sm font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="index.html">Home</a>
-                        <a class="text-sm font-medium hover:text-indigo-500 md:mx-4 md:my-0"
-                            href="impressum.html">Impressum</a>
+
+                <!-- DESKTOP MENU -->
+                <div class="hidden md:flex justify-end col-start-3">
+                    <div class="flex space-x-6 font-work uppercase  text-[10px]">
+                        <a class="font-medium hover:text-indigo-700" href="new_startpage.html">Data</a>
+                        <a class="font-medium hover:text-indigo-700" href="overview_writing.html">Writing</a>
+                        <a class="font-medium hover:text-indigo-700" href="overview_design.html">Design</a>
                     </div>
                 </div>
             </div>
-            <!-- Mobile Menu (Dropdown) -->
-            <div x-show="isOpen"
-                class="absolute right-0 mt-2 py-2 w-48 dark:bg-gray-800 dark:text-gray-200 rounded-md shadow-xl z-20"
-                x-transition:enter="transition ease-out duration-200"
-                x-transition:enter-start="opacity-0 transform scale-90"
-                x-transition:enter-end="opacity-100 transform scale-100"
-                x-transition:leave="transition ease-in duration-200"
-                x-transition:leave-start="opacity-100 transform scale-100"
-                x-transition:leave-end="opacity-0 transform scale-90">
-                <a href="#segregation"
-                    class="block px-4 py-2 text-sm scroll-mt-40 text-gray-200 hover:text-indigo-500">Segregation</a>
-                <a href="#confusion" class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">Confusion
-                    Matrix</a>
-                <a href="#logistic-growth" class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">Logistic
-                    Growth</a>
-                <a href="#logistic-map" class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">Logistic
-                    Map</a>
-                <a href="#std-norm" class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">Standard
-                    Normal</a>
 
-                <hr class="my-2 mx-auto w-40 self-center solid">
+            <!-- MOBILE MENU (Dropdown) -->
+            <div x-show="isOpen" x-transition class="mt-2 py-2 w-full rounded-md shadow-md bg-white">
+                <a href="#charts"
+                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-indigo-500">Data</a>
+                <a href="#wbc"
+                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-indigo-500">Writing</a>
 
-                <a href="index.html" class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">Home</a>
+                <hr class="my-2 border-gray-300 dark:border-gray-700">
+                <a href="index.html"
+                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-indigo-500">Home</a>
                 <a href="impressum.html"
-                    class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">Impressum</a>
+                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-indigo-500">Impressum</a>
             </div>
         </div>
     </nav>
@@ -209,36 +207,19 @@
         </div>
     </div>
 
-    <main id="main-content" class="container mt-8 flex justify-center items-center min-h-screen">
-        <div
-            class="container px-4 font-literata divide-y-2 divide-solid max-w-full prose prose-stone prose-lg md:prose-xl text-pretty leading-8 md:leading-10 dark:prose-invert">
-
-
+    <main id="main-content" class="container mx-auto flex flex-col justify-center items-center mt-8 min-h-screen font-literata divide-y-2 divide-solid prose prose-stone prose-lg md:prose-xl text-pretty leading-8 md:leading-10 dark:prose-invert">
+        
             <!-- segregation  -->
             <div id="segregation" class="scroll-mt-14 md:scroll-mt-10 z-0">
                 <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Schelling's Segregation
                     Model</h2>
-                <div class="grid md:grid-cols-2 py-6 md:px-0 gap-2 h-fit overflow-visible">
-                    <div class="md:col-span-1 max-w-full md:max-w-xl lg:max-w-2xl xl:max-w-3xl">
-                        <p>Economist Thomas Schelling developed the model in the 1970s, demonstrating how a mild
-                            inclination of people to live around the same kind can lead to a highly segregated society.
-                            From the narrow decisions of individuals emerges an overall pattern of neighborhoods that
-                            are more homogeneous than individual preferences suggest.</p>
-                        <p>In the model, each person is represented by a field on a grid surrounded by eight neighbors.
-                            When deciding whether to stay or move, a person looks at the percentage of similar people in
-                            their vicinity. For example, if someone prefers 30% of their neighbors to be similar to
-                            them, they will move if fewer than 3 out of 8 neighbors are of their kind. If there are
-                            vacancies and the person has only 6 neighbors, having 2 of their kind around will cause them
-                            to stay.</p>
-                        <p>One person moving could induce the next person to leave the neighborhood and eventually
-                            trigger a cascade of relocations. The process might easily lead to a situation, where
-                            environments are more homogeneous than anybody wished for. These are examples of a tipping
-                            point and a subsequent emergent phenomenon. Where abrupt change is happening once the
-                            preference level is reached and a large-scale pattern emerges that the individual decisions
-                            would not suggest on their own.</p>
-                    </div>
+                <div class="py-0">
+                    <p>Economist Thomas Schelling developed the model in the 1970s, demonstrating how a mild
+                        inclination of people to live around the same kind can lead to a highly segregated society.
+                        From the narrow decisions of individuals emerges an overall pattern of neighborhoods that
+                        are more homogeneous than individual preferences suggest.</p>
 
-                    <div class="md:col-span-1 md:mt-6 justify-center items-center relative h-fit">
+                    <div class="md:mt-6 justify-center items-center relative h-fit">
                         <iframe class="w-full md:pl-10" loading="lazy" src="./plots/model_gallery/segregation_new.html"
                             sandbox="allow-same-origin allow-scripts" height="600" width="900" scrolling="no"
                             seamless="seamless" frameborder="0" title="logistic map">
@@ -261,8 +242,19 @@
                             you can find a much better animation of Schelling's Model made by Chandan Relekar.
                         </div>
                     </div>
-                </div>
-                <div class="py-6 max-w-full md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto">
+                    <p>In the model, each person is represented by a field on a grid surrounded by eight neighbors.
+                        When deciding whether to stay or move, a person looks at the percentage of similar people in
+                        their vicinity. For example, if someone prefers 30% of their neighbors to be similar to
+                        them, they will move if fewer than 3 out of 8 neighbors are of their kind. If there are
+                        vacancies and the person has only 6 neighbors, having 2 of their kind around will cause them
+                        to stay.</p>
+                    <p>One person moving could induce the next person to leave the neighborhood and eventually
+                        trigger a cascade of relocations. The process might easily lead to a situation, where
+                        environments are more homogeneous than anybody wished for. These are examples of a tipping
+                        point and a subsequent emergent phenomenon. Where abrupt change is happening once the
+                        preference level is reached and a large-scale pattern emerges that the individual decisions
+                        would not suggest on their own.</p>
+
                     <p>To measure segregation we can calculate the index of dissimilarity $DI$. It ranges between zero,
                         or no dissimilarity, and 1, or complete separation of each group from the other. $$DI =
                         \frac{1}{2} \sum_{i=1}^{n} \left| \frac{a_i}{A} - \frac{b_i}{B} \right|$$</p>
@@ -319,8 +311,8 @@
                 <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Confusion Matrix</h2>
 
                 <!-- text  -->
-                <div class="grid md:grid-cols-2 gap-0 md:gap-8 md:divide-x h-full overflow-visible">
-                    <div class="md:col-span-1 py-0 md:py-6 gap-6 md:px-0">
+                <div class="overflow-visible">
+                    <div class="py-0">
                         <p>When we predict something – be it with a machine learning algorithm or a disease test – we
                             would like to know the performance of our tool, since we will almost certainly have some
                             erroneous predictions. </p>
@@ -342,7 +334,7 @@
                     </div>
 
                     <!-- matrix  -->
-                    <div class="flex col-span-1 md:mt-14 justify-center items-center relative h-lvh min-h-screen">
+                    <div class="md:mt-5 justify-center items-center relative h-lvh min-h-screen">
                         <iframe class="w-full " loading="lazy" src="./plots/model_gallery/confusion_matrix.html"
                             sandbox="allow-same-origin allow-scripts" scrolling="no" seamless="seamless" frameborder="0"
                             title="confusion_matrix" onload="resizeIframe(this)">
@@ -394,8 +386,8 @@
             <!-- logistic growth  -->
             <div id="logistic-growth" class="scroll-mt-10 md:-scroll-mt-1 z-0">
                 <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Logistic Growth</h2>
-                <div class="grid md:grid-cols-2 gap-0 md:gap-8 h-full overflow-visible">
-                    <div class="md:col-span-1 py-0 md:py-6 gap-6 md:px-0">
+                <div class="h-full overflow-visible">
+                    <div class="py-0">
                         <p>The logistic growth is a common model used to describe population growth. Scholars have put
                             Thomas Malthus ideas about demography in a simple formula that captures the basic assumption
                             that humanity, with higher quality of life, will grow exponentially until food production
@@ -415,9 +407,9 @@
                         </p>
                     </div>
 
-                    <div class="col-span-1 flex md:mt-6 justify-center items-center relative h-fit overflow-scroll">
+                    <div class="flex justify-center items-center relative h-fit overflow-scroll">
                         <iframe class="md:w-full md:h-full" src="./plots/model_gallery/logistic_growth_d3.html"
-                            style="min-height: 700px; min-width: 600px;" loading="lazy"
+                            style="min-height: 580px; min-width: 600px;" loading="lazy"
                             sandbox="allow-same-origin allow-scripts" scrolling="no" seamless="seamless" frameborder="0"
                             title="logistic map">
                         </iframe>
@@ -428,7 +420,7 @@
             <!-- logistic map  -->
             <div id="logistic-map" class="scroll-mt-10 md:-scroll-mt-1 z-0">
                 <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Logistic Map</h2>
-                <div class="grid md:grid-cols-2 gap-8 h-full overflow-visible">
+                <div class="h-full overflow-visible">
                     <div>
                         <p>The logistic map is a mathematical model used to describe how populations change over time in
                             a constrained environment. It is particularly famous for demonstrating how simple rules can
@@ -499,9 +491,10 @@
                     Distribution</h2>
 
                 <!-- section 1 -->
-                <div class="grid md:grid-cols-2 pt-6 pb-0 gap-6 md:px-0 h-fit overflow-visible">
+                <div class="py-0 overflow-visible">
+
                     <!-- text  -->
-                    <div class="md:col-span-1">
+                    <div class="">
                         <p>All kinds of variables in natural and social sciences are (approximately) normally
                             distributed. Height, birth weight, reading ability, job satisfaction, or test scores are
                             just a few examples of such variables. Because normally distributed variables are so common,
@@ -515,9 +508,9 @@
                     </div>
 
                     <!-- figure  -->
-                    <div class="col-span-1 flex md:mt-6 justify-center items-center relative overflow-scroll">
+                    <div class="flex md:mt-0 justify-center items-center relative overflow-scroll">
                         <iframe id="normal-distribution-iframe" class="w-full h-full"
-                            style="min-height: 600px; min-width: 600px;" loading="lazy"
+                            style="min-height: 500px; min-width: 600px;" loading="lazy"
                             src="./plots/model_gallery/normal_distribution_d3.html"
                             sandbox="allow-same-origin allow-scripts" scrolling="no" seamless="seamless" frameborder="0"
                             title="normal_distribution">
@@ -525,7 +518,7 @@
                     </div>
                 </div>
 
-                <div class="py-6 max-w-full md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto">
+                <div class="max-w-full md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto">
                     <p>When we know the mean $\mu$ and the standard deviation $\sigma$, which is the average amount by
                         which observations deviate on either side from the mean, we can immediately tell that 68% of
                         your observations will fall within the range of two standard deviations centered at $\mu$.
@@ -566,92 +559,109 @@
                 </div>
 
 
-                <!-- section 2 -->
-                <div class="grid grid-cols-1 md:grid-cols-3 md:px-0 md:gap-14 md:mt-0 h-fit">
-                    <table id="cssTable" class="w-full border-separate border-spacing-1">
-                        <thead>
-                            <tr>
-                                <th class="text-center">x</th>
-                                <th class="text-center">z</th>
-                                <th class="text-center">p-value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>0</td>
-                                <td>-1.62</td>
-                                <td>0.053</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>-0.97</td>
-                                <td>0.166</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>-0.97</td>
-                                <td>0.166</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>0</td>
-                                <td>0.5</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>0</td>
-                                <td>0.5</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>0</td>
-                                <td>0.5</td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>0.97</td>
-                                <td>0.83</td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>0.97</td>
-                                <td>0.83</td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>1.62</td>
-                                <td>0.95</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Section 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 items-start md:px-0 md:mt-0 h-fit">
 
-                    <div class="md:col-span-2 max-w-full md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto">
-                        <p>Once you have a standard normal distribution you’re looking for the probabilities of
-                            $\mathbf{z}$-<strong>scores</strong>, which are nothing else then standardized $x$
+                    <!-- Text Content -->
+                    <div class="md:col-span-2 max-w-none mx-auto md:mx-0">
+                        <p>
+                            Once you have a standard normal distribution you’re looking for the probabilities of
+                            $\mathbf{z}$-<strong>scores</strong>, which are nothing else than standardized $x$
                             observations. <br />
                             $$z=(\frac{{x - \mu}}{{\sigma}})$$
                             For a dataset with a mean $\mu_x = 5.0$ and standard deviation $\sigma_x=3.09$, you can see
-                            the $x$ values and their corresponding $z$-scores in the table.</p>
+                            the $x$ values and their corresponding $z$-scores in the table.
+                        </p>
 
-                        <p>After the standardization the mean of $x$ corresponds with a $z$-score $= 0$. Each $z$-score
+                        <p>
+                            After the standardization, the mean of $x$ corresponds with a $z$-score $= 0$. Each
+                            $z$-score
                             is associated with a probability, or $\mathbf{p}$<strong>-value</strong>, that tells you the
                             likelihood of values occurring below that $z$-score: <br /> $P(x\leqslant 8) =P(z\leqslant
-                            0.97) =0.83\%$.<br /> With the p-values you can also determine how likely it is that random
-                            variable in the distribution is greater than 10:<br /> $P(x\geqslant 10)=P(z\geqslant 1.62)
-                            \\ = (1-0.95)=0.05\%$ <br /> or the probability of a variable greater than 2 but below 10:
-                            <br /> $P(2\leqslant x \leqslant 10) \\ = (0.95 - 0.166)=0.78\%$
+                            0.97) =0.83\%$.<br />
+                            
                         </p>
                     </div>
-                </div>
-            </div>
 
-        </div>
+                    <!-- Table -->
+                    <div class="md:col-span-1 overflow-x-auto">
+                        <table id="cssTable" class="w-full border-separate border-spacing-1 border border-gray-300">
+                            <thead>
+                                <tr class="bg-gray-100">
+                                    <th class="text-center border border-gray-300 px-4 py-2">x</th>
+                                    <th class="text-center border border-gray-300 px-4 py-2">z</th>
+                                    <th class="text-center border border-gray-300 px-4 py-2">p-value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0</td>
+                                    <td>-1.62</td>
+                                    <td>0.053</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>-0.97</td>
+                                    <td>0.166</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>-0.97</td>
+                                    <td>0.166</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>0</td>
+                                    <td>0.5</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>0</td>
+                                    <td>0.5</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>0</td>
+                                    <td>0.5</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>0.97</td>
+                                    <td>0.83</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>0.97</td>
+                                    <td>0.83</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>1.62</td>
+                                    <td>0.95</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-span-3">
+                        With the p-values you can also determine how likely it is that a random variable in the
+                        distribution is
+                        greater than 10:<br />
+                        $P(x\geqslant 10)=P(z\geqslant 1.62) \\ = (1-0.95)=0.05\%$ <br />
+                        Or the probability of a variable greater than 2 but below 10: <br />
+                        $P(2\leqslant x \leqslant 10) \\ = (0.95 - 0.166)=0.78\%$
+                    </div>
+
+                </div>
+
+            </div>
 
     </main>
 
     <!-- footer  -->
-    <hr class="mt-10 border-gray-200 dark:border-gray-700">
-    <footer class="bg-white dark:bg-gray-900">
+    <hr class="mt-20 border-gray-200 dark:border-gray-700 md:mx-[10.5rem]">
+
+    <footer class="bg-white dark:bg-gray-900 md:mx-[10.5rem]">
         <div class="container">
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
@@ -683,30 +693,33 @@
                 <div class="flex flex-col sm:flex-row sm:gap-24 justify-between">
 
                     <!-- CONTACT ME -->
-                    <div class="py-3 md:py-0 flex-1">
-                        <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
-                        <a id="mlink" class="flex items-center gap-3 my-3 hover:text-indigo-400 dark:hover:text-sky-300"
-                            href="#">Email</a>
+                    <div class="py-2 md:py-0 flex-1">
+                        <div class="text-sm uppercase font-medium">Contact Me</div>
+                        <div class="flex items-center gap-3 my-2">
+                            <img src="img/icons/envelope-solid.svg" class="w-5 h-5 filter-icon" id="envelope" />
+                            <a class="hover:text-indigo-400 dark:hover:text-sky-300" id="mlink" href="#mlink">Email</a>
+                        </div>
                     </div>
 
+
                     <!-- WORK -->
-                    <div class="py-3 md:py-0 flex-1">
-                        <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
-                        <p class="my-3 flex items-center gap-3">
-                            <a href="https://www.linkedin.com/in/marcozausch" aria-label="LinkedIn">
-                                <span
-                                    class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
-                            </a>
-                            <a class="block hover:text-indigo-400 dark:hover:text-sky-300"
-                                href="https://www.linkedin.com/in/marcozausch">LinkedIn</a>
+                    <div class="py-2 md:py-0 flex-1">
+                        <div class="text-sm uppercase font-medium">Work</div>
+
+                        <p class="mt-2 flex items-center">
+                        <div class="flex items-center gap-3" aria-label="LinkedIn">
+                            <img src="img/icons/linkedin.svg" class="w-5 h-5 filter-icon" id="linkedin">
+                            <a href="https://www.linkedin.com/in/marcozausch"
+                                class="hover:text-indigo-400 dark:hover:text-sky-300">LinkedIn</a>
+                        </div>
                         </p>
-                        <p class="my-3 flex items-center gap-3">
-                            <a href="https://github.com/MaCoZu" aria-label="Github">
-                                <span
-                                    class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
-                            </a>
-                            <a class="block hover:text-indigo-400 dark:hover:text-sky-300"
-                                href="https://github.com/MaCoZu">Github</a>
+
+                        <p class="mt-2 flex items-center">
+                        <div class="flex items-center gap-3" aria-label="github">
+                            <img src="img/icons/github.svg" class="w-5 h-5 filter-icon" id="github">
+                            <a href="https://github.com/MaCoZu" class="hover:text-indigo-400 dark:hover:text-sky-300"
+                                aria-label="Github">Github</a>
+                        </div>
                         </p>
                     </div>
 
@@ -716,7 +729,8 @@
                         <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300"
                             href="./impressum.html">Impressum</a>
                         <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300"
-                            href="./privacypolicy.html">Privacy Policy</a>
+                            href="./privacypolicy.html">Privacy
+                            Policy</a>
                     </div>
                 </div>
             </div>
