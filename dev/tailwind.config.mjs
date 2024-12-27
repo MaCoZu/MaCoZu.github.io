@@ -1,11 +1,11 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: [
+    "./font.css",
     "./index.html",
-    "./public/*",
-    "./*.{html,js}",
-    "./public/**/*.{html, js, cjs}",
-    "./*.{html, js, cjs}",
+    "./public/**/*.html",
+    "./**/*.{html,js,cjs}", // Matches all HTML and JS files in any folder
   ],
   theme: {
     extend: {
@@ -18,5 +18,7 @@ export default {
     require('@tailwindcss/typography'),
     require('tailwindcss-filters'),
   ],
+
+
 }
 
