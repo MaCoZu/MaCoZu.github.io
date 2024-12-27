@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive D3 Grid</title>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../font.css">
+
+    <!-- css  -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- D3.js CDN -->
+    <script src="../d3.v7.js"></script>
+
+    <!-- Include Prism.js CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+
+    <style>
+        /* Make sure the grid and svg fill the screen fully without any overflow */
+        html,
+        body {
+            margin-top: 20px;
+            padding: 0;
+            overflow: scroll;
+            height: 100%;
+            /* display: flex; */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .grid-container {
+            height: 80vh;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Button styling */
+        #next-grid {
+            /* margin: 10px auto; */
+            display: block;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+        }
+
+        /* TEXT */
+        .font-literata {
+            font-family: 'Literata', serif;
+        }
+
+        /* HIGHLIGHT  */
+        .font-bebas {
+            font-family: 'Bebas', sans-serif;
+        }
+
+        pre,
+        code {
+            background-color: transparent;
+        }
+
+        /* Prevent extra scroll containers */
+        .code-container {
+            overflow: auto;
+            height: 100%;
+            width: 100%;
+        }
+
+        .code-wrapper {
+            height: auto;
+            overflow: auto;
+            /* padding: 1rem; */
+        }
+
+        code {
+            /* Use a coding font */
+            font-family: 'Fira Code', monospace;
+            /* Adjust font size */
+            font-size: 0.9rem;
+        }
+    </style>
+
+
+</head>
+
+<body class="bg-white font-literata dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div>
+        <!-- HEADER  -->
+        <div class="mx-20 flex items-center justify-between align-middle">
+            <a href="index.html" class="flex">
+                <img id="logo" class="h-8 sm:h-8 fill-current dark:filter-white" src="../img/logo/logo.svg" alt="logo">
+            </a>
+            <h1 class="text-4xl font-bebas tracking-widest font-semibold text-left dark:text-gray-200">
+                D3
+                Quick Start</h1>
+        </div>
+
+        <a href="02_d3_gallery.html">
+            <button class="text-slate-600 mx-2 text-5xl font-semibold top-1/2 absolute right-2" id="next-grid"><svg
+                    xmlns="http://www.w3.org/2000/svg" width=".8em" height=".8em" viewBox="0 0 24 24">
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="1.5">
+                        <path d="m11 19l6-7l-6-7" />
+                        <path d="m7 19l6-7l-6-7" opacity="0.5" />
+                    </g>
+                </svg>
+            </button>
+        </a>
+    </div>
+
+    <!-- Grid Layout -->
+    <div class="mx-20 grid md:grid-cols-12 md:grid-rows-12 gap-8 grid-container">
+
+        <!-- Intro Text -->
+        <div
+            class="md:col-start-1 md:row-start-1 md:col-span-5 md:row-span-6 prose-stone text-pretty leading-8 dark:prose-invert rounded-m text-lg items-center justify-center h-full">
+            <h2 class="text-2xl font-semibold mb-1">Daunting at first</h2>
+            <p>D3 (Data-Driven Documents) isn't a charting library—it’s a tool for creating custom visualizations from
+                scratch. Instead of ready-made templates, you’ll craft every line, curve, and shape yourself using open
+                standards like SVG or HTML Canvas. This means more code, but also more creative freedom.</p><br>
+
+        </div>
+
+
+
+        <!-- Code -->
+        <div class="md:col-start-7 md:row-start-1 md:col-span-6 md:row-span-12 box h-full code-container">
+            <pre class="w-full h-full overflow-auto rounded scrollbar-thin">
+                <code class="code-wrapper language-javascript" data-prismjs-copy="Copy">
+// Create an SVG insisde an html element with id "chart"
+var svg = d3.select("#chart").append("svg").attr("width", 1000).attr("height", 400);
+
+// Define data array
+data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+// Define a sequential color scale, mapping domain [1, 10] to Viridis color scheme
+color = d3.scaleSequential().domain([1, 10]).interpolator(d3.interpolateViridis);
+
+// Bind data to circle elements - draw, style and animate your data
+svg.selectAll("circle")
+    .data(data) // Bind data array
+    .join("circle") // Create new circles for each data point (non-existent at first)
+    .attr("cy", 250) // Set vertical position of the circles in the SVG
+    .attr("r", 25) // Initialize all circles with a radius of 25
+    .attr("fill", "red") // Start with a red fill color
+    .transition() // Begin first transition
+    .ease(d3.easeBack) // Use an easing method for smooth animation
+    .duration(2000) // Transition lasts 2000ms
+    .attr("cx", function (d, i) { return 30 + i * 60 }) // Actual transition: move circles horizontally
+    .transition() // Chain a second transition
+    .duration(1050) // Transition lasts 1050ms
+    .ease(d3.easeBounceOut) // Use "easeBounceOut" for easing method
+    .attr('r', d => 8 * d) // Actual transition: reset radius based on data
+    // the follwing attributes take 1/4 of second to take effect as this is the default 
+    .attr("fill", function (d) { return color(d) }) // Apply color scale to fill based on data
+    .attr("stroke", "orange") // Add orange strokes to final circles
+    .attr("stroke-width", 5) // Set stroke width
+    .attr("fill-opacity", 0.8) // Set partial opacity for fill
+    .attr("stroke-opacity", 0.7); // Set partial opacity for stroke
+                    
+                </code>
+            </pre>
+        </div>
+
+        <!-- Chart -->
+        <div class="md:col-start-1 md:row-start-6 md:col-span-6 md:row-span-6 relative rounded-md overflow-hidden items-center justify-center h-full">
+            <button id="refreshButton"
+                class="absolute bottom-10 left-96 bg-indigo-700 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-md"
+                onClick="update();">
+                Again
+            </button>
+            <svg id="chart" class="w-full h-full"></svg>
+        </div>
+
+    </div>
+
+
+    <!-- D3 Chart Script -->
+    <script>
+         // Chart configuration
+         const margin = { top: 50, right: 50, bottom: 50, left: 50 };
+        const width = 500 - margin.left - margin.right;
+        const height = 300 - margin.top - margin.bottom;
+
+        function createAnimatedChart() {
+            // Clear existing chart
+            d3.select("#chart").selectAll("*").remove();
+
+            // Prepare data
+            const data = [
+                { x: 10, y: 30 },
+                { x: 30, y: 50 },
+                { x: 50, y: 20 },
+                { x: 70, y: 100 },
+                { x: 90, y: 60 }
+            ];
+
+            // Find lowest and highest points
+            const lowestPoint = data.reduce((min, point) => point.y < min.y ? point : min, data[0]);
+            const highestPoint = data.reduce((max, point) => point.y > max.y ? point : max, data[0]);
+
+
+            // Create SVG
+            const svg = d3.select("#chart")
+                .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            // X scale
+            const xScale = d3.scaleLinear()
+                .domain([0, 110])
+                .range([0, width]);
+
+            // Y scale
+            const yScale = d3.scaleLinear()
+                .domain([0, 100])
+                .range([height, 0]);
+
+            // X axis
+            svg.append("g")
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(xScale).ticks(5));
+
+            // Y axis
+            svg.append("g")
+                .call(d3.axisLeft(yScale).ticks(3));
+
+            // Line generator
+            const line = d3.line()
+                .x(d => xScale(d.x))
+                .y(d => yScale(d.y));
+
+            // Create a path that will be animated
+            const path = svg.append("path")
+                .datum(data)
+                .attr("fill", "none")
+                .attr("stroke", "steelblue")
+                .attr("stroke-width", 3)
+                .attr("d", line)
+                // Initial path length to 0
+                .attr("stroke-dasharray", function () {
+                    // Get the total length of the path
+                    // Creates a dash pattern where the dash and gap are equal to the path's total length
+                    // This effectively makes the entire path invisible initially
+                    return this.getTotalLength() + " " + this.getTotalLength();
+                })
+                .attr("stroke-dashoffset", function () {
+                    // Sets the initial offset to the full length of the path
+                    // This means the entire path is "hidden"
+                    return this.getTotalLength();
+                })
+                // Animate path drawing
+                .transition()
+                .duration(2000)
+                .ease(d3.easeLinear)
+                // Gradually reduces the offset to 0
+                // This creates the effect of the line "drawing" itself
+                .attr("stroke-dashoffset", 0);
+
+            // Add dots with programmatic min/max coloring
+            svg.selectAll(".dot")
+                .data(data)
+                .enter()
+                .append("circle")
+                .attr("class", "dot")
+                .attr("cx", d => xScale(d.x))
+                .attr("cy", d => yScale(d.y))
+                .attr("r", 0)
+                .style("fill", d => {
+                    // Color logic for points
+                    if (d === lowestPoint) return "red";     // Lowest point in red
+                    if (d === highestPoint) return "green";  // Highest point in green
+                    return "steelblue";                         // Default color
+                })
+                .transition()
+                .delay((d, i) => 2000 + i * 300)
+                .duration(300)
+                .attr("r", 7);
+
+            // Add labels highlighting min/max
+            svg.selectAll(".point-label")
+                .data([lowestPoint, highestPoint])
+                .enter()
+                .append("text")
+                .attr("class", "point-label")
+                .attr("x", d => xScale(d.x) + 12)
+                .attr("y", d => yScale(d.y) - 10)
+                .text(d => `(${d.x}, ${d.y})`)
+                .style("fill", d => d === lowestPoint ? "red" : "green")
+                .attr("opacity", 0)
+                .transition()
+                .delay(2300)
+                .duration(300)
+                .attr("opacity", 1);
+        }
+
+        // Event listener for refresh button
+        document.getElementById("refreshButton").addEventListener("click", createAnimatedChart);
+
+        // Initial chart creation when page loads
+        document.addEventListener("DOMContentLoaded", createAnimatedChart);
+    </script>
+
+    <!-- Initialize highlight.js -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
+
+    <script type="module" src="../../main.js"></script>
+    <script type="module" src="../../script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js" defer></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+</body>
+
+</html>

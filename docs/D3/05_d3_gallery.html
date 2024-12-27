@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive D3 Grid</title>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../font.css">
+
+    <!-- css  -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- D3.js CDN -->
+    <script src="../d3.v7.js"></script>
+
+    <!-- Include Prism.js CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+
+    <style>
+        /* Make sure the grid and svg fill the screen fully without any overflow */
+        html,
+        body {
+            margin-top: 20px;
+            padding: 0;
+            overflow: scroll;
+            height: 100%;
+            /* display: flex; */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .grid-container {
+            height: 80vh;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Button styling */
+        #next-grid {
+            /* margin: 10px auto; */
+            display: block;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+        }
+
+        /* TEXT */
+        .font-literata {
+            font-family: 'Literata', serif;
+        }
+
+        /* HIGHLIGHT  */
+        .font-bebas {
+            font-family: 'Bebas', sans-serif;
+        }
+
+        pre,
+        code {
+            background-color: transparent;
+        }
+
+        /* Prevent extra scroll containers */
+        .code-container {
+            overflow: auto;
+            height: 100%;
+            width: 100%;
+        }
+
+        .code-wrapper {
+            height: auto;
+            overflow: auto;
+            /* padding: 1rem; */
+        }
+
+        code {
+            /* Use a coding font */
+            font-family: 'Fira Code', monospace;
+            /* Adjust font size */
+            font-size: 0.9rem;
+        }
+
+        /* .axis {
+            font: 5px sans-serif;
+        } */
+    </style>
+
+
+</head>
+
+<body class="bg-white font-literata dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div>
+        <!-- HEADER  -->
+        <div class="mx-20 flex items-center justify-between align-middle">
+            <a href="index.html" class="flex">
+                <img id="logo" class="h-8 sm:h-8 fill-current dark:filter-white" src="../img/logo/logo.svg" alt="logo">
+            </a>
+            <h1 class="text-4xl font-bebas tracking-widest font-semibold text-left dark:text-gray-200"> D3 Quick Start
+            </h1>
+        </div>
+
+        <!-- SLIDE BEFORE  -->
+        <a href="04_d3_gallery.html">
+            <button class="text-slate-600 mx-2 text-5xl font-semibold top-1/2 absolute left-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="1.5">
+                        <path d="m13 19l-6-7l6-7" />
+                        <path d="m17 19l-6-7l6-7" opacity="0.5" />
+                    </g>
+                </svg>
+            </button>
+        </a>
+
+        <!-- NEXT SLIDE  -->
+        <a href="06_d3_gallery.html">
+            <button class="text-slate-600 mx-2 text-5xl font-semibold top-1/2 absolute right-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="1.5">
+                        <path d="m11 19l6-7l-6-7" />
+                        <path d="m7 19l6-7l-6-7" opacity="0.5" />
+                    </g>
+                </svg>
+            </button>
+        </a>
+    </div>
+
+    <!-- Grid Layout -->
+    <div class="mx-20 grid md:grid-cols-3 gap-6 grid-container">
+
+        <!-- TEXT -->
+        <div
+            class="md-col-start-1 md:col-span-2 px-8 prose-stone text-pretty leading-8 dark:prose-invert rounded-m text-lg items-center justify-center h-full">
+            <h2 class="text-2xl font-semibold mb-1">Origin</h2>
+            <p>A peculiarity of SVG is that the origin is at the top left corner of the Viewport and all elements
+                inside are positioned relative to this point. A circle with no coordinates is placed at the origin (0,
+                0). And
+                when it is given positive coordinates the circle moves down and rigthwards.</p>
+
+            <p>When creating a chart, we want all elements visible and thus place the chart area in the middle of the
+                canvas with
+                some margins around it. In the example the chart area is tomatoe red, but usually the area is only
+                indicated by the
+                surrounding axes, if at all.</p>
+        </div>
+
+        <div class="md:col-start-3 md:col-span-1 relative overflow-hidden items-center justify-center">
+            <div id="chart"></div>
+
+            <div class="flex right-0">
+                <button id="refreshButton"
+                    class="mt-8 bg-indigo-700 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-md"
+                    onClick="update();">
+                    Refresh
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- D3 Chart Script -->
+    <script>
+        function update() {
+            d3.select("#chart").selectAll("*").remove();
+
+            // Chart configuration with sensible defaults
+            const margin = { top: 40, right: 40, bottom: 40, left: 50 };
+            const width = 370 - margin.left - margin.right;
+            const height = 270 - margin.top - margin.bottom;
+
+            // Create SVG canvas with clear, chained method calls
+            const svg = d3.select("#chart")
+                .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom);
+
+            svg.selectAll("*").remove();
+
+            svg.append("rect").attr("width", 0)
+                .attr("height", 0)
+                .transition().delay(700).duration(1000)
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .style("fill", 'lightgray')
+
+            svg.append("text")
+                .attr("x", width / 1)
+                .attr("y", height / 6)
+                .attr("text-anchor", "middle")
+                .attr("text-anchor", "middle")
+                .attr("opacity", 0)
+                .transition().delay(6000).duration(1000).attr("opacity", 1)
+                .text("Viewport")
+                .style("font", "normal bold 16px sans-serif");
+
+            svg.append("circle")
+                .attr("cx", 0)
+                .attr("cy", 0)
+                .attr("r", 0)
+                .transition().duration(1000)
+                .attr("r", 20)
+                .style("fill", "darkred");
+
+            // Define the arrowhead marker for the arrow
+            svg.append("defs").append("marker")
+                .attr("id", "arrowhead")
+                .attr("viewBox", "0 0 10 10")
+                .attr("refX", 5)
+                .attr("refY", 5)
+                .attr("markerWidth", 6)
+                .attr("markerHeight", 6)
+                .attr("orient", "auto-start-reverse")
+                .append("path")
+                .attr("d", "M 0 0 L 10 5 L 0 10 Z")
+                .style("fill", "darkred");
+
+            // Add the arrow line directly on the canvas, spanning from the inner svg center to the origin
+            svg.append("line")
+                .attr("x1", "70")
+                .attr("y1", "20")
+                .attr("x2", "30")
+                .attr("y2", "10")
+                .attr("stroke", "darkred")
+                .attr("stroke-width", 1.5)
+                .attr("marker-end", "url(#arrowhead)")
+                .attr("opacity", 0)
+                .transition().delay(5000).duration(1000).attr("opacity", 1);
+
+            svg.append("text")
+                .attr("x", "120")
+                .attr("y", "25")
+                .style("text-anchor", "middle")
+                .style("fill", "darkred")
+                .style("font", "normal bold 14px sans-serif")
+                .text("Origin (0,0)")
+                .attr("opacity", 0)
+                .transition().delay(5000).duration(1000)
+                .attr("opacity", 1);
+
+            // X scale and Axis
+            var x = d3.scaleLinear()
+                .domain([0, 100])         // This is the min and the max of the data: 0 to 100 if percentages
+                .range([0, width]);       // This is the corresponding value I want in Pixel
+
+            // Add the x-axis.
+            svg.append("g")
+                .attr("x", "0").attr("y", "0")
+                .transition().delay(1500).duration(2500)
+                .attr("transform", `translate(${margin.left}, ${height + margin.top})`)
+                .call(d3.axisBottom(x).ticks(5))
+                .selectAll("text") // Select all axis labels
+                .style("font-size", "14px") // Make the font smaller
+                .attr("dy", "14px");
+
+            // X scale and Axis
+            var y = d3.scaleLinear()
+                .domain([0, 100])         // This is the min and the max of the data: 0 to 100 if percentages
+                .range([height, 0]);       // This is the corresponding value I want in Pixel
+
+            // Add the y-axis.
+            svg.append("g")
+                .attr("x", "0").attr("y", "0")
+                .transition().delay(2000).duration(2000)
+                .attr("transform", `translate(${margin.left}, ${margin.top})`)
+                .call(d3.axisLeft(y).ticks(5))
+                .selectAll("text") // Select all axis labels
+                .style("font-size", "14px") // Make the font smaller
+                .attr("dx", "-5px");
+
+            svg.append("rect")
+                .attr("width", width)
+                .attr("height", height)
+                .style("fill", "lightcoral")
+                .attr("transform", `translate(${margin.left}, ${margin.top})`)
+                .attr("opacity", 0)
+                .transition().delay(3500).duration(2000)
+                .attr("opacity", 0.5);
+
+            svg.append("text")
+                .attr("x", (width + margin.left + margin.right) / 2)
+                .attr("y", (height + margin.top + margin.bottom) / 2)
+                .attr("text-anchor", "middle")
+                .attr("dominant-baseline", "middle")
+                .text("Actual Chart Area")
+                .style("font", "normal bold 16px sans-serif")
+                .attr("opacity", 0)
+                .transition().delay(7000).duration(1000)
+                .attr("opacity", 1);
+
+            // Define the arrowhead marker for the arrow
+            svg.append("defs").append("marker")
+                .attr("id", "arrowhead2")
+                .attr("viewBox", "0 0 10 10")
+                .attr("refX", 5)
+                .attr("refY", 5)
+                .attr("markerWidth", 6)
+                .attr("markerHeight", 6)
+                .attr("orient", "auto-start-reverse")
+                .append("path")
+                .attr("d", "M 0 0 L 10 5 L 0 10 Z")
+                .style("fill", "black");
+
+            // Add the arrow line directly on the canvas, spanning from the inner svg center to the origin
+            svg.append("line")
+                .attr("x1", 0)
+                .attr("y1", margin.top + height / 2)
+                .attr("y2", margin.top + height / 2)
+                .transition().delay(4000).duration(1000)
+                .attr("x2", margin.left - 10)
+                .attr("stroke", "black")
+                .attr("stroke-width", 2)
+                .attr("marker-end", "url(#arrowhead2)");
+
+            svg.append("line")
+                .attr("x1", (width + margin.left + margin.right) / 2)
+                .attr("y1", 0)
+                .attr("x2", (width + margin.left + margin.right) / 2)
+                .transition().delay(4000).duration(1000)
+                .attr("y2", margin.top - 10)
+                .attr("stroke", "black")
+                .attr("stroke-width", 2)
+                .attr("marker-end", "url(#arrowhead2)");
+        }
+
+        // Event listener for refresh button
+        document.getElementById("refreshButton").addEventListener("click", update);
+
+        // Initial chart creation when page loads
+        document.addEventListener("DOMContentLoaded", update);
+    </script>
+
+    <script type="module" src="../../main.js"></script>
+    <script type="module" src="../../script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js" defer></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+</body>
+
+</html>
