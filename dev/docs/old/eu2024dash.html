@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="./img/logo/logo_weiß.svg" type="image/x-icon" />
+
+  <style>
+    [x-cloak] {
+      display: none !important;
+    }
+
+    /* MENU */
+    .font-pop {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* TEXT */
+    .font-literata {
+      font-family: 'Literata', serif;
+    }
+
+    /* HIGHLIGHT  */
+    .font-bebas {
+      font-family: 'Bebas', sans-serif;
+    }
+  </style>
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="../font.css">
+
+  <!-- css  -->
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- mathjax  -->
+  <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+          }
+        });
+      </script>
+
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+
+
+  <title>EU Elections 2024 Dashboard</title>
+
+</head>
+
+<body class="font-pop bg-white mx-auto md:mx-20 px-6 md:px-0 text-gray-700 dark:bg-gray-900 dark:text-gray-200">
+
+  <!-- new nav bar  -->
+  <nav x-data="{ isOpen: false, showSearch: false }"
+    class="sticky md:relative top-0 left-0 right-0 dark:bg-gray-900 dark:text-gray-200 z-50"
+    @click.away="isOpen = false">
+    <div class="container px-4 py-2 md:py-3 mx-auto">
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center">
+          <img id="logo" class="h-8 sm:h-8 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="logo">
+        </a>
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button @click="isOpen = !isOpen"
+            class="p-2 text-gray-400 rounded-md hover:text-indigo-500 focus:outline-none focus:text-gray-200"
+            aria-label="toggle menu">
+            <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex md:items-center">
+          <div class="flex flex-row md:mx-6">
+            <a class="text-sm font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="index.html">Home</a>
+            <a class="text-sm font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="impressum.html">Impressum</a>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile Menu (Dropdown) -->
+      <div x-show="isOpen"
+        class="absolute right-0 mt-2 py-2 w-48 dark:bg-gray-800 dark:text-gray-200 rounded-md shadow-xl z-20"
+        x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform scale-90"
+        x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100 transform scale-100"
+        x-transition:leave-end="opacity-0 transform scale-90">
+        <a href="index.html" class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">Home</a>
+        <a href="impressum.html" class="block px-4 py-2 text-sm text-gray-200 hover:text-indigo-500">Impressum</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-screen-xl mt-8  md:mb-32">
+
+    <div class='tableauPlaceholder min-w-full object-contain' id='viz1718977126621' style='position: relative'>
+      <noscript>
+        <a href='#'>
+          <img alt='EU2024 '
+            src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;EU&#47;EU2024&#47;EU2024&#47;1_rss.png'
+            style='border: none;' />
+        </a>
+      </noscript>
+      <object class='tableauViz' style='display:none'>
+        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+        <param name='embed_code_version' value='3' />
+        <param name='site_root' value='' />
+        <param name='name' value='EU2024&#47;EU2024' />
+        <param name='tabs' value='no' />
+        <param name='toolbar' value='yes' />
+        <param name='static_image'
+          value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;EU&#47;EU2024&#47;EU2024&#47;1.png' />
+        <param name='animate_transition' value='yes' />
+        <param name='display_static_image' value='yes' />
+        <param name='display_spinner' value='yes' />
+        <param name='display_overlay' value='yes' />
+        <param name='display_count' value='yes' />
+        <param name='language' value='en-US' />
+        <param name='filter' value='publish=yes' />
+      </object>
+    </div>
+
+    <script type='text/javascript'> var divElement = document.getElementById('viz1718977126621'); var vizElement = divElement.getElementsByTagName('object')[0]; if (divElement.offsetWidth > 800) { vizElement.style.width = '1300px'; vizElement.style.height = '927px'; } else if (divElement.offsetWidth > 500) { vizElement.style.width = '1300px'; vizElement.style.height = '927px'; } else { vizElement.style.width = '100%'; vizElement.style.height = '1927px'; } var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+    </script>
+
+  </main>
+
+
+  <!-- footer  -->
+  <hr class="mt-10 border-gray-200 dark:border-gray-700">
+  <footer class="bg-white dark:bg-gray-900">
+    <div class="container">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+
+        <div class="">
+          <!-- Logo and Name  -->
+          <div class="hidden sm:block">
+            <div class="flex justify-between items-center">
+              <div class="flex gap-3 items-center">
+                <a>
+                  <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="">
+                </a>
+                <div class="">
+                  <p
+                    class="pb-3 text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                    Marco</p>
+                  <p
+                    class="text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                    Zausch</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:gap-24 justify-between">
+
+          <!-- CONTACT ME -->
+          <div class="py-3 md:py-0 flex-1">
+            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
+            <a id="mlink" class="flex items-center gap-3 my-3 hover:text-indigo-400 dark:hover:text-sky-300"
+              href="#">Email</a>
+          </div>
+
+          <!-- WORK -->
+          <div class="py-3 md:py-0 flex-1">
+            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
+            <p class="my-3 flex items-center gap-3">
+              <a href="https://www.linkedin.com/in/marcozausch" aria-label="LinkedIn">
+                <span
+                  class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
+              </a>
+              <a class="block hover:text-indigo-400 dark:hover:text-sky-300"
+                href="https://www.linkedin.com/in/marcozausch">LinkedIn</a>
+            </p>
+            <p class="my-3 flex items-center gap-3">
+              <a href="https://github.com/MaCoZu" aria-label="Github">
+                <span
+                  class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
+              </a>
+              <a class="block hover:text-indigo-400 dark:hover:text-sky-300" href="https://github.com/MaCoZu">Github</a>
+            </p>
+          </div>
+
+          <!-- LEGAL -->
+          <div class="py-3 md:py-0 flex-1">
+            <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400">Legal</div>
+            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./impressum.html">Impressum</a>
+            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./privacypolicy.html">Privacy
+              Policy</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <script type="module" src="../main.js"></script>
+  <script type="module" src="../script.js"></script>
+</body>
+
+</html>

@@ -15,6 +15,10 @@
       display: none !important;
     }
 
+    .filter-white {
+      filter: invert(100%);
+    }
+
     /* MENU */
     .font-work {
       font-family: 'Poppins', sans-serif;
@@ -36,7 +40,7 @@
 
 </head>
 
-<body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-20">
+<body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
 
       <!-- NAV BAR -->
       <nav x-data="{ isOpen: false }" class="sticks md:relative h-[4rem] md:h-[2.7rem] top-0 left-0 right-0 border-b-0 z-50">
@@ -129,7 +133,7 @@
             <h4 id="verantwortlicher" class="m-0 ">Email:</h4>
         
             <!-- Envelope Icon -->
-            <a class="hover:text-indigo-700" id="mlink" href="#mlink">
+            <a class="hover:text-indigo-700 dark:filter-white" id="mlink" href="#mlink">
               <img src="img/icons/envelope-solid.svg" class="w-5 h-5 inline-block align-middle" id="envelope" />
             </a>
           </div>
@@ -142,7 +146,7 @@
 
   <!-- footer  -->
   <hr class="mt-20 border-gray-200 dark:border-gray-700 md:mx-[10.5rem]">
-
+  
   <footer class="bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 mx-auto md:mx-[10.5rem] mb-5">
     <div class="container">
   

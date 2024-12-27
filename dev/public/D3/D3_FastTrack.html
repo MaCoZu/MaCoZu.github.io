@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <!-- Tailwinds  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+
+    </style>
+
+    <title>D3 Fast Track</title>
+</head>
+
+<body class="h-min-dvh mx-auto bg-gray-100">
+    <h1 class="text-3xl m-4 font-semibold tracking-[8px] text-left">D3 Fast Track</h1>
+
+    <div class="grid grid-rows-10 grid-cols-2 gap-4">
+
+        <div class="text-2xl py-6 row-span-1 col-span-2 mx-2">HTML Setup</div>
+
+        <div class="p-4 m-2 bg-gray-200 row-span-9 col-span-1 text-xs overflow-auto">
+            <code>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+        
+        &lt;!-- Load d3.js --&gt;
+        &lt;script src="https://d3js.org/d3.v4.js"&gt;&lt;/script&gt;
+
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;!-- Define the svg area where the D3 chart will be drawn --&gt;
+        &lt;div id="chart"&gt;&lt;/div&gt;
+
+        &lt;script&gt;
+            <h1 class="text-lg font-semibold text-orange-700">Here goes your d3 code</h1>
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</pre>
+        </code>
+        </div>
+        
+        <div id="chart_02" class="m-2 p-0 row-span-4 col-span-1"></div>
+        <div class="text-2xl py-6 row-span-1 col-span-1 mx-2">Define your Canvas and Graph Area</div>
+        <div class="p-8 m-2 bg-gray-200 text-xs row-span-5 col-span-1 overflow-auto">
+            <code>
+                <pre>
+    // Set margins - Canvas = Graph Area + Margins
+    var margin = { top: 40, right: 40, bottom: 40, left: 40 },
+
+    // Graph Area
+    width = 400 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+    // append the svg object to the body of the page
+    var canvas = d3.select("#chart_02")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        // the following pushes the graph area to the right 
+        // (by value of margin.left) and down by value in margin.top 
+            .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
+                </pre>
+            </code>
+        </div>
+
+    </div>
+</body>
+    <script>
+        // set the dimensions and margins of the graph
+        var margin = { top: 40, right: 40, bottom: 40, left: 40 },
+            width = 400 - margin.left - margin.right,
+            height = 300 - margin.top - margin.bottom;
+
+        // append the svg object to the body of the page
+        var canvas = d3.select("#chart_02")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .style("background-color", "lightgray");
+
+        canvas.append("text")
+            .attr("x", margin.left + width / 2)
+            .attr("y", margin.top - 10)
+            .style("text-anchor", "middle")
+            .text("Canvas to draw in - creates margins");
+
+        // Create a `g` element for the drawing area (shifted by margins)
+        const svg = canvas.append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        svg.append("rect")
+            .attr("width", width)
+            .attr("height", height)
+            .style("fill", "lightcoral");
+
+        svg.append("text")
+            .attr("x", width / 2)
+            .attr("y", height / 2)
+            .style("text-anchor", "middle")
+            .text("Actual graph area");
+
+        // X scale and Axis
+        var x = d3.scaleLinear()
+            .domain([0, 100])         // This is the min and the max of the data: 0 to 100 if percentages
+            .range([0, width]);       // This is the corresponding value I want in Pixel
+
+        svg.append('g')
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x));
+
+        // X scale and Axis
+        var y = d3.scaleLinear()
+            .domain([0, 100])         // This is the min and the max of the data: 0 to 100 if percentages
+            .range([height, 0]);       // This is the corresponding value I want in Pixel
+
+        svg.append('g')
+            .call(d3.axisLeft(y));
+
+        canvas.append("circle")
+            .attr("cx", 0)
+            .attr("cy", 0)
+            .attr("r", 20)
+            .style("fill", "darkred");
+
+        // Define the arrowhead marker for the arrow
+        canvas.append("defs").append("marker")
+            .attr("id", "arrowhead")
+            .attr("viewBox", "0 0 10 10")
+            .attr("refX", 5)
+            .attr("refY", 5)
+            .attr("markerWidth", 6)
+            .attr("markerHeight", 6)
+            .attr("orient", "auto-start-reverse")
+            .append("path")
+            .attr("d", "M 0 0 L 10 5 L 0 10 Z")
+            .style("fill", "black");
+
+        // Add the arrow line directly on the canvas, spanning from the inner svg center to the origin
+        canvas.append("line")
+            .attr("x1", margin.left + width / 5)
+            .attr("y1", margin.top + height / 7)
+            .attr("x2", 20)
+            .attr("y2", 20)
+            .attr("stroke", "black")
+            .attr("stroke-width", 2)
+            .attr("marker-end", "url(#arrowhead)");
+
+        svg.append("text")
+            .attr("x", width / 3)
+            .attr("y", height / 5)
+            .style("text-anchor", "middle")
+            .text("Origin (0,0)");
+
+    </script>
+</body>
+
+</html>

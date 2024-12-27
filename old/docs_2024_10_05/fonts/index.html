@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="./img/logo/logo_weiß.svg" type="image/x-icon" />
+
+  <style>
+    [x-cloak] {
+      display: none !important;
+    }
+
+
+    /* MENU */
+    .font-pop {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* TEXT */
+    .font-literata {
+      font-family: 'Literata', serif;
+    }
+
+    /* HIGHLIGHT  */
+    .font-bebas {
+      font-family: 'Bebas', sans-serif;
+    }
+
+    /* Serif  */
+    .font-merri {
+      font-family: 'Merriweather', serif;
+    }
+
+    /* Sans  */
+    .font-ledger {
+      font-family: 'Ledger', sans-serif;
+    }
+  </style>
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="./font.css">
+
+  <!-- css  -->
+  <link rel="stylesheet" href="./style.css">
+
+  <title>Zausch Portfolio</title>
+
+</head>
+
+<body class="font-pop bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
+
+  <!-- navbar -->
+  <nav x-data="{ isOpen: false }" class="relative uppercase">
+    <div class="container mx-auto md:mx-20 px-6 md:px-0 mt-8 md:mt-8 md:flex md:justify-between md:items-center">
+      <div class="flex items-center justify-between w-full">
+        <!-- Logo + Name -->
+        <a href="index.html" class="flex items-center">
+          <img id="logo" class="h-8 sm:h-8 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="logo">
+        </a>
+
+        <!-- Menu Button (Right Aligned) -->
+        <button @click="isOpen = !isOpen" class="flex md:hidden focus:outline-none ml-auto">
+          <div class="w-6 h-6 relative">
+            <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+            </svg>
+            <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </div>
+        </button>
+
+        <!-- Desktop Menu (Right Aligned) -->
+        <div class="hidden md:flex ml-auto items-center">
+          <!-- <div class="p-3 space-y-2 text-lg">
+            <p id="modal-switch" class="hover:text-indigo-400" href="#">Contact</p>
+          </div> -->
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div x-show="isOpen" x-transition:enter="transform ease-out duration-300 transition-translate-opacity"
+        x-transition:enter-start="translate-y-10 opacity-0" x-transition:enter-end="translate-y-0 opacity-100"
+        x-transition:leave="transform ease-in duration-300 transition-translate-opacity"
+        x-transition:leave-start="translate-y-0 opacity-100" x-transition:leave-end="translate-y-10 opacity-0"
+        class="lg:hidden absolute top-16 right-0 pr-4 z-10 w-1/2 h-screen">
+
+        <!-- <div class="p-3 space-y-2 text-lg">
+          <p id="modal-switch2" class="hover:text-indigo-400" href="#">Contact</p>
+        </div> -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- Modal 
+  <div class="w-1/2 h-1/2">
+    <div id="modal-bg" class="w-full h-full bg-gray-100 top-0 absolute hidden"></div>
+    <div id="modal-box" class="sm:w-[385px] sm:min-w-[40vw] min-w-[80vw] min-h-[50vh] flex flex-col items-center gap-2 -translate-y-1/2 p-6 bg-[#FFFFEB] rounded-lg top-1/2 left-1/2 -translate-x-1/2 absolute hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" class="text-[#059669] mx-auto h-11 rounded-full bg-[#D1FAE5] w-11" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 13l4 4L19 7" />
+      </svg>
+      <span class="text-2xl font-medium">Payment Successful</span>
+      <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, consequatur?</p>
+      <button id="modal-close" class="p-3 bg-[#4F46E5] rounded-lg w-full text-white">Click Background</button>
+    </div>
+  </div> -->
+
+  <!-- main -->
+  <section class="bg-white dark:bg-gray-900">
+    <div class="container mx-auto md:mx-20 px-6 md:px-0 mt-8 md:mb-32 md:mt-20 md:px-0">
+      <h1 class="text-4xl font-bebas font-semibold my-10 tracking-[8px] text-center">Latest Projects</h1>
+
+
+      <div class="grid grid-cols-1 gap-24 md:gap-14 md:grid-cols-2 xl:grid-cols-3">
+
+        <!-- Model Gallery  -->
+        <div>
+          <a href="model_gallery.html">
+            <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="./img/foto/model_museeum.jpg"
+              alt="">
+
+            <div class="mt-8">
+              <span class="text-indigo-700 dark:text-amber-400 uppercase">Math & More</span>
+
+              <h1
+                class="mt-4 font-literata text-xl capitalize font-semibold tracking-wide text-gray-800 dark:text-white">
+                Model Gallery
+              </h1>
+
+              <p class="mt-2 font-literata text-lg text-gray-500 dark:text-gray-300">
+                Models from all walks of life. If I meet an interesting model on my strolls in the social or natural
+                sciences, I'll invite her to my little gallery.
+              </p>
+
+              <div class="flex items-center justify-end mt-4">
+                <p class="text-gray-500 dark:text-gray-300">August 2024</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- EU Elections Dashboard  -->
+        <div>
+          <a href="eu2024dash.html">
+            <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="./img/foto/elections.jpg"
+              alt="">
+
+            <div class="mt-8">
+              <span class="text-indigo-700 dark:text-amber-400 uppercase">dashboard</span>
+
+              <h1
+                class="mt-4 font-literata text-xl capitalize font-semibold tracking-wide text-gray-800 dark:text-white">
+                EU 2024 Elections in Germany</h1>
+
+              <p class="mt-2 font-literata text-lg text-gray-500 dark:text-gray-300">
+                A Tableau dashboard showing all German parties and their election results at state and district level.
+                You
+                may find your parties sweet or weak spots.</br>
+              </p>
+
+              <div class="flex items-center justify-end mt-4">
+                <p class="text-gray-500 dark:text-gray-300">June 2024</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- scatter  -->
+        <div>
+          <a href="scatter.html">
+            <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="./img/foto/stats.png" alt="">
+
+            <div class="mt-8">
+              <span class="text-indigo-700 dark:text-amber-400 uppercase">statistics</span>
+
+              <h1
+                class="mt-4 text-xl font-literata capitalize font-semibold tracking-wide text-gray-800 dark:text-white">
+                from scatter to line
+              </h1>
+
+              <p class="mt-2 font-literata text-lg text-gray-500 dark:text-gray-300">
+                All the components of regression analysis are introduced in this step-by-step
+                development of a simple linear regression line from a scatterplot.
+              </p>
+
+              <div class="flex items-center justify-end mt-4">
+                <p class="text-gray-500 dark:text-gray-300">March 2024</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+  </section>
+
+
+  <!-- footer  -->
+  <hr class="mx-20 mt-10 border-gray-200 dark:border-gray-700">
+  <footer class="bg-white dark:bg-gray-900">
+    <div class="container px-6 py-4 mx-auto md:mx-20 md:px-0">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+
+        <div class="">
+          <!-- Logo and Name  -->
+          <div class="hidden sm:block">
+            <div class="flex justify-between items-center">
+              <div class="flex gap-3 items-center">
+                <a>
+                  <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="">
+                </a>
+                <div class="">
+                  <p
+                    class="pb-3 text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                    Marco</p>
+                  <p
+                    class="text-lg font-merri font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                    Zausch</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:gap-24 justify-between">
+  
+          <!-- CONTACT ME -->
+          <div class="py-3 md:py-0 flex-1">
+            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Contact Me</div>
+            <a id="mlink" class="flex items-center gap-3 my-3 hover:text-indigo-400 dark:hover:text-sky-300" href="#">Email</a>
+          </div>
+        
+          <!-- WORK -->
+          <div class="py-3 md:py-0 flex-1">
+            <div class="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium">Work</div>
+            <p class="my-3 flex items-center gap-3">
+              <a href="https://www.linkedin.com/in/marcozausch" aria-label="LinkedIn">
+                <span class="icon-[fa6-brands--linkedin] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
+              </a>
+              <a class="block hover:text-indigo-400 dark:hover:text-sky-300" href="https://www.linkedin.com/in/marcozausch">LinkedIn</a>
+            </p>
+            <p class="my-3 flex items-center gap-3">
+              <a href="https://github.com/MaCoZu" aria-label="Github">
+                <span class="icon-[fa6-brands--github] fill-current w-5 h-5 text-gray-500 dark:text-gray-300 hover:text-indigo-400 dark:hover:text-sky-300"></span>
+              </a>
+              <a class="block hover:text-indigo-400 dark:hover:text-sky-300" href="https://github.com/MaCoZu">Github</a>
+            </p>
+          </div>
+        
+          <!-- LEGAL -->
+          <div class="py-3 md:py-0 flex-1">
+            <div class="text-sm uppercase font-medium text-gray-500 dark:text-gray-400">Legal</div>
+            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./impressum.html">Impressum</a>
+            <a class="my-3 block hover:text-indigo-400 dark:hover:text-sky-300" href="./privacypolicy.html">Privacy Policy</a>
+          </div>
+        
+        </div>
+        
+
+
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    /* 1. define variables */
+    var me = "marcozausch";
+    var place = "posteo.de";
+
+    /* 2. find email link to replace */
+    var elink = document.getElementById("mlink");
+
+    /* 3. replace link href with variables  */
+    elink.href = `mailto:${me}@${place}`;
+
+
+    const modalbg = document.getElementById('modal-bg');
+    const modalSwitch = document.getElementById('modal-switch');
+    const modalBox = document.getElementById('modal-box');
+    const modalClose = document.getElementById('modal-close');
+    modalbg.addEventListener("click", function () {
+      modalBox.classList.add('hidden')
+      modalbg.classList.add('hidden')
+    });
+    modalSwitch.addEventListener("click", function () {
+      modalBox.classList.remove('hidden')
+      modalbg.classList.remove('hidden')
+    });
+    modalClose.addEventListener("click", function () {
+      modalBox.classList.remove('hidden')
+      modalbg.classList.remove('hidden')
+    });
+  </script>
+
+
+  <script type="module" src="./main.js"></script>
+  <script type="module" src="./script.js"></script>
+</body>
+
+</html>

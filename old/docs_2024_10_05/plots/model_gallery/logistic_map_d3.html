@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistic Map Visualization</title>
+    <script src="./d3.v7.js"></script>
+    <style>
+        body {
+            /* font-family: Arial, sans-serif; */
+            font-family: Poppins, sans-serif;
+            margin: 0;
+            padding: 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: rgb(17 24 39);
+                color: rgb(229 231 235);
+            }
+            .axis-label {
+            fill: #fff; /* White color for dark mode */
+            }
+        }
+
+        #graph {
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            /* justify-content: space-around; */
+            width: 100%;
+            max-width: 800px;
+            margin-top: 4px;
+        }
+
+        .control {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 7px;
+        }
+    </style>
+    
+    <!-- css  -->
+    <script type="module" crossorigin src="./assets/index.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index.css">
+
+
+    <!-- mathjax  -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            messageStyle: "normal",
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                processEscapes: true
+                }
+            });
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+</head>
+<body class="flex flex-col h-fit w-fit content-center items-center bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-200">
+    <div id="graph"></div>
+    <div class="controls">
+        <div class="control">
+            <label for="r">$R$ value:</label>
+            <input type="range" id="r" min="0" max="4" step="0.01" value="2.5">
+            <span id="rValue">2.5</span>
+        </div>
+        <div class="control">
+            <label for="x0">Initial $x_0$:</label>
+            <input type="range" id="x0" min="0" max="1" step="0.000001" value="0.5">
+            <span id="x0Value">0.5</span>
+        </div>
+        <div class="control">
+            <label for="iterations">Iterations:</label>
+            <input type="range" id="iterations" min="10" max="200" step="1" value="100">
+            <span id="iterationsValue">100</span>
+        </div>
+    </div>
+    <script>
+        // Set up the SVG
+        const margin = {top: 40, right: 30, bottom: 80, left: 60};
+        let width = 800 - margin.left - margin.right;
+        let height = 500 - margin.top - margin.bottom;
+
+        const svg = d3.select("#graph")
+            .append("svg")
+            .attr("preserveAspectRatio", "xMidYMid meet")
+            .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // Set up scales
+        const x = d3.scaleLinear().range([0, width]);
+        const y = d3.scaleLinear().range([height, 0]);
+
+        // Add axes
+        const xAxis = svg.append("g")
+            .attr("transform", `translate(0,${height})`)
+            .attr("class", "x-axis");
+
+        const yAxis = svg.append("g")
+            .attr("class", "y-axis");
+
+        // Add axis labels
+        const xLabel = svg.append("text")
+            .attr("text-anchor", "middle")
+            .attr("x", width / 2)
+            .attr("y", height + margin.bottom - 10)
+            .text("Iteration")
+            .attr("class", "axis-label");
+
+        const yLabel = svg.append("text")
+            .attr("text-anchor", "middle")
+            .attr("transform", "rotate(-90)")
+            .attr("y", -margin.left + 20)
+            .attr("x", -height / 2)
+            .text("$x_0$")
+            .attr("class", "axis-label") ;
+
+        // Line generator
+        const line = d3.line()
+            .x((d, i) => x(i))
+            .y(d => y(d));
+
+        // Plot function
+        function plot() {
+            const r = parseFloat(d3.select("#r").property("value"));
+            const x0 = parseFloat(d3.select("#x0").property("value"));
+            const iterations = parseInt(d3.select("#iterations").property("value"));
+
+            // Generate data
+            const data = [x0];
+            for (let i = 1; i < iterations; i++) {
+                const prevX = data[i - 1];
+                const nextX = r * prevX * (1 - prevX);
+                data.push(nextX);
+            }
+
+            // Update scales
+            x.domain([0, iterations - 1]);
+            y.domain([0, 1]);
+
+            // Update axes
+            xAxis.call(d3.axisBottom(x).tickSize(8).tickPadding(15));
+            yAxis.call(d3.axisLeft(y).tickSize(8).tickPadding(8));
+
+            // Update or create the line
+            const path = svg.selectAll(".line").data([data]);
+            path.enter()
+                .append("path")
+                .attr("class", "line")
+                .merge(path)
+                .attr("d", line)
+                .attr("fill", "none")
+                .attr("stroke", "steelblue")
+                .attr("stroke-width", 2);
+
+            path.exit().remove();
+        }
+
+        // Resize function
+        function resizeGraph() {
+            const graphElement = document.getElementById("graph");
+            width = graphElement.clientWidth - margin.left - margin.right;
+            height = graphElement.clientHeight - margin.top - margin.bottom;
+
+            svg.attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`);
+
+            x.range([0, width]);
+            y.range([height, 0]);
+
+            xAxis.attr("transform", `translate(0,${height})`);
+            xLabel.attr("x", width / 2).attr("y", height + margin.bottom - 10);
+            yLabel.attr("x", -height / 2);
+
+            plot();
+        }
+
+        // Initial plot
+        plot();
+
+        // Update plot on input change
+        d3.selectAll("input").on("input", function() {
+            d3.select(`#${this.id}Value`).text(this.value);
+            plot();
+        });
+
+        // Add resize event listener
+        window.addEventListener('resize', resizeGraph);
+
+        // Initial resize
+        resizeGraph();
+    </script>
+    <script type="module" src="../main.js"></script>
+    <script type="module" src="../script.js"></script>
+</body>
+</html>
