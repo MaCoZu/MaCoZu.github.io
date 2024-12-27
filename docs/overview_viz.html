@@ -24,11 +24,11 @@
         }
     </style>
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="../font.css">
+<!-- Fonts -->
+<link rel="stylesheet" href="./font.css">
 
-    <!-- css  -->
-    <link rel="stylesheet" href="../style.css">
+<script type="module" crossorigin src="/MaCoZu.github.io/docs/assets/index-B42VW01z.js"></script>
+<link rel="stylesheet" crossorigin href="/MaCoZu.github.io/docs/assets/index-Ddv5icHQ.css">
 
     <!-- mathjax  -->
     <script type="text/x-mathjax-config">
@@ -123,63 +123,48 @@
             </div>
     </nav>
 
-    <div class="md:h-20"></div>
+    <div class="h-10 md:h-20"></div>
 
 
-    <main class="md:mx-[10.5rem]">
+    <main class="mx-auto md:mx-[10.5rem] min-h-screen">
 
-        <div class="max-w-full text-pretty">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
 
-            <!-- MODEL GALLERY -->
-            <div class="container mx-auto md:px-9 md:max-w-4xl font-work text-xl w-full box-border">
-                <div class="">
-                    <a href="./model_gallery.html">
-                        <!-- Title -->
-                        <h1 class="text-2xl font-semibold font-literata pb-3">Model Gallery</h1>
-                    </a>
-
-                    <!-- Text Content -->
-                    <div class="items-start">
-                        <p class="text-pretty font-work leading-8">
-                            A collection of short introductions to different models from the realm of AI, complexity
-                            science, economics etc. This was motivated by a nice course by Scott E. Page, the plan to
-                            develope my popular science writing skills and to learn JavaScript at the same time.
-                        </p>
-                        <p class="text-right font-work text-lg pt-2 text-gray-500">Updated: August 2024</p>
+            <div class="col-span-1 md:col-span-3 mr-2">
+                <a href="./eco_footprint_hdi.html">
+                    <div class="relative w-full h-40"> <!-- Consistent height -->
+                        <img src="./img/foto/ecological_footprint_detail.png" alt="" class="absolute inset-0 w-full h-full object-contain">
                     </div>
+                    <div class="mt-3 px-1">
+                        <h1 class="font-literata text-lg uppercase text-gray-600 tracking-wide font-semibold mb-1">
+                            Ecological Footprint</h1>
+                        <p>
+                            Just two countries have high human development and a sustainable lifestyle.
+                        </p>
+                    </div>
+                </a>
+
+
+            </div>
+
+
+            <div class="col-span-1 md:col-span-3 mr-2">
+                <a href="./happy_sustainable.html">
+                <div class="relative w-full h-40"> <!-- Consistent height -->
+                    <img src="./img/foto/happy&sustainable_detail.png" alt="" class="absolute inset-0 w-full h-full object-contain">
+                </div>
+                <div class="mt-3 px-1">
+                    <h1 class="font-literata text-lg uppercase text-gray-600 tracking-wide font-semibold mb-1">
+                        Happy & Sustainable</h1>
+                    <p>
+                        Happiness score, emissions and more in one big bubble chart.
+                    </p>
 
                 </div>
+                </a>
             </div>
 
-            <!-- Horizontal Ruler -->
-            <div class="flex justify-center my-5">
-                <hr class="w-1/2 border-gray-400">
-            </div>
-
-            <!-- Ingredients of Regression -->
-            <div class="container mx-auto md:px-9 md:max-w-4xl font-work text-xl w-full box-border">
-                <div class="">
-                    <a href="./TwitterAnalysis/01_tweet_times.html">
-                        <!-- Title -->
-                        <h1 class="text-2xl font-semibold font-literata pb-3">From Scatter to Line</h1>
-                    </a>
-
-                    <!-- Text Content -->
-                    <div class="items-start">
-                        <p class="text-pretty font-work leading-8">
-                            I investigate the regression line a bit deeper and found a more intuitive way of describing
-                            the evolution of a line from scattered dots. Usually a regression line is calculated
-                            with minimizing errors. But the natural approach of working out a simple regression line
-                            from data points is to hang a standard deviation line on the point of averages ($\bar{x}$,
-                            $\bar{y}$)
-                            and adjust it with the correlation coefficient.
-                        </p>
-                        <p class="text-right font-work text-lg pt-2 text-gray-500">March 2024</p>
-                    </div>
-                </div>
-            </div>
         </div>
-
 
     </main>
 
@@ -197,7 +182,7 @@
                         <div class="flex justify-between items-center">
                             <div class="flex gap-3 items-center">
                                 <a>
-                                    <img id="logo2" class="h-16 fill-current" src="./img/logo/logo.svg" alt="">
+                                    <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="">
                                 </a>
                                 <div class="">
                                     <p
@@ -290,8 +275,8 @@
 
 
 
-    <script type="module" src="./main.js"></script>
-    <script type="module" src="./script.js"></script>
+    <script type="module" src="../main.js"></script>
+    <script type="module" src="../script.js"></script>
 </body>
 
 </html>

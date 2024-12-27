@@ -14,6 +14,8 @@ dist
 dist-ssr
 public/plots/d3/
 public/fonts/
+public/old/
+public/D3/
 
 # pages 
 web_dubbois_stats.html
