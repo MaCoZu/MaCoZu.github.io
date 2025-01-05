@@ -11,17 +11,14 @@ lerna-debug.log*
 old/
 docs/D3
 dev/node_modules/
-dev/public/img/
-dev/public/data
-dev/public/plots/d3/
-dev/public/fonts/
-dev/public/old/
-dev/public/D3/
-dev/dist
-dev/dist-ssr
+dev/src/assets
+dev/_unused_pages
+dev/docs
 
-# pages 
-web_dubbois_stats.html
+# files 
+**/*.png
+**/*.jpg
+
 
 *.local
 

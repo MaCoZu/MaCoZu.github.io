@@ -3,7 +3,7 @@
   font-family: 'Bebas';
   font-weight: normal;
   font-style: normal;
-  src: url('./fonts/Bebas.woff2') format('woff2');
+  src: url('../assets/fonts/Bebas.woff2') format('woff2');
 }
 
  /* TEXT  */
@@ -12,7 +12,7 @@
   display:swap;
   font-weight:300;
   font-style:normal;
-  src:url(../fonts/Literata-Light.ttf) format("truetype")
+  src:url('../assets/fonts/Literata-Light.ttf') format("truetype")
 }
 
 @font-face{
@@ -20,7 +20,7 @@
   display:swap;
   font-weight:300;
   font-style:italic;
-  src:url(../fonts/Literata-LightItalic.ttf) format("truetype")
+  src:url('../assets/fonts/Literata-LightItalic.ttf') format("truetype")
 }
 
 @font-face{
@@ -28,7 +28,7 @@
   display:swap;
   font-weight:400;
   font-style:normal;
-  src:url(../fonts/Literata-Light.ttf) format("truetype")
+  src:url('../assets/fonts/Literata-Light.ttf') format("truetype")
 }
 
 @font-face{
@@ -36,7 +36,7 @@
   display:swap;
   font-weight:400;
   font-style:italic;
-  src:url(../fonts/Literata-LightItalic.ttf) format("truetype")
+  src:url('../assets/fonts/Literata-LightItalic.ttf') format("truetype")
 }
 
 @font-face{
@@ -44,25 +44,25 @@
   display:swap;
   font-weight:600;
   font-style:normal;
-  src:url(../fonts/Literata-SemiBold.ttf) format("truetype")
+  src:url('../assets/fonts/Literata-SemiBold.ttf') format("truetype")
 }
 
 /* Chomsky */
 @font-face {
   font-family: 'Chomsky';
-  src: url('./fonts/Chomsky.woff2') format('woff2');
+  src: url('../assets/fonts/Chomsky.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Bevan';
-  src: url('./fonts/Bevan.woff2') format('woff');
+  src: url('../assets/fonts/Bevan.woff2') format('woff');
 }
 
 @font-face {
   font-family: 'Work';
-  src: url('./fonts/WorkSans-Light.ttf') format('ttf');
+  src: url('../assets/fonts/WorkSans-Light.ttf') format('ttf');
 }
 
 

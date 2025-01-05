@@ -1,2 +1,2 @@
 import '@tailwindcss/typography';
-import './style.css';
+import './styles/style.css/'

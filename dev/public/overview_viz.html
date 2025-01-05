@@ -7,7 +7,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- Favicon -->
-    <link rel="icon" href="./img/logo/logo_weiß.svg" type="image/x-icon" />
+    <link rel="icon" href="../src/assets/img/logo/logo_weiß.svg" type="image/x-icon" />
 
     <style>
         [x-cloak] {
@@ -25,27 +25,12 @@
     </style>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="../font.css">
+    <link rel="stylesheet" href="../src/styles/font.css">
 
     <!-- css  -->
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../src/styles/style.css">
 
-    <!-- mathjax  -->
-    <script type="text/x-mathjax-config">
-                MathJax.Hub.Config({
-                    messageStyle: "normal",
-                    tex2jax: {
-                        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                        processEscapes: true
-                        }
-                    });
-              </script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
-
-
-    <link rel="stylesheet" href="">
-    <title>Zausch Writing</title>
+    <title>Charts</title>
 </head>
 
 
@@ -61,7 +46,7 @@
     
                 <!-- LOGO -->
                 <a href="index.html" class="flex items-center">
-                    <img id="logo" class="h-6 sm:h-6 dark:filter-white" src="./img/logo/logo.svg" alt="logo">
+                    <img id="logo" class="h-6 sm:h-6 dark:filter-white" src="../src/assets/img/logo/logo.svg" alt="logo">
                 </a>
     
                 <!-- MOBILE MENU BUTTON -->
@@ -132,8 +117,8 @@
 
             <div class="col-span-1 md:col-span-3 mr-2">
                 <a href="./eco_footprint_hdi.html">
-                    <div class="relative w-full h-40"> <!-- Consistent height -->
-                        <img src="./img/foto/ecological_footprint_detail.png" alt="" class="absolute inset-0 w-full h-full object-contain">
+                    <div class="relative w-full h-40"> 
+                        <img src="../src/assets/img/foto/ecological_footprint_detail.png" alt="ecological footprint chart detail" class="absolute inset-0 w-full h-full object-contain">
                     </div>
                     <div class="mt-3 px-1">
                         <h1 class="font-literata text-lg uppercase text-gray-600 tracking-wide font-semibold mb-1">
@@ -151,7 +136,7 @@
             <div class="col-span-1 md:col-span-3 mr-2">
                 <a href="./happy_sustainable.html">
                 <div class="relative w-full h-40"> <!-- Consistent height -->
-                    <img src="./img/foto/happy&sustainable_detail.png" alt="" class="absolute inset-0 w-full h-full object-contain">
+                    <img src="../src/assets/img/foto/happy&sustainable_detail.png" alt="" class="absolute inset-0 w-full h-full object-contain">
                 </div>
                 <div class="mt-3 px-1">
                     <h1 class="font-literata text-lg uppercase text-gray-600 tracking-wide font-semibold mb-1">
@@ -182,7 +167,7 @@
                         <div class="flex justify-between items-center">
                             <div class="flex gap-3 items-center">
                                 <a>
-                                    <img id="logo2" class="h-16 fill-current dark:filter-white" src="./img/logo/logo.svg" alt="">
+                                    <img id="logo2" class="h-16 fill-current dark:filter-white" src="../src/assets/img/logo/logo.svg" alt="">
                                 </a>
                                 <div class="">
                                     <p
@@ -201,11 +186,11 @@
     
                 <div class="flex flex-col sm:flex-row sm:gap-24 md:justify-between ">
     
-                    <!-- CONTACT ME -->
+                    <!-- CONTACT -->
                     <div class="py-2 md:py-0 flex-1">
                         <div class="text-sm uppercase font-medium">Contact </div>
                         <div class="flex items-center gap-3 my-2">
-                            <img src="img/icons/envelope-solid.svg" class="w-5 h-5 dark:filter-white" id="envelope" />
+                            <img src="../src/assets/img/icons/envelope-solid.svg" class="w-5 h-5 dark:filter-white" id="envelope" />
                             <a class="hover:text-indigo-700" id="mlink" href="#mlink">Email</a>
                         </div>
                     </div>
@@ -217,14 +202,14 @@
     
                         <p class="mt-2 flex items-center">
                         <div class="flex items-center gap-3" aria-label="LinkedIn">
-                            <img src="img/icons/linkedin.svg" class="w-5 h-5 dark:filter-white" id="linkedin">
+                            <img src="../src/assets/img/icons/linkedin.svg" class="w-5 h-5 dark:filter-white" id="linkedin">
                             <a href="https://www.linkedin.com/in/marcozausch" class="hover:text-indigo-700">LinkedIn</a>
                         </div>
                         </p>
     
                         <p class="mt-2 flex items-center">
                         <div class="flex items-center gap-3" aria-label="github">
-                            <img src="img/icons/github.svg" class="w-5 h-5 dark:filter-white" id="github">
+                            <img src="../src/assets/img/icons/github.svg" class="w-5 h-5 dark:filter-white" id="github">
                             <a href="https://github.com/MaCoZu" class="hover:text-indigo-700" aria-label="Github">Github</a>
                         </div>
                         </p>
@@ -243,42 +228,7 @@
         </div>
     </footer>
 
-    <script>
-        /* 1. define variables */
-        var me = "marcozausch";
-        var place = "posteo.de";
-
-        /* 2. find email link to replace */
-        var elink = document.getElementById("mlink");
-
-        /* 3. replace link href with variables  */
-        elink.href = `mailto:${me}@${place}`;
-
-
-        const modalbg = document.getElementById('modal-bg');
-        const modalSwitch = document.getElementById('modal-switch');
-        const modalBox = document.getElementById('modal-box');
-        const modalClose = document.getElementById('modal-close');
-        modalbg.addEventListener("click", function () {
-            modalBox.classList.add('hidden')
-            modalbg.classList.add('hidden')
-        });
-        modalSwitch.addEventListener("click", function () {
-            modalBox.classList.remove('hidden')
-            modalbg.classList.remove('hidden')
-        });
-        modalClose.addEventListener("click", function () {
-            modalBox.classList.remove('hidden')
-            modalbg.classList.remove('hidden')
-        });
-    </script>
-
-
-
-    <script type="module" src="../main.js"></script>
-    <script type="module" src="../script.js"></script>
+    <script type="module" src="../src/main.js"></script>
+    <script type="module" src="../src/script.js"></script>
 </body>
-
-</html>
-
 </html>
