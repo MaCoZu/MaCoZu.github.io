@@ -6,9 +6,15 @@
   src: url('../assets/fonts/Bebas.woff2') format('woff2');
 }
 
+/* MENU  */
+@font-face {
+  font-family: 'Work';
+  src: url('../assets/fonts/WorkSans-Light.ttf') format('ttf');
+}
+
  /* TEXT  */
 @font-face{
-  font-family:Literata;
+  font-family:'Literata';
   display:swap;
   font-weight:300;
   font-style:normal;
@@ -16,7 +22,7 @@
 }
 
 @font-face{
-  font-family:Literata;
+  font-family:'Literata';
   display:swap;
   font-weight:300;
   font-style:italic;
@@ -24,7 +30,7 @@
 }
 
 @font-face{
-  font-family:Literata;
+  font-family:'Literata';
   display:swap;
   font-weight:400;
   font-style:normal;
@@ -32,7 +38,7 @@
 }
 
 @font-face{
-  font-family:Literata;
+  font-family:'Literata';
   display:swap;
   font-weight:400;
   font-style:italic;
@@ -40,7 +46,7 @@
 }
 
 @font-face{
-  font-family:Literata;
+  font-family:'Literata';
   display:swap;
   font-weight:600;
   font-style:normal;
@@ -59,18 +65,3 @@
   font-family: 'Bevan';
   src: url('../assets/fonts/Bevan.woff2') format('woff');
 }
-
-@font-face {
-  font-family: 'Work';
-  src: url('../assets/fonts/WorkSans-Light.ttf') format('ttf');
-}
-
-
-
-
-
-
-
-
-
-
