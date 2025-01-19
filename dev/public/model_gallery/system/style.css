@@ -12,20 +12,3 @@
     /* Dark mode: Adjust the icon to match rgb(229, 231, 235) */
     filter: invert(86%) sepia(4%) saturate(0%) hue-rotate(210deg) brightness(98%) contrast(89%);
 }
-
-#cssTable td {
-    text-align: center;
-    vertical-align: middle;
-}
-
-td:nth-child(odd),
-th:nth-child(odd) {
-    background-color: #efd2d2;
-    color: #000000;
-}
-
-td:nth-child(even),
-th:nth-child(even) {
-    background-color: #e38888;
-    color: #000000;
-}
