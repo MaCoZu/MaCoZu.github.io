@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normal Distribution</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/src/assets/img/logo/logo_weiß.svg" type="image/x-icon" />
+
+    <!-- mathjax  -->
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                messageStyle: "normal",
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    processEscapes: true
+                    }
+                });
+        </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+    <!-- alpinejs  -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+    <!-- Include KaTeX for rendering formulas -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/styles/font.css">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
+
+    <div id="navbar"></div>
+
+    <main id="main-content"
+        class="container mx-auto flex flex-col justify-center items-center mt-8 min-h-screen font-literata divide-y-2 divide-solid prose prose-stone prose-lg md:prose-xl text-pretty leading-8 md:leading-10 dark:prose-invert">
+
+        <!-- normal distribution  -->
+        <div id="std-norm" class="scroll-mt-10 md:-scroll-mt-1 z-0">
+            <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Standard Normal
+                Distribution</h2>
+        
+            <!-- section 1 -->
+            <div class="py-0 overflow-visible">
+        
+                <!-- text  -->
+                <div class="">
+                    <p>All kinds of variables in natural and social sciences are (approximately) normally
+                        distributed. Height, birth weight, reading ability, job satisfaction, or test scores are
+                        just a few examples of such variables. Because normally distributed variables are so common,
+                        many statistical tests are designed for them.</p>
+                    <p>In a normal distribution data is clustered in the middle and tapering off as they go further
+                        away from the center, forming a bell shaped curve. Such a bell shaped curve has very
+                        convenient characteristics. Its measures of central tendency – mean, median, and mode – fall
+                        in one place. This place splits the dataset cleanly in the middle where half of the values
+                        fall below and the other half above the mean. </p>
+        
+                </div>
+        
+                <!-- figure  -->
+                <div class="flex-col md:mt-0 justify-center items-center relative overflow-scroll">
+                    <!-- Sliders -->
+                    <div class="slider-container">
+                        <label for="mean_nd">Mean (μ): <span id="mean-value_nd">0</span></label>
+                        <input type="range" id="mean_nd" min="-5" max="5" value="0" step="0.1">
+                    </div>
+                    <div class="slider-container">
+                        <label for="variance_nd">Variance (σ²): <span id="variance-value_nd">1</span></label>
+                        <input type="range" id="variance_nd" min="0.1" max="5" value="1" step="0.1">
+                    </div>
+        
+                    <!-- Chart Container -->
+                    <div id="normal_distribution_chart"></div>
+                </div>
+            </div>
+        
+            <div class="max-w-full md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto">
+                <p>When we know the mean $\mu$ and the standard deviation $\sigma$, which is the average amount by
+                    which observations deviate on either side from the mean, we can immediately tell that 68% of
+                    your observations will fall within the range of two standard deviations centered at $\mu$.
+                    Provided that the variables are independent and have limited variance. 95% of the data lies
+                    within four standard deviations and 99.7% within six $\sigma$ above $\mu$. That is two or three
+                    standard deviations below and above the mean. This is called the $\mathbf{68-95-99.7}$ rule or
+                    <strong>empirical rule</strong> and if you have $\mu=100$ and $\sigma=15$ you know instantly
+                    that 95% of your data points will be found in the range $[70, 130]$.
+                </p>
+        
+                <p>In business companies try to reduce the deviation, of some critical parts or services, from their
+                    perfect quality to a minimum. In terms of the normal distribution, they strive to make the range
+                    of variability ($\sigma$) around $\mu$ (perfect quality) as small as possible. </p>
+                <p>For example Motorola aspires to improve its manufacturing and business processes, through quality
+                    control that defects only happen in 3.4 per million opportunities. The methods to achieve this
+                    goal, where coined <strong>Six Sigma</strong> and are now widely implemented by other companies.
+                    Sigma is the name of the symbol $\sigma$ for standard deviations, and the goal is to make
+                    $\sigma$, so small that any product, within six standard deviations to both sides of the mean
+                    (prefect quality) can be rendered good enough.</p>
+        
+                <p>Normal distributions can be applied even to variables that are not normally distributed, with the
+                    help of the <strong>central limit theorem (CLT).</strong> The CLT says that when you repeatedly
+                    sample from independent and identically distributed (other than normally distributed) random
+                    variables, and take the arithmetic mean of every sample, these sample means will closely
+                    approximate a normal distribution. Thereby statistical methods that work for normal
+                    distributions can be applicable to many problems involving other types of distributions.</p>
+                <p>Once you have $\mu$ and $\sigma$ you can find the probability of any data point $x$ to appear in
+                    the distribution with the help of the <strong>Probability Density Function (PDF)</strong>. But
+                    more commonly we’ll ask, how likely is it to see values below or above some point $x$, and the
+                    <strong>Cumulative Distribution Function (CDF)</strong> answers this question.
+                </p>
+                <p>Furthermore any normal distribution can be simplified into a standardized form with $\mu=0$ and
+                    $\sigma=1$. It can also be said that every normal distribution is a version of the standard
+                    normal distribution, whose domain has been stretched by $\sigma$ and shifted by $\mu$. By
+                    playing with the interactive graph, you can inspect the form of some normal distributions with
+                    different $\mu$ and $\sigma$ or visualize the effects of the transformation from normal to
+                    standard normal.</p>
+            </div>
+        
+        
+            <!-- Section 2 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 items-start md:px-0 md:mt-0 h-fit">
+        
+                <!-- Text Content -->
+                <div class="md:col-span-2 max-w-none mx-auto md:mx-0">
+                    <p>
+                        Once you have a standard normal distribution you’re looking for the probabilities of
+                        $\mathbf{z}$-<strong>scores</strong>, which are nothing else than standardized $x$
+                        observations. <br />
+                        $$z=(\frac{{x - \mu}}{{\sigma}})$$
+                        For a dataset with a mean $\mu_x = 5.0$ and standard deviation $\sigma_x=3.09$, you can see
+                        the $x$ values and their corresponding $z$-scores in the table.
+                    </p>
+        
+                    <p>
+                        After the standardization, the mean of $x$ corresponds with a $z$-score $= 0$. Each
+                        $z$-score
+                        is associated with a probability, or $\mathbf{p}$<strong>-value</strong>, that tells you the
+                        likelihood of values occurring below that $z$-score: <br /> $P(x\leqslant 8) =P(z\leqslant
+                        0.97) =0.83\%$.<br />
+        
+                    </p>
+                </div>
+        
+                <!-- Table -->
+                <div class="md:col-span-1 overflow-x-auto">
+                    <table id="cssTable" class="w-full border-separate border-spacing-1 border border-gray-300">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="text-center border border-gray-300 px-4 py-2">x</th>
+                                <th class="text-center border border-gray-300 px-4 py-2">z</th>
+                                <th class="text-center border border-gray-300 px-4 py-2">p-value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>-1.62</td>
+                                <td>0.053</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>-0.97</td>
+                                <td>0.166</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>-0.97</td>
+                                <td>0.166</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>0</td>
+                                <td>0.5</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>0</td>
+                                <td>0.5</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>0</td>
+                                <td>0.5</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>0.97</td>
+                                <td>0.83</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>0.97</td>
+                                <td>0.83</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>1.62</td>
+                                <td>0.95</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+        
+                <div class="col-span-3">
+                    With the p-values you can also determine how likely it is that a random variable in the
+                    distribution is
+                    greater than 10:<br />
+                    $P(x\geqslant 10)=P(z\geqslant 1.62) \\ = (1-0.95)=0.05\%$ <br />
+                    Or the probability of a variable greater than 2 but below 10: <br />
+                    $P(2\leqslant x \leqslant 10) \\ = (0.95 - 0.166)=0.78\%$
+                </div>
+        
+            </div>
+        
+        </div>
+
+
+      
+    </main>
+
+
+    <div id="footer"></div>
+
+    <script type="module" src="/src/scripts/loadComponents.js"></script>
+    <script type="module" src="/src/scripts/main.js"></script>
+    <script type="module" src="/src/scripts/script.js"></script>
+
+    <!-- normal distribution chart -->
+    <script type="module">
+        import { NormalDistribution } from '/public/model_gallery/normal_distribution/normal_distribution.js';
+
+        // Initialize the chart
+        const chart_nd = NormalDistribution("#normal_distribution_chart");
+
+        // Add event listeners for sliders
+        document.getElementById("mean_nd").addEventListener("input", (e) => {
+            document.getElementById("mean-value_nd").textContent = e.target.value;
+            chart_nd.updateMean(e.target.value);
+        });
+
+        document.getElementById("variance_nd").addEventListener("input", (e) => {
+            document.getElementById("variance-value_nd").textContent = e.target.value;
+            chart_nd.updateVariance(e.target.value);
+        });
+    </script>
+
+
+
+</body>
+
+</html>

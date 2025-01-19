@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOC Graph Modell Gallery</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/src/assets/img/logo/logo_weiß.svg" type="image/x-icon" />
+
+    <!-- mathjax  -->
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                messageStyle: "normal",
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    processEscapes: true
+                    }
+                });
+        </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+    <!-- alpinejs  -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+    <!-- Include KaTeX for rendering formulas -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/styles/font.css">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
+
+    <div id="navbar"></div>
+
+    <main id="main-content"
+        class="container mx-auto flex flex-col justify-center items-center mt-8 min-h-screen font-literata divide-y-2 divide-solid prose prose-stone prose-lg md:prose-xl text-pretty leading-8 md:leading-10 dark:prose-invert">
+
+
+        <!-- logistic growth  -->
+        <div id="logistic-growth" class="scroll-mt-10 md:-scroll-mt-1 z-0">
+            <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Logistic Growth</h2>
+            <div class="h-full overflow-visible">
+                <div class="py-0">
+                    <p>The logistic growth is a common model used to describe population growth. Scholars have put
+                        Thomas Malthus ideas about demography in a simple formula that captures the basic assumption
+                        that humanity, with higher quality of life, will grow exponentially until food production
+                        hits a limit and population size will stagnate at a sustainable level. Today we know that a
+                        long lifespan and low mortality
+                        goes hand in hand with low fertility. Malthus was wrong concerning humans but the model is
+                        still useful for all kinds of problems where resources are limited.</p>
+
+                    <!-- Sliders -->
+                    <div class="flex-col justify-center items-center relative h-fit overflow-scroll mt-10">
+                        <div class="grid grid-cols-2 my-1">
+                            <label for="N">Initial Population (N): <span id="N-value">10</span></label>
+                            <input type="range" id="N" min="1" max="200" value="10" step="1" class="win10-thumb">
+                        </div>
+                        <div class="grid grid-cols-2 my-1">
+                            <label for="K">Carrying Capacity (K): <span id="K-value">100</span></label>
+                            <input type="range" id="K" min="10" max="500" value="100" step="10" class="win10-thumb">
+                        </div>
+                        <div class="grid grid-cols-2 my-1">
+                            <label for="r">Growth Rate (r): <span id="r-value">0.1</span></label>
+                            <input type="range" id="r" min="0.01" max="3" value="0.1" step="0.01" class="win10-thumb">
+                        </div>
+                        <div class="grid grid-cols-2 my-1">
+                            <label for="t">Time Steps (t): <span id="t-value">50</span></label>
+                            <input type="range" id="t" min="10" max="200" value="50" step="1" class="win10-thumb">
+                        </div>
+
+                        <!-- Chart Container -->
+                        <div id="logistic_growth_chart" class="mt-6 mb-20"></div>
+
+                        <p>In the model the current population $N$, instead of just growing at a certain rate $r$ at
+                            each time step $t$, is faced with a resource limit called carrying capacity $K$, which is
+                            the maximum of individuals the environment can sustain indefinitely. <br />
+                            $$\frac{dN}{dt} = rN \left(1 - \frac{N}{K}\right)$$<br />
+                            Every time the population size $N$ increases, $N$ is shrinking the factor in parentheses and
+                            thereby slowing down population growth. The larger $N$ becomes the slower it will grow in
+                            the next iteration until $N=K$. When the factor in parentheses is zero population size
+                            reached a plateau in the carrying capacity $K$. This trajectory produces the typical
+                            S-shaped curve of the logistic function, initially soaring and eventually flatting out.
+                        </p>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <div id="footer"></div>
+
+    <script type="module" src="/src/scripts/loadComponents.js"></script>
+    <script type="module" src="/src/scripts/main.js"></script>
+    <script type="module" src="/src/scripts/script.js"></script>
+    <script type="module" src="./slider.js"></script>
+
+    <!-- logistic growth chart -->
+    <script type="module">
+        import { createLogisticGrowthChart } from '/public/model_gallery/logistic_growth/logistic_growth.js';
+
+        // Initialize the chart
+        const chart = createLogisticGrowthChart("#logistic_growth_chart");
+
+        // Add event listeners for sliders
+        document.getElementById("N").addEventListener("input", (e) => {
+            document.getElementById("N-value").textContent = e.target.value;
+            chart.updateN(e.target.value);
+        });
+
+        document.getElementById("K").addEventListener("input", (e) => {
+            document.getElementById("K-value").textContent = e.target.value;
+            chart.updateK(e.target.value);
+        });
+
+        document.getElementById("r").addEventListener("input", (e) => {
+            document.getElementById("r-value").textContent = e.target.value;
+            chart.updateR(e.target.value);
+        });
+
+        document.getElementById("t").addEventListener("input", (e) => {
+            document.getElementById("t-value").textContent = e.target.value;
+            chart.updateT(e.target.value);
+        });
+    </script>
+
+
+
+</body>
+
+</html>

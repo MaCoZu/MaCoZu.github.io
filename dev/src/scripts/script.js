@@ -1,4 +1,4 @@
-import './styles/font.css';
+import '../styles/font.css';
 
 
 /* 1. define variables */

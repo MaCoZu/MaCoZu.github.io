@@ -1,15 +1,14 @@
-import * as d3 from "d3";
+import * as d3 from 'd3';
 
-export function createLogisticGrowthChart(container, { height = 400, margin = { top: 50, right: 50, bottom: 50, left: 70 } } = {}) {
+export function createLogisticMapChart(container, { height = 400, margin = { top: 50, right: 50, bottom: 50, left: 70 } } = {}) {
+    
     const containerWidth = d3.select(container).node().getBoundingClientRect().width;
     const width = containerWidth;
 
-    // Default parameters for the logistic growth model
-    let N = 10; // Initial population
-    let K = 100; // Carrying capacity
-    let r = 0.1; // Growth rate
-    let t = 50; // Time steps
-    const dt = 0.1; // Time step for Euler method
+    // Default parameters for the logistic map
+    let r = 3.5; // Growth rate
+    let x0 = 0.5; // Initial population (normalized)
+    let steps = 100; // Number of steps
 
     // Calculate inner dimensions (width and height minus margins)
     const innerWidth = width - margin.left - margin.right;
@@ -22,8 +21,8 @@ export function createLogisticGrowthChart(container, { height = 400, margin = { 
         .attr("height", height);
 
     // Scales for the chart
-    const xScale = d3.scaleLinear().domain([0, t]).range([0, innerWidth]); // Domain is [0, t]
-    const yScale = d3.scaleLinear().domain([0, K]).range([innerHeight, 0]);
+    const xScale = d3.scaleLinear().domain([0, steps]).range([0, innerWidth]);
+    const yScale = d3.scaleLinear().domain([0, 1]).range([innerHeight, 0]);
 
     // Axes
     const xAxis = d3.axisBottom(xScale).ticks(10).tickPadding(10);
@@ -66,60 +65,54 @@ export function createLogisticGrowthChart(container, { height = 400, margin = { 
         .style("font-size", "20px")
         .style("font-family", "sans-serif");
 
+
     // Line generator
     const line = d3.line()
-        .x((d, i) => xScale(i * dt) + margin.left) // Scale x-coordinate by dt
-        .y(d => yScale(d) + margin.top); // Adjust for margin
+        .x((d, i) => xScale(i) + margin.left)
+        .y(d => yScale(d) + margin.top);
 
-    // Function to calculate logistic growth (continuous-time)
-    function logisticGrowth(N, K, r, t, dt) {
-        const data = [N];
-        for (let i = 1; i <= t / dt; i++) {
-            const prevN = data[i - 1];
-            const dN = r * prevN * (1 - prevN / K) * dt; // Euler method
-            const nextN = prevN + dN;
-            data.push(nextN);
+    // Function to calculate logistic map
+    function logisticMap(r, x0, steps) {
+        const data = [x0];
+        for (let i = 1; i <= steps; i++) {
+            const prevX = data[i - 1];
+            const nextX = r * prevX * (1 - prevX);
+            data.push(nextX);
         }
         return data;
     }
 
     // Initial data
-    let data = logisticGrowth(N, K, r, t, dt);
+    let data = logisticMap(r, x0, steps);
 
     // Draw the initial line
     const path = svg.append("path")
         .datum(data)
         .attr("fill", "none")
-        .attr("stroke", "#5ba300")
-        .attr("stroke-width", 3)
+        .attr("stroke", "steelblue")
+        .attr("stroke-width", 2)
         .attr("d", line);
 
     // Function to update the chart
     function updateChart() {
-        data = logisticGrowth(N, K, r, t, dt);
+        data = logisticMap(r, x0, steps);
         path.datum(data)
             .attr("d", line);
     }
 
     // Expose update functions for sliders
     return {
-        updateN(value) {
-            N = +value;
-            updateChart();
-        },
-        updateK(value) {
-            K = +value;
-            yScale.domain([0, K]); // Update y-scale domain
-            svg.select(".y-axis").call(yAxis); // Update y-axis
-            updateChart();
-        },
         updateR(value) {
             r = +value;
             updateChart();
         },
-        updateT(value) {
-            t = +value;
-            xScale.domain([0, t]); // Update x-scale domain
+        updateX0(value) {
+            x0 = +value;
+            updateChart();
+        },
+        updateSteps(value) {
+            steps = +value;
+            xScale.domain([0, steps]); // Update x-scale domain
             svg.select(".x-axis").call(xAxis); // Update x-axis
             updateChart();
         },

@@ -22,6 +22,73 @@
             font-family: 'Literata', serif;
         }
 
+        
+        /* Add the CSS for the slider here */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            background: #89ce00;
+            border-radius: 4px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            background: #89ce00;
+            border-radius: 50%;
+            margin-top: -4px;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-track {
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: #89ce00;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-ms-track {
+            width: 100%;
+            height: 8px;
+            background: transparent;
+            border-color: transparent;
+            color: transparent;
+        }
+
+        input[type="range"]::-ms-fill-lower {
+            background: #ddd;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-ms-fill-upper {
+            background: #ddd;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-ms-thumb {
+            width: 14px;
+            height: 14px;
+            background: #89ce00;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    
+
         .filter-icon {
             /* Dark mode: Adjust the icon to match rgb(229, 231, 235) */
             filter: invert(86%) sepia(4%) saturate(0%) hue-rotate(210deg) brightness(98%) contrast(89%);
@@ -68,11 +135,9 @@
         }
     </style>
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="../src/styles/font.css">
-
-    <!-- css  -->
-    <link rel="stylesheet" href="../src/styles/style.css">
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/styles/font.css">
+    <link rel="stylesheet" href="/src/styles/main.css">
 
     <!-- mathjax  -->
     <script type="text/x-mathjax-config">
@@ -87,8 +152,8 @@
 
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <!-- Include KaTeX for rendering formulas -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 
     <!-- Include Tippy.js -->
@@ -98,22 +163,20 @@
 
 </head>
 
-<body class="font-work bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
+<body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
 
 
     <!-- NAV BAR -->
-    <nav x-data="{ isOpen: false }"
-        class="sticks md:relative h-[4rem] md:h-[2.7rem] top-0 left-0 right-0 border-b-0 z-50">
+    <nav x-data="{ isOpen: false }" class="sticks md:relative h-[4rem] md:h-[2.7rem] top-0 left-0 right-0 border-b-0 z-50">
         <div class="container mx-auto py-2 md:py-1">
             <!-- Navbar Grid -->
             <div class="grid grid-cols-3 items-center md:mx-[10.5rem] py-[6px]">
-
+    
                 <!-- LOGO -->
                 <a href="index.html" class="flex items-center">
-                    <img id="logo" class="h-6 sm:h-6 dark:filter-white" src="../src/assets/img/logo/logo.svg"
-                        alt="logo">
+                    <img id="logo" class="h-6 sm:h-6 dark:filter-white" src="../src/assets/img/logo/logo.svg" alt="logo">
                 </a>
-
+    
                 <!-- MOBILE MENU BUTTON -->
                 <div class="md:hidden col-start-3 justify-self-end">
                     <button @click="isOpen = !isOpen"
@@ -128,7 +191,7 @@
                         </svg>
                     </button>
                 </div>
-
+    
                 <!-- DESKTOP MENU -->
                 <div class="hidden md:flex justify-end col-start-3">
                     <div class="flex space-x-6 uppercase text-[10px]">
@@ -137,13 +200,13 @@
                     </div>
                 </div>
             </div>
-
+    
             <!-- MOBILE MENU  -->
             <div x-show="isOpen" x-transition class="fixed inset-0 z-50 bg-black bg-opacity-10 flex justify-end">
-
+    
                 <!-- Wrapper to Detect Clicks -->
                 <div @click="isOpen = false" class="absolute inset-0"></div>
-
+    
                 <!-- Menu Content -->
                 <div class="relative w-1/3 bg-white dark:bg-gray-900 h-full shadow-md flex flex-col justify-start">
                     <!-- Close Button -->
@@ -154,14 +217,14 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
-
+    
                     <!-- Links -->
                     <div>
                         <a href="index.html"
                             class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-indigo-700">Data</a>
                         <a href="overview_viz.html"
                             class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-indigo-700">Visualizations</a>
-
+    
                         <hr class="my-2 border-gray-300 dark:border-gray-700">
                         <a href="impressum.html"
                             class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-indigo-700">Impressum</a>
@@ -172,6 +235,8 @@
                 </div>
             </div>
     </nav>
+    
+    <div class="h-10 md:h-20"></div>
 
     <!-- drawer  -->
     <div class="hidden md:flex z-50">
@@ -419,12 +484,12 @@
                     </div>
 
 
-                    <div class="flex flex-col gap-4 max-w-md">
+                    <div class="flex flex-col mt-3 gap-4 max-w-md">
 
                         <div class="metric">
                             <div class="flex items-center">
                                 <div id="precision-formula" class="mr-2"></div>
-                                <span id="precision" class="font-bold mx-3">N/A</span>
+                                <span id="precision" class="font-bold mr-4">N/A</span>
                                 <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer"
                                     viewBox="0 0 24 24" fill="none"
                                     data-tippy-content="Precision measures the proportion of correctly predicted positive instances out of all instances predicted as positive. It indicates the model's ability to avoid false positives."
@@ -449,7 +514,7 @@
                         <div class="metric">
                             <div class="flex items-center">
                                 <div id="accuracy-formula" class="mr-2"></div>
-                                <span id="accuracy" class="font-bold mx-3">N/A</span>
+                                <span id="accuracy" class="font-bold mr-4">N/A</span>
                                 <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer"
                                     viewBox="0 0 24 24" fill="none" data-tippy-content="Accuracy measures the proportion of correctly predicted
                                 instances (both positive and
@@ -475,7 +540,7 @@
                         <div class="metric">
                             <div class="flex items-center">
                                 <div id="recall-formula" class="mr-2"></div>
-                                <span id="recall" class="font-bold mx-3">N/A</span>
+                                <span id="recall" class="font-bold mr-4">N/A</span>
                                 <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer"
                                     viewBox="0 0 24 24" fill="none" data-tippy-content="Recall measures the proportion of correctly predicted positive
                                 instances out of all
@@ -501,7 +566,7 @@
                         <div class="metric">
                             <div class="flex items-center">
                                 <div id="specificity-formula" class="mr-2"></div>
-                                <span id="specificity" class="font-bold mx-3">N/A</span>
+                                <span id="specificity" class="font-bold mr-4">N/A</span>
                                 <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer"
                                     viewBox="0 0 24 24" fill="none" data-tippy-content="Specificity measures the proportion of correctly predicted
                                 negative instances out of all
@@ -526,9 +591,9 @@
                         <div class="metric">
                             <div class="flex items-center">
                                 <div id="f1-formula" class="mr-2"></div>
-                                <span id="f1" class="font-bold mx-3">N/A</span>
-                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24" fill="none"
-                                    data-tippy-content="F1-score is the harmonic mean of precision and recall. It
+                                <span id="f1" class="font-bold mr-4">N/A</span>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer"
+                                    viewBox="0 0 24 24" fill="none" data-tippy-content="F1-score is the harmonic mean of precision and recall. It
                                 provides a single score that
                                 balances both precision and recall, especially useful when you have an uneven class
                                 distribution." xmlns="http://www.w3.org/2000/svg">
@@ -537,11 +602,13 @@
                                     <g id="SVGRepo_iconCarrier">
                                         <path
                                             d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        <path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999" stroke="#000000" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round"></path>
-                                        <path d="M12 18.01L12.01 17.9989" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round"></path>
+                                        <path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                        <path d="M12 18.01L12.01 17.9989" stroke="#000000" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
                                     </g>
                                 </svg>
                             </div>
@@ -549,20 +616,24 @@
                         <div class="metric">
                             <div class="flex items-center">
                                 <div id="youden-formula" class="mr-2"></div>
-                                <span id="youden" class="font-bold mx-3">N/A</span>
-                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24" fill="none"
+                                <span id="youden" class="font-bold mr-4">N/A</span>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer"
+                                    viewBox="0 0 24 24" fill="none"
                                     data-tippy-content="Youden's J statistic (also known as Youden's index) measures the
-                                performance of a dichotomous diagnostic test. It ranges from -1 to 1, with 1 indicating a perfect test and 0 indicating a useless test." xmlns="http://www.w3.org/2000/svg">
+                                performance of a dichotomous diagnostic test. It ranges from -1 to 1, with 1 indicating a perfect test and 0 indicating a useless test."
+                                    xmlns="http://www.w3.org/2000/svg">
                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                                     <g id="SVGRepo_iconCarrier">
                                         <path
                                             d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        <path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999" stroke="#000000" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round"></path>
-                                        <path d="M12 18.01L12.01 17.9989" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round"></path>
+                                        <path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                        <path d="M12 18.01L12.01 17.9989" stroke="#000000" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
                                     </g>
                                 </svg>
                             </div>
@@ -570,76 +641,77 @@
                         <div class="metric">
                             <div class="flex items-center">
                                 <div id="mcc-formula" class="mr-2"></div>
-                                <span id="mcc" class="font-bold mx-3">N/A</span>
-                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24" fill="none"
-                                    data-tippy-content="The Matthews correlation coefficient (MCC) is a balanced measure
+                                <span id="mcc" class="font-bold mr-4">N/A</span>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer"
+                                    viewBox="0 0 24 24" fill="none" data-tippy-content="The Matthews correlation coefficient (MCC) is a balanced measure
                                 that can be used even
                                 if the classes are of very different sizes. It ranges from -1 to 1, where <br> 1
                                 represents a perfect prediction, <br>
                                 0 no better than random prediction, and <br> -1 indicates total disagreement between
-                                prediction and observation."
-                                    xmlns="http://www.w3.org/2000/svg">
+                                prediction and observation." xmlns="http://www.w3.org/2000/svg">
                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                                     <g id="SVGRepo_iconCarrier">
                                         <path
                                             d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        <path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999" stroke="#000000" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round"></path>
-                                        <path d="M12 18.01L12.01 17.9989" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round"></path>
+                                        <path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                        <path d="M12 18.01L12.01 17.9989" stroke="#000000" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
                                     </g>
                                 </svg>
                             </div>
-                           
+
                         </div>
                     </div>
 
                 </div>
 
             </div>
-        </div>
 
-        <div class="md:py-6 py-0 max-w-full md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto">
-            <p>As to the performance of our tool, the first question we might ask is “<em>how many correct
-                    predictions did we get overall</em>?”. The <strong>Accuracy</strong> measure answers this
-                question as the percentage of correct predictions out of all instances. But accuracy has a
-                problem with imbalanced datasets, consider data with $95$ infected and $5$ non-infected samples,
-                our test could classify all samples as infected and still boast an accuracy of $95\%$.</p>
-            <p>You could also claim that the test recognized $100\%$ of the infections, and the corresponding
-                measure is <strong>Sensitivity</strong> (aka <strong>Recall</strong>), which is the proportion
-                of correctly predicted positives out of all actual positive instances. Sensitivity warns you
-                about false-negatives but not about false-positives.</p>
-            <p>But what if the treatment of the infection is very dangerous and you can’t afford to detect
-                infections that are not actually there? Then you want to look at <strong>Specificity</strong>,
-                which measures the proportion of correctly predicted negative instances out of all actual
-                negative instances. And the test above with high accuracy and even higher sensitivity renders
-                useless, since it spotted $0\%$ of the non-infected (negative) samples.</p>
-            <p>Another measure called <strong>Precision</strong> tells you “<em>how many of the cases predicted
-                    as positive where actually positive</em>”. Precision is interesting if false-positives are
-                costly. While Precision and Specificity help us avoid false-positives they hold no information
-                of false-negatives and you have to look at Sensitivity if you worry about them.</p>
-            <p>Since all those measure have flaws there is measures compounded from the ones above. The
-                <strong>$\mathbf{F_1}$-score</strong> is the harmonic mean of precision and sensitivity and
-                represents their impact evenly. It gives you an overall assessment of the tool's performance
-                even with imbalanced data. But since precision and sensitivity are symmetrically weighted the
-                $F_1$-score is sometimes further adjusted with different weights attached to precision and/or
-                sensitivity befitting the purpose of your test. Moreover the $F_1$-score ignores true-negatives
-                something <strong>Youden's J statistic</strong> corrects by combining sensitivity and
-                specificity. Tests with the same $J$-value give the same proportion of total misclassified
-                results. But Youden's J doesn’t tell you in which category the the misclassifications happen, as
-                very different values of sensitivity or specificity may yield the same $J$-value. One measure
-                that is considered suitable even for very imbalanced data is <strong>Matthews Correlation
-                    Coefficient (MCC)</strong>. The coefficient is equivalent to the chi-square statistic for a
-                $2\times2$ contingency table and produces a high score only if the predictions obtained good
-                results in all of the four categories of the confusion matrix proportionally both to the size of
-                positive elements and the size of negative elements in the dataset.
-            </p>
-            <p>Since this is all very confusing you should play with the interactive matrix, test the edge cases
-                and the behaviour of the measures until you have a precise and accurate understanding of the
-                specifics of this sensitive concept. </p>
-        </div>
+
+            <div class="md:py-6 py-0 max-w-full md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto">
+                <p>As to the performance of our tool, the first question we might ask is “<em>how many correct
+                        predictions did we get overall</em>?”. The <strong>Accuracy</strong> measure answers this
+                    question as the percentage of correct predictions out of all instances. But accuracy has a
+                    problem with imbalanced datasets, consider data with $95$ infected and $5$ non-infected samples,
+                    our test could classify all samples as infected and still boast an accuracy of $95\%$.</p>
+                <p>You could also claim that the test recognized $100\%$ of the infections, and the corresponding
+                    measure is <strong>Sensitivity</strong> (aka <strong>Recall</strong>), which is the proportion
+                    of correctly predicted positives out of all actual positive instances. Sensitivity warns you
+                    about false-negatives but not about false-positives.</p>
+                <p>But what if the treatment of the infection is very dangerous and you can’t afford to detect
+                    infections that are not actually there? Then you want to look at <strong>Specificity</strong>,
+                    which measures the proportion of correctly predicted negative instances out of all actual
+                    negative instances. And the test above with high accuracy and even higher sensitivity renders
+                    useless, since it spotted $0\%$ of the non-infected (negative) samples.</p>
+                <p>Another measure called <strong>Precision</strong> tells you “<em>how many of the cases predicted
+                        as positive where actually positive</em>”. Precision is interesting if false-positives are
+                    costly. While Precision and Specificity help us avoid false-positives they hold no information
+                    of false-negatives and you have to look at Sensitivity if you worry about them.</p>
+                <p>Since all those measure have flaws there is measures compounded from the ones above. The
+                    <strong>$\mathbf{F_1}$-score</strong> is the harmonic mean of precision and sensitivity and
+                    represents their impact evenly. It gives you an overall assessment of the tool's performance
+                    even with imbalanced data. But since precision and sensitivity are symmetrically weighted the
+                    $F_1$-score is sometimes further adjusted with different weights attached to precision and/or
+                    sensitivity befitting the purpose of your test. Moreover the $F_1$-score ignores true-negatives
+                    something <strong>Youden's J statistic</strong> corrects by combining sensitivity and
+                    specificity. Tests with the same $J$-value give the same proportion of total misclassified
+                    results. But Youden's J doesn’t tell you in which category the the misclassifications happen, as
+                    very different values of sensitivity or specificity may yield the same $J$-value. One measure
+                    that is considered suitable even for very imbalanced data is <strong>Matthews Correlation
+                        Coefficient (MCC)</strong>. The coefficient is equivalent to the chi-square statistic for a
+                    $2\times2$ contingency table and produces a high score only if the predictions obtained good
+                    results in all of the four categories of the confusion matrix proportionally both to the size of
+                    positive elements and the size of negative elements in the dataset.
+                </p>
+                <p>Since this is all very confusing you should play with the interactive matrix, test the edge cases
+                    and the behaviour of the measures until you have a precise and accurate understanding of the
+                    specifics of this sensitive concept. </p>
+            </div>
         </div>
 
         <!-- logistic growth  -->
@@ -670,7 +742,7 @@
                     <!-- Sliders -->
                     <div class="grid grid-cols-2 my-1">
                         <label for="N">Initial Population (N): <span id="N-value">10</span></label>
-                        <input type="range" id="N" min="1" max="200" value="10" step="1">
+                        <input style="color: #5ba300" type="range" id="N" min="1" max="200" value="10" step="1">
                     </div>
                     <div class="grid grid-cols-2 my-1">
                         <label for="K">Carrying Capacity (K): <span id="K-value">100</span></label>
@@ -684,7 +756,7 @@
                         <label for="t">Time Steps (t): <span id="t-value">50</span></label>
                         <input type="range" id="t" min="10" max="200" value="50" step="1">
                     </div>
-                    
+
                     <!-- Chart Container -->
                     <div id="logistic_growth_chart" class="my-6"></div>
 
@@ -717,11 +789,23 @@
                         the system. </p>
                 </div>
 
-                <div class="col-span-1 flex md:mt-6 justify-center items-center relative h-fit overflow-scroll">
-                    <iframe class="w-full h-full" style="min-height: 600px; min-width: 600px;" loading="lazy"
-                        src="./plots/model_gallery/logistic_map_d3.html" sandbox="allow-same-origin allow-scripts"
-                        scrolling="no" seamless="seamless" frameborder="0" title="logistic map">
-                    </iframe>
+                <div class="flex-col justify-center items-center relative h-fit overflow-scroll">
+                    <!-- Sliders -->
+                    <div class="grid grid-cols-2 my-1">
+                        <label for="r">Growth Rate (r): <span id="r-value_map">3.5</span></label>
+                        <input type="range" id="r_map" min="0" max="4" value="3.5" step="0.01">
+                    </div>
+                    <div class="grid grid-cols-2 my-1">
+                        <label for="x0">Initial Population (x0): <span id="x0-value_map">0.5</span></label>
+                        <input type="range" id="x0_map" min="0" max="1" value="0.5" step="0.01">
+                    </div>
+                    <div class="grid grid-cols-2 my-1">
+                        <label for="steps">Time Steps: <span id="steps-value_map">100</span></label>
+                        <input type="range" id="steps_map" min="10" max="500" value="100" step="1">
+                    </div>
+
+                    <!-- Chart Container -->
+                    <div id="logistic_map_chart"></div>
                 </div>
             </div>
 
@@ -760,7 +844,7 @@
 
         </div>
 
-        <!-- standard normal distribution  -->
+        <!-- normal distribution  -->
         <div id="std-norm" class="scroll-mt-10 md:-scroll-mt-1 z-0">
             <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Standard Normal
                 Distribution</h2>
@@ -783,13 +867,19 @@
                 </div>
 
                 <!-- figure  -->
-                <div class="flex md:mt-0 justify-center items-center relative overflow-scroll">
-                    <iframe id="normal-distribution-iframe" class="w-full h-full"
-                        style="min-height: 500px; min-width: 600px;" loading="lazy"
-                        src="./plots/model_gallery/normal_distribution_d3.html"
-                        sandbox="allow-same-origin allow-scripts" scrolling="no" seamless="seamless" frameborder="0"
-                        title="normal_distribution">
-                    </iframe>
+                <div class="flex-col md:mt-0 justify-center items-center relative overflow-scroll">
+                    <!-- Sliders -->
+                    <div class="slider-container">
+                        <label for="mean_nd">Mean (μ): <span id="mean-value_nd">0</span></label>
+                        <input type="range" id="mean_nd" min="-5" max="5" value="0" step="0.1">
+                    </div>
+                    <div class="slider-container">
+                        <label for="variance_nd">Variance (σ²): <span id="variance-value_nd">1</span></label>
+                        <input type="range" id="variance_nd" min="0.1" max="5" value="1" step="0.1">
+                    </div>
+                    
+                    <!-- Chart Container -->
+                    <div id="normal_distribution_chart"></div>
                 </div>
             </div>
 
@@ -935,20 +1025,20 @@
 
     <!-- footer  -->
     <hr class="mt-20 border-gray-200 dark:border-gray-700 md:mx-[10.5rem]">
-
+    
     <footer class="bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 mx-auto md:mx-[10.5rem] mb-5">
         <div class="container">
-
+    
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
-
+    
                 <!-- Logo and Name  -->
                 <div class="">
                     <div class="hidden md:block">
                         <div class="flex justify-between items-center">
                             <div class="flex gap-3 items-center">
                                 <a>
-                                    <img id="logo2" class="h-16 fill-current" src="../src/assets/img/logo/logo.svg"
-                                        alt="">
+                                    <img id="logo2" class="h-16 fill-current dark:filter-white"
+                                        src="../src/assets/img/logo/logo.svg" alt="">
                                 </a>
                                 <div class="">
                                     <p
@@ -961,13 +1051,13 @@
                             </div>
                         </div>
                     </div>
-
-
+    
+    
                 </div>
-
+    
                 <div class="flex flex-col sm:flex-row sm:gap-24 md:justify-between ">
-
-                    <!-- CONTACT ME -->
+    
+                    <!-- CONTACT -->
                     <div class="py-2 md:py-0 flex-1">
                         <div class="text-sm uppercase font-medium">Contact </div>
                         <div class="flex items-center gap-3 my-2">
@@ -976,29 +1066,27 @@
                             <a class="hover:text-indigo-700" id="mlink" href="#mlink">Email</a>
                         </div>
                     </div>
-
-
+    
+    
                     <!-- WORK -->
                     <div class="py-2 md:py-0 flex-1">
                         <div class="text-sm uppercase font-medium">Work</div>
-
+    
                         <p class="mt-2 flex items-center">
                         <div class="flex items-center gap-3" aria-label="LinkedIn">
-                            <img src="../src/assets/img/icons/linkedin.svg" class="w-5 h-5 dark:filter-white"
-                                id="linkedin">
+                            <img src="../src/assets/img/icons/linkedin.svg" class="w-5 h-5 dark:filter-white" id="linkedin">
                             <a href="https://www.linkedin.com/in/marcozausch" class="hover:text-indigo-700">LinkedIn</a>
                         </div>
                         </p>
-
+    
                         <p class="mt-2 flex items-center">
                         <div class="flex items-center gap-3" aria-label="github">
                             <img src="../src/assets/img/icons/github.svg" class="w-5 h-5 dark:filter-white" id="github">
-                            <a href="https://github.com/MaCoZu" class="hover:text-indigo-700"
-                                aria-label="Github">Github</a>
+                            <a href="https://github.com/MaCoZu" class="hover:text-indigo-700" aria-label="Github">Github</a>
                         </div>
                         </p>
                     </div>
-
+    
                     <!-- LEGAL -->
                     <div class="py-2 md:py-0 flex-1">
                         <div class="text-sm uppercase font-medium">Legal</div>
@@ -1008,7 +1096,7 @@
                     </div>
                 </div>
             </div>
-
+    
         </div>
     </footer>
 
@@ -1087,34 +1175,78 @@
     </script>
 
 
-<!-- Import D3 and the logistic growth chart -->
-<script type="module">
-    import { createLogisticGrowthChart } from '/src/components/logistic_growth.js';
+    <!-- logistic growth chart -->
+    <script type="module">
+        import { createLogisticGrowthChart } from '/src/components/logistic_growth.js';
 
-    // Initialize the chart
-    const chart = createLogisticGrowthChart("#logistic_growth_chart");
+        // Initialize the chart
+        const chart = createLogisticGrowthChart("#logistic_growth_chart");
 
-    // Add event listeners for sliders
-    document.getElementById("N").addEventListener("input", (e) => {
-        document.getElementById("N-value").textContent = e.target.value;
-        chart.updateN(e.target.value);
-    });
+        // Add event listeners for sliders
+        document.getElementById("N").addEventListener("input", (e) => {
+            document.getElementById("N-value").textContent = e.target.value;
+            chart.updateN(e.target.value);
+        });
 
-    document.getElementById("K").addEventListener("input", (e) => {
-        document.getElementById("K-value").textContent = e.target.value;
-        chart.updateK(e.target.value);
-    });
+        document.getElementById("K").addEventListener("input", (e) => {
+            document.getElementById("K-value").textContent = e.target.value;
+            chart.updateK(e.target.value);
+        });
 
-    document.getElementById("r").addEventListener("input", (e) => {
-        document.getElementById("r-value").textContent = e.target.value;
-        chart.updateR(e.target.value);
-    });
+        document.getElementById("r").addEventListener("input", (e) => {
+            document.getElementById("r-value").textContent = e.target.value;
+            chart.updateR(e.target.value);
+        });
 
-    document.getElementById("t").addEventListener("input", (e) => {
-        document.getElementById("t-value").textContent = e.target.value;
-        chart.updateT(e.target.value);
-    });
-</script>
+        document.getElementById("t").addEventListener("input", (e) => {
+            document.getElementById("t-value").textContent = e.target.value;
+            chart.updateT(e.target.value);
+        });
+    </script>
+
+    <!-- logistic map chart -->
+    <script type="module">
+        import { createLogisticMapChart } from '/src/components/logistic_map.js';
+
+        // Initialize the chart
+        const logistic_map_chart = createLogisticMapChart("#logistic_map_chart");
+
+        // Add event listeners for sliders
+        document.getElementById("r_map").addEventListener("input", (e) => {
+            document.getElementById("r-value_map").textContent = e.target.value;
+            logistic_map_chart.updateR(e.target.value);
+        });
+
+        document.getElementById("x0_map").addEventListener("input", (e) => {
+            document.getElementById("x0-value_map").textContent = e.target.value;
+            logistic_map_chart.updateX0(e.target.value);
+        });
+
+        document.getElementById("steps_map").addEventListener("input", (e) => {
+            document.getElementById("steps-value_map").textContent = e.target.value;
+            logistic_map_chart.updateSteps(e.target.value);
+        });
+    </script>
+
+
+    <!-- normal distribution chart -->
+    <script type="module">
+        import { NormalDistribution } from '/src/components/normal_distribution.js';
+
+        // Initialize the chart
+        const chart_nd = NormalDistribution("#normal_distribution_chart");
+
+        // Add event listeners for sliders
+        document.getElementById("mean_nd").addEventListener("input", (e) => {
+            document.getElementById("mean-value_nd").textContent = e.target.value;
+            chart_nd.updateMean(e.target.value);
+        });
+
+        document.getElementById("variance_nd").addEventListener("input", (e) => {
+            document.getElementById("variance-value_nd").textContent = e.target.value;
+            chart_nd.updateVariance(e.target.value);
+        });
+    </script>
 
     <!-- sidebar script -->
     <script>
@@ -1173,8 +1305,8 @@
 
 
 
-    <script type="module" src="/src/main.js"></script>
-    <script type="module" src="/src/script.js"></script>
+    <script type="module" src="/src/scripts/main.js"></script>
+    <script type="module" src="/src/scripts/script.js"></script>
 </body>
 
 </html>

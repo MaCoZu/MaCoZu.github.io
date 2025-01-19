@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schelling's Segeration</title>
+
+    <!-- mathjax  -->
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                messageStyle: "normal",
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    processEscapes: true
+                    }
+                });
+        </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+    <!-- alpinejs  -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+    <!-- Include KaTeX for rendering formulas -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/styles/font.css">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
+
+    <div id="navbar"></div> 
+
+    <main id="main-content"
+        class="container mx-auto flex flex-col justify-center items-center mt-8 min-h-screen font-literata divide-y-2 divide-solid prose prose-stone prose-lg md:prose-xl text-pretty leading-8 md:leading-10 dark:prose-invert">
+
+        <!-- segregation  -->
+        <div id="segregation" class="scroll-mt-14 md:scroll-mt-10 z-0">
+            <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Schelling's Segregation
+                Model</h2>
+            <div class="py-0">
+                <p>Economist Thomas Schelling developed the model in the 1970s, demonstrating how a mild
+                    inclination of people to live around the same kind can lead to a highly segregated society.
+                    From the narrow decisions of individuals emerges an overall pattern of neighborhoods that
+                    are more homogeneous than individual preferences suggest.</p>
+
+                <div class="md:mt-6 justify-center items-center relative h-fit">
+
+                    <!-- Segregation Model  -->
+                    <div class="flex flex-col w-full max-w-[350px] mx-auto font-work text-lg">
+                        <div class="grid grid-cols-[auto,1fr] gap-x-4 gap-y-1 items-center max-w-md">
+                            <label for="vacancy" class="font-medium">Vacancy Rate (%):</label>
+                            <input type="number" id="vacancy" value="10" min="0" max="100" class="w-16 py-0 px-2">
+                            <label for="threshold" class="font-medium">Threshold (%):</label>
+                            <input type="number" id="threshold" value="50" min="0" max="100" class="w-16 py-0 px-2">
+                        </div>
+
+                        <!-- Buttons in one row, justified between -->
+                        <div class="flex justify-start gap-x-4 my-2">
+                            <button class="bg-cyan-800 hover:bg-cyan-900 text-white font-bold py-[0.5] px-4 rounded"
+                                id="start-button">Start
+                            </button>
+                            <button class="bg-cyan-800 hover:bg-cyan-900 text-white font-bold py-[0.5] px-4 rounded"
+                                id="reset-button">Reset
+                            </button>
+                        </div>
+
+                        <!-- Chart -->
+                        <div id="chart" class="w-full my-0" style="height: 350px;"></div>
+
+                        <!-- Metrics aligned to the left, on par with the left chart edge -->
+                        <div class="grid grid-row-2 mt-1 gap-x-4 gap-y-1 items-center max-w-md">
+                            <div class="">Unhappiness Index: <span id="unhappiness-value" class="">0.0</span>% </div>
+                            <div class="">Dissimilarity Index: <span id="dissimilarity-value" class="">0.00</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="mx-auto md:mx-20 mt-4 text-lg text-left">
+                        <a href="https://visualize-it.github.io/schelling_model/simulation.html" target="_blank"
+                            class="inline-flex items-center">
+                            Here
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="1.1em" height="1.1em"
+                                fill="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"
+                                style="display:inline-block; vertical-align:text-bottom; transform:translateY(-0.4em); margin:0 0em;">
+                                <path
+                                    d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                                <path
+                                    d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                            </svg>
+                        </a>
+                        you can find a more sophisticated animation of Schelling's Model made by Chandan Relekar.
+                    </div>
+                </div>
+                <p>In the model, each person is represented by a field on a grid surrounded by eight neighbors.
+                    When deciding whether to stay or move, a person looks at the percentage of similar people in
+                    their vicinity. For example, if someone prefers 30% of their neighbors to be similar to
+                    them, they will move if fewer than 3 out of 8 neighbors are of their kind. If there are
+                    vacancies and the person has only 6 neighbors, having 2 of their kind around will cause them
+                    to stay.</p>
+                <p>One person moving could induce the next person to leave the neighborhood and eventually
+                    trigger a cascade of relocations. The process might easily lead to a situation, where
+                    environments are more homogeneous than anybody wished for. These are examples of a tipping
+                    point and a subsequent emergent phenomenon. Where abrupt change is happening once the
+                    preference level is reached and a large-scale pattern emerges that the individual decisions
+                    would not suggest on their own.</p>
+
+                <p>To measure segregation we can calculate the index of dissimilarity $DI$. It ranges between zero,
+                    or no dissimilarity, and 1, or complete separation of each group from the other. $$DI =
+                    \frac{1}{2} \sum_{i=1}^{n} \left| \frac{a_i}{A} - \frac{b_i}{B} \right|$$</p>
+                <ul>
+                    <li>$n$ = Number of neighborhoods</li>
+                    <li>$a_i$ = Population of group A in neighborhood $i$</li>
+                    <li>$b_i$ = Population of group B in neighborhood $i$</li>
+                    <li>$A$ = Total population of group A across all neighborhoods</li>
+                    <li>$B$ = Total population of group B across all neighborhoods</li>
+                </ul>
+                <p>Dissimilarity is the most widely used measure of evenness. It compares the composition of
+                    neighborhoods to the proportion of different groups in the overall metropolitan area. If the
+                    single neighborhoods have the same composition as the entire region, the index is close to zero.
+                    While a value close to 1 means high segregation. </p>
+                <p>As people move they’re reducing the unhappiness with their neighbors. I have added an unhappiness
+                    meter to the simulation, showing the percentage of people whose preferences are met. </p>
+                <p>More <strong>Measures of Evenness</strong> like the Dissimilarity Index, compare the spatial
+                    distributions of different groups.</p>
+                <ul>
+                    <li>The <strong>Gini coefficient</strong> captures overall inequality between areas, taking into
+                        account how unevenly groups are spread out <em>across the entire region</em>. </li>
+                    <li><strong>Entropy</strong> captures how mixed neighborhoods are, versus overall group
+                        separation.</li>
+                </ul>
+                <p><strong>Concentration</strong> is measured by how much space is occupied by a group. Minority
+                    groups of the same relative size occupying less space would be considered more concentrated and
+                    consequently more segregated. Furthermore, <strong>Centralization</strong> measures the location
+                    of groups relative to a city center, and <strong>Clustering</strong> examines the adjacency of
+                    similar groups.<a id="fn-ref-dissimilarity-measures">$^1$</a></p>
+                <p>The above measures focus on where people live, with the use of smartphones and GPS data less
+                    static approaches allow us to analyze movement patterns and “experienced segregation” – the
+                    amount of people’s exposure to other groups as they go about their daily lives.<a
+                        id="fn-ref-dissimilarity-measures">$^2$</a>
+                </p>
+                <p>So-called <strong>Measures of Exposure</strong> can determine the degree of potential contact
+                    between the minority and majority groups and thus the experienced segregation by the minority.
+                    Whereby <strong>Interaction</strong> (the exposure of the minority to the majority) and
+                    <strong>Isolation</strong> (the extent to which the minority sticks among themselves) can be
+                    measured.
+                </p>
+                <div class="mt-14">
+                    <p id="footnote-dissimilarity-measures">$^1$ <a
+                            href="https://www.census.gov/topics/housing/housing-patterns/guidance/appendix-b.html">https://www.census.gov/topics/housing/housing-patterns</a>.
+                    </p>
+                    <p id="footnote-new-measures">$^2$ <a
+                            href="https://news.stanford.edu/stories/2020/08/new-measure-segregation">https://news.stanford.edu/stories/2020/08/new-measure-segregation</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="footer"></div> 
+
+    <script type="module" src="/src/scripts/loadComponents.js"></script>
+    <script type="module" src="/src/scripts/main.js"></script>
+    <script type="module" src="/src/scripts/script.js"></script>
+
+    <!-- Segeration Script -->
+    <script type="module">
+        import SegregationModel from '/src/components/segregation.js';
+
+        // Initialize the simulation
+        const container = "#chart";
+        const simulation = SegregationModel(container);
+
+        // Set up event listeners for buttons
+        document.getElementById('start-button').addEventListener('click', () => {
+            simulation.initializeGrid();
+            simulation.runModel();
+        });
+
+        document.getElementById('reset-button').addEventListener('click', () => {
+            simulation.resetGrid();
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+ /* MENU */
+ .font-work {
+     font-family: 'Work', sans-serif;
+ }
+
+ /* TEXT */
+ .font-literata {
+     font-family: 'Literata', serif;
+ }
+ 
+  .filter-icon {
+      /* Dark mode: Adjust the icon to match rgb(229, 231, 235) */
+      filter: invert(86%) sepia(4%) saturate(0%) hue-rotate(210deg) brightness(98%) contrast(89%);
+  }

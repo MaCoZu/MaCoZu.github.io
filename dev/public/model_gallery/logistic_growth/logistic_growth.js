@@ -25,9 +25,20 @@ export function createLogisticGrowthChart(container, { height = 400, margin = { 
     const xScale = d3.scaleLinear().domain([0, t]).range([0, innerWidth]); // Domain is [0, t]
     const yScale = d3.scaleLinear().domain([0, K]).range([innerHeight, 0]);
 
+
+    // Custom tick formatter to remove zeros
+    const removeZeroFormatter = (d) => (d === 0 ? "" : d);
+
     // Axes
-    const xAxis = d3.axisBottom(xScale).ticks(10).tickPadding(10);
-    const yAxis = d3.axisLeft(yScale).ticks(10).tickPadding(8);
+    const xAxis = d3.axisBottom(xScale)
+        .ticks(10)
+        .tickPadding(10)
+
+    const yAxis = d3.axisLeft(yScale)
+        .ticks(10)
+        .tickPadding(8)
+        .tickFormat(removeZeroFormatter);
+
 
     // Add x-axis
     svg.append("g")
@@ -110,7 +121,10 @@ export function createLogisticGrowthChart(container, { height = 400, margin = { 
         updateK(value) {
             K = +value;
             yScale.domain([0, K]); // Update y-scale domain
-            svg.select(".y-axis").call(yAxis); // Update y-axis
+            svg.select(".y-axis")
+                .transition() // Add transition
+                .duration(300)
+                .call(yAxis) // Update y-axis
             updateChart();
         },
         updateR(value) {
@@ -120,7 +134,10 @@ export function createLogisticGrowthChart(container, { height = 400, margin = { 
         updateT(value) {
             t = +value;
             xScale.domain([0, t]); // Update x-scale domain
-            svg.select(".x-axis").call(xAxis); // Update x-axis
+            svg.select(".x-axis")
+                .transition() // Add transition
+                .duration(300)
+                .call(xAxis) // Update x-axis
             updateChart();
         },
     };
