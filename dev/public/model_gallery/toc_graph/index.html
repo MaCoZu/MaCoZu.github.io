@@ -25,7 +25,6 @@
     <!-- alpinejs  -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-
     <!-- Include KaTeX for rendering formulas -->
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
@@ -35,30 +34,46 @@
     <link rel="stylesheet" href="/src/styles/main.css">
     <link rel="stylesheet" href="style.css">
 
+    
 </head>
 
 <body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
 
     <div id="navbar"></div>
+    <div id="model_drawer"></div>
 
     <div id="toc_graph" class="w-auto"></div>
 
     <div id="footer"></div>
 
-    <script type="module" src="/src/scripts/loadComponents.js"></script>
     <script type="module" src="/src/scripts/main.js"></script>
     <script type="module" src="/src/scripts/script.js"></script>
 
+    <!-- load components  -->
+    <script type="module">
+        import { loadComponents } from "/src/scripts/loadComponents.js";
+        // Define the components to load
+        const components = [
+            { name: "navbar", targetId: "navbar" },
+            { name: "footer", targetId: "footer" },
+            { name: "model_drawer", targetId: "model_drawer" }
+        ];
+
+        // Load the components
+        loadComponents(components);
+    </script>
+
+
     <!-- graph table of content  -->
     <script type="module">
-        import { GraphTOC } from "/public/model_gallery/toc_graph/toc_graph.js";
+        import { GraphTOC } from "/public/model_gallery/toc_graph/toc_graph2.js";
 
         const data = {
             name: "Texts",
             children: [
                 {
                     id: "Theory",
-                    level: 1,
+                    type: "theory",
                     text: "First paragraph of Text A",
                     url: "/model_gallery/theory/index.html",
                     links: ["Model", "System"]
@@ -72,19 +87,21 @@
                 // },
                 {
                     id: "Model",
-                    level: 1,
+                    type: "model",
                     text: "First paragraph of Text B",
                     url: "/model_gallery/model/index.html",
                     links: ["Theory", "System"]
                 },
                 {
                     id: "System",
+                    type: "system",
                     text: "First paragraph of Text C",
                     url: "/model_gallery/system/index.html",
                     links: ["Theory", "Model"]
                 },
                 {
                     id: "Complex System",
+                    type: "system",
                     text: "First paragraph of Text C",
                     url: "/model_gallery/complex_system/index.html",
                     links: ["System"]
@@ -125,6 +142,8 @@
         GraphTOC(data, "#toc_graph", { height: 600 });
 
     </script>
+
+    
 
 </body>
 

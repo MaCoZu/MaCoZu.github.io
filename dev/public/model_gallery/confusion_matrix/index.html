@@ -45,6 +45,7 @@
 <body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
 
     <div id="navbar"></div>
+    <div id="model_drawer"></div>
 
     <main id="main-content"
         class="container mx-auto flex flex-col justify-center items-center mt-8 min-h-screen font-literata divide-y-2 divide-solid prose prose-stone prose-lg md:prose-xl text-pretty leading-8 md:leading-10 dark:prose-invert">
@@ -390,7 +391,19 @@
 
     </script>
 
+    <!-- load components  -->
+    <script type="module">
+        import { loadComponents } from "/src/scripts/loadComponents.js";
+        // Define the components to load
+        const components = [
+            { name: "navbar", targetId: "navbar" },
+            { name: "footer", targetId: "footer" },
+            { name: "model_drawer", targetId: "model_drawer" }
+        ];
 
+        // Load the components
+        loadComponents(components);
+    </script>
 
 </body>
 

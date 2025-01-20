@@ -5,15 +5,13 @@ export function GraphTOC(data, container, { height = 600 } = {}) {
     // Get the available width of the container
     const containerWidth = d3.select(container).node().getBoundingClientRect().width;
 
-
     // Use the container's width and the specified height
     const width = containerWidth;
-
-
 
     // Flatten nodes and create links based on the "links" property.
     const nodes = data.children.map(d => ({
         id: d.id,
+        type: d.type,
         text: d.text,
         url: d.url
     }));
@@ -25,17 +23,46 @@ export function GraphTOC(data, container, { height = 600 } = {}) {
         }))
     );
 
+    // Color for types of nodes 
+    const colorScale = d3.scaleOrdinal()
+        .domain(["model", "system", "theory"]) 
+        .range(["#0073e6", "#5ba300", "#e6308a"]);
+
+    // Define cluster positions for each node type
+    const clusterPositions = {
+        "model": { x: 0.2, y: height}, // Left side
+        "theory": { x: 0.5, y: height}, // Center
+        "system": { x: 0.8, y: height} // Right side
+    };
+    
     // Start the force simulation.
     const simulation = d3.forceSimulation(nodes)
+        .force("x", d3.forceX(1).strength(0.01))
+        .force("y", d3.forceY(height).strength(0.01))
+        // .force("x", d3.forceX(d => clusterPositions[d.type].x).strength(0.1))
+        // .force("y", d3.forceY(d => clusterPositions[d.type].y).strength(0.1))
+        // .force("radial", d3.forceRadial(1.5))
+        // .force("radial", d3.forceRadial(100, width / 2, height / 2))
         .force("link", d3.forceLink(links).id(d => d.id).distance(130).strength(1.5))
-        .force("charge", d3.forceManyBody().strength(-200).distanceMin(150))
+        // .force("charge", d3.forceManyBody().strength(-30).distanceMin(50))
+        .force("r", d3.forceRadial(function (d) { return d.type === "model" ? 500 : 200; }))
+        .force("charge", d3.forceCollide().radius(5))
         .force("center", d3.forceCenter().strength(1))
         .force("collide", d3.forceCollide().radius(45).strength(1)) // Add collision detection
-        // .force("radial", d3.forceRadial(100, width / 2, height / 2))
-        .force("x", d3.forceX(1).strength(0.0001))
-        .force("y", d3.forceY(height).strength(0.0001));
+        // Custom force to keep children close to parents
+        .force("parent", (alpha) => {
+            nodes.forEach(d => {
+                if (d.parent) {
+                    const parent = nodes.find(n => n.id === d.parent);
+                    if (parent) {
+                        d.x += (parent.x - d.x) * alpha * 0.1; // Adjust attraction strength
+                        d.y += (parent.y - d.y) * alpha * 0.1;
+                    }
+                }
+            });
+        })          
+        ;
     
-        
     // Create the container SVG.
     const svg = d3.select(container)
         .append("svg")
@@ -43,6 +70,7 @@ export function GraphTOC(data, container, { height = 600 } = {}) {
         .attr("height", height)
         .attr("viewBox", [-width / 2, -height / 2, width, height])
         .attr("style", "max-width: 100%; height: auto; font: 12px sans-serif;");
+
     
     // Add a glow filter
     svg.append("defs").append("filter")
@@ -73,6 +101,7 @@ export function GraphTOC(data, container, { height = 600 } = {}) {
         .join("circle")
         .attr("fill", "darkorange")
         .attr("r", 6)
+        .attr("fill", d => colorScale(d.type))
         .call(drag(simulation)) // Dragging functionality.
         .on("mouseover", (event, d) => {
             tooltip

@@ -40,6 +40,7 @@
 <body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
 
     <div id="navbar"></div>
+    <div id="model_drawer"></div>
 
     <main id="main-content"
         class="container mx-auto flex flex-col justify-center items-center mt-8 min-h-screen font-literata divide-y-2 divide-solid prose prose-stone prose-lg md:prose-xl text-pretty leading-8 md:leading-10 dark:prose-invert">
@@ -68,7 +69,7 @@
                         between are called <strong>attractors</strong>, which represent the long-term behavior of
                         the system. </p>
                 </div>
-        
+
                 <div class="flex-col justify-center items-center relative h-fit overflow-scroll">
                     <!-- Sliders -->
                     <div class="grid grid-cols-2 my-1">
@@ -83,12 +84,12 @@
                         <label for="steps">Time Steps: <span id="steps-value_map">100</span></label>
                         <input type="range" id="steps_map" min="10" max="200" value="100" step="1">
                     </div>
-        
+
                     <!-- Chart Container -->
                     <div id="logistic_map_chart"></div>
                 </div>
             </div>
-        
+
             <div class="py-6 max-w-full md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto">
                 <p>With high values of $R$ fluctuations become unpredictably chaotic after about 30 iterations.
                     This illustrates how sensitive ecosystems can be to small changes in initial conditions
@@ -121,11 +122,11 @@
                     fast our computers become, we will never be able to predict the likelihood the weather
                     or population size beyond a modest time horizon.</p>
             </div>
-        
+
         </div>
 
 
-      
+
     </main>
 
 
@@ -159,7 +160,19 @@
         });
     </script>
 
+    <!-- load components  -->
+    <script type="module">
+        import { loadComponents } from "/src/scripts/loadComponents.js";
+        // Define the components to load
+        const components = [
+            { name: "navbar", targetId: "navbar" },
+            { name: "footer", targetId: "footer" },
+            { name: "model_drawer", targetId: "model_drawer" }
+        ];
 
+        // Load the components
+        loadComponents(components);
+    </script>
 
 </body>
 
