@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normal Distribution</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/src/assets/img/logo/logo_weiß.svg" type="image/x-icon" />
+
+    <!-- mathjax  -->
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                messageStyle: "normal",
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    processEscapes: true
+                    }
+                });
+        </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+    <!-- alpinejs  -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+    <!-- Include KaTeX for rendering formulas -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- Include Tippy.js -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/styles/font.css">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
+
+    <div id="navbar"></div>
+    <div id="model_drawer"></div>
+
+    <main id="main-content"
+        class="container mx-auto flex flex-col justify-center items-center mt-8 min-h-screen font-literata divide-y-2 divide-solid prose prose-stone prose-lg md:prose-xl text-pretty leading-8 md:leading-10 dark:prose-invert">
+
+        <!-- confusion matrix  -->
+        <div id="confusion" class="scroll-mt-10 md:-scroll-mt-1 z-0">
+            <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Complex System</h2>
+        
+            <!-- text  -->
+            <div class="md:py-6 py-0 max-w-full md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto">
+                
+            </div>
+        </div>
+
+    </main>
+
+
+    <div id="footer"></div>
+
+    <script type="module" src="/src/scripts/loadComponents.js"></script>
+    <script type="module" src="/src/scripts/main.js"></script>
+    <script type="module" src="/src/scripts/script.js"></script>
+
+    <!-- Confusion Matrix Script -->
+    <script type="module">
+        import { validateAndUpdateMatrix, updateMetrics, renderFormulas } from '/src/components/confusion_matrix.js';
+
+        // Attach functions to the global scope for inline event handlers
+        window.validateAndUpdateMatrix = validateAndUpdateMatrix;
+        window.updateMetrics = updateMetrics;
+        window.renderFormulas = renderFormulas;
+    </script>
+
+    <!-- tippy script  -->
+    <script>
+        // Initialize Tippy.js
+        tippy('[data-tippy-content]', {
+            placement: 'right',
+            animation: 'scale',
+            theme: 'light',
+            arrow: true,
+            allowHTML: true, // Allow HTML content in tooltips
+        });
+
+        // Render KaTeX formulas in tooltips
+        document.querySelectorAll('[data-tippy-content]').forEach(el => {
+            const content = el.getAttribute('data-tippy-content');
+            el.setAttribute('data-tippy-content', katex.renderToString(content));
+        });
+
+
+
+    </script>
+
+    <!-- load components  -->
+    <script type="module">
+        import { loadComponents } from "/src/scripts/loadComponents.js";
+        // Define the components to load
+        const components = [
+            { name: "navbar", targetId: "navbar" },
+            { name: "footer", targetId: "footer" },
+            { name: "model_drawer", targetId: "model_drawer" }
+        ];
+
+        // Load the components
+        loadComponents(components);
+    </script>
+
+</body>
+
+</html>

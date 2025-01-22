@@ -1,13 +1,13 @@
 import * as d3 from 'd3';
 
+
 export function NormalDistribution(container, { height = 400, margin = { top: 50, right: 50, bottom: 50, left: 70 } } = {}) {
     const containerWidth = d3.select(container).node().getBoundingClientRect().width;
     const width = containerWidth;
 
     // Default parameters for the normal distribution
     let mean = 0; // Mean (μ)
-    let variance = 1; // Variance (σ²)
-    const stdDev = Math.sqrt(variance); // Standard deviation (σ)
+    let stdDev = 1; // Standard deviation (σ)
 
     // Calculate inner dimensions (width and height minus margins)
     const innerWidth = width - margin.left - margin.right;
@@ -18,6 +18,15 @@ export function NormalDistribution(container, { height = 400, margin = { top: 50
         .append("svg")
         .attr("width", width)
         .attr("height", height);
+    
+    // Define a clip path to prevent lines and labels from appearing outside the chart area
+    svg.append("defs").append("clipPath")
+        .attr("id", "chart-clip")
+        .append("rect")
+        .attr("x", margin.left)
+        .attr("y", margin.top)
+        .attr("width", innerWidth)
+        .attr("height", innerHeight);
 
     // Scales for the chart
     const xScale = d3.scaleLinear().domain([-5, 5]).range([0, innerWidth]); // x-axis range for normal distribution
@@ -64,11 +73,6 @@ export function NormalDistribution(container, { height = 400, margin = { top: 50
         .style("font-size", "20px")
         .style("font-family", "sans-serif");
 
-    // Line generator
-    const line = d3.line()
-        .x(d => xScale(d.x) + margin.left) // Scale x-coordinate
-        .y(d => yScale(d.y) + margin.top); // Scale y-coordinate
-
     // Function to calculate normal distribution PDF
     function normalPDF(x, mean, stdDev) {
         const coefficient = 1 / (stdDev * Math.sqrt(2 * Math.PI));
@@ -94,15 +98,104 @@ export function NormalDistribution(container, { height = 400, margin = { top: 50
         .attr("fill", "none")
         .attr("stroke", "steelblue")
         .attr("stroke-width", 2)
-        .attr("d", line);
+        .attr("d", d3.line()
+            .x(d => xScale(d.x) + margin.left)
+            .y(d => yScale(d.y) + margin.top)
+        );
+
+    // Function to fill area under the curve
+    function fillArea(startX, endX, color) {
+        const area = d3.area()
+            .x(d => xScale(d.x) + margin.left)
+            .y0(innerHeight + margin.top)
+            .y1(d => yScale(d.y) + margin.top);
+
+        svg.append("path")
+            .attr("class", "area")
+            .datum(data.filter(d => d.x >= startX && d.x <= endX))
+            .transition().duration(500)
+            .attr("fill", color)
+            .attr("opacity", 0.5)
+            .attr("d", area);
+    }
+
+    // Function to draw vertical lines and labels at ±1σ, ±2σ, ±3σ
+    function drawVerticalLinesAndLabels() {
+        const offsets = [-3, -2, -1, 1, 2, 3].map(d => mean + d * stdDev);
+        const labels = ["-3σ", "-2σ", "-1σ", "+1σ", "+2σ", "+3σ"];
+
+        // Draw vertical lines
+        svg.selectAll(".std-line")
+            .data(offsets)
+            .join("line")
+            .attr("class", "std-line")
+            .attr("x1", d => xScale(d) + margin.left)
+            .attr("x2", d => xScale(d) + margin.left)
+            .attr("y1", margin.top + 30)
+            .attr("y2", height - margin.bottom)
+            .attr("stroke", "gray")
+            .attr("stroke-opacity", 0.4)
+            .attr("stroke-width", 1)
+            .attr("clip-path", "url(#chart-clip)");
+
+        // Add labels next to vertical lines
+        svg.selectAll(".std-label")
+            .data(offsets)
+            .join("text")
+            .attr("class", "std-label")
+            .attr("x", d => xScale(d) + margin.left - 18) // Offset labels to the right of the lines
+            .attr("y", margin.top + 20) // Position labels at the bottom
+            .style("text-anchor", "start")
+            .style("font-size", "20px")
+            .style("font-family", "serif")
+            .text((d, i) => {
+                if (stdDev < 0.4) {
+                    // Only show ±3σ labels if stdDev < 0.4
+                    return Math.abs(offsets[i] - mean) === 3 * stdDev ? labels[i] : "";
+                } else if (stdDev < 0.7) {
+                    // Show ±2σ and ±3σ labels if stdDev < 0.6
+                    return Math.abs(offsets[i] - mean) >= 2 * stdDev ? labels[i] : "";
+                } else {
+                    // Show all labels if stdDev >= 0.6
+                    return labels[i];
+                }
+
+            })
+            .attr("clip-path", "url(#chart-clip)");
+    }
 
     // Function to update the chart
     function updateChart() {
-        const newStdDev = Math.sqrt(variance); // Recalculate standard deviation
-        data = generateNormalData(mean, newStdDev);
+        data = generateNormalData(mean, stdDev);
+
+        // Update the normal distribution curve
         path.datum(data)
-            .attr("d", line);
+            .transition()
+            .duration(500)
+            .attr("d", d3.line()
+                .x(d => xScale(d.x) + margin.left)
+                .y(d => yScale(d.y) + margin.top)
+                
+            );
+
+        // Clear previous areas and lines
+        svg.selectAll(".area").remove().transition().duration(500);
+        svg.selectAll(".std-line").remove().transition().duration(500);
+        svg.selectAll(".std-label").remove().transition().duration(500);
+
+        // Fill areas under the curve according to the empirical rule
+        fillArea(mean - stdDev, mean + stdDev, "#89ce00"); // 68% region
+        fillArea(mean - 2 * stdDev, mean - stdDev, "#0073e6"); // 95% region (left)
+        fillArea(mean + stdDev, mean + 2 * stdDev, "#0073e6"); // 95% region (right)
+        fillArea(mean - 3 * stdDev, mean - 2 * stdDev, "#e6308a"); // 99.7% region (left)
+        fillArea(mean + 2 * stdDev, mean + 3 * stdDev, "#e6308a"); // 99.7% region (right)
+
+        // Draw vertical lines and labels
+        drawVerticalLinesAndLabels();
     }
+
+    // Initial chart rendering
+    updateChart();
 
     // Expose update functions for sliders
     return {
@@ -110,8 +203,8 @@ export function NormalDistribution(container, { height = 400, margin = { top: 50
             mean = +value;
             updateChart();
         },
-        updateVariance(value) {
-            variance = +value;
+        updateStdDev(value) {
+            stdDev = +value;
             updateChart();
         },
     };

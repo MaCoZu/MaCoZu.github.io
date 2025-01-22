@@ -42,12 +42,13 @@
     <div id="navbar"></div>
     <div id="model_drawer"></div>
 
-    <div id="toc_graph" class="w-auto"></div>
+    <div id="toc_graph" class="w-auto h-screen"></div>
 
     <div id="footer"></div>
 
     <script type="module" src="/src/scripts/main.js"></script>
     <script type="module" src="/src/scripts/script.js"></script>
+    <script src="https://unpkg.com/force-graph"></script>
 
     <!-- load components  -->
     <script type="module">
@@ -69,7 +70,6 @@
         import { GraphTOC } from "/public/model_gallery/toc_graph/toc_graph2.js";
 
         const data = {
-            name: "Texts",
             children: [
                 {
                     id: "Theory",
@@ -78,13 +78,6 @@
                     url: "/model_gallery/theory/index.html",
                     links: ["Model", "System"]
                 },
-                // {
-                //     id: "Conspiracy Theory",
-                //     level: 1,
-                //     text: "First paragraph of Text A",
-                //     url: "",
-                //     links: ["Theory"]
-                // },
                 {
                     id: "Model",
                     type: "model",
@@ -99,6 +92,13 @@
                     url: "/model_gallery/system/index.html",
                     links: ["Theory", "Model"]
                 },
+                 {
+                    id: "Conspiracy Theory",
+                    type: "theory",
+                    text: "First paragraph of Text A",
+                    url: "/model_gallery/theory/index.html",
+                    links: ["Theory"]
+                },
                 {
                     id: "Complex System",
                     type: "system",
@@ -108,30 +108,35 @@
                 },
                 {
                     id: "Schelling`s Segregation",
-                    text: "First paragraph of Text C",
+                    type: "model",
+                    text: "Schelling`s Segregation",
                     url: "/model_gallery/schelling_segregation/index.html",
                     links: ["Model"]
                 },
                 {
                     id: "Logistic Growth",
+                    type: "model",
                     text: "First paragraph of Text C",
                     url: "/model_gallery/logistic_growth/index.html",
                     links: ["Model"]
                 },
                 {
                     id: "Logistic Map",
+                    type: "model",
                     text: "First paragraph of Text C",
                     url: "/model_gallery/logistic_map/index.html",
                     links: ["Model"]
                 },
                 {
                     id: "Normal Distribution",
+                    type: "model",
                     text: "First paragraph of Text C",
                     url: "/model_gallery/normal_distribution/index.html",
                     links: ["Model"]
                 },
                 {
                     id: "Confusion Matrix",
+                    type: "model",
                     text: "First paragraph of Text C",
                     url: "/model_gallery/confusion_matrix/index.html",
                     links: ["Model"]
@@ -139,7 +144,7 @@
             ]
         };
 
-        GraphTOC(data, "#toc_graph", { height: 600 });
+        GraphTOC(data, "toc_graph");
 
     </script>
 
