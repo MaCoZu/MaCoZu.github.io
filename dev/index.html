@@ -7,33 +7,14 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- Favicon -->
-    <link rel="icon" href="./src/assets/img/logo/logo_weiß.svg" type="image/x-icon" />
-
-    <!-- Styles  -->
-    <style>
-        [x-cloak] {
-            display: none !important;
-        }
-
-        /* MENU */
-        .font-work {
-            font-family: 'Work', sans-serif;
-        }
-
-        /* TEXT */
-        .font-literata {
-            font-family: 'Literata', serif;
-        }
-
-        /* HIGHLIGHT  */
-        .font-bebas {
-            font-family: 'Bebas', sans-serif;
-        }
-    </style>
+    <link rel="icon" href="/img/logo/logo_weiß.svg" type="image/x-icon" />
 
     <!-- Styles -->
     <link rel="stylesheet" href="./src/styles/font.css">
-    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="./src/styles/main.css">
+    <script type="module" src="/src/scripts/script.js"></script>
+   
+
 
     <title>Zausch Portfolio</title>
 </head>
@@ -41,76 +22,7 @@
 <body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
 
 
-    <!-- NAV BAR -->
-    <nav x-data="{ isOpen: false }"
-        class="sticks md:relative h-[4rem] md:h-[2.7rem] top-0 left-0 right-0 border-b-0 z-50">
-        <div class="container mx-auto py-2 md:py-1">
-            <!-- Navbar Grid -->
-            <div class="grid grid-cols-3 items-center md:mx-[10.5rem] py-[6px]">
-
-                <!-- LOGO -->
-                <a href="index.html" class="flex items-center">
-                    <img id="logo" class="h-6 sm:h-6 dark:filter-white" src="./src/assets/img/logo/logo.svg" alt="logo">
-                </a>
-
-                <!-- MOBILE MENU BUTTON -->
-                <div class="md:hidden col-start-3 justify-self-end">
-                    <button @click="isOpen = !isOpen"
-                        class="p-2 text-gray-500 dark:text-gray-200 rounded-md hover:text-indigo-700 focus:outline-none">
-                        <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                        <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-
-                <!-- DESKTOP MENU -->
-                <div class="hidden md:flex justify-end col-start-3">
-                    <div class="flex space-x-6 uppercase text-[10px]">
-                        <a class="font-medium hover:text-indigo-700" href="index.html">Data</a>
-                        <a class="font-medium hover:text-indigo-700" href="overview_viz.html">Visualizations</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MOBILE MENU  -->
-            <div x-show="isOpen" x-transition class="fixed inset-0 z-50 bg-black bg-opacity-10 flex justify-end">
-
-                <!-- Wrapper to Detect Clicks -->
-                <div @click="isOpen = false" class="absolute inset-0"></div>
-
-                <!-- Menu Content -->
-                <div class="relative w-1/3 bg-white dark:bg-gray-900 h-full shadow-md flex flex-col justify-start">
-                    <!-- Close Button -->
-                    <button @click="isOpen = false" class="self-end m-4 p-2 text-gray-500 dark:text-gray-200 hover:text-indigo-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-
-                    <!-- Links -->
-                    <div>
-                        <a href="index.html"
-                            class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-indigo-700">Data</a>
-                        <a href="overview_viz.html"
-                            class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-indigo-700">Visualizations</a>
-
-                        <hr class="my-2 border-gray-300 dark:border-gray-700">
-                        <a href="impressum.html"
-                            class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-indigo-700">Impressum</a>
-                        <a href="privacypolicy.html"
-                            class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-indigo-700">Privacy
-                            Policy</a>
-                    </div>
-                </div>
-            </div>
-    </nav>
-
+    <div id="navbar"></div>
 
     <main class="md:mx-[10.5rem]">
         <div class="md:h-20"></div>
@@ -154,7 +66,7 @@
 
                 <!-- Image -->
                 <div class="hidden md:block w-14 h-14 box-border">
-                    <img class="w-full h-full fill-current dark:filter-white" src="./src/assets/img/icons/x.svg" alt="X Icon">
+                    <img class="w-full h-full fill-current dark:filter-white" src="/img/icons/x.svg" alt="X Icon">
                 </div>
             </div>
 
@@ -171,7 +83,7 @@
 
         <!-- MODEL GALLERY -->
         <div class="container mx-auto md:max-w-4xl text-xl w-full box-border">
-            <a href="/public/model_gallery/toc_graph/index.html">
+            <a href="/src/pages/model_gallery/toc_graph/index.html">
         
                 <!-- Title -->
                 <h1 class="text-3xl md:text-4xl font-bebas font-semibold my-4 tracking-[5px] text-center">Model Gallery
@@ -194,7 +106,7 @@
                 </div>
                 <!-- Image -->
                 <div class="hidden md:block w-14 h-14 box-border">
-                    <img class="w-full h-full" src="./src/assets/img/icons/d3.svg" alt="D3 Icon">
+                    <img class="w-full h-full" src="/img/icons/d3.svg" alt="D3 Icon">
                 </div>
         
         
@@ -250,7 +162,7 @@
 
                 <!-- Image -->
                 <div class="hidden md:block w-14 h-14 box-border">
-                    <img class="w-full h-full" src="./src/assets/img/icons/worldbank_logo.svg" alt="wb icon">
+                    <img class="w-full h-full" src="/img/icons/worldbank_logo.svg" alt="wb icon">
                 </div>
             </div>
 
@@ -267,7 +179,7 @@
 
         <!-- D3 CHARTS -->
         <div class="container mx-auto md:max-w-4xl text-xl w-full box-border">
-            <a href="./overview_viz.html">
+            <a href="/src/pages/overview_viz.html">
 
                 <!-- Title -->
                 <h1 class="text-3xl md:text-4xl font-bebas font-semibold my-4 tracking-[5px] text-center">Delicious Data
@@ -293,7 +205,7 @@
                 </div>
                 <!-- Image -->
                 <div class="hidden md:block w-14 h-14 box-border">
-                    <img class="w-full h-full" src="./src/assets/img/icons/d3.svg" alt="D3 Icon">
+                    <img class="w-full h-full" src="/img/icons/d3.svg" alt="D3 Icon">
                 </div>
 
 
@@ -306,91 +218,30 @@
 
         </div>
 
-        
-
-        
-
-
     </main>
 
     <!-- footer  -->
-    <hr class="mt-20 border-gray-200 dark:border-gray-700 md:mx-[10.5rem]">
+    <div id="footer"></div>
 
-    <footer class="bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 mx-auto md:mx-[10.5rem] mb-5">
-        <div class="container">
+    <script type="module" src="./src/scripts/main.js"></script>
+    <script type="module" src="./src/scripts/script.js" defer></script>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+    
 
-                <!-- Logo and Name  -->
-                <div class="">
-                    <div class="hidden md:block">
-                        <div class="flex justify-between items-center">
-                            <div class="flex gap-3 items-center">
-                                <a>
-                                    <img id="logo2" class="h-16 fill-current" src="./src/assets/img/logo/logo.svg" alt="">
-                                </a>
-                                <div class="">
-                                    <p
-                                        class="pb-3 text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                                        Marco</p>
-                                    <p
-                                        class="text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                                        Zausch</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<!-- Load Components -->
+<script type="module">
+    import { loadComponents } from "/src/scripts/loadComponents.js";
 
+    // Define the components to load
+    const components = [
+        { name: "navbar", targetId: "navbar" },
+        { name: "footer", targetId: "footer" },
+        { name: "model_drawer", targetId: "model_drawer" }
+    ];
 
-                </div>
-
-                <div class="flex flex-col sm:flex-row sm:gap-24 md:justify-between ">
-
-                    <!-- CONTACT ME -->
-                    <div class="py-2 md:py-0 flex-1">
-                        <div class="text-sm uppercase font-medium">Contact </div>
-                        <div class="flex items-center gap-3 my-2">
-                            <img src="./src/assets/img/icons/envelope-solid.svg" class="w-5 h-5 dark:filter-white" id="envelope" />
-                            <a class="hover:text-indigo-700" id="mlink" href="#mlink">Email</a>
-                        </div>
-                    </div>
-
-
-                    <!-- WORK -->
-                    <div class="py-2 md:py-0 flex-1">
-                        <div class="text-sm uppercase font-medium">Work</div>
-
-                        <p class="mt-2 flex items-center">
-                        <div class="flex items-center gap-3" aria-label="LinkedIn">
-                            <img src="./src/assets/img/icons/linkedin.svg" class="w-5 h-5 dark:filter-white" id="linkedin">
-                            <a href="https://www.linkedin.com/in/marcozausch" class="hover:text-indigo-700">LinkedIn</a>
-                        </div>
-                        </p>
-
-                        <p class="mt-2 flex items-center">
-                        <div class="flex items-center gap-3" aria-label="github">
-                            <img src="./src/assets/img/icons/github.svg" class="w-5 h-5 dark:filter-white" id="github">
-                            <a href="https://github.com/MaCoZu" class="hover:text-indigo-700"
-                                aria-label="Github">Github</a>
-                        </div>
-                        </p>
-                    </div>
-
-                    <!-- LEGAL -->
-                    <div class="py-2 md:py-0 flex-1">
-                        <div class="text-sm uppercase font-medium">Legal</div>
-                        <a class="mt-2 block hover:text-indigo-700" href="./impressum.html">Impressum</a>
-                        <a class="mt-2 block hover:text-indigo-700" href="./privacypolicy.html">Privacy
-                            Policy</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </footer>
-
-    <script type="module" src="/src/scripts/main.js"></script>
-    <script type="module" src="/src/scripts/script.js"></script>
+    // Load the components
+    loadComponents(components);
+</script>
 </body>
 
 </html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistic Map</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/src/assets/img/logo/logo_weiß.svg" type="image/x-icon" />
+
+    <!-- mathjax  -->
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                messageStyle: "normal",
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    processEscapes: true
+                    }
+                });
+        </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+    <!-- alpinejs  -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+    <!-- Include KaTeX for rendering formulas -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- Styles -->
+    <link type=“text/css” rel="stylesheet" href="/src/styles/font.css">
+    <link type=“text/css” rel="stylesheet" href="/src/styles/main.css">
+    <link type=“text/css” rel="stylesheet" href="./style.css">
+
+</head>
+
+<body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
+
+    <div id="navbar"></div>
+    <div id="model_drawer"></div>
+
+    <main id="main-content"
+        class="container mx-auto flex flex-col justify-center items-center mt-8 min-h-screen font-literata  prose prose-stone prose-lg md:prose-xl text-pretty leading-8 md:leading-10 dark:prose-invert">
+
+
+        <div class="scroll-mt-10 md:-scroll-mt-1 z-0">
+            <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Linear Regression</h2>
+            <div id="chart" class="w-full"></div>
+
+            <div class="h-full overflow-visible">
+            <p>A regression line is the functional description of statistical observations, whereby one or many features $X_i$ are assumed to have an effect on the outcome of $Y$. In the simple case, where one $x$ is said to have an impact on $y$, we can draw the observations on a Cartesian coordinate system, we get the typical scatter plot, and we might even see a trend in the scatter of dots. A regression line crystallizes any existing trend and provides us with a formula that tells us the strength and direction of it. The model may also tell us that there is no relationship between $x$ and $y$ and that any pattern we might have spotted in the cloud of dots has no mathematical proof.</p>
+            <p>If we have a data set with only two characteristics, where $x$ has a certified effect on $y$, the regression model does a few things for us. </p>
+            <p>First we get a smooth line that represents all the available data only in a condensed form. Second, the corresponding mathematical formula allows us to fill in the gaps between the known data points and make predictions beyond the observed data. Furthermore the coefficients of the formula tell us the strength and direction of the relationship between $x$ and $y$. </p>
+            <p>A simple linear regression model has the form:<br /> $$\hat{y}=β_0+β_1x+\epsilon $$<br /> $y$: <em>response</em> is the quantity to be estimated or “modeled”.<br /> $x$: <em>explanatory</em> variable is used to explain $y$.<br /> $\beta_0$ (<em>beta zero</em>): $y$-<strong>intercept</strong>, that is, the point at which the regression line intercepts or cuts through the $y$-axis<br /> $\beta_1$ (<em>beta one</em>): <em>Slope</em> of the line and measure of the relationship between $x$ and $y$. That is the amount of increase or decrease of $y$ for every unit increase in $x$.<br /> $\epsilon$: is the error or deviation of $y_i$ from the line, $\hat{y_i}$.</p>
+            <p>The above regression formula allows us to draw a straight continuous line across our scatter plot and beyond. We can place a ruler at $\beta_0$ and draw the line, where we go one $\beta_1$ in the vertical direction for each horizontal step of $x$. The coefficient of $\beta_1$ can be positive or negative, weak or strong, and it represent the assumed effect of $x$ on $y$. </p>
+            <p>The $y$-intercept, $\beta_0$, has no inherent meaning, it is only an aid to draw the line. If your
+                $\beta_0$ does not lie within the range of your observations it makes no sense to interpret it. </p>
+            <p>Likewise, extending the line too far away from the observed data may lead you into the realm of the fantastical. Consider weight as a function of height, carrying on too far with your predictions you may find a giant of 4.20 meter that weighs 310 kg. Therefore it is advisable to stay close to the observations when you predict “out of sample”. </p>
+            <p>The coefficients $\beta_0$, $\beta_1$ itself are usually obtained with the method of least squares. The idea is to “fit the line” among the observation so that the squared errors $(y_i -\hat{y}_i)$ between the observed characteristic $y_i$ and its modeled estimate $\hat{y}_i$ are minimal. This should hold for all sample points, thus the <em>sum of squared errors</em> $\sum(y_i -\hat{y}_i)$ should be minimized. At this point of the process this is a purely hypothetical exercise, since we do not have a model yet and therefore no $\hat{y}_i$ for comparison. But we can rewrite the sum of squared errors (SSE) and then turn it into an optimization problem that yields the formulas for the desired coefficients. $$\sum(y_{i} - \hat{y}_i) = \sum (y_i - (\beta_0 + \beta_1 x_i))$$A typical optimization notation is $Q$ for the objective function, with the parameter estimates to be minimized in parentheses. <br /> $$\text{Find }\min_{\beta_{0}, \,\beta_1} Q(\beta_{0}, \,\beta_1), \quad\quad \text{for } Q(\beta_{0},\,\beta_1) = \sum \left[y_i - (\beta_0 + \beta_1 x_i)\right]$$</p>
+            <p>Minimizing the objective function for the intercept $\beta_0$ is equivalent to finding the best vertical position of the line.<br /> $$\frac{\partial Q(\beta_{0}, \beta_1)}{\beta_{0}}\quad \rightarrow \quad \hat\beta_{0}=\bar{y}-\hat{\beta_1}\bar{x}$$<br /> Minimizing the objective function for $\beta_1$​ ensures that the regression line has the optimal slope to best capture or relationship between the variables.<br /> $$\frac{\partial Q(\beta_{0}, \beta_1)}{\beta_{1}}\quad \rightarrow \quad \hat{\beta_1}= \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sum (x_i - \bar{x})^{2}} = \frac{s_{xy}}{s_x}$$<br /> Where $s_{xy}$ is the sample covariance and $s_x$ is the sample variance of $x$. </p>
+        </div>
+</div>
+
+
+    </main>
+
+
+    <div id="footer"></div>
+
+    <script type="module" src="/src/scripts/loadComponents.js"></script>
+    <script type="module" src="/src/scripts/main.js"></script>
+    <script type="module" src="/src/scripts/script.js"></script>
+
+    <script type="module">
+        import { RegressionLine } from '/src/pages/model_gallery/linear_regression/linear_regression.js';
+
+        // Call the function with a container
+        RegressionLine("#chart", { height: 400 });
+    </script>
+
+    <!-- load components  -->
+    <script type="module">
+        import { loadComponents } from "/src/scripts/loadComponents.js";
+        // Define the components to load
+        const components = [
+            { name: "navbar", targetId: "navbar" },
+            { name: "footer", targetId: "footer" },
+            { name: "model_drawer", targetId: "model_drawer" }
+        ];
+
+        // Load the components
+        loadComponents(components);
+    </script>
+
+</body>
+
+</html>

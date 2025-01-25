@@ -1,0 +1,24 @@
+/* #legend {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    background: transparent;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+#legend div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+#legend div div {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+} */
+

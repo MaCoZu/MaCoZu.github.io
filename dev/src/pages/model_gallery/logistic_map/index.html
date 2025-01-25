@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistic Map</title>
+
+    <!-- Styles -->
+    <link type="text/css" rel="stylesheet" href="/src/styles/font.css">
+    <link type="text/css" rel="stylesheet" href="/src/styles/main.css">
+    <link type="text/css" rel="stylesheet" href="/src/pages/model_gallery/logistic_map/style.css">
+
+
+    <!-- Favicon -->
+    <link rel="icon" href="/src/assets/img/logo/logo_weiß.svg" type="image/x-icon" />
+
+    <!-- alpinejs  -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Include KaTeX for rendering formulas -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"> -->
+
+    <!-- MathJax Configuration -->
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                messageStyle: "normal",
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    processEscapes: true
+                }
+            });
+        </script>
+    
+        <!-- Load MathJax -->
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
+
+    <div id="navbar"></div>
+    <div id="model_drawer"></div>
+
+    <main id="main-content"
+        class="container mx-auto flex flex-col justify-center items-center mt-8 min-h-screen font-literata divide-y-2 divide-solid prose prose-stone prose-lg md:prose-xl text-pretty leading-8 md:leading-10 dark:prose-invert">
+
+        <!-- logistic map  -->
+        <div id="logistic-map" class="scroll-mt-10 md:-scroll-mt-1 z-0">
+            <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Logistic Map</h2>
+            <div class="h-full overflow-visible">
+                <div>
+                    <p>The logistic map is a mathematical model used to describe how populations change over time in
+                        a constrained environment. It is particularly famous for demonstrating how simple rules can
+                        lead to complex and even chaotic behavior.</p>
+                    <p>Populations size $x_{t}$ is is given as a fraction of the maximum population an environment
+                        can sustain, called “<em>fraction of carrying capacity</em>”. $R$ is the growth rate, which
+                        influences how quickly the population grows.<br />
+                        $$x_{n+1}​=Rx_n​(1−x_n​)$$<br />
+                        With different values of $R$ the model exhibits population stabilization at a certain size
+                        ($1&lt;R&lt;3$), or oscillations and cycles ($3&lt;R&lt;3.57$) and even unpredictable
+                        chaotic
+                        behavior
+                        ($R&lt;3.57$), although the model is deterministically, that is every $x_{t}$ maps to one
+                        $x_{t+1}$.</p>
+                    <p>Stabilization reflects real-world scenarios where populations grow until they reach a
+                        sustainable level. Oscillations and cycles may represent predator-prey dynamics or seasonal
+                        population changes. The value or set of values a populations settles into it fluctuates
+                        between are called <strong>attractors</strong>, which represent the long-term behavior of
+                        the system. </p>
+                </div>
+
+            <div class="flex-col justify-center items-center relative h-fit overflow-scroll">
+                <!-- Sliders -->
+                <div id="slider-container" class="grid grid-cols-2 items-center">
+                    <label for="r_map">Growth Rate ($r$): <span id="r-value_map">3.5</span></label>
+                    <input type="range" id="r_map" min="0" max="4" value="3" step="0.01">
+                </div>
+                <div id="slider-container" class="grid grid-cols-2">
+                    <label for="x0_map">Initial Population ($x_{0}$): <span id="x0-value_map">0.5</span></label>
+                    <input type="range" id="x0_map" min="0" max="1" value="0.5" step="0.01">
+                </div>
+                <div id="slider-container" class="grid grid-cols-2">
+                    <label for="steps_map">Time Steps ($t$): <span id="steps-value_map">100</span></label>
+                    <input type="range" id="steps_map" min="10" max="200" value="100" step="1">
+                </div>
+
+                    <!-- Chart Container -->
+                    <div id="logistic_map_chart"></div>
+                </div>
+            </div>
+
+            <div class="py-6 max-w-full md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto">
+                <p>With high values of $R$ fluctuations become unpredictably chaotic after about 30 iterations.
+                    This illustrates how sensitive ecosystems can be to small changes in initial conditions
+                    $x_{n}$. It is an example of the <strong>butterfly effect</strong>, a metaphor how tiny
+                    things can change the world or how a butterfly flapping its wings can set off a tornado. The
+                    concept of trifles becoming earth-shattereing events was around for some time when Edward
+                    Lorenz (1917–2008) known as the founder of modern chaos theory, placed it onto a
+                    quantitative base.</p>
+                <figure class="quote">
+                    <blockquote>
+                        <p>You could not remove a single grain of sand from its place without thereby … changing
+                            something throughout all parts of the immeasurable whole.
+                    </blockquote>
+                    <figcaption>
+                        &mdash; Fichte, <cite>Vocation of Man (1800)</cite></figcaption>
+                </figure>
+                </p>
+                <p>Lorenz was a meteorologist and messing around with a computer model of weather patterns in
+                    1961 he noticed that very small rounding errors in his simulation compounded to produce
+                    large changes in the long-run. The prevailing view at the time was that minor discrepancies
+                    in the initial conditions would result in comparable forecast trajectories. When Lorenz was
+                    right most weather and other models are garbage, because they’re so “<em>sensitive to
+                        initial conditions</em>” that the smallest rounding error in the model will eventually
+                    dominate the solution.</p>
+                <p>You can look for attractors with $R &lt; 3.57$ and different values of $x_t$, or discover the so
+                    called <strong>deterministic chaos</strong> with $R>3.57$. Here changes of $x_t$ in the
+                    sixth decimal place generate wildly differing trajectories in the later periods. Even
+                    though the trajectory is fully determined by the equation above, the sensitivity to
+                    initial conditions means: no matter how accurate our measurements get, no matter how
+                    fast our computers become, we will never be able to predict the likelihood the weather
+                    or population size beyond a modest time horizon.</p>
+            </div>
+
+        </div>
+
+
+
+    </main>
+
+    <div id="footer"></div>
+
+    <script type="module" src="/src/scripts/loadComponents.js"></script>
+    <script type="module" src="/src/scripts/main.js"></script>
+    <script type="module" src="/src/scripts/script.js"></script>
+    <!-- <script type="module" src="/src/pages/model_gallery/logistic_map/slider.js"></script> -->
+
+    <!-- logistic map chart -->
+    <script type="module">
+        import { LogisticMapChart } from '/src/pages/model_gallery/logistic_map/logistic_map.js';
+
+        // Initialize the chart
+        const logistic_map_chart = LogisticMapChart("#logistic_map_chart");
+
+        // Add event listeners for sliders
+        document.getElementById("r_map").addEventListener("input", (e) => {
+            document.getElementById("r-value_map").textContent = e.target.value;
+            logistic_map_chart.updateR(e.target.value);
+        });
+
+        document.getElementById("x0_map").addEventListener("input", (e) => {
+            document.getElementById("x0-value_map").textContent = e.target.value;
+            logistic_map_chart.updateX0(e.target.value);
+        });
+
+        document.getElementById("steps_map").addEventListener("input", (e) => {
+            document.getElementById("steps-value_map").textContent = e.target.value;
+            logistic_map_chart.updateSteps(e.target.value);
+        });
+    </script>
+
+    <!-- load components  -->
+    <script type="module">
+        import { loadComponents } from "/src/scripts/loadComponents.js";
+        // Define the components to load
+        const components = [
+            { name: "navbar", targetId: "navbar" },
+            { name: "footer", targetId: "footer" },
+            { name: "model_drawer", targetId: "model_drawer" }
+        ];
+
+        // Load the components
+        loadComponents(components);
+    </script>
+
+</body>
+</html>

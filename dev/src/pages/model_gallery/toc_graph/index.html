@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOC Graph Modell Gallery</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/img/logo/logo_weiß.svg" type="image/x-icon" />
+
+    <!-- mathjax  -->
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                messageStyle: "normal",
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    processEscapes: true
+                    }
+                });
+        </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+    <!-- alpinejs  -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Include KaTeX for rendering formulas -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/styles/font.css">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="/src/pages/model_gallery/toc_graph/style.css">
+
+
+</head>
+
+<body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
+
+    <div id="navbar"></div>
+    <div id="model_drawer"></div>
+
+    
+
+    <div id="legend" class="absolute top-1/4 ml-[10.5rem] z-50"></div>
+    <div id="toc_graph" class="mt-0 mx-[10.5rem] relative"> </div>
+
+    <div id="footer"></div>
+
+    <script type="module" src="/src/scripts/main.js"></script>
+    <script type="module" src="/src/scripts/script.js"></script>
+    <!-- <script src="https://unpkg.com/force-graph"></script> -->
+
+    <!-- load components  -->
+    <script type="module">
+        import { loadComponents } from "/src/scripts/loadComponents.js";
+        // Define the components to load
+        const components = [
+            { name: "navbar", targetId: "navbar" },
+            { name: "footer", targetId: "footer" },
+            { name: "model_drawer", targetId: "model_drawer" }
+        ];
+
+        // Load the components
+        loadComponents(components);
+    </script>
+
+    <!-- graph table of content  -->
+    <script type="module">
+        import { GraphTOC } from "/src/pages/model_gallery/toc_graph/toc_graph2.js";
+
+        const data = {
+            children: [
+                {
+                    id: "Theory",
+                    type: "theory",
+                    text: "First paragraph of Text A",
+                    url: "/src/pages/model_gallery/theory/index.html",
+                    links: ["Model", "System"]
+                },
+                {
+                    id: "Model",
+                    type: "model",
+                    text: "First paragraph of Text B",
+                    url: "/src/pages/model_gallery/model/index.html",
+                    links: ["Theory", "System"]
+                },
+                {
+                    id: "System",
+                    type: "system",
+                    text: "First paragraph of Text C",
+                    url: "/src/pages/model_gallery/system/index.html",
+                    links: ["Theory", "Model"]
+                },
+                {
+                    id: "Conspiracy Theory",
+                    type: "theory",
+                    text: "First paragraph of Text A",
+                    url: "/src/pages/model_gallery/theory/index.html",
+                    links: ["Theory"]
+                },
+                {
+                    id: "Linear Regression",
+                    type: "model",
+                    text: "Simple Linear Regression",
+                    url: "/src/pages/model_gallery/linear_regression/index.html",
+                    links: ["Model"]
+                },
+                {
+                    id: "Complex System",
+                    type: "system",
+                    text: "First paragraph of Text C",
+                    url: "/src/pages/model_gallery/complex_system/index.html",
+                    links: ["System"]
+                },
+                {
+                    id: "Schelling`s Segregation",
+                    type: "model",
+                    text: "Schelling`s Segregation",
+                    url: "/src/pages/model_gallery/schelling_segregation/index.html",
+                    links: ["Model"]
+                },
+                {
+                    id: "Logistic Growth",
+                    type: "model",
+                    text: "First paragraph of Text C",
+                    url: "/src/pages/model_gallery/logistic_growth/index.html",
+                    links: ["Model"]
+                },
+                {
+                    id: "Logistic Map",
+                    type: "model",
+                    text: "First paragraph of Text C",
+                    url: "/src/pages/model_gallery/logistic_map/index.html",
+                    links: ["Model"]
+                },
+                {
+                    id: "Normal Distribution",
+                    type: "model",
+                    text: "First paragraph of Text C",
+                    url: "/src/pages/model_gallery/normal_distribution/index.html",
+                    links: ["Model"]
+                },
+                {
+                    id: "Confusion Matrix",
+                    type: "model",
+                    text: "First paragraph of Text C",
+                    url: "/src/pages/model_gallery/confusion_matrix/index.html",
+                    links: ["Model"]
+                },
+            ]
+        };
+
+        GraphTOC(data, "toc_graph", "legend");
+
+    </script>
+
+    </body>
+</html>
