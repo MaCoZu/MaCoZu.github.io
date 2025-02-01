@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logistic Map</title>
+    <title>Linear Regression</title>
 
     <!-- Favicon -->
     <link rel="icon" href="/src/assets/img/logo/logo_weiß.svg" type="image/x-icon" />
@@ -21,15 +21,25 @@
         </script>
 
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
-
+    
     <!-- alpinejs  -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    <!-- Include Tippy.js -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css"> 
 
     <!-- Include KaTeX for rendering formulas -->
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
 
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> -->
+
+       
     <!-- Styles -->
     <link type=“text/css” rel="stylesheet" href="/src/styles/font.css">
     <link type=“text/css” rel="stylesheet" href="/src/styles/main.css">
@@ -48,23 +58,54 @@
 
         <div class="scroll-mt-10 md:-scroll-mt-1 z-0">
             <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Linear Regression</h2>
-            <div id="chart" class="w-full"></div>
+
+            <div class="flex justify-end">
+                <button id="refresh_regression_simulation" type="button"
+                    class="bg-cyan-800 hover:bg-cyan-900 text-white font-bold p-1 rounded">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M5.1 16.05q-.55-.95-.825-1.95T4 12.05q0-3.35 2.325-5.7T12 4h.175l-1.6-1.6l1.4-1.4l4 4l-4 4l-1.4-1.4l1.6-1.6H12Q9.5 6 7.75 7.763T6 12.05q0 .65.15 1.275t.45 1.225zM12.025 23l-4-4l4-4l1.4 1.4l-1.6 1.6H12q2.5 0 4.25-1.763T18 11.95q0-.65-.15-1.275T17.4 9.45l1.5-1.5q.55.95.825 1.95T20 11.95q0 3.35-2.325 5.7T12 20h-.175l1.6 1.6z" />
+                    </svg>
+                </button>
+            </div>
+            <div id="regression_simulation" class="w-full"></div>
+            <figcaption class="px-4 my-8">Simulation of a linear regression line that adjust to new data. Each new data points trigers the line to update its slope and intercept. Adjustments become smaller with accumulating data, as the relative impact of new data decreases.</figcaption>
 
             <div class="h-full overflow-visible">
-            <p>A regression line is the functional description of statistical observations, whereby one or many features $X_i$ are assumed to have an effect on the outcome of $Y$. In the simple case, where one $x$ is said to have an impact on $y$, we can draw the observations on a Cartesian coordinate system, we get the typical scatter plot, and we might even see a trend in the scatter of dots. A regression line crystallizes any existing trend and provides us with a formula that tells us the strength and direction of it. The model may also tell us that there is no relationship between $x$ and $y$ and that any pattern we might have spotted in the cloud of dots has no mathematical proof.</p>
-            <p>If we have a data set with only two characteristics, where $x$ has a certified effect on $y$, the regression model does a few things for us. </p>
-            <p>First we get a smooth line that represents all the available data only in a condensed form. Second, the corresponding mathematical formula allows us to fill in the gaps between the known data points and make predictions beyond the observed data. Furthermore the coefficients of the formula tell us the strength and direction of the relationship between $x$ and $y$. </p>
-            <p>A simple linear regression model has the form:<br /> $$\hat{y}=β_0+β_1x+\epsilon $$<br /> $y$: <em>response</em> is the quantity to be estimated or “modeled”.<br /> $x$: <em>explanatory</em> variable is used to explain $y$.<br /> $\beta_0$ (<em>beta zero</em>): $y$-<strong>intercept</strong>, that is, the point at which the regression line intercepts or cuts through the $y$-axis<br /> $\beta_1$ (<em>beta one</em>): <em>Slope</em> of the line and measure of the relationship between $x$ and $y$. That is the amount of increase or decrease of $y$ for every unit increase in $x$.<br /> $\epsilon$: is the error or deviation of $y_i$ from the line, $\hat{y_i}$.</p>
-            <p>The above regression formula allows us to draw a straight continuous line across our scatter plot and beyond. We can place a ruler at $\beta_0$ and draw the line, where we go one $\beta_1$ in the vertical direction for each horizontal step of $x$. The coefficient of $\beta_1$ can be positive or negative, weak or strong, and it represent the assumed effect of $x$ on $y$. </p>
-            <p>The $y$-intercept, $\beta_0$, has no inherent meaning, it is only an aid to draw the line. If your
-                $\beta_0$ does not lie within the range of your observations it makes no sense to interpret it. </p>
-            <p>Likewise, extending the line too far away from the observed data may lead you into the realm of the fantastical. Consider weight as a function of height, carrying on too far with your predictions you may find a giant of 4.20 meter that weighs 310 kg. Therefore it is advisable to stay close to the observations when you predict “out of sample”. </p>
-            <p>The coefficients $\beta_0$, $\beta_1$ itself are usually obtained with the method of least squares. The idea is to “fit the line” among the observation so that the squared errors $(y_i -\hat{y}_i)$ between the observed characteristic $y_i$ and its modeled estimate $\hat{y}_i$ are minimal. This should hold for all sample points, thus the <em>sum of squared errors</em> $\sum(y_i -\hat{y}_i)$ should be minimized. At this point of the process this is a purely hypothetical exercise, since we do not have a model yet and therefore no $\hat{y}_i$ for comparison. But we can rewrite the sum of squared errors (SSE) and then turn it into an optimization problem that yields the formulas for the desired coefficients. $$\sum(y_{i} - \hat{y}_i) = \sum (y_i - (\beta_0 + \beta_1 x_i))$$A typical optimization notation is $Q$ for the objective function, with the parameter estimates to be minimized in parentheses. <br /> $$\text{Find }\min_{\beta_{0}, \,\beta_1} Q(\beta_{0}, \,\beta_1), \quad\quad \text{for } Q(\beta_{0},\,\beta_1) = \sum \left[y_i - (\beta_0 + \beta_1 x_i)\right]$$</p>
-            <p>Minimizing the objective function for the intercept $\beta_0$ is equivalent to finding the best vertical position of the line.<br /> $$\frac{\partial Q(\beta_{0}, \beta_1)}{\beta_{0}}\quad \rightarrow \quad \hat\beta_{0}=\bar{y}-\hat{\beta_1}\bar{x}$$<br /> Minimizing the objective function for $\beta_1$​ ensures that the regression line has the optimal slope to best capture or relationship between the variables.<br /> $$\frac{\partial Q(\beta_{0}, \beta_1)}{\beta_{1}}\quad \rightarrow \quad \hat{\beta_1}= \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sum (x_i - \bar{x})^{2}} = \frac{s_{xy}}{s_x}$$<br /> Where $s_{xy}$ is the sample covariance and $s_x$ is the sample variance of $x$. </p>
-        </div>
-</div>
+                <p>Regression models establish a relationships between variables. For example the price of a house could be described as a function of its size, location and condition. Formally we say the price of a house $Y$ depends on its characteristics $X_i$ (size, location and condition). </p> <p>$Y$ is called the <em>dependent variable</em>, among others, and the $X_i$’s are called independent variables, as they do not depend on other variables, at least not in the model. Other common names for $X_i$ and $Y$ are <em>explanatory variables</em> and <em>explained variable</em> or simply input and output.</p> <p>The price of a house is thus a function of its characteristics and we can write it as a string of explanatory variables $x_i$ and their respective influence on the price expressed by their coefficients $\beta_i$ :
+                    <br /> $${y} = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_kx_k + ε$$</p>
+                        
+                <details class="bg-gray-300 open:bg-amber-100 duration-300 my-3">
+                    <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Notation explantion</summary>
+                    <div class="bg-white px-5 py-3 border border-gray-300 text-lg font-light">
+                        <p>$\mathbf{{y}}$<br /> The output (dependent/explained/response) variable of the model.</p> <p>$\mathbf{x}$ <br /> The input (independent/explanatory) variables chosen to explain $y$.</p> <p>$\mathbf{\beta_0}$ <br /> The beta zero or the $y$- intercept. This is the point at which the regression line intercepts or cuts through the $y$-axis. It is an more aid to draw the regression line and should only be interpreted if the point $y=0$ lies within the range of your observations.</p> <p>$\mathbf{\beta_1}$ <br /> The coefficients of the explanatory variables. Their signs tells us if the impact of the variable is positive or negative. Their magnitudes are the strength of the effect that $x_i$ has on $y$.</p> <p>$\mathbf{\epsilon}$ <br /> The error term equals the difference between what the model estimates $\hat{y}$ (estimates have little hats over their symbols) and the actual value $y$. Therefore it captures all the shortcomings of the model and there are many of them. For example all the effects of all the variables we left out, called omitted variables. Or measurement errors and environmental noise.</p>
+                    </div>
+                </details>
 
+                <p>The above is a <em>multiple regression</em>, where many input variables $X_i$ account for the outcome of $Y$. And it is also <em>linear</em> as the graphical representation is a straight line, starting in $\beta_0$ and progressing linearly for each unit of $x_i$ by its accompanied coefficient value $\beta_i$.</p> <p>We can model relationships between variables as non-linear, as a zick-zack line or concave, convex, S-shaped and with threshold effects. But to learn about regression, in the first place, it is most appropriate to start with the <em>simple linear regression</em>, with only one input variable and an assumed linear relationship. That is to say, that we expect a unit change in the independent variable to have a constant impact on on the dependent
+                variable.</p>
 
+                <p>$${y}={\beta}_0+\beta_1x_1+\epsilon \tag{1}$$</p>
+
+                <p>The coefficient $\beta_1$ represents the change one additional unit of $x_1$ has on $y$, while $\beta_0$ is the
+                $y$-intercept, that is where the regression line intersects with the $y$-axis. If $\beta_0$ lies outside of the data
+                set, it is a mere aid in defining and drawing the line and has no inherent meaning.</p>
+                 
+                <p>Graphically, a linear regression line can be understood as the straight line that best represents the data points. A straight line has of course very modest capabilities of representing a cluster of scattered dots. All the information that is lost in the process of modeling is captured by the little error term $\epsilon$. The term accounts for our clunky approach of trying to represent a lot of data points in one straight line but also for many other missing or distorting factors, like vital characteristics we omitted, measurement errors and noise. That is fine, as modeling is by definition a simplification. However the idea of regression is to find a function and an associated line that minimizes these errors, defined as differences between the observed values $y_i$ and the model estimates $\hat{y}_i$ for each point $i$. </p> <p>That is accomplished using the <em>method of ordinary least squares</em> (OLS) which seeks to reduce all errors $\epsilon_i$ simultaneously. Or more precisely, the sum of squared errors (SSE) is reduced, as the squaring “penalizes” large errors more and hence puts more importance on their reduction.</p> <p>The OLS approach is formulated as an optimization problem with the following objective function:
+                    
+                <div class="text-left px-10">
+                    <p>$\min_{\beta_{0}, \,\beta_1} \,(SSE)$</p>
+                    <p>$= \min_{\beta_{0}, \,\beta_1} \left( \sum (y_{i} - \hat{y}_i)^2 \right)$</p>
+                    <p>$= \min_{\beta_{0}, \beta_1} \left(\sum[y_i-(\hat\beta_0+\hat\beta_{1}x_i)]^2\right)$</p>
+                
+                    <p>The partial derivates amount to:</p>
+                    <p>$\hat{\beta}_{1} = \frac{s_{x y}}{s_{x}}$</p>
+                    <p>$\hat\beta_{0}=\bar{y}-\hat{\beta_1}\bar{x}$</p>
+                    <p>where $s_{x}$ is the squared standard deviation of $x$ and $s_{x y}$ the sample covariance, a measure of joint
+                        variation between $x$ and $y$.</p>
+                </div>
+                            
+                <p>We can plug $\hat\beta_{0}$ and $\hat{\beta}_{1}$ in the function $(1)$ and it will supply us with continuous values of $\hat{y}$ for every input of $x$. We now have a unified function to interpolate any $\hat{y}$ along the range of known $x$ values but also go beyond our observations and do out-of-sample predictions. <br /> $$\hat{y}=\hat{\beta}_0+\hat{\beta}_1x$$<br /> The little hats ($\hat{y}$) above the symbols signify that they're estimates, in contrast to the “true” but unknown values. The error terms $\epsilon$ in the resulting equation dissolved into the our estimates $\hat{\beta}_0$ and $\hat{\beta}_1$, which are of course imprecise. </p> <p>In the simulation on top you can see how the line adjusts with each additional data point to fit a straight line between the scattered dots, by minimizing the errors.</p>
     </main>
 
 
@@ -74,11 +115,54 @@
     <script type="module" src="/src/scripts/main.js"></script>
     <script type="module" src="/src/scripts/script.js"></script>
 
+    <!-- Regression Simulation  -->
     <script type="module">
         import { RegressionLine } from '/src/pages/model_gallery/linear_regression/linear_regression.js';
 
         // Call the function with a container
-        RegressionLine("#chart", { height: 400 });
+        RegressionLine("#regression_simulation", { height: 400 });
+
+        // Add event listener to the refresh button
+        document.getElementById('refresh_regression_simulation').addEventListener('click', () => {
+            event.preventDefault(); // Prevent default behavior
+            RegressionLine("#regression_simulation", { height: 400 });
+
+        });
+    </script>
+
+    <!-- Grouped Average Plot  -->
+    <script type="module">
+        import { GroupedAverage } from '/src/pages/model_gallery/linear_regression/grouped_averages.js';
+
+        // Initial chart rendering
+        GroupedAverage('#grouped_averages', { height: 400 });
+
+        // Add event listener to the refresh button
+        document.getElementById('refresh_grouped_averages').addEventListener('click', () => {
+            GroupedAverage('#grouped_averages', { height: 400 });
+        });
+    </script>
+
+    <!-- tippy script  -->
+    <script>
+        // import tippy from 'tippy.js';
+        // import 'tippy.js/dist/tippy.css';
+
+        // Initialize Tippy.js
+        tippy('[data-tippy-content]', {
+            placement: 'right',
+            animation: 'scale',
+            // animation: 'fade',
+            theme: 'light',
+            arrow: true,
+            allowHTML: true, // Allow HTML content in tooltips
+        });
+
+        // Render KaTeX formulas in tooltips
+        document.querySelectorAll('[data-tippy-content]').forEach(el => {
+            const content = el.getAttribute('data-tippy-content');
+            el.setAttribute('data-tippy-content', katex.renderToString(content));
+        });
     </script>
 
     <!-- load components  -->

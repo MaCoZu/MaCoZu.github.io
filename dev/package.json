@@ -22,7 +22,8 @@
     "fast-glob": "^3.3.3",
     "force-graph": "^1.49.0",
     "jquery": "^3.7.1",
-    "tailwindcss-filters": "^3.0.0"
+    "tailwindcss-filters": "^3.0.0",
+    "tippy.js": "^6.3.7"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",

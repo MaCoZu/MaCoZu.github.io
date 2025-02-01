@@ -1,6 +1,10 @@
 import * as d3 from 'd3';
 
 export function RegressionLine(container, { height = 400, margin = { top: 50, right: 50, bottom: 50, left: 70 } } = {}) {
+    
+    // Clear the existing chart
+    d3.select(container).select("svg").remove();
+    
     // Get the width of the container
     const containerWidth = d3.select(container).node().getBoundingClientRect().width;
     const width = containerWidth;
@@ -36,23 +40,36 @@ export function RegressionLine(container, { height = 400, margin = { top: 50, ri
     const removeZeroFormatter = (d) => (d === 0 ? "" : d);
 
     // Add axes
-    const xAxis = d3.axisBottom(xScale).tickSize(8).tickPadding(8).tickSizeOuter(0).tickFormat(removeZeroFormatter);
+    const xAxis = d3.axisBottom(xScale).tickSize(8).tickPadding(8).tickSizeOuter(0);
     const yAxis = d3.axisLeft(yScale).tickSize(8).tickPadding(10).tickFormat(removeZeroFormatter);
 
-    svg.selectAll("line.horizontalGrid").data(yScale.ticks(10)).enter()
+    // Add horizontal gridlines
+    g.selectAll("line.horizontalGrid")
+        .data(yScale.ticks(10)) // Use 10 ticks for gridlines
+        .enter()
         .append("line")
-        .attr(
-            {
-                "class": "horizontalGrid",
-                "x1": margin.right,
-                "x2": width,
-                "y1": function (d) { return yScale(d); },
-                "y2": function (d) { return yScale(d); },
-                "fill": "none",
-                "shape-rendering": "crispEdges",
-                "stroke": "black",
-                "stroke-width": "1px"
-            });
+        .attr("class", "horizontalGrid")
+        .attr("x1", 0) // Start at the left edge of the chart
+        .attr("x2", innerWidth) // End at the right edge of the chart
+        .attr("y1", d => yScale(d)) // Y position of the gridline
+        .attr("y2", d => yScale(d)) // Y position of the gridline
+        .attr("stroke", "#ddd") // Light gray color
+        .attr("stroke-width", 1) // Thin stroke
+    // .attr("stroke-dasharray", "2,2"); // Dashed line
+
+    // Add horizontal gridlines
+    g.selectAll("line.verticalGrid")
+        .data(yScale.ticks(10)) // Use 10 ticks for gridlines
+        .enter()
+        .append("line")
+        .attr("class", "horizontalGrid")
+        .attr("x1", d => xScale(d)) // Start at the left edge of the chart
+        .attr("x2", d => xScale(d)) // End at the right edge of the chart
+        .attr("y1", innerHeight) // Y position of the gridline
+        .attr("y2", 0) // Y position of the gridline
+        .attr("stroke", "#ddd") // Light gray color
+        .attr("stroke-width", 1) // Thin stroke
+    // .attr("stroke-dasharray", "2,2"); // Dashed line
 
     g.append("g")
         .attr("transform", `translate(0,${innerHeight})`)
@@ -60,7 +77,7 @@ export function RegressionLine(container, { height = 400, margin = { top: 50, ri
 
     g.append("g")
         .call(yAxis);
-
+    
     // Add axis labels
     g.append("text")
         .attr("class", "axis-label")
@@ -106,7 +123,7 @@ export function RegressionLine(container, { height = 400, margin = { top: 50, ri
             .join("path")
             .attr("class", "regression-line")
             .attr("d", line)
-            .style("stroke", "blue")
+            .style("stroke", "navy")
             .style("stroke-width", 2)
             ;
     }
@@ -122,12 +139,15 @@ export function RegressionLine(container, { height = 400, margin = { top: 50, ri
             .attr("cx", d => xScale(d.x))
             .attr("cy", d => yScale(d.y))
             .attr("r", 5)
+            .style("fill", "gray")
+            .style("stroke", "black")
+            .style("stroke-width", 0.5)
             .transition()
             .duration(500);
 
         updateRegressionLine(data.slice(0, index + 1));
 
-        setTimeout(() => addPoints(data, index + 1), 500);
+        setTimeout(() => addPoints(data, index + 1), 1200);
     }
 
     // Start the animation

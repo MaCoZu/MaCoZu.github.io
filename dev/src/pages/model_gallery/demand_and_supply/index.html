@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Regression</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/src/assets/img/logo/logo_weiß.svg" type="image/x-icon" />
+
+    <!-- mathjax  -->
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                messageStyle: "normal",
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    processEscapes: true
+                    }
+                });
+        </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
+    
+    <!-- alpinejs  -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Include Tippy.js -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css"> 
+
+    <!-- Include KaTeX for rendering formulas -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> -->
+
+       
+    <!-- Styles -->
+    <link type=“text/css” rel="stylesheet" href="/src/styles/font.css">
+    <link type=“text/css” rel="stylesheet" href="/src/styles/main.css">
+    <link type=“text/css” rel="stylesheet" href="./style.css">
+
+</head>
+
+<body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
+
+    <div id="navbar"></div>
+    <div id="model_drawer"></div>
+
+    <main id="main-content"
+        class="container mx-auto flex flex-col justify-center items-center mt-8 min-h-screen font-literata  prose prose-stone prose-lg md:prose-xl text-pretty leading-8 md:leading-10 dark:prose-invert">
+
+
+        <div class="scroll-mt-10 md:-scroll-mt-1 z-0">
+            <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Demand and Supply</h2>
+            <div id="demand_and_supply" class="w-full"></div>
+            <figcaption class="px-4 my-8">Supply and demand...</figcaption>
+            
+                <p>If you should just know one model from economics, it is probably this one. You certainly have an idea how demand and supply work, like almost anybody. But it is astonishing how often we see people going against its lesson. They fall for the latest fad and pay a terrible price just to realize that if they had waited for one month, they had paid a fraction. Granted, that is not true for any good, if your favorite musician is in town there could be no other option than to pay over the odds. But it happens regularly with game consoles, smartphones, fancy clothes or the occasional food trend. The experience is almost universal because we’re human, curious, and social not rational, clinical scheming automaton. But not just consumers follow the herd, also producers get antsy and jump on the bandwagon when they smell money, just to find themselves in a nasty competition. Eventually the craze is over, people had enough or turn to the next “thing” and only a few competitive businesses can live on the now normalized price. In the economic jargon this is called the equilibrium price, where the market is saturated and supply matches demand.</p>
+
+            
+
+            <div class="h-full overflow-visible">
+                
+    </main>
+
+
+    <div id="footer"></div>
+
+    <script type="module" src="/src/scripts/loadComponents.js"></script>
+    <script type="module" src="/src/scripts/main.js"></script>
+    <script type="module" src="/src/scripts/script.js"></script>
+
+    <!-- Regression Simulation  -->
+    <script type="module">
+        import { DemandSupplyChart } from '/src/pages/model_gallery/demand_and_supply/demand_and_supply.js';
+
+        // Call the function with a container
+        DemandSupplyChart("#demand_and_supply", { height: 400});
+    </script>
+
+    <!-- tippy script  -->
+    <script>
+        // import tippy from 'tippy.js';
+        // import 'tippy.js/dist/tippy.css';
+
+        // Initialize Tippy.js
+        tippy('[data-tippy-content]', {
+            placement: 'right',
+            animation: 'scale',
+            // animation: 'fade',
+            theme: 'light',
+            arrow: true,
+            allowHTML: true, // Allow HTML content in tooltips
+        });
+
+        // Render KaTeX formulas in tooltips
+        document.querySelectorAll('[data-tippy-content]').forEach(el => {
+            const content = el.getAttribute('data-tippy-content');
+            el.setAttribute('data-tippy-content', katex.renderToString(content));
+        });
+    </script>
+
+    <!-- load components  -->
+    <script type="module">
+        import { loadComponents } from "/src/scripts/loadComponents.js";
+        // Define the components to load
+        const components = [
+            { name: "navbar", targetId: "navbar" },
+            { name: "footer", targetId: "footer" },
+            { name: "model_drawer", targetId: "model_drawer" }
+        ];
+
+        // Load the components
+        loadComponents(components);
+    </script>
+
+</body>
+
+</html>

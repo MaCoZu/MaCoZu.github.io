@@ -1,6 +1,21 @@
 import '/src/styles/font.css';
 
 
+// Initialize Tippy.js
+tippy('[data-tippy-content]', {
+    placement: 'right',
+animation: 'scale',
+theme: 'light',
+arrow: true,
+allowHTML: true, // Allow HTML content in tooltips
+});
+
+// Render KaTeX formulas in tooltips
+document.querySelectorAll('[data-tippy-content]').forEach(el => {
+        const content = el.getAttribute('data-tippy-content');
+    el.setAttribute('data-tippy-content', katex.renderToString(content));
+    });
+
 /* 1. define variables */
 var me = "marcozausch";
 var place = "posteo.de";
