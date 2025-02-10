@@ -59,70 +59,60 @@
         <div class="scroll-mt-10 md:-scroll-mt-1 z-0">
             <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Linear Regression</h2>
 
-            <p>Linear regression is about describing the connection between variables. And finding a graphical and mathematical expression for this relationship, if it exists. </p> <p>We could for example ask if there is a connection between the height of parents and their adult children. One of the first thing to do, is to plot both variables on a $xy$-plane and look for a pattern. That is what Sir Francis Galton, the originator of eugenics, did in a 1886 paper. </p>
-
-            <div id="galton_line" class="w-full"></div>
-
-            <p>The upward trend in the data points suggests a positive relationship. Taller parents have taller children and vice versa. Obviously, Galton expected parents height to affect the height of their children. </p> <p>And it is customary to call the affected property the <em>depended variable</em>, denominated as $Y$, and the affecting property the <em>independent variable</em> $X$.</p> <p>It is not always clear, as in the case at hand, which variable influences the other (<em>directionality problem</em>). There may be many variables $X_i$ influencing $Y$. In modeling, we concentrate on the most relevant influences $X_i$ and can build a <em>multiple regression</em> with them. If our analysis is reduced to just one $X$ it's called a <em>simple regression</em>, and we likely <em>omitted variables</em> which are relevant. </p> <p>Another thing to watch for, when deciding what is influence and what effect, is a third <em>hidden variable</em>. A hidden variable influences our properties under scrutiny unbeknownst to us and make them appear connected. The text book example for a hidden variable is a seeming connection between ice cream sales and violent crime. If we plot those, the variables are aligned like the size of parents and their children. There is, however, no direct connection between the two. But a third variable influencing ice cream sales and crime rates alike, and that’s hot summer days. Summer drives people outside, some buy ice cream, others go on a drinking spree and get into trouble[].</p>
-            
-
             <div class="h-full overflow-visible">
 
-            <p>Regression models establish a relationships between variables. For example the price of a house could be described as a function of its size, location and condition. Formally we say the price of a house $Y$ depends on its characteristics $X_i$ (size, location and condition). </p> <p>$Y$ is called the <em>dependent variable</em>, among others, and the $X_i$’s are called independent variables, as they do not depend on other variables, at least not in the model. Other common names for $X_i$ and $Y$ are <em>explanatory variables</em> and <em>explained variable</em> or simply input and output.</p> <p>The price of a house is thus a function of its characteristics and we can write it as a string of explanatory variables $x_i$ and their respective influence on the price expressed by their coefficients $\beta_i$ :
-                    <br /> $${y} = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_kx_k + ε$$</p>
-                        
-                <details class="bg-gray-300 open:bg-amber-100 duration-300 my-3">
-                    <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Notation explantion</summary>
-                    <div class="bg-white px-5 py-3 border border-gray-300 text-lg font-light">
-                        <p>$\mathbf{{y}}$<br /> The output (dependent/explained/response) variable of the model.</p> <p>$\mathbf{x}$ <br /> The input (independent/explanatory) variables chosen to explain $y$.</p> <p>$\mathbf{\beta_0}$ <br /> The beta zero or the $y$- intercept. This is the point at which the regression line intercepts or cuts through the $y$-axis. It is an more aid to draw the regression line and should only be interpreted if the point $y=0$ lies within the range of your observations.</p> <p>$\mathbf{\beta_1}$ <br /> The coefficients of the explanatory variables. Their signs tells us if the impact of the variable is positive or negative. Their magnitudes are the strength of the effect that $x_i$ has on $y$.</p> <p>$\mathbf{\epsilon}$ <br /> The error term equals the difference between what the model estimates $\hat{y}$ (estimates have little hats over their symbols) and the actual value $y$. Therefore it captures all the shortcomings of the model and there are many of them. For example all the effects of all the variables we left out, called omitted variables. Or measurement errors and environmental noise.</p>
-                    </div>
-                </details>
+            <p>Linear regression is about describing the connection between variables. And finding a graphical and mathematical
+            expression for this relationship, if it exists. Linear means that we model the interaction between the variables as a
+            constant rate of change.</p> 
+            
+            <p>We could for example ask if there is a relationship between the height of parents and their adult children. One of the first things to do is to plot both variables on a $xy$-plane and look for a pattern. That is what Sir Francis Galton, the originator of eugenics, did in an 1886 paper.</p>
 
-                <p>The above is a <em>multiple regression</em>, where many input variables $X_i$ account for the outcome of $Y$. And it is also <em>linear</em> as the graphical representation is a straight line, starting in $\beta_0$ and progressing linearly for each unit of $x_i$ by its accompanied coefficient value $\beta_i$.</p> <p>We can model relationships between variables as non-linear, as a zick-zack line or concave, convex, S-shaped and with threshold effects. But to learn about regression, in the first place, it is most appropriate to start with the <em>simple linear regression</em>, with only one input variable and an assumed linear relationship. That is to say, that we expect a unit change in the independent variable to have a constant impact on on the dependent
-                variable.</p>
+            <div id="scatter_plot" class="w-full"></div>
 
-                <p>$${y}={\beta}_0+\beta_1x_1+\epsilon \tag{1}$$</p>
+            <p>The upward trend in the data suggests a positive relationship. Taller parents have taller children and vice versa. There are two input variables, fathers height and mothers height and one could build a <em>multiple regression</em> model that considers the individual impact of each variable on the children’s height. For a <em>simple linear regression</em> only one variable is chosen, in the present case the single input variable is an artificial compound: the average height of the father and mother.</p>
 
-                <p>The coefficient $\beta_1$ represents the change one additional unit of $x_1$ has on $y$, while $\beta_0$ is the
-                $y$-intercept, that is where the regression line intersects with the $y$-axis. If $\beta_0$ lies outside of the data
-                set, it is a mere aid in defining and drawing the line and has no inherent meaning.</p>
-                 
-
-                <p>Graphically, a linear regression line can be understood as the straight line that best represents the data points. A straight line has of course very modest capabilities of representing a cluster of scattered dots. All the information that is lost in the process of modeling is captured by the little error term $\epsilon$. The term accounts for our clunky approach of trying to represent a lot of data points in one straight line but also for many other missing or distorting factors, like vital characteristics we omitted, measurement errors and noise. That is fine, as modeling is by definition a simplification. However the idea of regression is to find a function and an associated line that minimizes these errors, defined as differences between the observed values $y_i$ and the model estimates $\hat{y}_i$ for each point $i$. </p> <p>That is accomplished using the <em>method of ordinary least squares</em> (OLS) which seeks to reduce all errors $\epsilon_i$ simultaneously. Or more precisely, the sum of squared errors (SSE) is reduced, as the squaring “penalizes” large errors more and hence puts more importance on their reduction.</p>
+            <p>The relationship can ultimately be described in a single straight line where $\beta_0$ is the intercept of the line with the $y$-axis and $\beta_1$ is the constant change in $Y$ (children height) with every unit of $X$ (average parents height).
                 
-                <p>The OLS approach is formulated as an optimization problem with the following objective function:</p>
-
-                    
-                <div class="text-left px-10">
-                    <p>$\min_{\beta_{0}, \,\beta_1} \,(SSE)$</p>
-                    <p>$= \min_{\beta_{0}, \,\beta_1} \left( \sum (y_{i} - \hat{y}_i)^2 \right)$</p>
-                    <p>$= \min_{\beta_{0}, \beta_1} \left(\sum[y_i-(\hat\beta_0+\hat\beta_{1}x_i)]^2\right)$</p>
+                <p> $$y=\beta_0+\beta_{1}x+\epsilon$$</p> 
                 
-                    <p>The partial derivates amount to:</p>
-                    <p>$\hat{\beta}_{1} = \frac{s_{x y}}{s_{x}}$</p>
-                    <p>$\hat\beta_{0}=\bar{y}-\hat{\beta_1}\bar{x}$</p>
-                    <p>where $s_{x}$ is the squared standard deviation of $x$ and $s_{x y}$ the sample covariance, a measure of joint
-                        variation between $x$ and $y$.</p>
-                </div>
-                            
-                <p>We can plug $\hat\beta_{0}$ and $\hat{\beta}_{1}$ in the function $(1)$ and it will supply us with continuous values of $\hat{y}$ for every input of $x$. We now have a unified function to interpolate any $\hat{y}$ along the range of known $x$ values but also go beyond our observations and do out-of-sample predictions. <br /> $$\hat{y}=\hat{\beta}_0+\hat{\beta}_1x$$<br /> The little hats ($\hat{y}$) above the symbols signify that they're estimates, in contrast to the “true” but unknown values. The error terms $\epsilon$ in the resulting equation dissolved into the our estimates $\hat{\beta}_0$ and $\hat{\beta}_1$, which are of course imprecise. </p> <p>In the simulation on top you can see how the line adjusts with each additional data point to fit a straight line between the scattered dots, by minimizing the errors.</p>
+                Galton recognized that the children of parents with exceptional characteristics (very tall or very short), tended to have less extreme characteristics. He called this phenomenon “regression towards mediocrity” giving regression its name.</p> 
+            
+            <p>The most important coefficient is $\beta_1$, which can be conceived by the <em>regression method</em> combining the correlation coefficient $r$ and the ratio of standard deviations:</p>
 
-                <div class="flex justify-end">
-                    <button id="refresh_regression_simulation" type="button"
-                        class="bg-cyan-800 hover:bg-cyan-900 text-white font-bold p-1 rounded">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path fill="currentColor"
-                                d="M5.1 16.05q-.55-.95-.825-1.95T4 12.05q0-3.35 2.325-5.7T12 4h.175l-1.6-1.6l1.4-1.4l4 4l-4 4l-1.4-1.4l1.6-1.6H12Q9.5 6 7.75 7.763T6 12.05q0 .65.15 1.275t.45 1.225zM12.025 23l-4-4l4-4l1.4 1.4l-1.6 1.6H12q2.5 0 4.25-1.763T18 11.95q0-.65-.15-1.275T17.4 9.45l1.5-1.5q.55.95.825 1.95T20 11.95q0 3.35-2.325 5.7T12 20h-.175l1.6 1.6z" />
-                        </svg>
-                    </button>
-                </div>
-                <div id="regression_simulation" class="w-full"></div>
-                <figcaption class="px-4 my-8">Simulation of a linear regression line that adjust to new data. Each new data points
-                    trigers the line to update its slope and intercept. Adjustments become smaller with accumulating data, as the
-                    relative impact of new data decreases.</figcaption>
+            <p>$$\beta_1=r \times \frac{s_y}{s_x}$$</p>
 
+            <p>The more common method figuring out the regression coefficients is called <em>ordinary least squares</em> (OLS). It arrives at the same coefficients as the regression method by minimizing the squared differences between the data points and the regression line. </p>
+            
+            <p>The OLS approach is formulated as an optimization problem with the following objective function:</p>
+            
+            <div class="text-left px-10">
+                <p>$\min_{\beta_{0}, \,\beta_1} \,(SSE)$</p>
+                <p>$= \min_{\beta_{0}, \,\beta_1} \left( \sum (y_{i} - \hat{y}_i)^2 \right)$</p>
+                <p>$= \min_{\beta_{0}, \beta_1} \left(\sum[y_i-(\hat\beta_0+\hat\beta_{1}x_i)]^2\right)$</p>
+            
+                <p>The partial derivates amount to:</p>
+                <p>$\hat{\beta}_{1} = \frac{s_{x y}}{s_{x}}$</p>
+                <p>$\hat\beta_{0}=\bar{y}-\hat{\beta_1}\bar{x}$</p>
+                <p>where $s_{x}$ is the squared standard deviation of $x$ and $s_{x y}$ the sample covariance, a measure of joint
+                    variation between $x$ and $y$.</p>
+            </div>
+
+            <div class="flex justify-end">
+                <button id="refresh_regression_simulation" type="button"
+                    class="bg-cyan-800 hover:bg-cyan-900 text-white font-bold p-1 rounded">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M5.1 16.05q-.55-.95-.825-1.95T4 12.05q0-3.35 2.325-5.7T12 4h.175l-1.6-1.6l1.4-1.4l4 4l-4 4l-1.4-1.4l1.6-1.6H12Q9.5 6 7.75 7.763T6 12.05q0 .65.15 1.275t.45 1.225zM12.025 23l-4-4l4-4l1.4 1.4l-1.6 1.6H12q2.5 0 4.25-1.763T18 11.95q0-.65-.15-1.275T17.4 9.45l1.5-1.5q.55.95.825 1.95T20 11.95q0 3.35-2.325 5.7T12 20h-.175l1.6 1.6z" />
+                    </svg>
+                </button>
+            </div>
+            <div id="regression_simulation" class="w-full"></div>
+
+            <figcaption class="px-4 my-8">The regression line adjust to new data by calculation the coefficients with the OLS method. The sum of squared errors  (SSE) between the individual points and the line (prediction) is thereby minimized.</figcaption>
+
+            <p>Much could be said about the brazen simplicity of pressing a data set into a single straight line. About ascertaining which variable influences the other. And the dangers of confusing correlation with causation and much more. But for the sake of brevity I’ll leave it at that.</p>
+            
     </main>
-
 
     <div id="footer"></div>
 
@@ -132,30 +122,18 @@
 
     <!-- Regression Simulation  -->
     <script type="module">
-        import { RegressionLine, Galton_Regression } from '/src/pages/model_gallery/linear_regression/linear_regression.js';
+        import {Scatter_Plot, RegressionLine } from '/src/pages/model_gallery/linear_regression/linear_regression.js';
 
         // Call the function with a container
+        Scatter_Plot("#scatter_plot", { height: 400 });
         RegressionLine("#regression_simulation", { height: 400 });
-        Galton_Regression("#galton_line", { height: 400 });
+        // Galton_Regression("#galton_line", { height: 400 });
 
         // Add event listener to the refresh button
         document.getElementById('refresh_regression_simulation').addEventListener('click', () => {
             event.preventDefault(); // Prevent default behavior
             RegressionLine("#regression_simulation", { height: 400 });
 
-        });
-    </script>
-
-    <!-- Grouped Average Plot  -->
-    <script type="module">
-        import { GroupedAverage } from '/src/pages/model_gallery/linear_regression/grouped_averages.js';
-
-        // Initial chart rendering
-        GroupedAverage('#grouped_averages', { height: 400 });
-
-        // Add event listener to the refresh button
-        document.getElementById('refresh_grouped_averages').addEventListener('click', () => {
-            GroupedAverage('#grouped_averages', { height: 400 });
         });
     </script>
 
