@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 
-export function DemandSupplyMoves(container, slider_container, {margin = { top: 70, right: 10, bottom: 70, left: 120 } } = {}) {
+export function DemandSupplyMoves(container, slider_container, {margin = { top: 50, right: 10, bottom: 70, left: 120 } } = {}) {
 
     // Get the width of the container
     // const containerWidth = d3.select(container).node().getBoundingClientRect().width;
@@ -244,7 +244,7 @@ export function DemandSupplyMoves(container, slider_container, {margin = { top: 
 
 
 
-export function DemandSupplyShifts(container, slider_container, { margin = { top: 50, right: 50, bottom: 30, left: 50 } } = {}) {
+export function DemandSupplyShifts(container, demand_slider, supply_slider, { margin = { top: 20, right: 50, bottom: 40, left: 60 } } = {}) {
     const width = 500; // Fixed width for the chart
     const height = 400; // Fixed height for the chart
 
@@ -285,10 +285,6 @@ export function DemandSupplyShifts(container, slider_container, { margin = { top
         .attr("width", innerWidth)
         .attr("height", innerHeight);
 
-    // Initial intercepts for demand and supply curves
-    let demandIntercept = 100; // Demand curve: y = demandIntercept - x
-    let supplyIntercept = 0;   // Supply curve: y = supplyIntercept + x
-
     // Demand curve
     const demandPath = svg.append("path")
         .attr("class", "demand-curve")
@@ -296,15 +292,6 @@ export function DemandSupplyShifts(container, slider_container, { margin = { top
         .attr("stroke-width", 2.5)
         .attr("fill", "none")
         .attr("clip-path", "url(#chart-clip)"); // Apply clip path
-
-    svg.append("text")
-        .attr("x", xScale(20))
-        .attr("y", 2)
-        .attr("text-anchor", "middle")
-        .text("Demand")
-        .style("font-size", "16px")
-        .attr("fill", "blue")
-        .style("font-family", "sans-serif");
 
     // Supply curve
     const supplyPath = svg.append("path")
@@ -314,14 +301,57 @@ export function DemandSupplyShifts(container, slider_container, { margin = { top
         .attr("fill", "none")
         .attr("clip-path", "url(#chart-clip)"); // Apply clip path
 
+    // Equilibrium lines
+    const eqPriceLine = svg.append("line")
+        .attr("stroke-dasharray", "5,5")
+        .attr("stroke", "black")
+        .attr("stroke-width", 0.5)
+        .attr("clip-path", "url(#chart-clip)");
+
+    const eqQuantityLine = svg.append("line")
+        .attr("stroke-dasharray", "5,5")
+        .attr("stroke", "black")
+        .attr("stroke-width", 0.5)
+        .attr("clip-path", "url(#chart-clip)");
+
+    // eqPrice
     svg.append("text")
-        .attr("x", xScale(80))
-        .attr("y", 2)
-        .attr("text-anchor", "middle")
-        .text("Supply")
-        .style("font-size", "16px")
-        .attr("fill", "red")
+        .attr("transform", "rotate(-90)")
+        .attr("x", -innerHeight / 2 -40)
+        .attr("y", -margin.left + 15)
+        .style("text-anchor", "middle")
+        .text("Equilibrium Price:")
+        .style("font-size", "17px")
         .style("font-family", "sans-serif");
+    
+    const eqY = svg.append("text")
+        .attr("x", - margin.left +10)
+        .attr("y", innerHeight/2 - 50)
+        .text("50")
+        .style("text-anchor", "middle")
+        .style("font-size", "16px")
+        .style("font-family", "sans-serif");
+
+    // eqQuantity
+    svg.append("text")
+        .attr("x", xScale(20))
+        .attr("y", innerHeight + 50)
+        .text("Equilibrium Quantity:")
+        .attr("text-anchor", "start")
+        .style("font-size", "16px")
+        .style("font-family", "sans-serif");
+    
+    const eqX = svg.append("text")
+        .attr("x", xScale(65))
+        .attr("y", innerHeight + 50)
+        .text("50")
+        .attr("text-anchor", "start")
+        .style("font-size", "16px")
+        .style("font-family", "sans-serif");
+    
+    // Initial intercepts for demand and supply curves
+    let demandIntercept = 100; // Initial demand intercept
+    let supplyIntercept = 0;  // Initial supply intercept
 
     // Function to update the curves
     function updateCurves() {
@@ -337,59 +367,53 @@ export function DemandSupplyShifts(container, slider_container, { margin = { top
         // Update supply curve
         const supplyLine = d3.line()
             .x(d => xScale(d.x))
-            .y(d => yScale(supplyIntercept + d.x));
+            .y(d => yScale(d.x - supplyIntercept));
 
         supplyPath
             .datum(d3.range(0, 101).map(x => ({ x })))
             .attr("d", supplyLine);
+
+        // Calculate equilibrium point
+        const equilibriumX = (demandIntercept + supplyIntercept) / 2;
+        const equilibriumY = (demandIntercept - supplyIntercept) / 2;
+
+        // Update equilibrium lines
+        eqPriceLine
+            .attr("x1", xScale(equilibriumX))
+            .attr("y1", yScale(0))
+            .attr("x2", xScale(equilibriumX))
+            .attr("y2", yScale(100));
+
+        eqQuantityLine
+            .attr("x1", xScale(0))
+            .attr("y1", yScale(equilibriumY))
+            .attr("x2", xScale(100))
+            .attr("y2", yScale(equilibriumY));
+
+        eqX
+            .text(equilibriumX.toFixed(0));
+        
+        eqY
+            .text(equilibriumY.toFixed(0));
     }
 
     // Initial curve update
     updateCurves();
 
-    // Sliders for demand and supply shifts
-    const sliderContainer = d3.select(slider_container)
-        .style("display", "flex")
-        .style("flex-direction", "column")
-        .style("align-items", "center")
-        .style("gap", "5px")
-        .style("margin-top", "10px"); // Add margin to separate chart and sliders
+    // Select the existing slider elements
+    const demandSlider = d3.select("#demand_slider");
+    const supplySlider = d3.select("#supply_slider");
 
-    // Demand slider
-    sliderContainer.append("p")
-        .text("Demand Shift")
-        .style("font-size", "14px")
-        .style("font-family", "sans-serif")
-        .style("margin-top", "0px");
+    // Add event listeners to the sliders
+    demandSlider.on("input", function () {
+        demandIntercept = +this.value; // Update demand intercept
+        updateCurves(); // Update the chart
+    });
 
-    const demandSlider = sliderContainer.append("input")
-        .attr("type", "range")
-        .attr("min", 50)
-        .attr("max", 150)
-        .attr("value", demandIntercept)
-        .style("width", "300px")
-        .on("input", function () {
-            demandIntercept = +this.value;
-            updateCurves();
-        });
-
-    // Supply slider
-    sliderContainer.append("p")
-        .text("Supply Shift")
-        .style("font-size", "14px")
-        .style("font-family", "sans-serif")
-        .style("margin-top", "0px");
-
-    const supplySlider = sliderContainer.append("input")
-        .attr("type", "range")
-        .attr("min", -50)
-        .attr("max", 50)
-        .attr("value", supplyIntercept)
-        .style("width", "300px")
-        .on("input", function () {
-            supplyIntercept = +this.value;
-            updateCurves();
-        });
+    supplySlider.on("input", function () {
+        supplyIntercept = +this.value; // Update supply intercept
+        updateCurves(); // Update the chart
+    });
 
     return svg.node();
 }
