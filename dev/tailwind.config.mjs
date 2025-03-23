@@ -4,6 +4,8 @@ export default {
     "./index.html",
     "./public/**/*.html",
     "./src/**/*.html",
+    './src/pages/**/*.html',
+    './src/components/*.{html,js}',
     "./src/**/*.{vue,js,ts,jsx,tsx}", 
   ],
   theme: {

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confusion Matrix</title>
+
+
+    <!-- Styles -->
+  <script type="module" crossorigin src="../../../../assets/model_gallery/confusion_matrix/index-Dc8w4NJo.js"></script>
+  <link rel="modulepreload" crossorigin href="../../../../assets/loadComponents-IR4gVqQb.js">
+  <link rel="stylesheet" crossorigin href="../../../../assets/loadComponents-BpMYHXdy.css">
+</head>
+
+<body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
+
+    <div id="navbar"></div>
+    <div id="model_drawer"></div>
+
+    <main id="main-content"
+        class="container mx-auto flex flex-col justify-center items-center mt-8 min-h-screen font-literata divide-y-2 divide-solid prose prose-stone prose-lg md:prose-xl text-pretty leading-8 md:leading-10 dark:prose-invert">
+
+        <!-- confusion matrix  -->
+        <div id="confusion" class="scroll-mt-10 md:-scroll-mt-1 z-0">
+            <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Confusion Matrix</h2>
+        
+            <!-- text  -->
+            <div class="overflow-visible">
+                <div class="py-0">
+                    <p>When we predict something – be it with a machine learning algorithm or a disease test – we
+                        would like to know the performance of our tool, since we will almost certainly have some
+                        erroneous predictions. </p>
+                    <p>Predictions can fall in four categories:</p>
+                    <ul>
+                        <li>Something is correctly identified as being positive, this is called a
+                            <strong>true-positive (TP)</strong>. A Corona rapid test showing positive while you
+                            actually have Corona is an example for a true-positive.
+                        </li>
+                        <li>Or the test correctly predicts something to be negative (the test is negative and you do
+                            not have the disease). This is a <strong>true-negative (TN)</strong>.</li>
+                        <li>Erroneous predictions may find something to be positive while it is not, this is a
+                            <strong>false-positive (FP)</strong>.
+                        </li>
+                        <li>Or recognize something to be negative while it is actually positive, a
+                            <strong>false-negative (FN)</strong>.
+                        </li>
+                    </ul>
+                </div>
+        
+                <!-- matrix  -->
+                <div class="container mx-autop-1 bg-white rounded-lg">
+                    <div class="flex flex-col lg:flex-row gap-1">
+                        <div class="grid grid-cols-3 gap-1 bg-gray-200 p-1 rounded-lg">
+                            <div></div>
+                            <div class="cell bg-gray-700 text-white p-2 text-center font-bold">Predicted Positive</div>
+                            <div class="cell bg-gray-700 text-white p-2 text-center font-bold">Predicted Negative</div>
+                            <div class="cell bg-gray-700 text-white p-2 text-center font-bold">Actual Positive</div>
+                            <div class="cell bg-white p-2 text-center">
+                                <div class="flex justify-center gap-4">
+        
+                                    <div class="font-bold mb-1">TP</div>
+                                    <input type="text" inputmode="numeric" id="tp" value="80"
+                                        class="w-16 text-center border rounded" oninput="validateAndUpdateMatrix(this)">
+                                </div>
+                            </div>
+                            <div class="cell bg-white p-2 text-center">
+                                <div class="flex justify-center gap-4">
+                                    <div class="font-bold mb-1">FN</div>
+                                    <input type="text" inputmode="numeric" id="fn" value="20"
+                                        class="w-16 text-center border rounded" oninput="validateAndUpdateMatrix(this)">
+                                </div>
+        
+                            </div>
+                            <div class="cell bg-gray-700 text-white p-2 text-center font-bold">Actual Negative</div>
+                            <div class="cell bg-white p-2 text-center">
+                                <div class="flex justify-center gap-4">
+                                    <div class="font-bold mb-1">FP</div>
+                                    <input type="text" inputmode="numeric" id="fp" value="40"
+                                        class="w-16 text-center border rounded" oninput="validateAndUpdateMatrix(this)">
+                                </div>
+        
+                            </div>
+                            <div class="cell bg-white p-2 text-center">
+                                <div class="flex justify-center gap-4">
+                                    <div class="font-bold mb-1">TN</div>
+                                    <input type="text" inputmode="numeric" id="tn" value="10"
+                                        class="w-16 text-center border rounded" oninput="validateAndUpdateMatrix(this)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+        
+                    <div class="flex flex-col mt-3 gap-4 max-w-md">
+        
+                        <div class="metric">
+                            <div class="flex items-center">
+                                <div id="precision-formula" class="mr-2"></div>
+                                <span id="precision" class="font-bold mr-4">N/A</span>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24"
+                                    fill="none"
+                                data-tippy-content="Precision measures the proportion of correctly predicted positive instances out of all instances predicted as positive. It indicates the model's ability to avoid false positives."
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path d="M12 18.01L12.01 17.9989" stroke="#000000" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+        
+                        <div class="metric">
+                            <div class="flex items-center">
+                                <div id="accuracy-formula" class="mr-2"></div>
+                                <span id="accuracy" class="font-bold mr-4">N/A</span>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24"
+                                    fill="none" data-tippy-content="Accuracy measures the proportion of correctly predicted
+                                        instances (both positive and
+                                        negative) out of the total number of instances. It provides an overall measure of
+                                        the model's correctness." xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path d="M12 18.01L12.01 17.9989" stroke="#000000" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+        
+                        <div class="metric">
+                            <div class="flex items-center">
+                                <div id="recall-formula" class="mr-2"></div>
+                                <span id="recall" class="font-bold mr-4">N/A</span>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24"
+                                    fill="none" data-tippy-content="Recall measures the proportion of correctly predicted positive
+                                        instances out of all
+                                        actual positive instances. It indicates the model's ability to find all positive
+                                        instances." xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path d="M12 18.01L12.01 17.9989" stroke="#000000" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                            </div>
+        
+                        </div>
+                        <div class="metric">
+                            <div class="flex items-center">
+                                <div id="specificity-formula" class="mr-2"></div>
+                                <span id="specificity" class="font-bold mr-4">N/A</span>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24"
+                                    fill="none" data-tippy-content="Specificity measures the proportion of correctly predicted
+                                        negative instances out of all
+                                        actual negative instances. It indicates the model's ability to identify negative
+                                        instances correctly." xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path d="M12 18.01L12.01 17.9989" stroke="#000000" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="flex items-center">
+                                <div id="f1-formula" class="mr-2"></div>
+                                <span id="f1" class="font-bold mr-4">N/A</span>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24"
+                                    fill="none" data-tippy-content="F1-score is the harmonic mean of precision and recall. It
+                                        provides a single score that
+                                        balances both precision and recall, especially useful when you have an uneven class
+                                        distribution." xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path d="M12 18.01L12.01 17.9989" stroke="#000000" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="flex items-center">
+                                <div id="youden-formula" class="mr-2"></div>
+                                <span id="youden" class="font-bold mr-4">N/A</span>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24"
+                                    fill="none"
+                                    data-tippy-content="Youden's J statistic (also known as Youden's index) measures the
+                                        performance of a dichotomous diagnostic test. It ranges from -1 to 1, with 1 indicating a perfect test and 0 indicating a useless test."
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path d="M12 18.01L12.01 17.9989" stroke="#000000" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="flex items-center">
+                                <div id="mcc-formula" class="mr-2"></div>
+                                <span id="mcc" class="font-bold mr-4">N/A</span>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24"
+                                    fill="none" data-tippy-content="The Matthews correlation coefficient (MCC) is a balanced measure
+                                        that can be used even
+                                        if the classes are of very different sizes. It ranges from -1 to 1, where <br> 1
+                                        represents a perfect prediction, <br>
+                                        0 no better than random prediction, and <br> -1 indicates total disagreement between
+                                        prediction and observation." xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999"
+                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path d="M12 18.01L12.01 17.9989" stroke="#000000" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                            </div>
+        
+                        </div>
+                    </div>
+        
+                </div>
+        
+            </div>
+        
+        
+            <div class="md:py-6 py-0 max-w-full md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto">
+                <p>As to the performance of our tool, the first question we might ask is “<em>how many correct
+                        predictions did we get overall</em>?”. The <strong>Accuracy</strong> measure answers this
+                    question as the percentage of correct predictions out of all instances. But accuracy has a
+                    problem with imbalanced datasets, consider data with $95$ infected and $5$ non-infected samples,
+                    our test could classify all samples as infected and still boast an accuracy of $95\%$.</p>
+                <p>You could also claim that the test recognized $100\%$ of the infections, and the corresponding
+                    measure is <strong>Sensitivity</strong> (aka <strong>Recall</strong>), which is the proportion
+                    of correctly predicted positives out of all actual positive instances. Sensitivity warns you
+                    about false-negatives but not about false-positives.</p>
+                <p>But what if the treatment of the infection is very dangerous and you can’t afford to detect
+                    infections that are not actually there? Then you want to look at <strong>Specificity</strong>,
+                    which measures the proportion of correctly predicted negative instances out of all actual
+                    negative instances. And the test above with high accuracy and even higher sensitivity renders
+                    useless, since it spotted $0\%$ of the non-infected (negative) samples.</p>
+                <p>Another measure called <strong>Precision</strong> tells you “<em>how many of the cases predicted
+                        as positive where actually positive</em>”. Precision is interesting if false-positives are
+                    costly. While Precision and Specificity help us avoid false-positives they hold no information
+                    of false-negatives and you have to look at Sensitivity if you worry about them.</p>
+                <p>Since all those measure have flaws there is measures compounded from the ones above. The
+                    <strong>$\mathbf{F_1}$-score</strong> is the harmonic mean of precision and sensitivity and
+                    represents their impact evenly. It gives you an overall assessment of the tool's performance
+                    even with imbalanced data. But since precision and sensitivity are symmetrically weighted the
+                    $F_1$-score is sometimes further adjusted with different weights attached to precision and/or
+                    sensitivity befitting the purpose of your test. Moreover the $F_1$-score ignores true-negatives
+                    something <strong>Youden's J statistic</strong> corrects by combining sensitivity and
+                    specificity. Tests with the same $J$-value give the same proportion of total misclassified
+                    results. But Youden's J doesn’t tell you in which category the the misclassifications happen, as
+                    very different values of sensitivity or specificity may yield the same $J$-value. One measure
+                    that is considered suitable even for very imbalanced data is <strong>Matthews Correlation
+                        Coefficient (MCC)</strong>. The coefficient is equivalent to the chi-square statistic for a
+                    $2\times2$ contingency table and produces a high score only if the predictions obtained good
+                    results in all of the four categories of the confusion matrix proportionally both to the size of
+                    positive elements and the size of negative elements in the dataset.
+                </p>
+                <p>Since this is all very confusing you should play with the interactive matrix, test the edge cases
+                    and the behaviour of the measures until you have a precise and accurate understanding of the
+                    specifics of this sensitive concept ;-)</p>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="footer"></div>
+
+    
+    <!-- load components  -->
+
+    <!-- Confusion Matrix Script -->
+
+</body>
+</html>

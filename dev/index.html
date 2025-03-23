@@ -4,19 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>Zausch Portfolio</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="/img/logo/logo_weiß.svg" type="image/x-icon" />
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="./src/styles/font.css">
-    <link rel="stylesheet" href="./src/styles/main.css">
-    <script type="module" src="/src/scripts/script.js"></script>
-   
-
-
-    <title>Zausch Portfolio</title>
+    <link rel="icon" href="src/img/logo/logo_weiß.svg" type="image/x-icon" />
 </head>
 
 <body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
@@ -58,15 +49,13 @@
                                     d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
                             </svg>
                         </a>
-                        The imaginary customer wants an analysis of the 2008-2017 congressional tweets to understand
-                        key
-                        topics, members, and relationships within Congress.
+                        The imaginary customer wants an analysis of the 2008-2017 congressional tweets to understand key topics, members, and relationships within Congress.
                     </p>
                 </div>
 
                 <!-- Image -->
                 <div class="hidden md:block w-14 h-14 box-border">
-                    <img class="w-full h-full fill-current dark:filter-white" src="/img/icons/x.svg" alt="X Icon">
+                    <img class="w-full h-full fill-current dark:filter-white" src="src/img/icons/x.svg" alt="X Icon">
                 </div>
             </div>
 
@@ -81,17 +70,18 @@
             <hr class="w-1/2 border-gray-400">
         </div>
 
+
         <!-- MODEL GALLERY -->
         <div class="container mx-auto md:max-w-4xl text-xl w-full box-border">
-            <a href="/src/pages/model_gallery/toc_graph/index.html">
+            <a href="src/pages/model_gallery/toc_graph/index.html">
         
                 <!-- Title -->
-                <h1 class="text-3xl md:text-4xl font-bebas font-semibold my-4 tracking-[5px] text-center">Model Gallery
+                <h1 class="text-3xl md:text-4xl font-bebas font-semibold my-4 tracking-[5px] text-center">Model Explorer
                 </h1>
         
                 <!-- Subtitle -->
                 <p class="font-semibold leading-8 text-center py-4">
-                    A hodgepodge of models, systems and theories.
+                    Interactive graphs and short introductions.
                 </p>
             </a>
         
@@ -101,12 +91,12 @@
                 <!-- Text -->
                 <div class="flex-1 box-border">
                     <p class="text-pretty ">
-        
+                        An ecclectic collection of models, theories and systems that stirred my curiosity. With animated D3.js graph and other visualizations.
                     </p>
                 </div>
                 <!-- Image -->
                 <div class="hidden md:block w-14 h-14 box-border">
-                    <img class="w-full h-full" src="/img/icons/d3.svg" alt="D3 Icon">
+                    <img class="w-full h-full" src="src/img/icons/d3.svg" alt="D3 Icon">
                 </div>
         
         
@@ -162,7 +152,7 @@
 
                 <!-- Image -->
                 <div class="hidden md:block w-14 h-14 box-border">
-                    <img class="w-full h-full" src="/img/icons/worldbank_logo.svg" alt="wb icon">
+                    <img class="w-full h-full" src="src/img/icons/worldbank_logo.svg" alt="wb icon">
                 </div>
             </div>
 
@@ -179,11 +169,10 @@
 
         <!-- D3 CHARTS -->
         <div class="container mx-auto md:max-w-4xl text-xl w-full box-border">
-            <a href="/src/pages/overview_viz.html">
+            <a href="/overview_viz.html">
 
                 <!-- Title -->
-                <h1 class="text-3xl md:text-4xl font-bebas font-semibold my-4 tracking-[5px] text-center">Delicious Data
-                    Deli
+                <h1 class="text-3xl md:text-4xl font-bebas font-semibold my-4 tracking-[5px] text-center">Visualizations
                 </h1>
 
                 <!-- Subtitle -->
@@ -205,7 +194,7 @@
                 </div>
                 <!-- Image -->
                 <div class="hidden md:block w-14 h-14 box-border">
-                    <img class="w-full h-full" src="/img/icons/d3.svg" alt="D3 Icon">
+                    <img class="w-full h-full" src="./src/img/icons/d3.svg" alt="D3 Icon">
                 </div>
 
 
@@ -218,30 +207,26 @@
 
         </div>
 
+
     </main>
 
     <!-- footer  -->
     <div id="footer"></div>
 
-    <script type="module" src="./src/scripts/main.js"></script>
-    <script type="module" src="./src/scripts/script.js" defer></script>
+    <script type="module" src="./src/assets/scripts/main.js"></script>
+    <script type="module" src="./src/assets/scripts/script.js" defer></script>
 
-    
+    <!-- Load Components -->    
+    <script type="module">
+        import { loadComponents } from "./src/assets/scripts/loadComponents.js";
 
-<!-- Load Components -->
-<script type="module">
-    import { loadComponents } from "/src/scripts/loadComponents.js";
+        const components = [
+            { name: "navbar", targetId: "navbar" },
+            { name: "footer", targetId: "footer" },
+        ];
 
-    // Define the components to load
-    const components = [
-        { name: "navbar", targetId: "navbar" },
-        { name: "footer", targetId: "footer" },
-        { name: "model_drawer", targetId: "model_drawer" }
-    ];
-
-    // Load the components
-    loadComponents(components);
-</script>
+        loadComponents(components);
+    </script>
 </body>
 
 </html>

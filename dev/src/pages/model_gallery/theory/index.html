@@ -4,36 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logistic Map</title>
+    <title>Theory</title>
 
     <!-- Favicon -->
     <link rel="icon" href="/src/assets/img/logo/logo_weiß.svg" type="image/x-icon" />
-
-    <!-- mathjax  -->
-    <script type="text/x-mathjax-config">
-            MathJax.Hub.Config({
-                messageStyle: "normal",
-                tex2jax: {
-                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                    processEscapes: true
-                    }
-                });
-        </script>
-
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
-
-    <!-- alpinejs  -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-
-    <!-- Include KaTeX for rendering formulas -->
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="/src/styles/font.css">
-    <link rel="stylesheet" href="/src/styles/main.css">
-    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -49,21 +23,20 @@
         <div id="logistic-map" class="scroll-mt-10 md:-scroll-mt-1 z-0">
             <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Theory</h2>
             <div class="h-full overflow-visible">
-                    
+
             </div>
         </div>
     </main>
 
-
     <div id="footer"></div>
 
-    <script type="module" src="/src/scripts/loadComponents.js"></script>
-    <script type="module" src="/src/scripts/main.js"></script>
-    <script type="module" src="/src/scripts/script.js"></script>
+    <script type="module" src="../../../assets/scripts/loadComponents.js"></script>
+    <script type="module" src="../../../assets/scripts/main.js"></script>
+    <script type="module" src="../../../assets/scripts/script.js"></script>
 
     <!-- load components  -->
     <script type="module">
-        import { loadComponents } from "/src/scripts/loadComponents.js";
+        import { loadComponents } from "@/assets/scripts/loadComponents.js";
         // Define the components to load
         const components = [
             { name: "navbar", targetId: "navbar" },
@@ -74,8 +47,6 @@
         // Load the components
         loadComponents(components);
     </script>
-
-
 
 </body>
 

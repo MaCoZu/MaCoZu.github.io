@@ -17,11 +17,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "alpinejs": "^3.14.8",
     "animate.css": "^4.1.1",
     "d3": "^7.9.0",
     "fast-glob": "^3.3.3",
     "force-graph": "^1.49.0",
     "jquery": "^3.7.1",
+    "katex": "^0.16.21",
     "tailwindcss-filters": "^3.0.0",
     "tippy.js": "^6.3.7"
   },

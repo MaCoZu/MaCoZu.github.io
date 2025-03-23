@@ -7,43 +7,7 @@
     <title>Linear Regression</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="/src/assets/img/logo/logo_weiß.svg" type="image/x-icon" />
-
-    <!-- mathjax  -->
-    <script type="text/x-mathjax-config">
-            MathJax.Hub.Config({
-                messageStyle: "normal",
-                tex2jax: {
-                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                    processEscapes: true
-                    }
-                });
-        </script>
-
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
-
-    <!-- alpinejs  -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <!-- Include Tippy.js -->
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://unpkg.com/tippy.js@6"></script>
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css">
-
-    <!-- Include KaTeX for rendering formulas -->
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
-        onload="renderMathInElement(document.body);"></script>
-
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> -->
-
-
-    <!-- Styles -->
-    <link type=“text/css” rel="stylesheet" href="/src/styles/font.css">
-    <link type=“text/css” rel="stylesheet" href="/src/styles/main.css">
-    <link type=“text/css” rel="stylesheet" href="./style.css">
+    <link rel="icon" href="/img/logo/logo_weiß.svg" type="image/x-icon" />
 
 </head>
 
@@ -61,12 +25,7 @@
 
             <div class="h-full overflow-visible">
 
-                <p>Regression is about describing the interaction between variables. And finding a mathematical
-                    expression for this relationship, if it exists. If the relationship is modeled as a constant rate of
-                    change the regression is linear. </p>
-                <p>We could for example ask if there is a relationship between the height of parents and their adult
-                    children. One of the first things to do is to plot both variables on a $xy$-plane and look for a
-                    pattern. That is what Sir Francis Galton, the originator of eugenics, did in an 1886 paper. </p>
+            <p>Regression is about describing the interaction between variables. And finding a mathematical expression for this relationship, if it exists. A linear regression models the interplay between the variables as a constant rate of change.</p> <p>We could for example ask if there is a relationship between the height of parents and their adult children. One of the first things to do, is plotting both variables on a $xy$-plane and look for a pattern. That is what Sir Francis Galton, the originator of eugenics, did in an 1886 paper. </p>
 
                 <div class="flex justify-end">
                     <button id="button_container"
@@ -74,36 +33,7 @@
                 </div>
                 <div id="scatter_plot" class="w-full"></div>
 
-                <p>The upward trend in his data suggests a positive relationship. Taller parents have taller children
-                    and vice versa. Here it is obvious what is influence and what is affected, parents pass genes to
-                    their children. But it isn’t always this clear which variable moves the other (directionality
-                    problem), or if the interaction may be caused by some third <em>hidden variable</em>. </p>
-
-                <p>The two separate variables of father’s and mother’s height could be used to build a <em>multiple
-                        regression</em> model, that considers the individual impact of each variable on the children’s
-                    height. For a <em>simple linear regression</em> only one variable $X$ is chosen. For the present
-                    analysis father and mothers height are cast into a weighted average: $$X=\text{fathers height} +
-                    1.08 \times \text{mothers height}$$The relationship can ultimately be described in a single straight
-                    line where $\beta_0$ is the intercept of the line with the $y$-axis and $\beta_1$ is the constant
-                    change in $Y$ (children height) with every unit of $X$.<br />
-                    $$y=\beta_0+\beta_{1}x+\epsilon$$<br /> Galton recognized that parents with exceptional
-                    characteristics (very tall or very short), tended to have children with less extreme characteristics
-                    than them. He called this phenomenon “regression towards mediocrity” giving regression its name.</p>
-
-                <p>The most important coefficient is $\beta_1$, which can be conceived by the <em>regression method</em>
-                    combining the correlation coefficient $r$ and the ratio of standard deviations:<br /> $$\beta_1=r
-                    \times \frac{s_y}{s_x}$$<br /> The regression method only applies to simple linear regression, but
-                    it helps to understand the basic principle of conjuring a unified mathematical description from a
-                    bunch of individual data points. Pearson’s correlation coefficient quantifies the strength and
-                    direction of the linear relationship between $X$ and $Y$. Or how tight or loose the points are
-                    clustered around a hypothetical line. While the ratio of standard deviations, has a sense of scale,
-                    as it expresses the typical change of $Y$ for any step in $X$. A line with the slope of $\beta_1$
-                    can be drawn from the center of the data points $\bar{x}, \, \bar{y}$ (point of averages), whereby
-                    the intercept of the regression line and the $y$-axis $\beta_0$ is found.</p>
-
-                <p>The more common method to figure out the regression coefficients is called <em>ordinary least
-                        squares</em> (OLS). It arrives at the same coefficients as the regression method by minimizing
-                    the sum of squared errors (SSE) between the data points and the regression line. </p>
+                    <p>The upward trend in his data suggests a positive relationship: Taller parents have taller children and vice versa. Here it is obvious that parents pass genes to their children, but it isn’t always clear which variable moves the other (directionality problem). </p> <p>One could use fathers height and mothers height as two inputs for a <em>multiple regression</em> model, that considers the individual impact of each variable on the children’s height. For a <em>simple linear regression</em> only one variable $X$ is chosen. Here the single input is a weighted average of the parent’s heights: $$X=\text{fathers height} + 1.08 \times \text{mothers height}$$The relationship can ultimately be described in a single straight line where $\beta_0$ is the intercept of the line with the $y$-axis and $\beta_1$ is the constant change in $Y$ (children height) with every unit of $X$.<br /> $$y=\beta_0+\beta_{1}x+\epsilon$$<br /> Galton recognized that parents with exceptional characteristics (very tall or very short), tended to have children with less extreme characteristics than them. He called this phenomenon “regression towards mediocrity” giving regression its name.</p> <p>The most important coefficient is $\beta_1$, which can be conceived by the <em>regression method</em> combining the correlation coefficient $r$ and the ratio of standard deviations:<br /> $$\beta_1=r \times \frac{s_y}{s_x}$$<br /> The regression method only works for simple linear regression, but it highlights the mechanisms of regression. Pearson’s correlation coefficient $r$ measures how loose or tight the data points are clustered around a hypothetical line, and its sign tells us if the relationship is positive (upward sloping $r&gt;0$) or negative (downward sloping $r&lt;0$). The ration of standard deviations adds a sense of scale to the correlation coefficient’s information. A standard deviation is the typical deviation of the data points from the mean, therefore the ratio expresses the typical change of $Y$ for any step in $X$. </p> <p>The more common method figuring out the regression coefficients is called <em>ordinary least squares</em> (OLS). It arrives at the same coefficients as the regression method by minimizing the sum of squared errors (SSE) between the data points and the regression line. </p>
 
                 <p>The OLS approach is formulated as an optimization problem with the following objective function:</p>
 
@@ -144,13 +74,13 @@
 
     <div id="footer"></div>
 
-    <script type="module" src="/src/scripts/loadComponents.js"></script>
-    <script type="module" src="/src/scripts/main.js"></script>
-    <script type="module" src="/src/scripts/script.js"></script>
+    <script type="module" src="../../../assets/scripts/loadComponents.js"></script>
+    <script type="module" src="../../../assets/scripts/main.js"></script>
+    <script type="module" src="../../../assets/scripts/script.js"></script>
 
     <!-- Regression Simulation  -->
     <script type="module">
-        import { Scatter_Plot_Line, RegressionLine } from '/src/pages/model_gallery/linear_regression/linear_regression.js';
+        import { Scatter_Plot_Line, RegressionLine } from '@/pages/model_gallery/linear_regression/linear_regression.js';
 
         // Call the function with a container
         Scatter_Plot_Line("#scatter_plot", "#button_container", { height: 400 });
@@ -183,31 +113,9 @@
         });
     </script>
 
-    <!-- tippy script  -->
-    <script>
-        // import tippy from 'tippy.js';
-        // import 'tippy.js/dist/tippy.css';
-
-        // Initialize Tippy.js
-        tippy('[data-tippy-content]', {
-            placement: 'right',
-            animation: 'scale',
-            // animation: 'fade',
-            theme: 'light',
-            arrow: true,
-            allowHTML: true, // Allow HTML content in tooltips
-        });
-
-        // Render KaTeX formulas in tooltips
-        document.querySelectorAll('[data-tippy-content]').forEach(el => {
-            const content = el.getAttribute('data-tippy-content');
-            el.setAttribute('data-tippy-content', katex.renderToString(content));
-        });
-    </script>
-
     <!-- load components  -->
     <script type="module">
-        import { loadComponents } from "/src/scripts/loadComponents.js";
+        import { loadComponents } from "@/assets/scripts/loadComponents.js";
         // Define the components to load
         const components = [
             { name: "navbar", targetId: "navbar" },
@@ -220,5 +128,4 @@
     </script>
 
 </body>
-
 </html>

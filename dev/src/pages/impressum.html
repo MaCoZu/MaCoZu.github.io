@@ -4,10 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum</title>
 
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-  <!-- Favicon -->
   <link rel="icon" href="/img/logo/logo_weiß.svg" type="image/x-icon" />
 
   <style>
@@ -33,9 +31,6 @@
   <!-- Styles -->
   <link rel="stylesheet" href="/src/styles/font.css">
   <link rel="stylesheet" href="/src/styles/main.css">
-
-  <title>Impressum</title>
-
 </head>
 
 <body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
@@ -80,12 +75,12 @@
   <div id="footer"></div>
 
 
-  <script type="module" src="/src/scripts/main.js"></script>
-  <script type="module" src="/src/scripts/script.js"></script>
+  <script type="module" src="../assets/scripts/main.js"></script>
+  <script type="module" src="../assets/scripts/script.js"></script>
 
   <!-- load components  -->
   <script type="module">
-    import { loadComponents } from "/src/scripts/loadComponents.js";
+    import { loadComponents } from "@/assets/scripts/loadComponents.js";
     // Define the components to load
     const components = [
       { name: "navbar", targetId: "navbar" },

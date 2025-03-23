@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricardo's Corn Model</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="//unpkg.com/force-graph"></script>
+    <style>
+        .flow {
+            fill: none;
+            stroke: #333;
+            stroke-width: 2px;
+            marker-end: url(#arrowhead);
+        }
+        
+        .label {
+            font-family: sans-serif;
+            font-size: 18px;
+            fill: #333;
+        }
+    </style>
+  <script type="module" crossorigin src="../../../../assets/model_gallery/corn_model/index-SjJtWGBJ.js"></script>
+  <link rel="modulepreload" crossorigin href="../../../../assets/loadComponents-IR4gVqQb.js">
+  <link rel="stylesheet" crossorigin href="../../../../assets/loadComponents-BpMYHXdy.css">
+</head>
+
+<body>
+    
+    <div id="graph"></div>      
+
+    <script>
+        const w = document.documentElement.clientWidth;
+        const h = document.documentElement.clientHeight;
+        const svg = d3.select('#graph')
+        .append('svg')
+        .attr('width', w)
+        .attr('height', h);
+        
+        const gData = {
+            
+            // Define stocks
+            nodes: [
+            {id: "corn", x: 100, y: 100, width: 100, height: 60, label: "Corn Stock", color: "orange" },
+            {id: "workers", x: 400, y: 100, width: 100, height: 60, label: "Workers", color: "navy" },
+            {id: "capital", x: 250, y: 300, width: 100, height: 60, label: "Capital", color: "gray" }
+            ],
+            
+            // Define flows
+            links: [
+            {source: "workers", target: "corn", label: "Corn Production", curvature: 0.5  },
+            {source: "corn", target: "workers", label: "Corn Consumption", curvature: 0.5  },
+            {source: "corn", target: "capital", label: "Investment", curvature: 0.5  }
+            ]}
+            
+            
+            const Graph = new ForceGraph(document.getElementById('graph'))
+            .linkDirectionalParticles(1)
+            .linkCurvature('curvature')
+            .cooldownTicks(50)
+            .graphData(gData);
+            
+            
+            Graph.d3Force('center', null);
+            
+            // fit to canvas when engine stops
+            Graph.onEngineStop(() => Graph.zoomToFit(300));
+            
+        </script>
+
+        
+        <!-- load components  -->
+    
+</body>
+    </html>

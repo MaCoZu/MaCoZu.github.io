@@ -6,37 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logistic Map</title>
 
-    <!-- Styles -->
-    <link type="text/css" rel="stylesheet" href="/src/styles/font.css">
-    <link type="text/css" rel="stylesheet" href="/src/styles/main.css">
-    <link type="text/css" rel="stylesheet" href="/src/pages/model_gallery/logistic_map/style.css">
-
-
     <!-- Favicon -->
     <link rel="icon" href="/src/assets/img/logo/logo_weiß.svg" type="image/x-icon" />
-
-    <!-- alpinejs  -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <!-- Include KaTeX for rendering formulas -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"> -->
-
-    <!-- MathJax Configuration -->
-    <script type="text/x-mathjax-config">
-            MathJax.Hub.Config({
-                messageStyle: "normal",
-                tex2jax: {
-                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                    processEscapes: true
-                }
-            });
-        </script>
     
-        <!-- Load MathJax -->
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- Styles -->
+    <link type="text/css" rel="stylesheet" href="./style.css">
 </head>
 
 <body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
@@ -133,10 +107,23 @@
 
     <div id="footer"></div>
 
-    <script type="module" src="/src/scripts/loadComponents.js"></script>
-    <script type="module" src="/src/scripts/main.js"></script>
-    <script type="module" src="/src/scripts/script.js"></script>
-    <!-- <script type="module" src="/src/pages/model_gallery/logistic_map/slider.js"></script> -->
+    <script type="module" src="../../../assets/scripts/loadComponents.js"></script>
+    <script type="module" src="../../../assets/scripts/main.js"></script>
+    <script type="module" src="../../../assets/scripts/script.js"></script>
+    
+    <!-- load components  -->
+    <script type="module">
+        import { loadComponents } from "@/assets/scripts/loadComponents.js";
+        // Define the components to load
+        const components = [
+            { name: "navbar", targetId: "navbar" },
+            { name: "footer", targetId: "footer" },
+            { name: "model_drawer", targetId: "model_drawer" }
+        ];
+
+        // Load the components
+        loadComponents(components);
+    </script>
 
     <!-- logistic map chart -->
     <script type="module">
@@ -160,20 +147,6 @@
             document.getElementById("steps-value_map").textContent = e.target.value;
             logistic_map_chart.updateSteps(e.target.value);
         });
-    </script>
-
-    <!-- load components  -->
-    <script type="module">
-        import { loadComponents } from "/src/scripts/loadComponents.js";
-        // Define the components to load
-        const components = [
-            { name: "navbar", targetId: "navbar" },
-            { name: "footer", targetId: "footer" },
-            { name: "model_drawer", targetId: "model_drawer" }
-        ];
-
-        // Load the components
-        loadComponents(components);
     </script>
 
 </body>

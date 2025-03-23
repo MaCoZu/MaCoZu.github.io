@@ -5,15 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>Visualizations Overview</title>
 
     <!-- Favicon -->
     <link rel="icon" href="/img/logo/logo_weiß.svg" type="image/x-icon" />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="/src/styles/font.css">
-    <link rel="stylesheet" href="/src/styles/main.css">
-
-    <title>Visualizations Overview</title>
 </head>
 
 
@@ -33,7 +29,7 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
 
             <div class="col-span-1 md:col-span-3 mr-2">
-                <a href="/src/pages/eco_footprint_hdi.html">
+                <a href="/src/pages/eco_footprint/eco_footprint_hdi.html">
                     <div class="relative w-full h-40">
                         <img src="/img/foto/ecological_footprint_detail.png"
                             alt="ecological footprint chart detail"
@@ -53,7 +49,7 @@
 
 
             <div class="col-span-1 md:col-span-3 mr-2">
-                <a href="/src/pages/happy_sustainable.html">
+                <a href="/src/pages/happy_sustainable/happy_sustainable.html">
                     <div class="relative w-full h-40"> <!-- Consistent height -->
                         <img src="/img/foto/happy&sustainable_detail.png" alt=""
                             class="absolute inset-0 w-full h-full object-coverr">
@@ -91,7 +87,7 @@
             <div class="col-span-1 md:col-span-1 text-pretty">
                 <a href="/src/pages/model_gallery/linear_regression/index.html">
                 <h1 class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1">Linear Regression</h1>
-                <p>A short introduction to this fundamental model.</p>
+                <p>A short introduction to the fundamental model.</p>
                 </a>
             </div>
             <div class="col-span-1 md:col-span-1 text-pretty">
@@ -115,7 +111,19 @@
             <div class="col-span-1 md:col-span-1 text-pretty">
                 <a href="/src/pages/model_gallery/normal_distribution/index.html">
                 <h1 class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1">Normal Distribution</h1>
-                <p class="text-wrap">A fascinating .</p>
+                <p class="text-wrap">Natures preferred distribution.</p>
+                </a>
+            </div>
+            <div class="col-span-1 md:col-span-1 text-pretty">
+                <a href="/src/pages/model_gallery/demand_and_supply/index.html">
+                <h1 class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1">Supply and Demand</h1>
+                    <p class="text-wrap">The cornerstone model of neoclassical economics.</p>
+                </a>
+            </div>
+            <div class="col-span-1 md:col-span-1 text-pretty">
+                <a href="/src/pages/model_gallery/corn_model/index.html">
+                <h1 class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1">Corn Model</h1>
+                    <p class="text-wrap">Ricardo's three-factor economy.</p>
                 </a>
             </div>
             
@@ -129,13 +137,12 @@
     <!-- footer  -->
     <div id="footer"></div>
 
-
-    <script type="module" src="/src/scripts/main.js"></script>
-    <script type="module" src="/src/scripts/script.js"></script>
+    <script type="module" src="../assets/scripts/main.js"></script>
+    <script type="module" src="../assets/scripts/script.js"></script>
 
     <!-- load components  -->
     <script type="module">
-        import { loadComponents } from "/src/scripts/loadComponents.js";
+        import { loadComponents } from "../assets/scripts/loadComponents.js";
         // Define the components to load
         const components = [
             { name: "navbar", targetId: "navbar" },

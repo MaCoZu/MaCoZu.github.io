@@ -9,32 +9,8 @@
     <!-- Favicon -->
     <link rel="icon" href="/img/logo/logo_weiß.svg" type="image/x-icon" />
 
-    <!-- mathjax  -->
-    <script type="text/x-mathjax-config">
-            MathJax.Hub.Config({
-                messageStyle: "normal",
-                tex2jax: {
-                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                    processEscapes: true
-                    }
-                });
-        </script>
-
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
-
-    <!-- alpinejs  -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-
-    <!-- Include KaTeX for rendering formulas -->
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-
     <!-- Styles -->
-    <link rel="stylesheet" href="/src/styles/font.css">
-    <link rel="stylesheet" href="/src/styles/main.css">
-    <link rel="stylesheet" href="/src/pages/model_gallery/normal_distribution/style.css">
-
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
@@ -224,11 +200,12 @@
                         \rightarrow (1-0.95)=0.05\%$. </p>
                     <p>If you ask for the probability of some $x$ occurring in a certain range of values, you subtract
                         the smaller cumulative probability from the greater cumulative probability. Since the greater
-                        probability already includes the case of the smaller one. Here the probability of  $x&lt;10$
+                        probability already includes the case of the smaller one. Here the probability of $x&lt;10$
                         already includes the case of $x&lt;2$, if we wanted to know the probability of $2&lt;x&lt;10$
                         you have to remove the smaller probability from the greater. <br /> $P(2&lt;x&lt;10) = (0.95 -
                         0.166)=0.78\%$.</p>
-                    <p>If you had mutually exclusive cases you would add the probabilities together.<br/> $P(2&lt;x)\,or\,P(x&gt;10) = 0.166 + 0.05 =0.174\%$.</p>
+                    <p>If you had mutually exclusive cases you would add the probabilities together.<br />
+                        $P(2&lt;x)\,or\,P(x&gt;10) = 0.166 + 0.05 =0.174\%$.</p>
                 </div>
 
             </div>
@@ -242,9 +219,23 @@
 
     <div id="footer"></div>
 
-    <script type="module" src="/src/scripts/loadComponents.js"></script>
-    <script type="module" src="/src/scripts/main.js"></script>
-    <script type="module" src="/src/scripts/script.js"></script>
+    <script type="module" src="../../../assets/scripts/loadComponents.js"></script>
+    <script type="module" src="../../../assets/scripts/main.js"></script>
+    <script type="module" src="../../../assets/scripts/script.js"></script>
+
+    <!-- load components  -->
+    <script type="module">
+        import { loadComponents } from "@/assets/scripts/loadComponents.js";
+        // Define the components to load
+        const components = [
+            { name: "navbar", targetId: "navbar" },
+            { name: "footer", targetId: "footer" },
+            { name: "model_drawer", targetId: "model_drawer" }
+        ];
+
+        // Load the components
+        loadComponents(components);
+    </script>
 
     <!-- normal distribution chart -->
     <script type="module">
@@ -263,20 +254,6 @@
             document.getElementById("std_value_nd").textContent = e.target.value;
             chart_nd.updateStdDev(e.target.value);
         });
-    </script>
-
-    <!-- load components  -->
-    <script type="module">
-        import { loadComponents } from "/src/scripts/loadComponents.js";
-        // Define the components to load
-        const components = [
-            { name: "navbar", targetId: "navbar" },
-            { name: "footer", targetId: "footer" },
-            { name: "model_drawer", targetId: "model_drawer" }
-        ];
-
-        // Load the components
-        loadComponents(components);
     </script>
 
 </body>
