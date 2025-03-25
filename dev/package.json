@@ -33,6 +33,9 @@
     "glob": "^11.0.1",
     "postcss": "^8.5.1",
     "tailwindcss": "^3.4.17",
-    "vite": "^6.0.11"
+    "vite": "^6.0.11",
+    "vite-plugin-copy": "^0.1.6",
+    "vite-plugin-pages": "^0.32.5",
+    "vite-plugin-static-copy": "^2.3.0"
   }
 }

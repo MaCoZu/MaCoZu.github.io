@@ -27,10 +27,6 @@
       font-family: 'Literata', serif;
     }
   </style>
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="/src/styles/font.css">
-  <link rel="stylesheet" href="/src/styles/main.css">
 </head>
 
 <body class="font-work mx-6 md:mx-0 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
@@ -75,12 +71,12 @@
   <div id="footer"></div>
 
 
-  <script type="module" src="../assets/scripts/main.js"></script>
-  <script type="module" src="../assets/scripts/script.js"></script>
+  <script type="module" src="/src/assets/scripts/main.js"></script>
+  <script type="module" src="/src/assets/scripts/script.js" defer></script>
 
   <!-- load components  -->
   <script type="module">
-    import { loadComponents } from "@/assets/scripts/loadComponents.js";
+    import { loadComponents } from "/src/assets/scripts/loadComponents.js";
     // Define the components to load
     const components = [
       { name: "navbar", targetId: "navbar" },

@@ -1,48 +1,44 @@
-import { defineConfig } from "vite";
-import path from "path";
-import { globSync } from "glob";
-import { mkdir, copyFile } from "fs/promises"; // Correct import
+import { defineConfig } from 'vite';
+import path from 'path';
+import { globSync } from 'glob';
+import { mkdir, copyFile } from 'fs/promises';
 
 export default defineConfig(({ command }) => {
-    const isDev = command === "serve";
+    const isDev = command === 'serve';
 
     return {
-        base: isDev ? "/src/" : "./",
-        server: { host: "localhost", },
+        base: isDev ? '/src/' : './',
+        server: { host: 'localhost', port: 3000, },
         build: {
-            outDir: "dist",
+            outDir: 'dist',
             emptyOutDir: true,
-            assetsDir: "assets",
+            assetsDir: 'assets',
             rollupOptions: {
                 input: {
-                    main: path.resolve("index.html"),
+                    main: path.resolve('index.html'),
                     ...Object.fromEntries(
-                        globSync("src/pages/**/*.html").map(file => [
-                            file.replace(/^src\/pages\//, "").replace(/\.html$/, ""),
+                        globSync('src/pages/**/*.html').map(file => [
+                            file.replace(/^src\/pages\//, 'pages/').replace(/\.html$/, ''),
                             path.resolve(file),
                         ])
                     ),
                 },
             },
         },
-        // resolve: {
-        //     alias: {
-        //         "@": path.resolve(__dirname, "src"),
-        //     },
-        // },
-        plugins: [
+        resolve: { alias: { '@': path.resolve(__dirname, './src'), }, }, 
+        publicDir: 'public', // Explicitly define public directory
+        plugins: [ // Temporarily disable plugins
+            // Pages({
+            //     dirs: 'src/pages',
+            // }),
             {
-                name: "copy-components",
+                name: 'copy-pages',
                 async writeBundle() {
-                    const srcDir = "src/components";
-                    const destDir = "dist/components";
-
+                    const srcDir = 'src/pages';
+                    const destDir = 'dist/pages';
                     try {
-                        // Ensure destination directory exists
                         await mkdir(destDir, { recursive: true });
-
-                        // Find and copy all HTML files
-                        const files = globSync(`${srcDir}/*.html`);
+                        const files = globSync(`${srcDir}/**/*.html`);
                         await Promise.all(
                             files.map(async (file) => {
                                 const fileName = path.basename(file);
@@ -50,9 +46,8 @@ export default defineConfig(({ command }) => {
                                 console.log(`✅ Copied: ${file} -> ${destDir}/${fileName}`);
                             })
                         );
-
                     } catch (error) {
-                        console.error("❌ Error copying components:", error);
+                        console.error('❌ Error copying pages:', error);
                     }
                 },
             },

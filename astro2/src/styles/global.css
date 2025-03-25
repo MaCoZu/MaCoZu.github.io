@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import './font.css';
+@plugin "@tailwindcss/typography";
+
+
+/* MENU */
+.font-work {
+    font-family: 'Work', sans-serif;
+}
+
+/* TEXT */
+.font-literata {
+    font-family: 'Literata', serif;
+}
+
+/* HIGHLIGHT  */
+.font-bebas {
+    font-family: 'Bebas', sans-serif;
+}
