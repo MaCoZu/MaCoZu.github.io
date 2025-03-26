@@ -8,11 +8,11 @@ import "../../styles/eco_footprint.css";
 
     <main id="main-content"
         class="container mx-auto flex flex-col justify-center items-center mt-8 min-h-screen font-literata divide-y-2 divide-solid prose prose-stone prose-lg md:prose-xl text-pretty leading-8 md:leading-10 dark:prose-invert">
-    
+
         <!-- confusion matrix  -->
         <div id="confusion" class="scroll-mt-10 md:-scroll-mt-1 z-0">
             <h2 class="mt-8 md:mt-10 text-center font-semibold tracking-wider">Confusion Matrix</h2>
-    
+
             <!-- text  -->
             <div class="overflow-visible">
                 <div class="py-0">
@@ -35,7 +35,7 @@ import "../../styles/eco_footprint.css";
                         </li>
                     </ul>
                 </div>
-    
+
                 <!-- matrix  -->
                 <div class="container mx-autop-1 bg-white rounded-lg">
                     <div class="flex flex-col lg:flex-row gap-1">
@@ -46,7 +46,7 @@ import "../../styles/eco_footprint.css";
                             <div class="cell bg-gray-700 text-white p-2 text-center font-bold">Actual Positive</div>
                             <div class="cell bg-white p-2 text-center">
                                 <div class="flex justify-center gap-4">
-    
+
                                     <div class="font-bold mb-1">TP</div>
                                     <input type="text" inputmode="numeric" id="tp" value="80"
                                         class="w-16 text-center border rounded" oninput="validateAndUpdateMatrix(this)">
@@ -58,7 +58,7 @@ import "../../styles/eco_footprint.css";
                                     <input type="text" inputmode="numeric" id="fn" value="20"
                                         class="w-16 text-center border rounded" oninput="validateAndUpdateMatrix(this)">
                                 </div>
-    
+
                             </div>
                             <div class="cell bg-gray-700 text-white p-2 text-center font-bold">Actual Negative</div>
                             <div class="cell bg-white p-2 text-center">
@@ -67,7 +67,7 @@ import "../../styles/eco_footprint.css";
                                     <input type="text" inputmode="numeric" id="fp" value="40"
                                         class="w-16 text-center border rounded" oninput="validateAndUpdateMatrix(this)">
                                 </div>
-    
+
                             </div>
                             <div class="cell bg-white p-2 text-center">
                                 <div class="flex justify-center gap-4">
@@ -78,16 +78,16 @@ import "../../styles/eco_footprint.css";
                             </div>
                         </div>
                     </div>
-    
-    
+
+
                     <div class="flex flex-col mt-3 gap-4 max-w-md">
-    
+
                         <div class="metric">
                             <div class="flex items-center">
                                 <div id="precision-formula" class="mr-2"></div>
                                 <span id="precision" class="font-bold mr-4">N/A</span>
-                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24"
-                                    fill="none"
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer"
+                                    viewBox="0 0 24 24" fill="none"
                                     data-tippy-content="Precision measures the proportion of correctly predicted positive instances out of all instances predicted as positive. It indicates the model's ability to avoid false positives."
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -108,13 +108,13 @@ import "../../styles/eco_footprint.css";
                                 </svg>
                             </div>
                         </div>
-    
+
                         <div class="metric">
                             <div class="flex items-center">
                                 <div id="accuracy-formula" class="mr-2"></div>
                                 <span id="accuracy" class="font-bold mr-4">N/A</span>
-                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24"
-                                    fill="none" data-tippy-content="Accuracy measures the proportion of correctly predicted
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer"
+                                    viewBox="0 0 24 24" fill="none" data-tippy-content="Accuracy measures the proportion of correctly predicted
                                             instances (both positive and
                                             negative) out of the total number of instances. It provides an overall measure of
                                             the model's correctness." xmlns="http://www.w3.org/2000/svg">
@@ -136,13 +136,13 @@ import "../../styles/eco_footprint.css";
                                 </svg>
                             </div>
                         </div>
-    
+
                         <div class="metric">
                             <div class="flex items-center">
                                 <div id="recall-formula" class="mr-2"></div>
                                 <span id="recall" class="font-bold mr-4">N/A</span>
-                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24"
-                                    fill="none" data-tippy-content="Recall measures the proportion of correctly predicted positive
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer"
+                                    viewBox="0 0 24 24" fill="none" data-tippy-content="Recall measures the proportion of correctly predicted positive
                                             instances out of all
                                             actual positive instances. It indicates the model's ability to find all positive
                                             instances." xmlns="http://www.w3.org/2000/svg">
@@ -163,14 +163,14 @@ import "../../styles/eco_footprint.css";
                                     </g>
                                 </svg>
                             </div>
-    
+
                         </div>
                         <div class="metric">
                             <div class="flex items-center">
                                 <div id="specificity-formula" class="mr-2"></div>
                                 <span id="specificity" class="font-bold mr-4">N/A</span>
-                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24"
-                                    fill="none" data-tippy-content="Specificity measures the proportion of correctly predicted
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer"
+                                    viewBox="0 0 24 24" fill="none" data-tippy-content="Specificity measures the proportion of correctly predicted
                                             negative instances out of all
                                             actual negative instances. It indicates the model's ability to identify negative
                                             instances correctly." xmlns="http://www.w3.org/2000/svg">
@@ -196,8 +196,8 @@ import "../../styles/eco_footprint.css";
                             <div class="flex items-center">
                                 <div id="f1-formula" class="mr-2"></div>
                                 <span id="f1" class="font-bold mr-4">N/A</span>
-                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24"
-                                    fill="none" data-tippy-content="F1-score is the harmonic mean of precision and recall. It
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer"
+                                    viewBox="0 0 24 24" fill="none" data-tippy-content="F1-score is the harmonic mean of precision and recall. It
                                             provides a single score that
                                             balances both precision and recall, especially useful when you have an uneven class
                                             distribution." xmlns="http://www.w3.org/2000/svg">
@@ -223,8 +223,8 @@ import "../../styles/eco_footprint.css";
                             <div class="flex items-center">
                                 <div id="youden-formula" class="mr-2"></div>
                                 <span id="youden" class="font-bold mr-4">N/A</span>
-                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24"
-                                    fill="none"
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer"
+                                    viewBox="0 0 24 24" fill="none"
                                     data-tippy-content="Youden's J statistic (also known as Youden's index) measures the
                                             performance of a dichotomous diagnostic test. It ranges from -1 to 1, with 1 indicating a perfect test and 0 indicating a useless test."
                                     xmlns="http://www.w3.org/2000/svg">
@@ -250,8 +250,8 @@ import "../../styles/eco_footprint.css";
                             <div class="flex items-center">
                                 <div id="mcc-formula" class="mr-2"></div>
                                 <span id="mcc" class="font-bold mr-4">N/A</span>
-                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer" viewBox="0 0 24 24"
-                                    fill="none" data-tippy-content="The Matthews correlation coefficient (MCC) is a balanced measure
+                                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer"
+                                    viewBox="0 0 24 24" fill="none" data-tippy-content="The Matthews correlation coefficient (MCC) is a balanced measure
                                             that can be used even
                                             if the classes are of very different sizes. It ranges from -1 to 1, where <br> 1
                                             represents a perfect prediction, <br>
@@ -274,15 +274,15 @@ import "../../styles/eco_footprint.css";
                                     </g>
                                 </svg>
                             </div>
-    
+
                         </div>
                     </div>
-    
+
                 </div>
-    
+
             </div>
-    
-    
+
+
             <div class="md:py-6 py-0 max-w-full md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto">
                 <p>As to the performance of our tool, the first question we might ask is “<em>how many correct
                         predictions did we get overall</em>?”. The <strong>Accuracy</strong> measure answers this
@@ -323,7 +323,7 @@ import "../../styles/eco_footprint.css";
                     specifics of this sensitive concept ;-)</p>
             </div>
         </div>
-    
+
     </main>
 
     <script type="module">
