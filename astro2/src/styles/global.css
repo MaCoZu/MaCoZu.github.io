@@ -3,6 +3,11 @@
 @plugin "@tailwindcss/typography";
 
 
+/* Temporary disable KaTeX styles to isolate issues */
+.katex {
+    all: unset !important;
+}
+
 /* MENU */
 .font-work {
     font-family: 'Work', sans-serif;
