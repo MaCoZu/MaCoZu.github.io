@@ -1,5 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro';
+import "@styles/global.css";
 ---
 
 <Layout>
@@ -55,16 +56,24 @@ import Layout from '../layouts/Layout.astro';
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="col-span-1 md:col-span-1 text-pretty">
-                <a href="/model_gallery/toc_graph">
+                <a href="./model_gallery/toc_graph">
                     <h1
                         class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1">
                         TOC Graph</h1>
                     <p>A graph view of the model gallery series. Models, theories and systems and their connections.</p>
                 </a>
             </div>
+            <div class="col-span-1 md:col-span-1 text-pretty">
+                <a href="./model_gallery/model">
+                    <h1
+                        class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1">
+                        Model</h1>
+                    <p>What is a model anyway? About the merits and snares of model-building.</p>
+                </a>
+            </div>
 
             <div class="col-span-1 md:col-span-1 text-pretty">
-                <a href="/model_gallery/schelling_segregation">
+                <a href="./model_gallery/schelling_segregation">
                     <h1
                         class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1">
                         Schelling's Segregation</h1>
@@ -72,15 +81,15 @@ import Layout from '../layouts/Layout.astro';
                 </a>
             </div>
             <div class="col-span-1 md:col-span-1 text-pretty">
-                <a href="/model_gallery/linear_regression">
+                <a href="./model_gallery/linear_regression">
                     <h1
                         class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1">
                         Linear Regression</h1>
-                    <p>A short introduction to the fundamental model.</p>
+                    <p>The mother of modelling. Constructs relationships between one output and one or more input variables</p>
                 </a>
             </div>
             <div class="col-span-1 md:col-span-1 text-pretty">
-                <a href="/model_gallery/confusion_matrix">
+                <a href="./model_gallery/confusion_matrix">
                     <h1
                         class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1">
                         Confusion Matrix</h1>
@@ -88,7 +97,7 @@ import Layout from '../layouts/Layout.astro';
                 </a>
             </div>
             <div class="col-span-1 md:col-span-1 text-pretty">
-                <a href="/model_gallery/logistic_growth">
+                <a href="./model_gallery/logistic_growth">
                     <h1
                         class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1">
                         Logistic Growth</h1>
@@ -97,7 +106,7 @@ import Layout from '../layouts/Layout.astro';
                 </a>
             </div>
             <div class="col-span-1 md:col-span-1 text-pretty">
-                <a href="/model_gallery/logistic_map">
+                <a href="./model_gallery/logistic_map">
                     <h1
                         class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1">
                         Logistic Map</h1>
@@ -106,7 +115,7 @@ import Layout from '../layouts/Layout.astro';
                 </a>
             </div>
             <div class="col-span-1 md:col-span-1 text-pretty">
-                <a href="/model_gallery/normal_distribution">
+                <a href="./model_gallery/normal_distribution">
                     <h1
                         class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1">
                         Normal Distribution</h1>
@@ -114,26 +123,21 @@ import Layout from '../layouts/Layout.astro';
                 </a>
             </div>
             <div class="col-span-1 md:col-span-1 text-pretty">
-                <a href="/model_gallery/demand_and_supply">
+                <a href="./model_gallery/supply_and_demand">
                     <h1
                         class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1">
                         Supply and Demand</h1>
-                    <p class="text-wrap">The cornerstone model of neoclassical economics.</p>
+                    <p class="text-wrap">The cornerstone of neoclassical economics.</p>
                 </a>
             </div>
-            <div class="col-span-1 md:col-span-1 text-pretty">
-                <a href="/model_gallery/corn_model">
+            <!-- <div class="col-span-1 md:col-span-1 text-pretty">
+                <a href="./model_gallery/corn_model">
                     <h1
                         class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1">
                         Corn Model</h1>
                     <p class="text-wrap">Ricardo's three-factor economy.</p>
                 </a>
-            </div>
-
-
-
+            </div> -->
         </div>
-
-
     </main>
 </Layout>

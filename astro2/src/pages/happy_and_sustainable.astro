@@ -1,7 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import "../styles/global.css";
-import "../styles/happy_and _sustainable.css";
+import Layout from '@layouts/Layout.astro';
+import "@styles/global.css";
+import "@styles/happy_and _sustainable.css";
 ---
 
 <Layout>
@@ -28,7 +28,7 @@ import "../styles/happy_and _sustainable.css";
     </main>
 
     <script type="module">
-        import { HappyChart } from '/src/scripts/happy_sustainable.js';
+        import { HappyChart } from './src/scripts/happy_sustainable.js';
         document.addEventListener('DOMContentLoaded', () => {
             HappyChart("#happy_graph", "#buttons", "/data/happy_gni.csv");
         });

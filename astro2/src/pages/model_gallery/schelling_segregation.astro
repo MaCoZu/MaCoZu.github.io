@@ -1,0 +1,50 @@
+---
+import Layout from '@layouts/Layout.astro';
+import "@styles/global.css";
+import Markdown from '@components/Markdown.astro';
+import Drawer from "@components/Drawer.astro";
+import Content from './markdown/schelling_segregation.mdx';
+
+const { frontmatter } = await import('./markdown/schelling_segregation.mdx');
+const { title } = frontmatter;
+
+---
+<Layout>
+    <Drawer />
+    <Markdown title="{title}">
+        <Content />
+    </Markdown>
+
+    <!-- Segeration Script -->
+    <script type="module">
+        import SegregationModel from '../src/scripts/segregation.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize the simulation
+            const containerElement = document.getElementById('segregation_chart');
+            if (containerElement) {
+                const simulation = SegregationModel(containerElement);
+
+                // Set up event listeners for buttons
+                document.getElementById('start-button').addEventListener('click', () => {
+                    if (simulation && typeof simulation.initializeGrid === 'function') {
+                        simulation.initializeGrid();
+                        simulation.runModel();
+                    } else {
+                        console.error("Simulation object or initializeGrid not found.");
+                    }
+                });
+
+                document.getElementById('reset-button').addEventListener('click', () => {
+                    if (simulation && typeof simulation.resetGrid === 'function') {
+                        simulation.resetGrid();
+                    } else {
+                        console.error("Simulation object or resetGrid not found.");
+                    }
+                });
+            } else {
+                console.error("Chart container not found.");
+            }
+        });
+    </script>
+</Layout>

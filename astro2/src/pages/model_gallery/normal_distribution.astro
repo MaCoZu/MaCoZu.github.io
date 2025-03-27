@@ -1,0 +1,36 @@
+---
+import Layout from '@layouts/Layout.astro';
+import "@styles/global.css";
+import Markdown from '@components/Markdown.astro';
+import Content from './markdown/normal_distribution.mdx';
+import Drawer from "@components/Drawer.astro";
+import '@styles/normal_distribution.css';
+
+const { frontmatter } = await import('./markdown/normal_distribution.mdx');
+const { title } = frontmatter;
+---
+<Layout>
+    <Drawer />
+    <Markdown title="{title}">
+        <Content />
+    </Markdown>
+
+    <!-- normal distribution chart -->
+    <script type="module">
+        import { NormalDistribution } from '../src/scripts/normal_distribution.js';
+
+        // Initialize the chart
+        const chart_nd = NormalDistribution("#normal_distribution_chart");
+
+        // Add event listeners for sliders
+        document.getElementById("mean_nd").addEventListener("input", (e) => {
+            document.getElementById("mean-value_nd").textContent = e.target.value;
+            chart_nd.updateMean(e.target.value);
+        });
+
+        document.getElementById("std_nd").addEventListener("input", (e) => {
+            document.getElementById("std_value_nd").textContent = e.target.value;
+            chart_nd.updateStdDev(e.target.value);
+        });
+    </script>
+</Layout>

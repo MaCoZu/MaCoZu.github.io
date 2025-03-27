@@ -1,7 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import "../styles/global.css";
-import "../styles/eco_footprint.css";
+import Layout from '@layouts/Layout.astro';
+import "@styles/global.css";
+import "@styles/eco_footprint.css";
 ---
 
 <Layout>
@@ -19,7 +19,7 @@ import "../styles/eco_footprint.css";
     </div>
 
     <script type="module">
-        import { EcoChart } from '/src/scripts/eco_footprint.js';
+        import { EcoChart } from './src/scripts/eco_footprint.js';
         document.addEventListener('DOMContentLoaded', () => {
             EcoChart("#eco_graph", "/data/footprint.csv");
         });

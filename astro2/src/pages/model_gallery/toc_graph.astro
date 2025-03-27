@@ -1,21 +1,17 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import "../../styles/global.css";
+import Layout from '@layouts/Layout.astro';
+import "@styles/global.css";
+import Drawer from "@components/Drawer.astro";
 ---
-
-<layout>
+<Layout>
+    <Drawer />
 
     <div id="legend" class="absolute top-1/4 ml-[10.5rem] z-50"></div>
     <div id="toc_graph" class="mt-0 mx-[10.5rem] relative"> </div>
 
-    <script type="module">
-        import { initKaTeX } from '/src/scripts/client-init.js';
-        initKaTeX();
-    </script>
-
     <!-- graph table of content  -->
     <script type="module">
-        import { GraphTOC } from "/src/scripts/toc_graph2.js";
+        import { GraphTOC } from "../src/scripts/toc_graph2.js";
 
         const data = {
             children: [
@@ -23,84 +19,86 @@ import "../../styles/global.css";
                     id: "Theory",
                     type: "theory",
                     text: "First paragraph of Text A",
-                    url: "/model_gallery/theory",
+                    url: "./theory",
                     links: ["Model", "System"]
                 },
                 {
                     id: "Model",
                     type: "model",
                     text: "First paragraph of Text B",
-                    url: "/model_gallery/model",
+                    url: "./model",
                     links: ["Theory", "System"]
                 },
                 {
                     id: "System",
                     type: "system",
                     text: "First paragraph of Text C",
-                    url: "/model_gallery/system",
+                    url: "./system",
                     links: ["Theory", "Model"]
                 },
                 {
                     id: "Conspiracy Theory",
                     type: "theory",
                     text: "First paragraph of Text A",
-                    url: "/model_gallery/theory",
+                    // url: "./conspiracy_theory",
+                    url: "https://en.wikipedia.org/wiki/Conspiracy_theory",
                     links: ["Theory"]
                 },
                 {
-                    id: "Demand and Supply",
+                    id: "Supply and Demand",
                     type: "model",
                     text: "First paragraph of Text A",
-                    url: "/model_gallery/demand_and_supply",
+                    url: "./supply_and_demand",
                     links: ["Model"]
                 },
                 {
                     id: "Linear Regression",
                     type: "model",
                     text: "Simple Linear Regression",
-                    url: "/model_gallery/linear_regression",
+                    url: "./linear_regression",
                     links: ["Model"]
                 },
                 {
                     id: "Complex System",
                     type: "system",
                     text: "First paragraph of Text C",
-                    url: "/model_gallery/complex_system",
+                    // url: "./complex_systems",
+                    url: "https://www.santafe.edu/what-is-complex-systems-science",
                     links: ["System"]
                 },
                 {
                     id: "Schelling`s Segregation",
                     type: "model",
                     text: "Schelling`s Segregation",
-                    url: "/model_gallery/segregation",
+                    url: "./schelling_segregation",
                     links: ["Model"]
                 },
                 {
                     id: "Logistic Growth",
                     type: "model",
                     text: "First paragraph of Text C",
-                    url: "/model_gallery/logistic_growth",
+                    url: "./logistic_growth",
                     links: ["Model"]
                 },
                 {
                     id: "Logistic Map",
                     type: "model",
                     text: "First paragraph of Text C",
-                    url: "/model_gallery/logistic_map",
+                    url: "./logistic_map",
                     links: ["Model"]
                 },
                 {
                     id: "Normal Distribution",
                     type: "model",
                     text: "First paragraph of Text C",
-                    url: "/model_gallery/normal_distribution",
+                    url: "./normal_distribution",
                     links: ["Model"]
                 },
                 {
                     id: "Confusion Matrix",
                     type: "model",
                     text: "First paragraph of Text C",
-                    url: "/model_gallery/confusion_matrix",
+                    url: "./confusion_matrix",
                     links: ["Model"]
                 },
             ]
@@ -109,4 +107,4 @@ import "../../styles/global.css";
         GraphTOC(data, "toc_graph", "legend");
     </script>
 
-</layout></body></html>
+</Layout></body></html>

@@ -1,0 +1,41 @@
+---
+import Layout from '@layouts/Layout.astro';
+import "@styles/global.css";
+import Markdown from '@components/Markdown.astro';
+import Drawer from "@components/Drawer.astro";
+import Content from './markdown/logistic_map.mdx';
+
+const { frontmatter } = await import('./markdown/logistic_map.mdx');
+const { title } = frontmatter;
+
+---
+<Layout>
+    <Drawer />
+    <Markdown title="{title}">
+        <Content />
+    </Markdown>
+
+<!-- logistic map chart -->
+<script type="module">
+    import { LogisticMapChart } from '../src/scripts/logistic_map.js';
+
+    // Initialize the chart
+    const logistic_map_chart = LogisticMapChart("#logistic_map_chart");
+
+    // Add event listeners for sliders
+    document.getElementById("r_map").addEventListener("input", (e) => {
+        document.getElementById("r-value_map").textContent = e.target.value;
+        logistic_map_chart.updateR(e.target.value);
+    });
+
+    document.getElementById("x0_map").addEventListener("input", (e) => {
+        document.getElementById("x0-value_map").textContent = e.target.value;
+        logistic_map_chart.updateX0(e.target.value);
+    });
+
+    document.getElementById("steps_map").addEventListener("input", (e) => {
+        document.getElementById("steps-value_map").textContent = e.target.value;
+        logistic_map_chart.updateSteps(e.target.value);
+    });
+</script>
+</Layout>

@@ -1,0 +1,26 @@
+---
+import Layout from '@layouts/Layout.astro';
+import "@styles/global.css";
+import "@styles/demand_and_supply.css";
+import Markdown from '@components/Markdown.astro';
+import Drawer from "@components/Drawer.astro";
+import Content from './markdown/supply_and_demand.mdx';
+
+const { frontmatter } = await import('./markdown/supply_and_demand.mdx');
+const { title } = frontmatter;
+---
+<Layout>
+    <Drawer />
+    <Markdown title="{title}">
+        <Content />
+    </Markdown>
+
+        <!-- Supply  and Demand  -->
+        <script type="module">
+            import { DemandSupplyMoves, DemandSupplyShifts } from '../src/scripts//supply_and_demand.js';
+
+            // Call the function with a container
+            DemandSupplyMoves("#demand_and_supply_moves", "#slider_container_moves");
+            DemandSupplyShifts("#demand_and_supply_shifts", "#demand_slider_container", "#supply_slider_container");
+        </script>
+</Layout>

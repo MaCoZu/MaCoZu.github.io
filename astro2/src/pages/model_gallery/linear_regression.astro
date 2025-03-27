@@ -1,22 +1,23 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Markdown from '../../components/Markdown.astro';
+import Layout from '@layouts/Layout.astro';
+import "@styles/global.css";
+import Markdown from '@components/Markdown.astro';
+import Drawer from "@components/Drawer.astro";
 import Content from './markdown/linear_regression.mdx';
-import '../../styles/global.css';
 
 const { frontmatter } = await import('./markdown/linear_regression.mdx');
 const { title } = frontmatter;
-
 ---
 
 <Layout>
+    <Drawer />
     <Markdown title="{title}">
         <Content />
     </Markdown>
 
     <!-- Regression Simulation  -->
     <script type="module">
-        import { Scatter_Plot_Line, RegressionLine } from '/src/scripts/linear_regression.js';
+        import { Scatter_Plot_Line, RegressionLine } from '../src/scripts/linear_regression.js';
 
         // Call the function with a container
         Scatter_Plot_Line("#scatter_plot", "#scatter_button", { height: 400 });

@@ -2,16 +2,15 @@
 import Layout from '@layouts/Layout.astro';
 import "@styles/global.css";
 import Markdown from '@components/Markdown.astro';
-import Drawer from "@components/Drawer.astro";
-import Content from './markdown/model.mdx';
+import Content from './markdown/conspiracy_theory.mdx';
 
-const { frontmatter } = await import('./markdown/model.mdx');
+const { frontmatter } = await import('./markdown/conspiracy_theory.mdx');
 const { title } = frontmatter;
 ---
 
 <Layout>
-    <Drawer />
     <Markdown title="{title}">
         <Content />
     </Markdown>
+
 </Layout>

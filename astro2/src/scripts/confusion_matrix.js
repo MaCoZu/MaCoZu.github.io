@@ -1,6 +1,7 @@
 import katex from "katex";
 import "katex/dist/katex.min.css";
 
+
 export function validateAndUpdateMatrix(input) {
     // Remove any non-digit characters
     input.value = input.value.replace(/\D/g, '');

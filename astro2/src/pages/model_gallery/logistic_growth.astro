@@ -1,0 +1,46 @@
+---
+import Layout from '@layouts/Layout.astro';
+import "@styles/global.css";
+import Markdown from '@components/Markdown.astro';
+import Content from './markdown/logistic_growth.mdx';
+import Drawer from "@components/Drawer.astro";
+
+const { frontmatter } = await import('./markdown/logistic_growth.mdx');
+const { title } = frontmatter;
+
+---
+<Layout>
+    <Drawer />
+    <Markdown title="{title}">
+        <Content />
+    </Markdown>
+
+    <!-- logistic growth chart -->
+    <script type="module">
+        import { createLogisticGrowthChart } from '../src/scripts/logistic_growth.js';
+
+        // Initialize the chart
+        const chart = createLogisticGrowthChart("#logistic_growth_chart");
+
+        // Add event listeners for sliders
+        document.getElementById("N").addEventListener("input", (e) => {
+            document.getElementById("N-value").textContent = e.target.value;
+            chart.updateN(e.target.value);
+        });
+
+        document.getElementById("K").addEventListener("input", (e) => {
+            document.getElementById("K-value").textContent = e.target.value;
+            chart.updateK(e.target.value);
+        });
+
+        document.getElementById("r").addEventListener("input", (e) => {
+            document.getElementById("r-value").textContent = e.target.value;
+            chart.updateR(e.target.value);
+        });
+
+        document.getElementById("t").addEventListener("input", (e) => {
+            document.getElementById("t-value").textContent = e.target.value;
+            chart.updateT(e.target.value);
+        });
+    </script>
+</Layout>

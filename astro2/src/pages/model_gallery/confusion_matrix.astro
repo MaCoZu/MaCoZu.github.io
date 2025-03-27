@@ -1,11 +1,12 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import "../../styles/global.css";
-import "../../styles/eco_footprint.css";
+import Layout from '@layouts/Layout.astro';
+import "@styles/global.css";
+import "@styles/eco_footprint.css";
+import Drawer from "@components/Drawer.astro";
 ---
 
 <Layout>
-
+    <Drawer />
     <main id="main-content"
         class="container mx-auto flex flex-col justify-center items-center mt-8 min-h-screen font-literata divide-y-2 divide-solid prose prose-stone prose-lg md:prose-xl text-pretty leading-8 md:leading-10 dark:prose-invert">
 
@@ -326,21 +327,15 @@ import "../../styles/eco_footprint.css";
 
     </main>
 
-    <script type="module">
-        // import { EcoChart } from '/src/scripts/eco_footprint.js';
-        // document.addEventListener('DOMContentLoaded', () => {
-        //     EcoChart("#eco_graph", "/data/footprint.csv");
-        // });
-    </script>
 
     <script type="module">
-        import { initKaTeX } from '/src/scripts/client-init.js';
+        import { initKaTeX } from '../src/scripts/client-init.js';
         initKaTeX();
     </script>
 
     <!-- Confusion Matrix Script -->
     <script type="module">
-        import { validateAndUpdateMatrix, updateMetrics, renderFormulas } from '/src/scripts/confusion_matrix.js';
+        import { validateAndUpdateMatrix, updateMetrics, renderFormulas } from '../src/scripts/confusion_matrix.js';
 
         // Attach functions to the global scope for inline event handlers
         window.validateAndUpdateMatrix = validateAndUpdateMatrix;
