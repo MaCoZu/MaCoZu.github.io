@@ -9,30 +9,25 @@ import path from 'node:path';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+  base: '/', //  Correct if deploying to username.github.io/
   build: {
-    assets: '_astro',
-    format: 'directory'
+    outDir: 'docs', 
+    format: 'directory',
   },
+  trailingSlash: 'ignore',
   vite: {
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks(id) { if (id.includes('node_modules')) { return 'vendor'; } }
-        }
-      }
-    },
-    plugins: [tailwindcss()],   
-    optimizeDeps: { 
+    plugins: [tailwindcss()],
+    optimizeDeps: {
       include: ['d3']
     },
     resolve: {
-      alias: [
-            { find: '@/', replacement: path.resolve(__dirname, './src/') },
-            { find: '@scripts/', replacement: path.resolve(__dirname, './src/scripts/') },
-            { find: '@styles/', replacement: path.resolve(__dirname, './src/styles/') },
-            { find: '@layouts/', replacement: path.resolve(__dirname, './src/layouts/') },
-            { find: '@components/', replacement: path.resolve(__dirname, './src/components/') },
-      ],
+      alias: {
+        '@/': path.resolve(__dirname, './src/'),
+        '@scripts/': path.resolve(__dirname, './src/scripts/'),
+        '@styles/': path.resolve(__dirname, './src/styles/'),
+        '@layouts/': path.resolve(__dirname, './src/layouts/'),
+        '@components/': path.resolve(__dirname, './src/components/'),
+      },
       conditions: ['import', 'module']
     },
   },
@@ -43,4 +38,4 @@ export default defineConfig({
       rehypePlugins: [rehypeKatex],
     }),
   ],
-}); 
+});

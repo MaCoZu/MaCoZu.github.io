@@ -1,8 +1,8 @@
 ---
-import '../styles/global.css';
+import '@styles/global.css';
 import 'katex/dist/katex.min.css';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
+import Navbar from '@components/Navbar.astro';
+import Footer from '@components/Footer.astro';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +21,9 @@ import Footer from '../components/Footer.astro';
 	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
 		integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
 		onload="renderMathInElement(document.body);"></script>
+
+	<link rel="stylesheet" href="../styles/global.css" />
+
 </head>
 
 <body>
