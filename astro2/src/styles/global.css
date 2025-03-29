@@ -1,12 +1,7 @@
 @import "tailwindcss";
+@plugin '@tailwindcss/typography';
 @import './font.css';
-@plugin "@tailwindcss/typography";
 
-
-/* Temporary disable KaTeX styles to isolate issues */
-.katex {
-    all: unset !important;
-}
 
 /* MENU */
 .font-work {

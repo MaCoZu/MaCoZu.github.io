@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import "@styles/global.css";
+import '../styles/global.css';
+import '../styles/font.css';
 ---
 
 <Layout>
@@ -12,7 +13,7 @@ import "@styles/global.css";
         <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
 
             <div class="col-span-1 md:col-span-3 mr-2">
-                <a href="/eco_footprint">
+                <a href="./eco_footprint">
                     <div class="relative w-full h-40">
                         <img src="/img/foto/ecological_footprint_detail.png" alt="ecological footprint chart detail"
                             class="absolute inset-0 w-full h-full object-cover">
@@ -32,7 +33,7 @@ import "@styles/global.css";
 
 
             <div class="col-span-1 md:col-span-3 mr-2">
-                <a href="/happy_and_sustainable">
+                <a href="./happy_and_sustainable">
                     <div class="relative w-full h-40"> <!-- Consistent height -->
                         <img src="/img/foto/happy&sustainable_detail.png" alt=""
                             class="absolute inset-0 w-full h-full object-coverr">

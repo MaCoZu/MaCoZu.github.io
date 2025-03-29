@@ -10,8 +10,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   base: '/', //  Correct if deploying to username.github.io/
+  publicDir: './public',
   build: {
-    outDir: 'docs', 
+    outDir: 'docs',
     format: 'directory',
   },
   trailingSlash: 'ignore',
@@ -22,11 +23,8 @@ export default defineConfig({
     },
     resolve: {
       alias: {
+        '@scripts': '/src/scripts',
         '@/': path.resolve(__dirname, './src/'),
-        '@scripts/': path.resolve(__dirname, './src/scripts/'),
-        '@styles/': path.resolve(__dirname, './src/styles/'),
-        '@layouts/': path.resolve(__dirname, './src/layouts/'),
-        '@components/': path.resolve(__dirname, './src/components/'),
       },
       conditions: ['import', 'module']
     },

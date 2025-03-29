@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import "@styles/global.css";
+import '../../styles/global.css';
+import '../../styles/font.css';
 import Markdown from '@components/Markdown.astro';
 import Drawer from "@components/Drawer.astro";
 import Content from './markdown/complex_systems.mdx';
@@ -11,10 +12,8 @@ const { title } = frontmatter;
 
 
 <Layout>
-    <Drawer />
+    <Drawer/>
     <Markdown title="{title}">
         <Content />
     </Markdown>
-
-  
 </Layout>

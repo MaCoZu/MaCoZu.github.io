@@ -1,10 +1,15 @@
 ---
 import '@styles/global.css';
+import { Image } from 'astro:assets';
+import logo from '../../public/img/logo/logo.svg';
+import github from '../../public/img/icons/github.svg';
+import envelope from '../../public/img/icons/envelope-solid.svg';
+import linkedin from '../../public/img/icons/linkedin.svg';
 ---
 
-<hr class="mt-20 border-gray-200 dark:border-gray-700 md:mx-[10.5rem]">
+<hr class="mt-20 border-gray-200 dark:border-gray-700 md:mx-[10.5rem] max-sm:px-5">
 
-<footer class="bg-transparent text-gray-700 dark:text-gray-200 mx-auto md:mx-[10.5rem] mb-2">
+<footer class="bg-transparent text-gray-700 dark:text-gray-200 mx-auto md:mx-[10.5rem] mb-2 max-sm:px-5">
     <div class="container">
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
@@ -15,7 +20,7 @@ import '@styles/global.css';
                     <div class="flex justify-between items-center">
                         <div class="flex gap-3 items-center">
                             <a href="/">
-                                <img id="logo2" class="h-16 fill-current dark:filter-white" src="/img/logo/logo.svg" alt="logo" loading="lazy" href="">
+                                    <img    class="h-16 fill-current dark:filter-white" src="/img/logo/logo.svg" alt="logo" loading="lazy">
                             </a>
                             <div class="">
                                 <p
@@ -36,8 +41,7 @@ import '@styles/global.css';
                 <div class="py-2 md:py-0 flex-1">
                     <div class="text-sm uppercase font-medium">Contact </div>
                     <div class="flex items-center gap-3 my-2">
-                        <img src="/img/icons/envelope-solid.svg" alt="email symbol" class="w-5 h-5 dark:filter-white"
-                            id="envelope" loading="lazy"/>
+                            <img src="/img/icons/envelope-solid.svg" alt="logo" class="w-5 h-5 dark:filter-white" id="logo" loading="lazy">
                         <a class="hover:text-indigo-700" id="mlink" href="#mlink">Email</a>
                     </div>
                 </div>
@@ -49,7 +53,7 @@ import '@styles/global.css';
 
                     <p class="mt-2 flex items-center">
                     <div class="flex items-center gap-3" aria-label="LinkedIn">
-                        <img src="/img/icons/linkedin.svg" alt="linkedIn symbol" class="w-5 h-5 dark:filter-white" id="linkedin" loading="lazy">
+                            <img src="/img/icons/linkedin.svg" alt="logo" class="w-5 h-5 dark:filter-white" id="logo" loading="lazy">
                         <a href="https://www.linkedin.com/in/marcozausch" target="_blank"
                             class="hover:text-indigo-700">LinkedIn</a>
                     </div>
@@ -67,8 +71,8 @@ import '@styles/global.css';
                 <!-- LEGAL -->
                 <div class="py-2 md:py-0 flex-1">
                     <div class="text-sm uppercase font-medium">Legal</div>
-                    <a class="mt-2 block hover:text-indigo-700" href="/impressum">Impressum</a>
-                    <a class="mt-2 block hover:text-indigo-700" href="/privacypolicy">Privacy
+                    <a class="mt-2 block hover:text-indigo-700" href="./impressum">Impressum</a>
+                    <a class="mt-2 block hover:text-indigo-700" href="./privacypolicy">Privacy
                         Policy</a>
                 </div>
             </div>
