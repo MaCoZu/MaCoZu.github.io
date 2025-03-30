@@ -8,20 +8,14 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # folder
-astro_new/node_modules/
-astro_new/dist/
-astro_new/
+.old_projects
 astro3/
-astro2/
-dev/
-_docs/
-old/
-docs/D3
-
 
 # files 
-**/*.png
-**/*.jpg
+# **/*.png
+# **/*.jpg
+astro3/ **/*.png
+astro3/ **/*.jpg
 
 *.local
 
