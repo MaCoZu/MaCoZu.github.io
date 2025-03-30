@@ -12,19 +12,16 @@ astro_new/node_modules/
 astro_new/dist/
 astro_new/
 astro3/
-old/
 astro2/
 dev/
+_docs/
+old/
 docs/D3
-dev/node_modules/
-dev/src/assets
-dev/_unused_pages
-dev/docs
+
 
 # files 
 **/*.png
 **/*.jpg
-
 
 *.local
 
