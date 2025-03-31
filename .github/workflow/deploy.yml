@@ -16,11 +16,9 @@ jobs:
         run: |
           npm ci
           npm run build
-      - name: Move build output to root
-        run: mv docs ../docs
       - name: Create .nojekyll
-        run: touch ../docs/.nojekyll
-
+        run: cd docs && touch .nojekyll && cd ..  
+      
   deploy:
     needs: build
     permissions:
