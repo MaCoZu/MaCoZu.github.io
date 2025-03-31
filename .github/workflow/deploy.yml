@@ -1,5 +1,8 @@
 name: Deploy to GitHub Pages
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -9,14 +12,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install and build
+      - name: Install dependencies
         working-directory: ./astro3
-        run: |
-          npm ci
-          npm run deploy
-      - name: Create .nojekyll
-        run: touch docs/.nojekyll
-
-  deploy:
-    needs: build
-    uses: actions/deploy-pages@v4
+        run: npm ci
+      - name: Build project
+        working-directory: ./astro3
+        run: npm run build
+      - name: Move build output to root docs/
+        run: mv astro3/dist ../docs
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
