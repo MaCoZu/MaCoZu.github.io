@@ -17,7 +17,10 @@ jobs:
           npm ci
           npm run build
       - name: Create .nojekyll
-        run: cd docs && touch .nojekyll && cd ..
+        run: |
+          cd docs
+          echo "" > .nojekyll  #  Create an empty .nojekyll file
+          cd ..
 
   deploy:
     needs: build
