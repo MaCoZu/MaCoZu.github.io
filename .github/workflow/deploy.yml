@@ -19,7 +19,8 @@ jobs:
       - name: Create .nojekyll
         run: |
           cd docs
-          echo "" > .nojekyll  #  Create an empty .nojekyll file
+          touch .nojekyll
+          echo "" > .nojekyll # Ensure it's not empty (sometimes helps)
           cd ..
 
   deploy:
