@@ -1,0 +1,15 @@
+---
+import Main from "../components/Main.astro";
+import PostList from "../components/PostList.astro";
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+const blogPosts = await getCollection("blog");
+---
+
+<Layout>
+    <Main class="my-20">
+        {
+            blogPosts.map((post) => (<PostList posts={blogPosts} />))
+        }
+    </Main>
+</Layout>

@@ -1,0 +1,43 @@
+# Linear Regression
+Regression is about describing the interaction between variables. And finding a mathematical expression for this relationship, if it exists. A linear regression models the interplay between the variables as a constant rate of change.
+
+We could for example ask if there is a relationship between the height of parents and their adult children. One of the first things to do, is plotting both variables on a $xy$-plane and look for a pattern. That is what Sir Francis Galton, the originator of eugenics, did in an 1886 paper. 
+
+The upward trend in his data suggests a positive relationship: Taller parents have taller children and vice versa. Here it is obvious that parents pass genes to their children, but it isn’t always clear which variable moves the other (directionality problem). 
+
+One could use fathers height and mothers height as two inputs for a *multiple regression* model, that considers the individual impact of each variable on the children’s height. For a *simple linear regression* only one variable $X$ is chosen. Here the single input is a weighted average of the parent’s heights: 
+$$
+X=\text{fathers height} + 1.08 \times \text{mothers height}
+$$ 
+The relationship can ultimately be described in a single straight line where $\beta_0$ is the intercept of the line with the $y$-axis and $\beta_1$ is the constant change in $Y$ (children height) with every unit of $X$.
+$$
+y=\beta_0+\beta_{1}x+\epsilon
+$$
+Galton recognized that parents with exceptional characteristics (very tall or very short), tended to have children with less extreme characteristics than them. He called this phenomenon “regression towards mediocrity” giving regression its name.
+
+The most important coefficient is $\beta_1$, which can be conceived by the *regression method* combining the correlation coefficient $r$ and the ratio of standard deviations:
+$$
+\beta_1=r \times \frac{s_y}{s_x}
+$$
+The regression method only works for simple linear regression, but it highlights the mechanisms of regression. Pearson’s correlation coefficient $r$ measures how loose or tight the data points are clustered around a hypothetical line, and its sign tells us if the relationship is positive (upward sloping $r>0$) or negative (downward sloping $r<0$). The ration of standard deviations adds a sense of scale to the correlation coefficient’s information. A standard deviation is the typical deviation of the data points from the mean, therefore the ratio expresses the typical change of $Y$ for any step in $X$. 
+
+The more common method figuring out the regression coefficients is called *ordinary least squares* (OLS). It arrives at the same coefficients as the regression method by minimizing the sum of squared errors (SSE) between the data points and the regression line. 
+
+The OLS approach is formulated as an optimization problem with the following objective function:
+
+$$
+\min_{\beta_{0}, \,\beta_1} \,(SSE) = \min_{\beta_{0}, \,\beta_1} \left( \sum (y_{i} - \hat{y}_i)^2 \right) = \min_{\beta_{0}, \,\beta_1} \left\{\sum[y_i-(\hat\beta_0+\hat\beta_{1}x_i)]^2\right\}
+$$
+
+The partial derivates amount to: 
+$$
+\begin{gathered}
+\hat{\beta}_{1}= \frac{s_{x y}}{s_{x^2}}\\
+\hat\beta_{0}=\bar{y}-\hat{\beta_1}\bar{x}
+\end{gathered}
+$$
+where $s_{x^2}$ is the squared standard deviation of $x$ and $s_{x y}$ the sample covariance, a measure of joint variation between $x$ and $y$. In this notation the little hats above the symbols signify estimates, of the true but unknown population parameters. 
+
+In the following animation a regression line adjusts to each new data points by minimizing the sum of squared errors (SSE). The errors ($y_{i} - \hat{y}_i$) are the differences between the observations $y_i$ and the estimates of these points $\hat{y_i}$ modeled by the regression line. 
+
+Much could be said about the brazen simplicity of pressing a data set into a single straight line. About ascertaining which variable influences the other. And the dangers of confusing correlation with causation and so on. But for the sake of brevity I’ll leave it at that.

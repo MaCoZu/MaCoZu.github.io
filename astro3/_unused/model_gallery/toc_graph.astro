@@ -1,0 +1,111 @@
+---
+import "../../styles/global.css";
+import "../../styles/font.css";
+import Layout from "../../layouts/Layout.astro";
+import Drawer from "../../components/Drawer.astro";
+---
+
+<Layout>
+    <Drawer />
+
+    <div id="legend" class="absolute top-1/4 ml-[10.5rem] z-50"></div>
+    <div id="toc_graph" class="mt-0 mx-[10.5rem] relative"></div>
+
+    <!-- graph table of content  -->
+    <script type="module">
+        import { GraphTOC } from "../src/scripts/toc_graph2.js";
+
+        const data = {
+            children: [
+                {
+                    id: "Theory",
+                    type: "theory",
+                    text: "First paragraph of Text A",
+                    url: "./theory",
+                    links: ["Model", "System"],
+                },
+                {
+                    id: "Model",
+                    type: "model",
+                    text: "First paragraph of Text B",
+                    url: "./model",
+                    links: ["Theory", "System"],
+                },
+                {
+                    id: "System",
+                    type: "system",
+                    text: "First paragraph of Text C",
+                    url: "./system",
+                    links: ["Theory", "Model"],
+                },
+                {
+                    id: "Conspiracy Theory",
+                    type: "theory",
+                    text: "First paragraph of Text A",
+                    // url: "./conspiracy_theory",
+                    url: "https://en.wikipedia.org/wiki/Conspiracy_theory",
+                    links: ["Theory"],
+                },
+                {
+                    id: "Supply and Demand",
+                    type: "model",
+                    text: "First paragraph of Text A",
+                    url: "./supply_and_demand",
+                    links: ["Model"],
+                },
+                {
+                    id: "Linear Regression",
+                    type: "model",
+                    text: "Simple Linear Regression",
+                    url: "./linear_regression",
+                    links: ["Model"],
+                },
+                {
+                    id: "Complex System",
+                    type: "system",
+                    text: "First paragraph of Text C",
+                    // url: "./complex_systems",
+                    url: "https://www.santafe.edu/what-is-complex-systems-science",
+                    links: ["System"],
+                },
+                {
+                    id: "Schelling`s Segregation",
+                    type: "model",
+                    text: "Schelling`s Segregation",
+                    url: "./schelling_segregation",
+                    links: ["Model"],
+                },
+                {
+                    id: "Logistic Growth",
+                    type: "model",
+                    text: "First paragraph of Text C",
+                    url: "./logistic_growth",
+                    links: ["Model"],
+                },
+                {
+                    id: "Logistic Map",
+                    type: "model",
+                    text: "First paragraph of Text C",
+                    url: "./logistic_map",
+                    links: ["Model"],
+                },
+                {
+                    id: "Normal Distribution",
+                    type: "model",
+                    text: "First paragraph of Text C",
+                    url: "./normal_distribution",
+                    links: ["Model"],
+                },
+                {
+                    id: "Confusion Matrix",
+                    type: "model",
+                    text: "First paragraph of Text C",
+                    url: "./confusion_matrix",
+                    links: ["Model"],
+                },
+            ],
+        };
+
+        GraphTOC(data, "toc_graph", "legend");
+    </script>
+</Layout>

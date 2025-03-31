@@ -15,10 +15,10 @@ jobs:
       - name: Install dependencies and build
         run: |
           npm ci
-          npm run build
+          npm run build # Astro builds to 'docs'
       - name: Create .nojekyll
-        run: cd docs && touch .nojekyll && cd ..  
-      
+        run: cd docs && touch .nojekyll && cd .. # Create .nojekyll *inside* docs
+
   deploy:
     needs: build
     permissions:
@@ -27,4 +27,4 @@ jobs:
     uses: actions/deploy-pages@v4
     with:
       branch: gh-pages
-      folder: docs
+      folder: docs # Deploy the 'docs' folder

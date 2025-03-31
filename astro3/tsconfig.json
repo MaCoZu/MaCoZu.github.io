@@ -1,0 +1,12 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [ ".astro/types.d.ts", "**/*", "../docs", "../docs", "../docs", "../docs", "../dist", "../dist" ],
+  "exclude": [ "docs" ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}

@@ -1,0 +1,15 @@
+# Logistic Growth
+The logistic model is a common model used to describe population growth. Scholars have put Thomas Malthus ideas about demography in a simple formula. It captures the basic assumption that humanity, will grow exponentially until food production hits a hard limit and population size stagnates at a sustainable level. Malthus was proven wrong for the time being. Fertilizers, and pesticides boosted agricultural productivity, birth, and death rates slowed down with better health and living standards, urbanization and public services removed the need for big families and global trade made food production even more efficient. With mounting warnings about the impact of climate change, we may have only postponed the fate. In the meantime, the model has applications in many other areas. Bacteria, cancer cells, epidemics, but also innovations, viral videos and fads follow this pattern. These phenomena start slow, then grow rapidly and eventually flatten out. 
+
+ 
+
+
+In the model, the current population $N$ is faced with a resource limit $K$ called carrying capacity, which is the maximum of individuals the environment can sustain indefinitely. The population today is dependent on the size of the population tomorrow, more people will negatively affect the resources and thus constrain population growth.  
+$$
+\frac{dN}{dt} = rN \left(1 - \frac{N}{K}\right)
+$$
+When $N_{t}$ is big, it will grow by the factor $r$, but an opposing resource force shrinks $N$ at the same time. The resource factor $(1- N/K)$ shrinks with growing $N$ and thus slows down growth. The larger $N$ becomes the slower $N$ grows until it reaches the limit $K$: 
+$$
+N=K \rightarrow (1-\frac{N}{K})=0
+$$
+Growth stops and $N$ settles on a plateau in $K$. This trajectory produces the typical S-shaped curve of the logistic (sigmoid) function.

@@ -1,0 +1,18 @@
+---
+import "../../styles/global.css";
+import "../../styles/font.css";
+import Layout from "../../layouts/Layout.astro";
+import Drawer from "../../components/Drawer.astro";
+import Markdown from "../../components/Markdown.astro";
+import Content from "./markdown/theory.mdx";
+
+const { frontmatter } = await import("./markdown/theory.mdx");
+const { title } = frontmatter;
+---
+
+<Layout>
+    <Drawer />
+    <Markdown title="{title}">
+        <Content />
+    </Markdown>
+</Layout>
