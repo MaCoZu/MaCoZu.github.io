@@ -20,6 +20,8 @@ jobs:
         run: npm run build
       - name: Move build output to root docs/
         run: mv astro3/dist ../docs
+      - name: Create .nojekyll
+        run: touch docs/.nojekyll
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
