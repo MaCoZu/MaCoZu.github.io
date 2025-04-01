@@ -16,8 +16,7 @@ node_modules/
 # files 
 # **/*.png
 # **/*.jpg
-astro3/ **/*.png
-astro3/ **/*.jpg
+last/
 
 *.local
 
