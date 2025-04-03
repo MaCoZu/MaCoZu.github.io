@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # folder
+_docs/
 .old_projects
 # astro3/
 node_modules/
