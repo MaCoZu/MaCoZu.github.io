@@ -1,0 +1,157 @@
+.chartContainer {
+    max-width: 100%;
+    margin: auto;
+    overflow-x: auto;
+    font-family: sans-serif;
+}
+
+.tooltip {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    pointer-events: none;
+    font-size: 0.9rem;
+    color: black;
+    z-index: 1000;
+}
+
+#rect-container {
+    fill: #F0F0F1;
+}
+
+#ref-label {
+    fill: rgb(69, 68, 68);
+    font-size: 14px;
+}
+
+.refLine {
+    stroke: rgb(142, 138, 138);
+    stroke-width: 2px;
+    stroke-dasharray: 3, 3;
+}
+
+#sdg-quadrant {
+    fill: dimgray;
+}
+
+#bio-label {
+    font-size: 16px;
+    fill: rgb(0, 68, 11);
+}
+
+#sdg-quadrant-text {
+    font-size: 16px;
+    fill: rgb(0, 68, 11);
+}
+
+@media (prefers-color-scheme: dark) {
+    #sdg-quadrant {
+        fill: white;
+    }
+
+    #logo {
+        filter: invert(100%);
+    }
+
+    body {
+        background-color: rgb(17 24 39);
+        color: rgb(229 231 235);
+    }
+
+    #container {
+        background-color: rgb(17 24 39);
+    }
+
+    #chart-container {
+        background-color: rgb(17 24 39);
+    }
+
+    #svg-container {
+        background-color: rgb(17 24 39);
+    }
+
+    #g-container {
+        background-color: rgb(17 24 39);
+    }
+
+    #rect-container {
+        fill: rgb(17 24 39);
+    }
+
+    text {
+        fill: #fff;
+    }
+
+    #ref-label {
+        fill: darkgray;
+    }
+
+    .refLine {
+        stroke: darkgray;
+        stroke-width: 2px;
+        stroke-dasharray: 3, 3;
+    }
+
+}
+
+.refLine {
+    stroke: darkgray;
+}
+    #heading {
+        font-size: 30px;
+        font-family: 'Literata', sans-serif;
+        margin-bottom: 0px;
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #subheader {
+        font-size: 20px;
+        font-family: sans-serif;
+        margin-bottom: 0px;
+        position: absolute;
+        top: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #chart-container {
+        display: flex;
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+
+    .tooltip {
+        font-size: 12px;
+        font-weight: normal;
+        position: absolute;
+        padding: 10px;
+        text-align: left;
+        background: rgba(0, 0, 0, 0.805);
+        border: 0.5px solid #cccccc71;
+        border-radius: 5px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s;
+        color: black;
+    }
+
+    .tooltip td {
+        padding: 1.7px 5px;
+    }
+
+    text {
+        font-size: 18px;
+        font-weight: 400;
+        font-family: sans-serif;
+    }
+
+    /* New style for Select All option */
+    #select-all-container {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }

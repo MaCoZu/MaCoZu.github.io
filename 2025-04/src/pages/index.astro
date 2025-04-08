@@ -1,0 +1,190 @@
+---
+import "../styles/global.css";
+import "../styles/font.css";
+import Layout from "../layouts/Layout.astro";
+import Link from "../components/Link.astro";
+import { Icon } from "astro-icon/components";
+import ProjectCard from "../components/ProjectCard.astro";
+---
+
+<style>
+	.icon-medium {
+		width: 4rem;
+		height: 4rem;
+	}
+	.icon-large {
+		width: 4.8rem;
+		height: 4.8rem;
+	}
+</style>
+
+<Layout title="Portfolio">
+	<main
+		class="mx-auto md:mx-[10.5rem] min-h-[80dvh] max-sm:px-5 flex justify-center items-center flex-col"
+	>
+		<div class="md:h-20"></div>
+
+		<!-- TWITTER ANALYSIS -->
+		<ProjectCard
+			title="Congressional Tweeting"
+			subtitle="Big data analysis of tweets from US congress members."
+			link="https://twitter-analysis-six.vercel.app/"
+			iconName="twitter-bird2"
+			iconSize="large"
+			techList={["Pyspark", "Databricks", "SQL"]}
+		>
+			<span slot="description">
+				I took the task and data from the SQL for Data Science <Link
+					href="https://www.coursera.org/learn/sql-data-science-capstone?specialization=learn-sql-basics-data-science"
+					>course</Link
+				> on Coursera. The imaginary customer wants an analysis of the 2008-2017
+				congressional tweets to understand key topics, members, and relationships
+				within Congress.
+			</span>
+		</ProjectCard>
+
+		<!-- World Bank Commander -->
+		<ProjectCard
+			title="World Bank Commander"
+			subtitle="Compare all world bank indicators on a 2x2 chart grid."
+			link="https://world-bankcommander.onrender.com/"
+			iconName="worldbank_logo"
+			iconSize="medium"
+			techList={["Python", "Dash", "Plotly"]}
+		>
+			<span slot="description">
+				The idea was to have a clean overview of the different
+				indicators to comapare and spot unexpected relationships. Since
+				the world bank's <Link
+					href="https://databank.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG/1ff4a498/Popular-Indicators"
+					>interface</Link
+				> is cumbersome and crowded I wanted something simple. Happy relationship
+				hunting!
+			</span>
+		</ProjectCard>
+
+		<!-- Tableau Dashboards -->
+		<ProjectCard
+			title="Tableau Dashboards"
+			subtitle="Some of my data dashboard on Tableau Public."
+			link="https://public.tableau.com/app/profile/marco.zausch8856/vizzes"
+			iconName="tableau-software"
+			iconSize="medium"
+			techList={["Tableau", "Data Analysis"]}
+		>
+			<span slot="description">
+				Tableau is a Business Intelligence software but with a better
+				look than Power BI for example. Check out my public <Link
+					href="https://public.tableau.com/app/profile/marco.zausch8856/vizzes"
+				>
+					dashboards</Link
+				> here.
+			</span>
+		</ProjectCard>
+
+		{
+			/* 
+        <!-- MODEL GALLERY -->
+        <div class="container mx-auto md:max-w-4xl text-xl w-full box-border">
+            <a href="/model_gallery/toc_graph">
+                <!-- Title -->
+                <h1
+                    class="text-3xl md:text-4xl font-bebas font-semibold my-4 tracking-[5px] text-center"
+                >
+                    Model Explorer
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="font-semibold leading-8 text-center py-4">
+                    Interactive graphs and short introductions.
+                </p>
+            </a>
+
+            <!-- Text & Image -->
+            <div class="text-pretty leading-8 flex items-start space-x-8">
+                <!-- Text -->
+                <div class="flex-1 box-border">
+                    <p class="text-pretty">
+                        An ecclectic collection of models, theories and systems
+                        that stirred my curiosity. With animated D3.js graph and
+                        other visualizations.
+                    </p>
+                </div>
+                <!-- Image -->
+                <div class="hidden md:block w-14 h-14 box-border">
+                    <img
+                        class="w-full h-full"
+                        src="/img/icons/d3.svg"
+                        alt="D3 Icon"
+                    />
+                </div>
+            </div>
+
+            <!-- Footer Text -->
+            <p
+                class="flex text-gray-500 dark:text-gray-400 font-semibold pt-4 justify-center tracking-wider text-lg"
+            >
+                D3 • JavaScript • Css
+            </p>
+        </div>
+
+        <!-- Horizontal Ruler -->
+        <div class="flex justify-center my-10">
+            <hr class="w-1/2 border-gray-400" />
+        </div>
+        */
+		}
+
+		{
+			/*
+           <!-- VISUALISATIONS -->
+        <div class="container mx-auto md:max-w-4xl text-xl w-full box-border">
+            <a href="/overview_viz">
+                <!-- Title -->
+                <h1
+                    class="text-3xl md:text-4xl font-bebas font-semibold my-4 tracking-[5px] text-center"
+                >
+                    Visualizations
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="font-semibold leading-8 text-center py-4">
+                    Data Driven Documents (D3) visualizations.
+                </p>
+            </a>
+
+            
+            <!-- Text & Image -->
+            <div class="text-pretty leading-8 flex items-start space-x-8">
+                <!-- Text -->
+                <div class="flex-1 box-border">
+                    <p class="text-pretty">
+                        There's a ton of visualizations libraries but most of
+                        them leave much to be desired. Eventually I had to learn
+                        D3 since it gives me the creative freedom to customize
+                        like hell. Come visit my little delicatessen shop of
+                        statisical eye-candy.
+                    </p>
+                </div>
+                <!-- Image -->
+                <div class="hidden md:block w-14 h-14 box-border">
+                    <img
+                        class="w-full h-full"
+                        src="/img/icons/d3.svg"
+                        alt="D3 Icon"
+                        loading="lazy"
+                    />
+                </div>
+            </div>
+
+            <!-- Footer Text -->
+            <p
+                class="flex text-gray-500 dark:text-gray-400 font-semibold pt-4 justify-center tracking-wider text-lg"
+            >
+                D3 • JavaScript • Pandas
+            </p>
+        </div>
+        */
+		}
+	</main>
+</Layout>

@@ -10,14 +10,20 @@ lerna-debug.log*
 # folder
 _docs/
 .old_projects
-# astro3/
-node_modules/
+node_modules/s
 .vscode
+2025-04/docs/
+2025-04/.astro/
+2025-04/.vscode/
+2025-04/node_modules/
+2025-04/public/data/
+2025-04/public/fonts/
+2025-04/public/img/
+2025-04/src/icons/
 
 # files 
-# **/*.png
-# **/*.jpg
-last/
+**/*.png
+**/*.jpg
 
 *.local
 

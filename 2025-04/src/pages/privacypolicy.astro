@@ -1,0 +1,44 @@
+---
+import "../styles/global.css";
+import "../styles/font.css";
+import Layout from "../layouts/Layout.astro";
+import Docs from "../layouts/Docs.astro";
+import TOC from "../components/TOC.astro";
+import { getEntry } from "astro:content";
+const entry = await getEntry("docs", "privacypolicy")!;
+const { Content, headings } = await entry.render();
+---
+
+<Layout title="Privacy Policy">
+    <main
+        class="mx-auto md:mx-[10.5rem] min-h-[80dvh] max-sm:px-5 flex gap-20 mt-20"
+    >
+        <section class="flex-1">
+            <h1
+                class="text-3xl md:text-4xl font-bebas font-semibold mb-10 tracking-[5px] text-center"
+            >
+                Datenschutzerklärung
+            </h1>
+
+            <div class="prose prose-stone text-xl font-work leading-8">
+                <p>
+                    Verantwortlicher für die Datenverarbeitung Sinne der
+                    Datenschutz-Grundverordnung (DSGVO) ist:
+                </p>
+                <p><strong>Marco Zausch</strong></p>
+                <p><strong>marcoazusch@posteo.de</strong></p>
+                <p>
+                    Meine zusätzlichen Kontaktdaten finden Sie im <a
+                        href="/impressum">Impressum</a
+                    >.
+                </p>
+            </div>
+
+            <Docs>
+                <Content />
+            </Docs>
+        </section>
+        <!-- TOC -->
+        <TOC headings={headings}/>
+    </main>
+</Layout>

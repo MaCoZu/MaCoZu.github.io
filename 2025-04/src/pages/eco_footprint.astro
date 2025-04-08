@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+import "../styles/font.css";
+import EcoChart from "../components/Charts/EcoChart";
+import Heading from "../components/Heading.astro";
+import Markdown from "../components/Markdown.astro";
+const csvFilePath = "/data/footprint.csv";
+
+// Content
+import { Content } from "../content/visualizations/eco_footprint.mdx";
+import components from "../components/mdxComponents"; // for Links
+---
+
+<Layout title="Ecological Footprint">
+    <div class="md:h-5"></div>
+
+    <Heading className="font-literata mt-0 mb-0 font-bold">
+        Ecological Footprint
+    </Heading>
+    <Heading className="font-literata text-xl my-3">
+        60% of the world's population lives unsustainably.
+    </Heading>
+
+    <div class="-mt-4 flex justify-center items-start gap-x-4">
+        <EcoChart client:load csvPath={csvFilePath} />
+    </div>
+
+    <Markdown>
+        <Content components={components} />
+    </Markdown>
+</Layout>
