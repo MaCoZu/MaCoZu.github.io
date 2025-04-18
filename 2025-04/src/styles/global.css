@@ -55,3 +55,10 @@ span[tip] {
     text-decoration-thickness: 1.5px;
     font-weight: 500;
 }
+
+
+@layer components {
+    .btn {
+        @apply hover:text-blue-600 will-change-transform transform-gpu hover:scale-103 origin-center ease-in transition duration-300
+    }
+}

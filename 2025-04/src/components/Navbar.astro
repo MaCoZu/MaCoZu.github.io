@@ -17,7 +17,11 @@ import { Icon } from "astro-icon/components";
     <div class="container mx-auto py-2 md:py-1">
         <div class="grid grid-cols-3 items-center md:mx-[10.5rem] py-[6px]">
             <a href="/" class="flex items-center">
-                <Icon name="logo/logo" class="icon-medium" aria-label="logo"/>
+                <Icon
+                    name="logo/logo"
+                    class="icon-medium"
+                    aria-label="logo"
+                />
             </a>
 
             <div class="md:hidden col-start-3 justify-self-end">
@@ -58,11 +62,12 @@ import { Icon } from "astro-icon/components";
 
             <div class="hidden md:flex justify-end col-start-3">
                 <div class="flex space-x-6 uppercase text-[10px]">
-                    <a class="font-medium hover:text-indigo-700" href="/"
+
+                    <a class="font-normal hover:text-blue-600" href="/"
                         >Data</a
                     >
                     <a
-                        class="font-medium hover:text-indigo-700"
+                        class="font-normal hover:text-blue-600"
                         href="/overview_viz">Visualizations</a
                     >
                     <!-- <a class="font-medium hover:text-indigo-700" href="/blog"

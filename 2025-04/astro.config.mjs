@@ -8,9 +8,7 @@ import remarkToc from 'remark-toc';
 import remarkGfm from 'remark-gfm';
 import rehypeExternalLinks from 'rehype-external-links';
 
-
 import react from '@astrojs/react';
-
 import icon from 'astro-icon';
 
 // https://astro.build/config
