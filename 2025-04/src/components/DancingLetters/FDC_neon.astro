@@ -1,0 +1,66 @@
+<div class="flex flex-row">
+    <h1 class="text-5xl font-budmo1 tracking-wider neon">F</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider neon">O</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider neon">R</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider neon">R</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider neon">Ó</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider">&nbsp;</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider neon">D</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider neon">A</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider">&nbsp;</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider neon">C</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider neon">A</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider neon">P</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider neon">I</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider neon">T</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider neon">A</h1>
+</div>
+
+<style>
+    .neon:hover {
+        z-index: 10;
+        color: #fff;
+        text-shadow:
+            0 0 5px #ff005e,
+            0 0 10px #ff005e,
+            0 0 20px #ff005e,
+            0 0 40px #ff005e,
+            0 0 80px #ff005e;
+        animation: neon 4.5s infinite alternate;
+    }
+
+    @keyframes neon {
+        0% {
+            text-shadow:
+                0 0 5px #ff005e,
+                0 0 10px #ff005e,
+                0 0 20px #ff005e,
+                0 0 40px #ff005e,
+                0 0 80px #ff005e;
+        }
+        25% {
+            text-shadow:
+                0 0 5px #ffaa00,
+                0 0 10px #ffb300,
+                0 0 20px #ffa200,
+                0 0 40px #ffa200,
+                0 0 80px #ff9900;
+        }
+        75% {
+            text-shadow:
+                0 0 5px #2bff00,
+                0 0 10px #6aff00,
+                0 0 20px #84ff00,
+                0 0 40px #62ff00,
+                0 0 80px #22ff00;
+        }
+        100% {
+            text-shadow:
+                0 0 10px #00d4ff,
+                0 0 20px #00d4ff,
+                0 0 40px #00d4ff,
+                0 0 80px #00d4ff,
+                0 0 160px #00d4ff;
+        }
+    }
+</style>

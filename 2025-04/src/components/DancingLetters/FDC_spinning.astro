@@ -1,0 +1,77 @@
+<div class="flex flex-row">
+    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning">F</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning_reverse">O</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning">R</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning_reverse">R</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning">Ó</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider">&nbsp;</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning_reverse">D</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning">A</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider">&nbsp;</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning_reverse">C</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning">A</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning_reverse">P</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning">I</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning_reverse">T</h1>
+    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning">A</h1>
+</div>
+
+<style>
+    .glow:hover {
+        text-shadow:
+            0 0 5px #ffa500,
+            0 0 15px #ffa500,
+            0 0 20px #ffa500,
+            0 0 40px #ffa500,
+            0 0 60px #f8bd50,
+            0 0 10px #f4a749,
+            0 0 98px #fdc85f;
+        color: #fff6a9;
+    }
+
+    .spinning:hover {
+        position: relative;
+        display: inline-block;
+        animation: spinning 8.4s cubic-bezier(0.15, 0.2, 0.25, 0.1);
+    }
+
+    .spinning_reverse:hover {
+        position: relative;
+        display: inline-block;
+        animation: spinning_reverse 8.4s cubic-bezier(0.15, 0.2, 0.25, 0.1);
+    }
+
+    @keyframes spinning {
+        0%,
+        100% {
+            animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+        }
+        0% {
+            transform: rotateY(0deg);
+        }
+        50% {
+            transform: rotateY(1800deg);
+            animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+        }
+        100% {
+            transform: rotateY(3600deg);
+        }
+    }
+
+    @keyframes spinning_reverse {
+        0%,
+        100% {
+            animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+        }
+        0% {
+            transform: rotateY(0deg);
+        }
+        50% {
+            transform: rotateY(-1800deg);
+            animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+        }
+        100% {
+            transform: rotateY(-600deg);
+        }
+    }
+</style>

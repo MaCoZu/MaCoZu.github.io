@@ -1,0 +1,204 @@
+<div class="flex flex-row">
+  <h1 class="glow turn">D</h1>
+  <h1 class="glow bounce">A</h1>
+  <h1 class="glow swing">N</h1>
+  <h1 class="glow gelatine">C</h1>
+  <h1 class="glow x_flip">I</h1>
+  <h1 class="glow y_flip">N</h1>
+  <h1 class="glow pulse">G</h1>
+</div>
+
+<style>
+  @font-face {
+    font-family: "Oi";
+    src: url("/fonts/HennyPenny-Regular.ttf") format("truetype");
+    font-display: swap;
+  }
+
+  h1 {
+    font-family: "Oi";
+    font-size: 3rem;
+    /* font-weight: 100; */
+    letter-spacing: 4px;
+  }
+
+  /* GLOW */
+  .glow:hover {
+    text-shadow:
+      0 0 5px #ffa500,
+      0 0 15px #ffa500,
+      0 0 20px #ffa500,
+      0 0 40px #ffa500,
+      0 0 60px #f8bd50,
+      0 0 10px #f4a749,
+      0 0 98px #e39804;
+    color: #fff6a9;
+    animation: glow 3s infinte;
+  }
+  @keyframes glow {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  /* TURN */
+  .turn:hover {
+    animation: turn 4s infinite;
+  }
+  @keyframes turn {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* BOUNCE  */
+  .bounce:hover {
+    animation: bounce 2s ease-out infinite;
+  }
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-10px);
+    }
+    50% {
+      transform: translateY(5px);
+    }
+    75% {
+      transform: translateY(-3px);
+    }
+    85% {
+      transform: translateY(1px);
+    }
+  }
+
+  /* GELATINE */
+  .gelatine:hover {
+    animation: gelatine 0.5s infinite;
+  }
+  @keyframes gelatine {
+    from,
+    to {
+      transform: scale(1, 1);
+    }
+    25% {
+      transform: scale(0.9, 1.1);
+    }
+    50% {
+      transform: scale(1.1, 0.9);
+    }
+    75% {
+      transform: scale(0.95, 1.05);
+    }
+  }
+
+  /* Y FLIP */
+  .y_flip:hover {
+    animation: y_flip 3s infinite;
+    /* animation-delay: calc(0.2s * var(--i)); */
+  }
+  @keyframes y_flip {
+    0%,
+    80% {
+      transform: rotateY(360deg);
+    }
+  }
+
+  /* X FLIP */
+  .x_flip:hover {
+    animation: x_flip 3s infinite;
+    /* animation-delay: calc(0.2s * var(--i)); */
+  }
+  @keyframes x_flip {
+    0%,
+    80% {
+      transform: rotateX(360deg);
+    }
+  }
+
+  /* SWING  */
+  .swing:hover {
+    transform-origin: top center;
+    animation: swing 2s ease-in-out infinite alternate;
+  }
+  @keyframes swing {
+    20% {
+      transform: rotate(15deg);
+    }
+    40% {
+      transform: rotate(-10deg);
+    }
+    60% {
+      transform: rotate(5deg);
+    }
+    80% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .pulse:hover {
+    animation: pulse 1s infinite ease-in-out alternate;
+  }
+  @keyframes pulse {
+    from {
+      transform: scale(0.8);
+    }
+    to {
+      transform: scale(1.2);
+    }
+  }
+  /* Container for the letter */
+  .flip-container {
+    display: inline-block;
+    overflow: hidden;
+    height: 1em; /* Adjust based on your font size */
+  }
+
+  /* a */
+  .seventy:hover {
+    color: #ededed;
+    /* font-family: Oswald; */
+    /* font-size: 4em; */
+    transition: 0.5s all ease;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-shadow: 
+    /* Color 1 */
+      1px 1px #61b4de,
+      2px 2px #61b4de,
+      3px 3px #61b4de,
+      4px 4px #61b4de,
+      5px 5px #61b4de,
+      /* Color 2 */ 6px 6px #91c467,
+      7px 7px #91c467,
+      8px 8px #91c467,
+      9px 9px #91c467,
+      10px 10px #91c467,
+      /* Color 3 */ 11px 11px #f3a14b,
+      12px 12px #f3a14b,
+      13px 13px #f3a14b,
+      14px 14px #f3a14b,
+      15px 15px #f3a14b,
+      /* Color 4 */ 16px 16px #e84c50,
+      17px 17px #e84c50,
+      18px 18px #e84c50,
+      19px 19px #e84c50,
+      20px 20px #e84c50,
+      /* Color 5 */ 21px 21px #4e5965,
+      22px 22px #4e5965,
+      23px 23px #4e5965,
+      24px 24px #4e5965,
+      25px 25px #4e5965;
+  }
+</style>
