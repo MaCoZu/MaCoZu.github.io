@@ -8,9 +8,18 @@ import Image from "astro/components/Image.astro";
 ---
 
 <Layout title="Visualizations">
-    <main class="mx-auto md:mx-[10.5rem] min-h-screen font-work">
-        <Heading className="mt-20">Economic Indicators</Heading>
+        <!-- DESIGN  -->
+        <Heading className="mt-20">DESIGN</Heading>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div class="col-span-1 md:col-span-3 mr-2">
+                <a href="/dancing_letters">Dancing Letters</a>
 
+            </div>
+        </div>
+
+
+        <!-- ECONOMIC INDICATORS  -->
+        <Heading className="mt-20">Economic Indicators</Heading>
         <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
             <div class="col-span-1 md:col-span-3 mr-2">
                 <a href="/eco_footprint">
@@ -69,8 +78,8 @@ import Image from "astro/components/Image.astro";
             </div>
         </div>
 
+        <!-- MODEL GALLERY  -->
         <Heading className="mt-10">Model Gallery</Heading>
-
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <ModelCard
                 href="/model_gallery/toc_graph"
@@ -205,5 +214,4 @@ import Image from "astro/components/Image.astro";
                 </a>
             </div> -->
         </div>
-    </main>
 </Layout>
