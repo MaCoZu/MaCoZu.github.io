@@ -38,10 +38,12 @@ const { title } = Astro.props;
 			onload="renderMathInElement(document.body);"></script>
 	</head>
 	<body
-		class="font-work bg-white dark:bg-gray-950 text-gray-700 dark:text-gray-300"
+		class="flex flex-col min-h-screen mx-4 sm:mx-[9.5rem] font-work bg-white dark:bg-gray-950 text-gray-700 dark:text-gray-300"
 	>
 		<Navbar />
-		<slot />
+		<main class="flex-grow my-20 md:mb-20">
+			<slot />
+		</main>
 		<Footer />
 	</body>
 </html>
