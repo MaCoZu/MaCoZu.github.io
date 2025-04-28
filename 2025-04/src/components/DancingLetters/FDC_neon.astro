@@ -1,32 +1,85 @@
-<div class="flex flex-row">
-    <h1 class="text-5xl font-budmo1 tracking-wider neon">F</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider neon">O</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider neon">R</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider neon">R</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider neon">Ó</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider">&nbsp;</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider neon">D</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider neon">A</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider">&nbsp;</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider neon">C</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider neon">A</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider neon">P</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider neon">I</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider neon">T</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider neon">A</h1>
+<div class="bg">
+    <div class="neon-sign">
+        <div class="night">
+            <div class="letter-wrapper"><h1 class="letter">N</h1></div>
+            <div class="letter-wrapper"><h1 class="letter">I</h1></div>
+            <div class="letter-wrapper"><h1 class="letter">G</h1></div>
+            <div class="letter-wrapper"><h1 class="letter">H</h1></div>
+            <div class="letter-wrapper"><h1 class="letter">T</h1></div>
+        </div>
+        <div class="leam">
+            <h1 class="letter">L</h1>
+            <h1 class="letter">E</h1>
+            <h1 class="letter">A</h1>
+            <h1 class="letter">M</h1>
+        </div>
+    </div>
 </div>
 
 <style>
-    .neon:hover {
-        z-index: 10;
+    @font-face {
+        font-family: "Monoton";
+        src: url("/fonts/Monoton-Regular.ttf") format("truetype");
+        font-display: swap;
+    }
+
+    .bg {
+        background-color: black;
+    }
+
+    .neon-sign {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+        /* padding: 50%; */
+    }
+
+    .night {
+        display: flex;
+        flex-direction: row;
+        align-items: center; /* centers letters */
+    }
+
+    .leam {
+        position: absolute;
+        top: calc(3rem + 0px); /* adjust based on your h1 size and spacing */
+        left: calc(11rem + 0px);
+        display: flex;
+        flex-direction: column;
+        background-color: black;
+    }
+
+    .letter-wrapper {
+        position: relative; /* important for ::after */
+    }
+
+    h1.letter {
+        font-family: "Monoton";
+        font-size: 2rem;
+        letter-spacing: 5px;
+        margin: 0;
         color: #fff;
-        text-shadow:
-            0 0 5px #ff005e,
-            0 0 10px #ff005e,
-            0 0 20px #ff005e,
-            0 0 40px #ff005e,
-            0 0 80px #ff005e;
         animation: neon 4.5s infinite alternate;
+    }
+
+    /* Staggered animations for each letter */
+    h1.letter:nth-child(1) {
+        animation-delay: 0.1s, 0.2s;
+    }
+    h1.letter:nth-child(2) {
+        animation-delay: 0.3s, 0.4s;
+    }
+    h1.letter:nth-child(3) {
+        animation-delay: 0.5s, 0.6s;
+    }
+    h1.letter:nth-child(4) {
+        animation-delay: 0.7s, 0.8s;
+    }
+    h1.letter:nth-child(5) {
+        animation-delay: 0.9s, 1s;
     }
 
     @keyframes neon {
@@ -61,6 +114,64 @@
                 0 0 40px #00d4ff,
                 0 0 80px #00d4ff,
                 0 0 160px #00d4ff;
+        }
+    }
+
+    .letter {
+        animation: flicker 15s infinite alternate;
+    }
+
+    /* Flicker effect */
+    @keyframes flicker {
+        0%,
+        5%,
+        7%,
+        9%,
+        11%,
+        55%,
+        57%,
+        59%,
+        61%,
+        95%,
+        97%,
+        100% {
+            opacity: 1;
+        }
+        6%,
+        8%,
+        10%,
+        56%,
+        58%,
+        60%,
+        96% {
+            opacity: 0.7;
+            text-shadow: none;
+        }
+    }
+
+    /* Random short-circuit flicker */
+    .leam::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: black;
+        opacity: 0;
+        /* animation: short-circuit 1.5s infinite alternate; */
+    }
+
+    @keyframes short-circuit {
+        0%,
+        96%,
+        98%,
+        100% {
+            opacity: 0;
+        }
+        97%,
+        99% {
+            opacity: 0.8;
         }
     }
 </style>
