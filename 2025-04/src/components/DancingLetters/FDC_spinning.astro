@@ -1,44 +1,57 @@
 <div class="flex flex-row">
-    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning">F</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning_reverse">O</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning">R</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning_reverse">R</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning">Ó</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider">&nbsp;</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning_reverse">D</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning">A</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider">&nbsp;</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning_reverse">C</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning">A</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning_reverse">P</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning">I</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning_reverse">T</h1>
-    <h1 class="text-5xl font-budmo1 tracking-wider glow spinning">A</h1>
+    <h1 class="glow spinning">S</h1>
+    <h1 class="glow spinning_reverse">P</h1>
+    <h1 class="glow spinning">I</h1>
+    <h1 class="glow spinning_reverse">N</h1>
 </div>
 
 <style>
-    .glow:hover {
+    @font-face {
+        font-family: "CoffeeTin";
+        src: url("/fonts/CoffeeTin.ttf") format("truetype");
+        font-display: swap;
+    }
+    div {
+        perspective: 1000px;
+    }
+
+    h1 {
+        font-family: "CoffeeTin";
+        font-size: 5rem;
+        display: inline-block; /* always apply */
+        transform-origin: center center;
+        padding: 0px 8px;
+        transition: all 0.3s ease;
+        /*  */
+        /* cursor: default; */
+    }
+
+    .glow {
         text-shadow:
-            0 0 5px #ffa500,
-            0 0 15px #ffa500,
-            0 0 20px #ffa500,
-            0 0 40px #ffa500,
-            0 0 60px #f8bd50,
-            0 0 10px #f4a749,
-            0 0 98px #fdc85f;
+            0 0 5px #e9a319,
+            0 0 15px #f5c45e,
+            0 0 20px #ffb22c,
+            0 0 40px #ff9d23,
+            0 0 10px #ffb200,
+            0 0 60px #eddc1a;
         color: #fff6a9;
     }
 
     .spinning:hover {
         position: relative;
-        display: inline-block;
         animation: spinning 8.4s cubic-bezier(0.15, 0.2, 0.25, 0.1);
+        transform-origin: center center;
     }
 
     .spinning_reverse:hover {
         position: relative;
-        display: inline-block;
         animation: spinning_reverse 8.4s cubic-bezier(0.15, 0.2, 0.25, 0.1);
+        transform-origin: center center;
+    }
+
+    .spinning:hover,
+    .spinning_reverse:hover {
+        transform-origin: center center;
     }
 
     @keyframes spinning {

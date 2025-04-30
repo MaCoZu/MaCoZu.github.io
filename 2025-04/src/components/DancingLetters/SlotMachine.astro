@@ -1,0 +1,135 @@
+<div class="slot-machine">
+    <div class="slot-reel" data-final-value="S"></div>
+    <div class="slot-reel" data-final-value="L"></div>
+    <div class="slot-reel" data-final-value="O"></div>
+    <div class="slot-reel" data-final-value="T"></div>
+</div>
+
+<style>
+    @font-face {
+        font-family: "CoffeeTin";
+        src: url("/fonts/CoffeeTin.ttf") format("truetype");
+        font-display: swap;
+    }
+
+    .slot-machine {
+        display: flex;
+        gap: 0px;
+        padding: 0 10px;
+    }
+
+    .slot-reel {
+        width: 75px;
+        height: 90px;
+        overflow: hidden;
+        position: relative;
+        font-size: 3rem;
+        border: 2px solid #fff;
+        /* background: black; */
+    }
+
+    .slot-items {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        transition: transform 0.3s;
+    }
+
+    .slot-items div {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "CoffeeTin";
+        line-height: 1;
+        font-feature-settings: "kern";
+        color: black;
+    }
+
+    .slot-items .emoji {
+        transform: scale(0.25);
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const SYMBOLS = [
+            "🍒",
+            "S",
+            "💰",
+            "⭐",
+            "🍊",
+            "S",
+            "🍋",
+            "🔔",
+            "💎",
+            "L",
+            "🍍",
+            "🍇",
+            "🎰",
+            "🍉",
+            "🍀",
+            "🎯",
+            "O",
+            "🍎",
+            "🎲",
+            "🍓",
+            "🏆",
+            "🍬",
+            "🍹",
+            "T",
+            "🍾",
+            "🍭",
+            "🎪",
+            "🍄",
+        ];
+        const LETTERS = new Set(["S", "L", "O", "T"]);
+
+        function buildReel(reel, finalValue) {
+            const container = document.createElement("div");
+            container.className = "slot-items";
+
+            const visibleCount = 30; // Ensures a full loop spin
+            for (let i = 0; i < visibleCount; i++) {
+                const sym = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+                const div = document.createElement("div");
+                div.textContent = sym;
+                if (!LETTERS.has(sym)) div.classList.add("emoji");
+                container.appendChild(div);
+            }
+
+            // Append final value at end for final settle
+            const finalDiv = document.createElement("div");
+            finalDiv.textContent = finalValue;
+            if (!LETTERS.has(finalValue)) finalDiv.classList.add("emoji");
+            container.appendChild(finalDiv);
+
+            reel.innerHTML = ""; // Clear placeholder
+            reel.appendChild(container);
+        }
+
+        const reels = document.querySelectorAll(".slot-reel");
+        reels.forEach((reel) => buildReel(reel, reel.dataset.finalValue));
+
+        function spin() {
+            reels.forEach((reel, i) => {
+                const items = reel.querySelector(".slot-items");
+                const children = Array.from(items.children);
+                const target = children.length - 1; // Final symbol we placed
+
+                items.style.transition = "none";
+                items.style.transform = `translateY(0px)`;
+                void items.offsetHeight; // Reflow
+
+                setTimeout(() => {
+                    items.style.transition = `transform ${3 + i * 0.3}s cubic-bezier(0.2, 0.6, 0.1, 1)`;
+                    items.style.transform = `translateY(-${target * 90}px)`;
+                }, 10);
+            });
+        }
+
+        document
+            .querySelector(".slot-machine")
+            ?.addEventListener("mouseenter", spin);
+    });
+</script>

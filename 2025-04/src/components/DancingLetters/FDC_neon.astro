@@ -1,17 +1,19 @@
-<div class="bg">
-    <div class="neon-sign">
+<div class="outer-container">
+    <div class="inner-container">
         <div class="night">
-            <div class="letter-wrapper"><h1 class="letter">N</h1></div>
-            <div class="letter-wrapper"><h1 class="letter">I</h1></div>
-            <div class="letter-wrapper"><h1 class="letter">G</h1></div>
-            <div class="letter-wrapper"><h1 class="letter">H</h1></div>
-            <div class="letter-wrapper"><h1 class="letter">T</h1></div>
+            <h1 class="letter">N</h1>
+            <h1 class="letter">I</h1>
+            <h1 class="letter">G</h1>
+            <h1 class="letter">H</h1>
+            <h1 class="letter">T</h1>
         </div>
-        <div class="leam">
-            <h1 class="letter">L</h1>
+        <div class="ignite">
+            <h1 class="letter">I</h1>
+            <h1 class="letter opacity-0"></h1>
+            <h1 class="letter">N</h1>
+            <h1 class="letter">I</h1>
+            <h1 class="letter">T</h1>
             <h1 class="letter">E</h1>
-            <h1 class="letter">A</h1>
-            <h1 class="letter">M</h1>
         </div>
     </div>
 </div>
@@ -23,46 +25,70 @@
         font-display: swap;
     }
 
-    .bg {
-        background-color: black;
+    .outer-container {
+        position: relative;
+        height: 270px;
+        width: 400px;
+        background-color: rgb(11, 7, 42);
     }
 
-    .neon-sign {
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        background-color: black;
-        /* padding: 50%; */
+    .inner-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     .night {
         display: flex;
+        transform: translate(-0%, -130%);
+        letter-spacing: 10px;
         flex-direction: row;
         align-items: center; /* centers letters */
     }
 
-    .leam {
+    .ignite {
         position: absolute;
-        top: calc(3rem + 0px); /* adjust based on your h1 size and spacing */
-        left: calc(11rem + 0px);
+        text-align: center;
+        top: 20%;
+        left: 35%; /* or whatever horizontal offset you need */
+        transform: translateY(-45%);
         display: flex;
         flex-direction: column;
-        background-color: black;
+        line-height: 0px;
+        gap: 2.5em;
     }
 
     .letter-wrapper {
         position: relative; /* important for ::after */
     }
 
+    /* Random short-circuit flicker */
+    /* .ignite::after,
+    .night::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: transparent;
+        opacity: 0;
+        pointer-events: none;
+        animation: short-circuit 1.5s infinite alternate;
+    } */
+
+
+    .ignite {
+        animation: short-circuit 10s infinite alternate;
+    }
+
     h1.letter {
         font-family: "Monoton";
         font-size: 2rem;
-        letter-spacing: 5px;
+        /* letter-spacing: 5px; */
         margin: 0;
         color: #fff;
-        animation: neon 4.5s infinite alternate;
+        animation:
+            glow 4.5s infinite alternate-reverse,
+            flicker 23s infinite alternate;
     }
 
     /* Staggered animations for each letter */
@@ -82,7 +108,7 @@
         animation-delay: 0.9s, 1s;
     }
 
-    @keyframes neon {
+    @keyframes glow {
         0% {
             text-shadow:
                 0 0 5px #ff005e,
@@ -117,61 +143,36 @@
         }
     }
 
-    .letter {
-        animation: flicker 15s infinite alternate;
-    }
-
     /* Flicker effect */
     @keyframes flicker {
         0%,
-        5%,
-        7%,
-        9%,
-        11%,
-        55%,
-        57%,
-        59%,
-        61%,
+        3%,
+        71%,
+        74%,
         95%,
         97%,
         100% {
             opacity: 1;
         }
-        6%,
-        8%,
-        10%,
-        56%,
-        58%,
-        60%,
+        1%,
+        72%,
         96% {
-            opacity: 0.7;
-            text-shadow: none;
+            opacity: 0.3;
         }
-    }
-
-    /* Random short-circuit flicker */
-    .leam::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: black;
-        opacity: 0;
-        /* animation: short-circuit 1.5s infinite alternate; */
     }
 
     @keyframes short-circuit {
         0%,
-        96%,
-        98%,
+        92%,
+        94%,
+        99%,
         100% {
-            opacity: 0;
+            opacity: 1;
         }
-        97%,
-        99% {
-            opacity: 0.8;
+        93%,
+        96%,
+        98% {
+            opacity: 0;
         }
     }
 </style>

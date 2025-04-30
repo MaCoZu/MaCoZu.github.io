@@ -1,10 +1,11 @@
 <div class="outer-container">
     <div class="inner-container">
         <div class="disco">
-            <h1 class="pink_glow">A</h1>
-            <h1 class="yellow_glow">u</h1>
-            <h1 class="red_glow">t</h1>
-            <h1 class="orange_glow">o</h1>
+            <h1 class="pink_glow">D</h1>
+            <h1 class="yellow_glow">i</h1>
+            <h1 class="red_glow">s</h1>
+            <h1 class="orange_glow">c</h1>
+            <h1 class="green_glow">o</h1>
         </div>
         <h1 class="spacer">&nbsp;</h1>
         <div class="lights">
@@ -25,68 +26,70 @@
         font-display: swap;
     }
 
+    /* For a dark background */
     .outer-container {
         position: relative;
         height: 270px;
         width: 400px;
-        background-color: rgb(11, 7, 42);
+        background-color: rgb(19, 19, 74);
     }
 
+    /* inside the outer container we position the inner elemnts absolutely shifting them roughly in the middle */
     .inner-container {
         position: absolute;
-        top: 55%;
+        top: 60%;
         left: 42%;
         transform: translate(-50%, -50%);
     }
 
-    h1 {
-        font-family: "Moonrocks";
-        font-size: 4rem;
-        letter-spacing: 15px;
-        margin: 0;
-        color: #e8fafa;
-        text-shadow: none;
-        transition: all 0.3s ease;
-        cursor: default;
-    }
-
-    .disco,
-    .lights {
-        display: flex;
-        rotate: -5deg;
-    }
-
+    /* we want the 'Lights' sit under 'Disco' and slightly shifted to the right (from the left) */
     .inner-container .lights {
         position: absolute;
         top: 30%;
         left: 15%;
     }
 
+    h1 {
+        font-family: "Moonrocks";
+        font-size: 3.9rem;
+        letter-spacing: 13px;
+        margin: 0;
+        color: #c7fdff;
+        text-shadow: none;
+        transition: all 0.5s ease; /* smoothening the glow a little*/
+        cursor: default;
+    }
+
+    /* since we put the letters in single h1 tags they would appear vertically if untended, flex puts them horizontally.
+
+    Rotation is could be applied if you want a some visual effect of acceleration. 
+    */
+    .disco,
+    .lights {
+        display: flex;
+        rotate: -0deg;
+    }
+
+    /* space between disco and lights */
     .spacer {
-        height: 100px;
+        height: 120px;
     }
 
-    /* Glow shared styles */
-    [class$="_glow"].glow,
-    [class$="_glow"]:hover {
-        color: #fff;
-    }
-
-    /* Glow effect per color */
-    .orange_glow.glow,
+    /* Here we target the blur-radius and color properties of the text-shadow, you may simplify them and still get a decent effect.
+    
+    For exampe the greater the blur-radius wider is the glow, but the color is also more diluted. See the different glow in the orange 'c' from the other letters. The 'c' appears more crisp and has a smaller halo.*/
     .orange_glow:hover {
         text-shadow:
             0 0 5px #ffa500,
             0 0 15px #ffa500,
-            0 0 20px #ffa500,
-            0 0 40px #ffa500,
-            0 0 60px #f8bd50,
-            0 0 10px #f4a749,
-            0 0 98px #fdc85f;
+            0 0 20px #ffa500;
+        /* 0 0 40px #ffa500, */
+        /* 0 0 60px #f8bd50, */
+        /* 0 0 10px #f4a749, */
+        /* 0 0 98px #fdc85f; */
         color: #fff6a9;
     }
 
-    .darkorange_glow.glow,
     .darkorange_glow:hover {
         text-shadow:
             0 0 5px #ff6a00,
@@ -99,7 +102,6 @@
         color: #ffda9b;
     }
 
-    .yellow_glow.glow,
     .yellow_glow:hover {
         text-shadow:
             0 0 5px #ffd900,
@@ -112,7 +114,6 @@
         color: #fffc9b;
     }
 
-    .deepyellow_glow.glow,
     .deepyellow_glow:hover {
         text-shadow:
             0 0 5px #ffd900,
@@ -125,8 +126,20 @@
         color: #fffc9b;
     }
 
-    .lightgreen_glow.glow,
+    .green_glow:hover {
+        text-shadow:
+            0 0 5px #109c15,
+            0 0 15px #27aa39,
+            0 0 20px #0ba708,
+            0 0 40px #35a721,
+            0 0 60px #16991a,
+            0 0 10px #1cb035,
+            0 0 98px #07b410;
+        color: #aff2bb;
+    }
+
     .lightgreen_glow:hover {
+        z-index: 10;
         text-shadow:
             0 0 5px #46cc16,
             0 0 15px #81d978,
@@ -138,7 +151,6 @@
         color: #aff2b1;
     }
 
-    .red_glow.glow,
     .red_glow:hover {
         text-shadow:
             0 0 5px #ff5252,
@@ -151,7 +163,6 @@
         color: #ffc7c7;
     }
 
-    .blue_glow.glow,
     .blue_glow:hover {
         text-shadow:
             0 0 5px #5852ff,
@@ -164,7 +175,6 @@
         color: #d3d9ff;
     }
 
-    .pink_glow.glow,
     .pink_glow:hover {
         text-shadow:
             0 0 5px #ff52f3,
@@ -177,7 +187,6 @@
         color: #ffc7fa;
     }
 
-    .violet_glow.glow,
     .violet_glow:hover {
         text-shadow:
             0 0 5px #d752ff,
@@ -190,7 +199,6 @@
         color: #f3c7ff;
     }
 
-    .lightblue_glow.glow,
     .lightblue_glow:hover {
         text-shadow:
             0 0 5px #52ffeb,
@@ -203,36 +211,3 @@
         color: #c7fdff;
     }
 </style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const letters = document.querySelectorAll(".disco h1, .lights h1");
-
-        function glowRandomLetters() {
-            const activeLetters: HTMLElement[] = [];
-
-            // Choose 1 to 4 random letters
-            const count = Math.floor(Math.random() * 4) + 1;
-
-            while (activeLetters.length < count) {
-                const letter =
-                    letters[Math.floor(Math.random() * letters.length)];
-                if (!activeLetters.includes(letter)) activeLetters.push(letter);
-            }
-
-            // Apply glow --  The effect is added and removed randomly every 1-2 seconds.
-            activeLetters.forEach((el) => {
-                el.classList.add("glow");
-                setTimeout(
-                    () => el.classList.remove("glow"),
-                    1000 + Math.random() * 1000,
-                );
-            });
-
-            // Calls the glowRandomLetters function after a random delay between 0.5 seconds and 1.5 seconds.
-            setTimeout(glowRandomLetters, 500 + Math.random() * 1000);
-        }
-
-        glowRandomLetters();
-    });
-</script>

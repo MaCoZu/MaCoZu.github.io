@@ -1,0 +1,72 @@
+---
+const { count = 20, color = "#E9A319", shape = "rect" } = Astro.props;
+
+type ShapeType = "rect" | "circle" | "triangle";
+
+const safeShape = (
+    ["rect", "circle", "triangle"].includes(shape) ? shape : "rect"
+) as ShapeType;
+
+const shapeMap: Record<ShapeType, string> = {
+    rect: `<rect x=".75" y=".5" width="8" height="8" rx="1" fill="var(--fill)" />`,
+    circle: `<rect x=".75" y=".5" width="8" height="8" rx="4" fill="var(--fill)" />`,
+    triangle: `<path d="M4 1.3a1 1 0 0 1 1.6 0L9.3 7a1 1 0 0 1-.9 1.5H1.1A1 1 0 0 1 .2 7z" fill="var(--fill)" />`,
+};
+
+---
+
+<svg style="display: none">
+    <filter id="blur-glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"
+        ></feGaussianBlur>
+        <feMerge>
+            <feMergeNode in="blur"></feMergeNode>
+            <feMergeNode in="SourceGraphic"></feMergeNode>
+        </feMerge>
+    </filter>
+</svg>
+
+<div class="divider">
+    {
+        Array.from({ length: count }).map((_, i) => (
+            <svg
+                viewBox="0 0 9 9"
+                width="9"
+                height="9"
+                xmlns="http://www.w3.org/2000/svg"
+                class="shape"
+                style={`--i:${i}; --fill:${color};`}
+            >
+                <g set:html={shapeMap[safeShape]} />
+                <g filter="url(#blur-glow)" set:html={shapeMap[safeShape]} />
+            </svg>
+        ))
+    }
+</div>
+
+<style>
+    .divider {
+        display: flex;
+        gap: 6px;
+    }
+
+    .shape {
+        animation: shine 2s linear infinite;
+        animation-delay: calc(var(--i) * 0.01s);
+    }
+
+    .shape {
+        animation: shine 2s linear infinite;
+        animation-delay: calc(var(--i) * 0.1s);
+    }
+
+    @keyframes shine {
+        0%,
+        100% {
+            opacity: 0.5;
+        }
+        50% {
+            opacity: 1;
+        }
+    }
+</style>
