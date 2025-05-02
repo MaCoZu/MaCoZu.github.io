@@ -3,21 +3,21 @@
   <h1 class="glow bounce">A</h1>
   <h1 class="glow swing">N</h1>
   <h1 class="glow gelatine">C</h1>
-  <h1 class="glow x_flip">I</h1>
-  <h1 class="glow y_flip">N</h1>
+  <h1 class="glow spin">I</h1>
+  <h1 class="glow flip">N</h1>
   <h1 class="glow pulse">G</h1>
 </div>
 
 <style>
   @font-face {
-    font-family: "Oi";
-    src: url("/fonts/HennyPenny-Regular.ttf") format("truetype");
+    font-family: "RuslanDisplay";
+    src: url("/fonts/RuslanDisplay-Regular.ttf") format("truetype");
     font-display: swap;
   }
 
   h1 {
-    font-family: "Oi";
-    font-size: 3rem;
+    font-family: "RuslanDisplay";
+    font-size: 5rem;
     /* font-weight: 100; */
     letter-spacing: 4px;
   }
@@ -46,6 +46,7 @@
 
   /* TURN */
   .turn:hover {
+    transform-origin: center center;
     animation: turn 4s infinite;
   }
   @keyframes turn {
@@ -67,16 +68,13 @@
       transform: translateY(0);
     }
     25% {
-      transform: translateY(-10px);
+      transform: translateY(-20px);
     }
     50% {
-      transform: translateY(5px);
+      transform: translateY(10px);
     }
     75% {
-      transform: translateY(-3px);
-    }
-    85% {
-      transform: translateY(1px);
+      transform: translateY(-10px);
     }
   }
 
@@ -101,32 +99,53 @@
   }
 
   /* Y FLIP */
-  .y_flip:hover {
-    animation: y_flip 3s infinite;
-    /* animation-delay: calc(0.2s * var(--i)); */
+  .spin:hover {
+    transform-origin: center center;
+    animation: spin 9s infinite;
   }
-  @keyframes y_flip {
+
+  @keyframes spin {
     0%,
-    80% {
-      transform: rotateY(360deg);
+    100% {
+      animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+    }
+    0% {
+      transform: rotateY(0deg);
+    }
+    50% {
+      transform: rotateY(1800deg);
+      animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+    100% {
+      transform: rotateY(3600deg);
     }
   }
 
   /* X FLIP */
-  .x_flip:hover {
-    animation: x_flip 3s infinite;
-    /* animation-delay: calc(0.2s * var(--i)); */
+  .flip:hover {
+    transform-origin: center center 30px;
+    animation: flip 9s infinite;
   }
-  @keyframes x_flip {
+  @keyframes flip {
     0%,
-    80% {
-      transform: rotateX(360deg);
+    100% {
+      animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+    }
+    0% {
+      transform: rotateX(0deg);
+    }
+    50% {
+      transform: rotateX(1800deg);
+      animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+    100% {
+      transform: rotateX(3600deg);
     }
   }
 
   /* SWING  */
   .swing:hover {
-    transform-origin: top center;
+    transform-origin: top left;
     animation: swing 2s ease-in-out infinite alternate;
   }
   @keyframes swing {
@@ -157,48 +176,5 @@
     to {
       transform: scale(1.2);
     }
-  }
-  /* Container for the letter */
-  .flip-container {
-    display: inline-block;
-    overflow: hidden;
-    height: 1em; /* Adjust based on your font size */
-  }
-
-  /* a */
-  .seventy:hover {
-    color: #ededed;
-    /* font-family: Oswald; */
-    /* font-size: 4em; */
-    transition: 0.5s all ease;
-    text-transform: uppercase;
-    text-decoration: none;
-    text-shadow: 
-    /* Color 1 */
-      1px 1px #61b4de,
-      2px 2px #61b4de,
-      3px 3px #61b4de,
-      4px 4px #61b4de,
-      5px 5px #61b4de,
-      /* Color 2 */ 6px 6px #91c467,
-      7px 7px #91c467,
-      8px 8px #91c467,
-      9px 9px #91c467,
-      10px 10px #91c467,
-      /* Color 3 */ 11px 11px #f3a14b,
-      12px 12px #f3a14b,
-      13px 13px #f3a14b,
-      14px 14px #f3a14b,
-      15px 15px #f3a14b,
-      /* Color 4 */ 16px 16px #e84c50,
-      17px 17px #e84c50,
-      18px 18px #e84c50,
-      19px 19px #e84c50,
-      20px 20px #e84c50,
-      /* Color 5 */ 21px 21px #4e5965,
-      22px 22px #4e5965,
-      23px 23px #4e5965,
-      24px 24px #4e5965,
-      25px 25px #4e5965;
   }
 </style>
