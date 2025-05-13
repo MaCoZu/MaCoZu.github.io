@@ -12,16 +12,12 @@ import { Icon } from "astro-icon/components";
 
 <!-- NAV BAR -->
 <nav
-    class="sticks md:relative h-[4rem] md:h-[2.7rem] top-0 left-0 right-0 border-b-0 z-50 max-sm:px-5"
+    class="sticks md:relative h-[4rem] md:h-[2.7rem] top-3 left-0 right-0 border-b-0 z-50 max-sm:px-5"
 >
     <div class="container mx-auto py-2 md:py-1">
         <div class="grid grid-cols-3 items-center py-[6px]">
             <a href="/" class="flex items-center">
-                <Icon
-                    name="logo/logo"
-                    class="icon-medium"
-                    aria-label="logo"
-                />
+                <Icon name="logo/logo" class="icon-medium" aria-label="logo" />
             </a>
 
             <div class="md:hidden col-start-3 justify-self-end">
@@ -62,14 +58,31 @@ import { Icon } from "astro-icon/components";
 
             <div class="hidden md:flex justify-end col-start-3">
                 <div class="flex space-x-6 uppercase text-[10px]">
+                    <a class="font-normal hover:text-blue-600" href="/">Data</a>
 
-                    <a class="font-normal hover:text-blue-600" href="/"
-                        >Data</a
-                    >
-                    <a
-                        class="font-normal hover:text-blue-600"
-                        href="/overview_viz">Visualizations</a
-                    >
+                    <div class="relative group">
+                        <button
+                            class="font-normal uppercase text-[10px] hover:text-blue-600"
+                            >Other</button
+                        >
+                        <div
+                            class="absolute right-0 text-right pt-6 w-fit bg-white text-black rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300"
+                        >
+                            <a
+                                class="block py-2 font-normal hover:text-blue-600"
+                                href="/overview_viz#viz">Visualizations</a
+                            >
+                            <a
+                                class="block py-2 font-normal hover:text-blue-600"
+                                href="/overview_viz#design">Design</a
+                            >
+                            <a
+                                class="block py-2 font-normal hover:text-blue-600"
+                                href="/overview_viz#writing">Writing</a
+                            >
+                          
+                        </div>
+                    </div>
                     <!-- <a class="font-medium hover:text-indigo-700" href="/blog"
                         >Blog</a
                     > -->

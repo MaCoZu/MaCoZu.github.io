@@ -10,12 +10,14 @@ interface Props {
 const { text, className = "", id } = Astro.props;
 
 // Base classes that are always applied
-const base = "font-bebas text-4xl text-center mt-20 mb-10";
+const base = "flex relative items-center";
 
 // Merge with any custom classes passed in
 const merged = twMerge(base, className);
 ---
 
-<h1 id={id}  class={merged}>
-    {text}
-</h1>
+<div id={id} class={merged}>
+    <div class="flex-grow border-t border-gray-400"></div>
+    <span class="flex-shrink mx-4 text-gray-400">{text}</span>
+    <div class="flex-grow border-t border-gray-400"></div>
+</div>

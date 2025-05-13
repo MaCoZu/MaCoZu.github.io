@@ -13,6 +13,7 @@ import Neon from "../components/DancingLetters/Neon.astro";
 import Spinning from "../components/DancingLetters/Spinning.astro";
 import Seventy from "../components/DancingLetters/Seventy.astro";
 import SeventiesFollow from "../components/DancingLetters/Seventies_follow.astro";
+import Link from "../components/Link.astro";
 ---
 
 <Layout title="Dancing Letters">
@@ -1104,51 +1105,6 @@ import SeventiesFollow from "../components/DancingLetters/Seventies_follow.astro
 
     <hr class="my-10 border-gray-200 dark:border-gray-700" />
 
-    <!-- SEVENTIES -->
-    <div id="slot">
-        <div
-            class="flex flex-col md:flex-row w-full justify-between items-start gap-10 mt-15"
-        >
-            <div class="flex flex-col gap-0 items-start">
-                <Seventy />
-                <SeventiesFollow />
-            </div>
-            <div class="justify-center items-center">
-                <Article>
-                    <p>
-                        Once again the mouse will find some colorful cheese from
-                        the seventies. Very old cheese may begin a life of its
-                        own, and in the second case we see the colors follow the
-                        mouse around.
-                    </p>
-                    <!-- <p>
-                        That El Dorado shine is fine and dandy, but the Midas
-                        touch is just as handy. Have a try at the wheel of luck
-                        but not get stuck like those heliophilous critters.
-                    </p> -->
-                </Article>
-            </div>
-        </div>
-    </div>
-    <!-- AGED CODE -->
-    <details class="w-full mt-2">
-        <summary class="text-xl font-work mb-2 tracking-wide">AGED CODE</summary
-        >
-        <div class="w-full h-60 overflow-scroll resize-y rounded-lg">
-            <Code
-                class:list={["px-10 py-5"]}
-                lang="html"
-                theme="one-light"
-                wrap
-                code={`
-
-                 `}
-            />
-        </div>
-    </details>
-
-    <hr class="my-10 border-gray-200 dark:border-gray-700" />
-
     <!-- Movments -->
     <div id="slot">
         <div
@@ -1160,7 +1116,7 @@ import SeventiesFollow from "../components/DancingLetters/Seventies_follow.astro
                     <p>
                         Here are simple movments you can apply to your elements.
                         Each letter will do something else on hover, dangle,
-                        jumpp, turn and more.
+                        jump, turn and more.
                     </p>
                     <p>
                         For me the most interesting property to tweak was: <br
@@ -1384,8 +1340,6 @@ import SeventiesFollow from "../components/DancingLetters/Seventies_follow.astro
     }
   }
 </style>
-
-
                  `}
                 />
             </div>
@@ -1425,4 +1379,117 @@ import SeventiesFollow from "../components/DancingLetters/Seventies_follow.astro
             }
         </style>
     </div>
+
+    <hr class="my-10 border-gray-200 dark:border-gray-700" />
+
+    <!-- SEVENTIES -->
+    <div id="slot">
+        <div
+            class="flex flex-col md:flex-row w-full justify-between items-start gap-10 mt-15"
+        >
+            <div class="flex flex-col gap-0 items-start">
+                <Seventy />
+                <SeventiesFollow />
+            </div>
+            <div class="justify-center items-center">
+                <Article>
+                    <p>
+                        Once again the mouse will find some colorful cheese from
+                        the seventies. Very old cheese may begin a life of its
+                        own, and in the second case we see the cheese follow the
+                        mouse around.
+                    </p>
+                    <!-- <p>
+                        That El Dorado shine is fine and dandy, but the Midas
+                        touch is just as handy. Have a try at the wheel of luck
+                        but not get stuck like those heliophilous critters.
+                    </p> -->
+                </Article>
+            </div>
+        </div>
+    </div>
+
+    <!-- AGED CODE -->
+    <details class="w-full mt-2">
+        <summary class="text-xl font-work mb-2 tracking-wide">AGED CODE</summary
+        >
+        <div class="w-full h-60 overflow-scroll resize-y rounded-lg">
+            <Code
+                class:list={["px-10 py-5"]}
+                lang="html"
+                theme="one-light"
+                wrap
+                code={`
+<div class="flex flex-row seventy">
+    <h1 class="">A</h1>
+    <h1 class="">g</h1>
+    <h1 class="">e</h1>
+    <h1 class="">d</h1>
+</div>
+
+<style>
+    @font-face {
+        font-family: "FrederickatheGreat";
+        src: url("/fonts/FrederickatheGreat-Regular.ttf") format("truetype");
+        font-display: swap;
+    }
+
+    h1 {
+        font-family: "FrederickatheGreat";
+        text-transform: uppercase;
+        color: #11077c;
+        text-decoration: none;
+        font-size: 4rem;
+        letter-spacing: 15px;
+        margin: 0;
+    }
+
+    .seventy:hover {
+        transition: 0.5s all ease;
+        text-shadow: 
+             /* Color 1 */
+            1px 1px #61b4de,
+            2px 2px #61b4de,
+            3px 3px #61b4de,
+            4px 4px #61b4de,
+            5px 5px #61b4de,
+            /* Color 2 */ 6px 6px #91c467,
+            7px 7px #91c467,
+            8px 8px #91c467,
+            9px 9px #91c467,
+            10px 10px #91c467,
+            /* Color 3 */ 11px 11px #f3a14b,
+            12px 12px #f3a14b,
+            13px 13px #f3a14b,
+            14px 14px #f3a14b,
+            15px 15px #f3a14b,
+            /* Color 4 */ 
+            16px 16px #e84c50,
+            17px 17px #e84c50,
+            18px 18px #e84c50,
+            19px 19px #e84c50,
+            20px 20px #e84c50,
+            /* Color 5 */ 21px 21px #4e5965,
+            22px 22px #4e5965,
+            23px 23px #4e5965,
+            24px 24px #4e5965,
+            25px 25px #4e5965;
+    }
+</style>
+
+                 `}
+            />
+        </div>
+    </details>
+
+    <!-- CHEESE CODE -->
+    <details class="w-full mt-2">
+        <summary class="text-xl font-work mb-2 tracking-wide"
+            >CHEESE CODE</summary
+        >
+        <Link
+        class="text-xl"
+        href="https://codepen.io/MaCoZu/pen/raBaYKo"
+        text="Check Code on Codepen"/>
+    </details>
 </Layout>

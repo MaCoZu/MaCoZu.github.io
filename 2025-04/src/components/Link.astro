@@ -4,11 +4,12 @@ import "../styles/link.css";
 
 interface Props {
     href: string;
+    text: string;
     showIcon?: boolean;
     class?: string;
 }
 
-const { href, showIcon, class: className } = Astro.props;
+const { href, showIcon, class: className, text } = Astro.props;
 const isExternal = href.startsWith("http");
 ---
 
@@ -20,7 +21,7 @@ const isExternal = href.startsWith("http");
     rel={isExternal ? "noopener noreferrer" : undefined}
 >
     <span class="x-link-content">
-        <slot />
+        {text}
         {
             (showIcon ?? isExternal) && (
                 <svg

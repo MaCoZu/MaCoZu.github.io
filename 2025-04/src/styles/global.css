@@ -1,7 +1,11 @@
 @import "tailwindcss";
-@import './font.css';
 @plugin "@tailwindcss/typography";
+@import './font.css';
 
+
+.link-offset:target {
+    padding-top: 30px;
+   }
 
 /* Temporary disable KaTeX styles to isolate issues */
 .katex {

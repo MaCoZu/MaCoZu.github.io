@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import "../styles/font.css";
 import { Icon } from "astro-icon/components";
+import EmailLink from "../components/EmailLink.astro";
 ---
 
 <style>
@@ -26,9 +27,7 @@ import { Icon } from "astro-icon/components";
     }
 </style>
 
-<hr
-    class="mt-20 border-gray-200 dark:border-gray-700 max-sm:px-5"
-/>
+<hr class="mt-20 border-gray-200 dark:border-gray-700 max-sm:px-5" />
 
 <footer
     id="footer"
@@ -43,7 +42,11 @@ import { Icon } from "astro-icon/components";
                     <div class="flex justify-between items-center">
                         <div class="flex gap-3 items-center">
                             <a href="/">
-                                <Icon name="logo/logo" class="icon-large" aria-label="logo"/>
+                                <Icon
+                                    name="logo/logo"
+                                    class="icon-large"
+                                    aria-label="logo"
+                                />
                             </a>
                             <div class="">
                                 <p
@@ -64,16 +67,14 @@ import { Icon } from "astro-icon/components";
 
             <div class="flex flex-col sm:flex-row sm:gap-24 md:justify-between">
                 <!-- CONTACT ME -->
-                <div class="py-2 md:py-0 flex-1">
+                <div class="py-0 md:py-0 flex-1">
                     <div class="text-sm uppercase font-medium">Contact</div>
-                    <div class="flex items-center gap-3 my-2">
-                        <Icon
-                            name="icons/envelope-solid" class="icon-small"/>
-                        <a
-                            class="hover:text-blue-600"
-                            id="mlink"
-                            href="#mlink">Email</a
-                        >
+                    <div class="mt-2">
+                        <EmailLink
+                            encodedEmail="ZWQub2V0c29wQGhjc3Vhem9jcmFt"
+                            label="Email"
+                            class="hover:text-blue-500"
+                        />
                     </div>
                 </div>
 
@@ -86,7 +87,7 @@ import { Icon } from "astro-icon/components";
                             class="flex items-center gap-3"
                             aria-label="LinkedIn"
                         >
-                        <Icon name="icons/linkedin" class="icon-smd" />
+                            <Icon name="icons/linkedin" class="icon-smd" />
                             <a
                                 href="https://www.linkedin.com/in/marcozausch"
                                 target="_blank"
@@ -100,7 +101,7 @@ import { Icon } from "astro-icon/components";
                             class="flex items-center gap-3"
                             aria-label="github"
                         >
-                        <Icon name="icons/github" class="icon-smd" />
+                            <Icon name="icons/github" class="icon-smd" />
                             <a
                                 href="https://github.com/MaCoZu"
                                 target="_blank"
@@ -114,9 +115,8 @@ import { Icon } from "astro-icon/components";
                 <!-- LEGAL -->
                 <div class="py-2 md:py-0 flex-1">
                     <div class="text-sm uppercase font-medium">Legal</div>
-                    <a
-                        class="mt-2 block hover:text-blue-600"
-                        href="/impressum">Impressum</a
+                    <a class="mt-2 block hover:text-blue-600" href="/impressum"
+                        >Impressum</a
                     >
                     <a
                         class="mt-2 block hover:text-blue-600"
@@ -127,3 +127,9 @@ import { Icon } from "astro-icon/components";
         </div>
     </div>
 </footer>
+
+<script>
+    function getEmail() {
+        return `mailto:${"marcozausch" + String.fromCharCode(64) + "posteo.de"}`;
+    }
+</script>

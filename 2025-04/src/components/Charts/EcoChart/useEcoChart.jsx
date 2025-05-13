@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 
 export const useEcoChart = (containerRef, data) => {
   useEffect(() => {
@@ -101,15 +101,43 @@ export const useEcoChart = (containerRef, data) => {
         .style("opacity", 0.9);
 
       tooltip.html(`
-                    <table>
-                        <tr><td>Country</td><td><strong>${d.Country}</strong></td></tr>
-                        <tr><td>Region</td><td><strong>${d.Region}</strong></td></tr>
-                        <tr><td>Earths required</td><td><strong>${d['Number of Earths required']}</strong></td></tr>
-                        <tr><td>SDG</td><td><strong>${d.SDGi.toFixed(2)}</strong></td></tr>
-                        <tr><td>HDI</td><td><strong>${d.HDI.toFixed(2)}</strong></td></tr>
-                        <tr><td>Life Expectancy</td><td><strong>${d['Life Expectancy'].toFixed(2)}</strong></td></tr>
-                        <tr><td>GDP pc.</td><td><strong>$ ${d['Per Capita GDP'].toFixed(0)}</strong></td></tr>
-                    </table>
+        <table class="custom-table"">
+          <tr>
+                <td>Country</td>
+                <td style="width: 30px;"></td>
+                <td style="padding: 2px 0;"><strong>${d.Country}</strong></td>
+            </tr>
+            <tr>
+                <td>Region</td>
+                <td style="width: 30px;"></td>
+                <td style="padding: 2px 0;"><strong>${d.Region}</strong></td>
+            </tr>
+            <tr>
+                <td class="tight-lines">Earths<br>required</td>
+                <td style="width: 30px;"></td>
+                <td><strong>${d['Number of Earths required']}</strong></td>
+            </tr>
+            <tr>
+                <td>SDG</td>
+                <td style="width: 30px;"></td>
+                <td><strong>${d.SDGi.toFixed(2)}</strong></td>
+            </tr>
+            <tr>
+                <td>HDI</td>
+                <td style="width: 30px;"></td>
+                <td><strong>${d.HDI.toFixed(2)}</strong></td>
+            </tr>
+            <tr>
+                <td class="tight-lines">Life<br>Expectancy</td>
+                <td style="width: 30px;"></td>
+                <td><strong>${d['Life Expectancy'].toFixed(2)}</strong></td>
+            </tr>
+            <tr>
+                <td>GDP pc.</td>
+                <td style="width: 30px;"></td>
+                <td><strong>$ ${d['Per Capita GDP in $'].toFixed(0)}</strong></td>
+            </tr>
+        </table>
                 `)
         .style("left", `${event.pageX + 10}px`)
         .style("top", `${event.pageY - 28}px`)
@@ -275,7 +303,7 @@ export const useEcoChart = (containerRef, data) => {
         .on("click", (event) => toggleSelection(event, region))
         .style("cursor", "pointer");
     });
-    
+
     return () => {
       // Cleanup
       container.selectAll("*").remove();

@@ -9,8 +9,10 @@ const csvPath = "/data/happy_gni.csv";
 
 <Layout title="Happiness Scores">
     <div class="md:h-5"></div>
-
-    <Heading className="font-literata mb-0 mt-0 font-bold" > Happy & Sustainable </Heading>
+    
+    <Heading
+        className="font-literata mb-0 mt-0 font-bold"
+        text="Happy & Sustainable" />
 
     <div class="mt-2 flex justify-center items-start gap-x-4">
         <HappyChart client:load csvPath={csvPath} />

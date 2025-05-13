@@ -10,7 +10,7 @@ const { Content, headings } = await entry.render();
 ---
 
 <Layout title="Privacy Policy">
-    <main
+    <div
         class="mx-auto md:mx-[10.5rem] min-h-[80dvh] max-sm:px-5 flex gap-20 mt-20"
     >
         <section class="flex-1">
@@ -39,6 +39,6 @@ const { Content, headings } = await entry.render();
             </Docs>
         </section>
         <!-- TOC -->
-        <TOC headings={headings}/>
-    </main>
+        <TOC headings={headings} />
+    </div>
 </Layout>

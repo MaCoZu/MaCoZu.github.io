@@ -1,4 +1,4 @@
-<div class="flex flex-row seventy" id="bobbyText">
+<div class="flex flex-row seventy" id="cheesyText">
     <h1 class="">C</h1>
     <h1 class="">h</h1>
     <h1 class="">e</h1>
@@ -34,7 +34,7 @@
 </style>
 
 <script>
-    const bobbyText = document.getElementById("bobbyText");
+    const cheesyText = document.getElementById("cheesyText");
 
     const shadowLayers = [
         { color: "#61b4de", distance: 1 },
@@ -64,11 +64,11 @@
         { color: "#4e5965", distance: 25 },
     ];
 
-    if (bobbyText) {
-        const h1Elements = bobbyText?.querySelectorAll("h1");
+    if (cheesyText) {
+        const h1Elements = cheesyText?.querySelectorAll("h1");
 
-        bobbyText.addEventListener("mousemove", (event) => {
-            const rect = bobbyText.getBoundingClientRect();
+        cheesyText.addEventListener("mousemove", (event) => {
+            const rect = cheesyText.getBoundingClientRect();
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
 
@@ -89,12 +89,12 @@
             });
         });
 
-        bobbyText.addEventListener("mouseleave", () => {
+        cheesyText.addEventListener("mouseleave", () => {
             h1Elements.forEach((h1) => {
                 h1.style.textShadow = ""; // Remove the dynamic shadow on mouse leave
             });
         });
     } else {
-        console.error("Element with id 'bobbyText' not found");
+        console.error("Element with id 'cheesyText' not found");
     }
 </script>

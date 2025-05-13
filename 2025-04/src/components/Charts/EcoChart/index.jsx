@@ -22,11 +22,12 @@ const EcoChart = ({ csvPath }) => {
                     SDGi: +d.SDGi,
                     HDI: +d.HDI,
                     'Life Expectancy': +d['Life Expectancy'],
-                    'Per Capita GDP': +d['Per Capita GDP'],
+                    'Per Capita GDP in $': +d['Per Capita GDP in $'],
                     'Income Group': d['Income Group'],
                     'Population (millions)': +d['Population (millions)'],
                     'Number of Earths required': +d['Number of Earths required']
                 }));
+                // Country, Region, Population(millions), Income Group, HDI, Life Exectancy, Per Capita GDP in $, SDGi, Number of Earths required, Data Quality
                 setData(csvData);
             } catch (err) {
                 console.error("Failed to load CSV:", err);

@@ -17,7 +17,13 @@ export default defineConfig({
   outDir: 'docs',
   output: 'static',
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    build: {
+      sourcemap: false // Disable source maps entirely
+    },
+    optimizeDeps: {
+      exclude: ['svgo']
+    }
   },
   integrations: [mdx({
     remarkPlugins: [remarkToc, remarkGfm, remarkMath],

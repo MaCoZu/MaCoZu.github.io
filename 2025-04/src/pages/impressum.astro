@@ -2,47 +2,31 @@
 import "../styles/global.css";
 import "../styles/font.css";
 import Layout from "../layouts/Layout.astro";
-import H1_Bebas from "../components/Heading.astro";
-import Main from "../components/Main.astro";
+import Heading from "../components/Heading.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="Impressum">
-  <Main>
+  <div class="flex justify-center items-center">
     <article
-    id=""
-    class="w-3/5 max-w-none p-6 prose prose-lg prose-stone dark:prose-invert text-justify"
+      id=""
+      class="max-w-none prose prose-lg prose-stone dark:prose-invert text-justify"
     >
-    <H1_Bebas>Impressum</H1_Bebas>
-      <div class="grid md:grid-cols-2 gap-2 justify-items-center">
-        <div class="text-left text-xl">
-          <p class="text-lg">Verantwortlicher:</p>
-          <p class="font-semibold">Marco Zausch</p>
-          <p class="text-lg">Services:</p>
-          <p class="font-semibold">
-            Business Analytics | Data Science <br />
+    <Heading id="impressum" className="mt-10 mb-10" text="Impressum" />
+      <div class="flex justify-items-center">
+        <div class="text-center text-xl space-y-14">
+          <p class="leading-0.5">
+            Verantwortlicher: <br />
+            <div class="font-semibold">Marco Zausch</div>
           </p>
-        </div>
-
-        <div class="">
-          <div class="flex items-center gap-2 text-left">
-            <!-- Email Text -->
-            <p id="verantwortlicher" class="m-0">Email:</p>
-
-            <!-- Envelope Icon -->
-            <a
-              class="hover:text-indigo-700 dark:filter-white"
-              id="mlink"
-              href="#mlink"
-            >
-              <img
-                src="/img/icons/envelope-solid.svg"
-                class="w-5 h-5 inline-block align-middle"
-                id="envelope"
-              />
-            </a>
-          </div>
+          <p class="leading-0.5">
+            Services: <br />
+            <div class="font-semibold">
+              Business Analytics <br /> Data Science
+            </div>
+          </p>
         </div>
       </div>
     </article>
-  </Main>
+  </div>
 </Layout>
