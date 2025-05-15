@@ -22,8 +22,8 @@ node_modules/s
 2025-04/src/icons/
 
 # files 
-**/*.png
-**/*.jpg
+2025-04/**/*.png
+2025-04/**/*.jpg
 
 *.local
 
