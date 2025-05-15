@@ -11,16 +11,17 @@ import Divider from "../components/Dividers/Divider.astro";
 <Layout title="Other">
     <!-- DESIGN  -->
     <Heading id="design" className="link-offset mt-10" text="DESIGN" />
+
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-        <div class="col-span-1 md:col-span-3 mr-2">
+        <div class="col-span-1 md:col-span-6 lg:col-span-3 mr-2">
             <a href="/dancing_letters">
-                <div class="relative w-full h-40">
+                <div class="relative w-full h-52">
                     <Image
                         src="/foto/dancing_letters2.png"
                         alt="Chart detail"
                         width="100"
                         height="100"
-                        class="absolute inset-0 w-full h-full object-fit"
+                        class="absolute inset-0 w-full h-full object-cover aspect-square"
                     />
                 </div>
                 <div class="mt-3 px-1">
@@ -44,9 +45,9 @@ import Divider from "../components/Dividers/Divider.astro";
     <!-- ECONOMIC INDICATORS  -->
     <Heading id="indicators" className="" text="Economic Indicators" />
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-        <div class="col-span-1 md:col-span-3 mr-2">
+        <div class="col-span-1 lg:col-span-3 mr-2">
             <a href="/eco_footprint">
-                <div class="relative w-full h-40">
+                <div class="relative w-full h-44">
                     <Image
                         src="/foto/ecological_footprint_detail.png"
                         alt="Chart detail"
@@ -69,28 +70,29 @@ import Divider from "../components/Dividers/Divider.astro";
             </a>
         </div>
 
-        <div class="col-span-1 md:col-span-3 mr-2">
+        <div class="col-span-1 md:col-span-4 lg:col-span-3 mr-2">
             <a href="/happy_and_sustainable">
-            <div class="relative w-full h-40">
-                <Image
+                <div class="relative w-full h-44">
+                    <Image
                         src="/foto/happy&sustainable_detail.png"
                         alt="Chart detail"
                         width="100"
                         height="100"
-                        class="absolute inset-0 w-full h-full object-cover"
+                        class="absolute inset-0 w-full h-full object-cover aspect-square"
                     />
-            </div>
+                </div>
 
-            <div class="mt-3 px-1">
-                <h1
-                    class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
-                >
-                    Happy & Sustainable
-                </h1>
-                <p>
-                    Happiness score, emissions and more in one big bubble chart.
-                </p>
-            </div>
+                <div class="mt-3 px-1">
+                    <h1
+                        class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
+                    >
+                        Happy & Sustainable
+                    </h1>
+                    <p>
+                        Happiness score, emissions and more in one big bubble
+                        chart.
+                    </p>
+                </div>
             </a>
         </div>
     </div>
@@ -99,8 +101,9 @@ import Divider from "../components/Dividers/Divider.astro";
 
     <!-- MODEL GALLERY  -->
     <Heading id="models" className="" text="Model Gallery" />
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <ModelCard
+            className="bg-amber-50"
             href="/model_gallery/toc_graph"
             title="TOC Graph"
             description="A graph view of the model gallery series. Models, theories and systems and their connections."
@@ -109,120 +112,84 @@ import Divider from "../components/Dividers/Divider.astro";
             hasGraph={true}
         />
 
-        <div class="col-span-1 md:col-span-1 text-pretty">
-            <a href="/model_gallery/toc_graph">
-                <h1
-                    class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
-                >
-                    TOC Graph
-                </h1>
-                <p>
-                    A graph view of the model gallery series. Models, theories
-                    and systems and their connections.
-                </p>
-            </a>
-        </div>
-        <div class="col-span-1 md:col-span-1 text-pretty">
-            <a href="/model_gallery/model">
-                <h1
-                    class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
-                >
-                    Model
-                </h1>
-                <p>
-                    What is a model anyway? About the merits and snares of
-                    model-building.
-                </p>
-            </a>
-        </div>
+        <ModelCard
+            className="bg-blue-50"
+            href="/model_gallery/model"
+            title="Model"
+            description="What is a model anyway? About the merits and snares of model-building."
+            tag="Model"
+            date="2024-09-29"
+            hasGraph={false}
+        />
 
-        <div class="col-span-1 md:col-span-1 text-pretty">
-            <a href="/model_gallery/schelling_segregation">
-                <h1
-                    class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
-                >
-                    Schelling's Segregation
-                </h1>
-                <p>
-                    Simulation of individual decisons leading to emergend
-                    segregation.
-                </p>
-            </a>
-        </div>
-        <div class="col-span-1 md:col-span-1 text-pretty">
-            <a href="/model_gallery/linear_regression">
-                <h1
-                    class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
-                >
-                    Linear Regression
-                </h1>
-                <p>
-                    The mother of modelling. Constructs relationships between
-                    one output and one or more input variables
-                </p>
-            </a>
-        </div>
-        <div class="col-span-1 md:col-span-1 text-pretty">
-            <a href="/model_gallery/confusion_matrix">
-                <h1
-                    class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
-                >
-                    Confusion Matrix
-                </h1>
-                <p>
-                    Fill in your false and true positives/negatives and see
-                    accuracy, precision, recall and more.
-                </p>
-            </a>
-        </div>
-        <div class="col-span-1 md:col-span-1 text-pretty">
-            <a href="/model_gallery/logistic_growth">
-                <h1
-                    class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
-                >
-                    Logistic Growth
-                </h1>
-                <p>
-                    Inspired by Thomas Malthus model of population growth. Also
-                    known as sigmoid curve in statistics.
-                </p>
-            </a>
-        </div>
-        <div class="col-span-1 md:col-span-1 text-pretty">
-            <a href="/model_gallery/logistic_map">
-                <h1
-                    class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
-                >
-                    Logistic Map
-                </h1>
-                <p class="text-wrap">
-                    A simple modulation of the logistic growth model that
-                    produces phenomena like convergence or chaotic oscillations.
-                </p>
-            </a>
-        </div>
-        <div class="col-span-1 md:col-span-1 text-pretty">
-            <a href="/model_gallery/normal_distribution">
-                <h1
-                    class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
-                >
-                    Normal Distribution
-                </h1>
-                <p class="text-wrap">Natures preferred distribution.</p>
-            </a>
-        </div>
-        <div class="col-span-1 md:col-span-1 text-pretty">
-            <a href="/model_gallery/supply_and_demand">
-                <h1
-                    class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
-                >
-                    Supply and Demand
-                </h1>
-                <p class="text-wrap">
-                    The cornerstone of neoclassical economics.
-                </p>
-            </a>
-        </div>
+        <ModelCard
+            className="bg-blue-50"
+            href="/model_gallery/schelling_segregation"
+            title="Schelling's Segregation"
+            description="Simulation of individual decisons leading to emergend segregation."
+            tag="Model"
+            date="2024-10-12"
+            hasGraph={true}
+        />
+
+        <ModelCard
+            className="bg-blue-50"
+            href="/model_gallery/linear_regression"
+            title="Linear Regression"
+            description="The mother of models. Constructs relationships between one output and one or more input variables."
+            tag="Model"
+            date="2024-11-17"
+            hasGraph={true}
+        />
+
+        <ModelCard
+            className="bg-blue-50"
+            href="/model_gallery/confusion_matrix"
+            title="Confusion Matrix"
+            description=" Fill in your false and true positives/negatives and see accuracy, precision, recall and more."
+            tag="Model"
+            date="2024-12-27"
+            hasGraph={true}
+        />
+
+        <ModelCard
+            className="bg-blue-50"
+            href="/model_gallery/logistic_growth"
+            title="Logistic Growth"
+            description="Inspired by Thomas Malthus model of population growth. Also known as sigmoid curve in statistics."
+            tag="Model"
+            date="2024-12-27"
+            hasGraph={true}
+        />
+        <ModelCard
+            className="bg-blue-50"
+            href="/model_gallery/logistic_map"
+            title="Logistic Map"
+            description="A simple modulation of the logistic growth model that produces phenomena like convergence or chaotic oscillations."
+            tag="Model"
+            date="2024-12-27"
+            hasGraph={true}
+        />
+        <ModelCard
+            className="bg-blue-50"
+            href="/model_gallery/normal_distribution"
+            title="Normal Distribution"
+            description="Natures preferred distribution."
+            tag="Model"
+            date="2024-12-27"
+            hasGraph={true}
+        />
+
+        <ModelCard
+            className="bg-blue-50"
+            href="/model_gallery/supply_and_demand"
+            title="Supply and Demand"
+            description="The cornerstone of neoclassical economics."
+            tag="Model"
+            date="2024-12-27"
+            hasGraph={true}
+        />
+
         <!-- <div class="col-span-1 md:col-span-1 text-pretty">
                 <a href="/model_gallery/corn_model">
                     <h1
