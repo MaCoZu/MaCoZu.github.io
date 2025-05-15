@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import "../styles/font.css";
 import "katex/dist/katex.min.css";
-import Navbar from "../components/Navbar.astro";
+import Navbar from "../components/NewNavbar.astro";
 import Footer from "../components/Footer.astro";
 interface Props {
 	title: string;
@@ -37,7 +37,7 @@ const { title } = Astro.props;
 			onload="renderMathInElement(document.body);"></script>
 	</head>
 	<body
-		class="flex flex-col min-h-screen mx-4 sm:mx-[9.5rem] font-work bg-white dark:bg-gray-950 text-gray-700 dark:text-gray-300 scroll-smooth"
+		class="flex flex-col min-h-screen mx-4 md:mx-[9.5rem] font-work bg-white dark:bg-gray-950 text-gray-700 dark:text-gray-300 scroll-smooth"
 	>
 		<Navbar />
 		<main class="flex-grow my-20 md:mb-20">
