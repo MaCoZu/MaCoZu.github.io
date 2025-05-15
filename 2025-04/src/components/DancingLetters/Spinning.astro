@@ -37,6 +37,16 @@
         color: #fff6a9;
     }
 
+    .spinning::before .spinning_reverse::before {
+        content: ""; 
+        position: absolute; 
+        top: -2px; 
+        right: -8px; 
+        bottom: -2px; 
+        left: -8px; 
+        z-index: 1; 
+    }
+
     .spinning:hover {
         position: relative;
         animation: spinning 8.4s cubic-bezier(0.15, 0.2, 0.25, 0.1);
