@@ -1,38 +1,46 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import mdx from '@astrojs/mdx';
-import remarkToc from 'remark-toc';
-import remarkGfm from 'remark-gfm';
-import rehypeExternalLinks from 'rehype-external-links';
+import mdx from "@astrojs/mdx";
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
+import rehypeKatex from "rehype-katex";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import remarkToc from "remark-toc";
 
-import react from '@astrojs/react';
-import icon from 'astro-icon';
+import react from "@astrojs/react";
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://macozu.github.io',
-  outDir: 'docs',
-  output: 'static',
+  site: "https://macozu.github.io",
+  outDir: "docs",
+  output: "static",
   vite: {
     plugins: [tailwindcss()],
     build: {
-      sourcemap: false // Disable source maps entirely
+      sourcemap: false, // Disable source maps entirely
     },
     optimizeDeps: {
-      exclude: ['svgo']
-    }
+      exclude: ["svgo"],
+    },
   },
-  integrations: [mdx({
-    remarkPlugins: [remarkToc, remarkGfm, remarkMath],
-    rehypePlugins: [rehypeKatex],
-
-  }), react(), icon()],
+  integrations: [
+    mdx({
+      remarkPlugins: [remarkToc, remarkGfm, remarkMath],
+      rehypePlugins: [rehypeKatex],
+    }),
+    react(),
+    icon(),
+  ],
   markdown: {
     remarkPlugins: [remarkToc, remarkGfm, remarkMath],
-    rehypePlugins: [rehypeKatex ],
+    shikiConfig: {
+      themes: {
+        light: "one-light",
+        dark: "gruvbox-dark-medium",
+      },
+      wrap: true,
+    },
+    rehypePlugins: [rehypeKatex],
   },
- 
 });

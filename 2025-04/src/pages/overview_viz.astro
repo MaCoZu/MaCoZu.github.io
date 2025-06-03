@@ -1,105 +1,122 @@
 ---
-import "../styles/global.css";
-import "../styles/font.css";
-import Layout from "../layouts/Layout.astro";
-import Heading from "../components/Heading.astro";
-import ModelCard from "../components/ModelCard.astro";
 import { Image } from "astro:assets";
 import Divider from "../components/Dividers/Divider.astro";
+import Heading from "../components/Heading.astro";
+import Layout from "../layouts/Layout.astro";
+import "../styles/font.css";
+import "../styles/global.css";
 ---
 
 <Layout title="Other">
-    <!-- DESIGN  -->
-    <Heading id="design" className="link-offset mt-10" text="DESIGN" />
+  <!-- DESIGN  -->
+  <Heading id="design" className="link-offset mt-10" text="DESIGN" />
 
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-        <div class="col-span-1 md:col-span-6 lg:col-span-3 mr-2">
-            <a href="/dancing_letters">
-                <div class="relative w-full h-52">
-                    <Image
-                        src="/foto/dancing_letters2.png"
-                        alt="Chart detail"
-                        width="100"
-                        height="100"
-                        class="absolute inset-0 w-full h-full object-cover aspect-square"
-                    />
-                </div>
-                <div class="mt-3 px-1">
-                    <h1
-                        class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
-                    >
-                        Dancing Letters
-                    </h1>
-                    <p>
-                        CSS can do beautiful things, and letters are a bookworms
-                        first choice to learn this stuff. Here I collect some
-                        fine effects, along its code for you to steal.
-                    </p>
-                </div>
-            </a>
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+    <div class="col-span-1 md:col-span-6 lg:col-span-3 mr-2">
+      <a href="/forrodacapita">
+        <div class="relative w-full h-52">
+          <Image
+            src="/foto/dancing_letters2.png"
+            alt="Chart detail"
+            width="100"
+            height="100"
+            class="absolute inset-0 w-full h-full object-cover aspect-square"
+          />
         </div>
+        <div class="mt-3 px-1">
+          <h1
+            class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
+          >
+            Forró Da Cpaita Graphics
+          </h1>
+          <p>Mascot and Logo for Forró Da Capita.</p>
+        </div>
+      </a>
+    </div>
+    <div class="col-span-1 md:col-span-6 lg:col-span-3 mr-2">
+      <a href="/dancing_letters">
+        <div class="relative w-full h-52">
+          <Image
+            src="/foto/dancing_letters2.png"
+            alt="Chart detail"
+            width="100"
+            height="100"
+            class="absolute inset-0 w-full h-full object-cover aspect-square"
+          />
+        </div>
+        <div class="mt-3 px-1">
+          <h1
+            class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
+          >
+            Dancing Letters
+          </h1>
+          <p>
+            CSS can do beautiful things, and letters are a bookworms first
+            choice to learn this stuff. Here I collect some fine effects, along
+            its code for you to steal.
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <Divider id="viz" text="Visualizations" className="link-offset my-20" />
+
+  <!-- ECONOMIC INDICATORS  -->
+  <Heading id="indicators" className="" text="Economic Indicators" />
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+    <div class="col-span-1 lg:col-span-3 mr-2">
+      <a href="/eco_footprint">
+        <div class="relative w-full h-44">
+          <Image
+            src="/foto/ecological_footprint_detail.png"
+            alt="Chart detail"
+            width="100"
+            height="100"
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+        </div>
+        <div class="mt-3 px-1">
+          <h1
+            class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
+          >
+            Ecological Footprint
+          </h1>
+          <p>
+            Just two countries have high human development and a sustainable
+            lifestyle.
+          </p>
+        </div>
+      </a>
     </div>
 
-    <Divider id="viz" text="Visualizations" className="link-offset my-20" />
-
-    <!-- ECONOMIC INDICATORS  -->
-    <Heading id="indicators" className="" text="Economic Indicators" />
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-        <div class="col-span-1 lg:col-span-3 mr-2">
-            <a href="/eco_footprint">
-                <div class="relative w-full h-44">
-                    <Image
-                        src="/foto/ecological_footprint_detail.png"
-                        alt="Chart detail"
-                        width="100"
-                        height="100"
-                        class="absolute inset-0 w-full h-full object-cover"
-                    />
-                </div>
-                <div class="mt-3 px-1">
-                    <h1
-                        class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
-                    >
-                        Ecological Footprint
-                    </h1>
-                    <p>
-                        Just two countries have high human development and a
-                        sustainable lifestyle.
-                    </p>
-                </div>
-            </a>
+    <div class="col-span-1 md:col-span-4 lg:col-span-3 mr-2">
+      <a href="/happy_and_sustainable">
+        <div class="relative w-full h-44">
+          <Image
+            src="/foto/happy&sustainable_detail.png"
+            alt="Chart detail"
+            width="100"
+            height="100"
+            class="absolute inset-0 w-full h-full object-cover aspect-square"
+          />
         </div>
 
-        <div class="col-span-1 md:col-span-4 lg:col-span-3 mr-2">
-            <a href="/happy_and_sustainable">
-                <div class="relative w-full h-44">
-                    <Image
-                        src="/foto/happy&sustainable_detail.png"
-                        alt="Chart detail"
-                        width="100"
-                        height="100"
-                        class="absolute inset-0 w-full h-full object-cover aspect-square"
-                    />
-                </div>
-
-                <div class="mt-3 px-1">
-                    <h1
-                        class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
-                    >
-                        Happy & Sustainable
-                    </h1>
-                    <p>
-                        Happiness score, emissions and more in one big bubble
-                        chart.
-                    </p>
-                </div>
-            </a>
+        <div class="mt-3 px-1">
+          <h1
+            class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
+          >
+            Happy & Sustainable
+          </h1>
+          <p>Happiness score, emissions and more in one big bubble chart.</p>
         </div>
+      </a>
     </div>
+  </div>
 
-    <!-- <Divider id="writing" text="Writing" className="link-offset my-20" /> -->
+  <!-- <Divider id="writing" text="Writing" className="link-offset my-20" /> -->
 
-    <!-- MODEL GALLERY 
+  <!-- MODEL GALLERY 
     <Heading id="models" className="" text="Model Gallery" />
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <ModelCard
