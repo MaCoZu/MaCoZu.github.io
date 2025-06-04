@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 
 export const useEcoChart = (containerRef, data, xVariable, yVariable) => {
   useEffect(() => {
@@ -12,28 +12,32 @@ export const useEcoChart = (containerRef, data, xVariable, yVariable) => {
 
     // Clear previous content
     const container = d3.select(containerRef.current);
-    container.selectAll("*").remove();
+    container.selectAll('*').remove();
 
     // Append a div for the chart layout
-    const chart = container.append("div")
-      .attr("id", "chart-container")
-      .style("display", "flex")
-      .style("flex-direction", "row")
-      .style("align-items", "center");
+    const chart = container
+      .append('div')
+      .attr('id', 'chart-container')
+      .style('display', 'flex')
+      .style('flex-direction', 'row')
+      .style('align-items', 'center');
 
     // Append SVG to the chart container
-    const svg = chart.append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform", `translate(${margin.left},${margin.top})`);
+    const svg = chart
+      .append('svg')
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+      .append('g')
+      .attr('transform', `translate(${margin.left},${margin.top})`);
 
     // Update your scales to use the selected variables
-    const xAxis = d3.scaleLinear()
+    const xAxis = d3
+      .scaleLinear()
       .domain(d3.extent(data, d => d[xVariable]))
       .range([0, width]);
 
-    const yAxis = d3.scaleLinear()
+    const yAxis = d3
+      .scaleLinear()
       .domain(d3.extent(data, d => d[yVariable]))
       .range([height, 0]);
 
@@ -41,76 +45,75 @@ export const useEcoChart = (containerRef, data, xVariable, yVariable) => {
     // svg.append("g")
     //   .attr("transform", `translate(0,${height})`)
     //   .call(d3.axisBottom(x));
-    
+
     // Add X axis
-    svg.append("g")
-      .attr("class", "x-axis")
-      .attr("transform", `translate(0,${height})`)
-      .call(xAxis);
+    svg.append('g').attr('class', 'x-axis').attr('transform', `translate(0,${height})`).call(xAxis);
 
     // X axis title - now dynamic
-    svg.append("text")
-      .attr("class", "x-axis-label")
-      .attr("x", width / 2)
-      .attr("y", height + 60)
-      .style("text-anchor", "middle")
+    svg
+      .append('text')
+      .attr('class', 'x-axis-label')
+      .attr('x', width / 2)
+      .attr('y', height + 60)
+      .style('text-anchor', 'middle')
       .text(xVariable);
 
     // Add Y axis
-    svg.append("g")
-      .attr("class", "y-axis")
-      .call(yAxis);
+    svg.append('g').attr('class', 'y-axis').call(yAxis);
 
     // Y axis title - now dynamic
-    svg.append("text")
-      .attr("class", "y-axis-label")
-      .attr("transform", `translate(${-60}, ${height / 2}) rotate(-90)`)
-      .attr("text-anchor", "middle")
+    svg
+      .append('text')
+      .attr('class', 'y-axis-label')
+      .attr('transform', `translate(${-60}, ${height / 2}) rotate(-90)`)
+      .attr('text-anchor', 'middle')
       .text(yVariable);
 
     // Define color scale for regions
-    const color = d3.scaleOrdinal()
+    const color = d3
+      .scaleOrdinal()
       .domain([
-        "Africa",
-        "EU-27",
-        "Other Europe",
-        "Middle East/Central Asia",
-        "Asia-Pacific",
-        "North America",
-        "Central America/Caribbean",
-        "South America",
+        'Africa',
+        'EU-27',
+        'Other Europe',
+        'Middle East/Central Asia',
+        'Asia-Pacific',
+        'North America',
+        'Central America/Caribbean',
+        'South America',
       ])
       .range([
-        "darkgoldenrod",
-        "blue",
-        "tan",
-        "darkolivegreen",
-        "crimson",
-        "blueviolet",
-        "fuchsia",
-        "purple",
+        'darkgoldenrod',
+        'blue',
+        'tan',
+        'darkolivegreen',
+        'crimson',
+        'blueviolet',
+        'fuchsia',
+        'purple',
       ]);
 
     let selectedRegion = null;
 
     // Tooltip setup
-    const tooltip = container.append("div")
-      .attr("class", "tooltip")
-      .style("opacity", 0)
-      .style("position", "absolute")
-      .style("background", "white")
-      .style("border", "1px solid #ccc")
-      .style("padding", "10px")
-      .style("border-radius", "5px");
+    const tooltip = container
+      .append('div')
+      .attr('class', 'tooltip')
+      .style('opacity', 0)
+      .style('position', 'absolute')
+      .style('background', 'white')
+      .style('border', '1px solid #ccc')
+      .style('padding', '10px')
+      .style('border-radius', '5px');
 
     // Tooltip functions
     // Tooltip functions
     const showTooltip = (event, d) => {
-      tooltip.transition()
-        .duration(200)
-        .style("opacity", 0.9);
+      tooltip.transition().duration(200).style('opacity', 0.9);
 
-      tooltip.html(`
+      tooltip
+        .html(
+          `
         <table>
           <tr><td>Country</td><td><strong>${d.Country}</strong></td></tr>
           <tr><td>Region</td><td><strong>${d.Region}</strong></td></tr>
@@ -120,35 +123,34 @@ export const useEcoChart = (containerRef, data, xVariable, yVariable) => {
           ${xVariable !== 'Life Expectancy' ? `<tr><td>Life Expectancy</td><td><strong>${d['Life Expectancy'].toFixed(2)}</strong></td></tr>` : ''}
           ${xVariable !== 'Per Capita GDP' ? `<tr><td>GDP pc.</td><td><strong>$ ${d['Per Capita GDP'].toFixed(0)}</strong></td></tr>` : ''}
         </table>
-      `)
-        .style("left", `${event.pageX + 10}px`)
-        .style("top", `${event.pageY - 28}px`)
-        .style("z-index", 10);
+      `,
+        )
+        .style('left', `${event.pageX + 10}px`)
+        .style('top', `${event.pageY - 28}px`)
+        .style('z-index', 10);
     };
 
     const hideTooltip = () => {
-      tooltip.transition()
-        .duration(500)
-        .style("opacity", 0);
+      tooltip.transition().duration(500).style('opacity', 0);
     };
 
     // Highlight and selection functions
     const highlight = (event, d) => {
       const region = d.Region || d;
-      d3.selectAll(".dot")
+      d3.selectAll('.dot')
         .transition()
         .duration(200)
-        .style("fill", dot => dot.Region === region ? color(region) : "grey")
-        .attr("r", dot => dot.Region === region ? 7 : 3);
+        .style('fill', dot => (dot.Region === region ? color(region) : 'grey'))
+        .attr('r', dot => (dot.Region === region ? 7 : 3));
     };
 
     const doNotHighlight = () => {
       if (!selectedRegion) {
-        d3.selectAll(".dot")
+        d3.selectAll('.dot')
           .transition()
           .duration(200)
-          .style("fill", d => color(d.Region))
-          .attr("r", 4);
+          .style('fill', d => color(d.Region))
+          .attr('r', 4);
       }
     };
 
@@ -165,134 +167,138 @@ export const useEcoChart = (containerRef, data, xVariable, yVariable) => {
 
     const addReferenceLines = () => {
       // Only add biocapacity line if it's relevant to current y-axis
-      if (yVariable === 'Number of Earths required' || yVariable === 'Total Ecological Footprint (Consumption)') {
-        svg.append("line")
-          .attr("class", "refLine")
-          .style("stroke", "rgb(142, 138, 138)")
-          .style("stroke-width", "2px")
-          .style("stroke-dasharray", "3, 3")
-          .attr("x1", 0)
-          .attr("x2", width)
-          .attr("y1", y(1))
-          .attr("y2", y(1))
-          .attr("stroke-width", 2.5)
-          .attr("stroke-dasharray", "3 3");
+      if (
+        yVariable === 'Number of Earths required' ||
+        yVariable === 'Total Ecological Footprint (Consumption)'
+      ) {
+        svg
+          .append('line')
+          .attr('class', 'refLine')
+          .style('stroke', 'rgb(142, 138, 138)')
+          .style('stroke-width', '2px')
+          .style('stroke-dasharray', '3, 3')
+          .attr('x1', 0)
+          .attr('x2', width)
+          .attr('y1', y(1))
+          .attr('y2', y(1))
+          .attr('stroke-width', 2.5)
+          .attr('stroke-dasharray', '3 3');
 
-        svg.append("text")
-          .attr("id", "bio-label")
-          .attr("x", 10)
-          .attr("y", y(1) - 10)
-          .text("World Biocapacity");
+        svg
+          .append('text')
+          .attr('id', 'bio-label')
+          .attr('x', 10)
+          .attr('y', y(1) - 10)
+          .text('World Biocapacity');
 
-        svg.append("line")
-          .attr("class", "refLine")
-          .style("stroke", "rgb(142, 138, 138)")
-          .style("stroke-width", "2px")
-          .style("stroke-dasharray", "3, 3")
-          .attr("x1", x(0.7))
-          .attr("x2", x(0.7))
-          .attr("y1", y(8.5))
-          .attr("y2", y(0.1))
-          .attr("stroke-width", 2)
-          .attr("stroke-dasharray", "3 3");
+        svg
+          .append('line')
+          .attr('class', 'refLine')
+          .style('stroke', 'rgb(142, 138, 138)')
+          .style('stroke-width', '2px')
+          .style('stroke-dasharray', '3, 3')
+          .attr('x1', x(0.7))
+          .attr('x2', x(0.7))
+          .attr('y1', y(8.5))
+          .attr('y2', y(0.1))
+          .attr('stroke-width', 2)
+          .attr('stroke-dasharray', '3 3');
 
-        svg.append("text")
-          .attr("class", "ref-label")
-          .attr("x", x(0.71))
-          .attr("y", y(8.2))
-          .text("High");
+        svg
+          .append('text')
+          .attr('class', 'ref-label')
+          .attr('x', x(0.71))
+          .attr('y', y(8.2))
+          .text('High');
 
-        svg.append("line")
-          .attr("class", "refLine")
-          .style("stroke", "rgb(142, 138, 138)")
-          .style("stroke-width", "2px")
-          .style("stroke-dasharray", "3, 3")
-          .attr("x1", x(0.8))
-          .attr("x2", x(0.8))
-          .attr("y1", y(8.5))
-          .attr("y2", y(0.1))
-          .attr("stroke-width", 2)
-          .attr("stroke-dasharray", "3 3");
+        svg
+          .append('line')
+          .attr('class', 'refLine')
+          .style('stroke', 'rgb(142, 138, 138)')
+          .style('stroke-width', '2px')
+          .style('stroke-dasharray', '3, 3')
+          .attr('x1', x(0.8))
+          .attr('x2', x(0.8))
+          .attr('y1', y(8.5))
+          .attr('y2', y(0.1))
+          .attr('stroke-width', 2)
+          .attr('stroke-dasharray', '3 3');
 
-        svg.append("text")
-          .attr("class", "ref-label")
-          .attr("x", x(0.81))
-          .attr("y", y(8.2))
-          .selectAll("tspan")
-          .data(["Very high", "human", "development"]) // Data for each line
+        svg
+          .append('text')
+          .attr('class', 'ref-label')
+          .attr('x', x(0.81))
+          .attr('y', y(8.2))
+          .selectAll('tspan')
+          .data(['Very high', 'human', 'development']) // Data for each line
           .enter()
-          .append("tspan")
-          .attr("x", x(0.81))
-          .attr("dy", (d, i) => i === 0 ? 0 : 20)
+          .append('tspan')
+          .attr('x', x(0.81))
+          .attr('dy', (d, i) => (i === 0 ? 0 : 20))
           .text(d => d);
 
         // Add SDG quadrant
-        svg.append("rect")
-          .attr("id", "sdg-quadrant")
-          .attr("x", x(0.7))
-          .attr("y", y(1))
-          .attr("width", x(0.26))
-          // .attr("height", y(0.1) - y(1)) 
-          .attr("height", 54)
-          .style("opacity", 0.3);
+        svg
+          .append('rect')
+          .attr('id', 'sdg-quadrant')
+          .attr('x', x(0.7))
+          .attr('y', y(1))
+          .attr('width', x(0.26))
+          // .attr("height", y(0.1) - y(1))
+          .attr('height', 54)
+          .style('opacity', 0.3);
 
-        svg.append("text")
-          .attr("id", "bio-label")
-          .attr("x", x(0.71))
-          .attr("y", y(0.54))
-          .selectAll("tspan")
-          .data(["Global Sustainable", "Development Quadrant"])
-          .enter().append("tspan")
-          .attr("x", x(0.71))
-          .attr("dy", (d, i) => i * 20)
+        svg
+          .append('text')
+          .attr('id', 'bio-label')
+          .attr('x', x(0.71))
+          .attr('y', y(0.54))
+          .selectAll('tspan')
+          .data(['Global Sustainable', 'Development Quadrant'])
+          .enter()
+          .append('tspan')
+          .attr('x', x(0.71))
+          .attr('dy', (d, i) => i * 20)
           .text(d => d);
-
       }
     };
 
     // Add dots
-    svg.append("g")
-      .selectAll("dot")
+    svg
+      .append('g')
+      .selectAll('dot')
       .data(data)
       .enter()
-      .append("circle")
-      .attr("class", d => `dot ${d.Region.replace(/\s+/g, '')}`)
-      .attr("cx", d => x(d[xVariable]))
-      .attr("cy", d => y(d[yVariable]))
-      .attr("r", 4)
-      .style("fill", d => color(d.Region))
-      .on("mouseover", showTooltip)
-      .on("mouseout", hideTooltip)
-      .on("click", toggleSelection);
+      .append('circle')
+      .attr('class', d => `dot ${d.Region.replace(/\s+/g, '')}`)
+      .attr('cx', d => x(d[xVariable]))
+      .attr('cy', d => y(d[yVariable]))
+      .attr('r', 4)
+      .style('fill', d => color(d.Region))
+      .on('mouseover', showTooltip)
+      .on('mouseout', hideTooltip)
+      .on('click', toggleSelection);
 
     // Add legend
-    const legend = svg.append("g")
-      .attr("class", "legend")
-      .attr("transform", `translate(50, 30)`);
+    const legend = svg.append('g').attr('class', 'legend').attr('transform', `translate(50, 30)`);
 
     color.domain().forEach((region, i) => {
-      const legendRow = legend.append("g")
-        .attr("transform", `translate(0, ${i * 28})`);
+      const legendRow = legend.append('g').attr('transform', `translate(0, ${i * 28})`);
 
-      legendRow.append("circle")
-        .attr("r", 7)
-        .attr("fill", color(region));
+      legendRow.append('circle').attr('r', 7).attr('fill', color(region));
 
-      legendRow.append("text")
-        .attr("x", 15)
-        .attr("y", 5)
-        .style("font-size", "14px")
-        .text(region);
+      legendRow.append('text').attr('x', 15).attr('y', 5).style('font-size', '14px').text(region);
 
-      legendRow.on("mouseover", (event) => highlight(event, region))
-        .on("mouseleave", doNotHighlight)
-        .on("click", (event) => toggleSelection(event, region))
-        .style("cursor", "pointer");
+      legendRow
+        .on('mouseover', event => highlight(event, region))
+        .on('mouseleave', doNotHighlight)
+        .on('click', event => toggleSelection(event, region))
+        .style('cursor', 'pointer');
     });
-    
+
     return () => {
       // Cleanup
-      container.selectAll("*").remove();
+      container.selectAll('*').remove();
     };
   }, [data, containerRef, xVariable, yVariable]);
 };
