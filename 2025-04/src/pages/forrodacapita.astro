@@ -1,60 +1,76 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import "../styles/font.css";
-import "../styles/global.css";
+import Layout from '../layouts/Layout.astro';
+import '../styles/font.css';
+import '../styles/global.css';
 
-import { Code } from "astro:components";
-import Article from "../components/Article.astro";
-import Link from "../components/Link.astro";
+import { Code } from 'astro:components';
+
+import { Image } from 'astro:assets';
+import Article from '../components/Article.astro';
+import Divider from '../components/Dividers/Divider.astro';
+import Link from '../components/Link.astro';
 ---
 
-<Layout title="Dancing Letters">
-  <h1 class="text-4xl font-literata font-bold text-center mt-10 mb-10">
-    Forró da Capita Graphics
-  </h1>
+<Layout title="MZ | Forró Graphics">
+  <h1 class="text-4xl font-literata font-bold text-center mt-10 mb-10">Forró da Capita Graphics</h1>
+  <div class="flex flex-col items-center justify-center mx-auto">
+    <Article className="">
+      <p>
+        For our snug dance venue in the Prinzenalle 58, Berlin I've built a website with Astro. With
+        it came a logo and a mascot created using the free and open-source vector editor
+        <Link href="https://inkscape.org/" text="Inkscape" />.
+      </p>
+      <p>
+        I'll shortly walk you through the design process of the logo and mascot which you can also
+        see on the Forró Da Capita <Link href="https://forrodacapita.netlify.app/" text="website" />
+      </p>
+    </Article>
+  </div>
+  <Divider id="Logo" text="Logo" className="py-10" />
 
   <div class="grid md:grid-cols-2 gap-20">
     <div class="">
       <Article>
         <p>
-          For our snug dance venue in the Prinezenalle 58, Berlin I build a
-          website with Astro as to learn the trade. With it came a logo and a
-          mascot which I created using the free and open-source vector editor
+          For our snug dance venue in the Prinezenalle 58, Berlin I build a website with Astro as to
+          learn the trade. With it came a logo and a mascot which I created using the free and
+          open-source vector editor
           <Link href="https://inkscape.org/" text="Inkscape" />.
         </p>
         <p>
-          I'll shortly walk you through the design process of the logo and
-          mascot which you can also see on the Forró Da Capita <Link
+          I'll shortly walk you through the design process of the logo and mascot which you can also
+          see on the Forró Da Capita <Link
             href="https://forrodacapita.netlify.app/"
             text="website"
           />
         </p>
         <p>
-          For some playful letters I stole from the cover design of the
-          wonderful Bob Foss movie <Link
+          For some playful letters I stole from the cover design of the wonderful Bob Fosse movie <Link
             text="Cabaret"
             href="https://www.imdb.com/title/tt0068327/"
           /> and constructed the missing letters from the six available ones.
         </p>
         <p>
-          The final logo has to be exported as a plain SVG. The SVG code is
-          cluttered with metadata, and unnecessary precision that can be removed
-          with a SVG minifier, I liked the <Link
-            href="https://devina.io/svg-minifier"
-            text="Devina SVG minifier"
-          /> best. Do not merge paths, if you want each letter to be seperate. Devina
-          minifier shows you the bytes saved and the difference between the original
-          and the minified SVG visually.
+          The final logo has to be exported as a plain SVG. The SVG code is cluttered with metadata,
+          and unnecessary precision that can be removed with a SVG minifier.
+        </p>
+        <p>
+          I liked the <Link href="https://devina.io/svg-minifier" text="Devina SVG minifier" /> best.
+          Check what you can remove without breaking your SVG. I didn't merge path because I wanted each
+          letter to be seperate. The minifier shows you the bytes saved and the visual difference between
+          the original and the minified SVG.
+        </p>
+        <p>
+          The final SVG path are equipped with some selected attributes to add color, a css glow,
+          and a stroke. The stroke is transparent and pretty fat, to apply the glow on hover and not
+          miss the mouse.
         </p>
       </Article>
     </div>
     <div class="">
-      <div>
+      <div class="pb-20">
         <!-- FORRO DA CAPITA LOGO  -->
-        <svg
-          viewBox="-20 0 304 230"
-          class="z-20 px-0 md:min-w-[300px] md:max-w-[500px]"
-        >
+        <svg viewBox="-20 0 304 230" class="z-20 px-0 md:min-w-[300px] md:max-w-[500px]">
           <g transform="translate(60 0) scale(0.9 0.9)">
             <path
               id="F"
@@ -168,115 +184,314 @@ import Link from "../components/Link.astro";
           </g>
         </svg>
       </div>
-      <div class="pt-20">
-        <h1 class="text-xl font-mono text-gray-700">clutterd SVG code</h1>
+      <details
+        class="w-full pb-1 group p-3 mb-4 border-3 border-purple-900 rounded-md bg-gradient-to-r from-amber-50 to-amber-100"
+      >
+        <summary
+          class="text-xl font-work mb-2 tracking-wide
+        list-none cursor-pointer flex items-center
+        hover:text-purple-700 transition-colors
+        after:content-[''] after:ml-2 after:inline-block
+        after:w-2 after:h-2 after:border-r-2 after:border-b-2
+        after:border-current after:rotate-45 after:origin-center
+        after:transition-transform
+        group-open:after:rotate-[225deg]"
+          aria-expanded="false">clutterd SVG code</summary
+        >
         <Code
-          class:list={["px-10 py-10"]}
+          class:list={['px-10 py-10']}
           lang="css"
           wrap
           code={`<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) --> <svg width="303.98163mm" height="197.50055mm" viewBox="0 0 303.98163 197.50055" version="1.1" id="svg1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"> <defs id="defs1" /> <g id="layer1" transform="translate(65.61667,-17.72708)"> <path id="path2-4" style="fill:#000000" d="m -14.875581,105.23233 c -19.062561,0.11868 ...
 `}
         />
-      </div>
-      <div class="pt-10">
-        <h1 class="text-xl font-mono text-gray-700">minified SVG code</h1>
+      </details>
+      <details
+        class="w-full pb-1 group p-3 mb-4 border-3 border-purple-900 rounded-md bg-gradient-to-r from-amber-50 to-amber-100"
+      >
+        <summary
+          class="text-xl font-work mb-2 tracking-wide
+        list-none cursor-pointer flex items-center
+        hover:text-purple-700 transition-colors
+        after:content-[''] after:ml-2 after:inline-block
+        after:w-2 after:h-2 after:border-r-2 after:border-b-2
+        after:border-current after:rotate-45 after:origin-center
+        after:transition-transform
+        group-open:after:rotate-[225deg]"
+          aria-expanded="false">minified SVG code</summary
+        >
         <Code
-          class:list={["px-10 py-10"]}
+          class:list={['px-10 py-10']}
           lang="css"
           wrap
           code={`<svg viewBox="0 0 304 197.5">
-          <path d="M50.7 87.5c-19 .2-39.6 ...
+  <path d="M50.7 87.5c-19 .2-39.6 ...
 `}
+        />
+      </details>
+      <details
+        class="w-full pb-1 group p-3 mb-4 border-3 border-purple-900 rounded-md bg-gradient-to-r from-amber-50 to-amber-100"
+        open
+      >
+        <summary
+          class="text-xl font-work mb-2 tracking-wide
+        list-none cursor-pointer flex items-center
+        hover:text-purple-700 transition-colors
+        after:content-[''] after:ml-2 after:inline-block
+        after:w-2 after:h-2 after:border-r-2 after:border-b-2
+        after:border-current after:rotate-45 after:origin-center
+        after:transition-transform
+        group-open:after:rotate-[225deg]"
+          aria-expanded="false">final SVG path</summary
+        >
+        <Code
+          class:list={['px-10 py-10']}
+          lang="css"
+          wrap
+          code={`<path
+  id="F"
+  class="purple_glow fill-[#7f40e5]"
+  stroke="transparent"
+  stroke-width="20"
+  d="M-34 32.9a77 77 0 0 1-26.3 ...
+`}
+        />
+      </details>
+      <details
+        class="w-full pb-1 group p-3 mb-4 border-3 border-purple-900 rounded-md bg-gradient-to-r from-amber-50 to-amber-100"
+      >
+        <summary
+          class="text-xl font-work mb-2 tracking-wide
+        list-none cursor-pointer flex items-center
+        hover:text-purple-700 transition-colors
+        after:content-[''] after:ml-2 after:inline-block
+        after:w-2 after:h-2 after:border-r-2 after:border-b-2
+        after:border-current after:rotate-45 after:origin-center
+        after:transition-transform
+        group-open:after:rotate-[225deg]"
+          aria-expanded="false">CSS glow</summary
+        >
+        <Code
+          class:list={['px-10 py-10']}
+          lang="css"
+          wrap
+          code={`
+<style>
+    path {
+      transition:
+        filter 0.5s ease,
+        fill 0.5s ease;
+    }
+
+    /* Orange glow effect */
+    .yellow_glow:hover {
+      filter: drop-shadow(0 0 2px #ffa500) drop-shadow(0 0 5px #ffa500) drop-shadow(0 0 10px #fdc85f);
+      fill: #fff6a9;
+    }
+
+    .green_glow:hover {
+      filter: drop-shadow(0 0 2px #109c15) drop-shadow(0 0 5px #27aa39) drop-shadow(0 0 10px #0ba708);
+      fill: #aff2bb;
+    }
+
+    .darkorange_glow:hover {
+      filter: drop-shadow(0 0 2px #ff9f00) drop-shadow(0 0 5px #ff8c00) drop-shadow(0 0 20px #fd5800);
+      fill: #fff6a9;
+    }
+
+    .blue_glow:hover {
+      filter: drop-shadow(0 0 2px #5852ff) drop-shadow(0 0 5px #0037ff) drop-shadow(0 0 10px #497cf2);
+      fill: #d3d9ff;
+    }
+
+    .navy_glow:hover {
+      filter: drop-shadow(0 0 2px #000080) drop-shadow(0 0 5px #0000cd) drop-shadow(0 0 10px #002395);
+      fill: #caf3f8;
+    }
+
+    .red_glow:hover {
+      filter: drop-shadow(0 0 5px #ff5252) drop-shadow(0 0 15px #ff0000) drop-shadow(0 0 20px #c5400b);
+      fill: #ffc7c7;
+    }
+
+    .pink_glow:hover {
+      filter: drop-shadow(0 0 2px #ff52f3) drop-shadow(0 0 5px #ff00d4) drop-shadow(0 0 10px #c50baf);
+      fill: #ffc7fa;
+    }
+
+    .violet_glow:hover {
+      filter: drop-shadow(0 0 2px #d752ff) drop-shadow(0 0 5px #bb00ff) drop-shadow(0 0 10px #840bc5);
+      fill: #f3c7ff;
+    }
+
+    .lightblue_glow:hover {
+      filter: drop-shadow(0 0 2px #52ffeb) drop-shadow(0 0 5px #00fff7) drop-shadow(0 0 10px #08dee6);
+      fill: #c7fdff;
+    }
+
+    .darkred_glow:hover {
+      filter: drop-shadow(0 0 2px #cf1020) drop-shadow(0 0 5px #be0032) drop-shadow(0 0 10px #af002a);
+      fill: #fcbdcf;
+    }
+
+    .gold_glow:hover {
+      filter: drop-shadow(0 0 2px #ffd700) drop-shadow(0 0 5px #fcc200) drop-shadow(0 0 10px #ffcc00);
+      fill: #f7ef79;
+    }
+
+    .lime_glow:hover {
+      filter: drop-shadow(0 0 2px #86c626) drop-shadow(0 0 5px #7fff00) drop-shadow(0 0 10px #7cfc00);
+      fill: #e4fe20;
+    }
+
+    .purple_glow:hover {
+      filter: drop-shadow(0 0 2px #966fd6) drop-shadow(0 0 5px #bf00ff) drop-shadow(0 0 10px #b19cd9);
+      fill: #e6e6fa;
+    }
+  </style>
+          `}
+        />
+      </details>
+    </div>
+  </div>
+  <Divider id="mascot" text="Mascot" className="py-10" />
+  <div class="grid md:grid-cols-2 gap-10">
+    <div class="md-col-span-1 gap-10">
+      <Article>
+        <p>
+          I recruted the prince of a well-know cookie brand called Prinzenrolle for our
+          dance. After his conversion he is sporting a traditional hat from the Northeast of Brazil
+          and changed his boots for flip-flops.
+        </p>
+      </Article>
+      <div class="flex flex-row items-center gap-10">
+        <Image
+          class="h-full object-contain"
+          src="/images/old_prince.jpg"
+          alt="Chart detail"
+          width="200"
+          height="100"
+        />
+        <Image
+          class="h-full object-contain"
+          src="/images/prinzenrolle_logo.png"
+          alt="Chart detail"
+          width="350"
+          height="200"
+        />
+      </div>
+      <Article>
+        <p>
+          The prince is a few decades old, but has more character than his successors, he is also one-dimensional which makes him easier to redraw in
+          Inkscape. I was lucky to find a free SVG of the modern Prinzenrolle logo to reconstruct and lay
+          over the refreshed prince.
+        </p>
+        <p>
+          The most important Inkscape skill for this were working with paths and these specific tricks: <br /><br />
+          <span class="font-mono">Path &gt; Trace Bitmap <br /> Path &gt; Object to Path<br/> Path &gt; Simplify (Crtl+L)</span>
+          <br /><br />
+          <Link href="https://logosbynick.com/tutorials/" text="Nick's tutorials"/> were of great help as well.
+        </p>
+      </Article>
+    </div>
+
+    <div class="md-col-span-1">
+      <div class="flex justify-end">
+        <Image
+          class="h-full object-contain"
+          src="/images/PrinzenRuler.png"
+          alt="Chart detail"
+          width="400"
+          height="300"
         />
       </div>
     </div>
-
-    <style>
-      path {
-        transition:
-          filter 0.5s ease,
-          fill 0.5s ease;
-      }
-
-      /* Orange glow effect */
-      .yellow_glow:hover {
-        filter: drop-shadow(0 0 2px #ffa500) drop-shadow(0 0 5px #ffa500)
-          drop-shadow(0 0 10px #fdc85f);
-        fill: #fff6a9;
-      }
-
-      .green_glow:hover {
-        filter: drop-shadow(0 0 2px #109c15) drop-shadow(0 0 5px #27aa39)
-          drop-shadow(0 0 10px #0ba708);
-        fill: #aff2bb;
-      }
-
-      .darkorange_glow:hover {
-        filter: drop-shadow(0 0 2px #ff9f00) drop-shadow(0 0 5px #ff8c00)
-          drop-shadow(0 0 20px #fd5800);
-        fill: #fff6a9;
-      }
-
-      .blue_glow:hover {
-        filter: drop-shadow(0 0 2px #5852ff) drop-shadow(0 0 5px #0037ff)
-          drop-shadow(0 0 10px #497cf2);
-        fill: #d3d9ff;
-      }
-
-      .navy_glow:hover {
-        filter: drop-shadow(0 0 2px #000080) drop-shadow(0 0 5px #0000cd)
-          drop-shadow(0 0 10px #002395);
-        fill: #caf3f8;
-      }
-
-      .red_glow:hover {
-        filter: drop-shadow(0 0 5px #ff5252) drop-shadow(0 0 15px #ff0000)
-          drop-shadow(0 0 20px #c5400b);
-        fill: #ffc7c7;
-      }
-
-      .pink_glow:hover {
-        filter: drop-shadow(0 0 2px #ff52f3) drop-shadow(0 0 5px #ff00d4)
-          drop-shadow(0 0 10px #c50baf);
-        fill: #ffc7fa;
-      }
-
-      .violet_glow:hover {
-        filter: drop-shadow(0 0 2px #d752ff) drop-shadow(0 0 5px #bb00ff)
-          drop-shadow(0 0 10px #840bc5);
-        fill: #f3c7ff;
-      }
-
-      .lightblue_glow:hover {
-        filter: drop-shadow(0 0 2px #52ffeb) drop-shadow(0 0 5px #41e2dc)
-          drop-shadow(0 0 10px #4ee8ee);
-        fill: #d6f3f4;
-      }
-
-      .darkred_glow:hover {
-        filter: drop-shadow(0 0 2px #cf1020) drop-shadow(0 0 5px #be0032)
-          drop-shadow(0 0 10px #af002a);
-        fill: #fcbdcf;
-      }
-
-      .gold_glow:hover {
-        filter: drop-shadow(0 0 2px #ffd700) drop-shadow(0 0 5px #fcc200)
-          drop-shadow(0 0 10px #ffcc00);
-        fill: #f7ef79;
-      }
-
-      .lime_glow:hover {
-        filter: drop-shadow(0 0 2px #86c626) drop-shadow(0 0 5px #7fff00)
-          drop-shadow(0 0 10px #7cfc00);
-        fill: #e4fe20;
-      }
-
-      .purple_glow:hover {
-        filter: drop-shadow(0 0 2px #966fd6) drop-shadow(0 0 5px #bf00ff)
-          drop-shadow(0 0 10px #b19cd9);
-        fill: #e6e6fa;
-      }
-    </style>
   </div>
+  <style>
+    path {
+      transition:
+        filter 0.5s ease,
+        fill 0.5s ease;
+    }
+
+    /* Orange glow effect */
+    .yellow_glow:hover {
+      filter: drop-shadow(0 0 2px #ffa500) drop-shadow(0 0 5px #ffa500)
+        drop-shadow(0 0 10px #fdc85f);
+      fill: #fff6a9;
+    }
+
+    .green_glow:hover {
+      filter: drop-shadow(0 0 2px #109c15) drop-shadow(0 0 5px #27aa39)
+        drop-shadow(0 0 10px #0ba708);
+      fill: #aff2bb;
+    }
+
+    .darkorange_glow:hover {
+      filter: drop-shadow(0 0 2px #ff9f00) drop-shadow(0 0 5px #ff8c00)
+        drop-shadow(0 0 20px #fd5800);
+      fill: #fff6a9;
+    }
+
+    .blue_glow:hover {
+      filter: drop-shadow(0 0 2px #5852ff) drop-shadow(0 0 5px #0037ff)
+        drop-shadow(0 0 10px #497cf2);
+      fill: #d3d9ff;
+    }
+
+    .navy_glow:hover {
+      filter: drop-shadow(0 0 2px #000080) drop-shadow(0 0 5px #0000cd)
+        drop-shadow(0 0 10px #002395);
+      fill: #caf3f8;
+    }
+
+    .red_glow:hover {
+      filter: drop-shadow(0 0 5px #ff5252) drop-shadow(0 0 15px #ff0000)
+        drop-shadow(0 0 20px #c5400b);
+      fill: #ffc7c7;
+    }
+
+    .pink_glow:hover {
+      filter: drop-shadow(0 0 2px #ff52f3) drop-shadow(0 0 5px #ff00d4)
+        drop-shadow(0 0 10px #c50baf);
+      fill: #ffc7fa;
+    }
+
+    .violet_glow:hover {
+      filter: drop-shadow(0 0 2px #d752ff) drop-shadow(0 0 5px #bb00ff)
+        drop-shadow(0 0 10px #840bc5);
+      fill: #f3c7ff;
+    }
+
+    .lightblue_glow:hover {
+      filter: drop-shadow(0 0 2px #52ffeb) drop-shadow(0 0 5px #41e2dc)
+        drop-shadow(0 0 10px #4ee8ee);
+      fill: #d6f3f4;
+    }
+
+    .darkred_glow:hover {
+      filter: drop-shadow(0 0 2px #cf1020) drop-shadow(0 0 5px #be0032)
+        drop-shadow(0 0 10px #af002a);
+      fill: #fcbdcf;
+    }
+
+    .gold_glow:hover {
+      filter: drop-shadow(0 0 2px #ffd700) drop-shadow(0 0 5px #fcc200)
+        drop-shadow(0 0 10px #ffcc00);
+      fill: #f7ef79;
+    }
+
+    .lime_glow:hover {
+      filter: drop-shadow(0 0 2px #86c626) drop-shadow(0 0 5px #7fff00)
+        drop-shadow(0 0 10px #7cfc00);
+      fill: #e4fe20;
+    }
+
+    .purple_glow:hover {
+      filter: drop-shadow(0 0 2px #966fd6) drop-shadow(0 0 5px #bf00ff)
+        drop-shadow(0 0 10px #b19cd9);
+      fill: #e6e6fa;
+    }
+  </style>
 </Layout>
