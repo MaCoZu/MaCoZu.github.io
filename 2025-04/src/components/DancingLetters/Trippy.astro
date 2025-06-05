@@ -1,163 +1,156 @@
----
-
----
-<h1 class="trippy-title md:text-3xl font-funky">
-  Trippy
-</h1>
-
 <div
-class="trippy-text font-funky text-xl md:text-2xl text-black prose tracking-wider max-w-prose dark:prose-invert prose-p:text-pretty prose-img:rounded-xl  text-balance"
+  class="trippy-text font-funky text-3xl md:text-4xl text-black prose tracking-wider max-w-prose dark:prose-invert prose-p:text-pretty prose-img:rounded-xl text-pretty"
 >
-When Prosper Alpanus opened the book, the friends saw a number of neatly
-illuminated copperplates portraying the most utterly astonishing,
-misshapen manikins with the wildest grimacing faces one could possibly
-see. But as soon as Prosper touched one of these manikins on the page, it
-came to life, sprang out and flitted and hopped around on the marble table
-in a really comical way and snapped its little fingers and performed the
-most wonderful pirouettes and entrechats, while singing Quirr, Quapp,
-Pirr, Papp, until Prosper grabbed it by the head and placed it back in the
-book, where it immediately flattened and evened itself out into a
-colourful picture. -- E.T.A. Hoffmann
+  But as soon as Prosper touched one of these manikins on the page, it came to life, sprang out and
+  flitted and hopped around on the marble table in a really comical way and snapped its little
+  fingers and performed the most wonderful pirouettes and entrechats, while singing Quirr, Quapp,
+  Pirr, Papp, until Prosper grabbed it by the head and placed it back in the book, where it
+  immediately flattened and evened itself out into a colourful picture. -- E.T.A. Hoffmann
 </div>
 
 <script>
+  import { gsap } from 'gsap';
+  import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+  import { SplitText } from 'gsap/SplitText';
 
+  gsap.registerPlugin(SplitText, MotionPathPlugin);
 
-import { gsap } from 'gsap';
-import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
-import { SplitText } from 'gsap/SplitText';
+  const deepcoral_palette = [
+    '#1c1529', // dark purple
+    '#393350', // space cadet
+    '#895879', // chinese violet
+    '#838a47', // moss green
+    '#275d46', // castleton green
+  ];
 
-gsap.registerPlugin(SplitText, MotionPathPlugin);
+  gsap.registerEffect({
+    name: 'trippyWobble',
+    extendTimeline: true,
+    defaults: {
+      durationRange: [10, 15],
+      xRange: [-0.8, 0.8],
+      yRange: [-0.8, 0.8],
+      rotationRange: [-2, 2],
+      scaleXRange: [0.97, 1.03],
+      scaleYRange: [0.96, 1.04],
+      colors: null,
+      glow: true,
+      motionPath: false,
+    },
 
-const deepcoral_palette = [
-  '#1c1529', // dark purple
-  '#393350', // space cadet
-  '#895879', // chinese violet
-  '#838a47', // moss green
-  '#275d46', // castleton green
-];
-
-const title_split = new SplitText(".trippy-title", { type: "chars" });
-title_split.chars.forEach((char, i) => {
-  char.style.color = deepcoral_palette[i % deepcoral_palette.length];
-});
-
-gsap.registerEffect({
-  name: 'trippyWobble',
-  extendTimeline: true,
-  defaults: {
-    durationRange: [10, 15],
-    xRange: [-0.8, 0.8],
-    yRange: [-0.8, 0.8],
-    rotationRange: [-2, 2],
-    scaleXRange: [0.97, 1.03],
-    scaleYRange: [0.96, 1.04],
-    colors: null,
-    glow: true,
-    motionPath: false,
-  },
-  effect: (targets, config) => {
-    const split = new SplitText(targets, {
-      type: 'chars',
-      charsClass: 'char inline-block',
-    });
-
-    const chars = split.chars;
-    const useMotionPath = config.motionPath === true;
-
-    chars.forEach((char, i) => {
-      char.style.willChange = 'transform, color, filter';
-
-      gsap.set(char, {
-        scaleX: 1,
-        scaleY: 1,
-        transformOrigin: '50% 50%',
+    effect: (
+      targets: gsap.DOMTarget,
+      config: {
+        motionPath: boolean;
+        glow: any;
+        durationRange: [number, number];
+        xRange: [number, number];
+        yRange: [number, number];
+        rotationRange: [number, number];
+        scaleXRange: [number, number];
+        scaleYRange: [number, number];
+        colors: any[];
+      },
+    ) => {
+      const split = new SplitText(targets, {
+        type: 'chars',
+        charsClass: 'char inline-block',
       });
 
-      // Subtle glow style from CSS, only blur is animated
-      if (config.glow) {
-        gsap.to(char, {
-          filter: 'blur(0.2px)',
-          duration: gsap.utils.random(4, 8),
-          ease: 'sine.inOut',
-          repeat: -1,
-          yoyo: true,
-        });
-      }
+      const chars = split.chars;
+      const useMotionPath = config.motionPath === true;
 
-      // Animate transform motion
-      if (!useMotionPath) {
-        gsap.to(char, {
+      (chars as HTMLElement[]).forEach((char, i) => {
+        char.style.willChange = 'transform, color, filter';
+
+        gsap.set(char, {
+          scaleX: 1,
+          scaleY: 1,
           transformOrigin: '50% 50%',
-          duration: gsap.utils.random(...config.durationRange),
-          x: gsap.utils.random(...config.xRange),
-          y: gsap.utils.random(...config.yRange),
-          rotation: gsap.utils.random(...config.rotationRange),
-          // scale: gsap.utils.random(0.8, 4.5),
-          scaleX: gsap.utils.random(...config.scaleXRange),
-          scaleY: gsap.utils.random(...config.scaleYRange),
-          skewX: gsap.utils.random(-1, 1),
-          skewY: gsap.utils.random(-1, 1),
-          ease: 'sine.inOut',
-          repeat: -1,
-          yoyo: true,
-          delay: i * 0.05 + gsap.utils.random(0, 3),
         });
-      }
 
-      // Optional motion path (replaces x/y)
-      if (useMotionPath) {
-        const angle = i * 5.25;
-        const radius = 2 + Math.random(); // tighter orbit for subtler feel
-        const path = [
-          { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius },
-          {
-            x: Math.cos(angle + Math.PI) * radius,
-            y: Math.sin(angle + Math.PI) * radius,
-          },
-        ];
+        // Subtle glow style from CSS, only blur is animated
+        if (config.glow) {
+          gsap.to(char, {
+            filter: 'blur(0.2px)',
+            duration: gsap.utils.random(4, 8),
+            ease: 'sine.inOut',
+            repeat: -1,
+            yoyo: true,
+          });
+        }
 
-        gsap.to(char, {
-          motionPath: {
-            path: path,
-            autoRotate: false,
-          },
-          duration: gsap.utils.random(10, 16),
-          ease: 'sine.inOut',
-          repeat: -1,
-          yoyo: true,
-          delay: gsap.utils.random(0, 3),
-        });
-      }
+        // Animate transform motion
+        if (!useMotionPath) {
+          gsap.to(char, {
+            transformOrigin: '50% 50%',
+            duration: gsap.utils.random(...config.durationRange),
+            x: gsap.utils.random(...config.xRange),
+            y: gsap.utils.random(...config.yRange),
+            rotation: gsap.utils.random(...config.rotationRange),
+            // scale: gsap.utils.random(0.8, 4.5),
+            scaleX: gsap.utils.random(...config.scaleXRange),
+            scaleY: gsap.utils.random(...config.scaleYRange),
+            skewX: gsap.utils.random(-1, 1),
+            skewY: gsap.utils.random(-1, 1),
+            ease: 'sine.inOut',
+            // repeat: -1,
+            yoyo: true,
+            delay: i * 0.05 + gsap.utils.random(0, 3),
+          });
+        }
 
-      // Smooth color cycling with keyframes (no recursion)
-      if (config.colors?.length) {
-        gsap.to(char, {
-          keyframes: config.colors.map(c => ({ color: c })),
-          duration: gsap.utils.random(9, 12),
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut',
-          delay: gsap.utils.random(0, 3),
-        });
-      }
-    });
+        // Optional motion path (replaces x/y)
+        if (useMotionPath) {
+          const angle = i * 5.25;
+          const radius = 2 + Math.random(); // tighter orbit for subtler feel
+          const path = [
+            { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius },
+            {
+              x: Math.cos(angle + Math.PI) * radius,
+              y: Math.sin(angle + Math.PI) * radius,
+            },
+          ];
 
-    return gsap.timeline(); // enables timeline chaining if needed
-  },
-});
+          gsap.to(char, {
+            motionPath: {
+              path: path,
+              autoRotate: false,
+            },
+            duration: gsap.utils.random(10, 16),
+            ease: 'sine.inOut',
+            repeat: -1,
+            yoyo: true,
+            delay: gsap.utils.random(0, 3),
+          });
+        }
 
+        // Smooth color cycling with keyframes (no recursion)
+        if (config.colors?.length) {
+          gsap.to(char, {
+            keyframes: config.colors.map(c => ({ color: c })),
+            duration: gsap.utils.random(9, 12),
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut',
+            delay: gsap.utils.random(0, 3),
+          });
+        }
+      });
 
-gsap.effects.trippyWobble('.trippy-text', {
-  durationRange: [12, 15],
-  xRange: [-0.95, 0.95],
-  yRange: [-0.95, 0.95],
-  rotationRange: [-2, 2],
-  scaleXRange: [0.9, 1.2],
-  scaleYRange: [0.9, 1.2],
-  colors: deepcoral_palette,
-  motionPath: false,
-  glow: true,
-});
+      return gsap.timeline(); // enables timeline chaining if needed
+    },
+  });
 
+  gsap.effects.trippyWobble('.trippy-text', {
+    durationRange: [12, 15],
+    xRange: [-0.95, 0.95],
+    yRange: [-0.95, 0.95],
+    rotationRange: [-2, 2],
+    scaleXRange: [0.9, 1.2],
+    scaleYRange: [0.9, 1.2],
+    colors: deepcoral_palette,
+    motionPath: false,
+    glow: true,
+  });
 </script>
