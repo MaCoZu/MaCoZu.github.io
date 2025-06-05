@@ -1,19 +1,20 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Article from "../components/Article.astro";
 import { Code } from "astro:components";
-import "../styles/global.css";
+import Article from "../components/Article.astro";
+import Layout from "../layouts/Layout.astro";
 import "../styles/font.css";
-
-import Wobble from "../components/DancingLetters/Wobble.astro";
-import Move from "../components/DancingLetters/Moves.astro";
+import "../styles/global.css";
+import Trippy from "../components/DancingLetters/Trippy.astro";
 import Disco from "../components/DancingLetters/Disco.astro";
 import Disco2 from "../components/DancingLetters/Disco2.astro";
+import Move from "../components/DancingLetters/Moves.astro";
 import Neon from "../components/DancingLetters/Neon.astro";
-import Spinning from "../components/DancingLetters/Spinning.astro";
-import Seventy from "../components/DancingLetters/Seventy.astro";
 import SeventiesFollow from "../components/DancingLetters/Seventies_follow.astro";
+import Seventy from "../components/DancingLetters/Seventy.astro";
+import Spinning from "../components/DancingLetters/Spinning.astro";
+import Wobble from "../components/DancingLetters/Wobble.astro";
 import Link from "../components/Link.astro";
+
 ---
 
 <Layout title="Dancing Letters">
@@ -67,6 +68,32 @@ import Link from "../components/Link.astro";
     </div>
 
     <hr class="my-10 border-gray-200 dark:border-gray-700" />
+
+<!-- TRIPPY  -->
+<div id="wobble">
+    <div class="flex flex-col gap-10 mt-16">
+       <Trippy client:visible/>
+    </div>
+    <!-- TRIPPY CODE  -->
+    <details class="w-full mt-2">
+        <summary class="text-xl font-work mb-2 tracking-wide"
+            >TRIPPY CODE</summary
+        >
+        <div class="w-full h-60 overflow-scroll resize-y rounded-md">
+            <Code
+                class:list={["px-10 py-5"]}
+                lang="html"
+                theme="one-light"
+                wrap
+                code={`
+        `}
+            />
+        </div>
+    </details>
+</div>
+
+<hr class="my-10 border-gray-200 dark:border-gray-700" />
+
 
     <!-- WOBBLE  -->
     <div id="wobble">
