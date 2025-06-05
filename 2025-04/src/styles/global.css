@@ -11,6 +11,10 @@
   all: unset !important;
 }
 
+.font-funky {
+  font-family: 'Funky', sans-serif;
+}
+
 /* MENU */
 .font-work {
   font-family: 'Work', sans-serif;

@@ -8,6 +8,13 @@
 
 /* MENU  */
 @font-face {
+  font-family: 'Funky';
+  src: url('/fonts/Super Dream.ttf') format('truetype');
+  display: swap;
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
   font-family: 'Work';
   src: url('/fonts/WorkSans-Light.ttf') format('truetype');
   display: swap;
