@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
-import { useHappyChart } from './useHappyChart';
 import { useEffect, useRef, useState } from 'react';
 import './happy.css';
+import { useHappyChart } from './useHappyChart';
 
 const HappyChart = ({ csvPath }) => {
   const chartRef = useRef(null);
@@ -21,10 +21,10 @@ const HappyChart = ({ csvPath }) => {
             Country: d.Country,
             Year: +d.Year,
             SDGi: +d.SDGi,
-            HALE: +d.HALE,
+            HDI: +d.HDI,
             'CO₂ pc': +d['CO₂ pc'],
             'Happy Score': +d['Happy Score'],
-            'GNI pc PPP$': +d['GNI pc PPP$'],
+            // 'GNI pc PPP$': +d['GNI pc PPP$'],
           };
         });
         setData(csvData);
