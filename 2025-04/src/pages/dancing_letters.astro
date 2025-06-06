@@ -66,33 +66,150 @@ import '../styles/global.css';
         <Trippy />
       </div>
       <Article className="md:w-1/3">
-        This one is actually made with <Link text="GSAP" href="https://gsap.com/" />, which help in
-        simplifying JavaScript in your animations. I used GSAP instead of simple CSS because of the
-        SplitText function which let's you target single characters and animate them separately.
-        GSAP comes with a lot of smart little functions like <Code
+        This one is actually made with <Link text="GSAP" href="https://gsap.com/" />, which helps
+        with integrating JavaScript in your animations. E.g. the <Code
+          code={`SplitText()`}
           lang="js"
-          code={`yoyo()`}
           theme="one-light"
           inline
-        /> which runs the animation back and forth, <Code
-          lang="js"
-          code={`delay()`}
-          theme="one-light"
-          inline
-        /> for running things incrementally and many more.
+        /> function makes it easy to target single characters and animate them separately. GSAP also
+        comes with a lot of little helpers and the possibility to produce reusable effects.
+
+        <p>
+          The code is typed and the registered effect has default values but is eventually called
+          with specific parameters.
+        </p>
       </Article>
     </div>
 
     <!-- TRIPPY CODE  -->
-    <details class="w-full mt-2">
+    <details class="w-full mt-6">
       <summary class="text-xl font-work mb-2 tracking-wide">TRIPPY CODE</summary>
       <div class="w-full h-60 overflow-scroll resize-y rounded-md">
         <Code
           class:list={['px-10 py-5']}
-          lang="html"
+          lang="js"
           theme="one-light"
           wrap
           code={`
+  import { gsap } from 'gsap';
+  import { SplitText } from 'gsap/SplitText';
+
+  gsap.registerPlugin(SplitText);
+
+  const deepcoral_palette = [
+    '#1c1529', // dark purple
+    '#393350', // space cadet
+    '#895879', // chinese violet
+    '#838a47', // moss green
+    '#275d46', // castleton green
+  ];
+
+  gsap.registerEffect({
+    name: 'trippyWobble',
+    extendTimeline: true,
+    defaults: {
+      activeCharRatio: 0.7,
+      durationRange: [10, 15],
+      xRange: [-0.8, 0.8],
+      yRange: [-0.8, 0.8],
+      rotationRange: [-2, 2],
+      scaleXRange: [0.97, 1.03],
+      scaleYRange: [0.96, 1.04],
+      colors: null,
+      glow: true,
+    },
+
+    effect: (
+      targets: gsap.DOMTarget,
+      config: {
+        activeCharRatio: 0.7;
+        motionPath: boolean;
+        glow: any;
+        durationRange: [number, number];
+        xRange: [number, number];
+        yRange: [number, number];
+        rotationRange: [number, number];
+        scaleXRange: [number, number];
+        scaleYRange: [number, number];
+        colors: any[];
+      },
+    ) => {
+      const split = new SplitText(targets, {
+        type: 'chars',
+        charsClass: 'char inline-block',
+      });
+
+      const chars = split.chars;
+
+      (chars as HTMLElement[]).forEach((char, i) => {
+        char.style.willChange = 'transform, color, filter';
+
+        gsap.set(char, {
+          transformOrigin: '50% 50%',
+          scaleX: 1,
+          scaleY: 1,
+          rotation: 0,
+          willChange: 'transform',
+        });
+
+        // Subtle glow style from CSS, only blur is animated
+        function animateCharBlur() {
+          gsap.to(char, {
+            filter: \`blur(\${gsap.utils.random(0.2, 0.7)}px)\`,
+            duration: gsap.utils.random(3, 6),
+            ease: 'sine.inOut',
+            onComplete: animateCharBlur,
+          });
+        }
+        animateCharBlur();
+
+        // Animate transform motion
+        function animateCharTransform(char: HTMLElement) {
+          gsap.to(char, {
+            x: gsap.utils.random(...config.xRange),
+            y: gsap.utils.random(...config.yRange),
+            rotation: gsap.utils.random(...config.rotationRange),
+            scaleX: gsap.utils.random(...config.scaleXRange),
+            scaleY: gsap.utils.random(...config.scaleYRange),
+            skewX: gsap.utils.random(-1, 1),
+            skewY: gsap.utils.random(-1, 1),
+            duration: gsap.utils.random(...config.durationRange),
+            ease: 'sine.inOut',
+            delay: gsap.utils.random(5, 8),
+            onComplete: () => animateCharTransform(char),
+          });
+        }
+
+        gsap.delayedCall(gsap.utils.random(0, 2.5), () => animateCharTransform(char));
+
+        // Smooth color cycling with keyframes (no recursion)
+        if (config.colors?.length) {
+          gsap.to(char, {
+            keyframes: config.colors.map(c => ({ color: c })),
+            duration: gsap.utils.random(9, 12),
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut',
+            delay: gsap.utils.random(0, 3),
+          });
+        }
+      });
+
+      return gsap.timeline(); // enables timeline chaining if needed
+    },
+  });
+
+  gsap.effects.trippyWobble('.trippy-text', {
+    durationRange: [12, 15],
+    xRange: [-0.95, 0.95],
+    yRange: [-0.95, 0.95],
+    rotationRange: [-2, 2],
+    scaleXRange: [0.9, 1.3],
+    scaleYRange: [0.9, 1.5],
+    colors: deepcoral_palette,
+    glow: true,
+  });
             `}
         />
       </div>
@@ -746,12 +863,9 @@ import '../styles/global.css';
         <div class="md:col-span-2 justify-center items-center">
           <Article>
             <p>
-              Good Lord, flickering lights are mesmerizing. Insects, gamblers and other creatures of
-              the night can tell you a thing or two about it.
-            </p>
-            <p>
-              I've mixed three effects: glow, flickering and a short-circuted blink. The glow runs
-              through four colors and each letter starts with a lag.
+              Good Lord, flickering lights are mesmerizing. I've mixed three effects: glow,
+              flickering and a short-circuted blink. The glow runs through four colors and each
+              letter starts with a lag.
             </p>
             <p>
               The flicker and the blink are essentially the same thing, only that the latter is
@@ -988,10 +1102,7 @@ import '../styles/global.css';
         </div>
         <div class="md:col-span-2 justify-center items-center">
           <Article>
-            <p>
-              Talking about gambling, Casions offer a host of inspiration for swirling signs that
-              bedazzle to suck you dry.
-            </p>
+            <p>Here is one inspired by a slot machine.</p>
           </Article>
         </div>
       </div>
