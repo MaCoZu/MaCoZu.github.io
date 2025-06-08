@@ -1,88 +1,85 @@
 ---
-import "../styles/global.css";
-import "../styles/font.css";
-import Layout from "../layouts/Layout.astro";
-import Link from "../components/Link.astro";
-import ProjectCard from "../components/ProjectCard.astro";
+import Link from '../components/Link.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Layout from '../layouts/Layout.astro';
+import '../styles/font.css';
+import '../styles/global.css';
 ---
 
 <style>
-	.icon-medium {
-		width: 4rem;
-		height: 4rem;
-	}
-	.icon-large {
-		width: 4.8rem;
-		height: 4.8rem;
-	}
+  .icon-medium {
+    width: 4rem;
+    height: 4rem;
+  }
+  .icon-large {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
 </style>
 
 <Layout title="Portfolio">
-	<main
-		class="mx-auto md:mx-[10.5rem] min-h-[80dvh] max-sm:px-5 flex justify-center items-center flex-col"
-	>
-		<div class="md:h-20"></div>
+  <main
+    class="mx-auto md:mx-[10.5rem] min-h-[80dvh] max-sm:px-5 flex justify-center items-center flex-col"
+  >
+    <div class="md:h-20"></div>
 
-		<!-- TWITTER ANALYSIS -->
-		<ProjectCard
-			title="Congressional Tweeting"
-			subtitle="Big data analysis of tweets from US congress members."
-			link="https://twitter-analysis-six.vercel.app/"
-			iconName="icons/twitter-bird2"
-			iconSize="large"
-			techList={["Pyspark", "Databricks", "SQL"]}
-		>
-			<span slot="description">
-				I took the task and data from the SQL for Data Science <Link
-					href="https://www.coursera.org/learn/sql-data-science-capstone?specialization=learn-sql-basics-data-science"
-					>course</Link
-				> on Coursera. The imaginary customer wants an analysis of the 2008-2017
-				congressional tweets to understand key topics, members, and relationships
-				within Congress.
-			</span>
-		</ProjectCard>
+    <!-- TWITTER ANALYSIS -->
+    <ProjectCard
+      title="Congressional Tweeting"
+      subtitle="Big data analysis of tweets from US congress members."
+      link="https://twitter-analysis-six.vercel.app/"
+      iconName="icons/twitter-bird2"
+      iconSize="large"
+      techList={['Pyspark', 'Databricks', 'SQL']}
+    >
+      <span slot="description">
+        I took the task and data from the course <Link
+          href="https://www.coursera.org/learn/sql-data-science-capstone?specialization=learn-sql-basics-data-science"
+          text="SQL for Data Science"
+        />on Coursera. The imaginary customer wants an analysis of the 2008-2017 congressional
+        tweets to understand key topics, members, and relationships within Congress.
+      </span>
+    </ProjectCard>
 
-		<!-- World Bank Commander -->
-		<ProjectCard
-			title="World Bank Commander"
-			subtitle="Compare all world bank indicators on a 2x2 chart grid."
-			link="https://world-bankcommander.onrender.com/"
-			iconName="icons/worldbank_logo"
-			iconSize="medium"
-			techList={["Python", "Dash", "Plotly"]}
-		>
-			<span slot="description">
-				The idea was to have a clean overview of the different
-				indicators to comapare and spot unexpected relationships. Since
-				the world bank's <Link
-					href="https://databank.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG/1ff4a498/Popular-Indicators"
-					>interface</Link
-				> is cumbersome and crowded I wanted something simple. Happy relationship
-				hunting!
-			</span>
-		</ProjectCard>
+    <!-- World Bank Commander -->
+    <ProjectCard
+      title="World Bank Commander"
+      subtitle="Compare all world bank indicators on a 2x2 chart grid."
+      link="https://world-bankcommander.onrender.com/"
+      iconName="icons/worldbank_logo"
+      iconSize="medium"
+      techList={['Python', 'Dash', 'Plotly']}
+    >
+      <span slot="description">
+        The idea was to have a clean overview of the different indicators to comapare and spot
+        unexpected relationships. Since the world bank's <Link
+          href="https://databank.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG/1ff4a498/Popular-Indicators"
+          text="interface"
+        /> is cumbersome and crowded I wanted something simple. Happy relationship hunting!
+      </span>
+    </ProjectCard>
 
-		<!-- Tableau Dashboards -->
-		<ProjectCard
-			title="Tableau Dashboards"
-			subtitle="Some of my data dashboard on Tableau Public."
-			link="https://public.tableau.com/app/profile/marco.zausch8856/vizzes"
-			iconName="icons/tableau-software"
-			iconSize="medium"
-			techList={["Tableau", "Data Analysis"]}
-		>
-			<span slot="description">
-				Tableau is a Business Intelligence software but with a better
-				look than Power BI for example. Check out my public <Link
-					href="https://public.tableau.com/app/profile/marco.zausch8856/vizzes"
-				>
-					dashboards</Link
-				> here.
-			</span>
-		</ProjectCard>
+    <!-- Tableau Dashboards -->
+    <ProjectCard
+      title="Tableau Dashboards"
+      subtitle="Some of my data dashboard on Tableau Public."
+      link="https://public.tableau.com/app/profile/marco.zausch8856/vizzes"
+      iconName="icons/tableau-software"
+      iconSize="medium"
+      techList={['Tableau', 'Data Analysis']}
+    >
+      <span slot="description">
+        Tableau is a Business Intelligence software but with a better look than Power BI for
+        example. Check out my public <Link
+          href="https://public.tableau.com/app/profile/marco.zausch8856/vizzes"
+          text="dashboards"
+        />
+      </span> here.
+    </ProjectCard>
+  </main>
 
-		{
-			/* 
+  {
+    /* 
         <!-- MODEL GALLERY -->
         <div class="container mx-auto md:max-w-4xl text-xl w-full box-border">
             <a href="/model_gallery/toc_graph">
@@ -132,10 +129,10 @@ import ProjectCard from "../components/ProjectCard.astro";
             <hr class="w-1/2 border-gray-400" />
         </div>
         */
-		}
+  }
 
-		{
-			/*
+  {
+    /*
            <!-- VISUALISATIONS -->
         <div class="container mx-auto md:max-w-4xl text-xl w-full box-border">
             <a href="/overview_viz">
@@ -184,6 +181,5 @@ import ProjectCard from "../components/ProjectCard.astro";
             </p>
         </div>
         */
-		}
-	</main>
+  }
 </Layout>
