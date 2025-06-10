@@ -1,14 +1,12 @@
 // @ts-check
 import mdx from '@astrojs/mdx';
-import tailwindcss from '@tailwindcss/vite';
+import react from '@astrojs/react';
+import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 import rehypeKatex from 'rehype-katex';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkToc from 'remark-toc';
-
-import react from '@astrojs/react';
-import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,7 +14,7 @@ export default defineConfig({
   outDir: 'docs',
   output: 'static',
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [],
     build: {
       sourcemap: false, // Disable source maps entirely
     },
@@ -24,6 +22,7 @@ export default defineConfig({
       exclude: ['svgo'],
     },
   },
+
   integrations: [
     mdx({
       remarkPlugins: [remarkToc, remarkGfm, remarkMath],
