@@ -10,6 +10,7 @@ import remarkToc from 'remark-toc';
 
 // https://astro.build/config
 export default defineConfig({
+  base: 'MaCoZu.github.io',
   site: 'https://macozu.github.io',
   outDir: 'docs',
   output: 'static',
