@@ -3,10 +3,10 @@ name: Deploy Astro site to GitHub Pages
 on:
   push:
     branches:
-      - main  # or your default branch name
+      - main
 
 permissions:
-  contents: write  # Allows pushing to gh-pages branch
+  contents: write
 
 jobs:
   deploy:
@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18  # Adjust if needed
+          node-version: 20  # ✅ Added version
 
       - name: Install dependencies
         run: npm ci
