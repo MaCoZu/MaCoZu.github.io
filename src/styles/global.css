@@ -1,0 +1,71 @@
+@import 'tailwindcss';
+@import './font.css';
+@plugin "@tailwindcss/typography";
+
+
+
+.link-offset:target {
+  padding-top: 30px;
+}
+
+/* Temporary disable KaTeX styles to isolate issues */
+.katex {
+  all: unset !important;
+}
+
+.font-funky {
+  font-family: 'Funky', sans-serif;
+}
+
+/* MENU */
+.font-work {
+  font-family: 'Work', sans-serif;
+}
+
+/* TEXT */
+.font-literata {
+  font-family: 'Literata', serif;
+}
+
+/* HIGHLIGHT  */
+.font-bebas {
+  font-family: 'Bebas', sans-serif;
+}
+
+/* scrolling smooth instead of abruptly  */
+html {
+  scroll-behavior: smooth;
+}
+
+div.vtext {
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  text-decoration: none !important;
+}
+
+/* switch color of logo  */
+.filter-white {
+  filter: invert(100%);
+}
+
+/* .filter-icon { filter: none; } */
+.filter-icon {
+  /* Dark mode: Adjust the icon to match rgb(229, 231, 235) */
+  filter: invert(86%) sepia(4%) saturate(0%) hue-rotate(210deg) brightness(98%) contrast(89%);
+}
+
+/* TIPPY */
+span[tip] {
+  cursor: help;
+  text-decoration-style: dotted;
+  text-decoration-line: underline;
+  text-decoration-color: blue;
+  text-decoration-thickness: 1.5px;
+  font-weight: 500;
+}
+
+@layer components {
+  .btn {
+    @apply origin-center transform-gpu transition duration-300 ease-in will-change-transform hover:scale-103 hover:text-blue-600;
+  }
+}

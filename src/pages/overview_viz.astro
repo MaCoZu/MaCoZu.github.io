@@ -1,0 +1,262 @@
+---
+import { Image } from 'astro:assets';
+import Divider from '../components/Dividers/Divider.astro';
+import Heading from '../components/Heading.astro';
+import Layout from '../layouts/Layout.astro';
+import '../styles/font.css';
+import '../styles/global.css';
+---
+
+<Layout title="Other">
+  <!-- DESIGN  -->
+  <Heading id="design" className="link-offset mt-10" text="DESIGN" />
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+    <div class="col-span-1 md:col-span-6 lg:col-span-3 mr-2">
+      <a href="/css_gradients">
+        <div class="relative w-full h-52">
+          <div
+            id="gradients"
+            class="absolute inset-0 w-full h-full object-contain aspect-square rounded-sm"
+          >
+            <h1 id="gradients-text">Gradients</h1>
+          </div>
+        </div>
+        <div class="mt-3 px-1">
+          <h1
+            class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
+          >
+            CSS Gradients
+          </h1>
+          <p>
+            Exploration of CSS gradients with code. As a reference for myself and the accidental
+            surfer.
+          </p>
+        </div>
+      </a>
+    </div>
+    <div class="col-span-1 md:col-span-6 lg:col-span-3 mr-2">
+      <a href="/forrodacapita">
+        <div class="relative w-full h-52">
+          <Image
+            src="/images/PrinzenRuler.png"
+            alt="Chart detail"
+            width="100"
+            height="100"
+            class="absolute inset-0 w-full h-full object-contain aspect-square"
+          />
+        </div>
+        <div class="mt-3 px-1">
+          <h1
+            class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
+          >
+            Forró Da Capita Graphics
+          </h1>
+          <p>Mascot and Logo for the finest Forró venue in the capital.</p>
+        </div>
+      </a>
+    </div>
+    <div class="col-span-1 md:col-span-6 lg:col-span-3 mr-2">
+      <a href="/dancing_letters">
+        <div class="relative w-full h-52">
+          <Image
+            src="/foto/dancing_letters2.png"
+            alt="Chart detail"
+            width="100"
+            height="100"
+            class="absolute inset-0 w-full h-full object-cover aspect-square rounded-sm"
+          />
+        </div>
+        <div class="mt-3 px-1">
+          <h1
+            class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
+          >
+            Dancing Letters
+          </h1>
+          <p>
+            CSS can do beautiful things and letters were my first choice. You can use CSS in logos,
+            simple text or to animate SVG's.
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <Divider id="viz" text="Visualizations" className="link-offset my-20" />
+
+  <!-- ECONOMIC INDICATORS  -->
+  <Heading id="indicators" className="" text="Economic Indicators" />
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+    <div class="col-span-1 lg:col-span-3 mr-2">
+      <a href="/eco_footprint">
+        <div class="relative w-full h-44">
+          <Image
+            src="/foto/ecological_footprint_detail.png"
+            alt="Chart detail"
+            width="100"
+            height="100"
+            class="absolute inset-0 w-full h-full object-cover rounded-sm"
+          />
+        </div>
+        <div class="mt-3 px-1">
+          <h1
+            class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
+          >
+            Ecological Footprint
+          </h1>
+          <p>Just two countries have high human development and a sustainable lifestyle.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-span-1 md:col-span-4 lg:col-span-3 mr-2">
+      <a href="/happy_and_sustainable">
+        <div class="relative w-full h-44 scroll-appear">
+          <Image
+            src="/foto/happy&sustainable_detail.png"
+            alt="Chart detail"
+            width="100"
+            height="100"
+            class="absolute inset-0 w-full h-full object-cover aspect-square"
+          />
+        </div>
+
+        <div class="mt-3 px-1">
+          <h1
+            class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1"
+          >
+            Happy & Sustainable
+          </h1>
+          <p>Happiness score, emissions and more in one big bubble chart.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- <Divider id="writing" text="Writing" className="link-offset my-20" /> -->
+
+  <!-- MODEL GALLERY 
+    <Heading id="models" className="" text="Model Gallery" />
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <ModelCard
+            className="bg-amber-50"
+            href="/model_gallery/toc_graph"
+            title="TOC Graph"
+            description="A graph view of the model gallery series. Models, theories and systems and their connections."
+            tag="Systems"
+            date="2024-03-15"
+            hasGraph={true}
+        />
+
+        <ModelCard
+            className="bg-blue-50"
+            href="/model_gallery/model"
+            title="Model"
+            description="What is a model anyway? About the merits and snares of model-building."
+            tag="Model"
+            date="2024-09-29"
+            hasGraph={false}
+        />
+
+        <ModelCard
+            className="bg-blue-50"
+            href="/model_gallery/schelling_segregation"
+            title="Schelling's Segregation"
+            description="Simulation of individual decisions leading to the emergence of segregation."
+            tag="Model"
+            date="2024-10-12"
+            hasGraph={true}
+        />
+
+        <ModelCard
+            className="bg-blue-50"
+            href="/model_gallery/linear_regression"
+            title="Linear Regression"
+            description="The mother of models. Constructs relationships between one output and one or more input variables."
+            tag="Model"
+            date="2024-11-17"
+            hasGraph={true}
+        />
+
+        <ModelCard
+            className="bg-blue-50"
+            href="/model_gallery/confusion_matrix"
+            title="Confusion Matrix"
+            description=" Fill in your false and true positives/negatives and see accuracy, precision, recall and more."
+            tag="Model"
+            date="2024-12-27"
+            hasGraph={true}
+        />
+
+        <ModelCard
+            className="bg-blue-50"
+            href="/model_gallery/logistic_growth"
+            title="Logistic Growth"
+            description="Inspired by Thomas Malthus model of population growth. Also known as sigmoid curve in statistics."
+            tag="Model"
+            date="2024-12-27"
+            hasGraph={true}
+        />
+        <ModelCard
+            className="bg-blue-50"
+            href="/model_gallery/logistic_map"
+            title="Logistic Map"
+            description="A simple modulation of the logistic growth model that produces phenomena like convergence or chaotic oscillations."
+            tag="Model"
+            date="2024-12-27"
+            hasGraph={true}
+        />
+        <ModelCard
+            className="bg-blue-50"
+            href="/model_gallery/normal_distribution"
+            title="Normal Distribution"
+            description="Natures preferred distribution."
+            tag="Model"
+            date="2024-12-27"
+            hasGraph={true}
+        />
+
+        <ModelCard
+            className="bg-blue-50"
+            href="/model_gallery/supply_and_demand"
+            title="Supply and Demand"
+            description="The cornerstone of neoclassical economics."
+            tag="Model"
+            date="2024-12-27"
+            hasGraph={true}
+        />
+
+        <!-- <div class="col-span-1 md:col-span-1 text-pretty">
+                <a href="/model_gallery/corn_model">
+                    <h1
+                        class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold mb-1">
+                        Corn Model</h1>
+                    <p class="text-wrap">Ricardo's three-factor economy.</p>
+                </a>
+            </div> 
+    </div> -->
+  <style>
+    #gradients {
+      /* padding: 2.5rem; */
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(202, 21, 243, 0.7) 10%, transparent 50%),
+        linear-gradient(45deg, rgb(255, 80, 80) 40%, transparent 100%),
+        linear-gradient(180deg, #2f82ff 0%, #8ee6ff 70%);
+    }
+    #gradients-text {
+      padding: 1.5rem;
+      font-weight: bold;
+      font-family: 'Bevan', sans-serif;
+      font-size: clamp(1.5rem, calc(1rem + 2vw), 2.5rem);
+      background: linear-gradient(120deg, #ffffff, #fff943);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-align: center;
+    }
+  </style>
+</Layout>

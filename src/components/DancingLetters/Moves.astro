@@ -1,0 +1,189 @@
+<div class="flex flex-row">
+  <h1 class="glow turn">D</h1>
+  <h1 class="glow bounce">A</h1>
+  <h1 class="glow swing">N</h1>
+  <h1 class="glow gelatine">C</h1>
+  <h1 class="glow spin">I</h1>
+  <h1 class="glow flip">N</h1>
+  <h1 class="glow pulse">G</h1>
+</div>
+
+<style>
+  @font-face {
+    font-family: "RuslanDisplay";
+    src: url("/fonts/RuslanDisplay-Regular.ttf") format("truetype");
+    font-display: swap;
+  }
+
+  h1 {
+    font-family: "RuslanDisplay";
+    font-size: 5rem;
+    letter-spacing: 4px;
+  }
+
+  /* GLOW */
+  .glow:hover {
+    text-shadow:
+      0 0 5px #ffa500,
+      0 0 15px #ffa500,
+      0 0 20px #ffa500,
+      0 0 40px #ffa500,
+      0 0 60px #f8bd50,
+      0 0 10px #f4a749,
+      0 0 98px #e39804;
+    color: #fff6a9;
+    animation: glow 3s infinte;
+  }
+  @keyframes glow {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  /* TURN */
+  .turn:hover {
+    transform-origin: center center;
+    animation: turn 4s infinite;
+  }
+  @keyframes turn {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* BOUNCE  */
+  .bounce:hover {
+    animation: bounce 2s ease-out infinite;
+  }
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-20px);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+    75% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* GELATINE */
+  .gelatine:hover {
+    animation: gelatine 0.5s infinite;
+  }
+  @keyframes gelatine {
+    from,
+    to {
+      transform: scale(1, 1);
+    }
+    25% {
+      transform: scale(0.9, 1.1);
+    }
+    50% {
+      transform: scale(1.1, 0.9);
+    }
+    75% {
+      transform: scale(0.95, 1.05);
+    }
+  }
+
+  /* Y FLIP */
+  .spin:hover {
+    transform-origin: center center;
+    animation: spin 9s infinite;
+  }
+
+  @keyframes spin {
+    0%,
+    100% {
+      animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+    }
+    0% {
+      transform: rotateY(0deg);
+    }
+    50% {
+      transform: rotateY(1800deg);
+      animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+    100% {
+      transform: rotateY(3600deg);
+    }
+  }
+
+  .flip::before {
+    content: ""; /* Required for pseudo-elements */
+    position: absolute; /* Position absolutely around the element */
+    top: -20px; /* Adjust to increase the hoverable area */
+    right: -5px; /* Adjust to increase the hoverable area */
+    bottom: -20px; /* Adjust to increase the hoverable area */
+    left: -5px; /* Adjust to increase the hoverable area */
+    z-index: 1; /* Ensure the pseudo-element is above other elements */
+  }
+
+  /* X FLIP */
+  .flip:hover {
+    transform-origin: center center 20px;
+    position: relative;
+    display: inline-block;
+    animation: flip 9s linear infinite;
+  }
+
+  @keyframes flip {
+    0% {
+      transform: rotateX(0deg);
+      animation-timing-function: ease-in;
+    }
+    50% {
+      transform: rotateX(1800deg); /* 10 spins */
+      animation-timing-function: ease-out;
+    }
+    100% {
+      transform: rotateX(3600deg); /* 20 spins total */
+    }
+  }
+
+  /* SWING  */
+  .swing:hover {
+    transform-origin: top left;
+    animation: swing 2s ease-in-out infinite alternate;
+  }
+  @keyframes swing {
+    20% {
+      transform: rotate(15deg);
+    }
+    40% {
+      transform: rotate(-10deg);
+    }
+    60% {
+      transform: rotate(5deg);
+    }
+    80% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .pulse:hover {
+    animation: pulse 1s infinite ease-in-out alternate;
+  }
+  @keyframes pulse {
+    from {
+      transform: scale(0.8);
+    }
+    to {
+      transform: scale(1.2);
+    }
+  }
+</style>

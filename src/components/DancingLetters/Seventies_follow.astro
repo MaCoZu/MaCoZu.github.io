@@ -1,0 +1,100 @@
+<div class="flex flex-row seventy" id="cheesyText">
+    <h1 class="">C</h1>
+    <h1 class="">h</h1>
+    <h1 class="">e</h1>
+    <h1 class="">e</h1>
+    <h1 class="">s</h1>
+    <h1 class="">e</h1>
+</div>
+
+<style>
+    @font-face {
+        font-family: "LuckiestGuy";
+        src: url("/fonts/LuckiestGuy-Regular.ttf") format("truetype");
+        font-display: swap;
+    }
+
+    .flex-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        min-height: 150px;
+    }
+
+    h1 {
+        font-family: "LuckiestGuy";
+        text-transform: uppercase;
+        color: #11077c;
+        text-decoration: none;
+        font-size: 4rem;
+        letter-spacing: 15px;
+        margin: 0;
+    }
+</style>
+
+<script>
+    const cheesyText = document.getElementById("cheesyText");
+
+    const shadowLayers = [
+        { color: "#61b4de", distance: 1 },
+        { color: "#61b4de", distance: 2 },
+        { color: "#61b4de", distance: 3 },
+        { color: "#61b4de", distance: 4 },
+        { color: "#61b4de", distance: 5 },
+        { color: "#91c467", distance: 6 },
+        { color: "#91c467", distance: 7 },
+        { color: "#91c467", distance: 8 },
+        { color: "#91c467", distance: 9 },
+        { color: "#91c467", distance: 10 },
+        { color: "#f3a14b", distance: 11 },
+        { color: "#f3a14b", distance: 12 },
+        { color: "#f3a14b", distance: 13 },
+        { color: "#f3a14b", distance: 14 },
+        { color: "#f3a14b", distance: 15 },
+        { color: "#e84c50", distance: 16 },
+        { color: "#e84c50", distance: 17 },
+        { color: "#e84c50", distance: 18 },
+        { color: "#e84c50", distance: 19 },
+        { color: "#e84c50", distance: 20 },
+        { color: "#4e5965", distance: 21 },
+        { color: "#4e5965", distance: 22 },
+        { color: "#4e5965", distance: 23 },
+        { color: "#4e5965", distance: 24 },
+        { color: "#4e5965", distance: 25 },
+    ];
+
+    if (cheesyText) {
+        const h1Elements = cheesyText?.querySelectorAll("h1");
+
+        cheesyText.addEventListener("mousemove", (event) => {
+            const rect = cheesyText.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            const deltaX = (mouseX - centerX) / (rect.width / 2); // Normalize to -1 to 1
+            const deltaY = (mouseY - centerY) / (rect.height / 2); // Normalize to -1 to 1
+
+            h1Elements.forEach((h1) => {
+                let shadows = "";
+                shadowLayers.forEach((layer, index) => {
+                    const shadowX = deltaX * layer.distance;
+                    const shadowY = deltaY * layer.distance;
+                    shadows += `${shadowX}px ${shadowY}px ${layer.color}${index < shadowLayers.length - 1 ? ", " : ""}`;
+                });
+                h1.style.textShadow = shadows;
+            });
+        });
+
+        cheesyText.addEventListener("mouseleave", () => {
+            h1Elements.forEach((h1) => {
+                h1.style.textShadow = ""; // Remove the dynamic shadow on mouse leave
+            });
+        });
+    } else {
+        console.error("Element with id 'cheesyText' not found");
+    }
+</script>

@@ -1,0 +1,182 @@
+<div class="slot-machine">
+    <div class="slot-reel" data-final-value="S"></div>
+    <div class="slot-reel" data-final-value="L"></div>
+    <div class="slot-reel" data-final-value="O"></div>
+    <div class="slot-reel" data-final-value="T"></div>
+</div>
+
+<style>
+    @font-face {
+        font-family: "CoffeeTin";
+        src: url("/fonts/CoffeeTin.ttf") format("truetype");
+        font-display: swap;
+    }
+
+    .slot-machine {
+        display: flex; /* This was commented out in your code */
+        gap: 12px;
+        padding: 20px;
+        background-color: #620462;
+        border-radius: 8px;
+        width: fit-content;
+        margin: 20px auto;
+    }
+
+    .slot-reel {
+        width: 80px;
+        height: 90px;
+        overflow: hidden;
+        position: relative;
+        font-size: 3rem;
+        border: 3px solid #88e4db;
+        border-radius: 4px;
+        background-color: #230505;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slot-items {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        transition: transform 1s cubic-bezier(0.2, 0.7, 0.3, 1);
+        top: 0;
+    }
+
+    .slot-items div {
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Arial", sans-serif;
+        line-height: 1;
+        color: #f10d0d;
+        font-weight: bold;
+    }
+
+    .slot-items .emoji {
+        transform: scale(0.6);
+    }
+
+    /* Added for better visual effect */
+    .slot-items div.final {
+        color: gold;
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const SYMBOLS = [
+            "🍒",
+            "S",
+            "💰",
+            "⭐",
+            "🍊",
+            "S",
+            "🍋",
+            "🔔",
+            "💎",
+            "L",
+            "🍍",
+            "🍇",
+            "🎰",
+            "🍉",
+            "🍀",
+            "🎯",
+            "O",
+            "🍎",
+            "🎲",
+            "🍓",
+            "🏆",
+            "🍬",
+            "🍹",
+            "T",
+            "🍾",
+            "🍭",
+            "🎪",
+            "🍄",
+        ];
+        const REEL_HEIGHT = 90; // Height of each item
+
+        function buildReel(reel: HTMLElement, finalValue: string) {
+            const container = document.createElement("div");
+            container.className = "slot-items";
+
+            // Generate random symbols for spinning
+            const spinCount = 20;
+            for (let i = 0; i < spinCount; i++) {
+                const div = document.createElement("div");
+                div.textContent =
+                    SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+                container.appendChild(div);
+            }
+
+            // Add the final value (letter)
+            const finalDiv = document.createElement("div");
+            finalDiv.textContent = finalValue;
+            finalDiv.classList.add("final"); // Add special class for styling
+            container.appendChild(finalDiv);
+
+            reel.innerHTML = "";
+            reel.appendChild(container);
+
+            // Store the final value position for reference
+            reel.dataset.finalPosition = spinCount * REEL_HEIGHT;
+        }
+
+        const reels = document.querySelectorAll(".slot-reel");
+        reels.forEach((reel) => buildReel(reel, reel.dataset.finalValue));
+
+        function spin() {
+            reels.forEach((reel, i) => {
+                const items = reel.querySelector(".slot-items");
+                const finalPosition = parseInt(reel.dataset.finalPosition);
+
+                // Reset position first (without animation)
+                items.style.transition = "none";
+                items.style.transform = "translateY(0)";
+                void items.offsetHeight; // Force reflow
+
+                // Set timing - stagger the reels
+                const duration = 2 + i * 0.4;
+
+                // Apply the animation
+                items.style.transition = `transform ${duration}s cubic-bezier(0.2, 0.7, 0.3, 1)`;
+                items.style.transform = `translateY(-${finalPosition}px)`;
+
+                // Log for debugging
+                console.log(
+                    `Reel ${i} spinning to position: -${finalPosition}px`,
+                );
+            });
+        }
+
+        // Add button for spinning
+        const controlPanel = document.createElement("div");
+        controlPanel.style.textAlign = "center";
+        controlPanel.style.marginTop = "20px";
+
+        const spinButton = document.createElement("button");
+        spinButton.textContent = "SPIN!";
+        spinButton.style.padding = "10px 20px";
+        spinButton.style.fontSize = "18px";
+        spinButton.style.backgroundColor = "#f10d0d";
+        spinButton.style.color = "white";
+        spinButton.style.border = "none";
+        spinButton.style.borderRadius = "5px";
+        spinButton.style.cursor = "pointer";
+
+        controlPanel.appendChild(spinButton);
+        document
+            .querySelector(".slot-machine")
+            .insertAdjacentElement("afterend", controlPanel);
+
+        // Event listeners
+        spinButton.addEventListener("click", spin);
+
+        // Initial spin when page loads
+        setTimeout(spin, 1000);
+    });
+</script>

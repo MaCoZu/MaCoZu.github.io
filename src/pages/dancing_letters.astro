@@ -1,0 +1,1605 @@
+---
+import { Code } from 'astro:components';
+import Article from '../components/Article.astro';
+import Disco from '../components/DancingLetters/Disco.astro';
+import Disco2 from '../components/DancingLetters/Disco2.astro';
+import Move from '../components/DancingLetters/Moves.astro';
+import Neon from '../components/DancingLetters/Neon.astro';
+import SeventiesFollow from '../components/DancingLetters/Seventies_follow.astro';
+import Seventy from '../components/DancingLetters/Seventy.astro';
+import Spinning from '../components/DancingLetters/Spinning.astro';
+import Trippy from '../components/DancingLetters/Trippy.astro';
+import Wobble from '../components/DancingLetters/Wobble.astro';
+import Link from '../components/Link.astro';
+import Layout from '../layouts/Layout.astro';
+import '../styles/font.css';
+import '../styles/global.css';
+---
+
+<Layout title="Dancing Letters">
+  <h1 class="text-4xl font-literata font-bold text-center mt-10 mb-10">
+    <span class="dance">D</span>ancing Letters
+  </h1>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+    <div class="">
+      <Article>
+        <p>
+          When creating a website for Forró da Capita, I played with ideas for an animated logo.
+          Here are some of the CSS animations I pieced together.
+        </p>
+        <p>
+          The main thing to know about CSS animations is that your CSS styles (font size, color,
+          position, width, height, etc.) can vary and the change may be animated. You define
+          Keyframes which are the turning points of your animation and the transition between these
+          stages creates motion. For example, three different colors that your element passes
+          through, or two positions it should traverse.
+        </p>
+      </Article>
+    </div>
+    <div class="">
+      <Article>
+        <p>
+          Once you have the keyframes the transition needs a duration in which the stages are reeled
+          off. Additionally, the animation may be given a delay, a direction, an
+          iteration/repetition, and a timing function.
+        </p>
+        <p>
+          Have a look at the options at <a href="https://www.w3schools.com/css/css3_animations.asp"
+            >w3schools</a
+          >. For instance, check out <a href="https://www.w3schools.com/css/css3_2dtransforms.asp"
+            >2D</a
+          > and <a href="https://www.w3schools.com/css/css3_3dtransforms.asp">3D</a> transforms, that
+          allow you to rotate, scale, move (translate), and skew elements. Combine this with colors,
+          and you already have ample possibilities.
+        </p>
+      </Article>
+    </div>
+  </div>
+
+  <hr class="my-10 border-gray-200 dark:border-gray-700" />
+
+  <!-- TRIPPY  -->
+  <div id="trippy">
+    <div class="flex flex-col md:flex-row w-full justify-between items-start gap-10 mt-15">
+      <div class="md:w-2/3">
+        <Trippy />
+      </div>
+      <Article className="md:w-1/3">
+        This one is actually made with <Link text="GSAP" href="https://gsap.com/" />, which helps
+        with integrating JavaScript in your animations. E.g. the <Code
+          code={`SplitText()`}
+          lang="js"
+          theme="one-light"
+          inline
+        /> function makes it easy to target single characters and animate them separately. GSAP also
+        comes with a lot of little helpers and the possibility to produce reusable effects.
+
+        <p>
+          The code is typed and the registered effect has default values but is eventually called
+          with specific parameters.
+        </p>
+      </Article>
+    </div>
+
+    <!-- TRIPPY CODE  -->
+    <details class="w-full mt-6">
+      <summary class="text-xl font-work mb-2 tracking-wide">TRIPPY CODE</summary>
+      <div class="w-full h-60 overflow-scroll resize-y rounded-md">
+        <Code
+          class:list={['px-10 py-5']}
+          lang="js"
+          theme="one-light"
+          wrap
+          code={`
+  import { gsap } from 'gsap';
+  import { SplitText } from 'gsap/SplitText';
+
+  gsap.registerPlugin(SplitText);
+
+  const deepcoral_palette = [
+    '#1c1529', // dark purple
+    '#393350', // space cadet
+    '#895879', // chinese violet
+    '#838a47', // moss green
+    '#275d46', // castleton green
+  ];
+
+  gsap.registerEffect({
+    name: 'trippyWobble',
+    extendTimeline: true,
+    defaults: {
+      activeCharRatio: 0.7,
+      durationRange: [10, 15],
+      xRange: [-0.8, 0.8],
+      yRange: [-0.8, 0.8],
+      rotationRange: [-2, 2],
+      scaleXRange: [0.97, 1.03],
+      scaleYRange: [0.96, 1.04],
+      colors: null,
+      glow: true,
+    },
+
+    effect: (
+      targets: gsap.DOMTarget,
+      config: {
+        activeCharRatio: 0.7;
+        motionPath: boolean;
+        glow: any;
+        durationRange: [number, number];
+        xRange: [number, number];
+        yRange: [number, number];
+        rotationRange: [number, number];
+        scaleXRange: [number, number];
+        scaleYRange: [number, number];
+        colors: any[];
+      },
+    ) => {
+      const split = new SplitText(targets, {
+        type: 'chars',
+        charsClass: 'char inline-block',
+      });
+
+      const chars = split.chars;
+
+      (chars as HTMLElement[]).forEach((char, i) => {
+        char.style.willChange = 'transform, color, filter';
+
+        gsap.set(char, {
+          transformOrigin: '50% 50%',
+          scaleX: 1,
+          scaleY: 1,
+          rotation: 0,
+          willChange: 'transform',
+        });
+
+        // Subtle glow style from CSS, only blur is animated
+        function animateCharBlur() {
+          gsap.to(char, {
+            filter: \`blur(\${gsap.utils.random(0.2, 0.7)}px)\`,
+            duration: gsap.utils.random(3, 6),
+            ease: 'sine.inOut',
+            onComplete: animateCharBlur,
+          });
+        }
+        animateCharBlur();
+
+        // Animate transform motion
+        function animateCharTransform(char: HTMLElement) {
+          gsap.to(char, {
+            x: gsap.utils.random(...config.xRange),
+            y: gsap.utils.random(...config.yRange),
+            rotation: gsap.utils.random(...config.rotationRange),
+            scaleX: gsap.utils.random(...config.scaleXRange),
+            scaleY: gsap.utils.random(...config.scaleYRange),
+            skewX: gsap.utils.random(-1, 1),
+            skewY: gsap.utils.random(-1, 1),
+            duration: gsap.utils.random(...config.durationRange),
+            ease: 'sine.inOut',
+            delay: gsap.utils.random(5, 8),
+            onComplete: () => animateCharTransform(char),
+          });
+        }
+
+        gsap.delayedCall(gsap.utils.random(0, 2.5), () => animateCharTransform(char));
+
+        // Smooth color cycling with keyframes (no recursion)
+        if (config.colors?.length) {
+          gsap.to(char, {
+            keyframes: config.colors.map(c => ({ color: c })),
+            duration: gsap.utils.random(9, 12),
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut',
+            delay: gsap.utils.random(0, 3),
+          });
+        }
+      });
+
+      return gsap.timeline(); // enables timeline chaining if needed
+    },
+  });
+
+  gsap.effects.trippyWobble('.trippy-text', {
+    durationRange: [12, 15],
+    xRange: [-0.95, 0.95],
+    yRange: [-0.95, 0.95],
+    rotationRange: [-2, 2],
+    scaleXRange: [0.9, 1.3],
+    scaleYRange: [0.9, 1.5],
+    colors: deepcoral_palette,
+    glow: true,
+  });
+            `}
+        />
+      </div>
+    </details>
+
+    <hr class="my-10 border-gray-200 dark:border-gray-700" />
+
+    <!-- WOBBLE  -->
+    <div id="wobble">
+      <div class="flex flex-col md:flex-row w-full justify-between items-start gap-10 mt-15">
+        <div class="md:col-span-1">
+          <Wobble />
+        </div>
+        <div class="md:col-span-2 justify-center items-center">
+          <Article>
+            For a haggish wobble, single letters are shifted up and down, starting with a little lag
+            one after another. For that bubbling cauldron effect the letters are also bloated /
+            shrinked (<Code code={`scale`} lang="css" theme="one-light" inline />) and rotated a
+            little.
+          </Article>
+        </div>
+      </div>
+      <!-- WOBBLE CODE  -->
+      <details class="w-full mt-2">
+        <summary class="text-xl font-work mb-2 tracking-wide">WOBBLE CODE</summary>
+        <div class="w-full h-60 overflow-scroll resize-y rounded-md">
+          <Code
+            class:list={['px-10 py-5']}
+            lang="html"
+            theme="one-light"
+            wrap
+            code={`
+<div class="wobble">
+    <span>W</span>
+    <span>O</span>
+    <span>B</span>
+    <span>B</span>
+    <span>L</span>
+    <span>E</span>
+</div>
+
+<style>
+@font-face {
+    font-family: "Oi";
+    src: url("/fonts/HennyPenny-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+.wobble {
+    font-family: "Oi";
+    font-size: 3rem;
+    letter-spacing: 4px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wobble span {
+    display: inline-block;
+    animation: wobble 1.6s infinite ease-in-out;
+    transition: width 3s height 3s ease-in-out 3s;
+    will-change: transform;
+}
+
+/* The keyframes for wobble */
+@keyframes wobble {
+    0%,
+    100% { transform: translateY(0) rotate(0deg) scale(1); }
+    20% { transform: translateY(-4px) rotate(-2deg) scale(1.01); }
+    50% { transform: translateY(4px) rotate(2deg) scale(0.99); }
+    80% { transform: translateY(-3px) rotate(-2deg) scale(1.03); }
+}
+
+/* Different delays for each letter */
+.wobble span:nth-child(1) {
+    animation-delay: 0s;
+}
+.wobble span:nth-child(2) {
+    animation-delay: 0.1s;
+}
+.wobble span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+.wobble span:nth-child(4) {
+    animation-delay: 0.3s;
+}
+.wobble span:nth-child(5) {
+    animation-delay: 0.4s;
+}
+.wobble span:nth-child(6) {
+    animation-delay: 0.5s;
+}
+</style>
+            `}
+          />
+        </div>
+      </details>
+    </div>
+
+    <hr class="my-10 border-gray-200 dark:border-gray-700" />
+
+    <!-- DISCO -->
+    <div id="disco">
+      <div class="flex flex-col md:flex-row w-full justify-between items-start gap-10 mt-15">
+        <div class="md:col-span-1">
+          <Disco />
+        </div>
+        <div class="md:col-span-2 justify-center items-center">
+          <Article>
+            <p>
+              Hover over the letters and each will shine in a disco light. The glow is produced by
+              stacking multiple text-shadow layers with progressively larger blurs and slight color
+              variations around the text.
+            </p>
+            <p>
+              Text-shadow takes four values: <br />
+              <Code
+                code={`text-shadow: [horizontal-offset] [vertical-offset] [blur-radius] [color];`}
+                lang="css"
+                theme="one-light"
+                inline
+              />
+            </p>
+          </Article>
+        </div>
+      </div>
+      <!-- DISCO CODE  -->
+      <details class="w-full mt-2">
+        <summary class="text-xl font-work mb-2 tracking-wide">DISCO CODE</summary>
+        <div class="w-full h-60 overflow-scroll resize-y rounded-lg">
+          <Code
+            class:list={['px-10 py-5']}
+            lang="html"
+            theme="one-light"
+            wrap
+            code={`
+    <div class="outer-container">
+        <div class="inner-container">
+            <div class="disco">
+                <h1 class="pink_glow">D</h1>
+                <h1 class="yellow_glow">i</h1>
+                <h1 class="red_glow">s</h1>
+                <h1 class="orange_glow">c</h1>
+                <h1 class="green_glow">o</h1>
+            </div>
+            <h1 class="spacer">&nbsp;</h1>
+            <div class="lights">
+                <h1 class="darkorange_glow">L</h1>
+                <h1 class="blue_glow">i</h1>
+                <h1 class="violet_glow">g</h1>
+                <h1 class="lightgreen_glow">h</h1>
+                <h1 class="deepyellow_glow">t</h1>
+                <h1 class="lightblue_glow">s</h1>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        @font-face {
+            font-family: "Moonrocks";
+            src: url("/fonts/RubikMoonrocks-Regular.ttf") format("truetype");
+            font-display: swap;
+        }
+    
+        /* For a dark background */
+        .outer-container {
+            position: relative;
+            height: 270px;
+            width: 400px;
+            background-color: rgb(19, 19, 74);
+        }
+    
+        /* inside the outer container we position the inner elemnts absolutely shifting them roughly in the middle */
+        .inner-container {
+            position: absolute;
+            top: 60%;
+            left: 42%;
+            transform: translate(-50%, -50%);
+        }
+    
+        /* we want the 'Lights' sit under 'Disco' and slightly shifted to the right (from the left) */
+        .inner-container .lights {
+            position: absolute;
+            top: 30%;
+            left: 15%;
+        }
+    
+        h1 {
+            font-family: "Moonrocks";
+            font-size: 3.9rem;
+            letter-spacing: 13px;
+            margin: 0;
+            color: #c7fdff;
+            text-shadow: none;
+            transition: all 0.5s ease; /* smoothening the glow a little*/
+            cursor: default;
+        }
+    
+        /* since we put the letters in single h1 tags they would appear vertically if untended, flex puts them horizontally.
+    
+        Rotation is could be applied if you want a some visual effect of acceleration. 
+        */
+        .disco,
+        .lights {
+            display: flex;
+            rotate: -0deg;
+        }
+    
+        /* space between disco and lights */
+        .spacer {
+            height: 120px;
+        }
+    
+        /* Here we target the blur-radius and color properties of the text-shadow, you may simplify them and still get a decent effect.
+        
+        For exampe the greater the blur-radius wider is the glow, but the color is also more diluted. See the different glow in the orange 'c' from the other letters. The 'c' appears more crisp and has a smaller halo.*/
+        .orange_glow:hover {
+            text-shadow:
+                0 0 5px #ffa500,
+                0 0 15px #ffa500,
+                0 0 20px #ffa500;
+            /* 0 0 40px #ffa500, */
+            /* 0 0 60px #f8bd50, */
+            /* 0 0 10px #f4a749, */
+            /* 0 0 98px #fdc85f; */
+            color: #fff6a9;
+        }
+    
+        .darkorange_glow:hover {
+            text-shadow:
+                0 0 5px #ff6a00,
+                0 0 15px #ff8c00,
+                0 0 20px #d76f06,
+                0 0 40px #ffa500,
+                0 0 60px #f8b250,
+                0 0 10px #f48549,
+                0 0 98px #fd9e5f;
+            color: #ffda9b;
+        }
+    
+        .yellow_glow:hover {
+            text-shadow:
+                0 0 5px #ffd900,
+                0 0 15px #ffe100,
+                0 0 20px #d7d006,
+                0 0 40px #ffdd00,
+                0 0 60px #f8df50,
+                0 0 10px #f4e649,
+                0 0 98px #fddd5f;
+            color: #fffc9b;
+        }
+    
+        .deepyellow_glow:hover {
+            text-shadow:
+                0 0 5px #ffd900,
+                0 0 15px #ffc800,
+                0 0 20px #ffe046,
+                0 0 40px #ffdd00,
+                0 0 60px #ffe346,
+                0 0 10px #ffd84d,
+                0 0 98px #ffd54b;
+            color: #fffc9b;
+        }
+    
+        .green_glow:hover {
+            text-shadow:
+                0 0 5px #109c15,
+                0 0 15px #27aa39,
+                0 0 20px #0ba708,
+                0 0 40px #35a721,
+                0 0 60px #16991a,
+                0 0 10px #1cb035,
+                0 0 98px #07b410;
+            color: #aff2bb;
+        }
+    
+        .lightgreen_glow:hover {
+            z-index: 10;
+            text-shadow:
+                0 0 5px #46cc16,
+                0 0 15px #81d978,
+                0 0 20px #3fc50b,
+                0 0 40px #6df249,
+                0 0 60px #52e338,
+                0 0 10px #20cb26,
+                0 0 98px #4bec0b;
+            color: #aff2b1;
+        }
+    
+        .red_glow:hover {
+            text-shadow:
+                0 0 5px #ff5252,
+                0 0 15px #ff0000,
+                0 0 20px #c5400b,
+                0 0 40px #f26049,
+                0 0 60px #ff2a2a,
+                0 0 10px #cb3a20,
+                0 0 98px #ec0b0b;
+            color: #ffc7c7;
+        }
+    
+        .blue_glow:hover {
+            text-shadow:
+                0 0 5px #5852ff,
+                0 0 15px #0037ff,
+                0 0 20px #0b0ec5,
+                0 0 40px #497cf2,
+                0 0 60px #2a78ff,
+                0 0 10px #2e20cb,
+                0 0 98px #0bceec;
+            color: #d3d9ff;
+        }
+    
+        .pink_glow:hover {
+            text-shadow:
+                0 0 5px #ff52f3,
+                0 0 15px #ff00d4,
+                0 0 20px #c50baf,
+                0 0 40px #f249ea,
+                0 0 60px #ff2af8,
+                0 0 10px #cb20b4,
+                0 0 98px #ec0be1;
+            color: #ffc7fa;
+        }
+    
+        .violet_glow:hover {
+            text-shadow:
+                0 0 5px #d752ff,
+                0 0 15px #bb00ff,
+                0 0 20px #840bc5,
+                0 0 40px #cd49f2,
+                0 0 60px #cd2aff,
+                0 0 10px #c020cb,
+                0 0 98px #bb0bec;
+            color: #f3c7ff;
+        }
+    
+        .lightblue_glow:hover {
+            text-shadow:
+                0 0 5px #52ffeb,
+                0 0 15px #00fff7,
+                0 0 20px #08dee6,
+                0 0 40px #49f2de,
+                0 0 60px #2afffb,
+                0 0 10px #20c8cb,
+                0 0 98px #0bddec;
+            color: #c7fdff;
+        }
+    </style>
+    
+                `}
+          />
+        </div>
+      </details>
+    </div>
+
+    <hr class="my-10 border-gray-200 dark:border-gray-700" />
+
+    <!--AUTO  DISCO -->
+    <div id="auto-disco">
+      <div class="flex flex-col md:flex-row w-full justify-between items-start gap-10 mt-15">
+        <div class="md:col-span-1">
+          <Disco2 />
+        </div>
+        <div class="md:col-span-2 justify-center items-center">
+          <Article>
+            <p>
+              The hover glow from above is extended by a random flash of letters. A JavaScript
+              function randomly picks up to 4 letters and lets them glow. The hover glow still works
+              in parallel, go and hover a letter that is not yet glowing.
+            </p>
+          </Article>
+        </div>
+      </div>
+
+      <!-- AUTO CODE  -->
+      <details class="w-full mt-2">
+        <summary class="text-xl font-work mb-2 tracking-wide">AUTO CODE</summary>
+        <div class="w-full h-60 overflow-scroll resize-y rounded-lg">
+          <Code
+            class:list={['px-10 py-5']}
+            lang="html"
+            theme="one-light"
+            wrap
+            code={`
+    <div class="outer-container">
+        <div class="inner-container">
+            <div class="disco">
+                <h1 class="pink_glow">D</h1>
+                <h1 class="yellow_glow">i</h1>
+                <h1 class="red_glow">s</h1>
+                <h1 class="orange_glow">c</h1>
+                <h1 class="green_glow">o</h1>
+            </div>
+            <h1 class="spacer">&nbsp;</h1>
+            <div class="lights">
+                <h1 class="darkorange_glow">L</h1>
+                <h1 class="blue_glow">i</h1>
+                <h1 class="violet_glow">g</h1>
+                <h1 class="lightgreen_glow">h</h1>
+                <h1 class="deepyellow_glow">t</h1>
+                <h1 class="lightblue_glow">s</h1>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        @font-face {
+            font-family: "Moonrocks";
+            src: url("/fonts/RubikMoonrocks-Regular.ttf") format("truetype");
+            font-display: swap;
+        }
+    
+        .outer-container {
+            position: relative;
+            height: 270px;
+            width: 400px;
+            background-color: rgb(11, 7, 42);
+        }
+    
+        .inner-container {
+            position: absolute;
+            top: 55%;
+            left: 42%;
+            transform: translate(-50%, -50%);
+        }
+    
+        h1 {
+            font-family: "Moonrocks";
+            font-size: 4rem;
+            letter-spacing: 15px;
+            margin: 0;
+            color: #e8fafa;
+            text-shadow: none;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+    
+        .disco,
+        .lights {
+            display: flex;
+            rotate: -5deg;
+        }
+    
+        .inner-container .lights {
+            position: absolute;
+            top: 30%;
+            left: 15%;
+        }
+    
+        .spacer {
+            height: 100px;
+        }
+    
+        /* Glow shared styles */
+        [class$="_glow"].glow,
+        [class$="_glow"]:hover {
+            color: #fff;
+        }
+    
+        /* Glow effect per color */
+        .orange_glow.glow,
+        .orange_glow:hover {
+            text-shadow:
+                0 0 5px #ffa500,
+                0 0 15px #ffa500,
+                0 0 20px #ffa500,
+                0 0 40px #ffa500,
+                0 0 60px #f8bd50,
+                0 0 10px #f4a749,
+                0 0 98px #fdc85f;
+            color: #fff6a9;
+        }
+    
+        .darkorange_glow.glow,
+        .darkorange_glow:hover {
+            text-shadow:
+                0 0 5px #ff6a00,
+                0 0 15px #ff8c00,
+                0 0 20px #d76f06,
+                0 0 40px #ffa500,
+                0 0 60px #f8b250,
+                0 0 10px #f48549,
+                0 0 98px #fd9e5f;
+            color: #ffda9b;
+        }
+    
+        .yellow_glow.glow,
+        .yellow_glow:hover {
+            text-shadow:
+                0 0 5px #ffd900,
+                0 0 15px #ffe100,
+                0 0 20px #d7d006,
+                0 0 40px #ffdd00,
+                0 0 60px #f8df50,
+                0 0 10px #f4e649,
+                0 0 98px #fddd5f;
+            color: #fffc9b;
+        }
+    
+        .deepyellow_glow.glow,
+        .deepyellow_glow:hover {
+            text-shadow:
+                0 0 5px #ffd900,
+                0 0 15px #ffc800,
+                0 0 20px #ffe046,
+                0 0 40px #ffdd00,
+                0 0 60px #ffe346,
+                0 0 10px #ffd84d,
+                0 0 98px #ffd54b;
+            color: #fffc9b;
+        }
+    
+        .lightgreen_glow.glow,
+        .lightgreen_glow:hover {
+            text-shadow:
+                0 0 5px #46cc16,
+                0 0 15px #81d978,
+                0 0 20px #3fc50b,
+                0 0 40px #6df249,
+                0 0 60px #52e338,
+                0 0 10px #20cb26,
+                0 0 98px #4bec0b;
+            color: #aff2b1;
+        }
+    
+        .green_glow.glow,
+        .green_glow:hover {
+        text-shadow:
+            0 0 5px #116e14,
+            0 0 15px #126c1e,
+            0 0 20px #237f22,
+            0 0 40px #35a721,
+            0 0 60px #157a18,
+            0 0 10px #1cb035,
+            0 0 98px #07b410;
+        color: #94e68e;
+        }
+    
+        .red_glow.glow,
+        .red_glow:hover {
+            text-shadow:
+                0 0 5px #ff5252,
+                0 0 15px #ff0000,
+                0 0 20px #c5400b,
+                0 0 40px #f26049,
+                0 0 60px #ff2a2a,
+                0 0 10px #cb3a20,
+                0 0 98px #ec0b0b;
+            color: #ffc7c7;
+        }
+    
+        .blue_glow.glow,
+        .blue_glow:hover {
+            text-shadow:
+                0 0 5px #5852ff,
+                0 0 15px #0037ff,
+                0 0 20px #0b0ec5,
+                0 0 40px #497cf2,
+                0 0 60px #2a78ff,
+                0 0 10px #2e20cb,
+                0 0 98px #0bceec;
+            color: #d3d9ff;
+        }
+    
+        .pink_glow.glow,
+        .pink_glow:hover {
+            text-shadow:
+                0 0 5px #ff52f3,
+                0 0 15px #ff00d4,
+                0 0 20px #c50baf,
+                0 0 40px #f249ea,
+                0 0 60px #ff2af8,
+                0 0 10px #cb20b4,
+                0 0 98px #ec0be1;
+            color: #ffc7fa;
+        }
+    
+        .violet_glow.glow,
+        .violet_glow:hover {
+            text-shadow:
+                0 0 5px #d752ff,
+                0 0 15px #bb00ff,
+                0 0 20px #840bc5,
+                0 0 40px #cd49f2,
+                0 0 60px #cd2aff,
+                0 0 10px #c020cb,
+                0 0 98px #bb0bec;
+            color: #f3c7ff;
+        }
+    
+        .lightblue_glow.glow,
+        .lightblue_glow:hover {
+            text-shadow:
+                0 0 5px #52ffeb,
+                0 0 15px #00fff7,
+                0 0 20px #08dee6,
+                0 0 40px #49f2de,
+                0 0 60px #2afffb,
+                0 0 10px #20c8cb,
+                0 0 98px #0bddec;
+            color: #c7fdff;
+        }
+    </style>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const letters = document.querySelectorAll(".disco h1, .lights h1");
+    
+            function glowRandomLetters() {
+                const activeLetters = [];
+    
+                // Choose 1 to 4 random letters
+                const count = Math.floor(Math.random() * 4) + 1;
+    
+                while (activeLetters.length < count) {
+                    const letter =
+                        letters[Math.floor(Math.random() * letters.length)];
+                    if (!activeLetters.includes(letter)) activeLetters.push(letter);
+                }
+    
+                // Apply glow
+                activeLetters.forEach((el) => {
+                    el.classList.add("glow");
+                    setTimeout(
+                        () => el.classList.remove("glow"),
+                        1000 + Math.random() * 1000,
+                    );
+                });
+    
+                setTimeout(glowRandomLetters, 500 + Math.random() * 1000);
+            }
+    
+            glowRandomLetters();
+        });
+    </script>
+                `}
+          />
+        </div>
+      </details>
+    </div>
+
+    <hr class="my-10 border-gray-200 dark:border-gray-700" />
+
+    <!-- IGNITE NIGHT  -->
+    <div id="ignite-night">
+      <div class="flex flex-col md:flex-row w-full justify-between items-start gap-10 mt-15">
+        <div class="md:col-span-1">
+          <Neon />
+        </div>
+        <div class="md:col-span-2 justify-center items-center">
+          <Article>
+            <p>
+              Good Lord, flickering lights are mesmerizing. I've mixed three effects: glow,
+              flickering and a short-circuted blink. The glow runs through four colors and each
+              letter starts with a lag.
+            </p>
+            <p>
+              The flicker and the blink are essentially the same thing, only that the latter is
+              rather short. The blinking also happens less frequently. You can achive this by
+              switching the the opacity on and off and cram the effect at certain a point of its
+              duration. The short-circut effect happens at the last decile of its duration.
+            </p>
+          </Article>
+        </div>
+      </div>
+      <Code
+        class:list={['px-10 py-5']}
+        lang="css"
+        theme="one-light"
+        wrap
+        code={`
+    .ignite {
+        /* the effect targets only the word 'IGNITE' */
+        animation: short-circuit 10s infinite alternate;
+    }
+
+    @keyframes short-circuit {
+        /* nothing happens for 9 seconds until it blinks between the 9th and 10th second */
+        0%, 92%, 94%, 99%, 100% { opacity: 1; }
+        93%, 96%, 98% { opacity: 0; }
+        }`}
+      />
+
+      <!-- IGNITE CODE  -->
+      <details class="w-full mt-2">
+        <summary class="text-xl font-work mb-2 tracking-wide">IGNITE CODE</summary>
+        <div class="w-full h-60 overflow-scroll resize-y rounded-lg">
+          <Code
+            class:list={['px-10 py-5']}
+            lang="html"
+            theme="one-light"
+            wrap
+            code={`
+   <div class="outer-container">
+    <div class="inner-container">
+        <div class="night">
+            <h1 class="letter">N</h1>
+            <h1 class="letter">I</h1>
+            <h1 class="letter">G</h1>
+            <h1 class="letter">H</h1>
+            <h1 class="letter">T</h1>
+        </div>
+        <div class="ignite">
+            <h1 class="letter">I</h1>
+            <h1 class="letter opacity-0"></h1>
+            <h1 class="letter">N</h1>
+            <h1 class="letter">I</h1>
+            <h1 class="letter">T</h1>
+            <h1 class="letter">E</h1>
+        </div>
+    </div>
+</div>
+
+<style>
+    @font-face {
+        font-family: "Monoton";
+        src: url("/fonts/Monoton-Regular.ttf") format("truetype");
+        font-display: swap;
+    }
+
+    .outer-container {
+        position: relative;
+        height: 270px;
+        width: 400px;
+        background-color: rgb(11, 7, 42);
+    }
+
+    .inner-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .night {
+        display: flex;
+        transform: translate(-0%, -130%);
+        letter-spacing: 10px;
+        flex-direction: row;
+        align-items: center; /* centers letters */
+    }
+
+    .ignite {
+        position: absolute;
+        text-align: center;
+        top: 20%;
+        left: 35%; /* or whatever horizontal offset you need */
+        transform: translateY(-45%);
+        display: flex;
+        flex-direction: column;
+        line-height: 0px;
+        gap: 2.5em;
+    }
+
+    .letter-wrapper {
+        position: relative; /* important for ::after */
+    }
+
+    /* Random short-circuit flicker */
+    /* .ignite::after,
+    .night::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: transparent;
+        opacity: 0;
+        pointer-events: none;
+        animation: short-circuit 1.5s infinite alternate;
+    } */
+
+
+    .ignite {
+        animation: short-circuit 10s infinite alternate;
+    }
+
+    h1.letter {
+        font-family: "Monoton";
+        font-size: 2rem;
+        /* letter-spacing: 5px; */
+        margin: 0;
+        color: #fff;
+        animation:
+            glow 4.5s infinite alternate-reverse,
+            flicker 23s infinite alternate;
+    }
+
+    /* Staggered animations for each letter */
+    h1.letter:nth-child(1) {
+        animation-delay: 0.1s, 0.2s;
+    }
+    h1.letter:nth-child(2) {
+        animation-delay: 0.3s, 0.4s;
+    }
+    h1.letter:nth-child(3) {
+        animation-delay: 0.5s, 0.6s;
+    }
+    h1.letter:nth-child(4) {
+        animation-delay: 0.7s, 0.8s;
+    }
+    h1.letter:nth-child(5) {
+        animation-delay: 0.9s, 1s;
+    }
+
+    @keyframes glow {
+        0% {
+            text-shadow:
+                0 0 5px #ff005e,
+                0 0 10px #ff005e,
+                0 0 20px #ff005e,
+                0 0 40px #ff005e,
+                0 0 80px #ff005e;
+        }
+        25% {
+            text-shadow:
+                0 0 5px #ffaa00,
+                0 0 10px #ffb300,
+                0 0 20px #ffa200,
+                0 0 40px #ffa200,
+                0 0 80px #ff9900;
+        }
+        75% {
+            text-shadow:
+                0 0 5px #2bff00,
+                0 0 10px #6aff00,
+                0 0 20px #84ff00,
+                0 0 40px #62ff00,
+                0 0 80px #22ff00;
+        }
+        100% {
+            text-shadow:
+                0 0 10px #00d4ff,
+                0 0 20px #00d4ff,
+                0 0 40px #00d4ff,
+                0 0 80px #00d4ff,
+                0 0 160px #00d4ff;
+        }
+    }
+
+    /* Flicker effect */
+    @keyframes flicker {
+        0%,
+        3%,
+        71%,
+        74%,
+        95%,
+        97%,
+        100% {
+            opacity: 1;
+        }
+        1%,
+        72%,
+        96% {
+            opacity: 0.3;
+        }
+    }
+
+    @keyframes short-circuit {
+        0%,
+        92%,
+        94%,
+        99%,
+        100% {
+            opacity: 1;
+        }
+        93%,
+        96%,
+        98% {
+            opacity: 0;
+        }
+    }
+</style>
+
+    
+                `}
+          />
+        </div>
+      </details>
+    </div>
+
+    <hr class="my-10 border-gray-200 dark:border-gray-700" />
+
+    <!-- SPINNER -->
+    <div id="spin">
+      <div class="flex flex-col md:flex-row w-full justify-between items-start gap-10 mt-15">
+        <div class="md:col-span-1">
+          <Spinning />
+          <br />
+          <!-- <SlotMachine/> -->
+        </div>
+        <div class="md:col-span-2 justify-center items-center">
+          <Article>
+            <p>Here is one inspired by a slot machine.</p>
+          </Article>
+        </div>
+      </div>
+
+      <!-- SPINNING CODE -->
+      <details class="w-full mt-2">
+        <summary class="text-xl font-work mb-2 tracking-wide">SPIN CODE</summary>
+        <div class="w-full h-60 overflow-scroll resize-y rounded-lg">
+          <Code
+            class:list={['px-10 py-5']}
+            lang="html"
+            theme="one-light"
+            wrap
+            code={`
+     <div class="flex flex-row">
+         <h1 class="glow spinning">S</h1>
+         <h1 class="glow spinning_reverse">P</h1>
+         <h1 class="glow spinning">I</h1>
+         <h1 class="glow spinning_reverse">N</h1>
+     </div>
+     
+     <style>
+         @font-face {
+             font-family: "CoffeeTin";
+             src: url("/fonts/CoffeeTin.ttf") format("truetype");
+             font-display: swap;
+         }
+         div {
+             perspective: 1000px;
+         }
+     
+         h1 {
+             font-family: "CoffeeTin";
+             font-size: 5rem;
+             display: inline-block; /* always apply */
+             transform-origin: center center;
+             padding: 0px 8px;
+             transition: all 0.3s ease;
+         }
+     
+         .glow {
+             text-shadow:
+                 0 0 5px #e9a319,
+                 0 0 15px #f5c45e,
+                 0 0 20px #ffb22c,
+                 0 0 40px #ff9d23,
+                 0 0 10px #ffb200,
+                 0 0 60px #eddc1a;
+             color: #fff6a9;
+         }
+     
+         .spinning:hover {
+             position: relative;
+             animation: spinning 8.4s cubic-bezier(0.15, 0.2, 0.25, 0.1);
+             transform-origin: center center;
+         }
+     
+         .spinning_reverse:hover {
+             position: relative;
+             animation: spinning_reverse 8.4s cubic-bezier(0.15, 0.2, 0.25, 0.1);
+             transform-origin: center center;
+         }
+     
+         .spinning:hover,
+         .spinning_reverse:hover {
+             transform-origin: center center;
+         }
+     
+         @keyframes spinning {
+             0%,
+             100% {
+                 animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+             }
+             0% {
+                 transform: rotateY(0deg);
+             }
+             50% {
+                 transform: rotateY(1800deg);
+                 animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+             }
+             100% {
+                 transform: rotateY(3600deg);
+             }
+         }
+     
+         @keyframes spinning_reverse {
+             0%,
+             100% {
+                 animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+             }
+             0% {
+                 transform: rotateY(0deg);
+             }
+             50% {
+                 transform: rotateY(-1800deg);
+                 animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+             }
+             100% {
+                 transform: rotateY(-600deg);
+             }
+         }
+     </style>
+     
+     
+                 `}
+          />
+        </div>
+      </details>
+    </div>
+
+    <hr class="my-10 border-gray-200 dark:border-gray-700" />
+
+    <!-- MOVEMENTS -->
+    <div id="movements">
+      <div class="flex flex-col md:flex-row w-full justify-between items-start gap-10 mt-15">
+        <Move />
+        <div class="justify-center items-center">
+          <Article>
+            <p>
+              Here are simple movments you can apply to your elements. Each letter will do something
+              else on hover, dangle, jump, turn and more.
+            </p>
+            <p>
+              For me the most interesting property to tweak was: <br />
+              <a
+                class="no-underline"
+                href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin"
+              >
+                <Code
+                  lang="css"
+                  theme="one-light"
+                  inline
+                  code={`transform-origin:  x-offset-keyword | y-offset-keyword | z-offset;`}
+                /></a
+              >
+              <p>
+                E.g. the letter 'N' dangles from the top-left corner: <Code
+                  lang="css"
+                  theme="one-light"
+                  inline
+                  code={`
+                            .swing:hover {
+                                transform-origin: top left; 
+                                ...}`}
+                />
+              </p>
+              <br />
+              <p>
+                And how to create a smooth spin /turn or bounce effect, which is done in the
+                keyframes.
+              </p>
+
+              <!-- <p>
+                        That El Dorado shine is fine and dandy, but the Midas
+                        touch is just as handy. Have a try at the wheel of luck
+                        but not get stuck like those heliophilous critters.
+                    </p> -->
+            </p>
+          </Article>
+        </div>
+      </div>
+      <!-- Move CODE -->
+      <details class="w-full
+                            mt-2">
+        <summary class="text-xl font-work mb-2 tracking-wide">MOVE CODE</summary>
+        <div class="w-full h-60 overflow-scroll resize-y rounded-lg">
+          <Code
+            class:list={['px-10 py-5']}
+            lang="html"
+            theme="one-light"
+            wrap
+            code={`
+<div class="flex flex-row">
+  <h1 class="glow turn">D</h1>
+  <h1 class="glow bounce">A</h1>
+  <h1 class="glow swing">N</h1>
+  <h1 class="glow gelatine">C</h1>
+  <h1 class="glow spin">I</h1>
+  <h1 class="glow flip">N</h1>
+  <h1 class="glow pulse">G</h1>
+</div>
+
+<style>
+  @font-face {
+    font-family: "RuslanDisplay";
+    src: url("/fonts/RuslanDisplay-Regular.ttf") format("truetype");
+    font-display: swap;
+  }
+
+  h1 {
+    font-family: "RuslanDisplay";
+    font-size: 5rem;
+    /* font-weight: 100; */
+    letter-spacing: 4px;
+  }
+
+  /* GLOW */
+  .glow:hover {
+    text-shadow:
+      0 0 5px #ffa500,
+      0 0 15px #ffa500,
+      0 0 20px #ffa500,
+      0 0 40px #ffa500,
+      0 0 60px #f8bd50,
+      0 0 10px #f4a749,
+      0 0 98px #e39804;
+    color: #fff6a9;
+    animation: glow 3s infinte;
+  }
+  @keyframes glow {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  /* TURN */
+  .turn:hover {
+    transform-origin: center center;
+    animation: turn 4s infinite;
+  }
+  @keyframes turn {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* BOUNCE  */
+  .bounce:hover {
+    animation: bounce 2s ease-out infinite;
+  }
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-20px);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+    75% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* GELATINE */
+  .gelatine:hover {
+    animation: gelatine 0.5s infinite;
+  }
+  @keyframes gelatine {
+    from,
+    to {
+      transform: scale(1, 1);
+    }
+    25% {
+      transform: scale(0.9, 1.1);
+    }
+    50% {
+      transform: scale(1.1, 0.9);
+    }
+    75% {
+      transform: scale(0.95, 1.05);
+    }
+  }
+
+  /* Y FLIP */
+  .spin:hover {
+    transform-origin: center center;
+    animation: spin 9s infinite;
+  }
+
+  @keyframes spin {
+    0%,
+    100% {
+      animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+    }
+    0% {
+      transform: rotateY(0deg);
+    }
+    50% {
+      transform: rotateY(1800deg);
+      animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+    100% {
+      transform: rotateY(3600deg);
+    }
+  }
+
+  /* X FLIP */
+  .flip:hover {
+    transform-origin: center center 30px;
+    animation: flip 9s infinite;
+  }
+  @keyframes flip {
+    0%,
+    100% {
+      animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+    }
+    0% {
+      transform: rotateX(0deg);
+    }
+    50% {
+      transform: rotateX(1800deg);
+      animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+    100% {
+      transform: rotateX(3600deg);
+    }
+  }
+
+  /* SWING  */
+  .swing:hover {
+    transform-origin: top left;
+    animation: swing 2s ease-in-out infinite alternate;
+  }
+  @keyframes swing {
+    20% {
+      transform: rotate(15deg);
+    }
+    40% {
+      transform: rotate(-10deg);
+    }
+    60% {
+      transform: rotate(5deg);
+    }
+    80% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .pulse:hover {
+    animation: pulse 1s infinite ease-in-out alternate;
+  }
+  @keyframes pulse {
+    from {
+      transform: scale(0.8);
+    }
+    to {
+      transform: scale(1.2);
+    }
+  }
+</style>
+                 `}
+          />
+        </div>
+      </details>
+
+      <style>
+        /* Keyframes for the animation */
+        @keyframes jump-spin {
+          0% {
+            color: #ff9d00;
+            transform: translateY(0) rotate(0deg);
+          }
+          50% {
+            color: #ff3300;
+            transform: translateY(-30px) rotateY(360deg);
+          }
+          50% {
+            color: #ae03b7;
+            transform: translateY(-30px) rotateY(720deg);
+          }
+          75% {
+            color: #ff009d;
+            transform: translateY(0px) rotateY(720deg) rotate(340deg);
+          }
+          100% {
+            color: #ff9d00;
+            transform: translateY(0px) rotateY(720deg) rotate(360deg) rotateX(360deg);
+          }
+        }
+
+        /* Apply the animation to the "D" */
+        .dance {
+          display: inline-block; /* Required for transforms */
+          animation: jump-spin 2s ease-in-out;
+          animation-fill-mode: forwards;
+        }
+      </style>
+    </div>
+
+    <hr class="my-10 border-gray-200 dark:border-gray-700" />
+
+    <!-- SEVENTIES -->
+    <div id="sevnties">
+      <div class="flex flex-col md:flex-row w-full justify-between items-start gap-10 mt-15">
+        <div class="flex flex-col gap-0 items-start">
+          <Seventy />
+          <SeventiesFollow />
+        </div>
+        <div class="justify-center items-center">
+          <Article>
+            <p>
+              Once again the mouse will find some colorful cheese from the seventies. Very old
+              cheese may begin a life of its own, and in the second case we see the cheese follow
+              the mouse around.
+            </p>
+            <!-- <p>
+                        That El Dorado shine is fine and dandy, but the Midas
+                        touch is just as handy. Have a try at the wheel of luck
+                        but not get stuck like those heliophilous critters.
+                    </p> -->
+          </Article>
+        </div>
+      </div>
+    </div>
+
+    <!-- AGED CODE -->
+    <details class="w-full mt-2">
+      <summary class="text-xl font-work mb-2 tracking-wide">AGED CODE</summary>
+      <div class="w-full h-60 overflow-scroll resize-y rounded-lg">
+        <Code
+          class:list={['px-10 py-5']}
+          lang="html"
+          theme="one-light"
+          wrap
+          code={`
+<div class="flex flex-row seventy">
+    <h1 class="">A</h1>
+    <h1 class="">g</h1>
+    <h1 class="">e</h1>
+    <h1 class="">d</h1>
+</div>
+
+<style>
+    @font-face {
+        font-family: "FrederickatheGreat";
+        src: url("/fonts/FrederickatheGreat-Regular.ttf") format("truetype");
+        font-display: swap;
+    }
+
+    h1 {
+        font-family: "FrederickatheGreat";
+        text-transform: uppercase;
+        color: #11077c;
+        text-decoration: none;
+        font-size: 4rem;
+        letter-spacing: 15px;
+        margin: 0;
+    }
+
+    .seventy:hover {
+        transition: 0.5s all ease;
+        text-shadow: 
+             /* Color 1 */
+            1px 1px #61b4de,
+            2px 2px #61b4de,
+            3px 3px #61b4de,
+            4px 4px #61b4de,
+            5px 5px #61b4de,
+            /* Color 2 */ 6px 6px #91c467,
+            7px 7px #91c467,
+            8px 8px #91c467,
+            9px 9px #91c467,
+            10px 10px #91c467,
+            /* Color 3 */ 11px 11px #f3a14b,
+            12px 12px #f3a14b,
+            13px 13px #f3a14b,
+            14px 14px #f3a14b,
+            15px 15px #f3a14b,
+            /* Color 4 */ 
+            16px 16px #e84c50,
+            17px 17px #e84c50,
+            18px 18px #e84c50,
+            19px 19px #e84c50,
+            20px 20px #e84c50,
+            /* Color 5 */ 21px 21px #4e5965,
+            22px 22px #4e5965,
+            23px 23px #4e5965,
+            24px 24px #4e5965,
+            25px 25px #4e5965;
+    }
+</style>
+
+                 `}
+        />
+      </div>
+    </details>
+
+    <!-- CHEESE CODE -->
+    <details class="w-full mt-2">
+      <summary class="text-xl font-work mb-2 tracking-wide">CHEESE CODE</summary>
+      <Link
+        class="text-xl"
+        href="https://codepen.io/MaCoZu/pen/raBaYKo"
+        text="Check Code on Codepen"
+      />
+    </details>
+  </div>
+</Layout>

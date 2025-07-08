@@ -1,0 +1,135 @@
+---
+import "../styles/global.css";
+import "../styles/font.css";
+import { Icon } from "astro-icon/components";
+import EmailLink from "../components/EmailLink.astro";
+---
+
+<style>
+    .icon-small {
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+
+    .icon-smd {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+
+    .icon-medium {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .icon-large {
+        width: 4rem;
+        height: 4rem;
+    }
+</style>
+
+<hr class="mt-20 border-gray-200 dark:border-gray-700 max-sm:px-5" />
+
+<footer
+    id="footer"
+    class="bg-transparent relative z-10 text-gray-700 dark:text-gray-200 mb-2 max-sm:px-5"
+    style="position: relative"
+>
+    <div class="container">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+            <!-- Logo and Name  -->
+            <div class="">
+                <div class="hidden md:block">
+                    <div class="flex justify-between items-center">
+                        <div class="flex gap-3 items-center">
+                            <a href="/">
+                                <Icon
+                                    name="logo/logo"
+                                    class="icon-large"
+                                    aria-label="logo"
+                                />
+                            </a>
+                            <div class="">
+                                <p
+                                    class="pb-3 text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline"
+                                >
+                                    Marco
+                                </p>
+                                <p
+                                    class="text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline"
+                                >
+                                    Zausch
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:gap-24 md:justify-between">
+                <!-- CONTACT ME -->
+                <div class="py-0 md:py-0 flex-1">
+                    <div class="text-sm uppercase font-medium">Contact</div>
+                    <div class="mt-2">
+                        <EmailLink
+                            encodedEmail="ZWQub2V0c29wQGhjc3Vhem9jcmFt"
+                            label="Email"
+                            class="hover:text-blue-500"
+                        />
+                    </div>
+                </div>
+
+                <!-- WORK -->
+                <div class="py-2 md:py-0 flex-1">
+                    <div class="text-sm uppercase font-medium">Work</div>
+
+                    <p class="mt-2 flex items-center">
+                        <div
+                            class="flex items-center gap-3"
+                            aria-label="LinkedIn"
+                        >
+                            <Icon name="icons/linkedin" class="icon-smd" />
+                            <a
+                                href="https://www.linkedin.com/in/marcozausch"
+                                target="_blank"
+                                class="hover:text-blue-600">LinkedIn</a
+                            >
+                        </div>
+                    </p>
+
+                    <p class="mt-2 flex items-center">
+                        <div
+                            class="flex items-center gap-3"
+                            aria-label="github"
+                        >
+                            <Icon name="icons/github" class="icon-smd" />
+                            <a
+                                href="https://github.com/MaCoZu"
+                                target="_blank"
+                                class="hover:text-blue-600"
+                                aria-label="Github">Github</a
+                            >
+                        </div>
+                    </p>
+                </div>
+
+                <!-- LEGAL -->
+                <div class="py-2 md:py-0 flex-1">
+                    <div class="text-sm uppercase font-medium">Legal</div>
+                    <a class="mt-2 block hover:text-blue-600" href="/impressum"
+                        >Impressum</a
+                    >
+                    <a
+                        class="mt-2 block hover:text-blue-600"
+                        href="/privacypolicy">Privacy Policy</a
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function getEmail() {
+        return `mailto:${"marcozausch" + String.fromCharCode(64) + "posteo.de"}`;
+    }
+</script>

@@ -1,0 +1,81 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  link: string;
+  iconName?: string;
+  iconSize?: 'medium' | 'large' | 'larger';
+  techList?: string[];
+}
+
+const { title, subtitle, link, iconName = '', iconSize = 'medium', techList = [] } = Astro.props;
+
+const isImage = iconName.match(/\.(svg|png|jpe?g|webp|gif)$/i);
+
+const iconClass =
+  iconSize === 'larger' ? 'icon-larger' : iconSize === 'large' ? 'icon-large' : 'icon-medium';
+---
+
+
+<div class="container mx-auto md:max-w-4xl text-xl w-full">
+  <a href={link}>
+    <h1 class="text-3xl md:text-4xl font-bebas font-semibold my-4 tracking-[5px] text-center">
+      {title}
+    </h1>
+    <p class="font-semibold leading-8 text-center py-4">
+      {subtitle}
+    </p>
+  </a>
+
+  <div class="text-pretty leading-8 flex items-start space-x-8">
+    <div class="flex-1 box-border">
+      <slot name="description" />
+    </div>
+
+    {
+      iconName && (
+        <div class="hidden md:block w-24 h-24 box-border">
+          {isImage ? (
+            <img src={`/icons/${iconName}`} alt={title} class={`image-${iconSize}`} />
+          ) : (
+            <Icon name={iconName} class={iconClass} />
+          )}
+        </div>
+      )
+    }
+  </div>
+
+  {
+    techList.length > 0 && (
+      <p class="flex text-gray-500 dark:text-gray-400 font-semibold pt-4 justify-center tracking-wider text-lg">
+        {techList.join(' • ')}
+      </p>
+    )
+  }
+</div>
+
+<!-- Horizontal Ruler -->
+<div class="flex justify-center my-10">
+  <hr class="w-1/2 border-gray-400" />
+</div>
+<style>
+  .icon-medium,
+  .image-medium {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .icon-large,
+  .image-large {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
+
+  .icon-larger,
+  .image-larger {
+    width: auto;
+    height: 8rem;
+  }
+</style>

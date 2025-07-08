@@ -1,0 +1,33 @@
+---
+// src/components/Tippy.astro
+import "tippy.js/dist/tippy.css";
+import "tippy.js/themes/light-border.css";
+import "tippy.js/animations/shift-away.css";
+---
+
+<script is:inline>
+    import tippy from "tippy.js";
+
+    // Initialize Tippy after page load
+    document.addEventListener("astro:page-load", () => {
+        tippy("[data-tippy]", {
+            content(reference) {
+                return reference.getAttribute("data-tippy");
+            },
+            theme: "light-border",
+            arrow: true,
+            placement: "right",
+            animation: "shift-away",
+            duration: 200,
+            offset: [0, 10],
+            interactive: true,
+            appendTo: document.body,
+            // onShow(instance) {
+            //     const isTruncated =
+            //         instance.reference.scrollWidth >
+            //         instance.reference.clientWidth;
+            //     return isTruncated;
+            // },
+        });
+    });
+</script>

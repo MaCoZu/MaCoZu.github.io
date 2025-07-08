@@ -1,0 +1,37 @@
+:root {
+  --link-color: #3459a8;
+  /* A nice blue */
+  --link-hover-color: #1d55f0;
+  /* Slightly darker blue */
+}
+
+/* src/styles/link.css */
+.x-link {
+  display: inline-flex;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--link-color, inherit);
+  transition: color 0.2s ease;
+}
+
+.x-link-content {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.15em;
+}
+
+.x-link:hover {
+  color: var(--link-hover-color, rgb(22, 22, 223));
+}
+
+.x-link-icon {
+  position: relative;
+  top: -0.15em;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.x-link:hover .x-link-icon {
+  opacity: 1;
+}

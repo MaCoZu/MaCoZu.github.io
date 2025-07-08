@@ -1,0 +1,502 @@
+---
+import GradientCard from '../components/GradientCard.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="CSS Gradients">
+  <layout class="gradient-layout">
+    <!-- Radial Mask  -->
+    <GradientCard
+      title="Radial Mask"
+      gradientClass="radial-mask"
+      codeButtonClass="bg-gray-100 text-black"
+      cssCode={`
+  .radial-mask {
+      background: repeating-conic-gradient(
+        from 45deg at 10% 20%,
+        rgba(113, 244, 90, 0.326) 0deg 18deg,
+        rgba(29, 71, 219, 0.393) 18deg 28deg,
+        rgba(193, 10, 181, 0.335) 28deg 47deg
+      );
+
+      mask-image:
+        radial-gradient(
+          circle at 15% 15%, 
+          black 10%, 
+          transparent 80%
+        ),
+        radial-gradient(
+          ellipse at top, 
+          black 10%, 
+          transparent 80%
+        );
+        mask-composite: intersect;
+    }
+            `}
+    />
+    <!-- Linear Mask  -->
+    <GradientCard
+      title="Linear Mask"
+      gradientClass="linear-mask"
+      codeButtonClass="bg-gray-100 text-black"
+      cssCode={`
+     .linear-mask {
+        background: repeating-conic-gradient(
+          from 45deg at 10% 50%,
+          rgba(244, 90, 90, 0.826) 0deg 18deg,
+          rgba(242, 209, 126, 0.893) 18deg 28deg,
+          rgba(244, 153, 89, 0.735) 28deg 47deg
+        );
+
+        mask-image:
+          linear-gradient(45deg, black 10%, transparent 99%),
+          linear-gradient(black 10%, transparent 99%);
+
+        mask-composite: intersect;
+
+      }
+            `}
+    />
+    <!-- Repeating-Conic Gradient -->
+    <GradientCard
+      title="Repeating-Conic Gradient"
+      gradientClass="repeating-conic-gradient"
+      codeButtonClass="bg-gray-100 text-black"
+      cssCode={`
+  .repeating-conic-gradient {
+      background: repeating-conic-gradient(
+        from 15deg at 50% 50%,
+        rgba(243, 142, 142, 0.849),
+        rgba(237, 204, 142, 0.813),
+        rgba(255, 255, 0, 0.824),
+        rgba(124, 227, 124, 0.815),
+        rgba(120, 120, 230, 0.824) 25deg
+      );
+    }
+            `}
+    />
+    <!-- Conic Gradient - Color Wheel  -->
+    <GradientCard
+      title="Conic Gradient - Color Wheel"
+      gradientClass="color-wheel"
+      codeButtonClass="bg-gray-100 text-black"
+      cssCode={`
+  .color-wheel {
+      background: conic-gradient(
+        hsl(360, 100%, 50%),
+        hsl(315 100% 50%),
+        hsl(270 100% 50%),
+        hsl(225 100% 50%),
+        hsl(180 100% 50%),
+        hsl(135 100% 50%),
+        hsl(90 100% 50%),
+        hsl(45 100% 50%),
+        hsl(0 100% 50%)
+      );
+    }
+            `}
+    />
+
+    <!-- Conic Gradient  -->
+    <GradientCard
+      title="Conic Gradient"
+      gradientClass="conic-gradient"
+      codeButtonClass="bg-gray-100 text-black"
+      cssCode={`
+  .conic-gradient {
+      background: conic-gradient(
+        hsl(360, 100%, 50%),
+        hsl(315 100% 50%),
+        hsl(270 100% 50%),
+        hsl(225 100% 50%),
+        hsl(180 100% 50%),
+        hsl(135 100% 50%),
+        hsl(90 100% 50%),
+        hsl(45 100% 50%),
+        hsl(0 100% 50%)
+      );
+    }
+            `}
+    />
+
+    <!-- 2 Radial-Gradients -->
+    <GradientCard
+      title="2 Radial Gradients"
+      gradientClass="two-radial-gradients"
+      codeButtonClass="bg-gray-100 text-black"
+      cssCode={`
+  .two-radial-gradients {
+      background:
+        radial-gradient(ellipse 50% 80% at bottom left, 
+          rgba(255, 0, 255, 0.5), 
+          transparent
+          ),
+        radial-gradient(circle at 70% 30%, 
+          rgba(255, 100, 100, 0.5), 
+          transparent
+          );
+    }
+            `}
+    />
+
+    <!-- Animated BG -->
+    <GradientCard
+      title="Animated BG"
+      gradientClass="animated-bg"
+      codeButtonClass="bg-gray-100 text-black"
+      cssCode={`
+  .animated-bg {
+      background: linear-gradient(90deg, 
+        #ff0000, #ff7f00, 
+        #ffff00, #00ff00, 
+        #0000ff, #4b0082, 
+        #9400d3
+        );
+      background-size: 1000% 100%;
+      animation: move 10s ease infinite;
+    }
+
+    @keyframes move {
+      0% {
+        background-position: 0% 0%;
+      }
+      100% {
+        background-position: 1000% 0%;
+      }
+    }
+            `}
+    />
+
+    <!-- Picture overlay -->
+    <GradientCard
+      title="Background Image - Paper"
+      gradientClass="background-paper-overlay"
+      codeButtonClass="bg-gray-100 text-black"
+      cssCode={`
+  .background-paper-overlay {
+      background:
+        linear-gradient(180deg, #e6e5f3dd, 
+        rgba(212, 136, 136, 0.623)),
+        url('/images/white-paper-texture.jpg');
+      background-blend-mode: difference;
+      background-size: 100% auto;
+    }
+            `}
+    />
+
+    <!-- Picture overlay -->
+    <GradientCard
+      title="Background Image - Grain"
+      gradientClass="background-grain-overlay"
+      codeButtonClass="bg-gray-100 text-black"
+      cssCode={`
+  .background-grain-overlay {
+      background:
+        linear-gradient(to right, rgba(234, 75, 64, 0.2), 
+        rgba(154, 6, 199, 0.3)),
+        url('/images/noise.jpg');
+      background-blend-mode: overlay;
+      background-size: 120% auto;
+    }
+            `}
+    />
+
+    <!-- Repeating Linear gradient -->
+    <GradientCard
+      title="Repeating Linear gradient"
+      gradientClass="repeating-linear-gradient"
+      codeButtonClass="bg-gray-100 text-black"
+      cssCode={`
+  .repeating-linear-gradient {
+      background: repeating-linear-gradient(-45deg, #eee, #cfcfcf 10px);
+    }
+            `}
+    />
+
+    <!-- Hard-Stop Gradients -->
+    <GradientCard
+      title="Hard-Stop Gradients"
+      gradientClass="hard-stop-gradient"
+      codeButtonClass="bg-gray-100 text-black"
+      cssCode={`
+  .hard-stop-gradient {
+      background: linear-gradient(
+        35deg,
+        #faeb4b 0%,
+        #ea4e1e 25%,
+        #9d0535 25%,
+        #ffa3c0 50%,
+        #0645ab 50%,
+        #aac7f5 75%,
+        #05817a 75%,
+        #86d4d0 100%
+      );
+    }
+            `}
+    />
+
+    <!-- Radial-Gradients -->
+    <GradientCard
+      title="Radial-Gradients"
+      gradientClass="radial-gradient"
+      codeButtonClass="bg-gray-100 text-black"
+      cssCode={`
+   .radial-gradient {
+      background: radial-gradient(
+        farthest-corner at 40px 40px,
+        rgb(244, 169, 169) 0,
+        rgb(219, 88, 221) 55%,
+        rgb(174, 18, 138) 98%
+      );
+    }
+            `}
+    />
+
+    <!-- One linear and two radial gradients -->
+    <GradientCard
+      title="One linear and two radial gradients"
+      gradientClass="one-linear-two-radial-gradients"
+      codeButtonClass="bg-gray-100 text-black"
+      cssCode={`
+  .one-linear-two-radial-gradients {
+      background:
+        linear-gradient(0.15turn, #8f008d, 90%, blue),
+        radial-gradient(ellipse 80% 98% at 20% 20%, #505fe9 5%, transparent),
+        radial-gradient(circle at 80% 10%, #fed6e3 20%, transparent);
+    }
+            `}
+    />
+
+    <!-- 3 Linear Gradients -->
+    <GradientCard
+      title="3 Linear Gradients"
+      gradientClass="three-linear-gradients"
+      codeButtonClass="bg-gray-100 text-black"
+      cssCode={`
+  .three-linear-gradients {
+      background:
+        linear-gradient(90deg, rgba(0, 255, 242, 0.7) 10%, transparent 50%),
+        linear-gradient(45deg, rgba(255, 0, 81, 0.7) 40%, transparent 100%),
+        linear-gradient(180deg, #003c95 0%, #8f008d 70%);
+    }
+            `}
+    />
+
+    <!-- 2 Linear Gradients -->
+    <GradientCard
+      title="2 Linear Gradients"
+      gradientClass="two-linear-gradients"
+      codeButtonClass="bg-gray-100 text-black"
+      cssCode={`
+  .two-linear-gradients {
+      background:
+        linear-gradient(120deg, 
+          #d8f8f6 0%, 
+          #60eae3 20%, 
+          transparent 100%
+          ),
+        linear-gradient(-120deg, 
+          #1536c9 70%, 
+          #031d47 100%
+          );
+    }
+            `}
+    />
+
+    <!-- simple linear gradients -->
+    <GradientCard
+      title="Simple Linear Gradients"
+      gradientClass="simple-gradient"
+      codeButtonClass="bg-gray-100 text-black"
+      cssCode={`
+  .simple-gradient {
+      background: linear-gradient(45deg, 
+          #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, 
+          #4b0082, #9400d3
+          );
+    }
+            `}
+    />
+  </layout>
+  <style is:global>
+    .gradient-layout {
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
+      gap: 2.5rem;
+      padding: 0rem;
+      background-color: #ffffff;
+      border-radius: 1.5rem;
+      /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); */
+    }
+
+    .gradient-card {
+      width: 100%;
+      height: 20em;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+      box-shadow:
+        8px 8px 20px 2px rgba(0, 0, 0, 0.1),
+        -8px -8px 10px white;
+    }
+    .gradient-card:hover {
+      transform: translateY(-3px); /* Lift effect on hover */
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .heading {
+      font-size: clamp(1rem, calc(0.5vw + 1rem), 2rem);
+      font-family: 'Work', sans-serif;
+      text-transform: uppercase;
+    }
+
+    @keyframes gradientShift {
+      0% 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .animated-bg {
+      background: linear-gradient(-45deg, #a8edea, #fed6e3, #c3cfe2, #a8edea);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    .simple-gradient {
+      background: linear-gradient(160deg, rgba(37, 230, 255, 0.9) 10%, rgb(233, 195, 255) 70%);
+    }
+
+    .two-linear-gradients {
+      background:
+        linear-gradient(120deg, #d8f8f6 0%, #60eae3 20%, transparent 100%),
+        linear-gradient(-120deg, #1536c9 70%, #031d47 100%);
+    }
+
+    .three-linear-gradients {
+      background:
+        linear-gradient(90deg, rgba(0, 255, 242, 0.7) 10%, transparent 50%),
+        linear-gradient(45deg, rgba(255, 0, 81, 0.7) 40%, transparent 100%),
+        linear-gradient(180deg, #003c95 0%, #8f008d 70%);
+    }
+
+    .radial-gradient {
+      background: radial-gradient(
+        farthest-corner at 40px 40px,
+        rgb(244, 169, 169) 0,
+        rgb(219, 88, 221) 55%,
+        rgb(174, 18, 138) 98%
+      );
+    }
+
+    .two-radial-gradients {
+      background:
+        radial-gradient(ellipse 50% 80% at bottom left, rgba(255, 0, 255, 0.5), transparent),
+        radial-gradient(circle at 70% 30%, rgba(255, 100, 100, 0.5), transparent);
+    }
+
+    .one-linear-two-radial-gradients {
+      background:
+        /* radial-shape | radial-size? at position?,color-stop-list */
+        radial-gradient(ellipse 80% 98% at 20% 20%, #505fe9 5%, transparent),
+        radial-gradient(circle at 80% 10%, #fed6e3 20%, transparent),
+        linear-gradient(0.15turn, #8f008d, 90%, blue);
+    }
+
+    .repeating-linear-gradient {
+      background: repeating-linear-gradient(-45deg, #eee, #cfcfcf 10px);
+    }
+    .background-grain-overlay {
+      background:
+        linear-gradient(to right, rgba(234, 75, 64, 0.2), rgba(154, 6, 199, 0.3)),
+        url('/images/noise.jpg');
+      background-blend-mode: overlay;
+      background-size: 120% auto;
+    }
+    .background-paper-overlay {
+      background:
+        linear-gradient(180deg, #e6e5f3dd, rgba(212, 136, 136, 0.623)),
+        url('/images/white-paper-texture.jpg');
+      background-blend-mode: difference;
+      background-size: 100% auto;
+    }
+    .hard-stop-gradient {
+      background: linear-gradient(
+        35deg,
+        #faeb4b 0%,
+        #ea4e1e 25%,
+        #9d0535 25%,
+        #ffa3c0 50%,
+        #0645ab 50%,
+        #aac7f5 75%,
+        #05817a 75%,
+        #86d4d0 100%
+      );
+    }
+    .conic-gradient {
+      /* first and last color same to avoid hard edges */
+      background: conic-gradient(from 90deg at 25% 25%, #a8edea, #fed6e3, #a7c6f8, #a8edea);
+    }
+
+    .color-wheel {
+      background: conic-gradient(
+        hsl(360, 100%, 50%),
+        hsl(315 100% 50%),
+        hsl(270 100% 50%),
+        hsl(225 100% 50%),
+        hsl(180 100% 50%),
+        hsl(135 100% 50%),
+        hsl(90 100% 50%),
+        hsl(45 100% 50%),
+        hsl(0 100% 50%)
+      );
+    }
+
+    .repeating-conic-gradient {
+      background: repeating-conic-gradient(
+        from 15deg at 50% 50%,
+        rgba(243, 142, 142, 0.849),
+        rgba(237, 204, 142, 0.813),
+        rgba(255, 255, 0, 0.824),
+        rgba(124, 227, 124, 0.815),
+        rgba(120, 120, 230, 0.824) 25deg
+      );
+    }
+
+    .radial-mask {
+      background: repeating-conic-gradient(
+        from 45deg at 10% 20%,
+        rgba(113, 244, 90, 0.326) 0deg 18deg,
+        rgba(29, 71, 219, 0.393) 18deg 28deg,
+        rgba(193, 10, 181, 0.335) 28deg 47deg
+      );
+
+      mask-image:
+        radial-gradient(circle at 15% 15%, black 10%, transparent 80%),
+        radial-gradient(ellipse at top, black 10%, transparent 80%);
+
+      -webkit-mask-composite: source-in;
+      mask-composite: intersect;
+    }
+    .linear-mask {
+      background: repeating-conic-gradient(
+        from 45deg at 10% 50%,
+        rgba(244, 90, 90, 0.826) 0deg 18deg,
+        rgba(242, 209, 126, 0.893) 18deg 28deg,
+        rgba(244, 153, 89, 0.735) 28deg 47deg
+      );
+
+      mask-composite: intersect;
+
+      mask-image:
+        linear-gradient(45deg, black 10%, transparent 99%),
+        linear-gradient(black 10%, transparent 99%);
+    }
+  </style>
+</Layout>
