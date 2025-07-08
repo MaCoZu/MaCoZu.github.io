@@ -6,23 +6,18 @@ interface Props {
   subtitle: string;
   link: string;
   iconName?: string;
-  iconSize?: 'medium' | 'large';
+  iconSize?: 'medium' | 'large' | 'larger';
   techList?: string[];
 }
 
 const { title, subtitle, link, iconName = '', iconSize = 'medium', techList = [] } = Astro.props;
+
+const isImage = iconName.match(/\.(svg|png|jpe?g|webp|gif)$/i);
+
+const iconClass =
+  iconSize === 'larger' ? 'icon-larger' : iconSize === 'large' ? 'icon-large' : 'icon-medium';
 ---
 
-<style>
-  .icon-medium {
-    width: 4rem;
-    height: 4rem;
-  }
-  .icon-large {
-    width: 4.8rem;
-    height: 4.8rem;
-  }
-</style>
 
 <div class="container mx-auto md:max-w-4xl text-xl w-full">
   <a href={link}>
@@ -41,8 +36,12 @@ const { title, subtitle, link, iconName = '', iconSize = 'medium', techList = []
 
     {
       iconName && (
-        <div class="hidden md:block w-14 h-14 box-border">
-          <Icon name={iconName} class={iconSize === 'large' ? 'icon-large' : 'icon-medium'} />
+        <div class="hidden md:block w-24 h-24 box-border">
+          {isImage ? (
+            <img src={`/icons/${iconName}`} alt={title} class={`image-${iconSize}`} />
+          ) : (
+            <Icon name={iconName} class={iconClass} />
+          )}
         </div>
       )
     }
@@ -61,3 +60,22 @@ const { title, subtitle, link, iconName = '', iconSize = 'medium', techList = []
 <div class="flex justify-center my-10">
   <hr class="w-1/2 border-gray-400" />
 </div>
+<style>
+  .icon-medium,
+  .image-medium {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .icon-large,
+  .image-large {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
+
+  .icon-larger,
+  .image-larger {
+    width: auto;
+    height: 8rem;
+  }
+</style>
