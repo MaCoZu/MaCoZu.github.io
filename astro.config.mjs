@@ -8,21 +8,9 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkToc from 'remark-toc';
 
-// https://astro.build/config
 export default defineConfig({
-  base: 'MaCoZu.github.io',
   site: 'https://macozu.github.io',
-  outDir: 'docs',
-  output: 'static',
-  vite: {
-    plugins: [],
-    build: {
-      sourcemap: false, // Disable source maps entirely
-    },
-    optimizeDeps: {
-      exclude: ['svgo'],
-    },
-  },
+  base: '/MaCoZu.github.io/',  // Correct base path for GitHub Pages
 
   integrations: [
     mdx({
@@ -32,8 +20,10 @@ export default defineConfig({
     react(),
     icon(),
   ],
+
   markdown: {
     remarkPlugins: [remarkToc, remarkGfm, remarkMath],
+    rehypePlugins: [rehypeKatex],
     shikiConfig: {
       themes: {
         light: 'one-light',
@@ -41,6 +31,14 @@ export default defineConfig({
       },
       wrap: true,
     },
-    rehypePlugins: [rehypeKatex],
+  },
+
+  vite: {
+    build: {
+      sourcemap: false,  // Keeps source maps off for smaller builds
+    },
+    optimizeDeps: {
+      exclude: ['svgo'],
+    },
   },
 });
