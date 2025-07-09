@@ -9,9 +9,6 @@ import remarkMath from 'remark-math';
 import remarkToc from 'remark-toc';
 
 export default defineConfig({
-  site: 'https://macozu.github.io',
-  base: '/MaCoZu.github.io/',  // Correct base path for GitHub Pages
-
   integrations: [
     mdx({
       remarkPlugins: [remarkToc, remarkGfm, remarkMath],
@@ -35,7 +32,7 @@ export default defineConfig({
 
   vite: {
     build: {
-      sourcemap: false,  // Keeps source maps off for smaller builds
+      sourcemap: false,
     },
     optimizeDeps: {
       exclude: ['svgo'],
