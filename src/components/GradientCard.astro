@@ -25,7 +25,7 @@ const { title, gradientClass, cssCode, codeButtonClass } = Astro.props;
 
     <button
       class={twMerge(
-        'gradient-text absolute top-2 right-2 bg-gray-100 text-gray-800 px-5 py-1 rounded-md text-sm z-10',
+        'gradient-text absolute top-4 right-8 bg-gray-100 text-gray-800 px-5 py-1 rounded-md text-sm z-10',
         codeButtonClass,
       )}
     >
@@ -34,15 +34,26 @@ const { title, gradientClass, cssCode, codeButtonClass } = Astro.props;
 
     <div class="code-display hidden absolute inset-0 bg-gray-50 p-0 overflow-auto">
       <Code class:list={['px-10 py-5']} lang="css" theme="one-light" wrap code={cssCode} />
-      <button
-        class="close-code-button absolute top-2 right-2 text-white bg-gray-700 px-2 py-1 rounded-md text-sm z-10 hover:bg-gray-800"
-      >
-        Gradient
-      </button>
+
+      <!-- Copy and Close buttons container -->
+      <div class="button-container absolute top-4 right-8 flex gap-2 z-10">
+        <button
+          class="copy-button bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md text-sm transition-colors duration-200"
+          data-css-code={cssCode}
+          title="Copy CSS code"
+        >
+          Copy
+        </button>
+        <button
+          class="close-code-button bg-gray-700 hover:bg-gray-800 text-white px-3 py-1 rounded-md text-sm transition-colors duration-200"
+        >
+          Close
+        </button>
+      </div>
     </div>
   </div>
 
-  <script is:inline define:vars={{ gradientClass }}>
+  <script is:inline define:vars={{ gradientClass, cssCode }}>
     document.addEventListener('DOMContentLoaded', () => {
       const card = document
         .querySelector(`.card .gradient-display[data-gradient-class="${gradientClass}"]`)
@@ -57,6 +68,7 @@ const { title, gradientClass, cssCode, codeButtonClass } = Astro.props;
       const codeDisplay = card.querySelector('.code-display');
       const closeButton = card.querySelector('.close-code-button');
       const codeToggleButton = card.querySelector('.gradient-text');
+      const copyButton = card.querySelector('.copy-button');
 
       // Helper function to show code and hide gradient view
       const showCodeView = () => {
@@ -72,15 +84,55 @@ const { title, gradientClass, cssCode, codeButtonClass } = Astro.props;
         codeDisplay.classList.add('hidden');
         gradientDisplay.classList.remove('hidden');
         if (codeToggleButton) {
-          // Check if button exists
           codeToggleButton.classList.remove('hidden');
         }
+      };
+
+      // Copy to clipboard functionality
+      const copyToClipboard = async text => {
+        try {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } catch (err) {
+          // Fallback for older browsers
+          const textArea = document.createElement('textarea');
+          textArea.value = text;
+          textArea.style.position = 'fixed';
+          textArea.style.left = '-999999px';
+          textArea.style.top = '-999999px';
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+
+          try {
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            return true;
+          } catch (err) {
+            document.body.removeChild(textArea);
+            return false;
+          }
+        }
+      };
+
+      // Show visual feedback for copy action
+      const showCopyFeedback = button => {
+        const originalText = button.textContent;
+        button.textContent = 'Copied!';
+        button.classList.add('bg-green-600');
+        button.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove('bg-green-600');
+          button.classList.add('bg-blue-600', 'hover:bg-blue-700');
+        }, 2000);
       };
 
       // 1. Show code on "Code" button click
       if (codeToggleButton) {
         codeToggleButton.addEventListener('click', event => {
-          event.stopPropagation(); // Prevent click from bubbling to gradientDisplay or card
+          event.stopPropagation();
           showCodeView();
         });
       }
@@ -88,22 +140,44 @@ const { title, gradientClass, cssCode, codeButtonClass } = Astro.props;
       // 2. Show code on gradient card (gradientDisplay) click
       if (gradientDisplay) {
         gradientDisplay.addEventListener('click', event => {
-          // Only show code if it's not already visible and not clicking the close button
           if (codeDisplay.classList.contains('hidden') && event.target !== closeButton) {
             showCodeView();
           }
         });
       }
 
-      // 3. Close code on "Gradient" button click
+      // 3. Close code on "Close" button click
       if (closeButton) {
         closeButton.addEventListener('click', event => {
-          event.stopPropagation(); // Prevent click from bubbling up
+          event.stopPropagation();
           showGradientView();
         });
       }
 
-      // 4. Close code on outside click
+      // 4. Copy button functionality
+      if (copyButton) {
+        copyButton.addEventListener('click', async event => {
+          event.stopPropagation();
+          const success = await copyToClipboard(cssCode);
+          if (success) {
+            showCopyFeedback(copyButton);
+          } else {
+            // Show error feedback
+            const originalText = copyButton.textContent;
+            copyButton.textContent = 'Failed';
+            copyButton.classList.add('bg-red-600');
+            copyButton.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+
+            setTimeout(() => {
+              copyButton.textContent = originalText;
+              copyButton.classList.remove('bg-red-600');
+              copyButton.classList.add('bg-blue-600', 'hover:bg-blue-700');
+            }, 2000);
+          }
+        });
+      }
+
+      // 5. Close code on outside click
       document.addEventListener('click', event => {
         if (!card.contains(event.target) && !codeDisplay.classList.contains('hidden')) {
           showGradientView();
@@ -115,9 +189,9 @@ const { title, gradientClass, cssCode, codeButtonClass } = Astro.props;
   <style>
     .card {
       width: 100%;
-      height: 20em; /* This is the "normal size" you referred to */
+      height: 20em;
       border-radius: 0.5rem;
-      overflow: hidden; /* Ensures content is clipped */
+      overflow: hidden;
     }
     .card:hover {
       transition:
@@ -132,24 +206,21 @@ const { title, gradientClass, cssCode, codeButtonClass } = Astro.props;
       font-family: 'Work', sans-serif;
       text-transform: uppercase;
       margin-bottom: 0rem;
-      text-align: left; /* Centering the heading */
+      text-align: left;
     }
 
-    /* Basic styling for the gradient display */
     .gradient-display {
-      transition: opacity 0.3s ease; /* For smooth show/hide */
-      position: relative; /* Ensure it stays in its normal flow position */
-      z-index: 1; /* Make sure it's above potential siblings if you add them */
+      transition: opacity 0.3s ease;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Styling for the code display when it's visible */
     .code-display {
-      /* This div uses absolute positioning to fully cover its parent .card */
-      display: flex; /* Use flexbox to center the Code component */
+      display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.3s ease; /* For smooth show/hide */
-      z-index: 2; /* Ensure it overlays the gradient display */
+      transition: opacity 0.3s ease;
+      z-index: 2;
     }
 
     .code-display.hidden[data-astro-cid-qp7awotk] {
@@ -160,26 +231,28 @@ const { title, gradientClass, cssCode, codeButtonClass } = Astro.props;
       display: none !important;
     }
 
-    /* Styles to make the Astro Code component look good within the overlay */
+    .button-container {
+      gap: 0.5rem;
+    }
+
     .code-display :global(.astro-code) {
-      width: 95%; /* Adjust width to fit */
-      height: 90%; /* Adjust height */
-      overflow: auto; /* Add scrollbars if code overflows */
-      flex-shrink: 0; /* Prevent it from shrinking if content is large */
+      width: 95%;
+      height: 90%;
+      overflow: auto;
+      flex-shrink: 0;
       display: flex;
       flex-direction: column;
-      justify-content: top; /* Center code block vertically if space allows */
+      justify-content: top;
     }
 
     .code-display :global(pre),
     .code-display :global(code) {
-      background-color: transparent !important; /* Override Code component's default background */
-      padding: 0 !important; /* Remove default padding */
-      font-size: 0.875rem; /* Adjust font size if needed */
+      background-color: transparent !important;
+      padding: 0 !important;
+      font-size: 0.875rem;
       line-height: 1.5;
     }
 
-    /* Ensure the text 'Click to see code' is also hidden/shown correctly */
     .gradient-text.hidden {
       display: none;
     }
