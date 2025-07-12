@@ -9,6 +9,9 @@ import remarkMath from 'remark-math';
 import remarkToc from 'remark-toc';
 
 export default defineConfig({
+  site: 'https://macozu.github.io/',
+  base: '/MaCoZu.github.io', 
+  output: 'static',
   integrations: [
     mdx({
       remarkPlugins: [remarkToc, remarkGfm, remarkMath],
