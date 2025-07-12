@@ -10,7 +10,7 @@ import remarkToc from 'remark-toc';
 
 export default defineConfig({
   site: 'https://macozu.github.io/',
-  base: '/MaCoZu.github.io', 
+  base: process.env.NODE_ENV === 'production' ? '/MaCoZu.github.io' : '/',
   output: 'static',
   integrations: [
     mdx({
