@@ -1,14 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import '../styles/font.css';
-import '../styles/global.css';
-
-import { Code } from 'astro:components';
-
 import { Image } from 'astro:assets';
-import Article from '../components/Article.astro';
-import Divider from '../components/Dividers/Divider.astro';
-import Link from '../components/Link.astro';
+import { Code } from 'astro:components';
+import Article from '../../components/Article.astro';
+import Divider from '../../components/Dividers/Divider.astro';
+import Link from '../../components/Link.astro';
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/font.css';
+import '../../styles/global.css';
 ---
 
 <Layout title="MZ | Forró Graphics">
@@ -16,7 +14,7 @@ import Link from '../components/Link.astro';
   <div class="flex flex-col items-center justify-center mx-auto">
     <Article className="">
       <p>
-        For our snug dance venue in the Prinzenalle 58, Berlin I've built a website with Astro. With
+        For our snug dance venue in the Prinzenallee 58, Berlin I've built a website with Astro. With
         it came a logo and a mascot created using the free and open-source vector editor
         <Link href="https://inkscape.org/" text="Inkscape" />.
       </p>
