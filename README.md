@@ -1,6 +1,3 @@
-TODO:
-
-
-- all svg and images in assets
-- no blurry images
-- 
+My Portfolio Website 
+- mainly data science projects
+- forays into web & graphic design
