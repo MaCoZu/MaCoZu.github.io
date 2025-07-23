@@ -1,6 +1,4 @@
 ---
-import { Icon } from "astro-icon/components";
-
 interface Props {
   encodedEmail: string;
   label?: string;
@@ -9,10 +7,9 @@ interface Props {
 }
 
 const {
-  encodedEmail = "ZWQub2V0c29wQGhjc3Vhem9jcmFt",
-  label = "Email",
-  iconName = "icons/envelope-solid",
-  class: className = "",
+  encodedEmail = 'ZWQub2V0c29wQGhjc3Vhem9jcmFt',
+  label = 'Email',
+  class: className = '',
 } = Astro.props;
 ---
 
@@ -22,21 +19,20 @@ const {
     const target = e.currentTarget;
 
     // Use the hardcoded value or find another way to pass the encoded email
-    const encoded = "ZWQub2V0c29wQGhjc3Vhem9jcmFt"; // or get it from a data attribute
+    const encoded = 'ZWQub2V0c29wQGhjc3Vhem9jcmFt'; // or get it from a data attribute
 
     // Decode and reverse the email
-    const decoded = atob(encoded).split("").reverse().join("");
+    const decoded = atob(encoded).split('').reverse().join('');
 
     // Update the link
     target.href = `mailto:${decoded}`;
 
     // Update the displayed text
-    const textEl = target.querySelector(".email-text");
+    const textEl = target.querySelector('.email-text');
     if (textEl) textEl.textContent = decoded;
 
     // Programmatically trigger the mailto
     window.location.href = target.href;
-
   }
 </script>
 
@@ -46,6 +42,12 @@ const {
   class={`email-link flex items-center gap-3 ${className}`}
   aria-label="Email contact"
 >
-  <Icon name={iconName} class="icon-small self-center" aria-hidden="true" />
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="19" height="19">
+    <path
+      fill="currentColor"
+      d="M4 20q-.8 0-1.4-.6T2 18V6q0-.8.6-1.4T4 4h16q.8 0 1.4.6T22 6v12q0 .8-.6 1.4T20 20zm8-7 8-5V6l-8 5-8-5v2z"
+    ></path>
+  </svg>
+
   <span class="email-text">{label}</span>
 </a>

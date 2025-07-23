@@ -1,55 +1,63 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
 
 interface Props {
   title: string;
   subtitle: string;
   link: string;
-  iconName?: string;
+  icon?: any; // imported image, not a string path!
+  iconName?: string; // for SVG icons
   iconSize?: 'medium' | 'large' | 'larger';
   techList?: string[];
 }
 
-const { title, subtitle, link, iconName = '', iconSize = 'medium', techList = [] } = Astro.props;
-
-const isImage = iconName.match(/\.(svg|png|jpe?g|webp|gif)$/i);
+const {
+  title,
+  subtitle,
+  link,
+  icon,
+  iconName = '',
+  iconSize = 'medium',
+  techList = [],
+} = Astro.props;
 
 const iconClass =
   iconSize === 'larger' ? 'icon-larger' : iconSize === 'large' ? 'icon-large' : 'icon-medium';
 ---
 
-
-<div class="container mx-auto md:max-w-4xl text-xl w-full">
-  <a href={link}>
-    <h1 class="text-3xl md:text-4xl font-bebas font-semibold my-4 tracking-[5px] text-center">
-      {title}
-    </h1>
-    <p class="font-semibold leading-8 text-center py-4">
-      {subtitle}
-    </p>
-  </a>
-
-  <div class="text-pretty leading-8 flex items-start space-x-8">
-    <div class="flex-1 box-border">
-      <slot name="description" />
+<div class="container mx-auto md:w-[50rem] text-xl w-full">
+  <div class="text-pretty leading-8 flex items-center justify-between">
+    <div>
+      <a href={link}>
+        <h1 class="text-3xl md:text-4xl font-bebas font-semibold tracking-[5px] text-left">
+          {title}
+        </h1>
+        <p class="font-semibold text-secondary leading-8 text-left my-3">
+          {subtitle}
+        </p>
+      </a>
     </div>
-
     {
-      iconName && (
+      icon ? (
         <div class="hidden md:block w-24 h-24 box-border">
-          {isImage ? (
-            <img src={`/icons/${iconName}`} alt={title} class={`image-${iconSize}`} />
-          ) : (
-            <Icon name={iconName} class={iconClass} />
-          )}
+          <Image src={icon} alt={title} class={`image-${iconSize}`} />
         </div>
-      )
+      ) : iconName ? (
+        <div class="hidden md:block w-24 h-24 box-border">
+          <Icon name={iconName} class={iconClass} />
+        </div>
+      ) : null
     }
+  </div>
+
+  <div class="flex-1 box-border">
+    <slot name="description" />
   </div>
 
   {
     techList.length > 0 && (
-      <p class="flex text-gray-500 dark:text-gray-400 font-semibold pt-4 justify-center tracking-wider text-lg">
+      <p class="flex text-tertiary  font-semibold mt-3 justify-center tracking-wider text-lg">
         {techList.join(' • ')}
       </p>
     )

@@ -1,4 +1,5 @@
 ---
+import forroIcon from '../assets/images/forroIcon.png';
 import Link from '../components/Link.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import Layout from '../layouts/Layout.astro';
@@ -25,15 +26,17 @@ import '../styles/global.css';
 
     <!-- Forro Da Capita Website -->
     <ProjectCard
-      title="Forró Da Capita Website"
-      subtitle="Webpage for Forró Da Capita."
+      title="Forró Da Capitá Website"
+      subtitle="Webpage for Forró Da Capitá."
       link="https://forrodacapita.vercel.app/"
-      iconName="icons/mascot.png"
-      iconSize="larger"
-      techList={['Astro', 'DatoCMS', 'Tailwind', 'React']}
+      icon={forroIcon}
+      iconSize="large"
+      techList={['Astro', 'DatoCMS', 'Supabase', 'FullCalendar']}
     >
       <span slot="description">
-        While this is mainly a design project, I put it also in the data category, because of the backend functionality. The site leveraging DatoCMS to give users the ability to create and edit content on the fly. And the guestbook is powered by Supabase. 
+        I build a visually appealing (hopefully) website for my favorite dance venue. While the focus
+        is on design, some data handling is happening in the background. Collaborators can edit most of
+        the sites contents (text, image, video). An openly accessible guestbook is in place to engage users. And a meta calendar pulls different public event calendars into one.
       </span>
     </ProjectCard>
 
@@ -42,16 +45,13 @@ import '../styles/global.css';
       title="Congressional Tweeting"
       subtitle="Big data analysis of tweets from US congress members."
       link="https://twitter-analysis-six.vercel.app/"
-      iconName="icons/twitter-bird2"
+      iconName="twitter-bird2"
       iconSize="large"
       techList={['Pyspark', 'Databricks', 'SQL']}
     >
       <span slot="description">
-        I took the task and data from the course <Link
-          href="https://www.coursera.org/learn/sql-data-science-capstone?specialization=learn-sql-basics-data-science"
-          text="SQL for Data Science"
-        />on Coursera. The imaginary customer wants an analysis of the 2008-2017 congressional
-        tweets to understand key topics, members, and relationships within Congress.
+        I analyzed the twitter data of the US congress between 2008-2017 to identify key topics and
+        relationships, providing actionable insights for political strategists.
       </span>
     </ProjectCard>
 
@@ -60,16 +60,17 @@ import '../styles/global.css';
       title="World Bank Commander"
       subtitle="Compare all world bank indicators on a 2x2 chart grid."
       link="https://world-bankcommander.onrender.com/"
-      iconName="icons/worldbank_logo"
+      iconName="worldbank_logo"
       iconSize="medium"
       techList={['Python', 'Dash', 'Plotly']}
     >
       <span slot="description">
-        The idea was to have a clean overview of the different indicators to comapare and spot
-        unexpected relationships. Since the world bank's <Link
+        I created a tool to compare World Bank indicators, enabling analysts to identify unexpected
+        relationships. The idea was to have a clean overview of the different indicators without the
+        cluttered World Bank <Link
           href="https://databank.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG/1ff4a498/Popular-Indicators"
           text="interface"
-        /> is cumbersome and crowded I wanted something simple. Happy relationship hunting!
+        />.
       </span>
     </ProjectCard>
 
@@ -78,17 +79,17 @@ import '../styles/global.css';
       title="Tableau Dashboards"
       subtitle="Some of my data dashboard on Tableau Public."
       link="https://public.tableau.com/app/profile/marco.zausch8856/vizzes"
-      iconName="icons/tableau-software"
+      iconName="tableau-software"
       iconSize="medium"
-      techList={['Tableau', 'Data Analysis']}
+      techList={['Tableau']}
     >
       <span slot="description">
-        Tableau is a Business Intelligence software but with a better look than Power BI for
-        example. Check out my public <Link
+        Tableau is a BI tool that creates visually appealing and informative dashboards. Here are my
+        public <Link
           href="https://public.tableau.com/app/profile/marco.zausch8856/vizzes"
           text="dashboards"
         />
-      </span> here.
+      </span>.
     </ProjectCard>
   </main>
 
@@ -132,7 +133,7 @@ import '../styles/global.css';
 
             <!-- Footer Text -->
             <p
-                class="flex text-gray-500 dark:text-gray-400 font-semibold pt-4 justify-center tracking-wider text-lg"
+                class="flex text-secondary  font-semibold pt-4 justify-center tracking-wider text-lg"
             >
                 D3 • JavaScript • Css
             </p>
@@ -189,7 +190,7 @@ import '../styles/global.css';
 
             <!-- Footer Text -->
             <p
-                class="flex text-gray-500 dark:text-gray-400 font-semibold pt-4 justify-center tracking-wider text-lg"
+                class="flex text-secondary  font-semibold pt-4 justify-center tracking-wider text-lg"
             >
                 D3 • JavaScript • Pandas
             </p>

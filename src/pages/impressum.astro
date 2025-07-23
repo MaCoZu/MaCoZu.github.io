@@ -1,32 +1,22 @@
 ---
-import "../styles/global.css";
-import "../styles/font.css";
-import Layout from "../layouts/Layout.astro";
-import Heading from "../components/Heading.astro";
-import { Icon } from "astro-icon/components";
+import EmailLink from '../components/EmailLink.astro';
+import Heading from '../components/Heading.astro';
+import Layout from '../layouts/Layout.astro';
+import '../styles/font.css';
+import '../styles/global.css';
 ---
 
 <Layout title="Impressum">
-  <div class="flex justify-center items-center">
-    <article
-      id=""
-      class="max-w-none prose prose-lg prose-stone dark:prose-invert text-justify"
-    >
-    <Heading id="impressum" className="mt-10 mb-10" text="Impressum" />
-      <div class="flex justify-items-center">
-        <div class="text-center text-xl space-y-14">
-          <p class="leading-0.5">
-            Verantwortlicher: <br />
-            <div class="font-semibold">Marco Zausch</div>
-          </p>
-          <p class="leading-0.5">
-            Services: <br />
-            <div class="font-semibold">
-              Business Analytics <br /> Data Science
-            </div>
-          </p>
-        </div>
-      </div>
-    </article>
+  <div class="flex flex-col justify-center items-center font-semibold font-work text-2xl">
+    <Heading id="impressum" className="my-10" text="Impressum" />
+    <div class="flex flex-col gap-2 text-center justify-center items-center">
+      <p>Marco Zausch</p>
+      <EmailLink
+        encodedEmail="ZWQub2V0c29wQGhjc3Vhem9jcmFt"
+        label="Email"
+        class="font-semibold font-work text-2xl"
+      />
+      <p>Business Analytics</p>
+      <p>Data Science</p>
   </div>
 </Layout>

@@ -10,7 +10,7 @@ interface Props {
 const { text, className = "", id } = Astro.props;
 
 // Base classes that are always applied
-const base = "font-bebas text-4xl text-center mt-20 mb-10";
+const base = "font-bebas text-4xl text-center";
 
 // Merge with any custom classes passed in
 const merged = twMerge(base, className);

@@ -1,6 +1,10 @@
 ---
 import { Image } from 'astro:assets';
 import { Code } from 'astro:components';
+import CabaretCover from '../../assets/images/cabaret_cover.jpg';
+import oldPrince from '../../assets/images/old_prince.jpg';
+import PrinzenrolleLogo from '../../assets/images/prinzenrolle_logo.png';
+import Prinzenruler from '../../assets/images/PrinzenRuler.png';
 import Article from '../../components/Article.astro';
 import Divider from '../../components/Dividers/Divider.astro';
 import Link from '../../components/Link.astro';
@@ -271,7 +275,7 @@ import '../../styles/global.css';
       </div>
       <div class="flex justify-center pb-20 pt-2">
         <Image
-          src="/images/cabaret_cover.jpg"
+          src={CabaretCover}
           alt="cabaret"
           class="object-contain rounded-md hover:scale-120 transition-all"
           height="300"
@@ -462,14 +466,14 @@ fill: #e6e6fa;
       <div class="flex flex-row items-center gap-10 py-10">
         <Image
           class="h-full object-contain hover:scale-120 transition-all"
-          src="/images/old_prince.jpg"
+          src={oldPrince}
           alt="Chart detail"
           width="200"
           height="100"
         />
         <Image
           class="h-full object-contain hover:scale-120 transition-all"
-          src="/images/prinzenrolle_logo.png"
+          src={PrinzenrolleLogo}
           alt="Chart detail"
           width="350"
           height="200"
@@ -499,7 +503,7 @@ fill: #e6e6fa;
       <div class="flex justify-end">
         <Image
           class="h-full object-contain hover:scale-120 transition-all"
-          src="/images/PrinzenRuler.png"
+          src={Prinzenruler}
           alt="Chart detail"
           width="400"
           height="300"
