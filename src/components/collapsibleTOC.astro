@@ -16,13 +16,13 @@ const { headings } = Astro.props;
     style="top: h-[calc(100vh-6rem)]"
 >
     <!-- TOC Content (visible by default) -->
-    <aside id="toc-content" class="w-64 bg-white transition-all duration-900">
+    <aside id="toc-content" class="w-64 bg-base transition-all duration-900">
         <nav class="text-sm space-y-1 p-4 h-full overflow-y-auto">
             <div class="flex justify-between items-center mb-2">
-                <h3 class="font-semibold text-gray-700">Inhaltsverzeichnis</h3>
+                <h3 class="font-semibold text-primary">Inhaltsverzeichnis</h3>
                 <button
                     id="toc-toggle"
-                    class="text-gray-400 hover:text-gray-600"
+                    class="text-primary hover:text-tertiary"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@ const { headings } = Astro.props;
                         >
                             <a
                                 href={`#${h.slug}`}
-                                class="text-gray-600 hover:text-blue-600 transition-colors line-clamp-1 hover:line-clamp-none"
+                                class="text-primary hover:text-tertiary transition-colors line-clamp-1 hover:line-clamp-none"
                             >
                                 {h.text}
                             </a>
@@ -59,11 +59,11 @@ const { headings } = Astro.props;
     <!-- Collapsed Handle (hidden by default) -->
     <button
         id="toc-handle"
-        class="hidden w-6 h-12 bg-gray-100 hover:bg-gray-200 rounded-l-lg items-center justify-center transition-all duration-200 ml-1"
+        class="hidden w-6 h-12 bg-base hover:bg-gray-200 rounded-l-lg items-center justify-center transition-all duration-200 ml-1"
         aria-label="Show Table of Contents"
     >
         <svg
-            class="w-4 h-4 text-gray-500"
+            class="w-4 h-4 text-primary"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

@@ -20,14 +20,14 @@ const merged = twMerge(base, className);
 <div class={merged}> <!-- Add relative positioning and minimum height -->
     <a href={href} class="group h-full flex flex-col"> <!-- Make this a flex container -->
         <div class="flex-grow space-y-1"> <!-- Content that should grow to push footer down -->
-            <h1 class="font-literata text-lg uppercase text-gray-600 dark:text-slate-400 tracking-wide font-semibold">
+            <h1 class="font-literata text-lg uppercase text-primary  tracking-wide font-semibold">
                 {title}
             </h1>
             <p>{description}</p>
         </div>
 
         <!-- Footer that stays at bottom -->
-        <div class="flex flex-row items-center justify-between mt-auto pt-2 gap-5 text-sm text-gray-500 dark:text-slate-400">
+        <div class="flex flex-row items-center justify-between mt-auto pt-2 gap-5 text-sm text-secondary ">
             <div class="flex items-center gap-2">
                 {tag && (
                     <span class="px-2 py-0.5 text-xs bg-blue-50 text-blue-800 rounded" title={`Category: ${tag}`}>

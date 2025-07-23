@@ -1,135 +1,141 @@
 ---
-import "../styles/global.css";
-import "../styles/font.css";
-import { Icon } from "astro-icon/components";
-import EmailLink from "../components/EmailLink.astro";
+import '../styles/global.css';
+import '../styles/font.css';
+import { Icon } from 'astro-icon/components';
+import EmailLink from '../components/EmailLink.astro';
 ---
-
-<style>
-    .icon-small {
-        width: 1.1rem;
-        height: 1.1rem;
-    }
-
-    .icon-smd {
-        width: 1.2rem;
-        height: 1.2rem;
-    }
-
-    .icon-medium {
-        width: 2rem;
-        height: 2rem;
-    }
-
-    .icon-large {
-        width: 4rem;
-        height: 4rem;
-    }
-</style>
 
 <hr class="mt-20 border-gray-200 dark:border-gray-700 max-sm:px-5" />
 
 <footer
-    id="footer"
-    class="bg-transparent relative z-10 text-gray-700 dark:text-gray-200 mb-2 max-sm:px-5"
-    style="position: relative"
+  id="footer"
+  class="bg-transparent relative z-10 text-primary  mb-2 max-sm:px-5"
+  style="position: relative"
 >
-    <div class="container">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
-            <!-- Logo and Name  -->
-            <div class="">
-                <div class="hidden md:block">
-                    <div class="flex justify-between items-center">
-                        <div class="flex gap-3 items-center">
-                            <a href="/">
-                                <Icon
-                                    name="logo/logo"
-                                    class="icon-large"
-                                    aria-label="logo"
-                                />
-                            </a>
-                            <div class="">
-                                <p
-                                    class="pb-3 text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline"
-                                >
-                                    Marco
-                                </p>
-                                <p
-                                    class="text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline"
-                                >
-                                    Zausch
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="container">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+      <!-- Logo and Name  -->
+      <div class="">
+        <div class="hidden md:block">
+          <div class="flex justify-between items-center">
+            <div class="flex gap-3 items-center">
+              <a href="/">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 300 300"
+                  width="65"
+                  height="65"
+                >
+                  <path
+                    class="fill-currentColor dark:invert"
+                    d="M273.3 50.5 38 285.9a1.8 1.8 0 0 0 1.3 3h235.3q1.6-.1 1.8-1.7V51.8c0-1.6-2-2.5-3-1.3m-36 199.5H129l108.5-108.4zm-212.7-2.5L260 12c1-1 .6-2.6-.6-3h-1L111 78.2c-7.8 3.6-17 2-23.1-4.2L24.2 10c-.9-1-2.6-.5-2.7.8v235.5c0 1.6 2 2.4 3.2 1.2"
+                  ></path>
+                </svg>
+              </a>
+              <div class="">
+                <p
+                  class="pb-3 text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline"
+                >
+                  Marco
+                </p>
+                <p
+                  class="text-lg font-literata font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline"
+                >
+                  Zausch
+                </p>
+              </div>
             </div>
-
-            <div class="flex flex-col sm:flex-row sm:gap-24 md:justify-between">
-                <!-- CONTACT ME -->
-                <div class="py-0 md:py-0 flex-1">
-                    <div class="text-sm uppercase font-medium">Contact</div>
-                    <div class="mt-2">
-                        <EmailLink
-                            encodedEmail="ZWQub2V0c29wQGhjc3Vhem9jcmFt"
-                            label="Email"
-                            class="hover:text-blue-500"
-                        />
-                    </div>
-                </div>
-
-                <!-- WORK -->
-                <div class="py-2 md:py-0 flex-1">
-                    <div class="text-sm uppercase font-medium">Work</div>
-
-                    <p class="mt-2 flex items-center">
-                        <div
-                            class="flex items-center gap-3"
-                            aria-label="LinkedIn"
-                        >
-                            <Icon name="icons/linkedin" class="icon-smd" />
-                            <a
-                                href="https://www.linkedin.com/in/marcozausch"
-                                target="_blank"
-                                class="hover:text-blue-600">LinkedIn</a
-                            >
-                        </div>
-                    </p>
-
-                    <p class="mt-2 flex items-center">
-                        <div
-                            class="flex items-center gap-3"
-                            aria-label="github"
-                        >
-                            <Icon name="icons/github" class="icon-smd" />
-                            <a
-                                href="https://github.com/MaCoZu"
-                                target="_blank"
-                                class="hover:text-blue-600"
-                                aria-label="Github">Github</a
-                            >
-                        </div>
-                    </p>
-                </div>
-
-                <!-- LEGAL -->
-                <div class="py-2 md:py-0 flex-1">
-                    <div class="text-sm uppercase font-medium">Legal</div>
-                    <a class="mt-2 block hover:text-blue-600" href="/impressum"
-                        >Impressum</a
-                    >
-                    <a
-                        class="mt-2 block hover:text-blue-600"
-                        href="/privacypolicy">Privacy Policy</a
-                    >
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:gap-24 md:justify-between">
+        <!-- CONTACT ME -->
+        <div class="py-0 md:py-0 flex-1">
+          <div class="text-sm uppercase font-medium">Contact</div>
+          <div class="mt-2">
+            <EmailLink
+              encodedEmail="ZWQub2V0c29wQGhjc3Vhem9jcmFt"
+              label="Email"
+              class="text-primary hover:text-tertiary"
+            />
+          </div>
+        </div>
+
+        <!-- WORK -->
+        <div class="py-2 md:py-0 flex-1">
+          <div class="text-sm uppercase font-medium">Work</div>
+
+          <p class="mt-2 flex items-center">
+            <div class="flex items-center gap-3" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="16" height="16">
+                <path
+                  fill="currentColor"
+                  d="M17.04 17.04h-2.96V12.4c0-1.1-.03-2.53-1.55-2.53-1.54 0-1.78 1.2-1.78 2.45v4.72H7.8V7.5h2.85v1.3h.04a3.1 3.1 0 0 1 2.8-1.54c3 0 3.56 1.97 3.56 4.55zM4.44 6.2a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44m1.5 10.85H2.95V7.5h2.97zM18.51 0H1.48C.66 0 0 .65 0 1.44v17.12C0 19.36.66 20 1.48 20h17.04c.81 0 1.48-.64 1.48-1.44V1.44C20 .64 19.33 0 18.52 0z"
+                ></path>
+              </svg>
+
+              <a
+                href="https://www.linkedin.com/in/marcozausch"
+                target="_blank"
+                class="text-primary hover:text-tertiary">LinkedIn</a
+              >
+            </div>
+          </p>
+
+          <p class="mt-2 flex items-center">
+            <div class="flex items-center gap-3" aria-label="github">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="17" height="17">
+                <path
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  d="M7.976 0A7.977 7.977 0 0 0 0 7.976c0 3.522 2.3 6.507 5.431 7.584.392.049.538-.196.538-.392v-1.37c-2.201.49-2.69-1.076-2.69-1.076-.343-.93-.881-1.175-.881-1.175-.734-.489.048-.489.048-.489.783.049 1.224.832 1.224.832.734 1.223 1.859.88 2.3.685.048-.538.293-.88.489-1.076-1.762-.196-3.621-.881-3.621-3.964 0-.88.293-1.566.832-2.153-.05-.147-.343-.978.098-2.055 0 0 .685-.196 2.201.832.636-.196 1.322-.245 2.007-.245s1.37.098 2.006.245c1.517-1.027 2.202-.832 2.202-.832.44 1.077.146 1.908.097 2.104a3.16 3.16 0 0 1 .832 2.153c0 3.083-1.86 3.719-3.62 3.915.293.244.538.733.538 1.467v2.202c0 .196.146.44.538.392A7.98 7.98 0 0 0 16 7.976C15.951 3.572 12.38 0 7.976 0"
+                  clip-rule="evenodd"></path></svg
+              >
+              <a
+                href="https://github.com/MaCoZu"
+                target="_blank"
+                class="text-primary hover:text-tertiary"
+                aria-label="Github">Github</a
+              >
+            </div>
+          </p>
+        </div>
+
+        <!-- LEGAL -->
+        <div class="py-2 md:py-0 flex-1">
+          <div class="text-sm uppercase font-medium">Legal</div>
+          <a class="mt-2 block text-primary  hover:text-tertiary" href="/impressum">Impressum</a>
+          <a class="mt-2 block text-primary  hover:text-tertiary" href="/privacypolicy">Privacy Policy</a>
+        </div>
+      </div>
     </div>
+  </div>
 </footer>
 
 <script>
-    function getEmail() {
-        return `mailto:${"marcozausch" + String.fromCharCode(64) + "posteo.de"}`;
-    }
+  function getEmail() {
+    return `mailto:${'marcozausch' + String.fromCharCode(64) + 'posteo.de'}`;
+  }
 </script>
+<style>
+  .icon-small {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .icon-smd {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .icon-medium {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .icon-large {
+    width: 4rem;
+    height: 4rem;
+  }
+</style>
