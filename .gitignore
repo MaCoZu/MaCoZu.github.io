@@ -13,10 +13,12 @@ _docs/
 node_modules/
 .vscode
 docs/
+dist/
 .astro/
 .vscode/
 node_modules/
 public/data/
+public/fonts/
 public/img/
 src/icons/
 
