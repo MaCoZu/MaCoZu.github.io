@@ -13,4 +13,16 @@ const models = defineCollection({
   }),
 });
 
-export const collections = { docs, models };
+const model_gallery = defineCollection({
+  schema: z.object({
+    title: z.string().optional(),
+  }),
+});
+
+const visualizations = defineCollection({
+  schema: z.object({
+    title: z.string().optional(),
+  }),
+});
+
+export const collections = { docs, models, model_gallery, visualizations };
