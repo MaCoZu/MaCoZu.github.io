@@ -1,8 +1,7 @@
 ---
-import '../styles/global.css';
-import '../styles/font.css';
-import { Icon } from 'astro-icon/components';
 import EmailLink from '../components/EmailLink.astro';
+import '../styles/font.css';
+import '../styles/global.css';
 ---
 
 <hr class="mt-20 border-gray-200 dark:border-gray-700 max-sm:px-5" />
@@ -113,11 +112,7 @@ import EmailLink from '../components/EmailLink.astro';
   </div>
 </footer>
 
-<script>
-  function getEmail() {
-    return `mailto:${'marcozausch' + String.fromCharCode(64) + 'posteo.de'}`;
-  }
-</script>
+
 <style>
   .icon-small {
     width: 1.1rem;

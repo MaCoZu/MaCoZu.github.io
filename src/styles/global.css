@@ -3,20 +3,20 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-base: #FCFCFC;
+  --color-base: #fcfcfc;
   --color-primary: #141300;
   --color-secondary: #333333;
-  --color-tertiary: #685C99;
+  --color-tertiary: #685c99;
   --color-link: #333333;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --color-base: #051103;
-    --color-primary: #F6F7EB;
-    --color-secondary: #D3D4CD;
-    --color-tertiary: #6FC3C1;
-    --color-link: #CFD0C8;
+    --color-primary: #f6f7eb;
+    --color-secondary: #d3d4cd;
+    --color-tertiary: #6fc3c1;
+    --color-link: #cfd0c8;
   }
 }
 
@@ -82,6 +82,6 @@ span[tip] {
 
 @layer components {
   .btn {
-    @apply origin-center transform-gpu transition duration-300 ease-in will-change-transform hover:scale-103 hover:text-tertiary;
+    @apply hover:text-tertiary origin-center transform-gpu transition duration-300 ease-in will-change-transform hover:scale-103;
   }
 }

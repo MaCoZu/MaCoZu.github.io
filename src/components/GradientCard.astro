@@ -3,13 +3,6 @@
 import { Code } from 'astro/components';
 import { twMerge } from 'tailwind-merge';
 
-interface Props {
-  title: string;
-  gradientClass: string;
-  cssCode: string;
-  codeButtonClass?: string;
-}
-
 const { title, gradientClass, cssCode, codeButtonClass } = Astro.props;
 ---
 
@@ -93,7 +86,7 @@ const { title, gradientClass, cssCode, codeButtonClass } = Astro.props;
         try {
           await navigator.clipboard.writeText(text);
           return true;
-        } catch (err) {
+        } catch {
           // Fallback for older browsers
           const textArea = document.createElement('textarea');
           textArea.value = text;
@@ -108,7 +101,7 @@ const { title, gradientClass, cssCode, codeButtonClass } = Astro.props;
             document.execCommand('copy');
             document.body.removeChild(textArea);
             return true;
-          } catch (err) {
+          } catch {
             document.body.removeChild(textArea);
             return false;
           }

@@ -1,15 +1,6 @@
 ---
 import { twMerge } from "tailwind-merge";
 
-interface Props {
-    title: string;
-    className?: string;
-    description: string;
-    href: string;
-    date?: string;
-    tag?: string;
-    hasGraph?: boolean;
-}
 
 const { title, description, href, date, tag,  hasGraph = false, className = ""} = Astro.props;
 

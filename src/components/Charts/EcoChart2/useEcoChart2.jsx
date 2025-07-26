@@ -165,104 +165,6 @@ export const useEcoChart = (containerRef, data, xVariable, yVariable) => {
       }
     };
 
-    const addReferenceLines = () => {
-      // Only add biocapacity line if it's relevant to current y-axis
-      if (
-        yVariable === 'Number of Earths required' ||
-        yVariable === 'Total Ecological Footprint (Consumption)'
-      ) {
-        svg
-          .append('line')
-          .attr('class', 'refLine')
-          .style('stroke', 'rgb(142, 138, 138)')
-          .style('stroke-width', '2px')
-          .style('stroke-dasharray', '3, 3')
-          .attr('x1', 0)
-          .attr('x2', width)
-          .attr('y1', y(1))
-          .attr('y2', y(1))
-          .attr('stroke-width', 2.5)
-          .attr('stroke-dasharray', '3 3');
-
-        svg
-          .append('text')
-          .attr('id', 'bio-label')
-          .attr('x', 10)
-          .attr('y', y(1) - 10)
-          .text('World Biocapacity');
-
-        svg
-          .append('line')
-          .attr('class', 'refLine')
-          .style('stroke', 'rgb(142, 138, 138)')
-          .style('stroke-width', '2px')
-          .style('stroke-dasharray', '3, 3')
-          .attr('x1', x(0.7))
-          .attr('x2', x(0.7))
-          .attr('y1', y(8.5))
-          .attr('y2', y(0.1))
-          .attr('stroke-width', 2)
-          .attr('stroke-dasharray', '3 3');
-
-        svg
-          .append('text')
-          .attr('class', 'ref-label')
-          .attr('x', x(0.71))
-          .attr('y', y(8.2))
-          .text('High');
-
-        svg
-          .append('line')
-          .attr('class', 'refLine')
-          .style('stroke', 'rgb(142, 138, 138)')
-          .style('stroke-width', '2px')
-          .style('stroke-dasharray', '3, 3')
-          .attr('x1', x(0.8))
-          .attr('x2', x(0.8))
-          .attr('y1', y(8.5))
-          .attr('y2', y(0.1))
-          .attr('stroke-width', 2)
-          .attr('stroke-dasharray', '3 3');
-
-        svg
-          .append('text')
-          .attr('class', 'ref-label')
-          .attr('x', x(0.81))
-          .attr('y', y(8.2))
-          .selectAll('tspan')
-          .data(['Very high', 'human', 'development']) // Data for each line
-          .enter()
-          .append('tspan')
-          .attr('x', x(0.81))
-          .attr('dy', (d, i) => (i === 0 ? 0 : 20))
-          .text(d => d);
-
-        // Add SDG quadrant
-        svg
-          .append('rect')
-          .attr('id', 'sdg-quadrant')
-          .attr('x', x(0.7))
-          .attr('y', y(1))
-          .attr('width', x(0.26))
-          // .attr("height", y(0.1) - y(1))
-          .attr('height', 54)
-          .style('opacity', 0.3);
-
-        svg
-          .append('text')
-          .attr('id', 'bio-label')
-          .attr('x', x(0.71))
-          .attr('y', y(0.54))
-          .selectAll('tspan')
-          .data(['Global Sustainable', 'Development Quadrant'])
-          .enter()
-          .append('tspan')
-          .attr('x', x(0.71))
-          .attr('dy', (d, i) => i * 20)
-          .text(d => d);
-      }
-    };
-
     // Add dots
     svg
       .append('g')
@@ -271,8 +173,8 @@ export const useEcoChart = (containerRef, data, xVariable, yVariable) => {
       .enter()
       .append('circle')
       .attr('class', d => `dot ${d.Region.replace(/\s+/g, '')}`)
-      .attr('cx', d => x(d[xVariable]))
-      .attr('cy', d => y(d[yVariable]))
+      .attr('cx', d => xAxis(d[xVariable]))
+      .attr('cy', d => yAxis(d[yVariable]))
       .attr('r', 4)
       .style('fill', d => color(d.Region))
       .on('mouseover', showTooltip)

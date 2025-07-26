@@ -2,13 +2,6 @@
 // src/components/Link.astro
 import "../styles/link.css";
 
-interface Props {
-    href: string;
-    text: string;
-    showIcon?: boolean;
-    class?: string;
-}
-
 const { href, showIcon, class: className, text } = Astro.props;
 const isExternal = href.startsWith("http");
 ---

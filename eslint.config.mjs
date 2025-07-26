@@ -1,17 +1,15 @@
-// eslint.config.cjs
+import { FlatCompat } from '@eslint/eslintrc';
+import eslintJs from '@eslint/js';
+import parserTypeScript from '@typescript-eslint/parser';
+import parserAstro from 'astro-eslint-parser';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import globals from 'globals';
+import path from 'path';
 
-// Import necessary modules
-const globals = require('globals');
-const eslintJs = require('@eslint/js'); // For eslint:recommended flat config
-const { FlatCompat } = require('@eslint/eslintrc'); // Import FlatCompat
-const path = require('path'); // Node.js path module for resolving baseDirectory
-
-const eslintPluginAstro = require('eslint-plugin-astro');
-const parserAstro = require('astro-eslint-parser');
-const eslintPluginTypescript = require('@typescript-eslint/eslint-plugin');
-const parserTypeScript = require('@typescript-eslint/parser');
-const eslintPluginJsxA11y = require('eslint-plugin-jsx-a11y');
-const eslintConfigPrettier = require('eslint-config-prettier');
+// Polyfill __dirname for ES modules
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Create a FlatCompat instance
 // You need to specify a baseDirectory, usually __dirname for the config file's location
@@ -23,7 +21,7 @@ const compat = new FlatCompat({
 });
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
-module.exports = [
+const config = [
   // --- 0. Global Ignores ---
   {
     ignores: ['node_modules/', 'dist/', 'docs/', 'build/', '.astro/', 'coverage/', '*.min.js'],
@@ -100,8 +98,8 @@ module.exports = [
         ...globals.browser,
         ...globals.node,
       },
-      // This ensures a default parser even if files don't explicitly match a plugin's
-      // parser: parserTypeScript, // Or you can make this generic if not all files are TS/JS
     },
   },
 ];
+
+export default config;

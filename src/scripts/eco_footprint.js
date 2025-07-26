@@ -34,8 +34,7 @@ export function EcoChart(container, data_path) {
       }
       // Parse data
       data.forEach(d => {
-        d.Country = d.Country;
-        d.Region = d.Region;
+        // No need to assign d.Country = d.Country or d.Region = d.Region; just leave them as is.
         d.SDGi = +d.SDGi;
         d.HDI = +d.HDI;
         d['Life Expectancy'] = +d['Life Expectancy'];

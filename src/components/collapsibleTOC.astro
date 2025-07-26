@@ -1,13 +1,4 @@
 ---
-// src/components/TOC.astro
-interface Props {
-    headings: {
-        depth: number;
-        slug: string;
-        text: string;
-    }[];
-}
-
 const { headings } = Astro.props;
 ---
 
@@ -39,7 +30,7 @@ const { headings } = Astro.props;
             </div>
             <ul class="list-none pl-0">
                 {
-                    headings.map((h) => (
+                    headings.map((h: { depth: number; slug: string; text: string }) => (
                         <li
                             class={`${h.depth === 3 ? "ml-3" : ""} leading-snug my-1`}
                         >

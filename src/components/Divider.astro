@@ -1,12 +1,5 @@
 ---
 import { twMerge } from 'tailwind-merge';
-
-interface Props {
-  id?: string;
-  text: string;
-  className?: string;
-}
-
 const { id, text, className = '' } = Astro.props;
 
 // Base classes that are always applied

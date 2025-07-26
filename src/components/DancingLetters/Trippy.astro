@@ -10,7 +10,7 @@
 
 <script>
   import { gsap } from 'gsap';
-  import { SplitText } from 'gsap/SplitText';
+import { SplitText } from 'gsap/SplitText';
 
   gsap.registerPlugin(SplitText);
 
@@ -42,14 +42,14 @@
       config: {
         activeCharRatio: 0.7;
         motionPath: boolean;
-        glow: any;
+        glow: boolean;
         durationRange: [number, number];
         xRange: [number, number];
         yRange: [number, number];
         rotationRange: [number, number];
         scaleXRange: [number, number];
         scaleYRange: [number, number];
-        colors: any[];
+        colors: string[];
       },
     ) => {
       const split = new SplitText(targets, {
@@ -59,7 +59,7 @@
 
       const chars = split.chars;
 
-      (chars as HTMLElement[]).forEach((char, i) => {
+      (chars as HTMLElement[]).forEach((char) => {
         char.style.willChange = 'transform, color, filter';
 
         gsap.set(char, {

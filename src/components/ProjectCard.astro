@@ -2,16 +2,6 @@
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 
-interface Props {
-  title: string;
-  subtitle: string;
-  link: string;
-  icon?: any; // imported image, not a string path!
-  iconName?: string; // for SVG icons
-  iconSize?: 'medium' | 'large' | 'larger';
-  techList?: string[];
-}
-
 const {
   title,
   subtitle,

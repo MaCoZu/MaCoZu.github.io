@@ -155,7 +155,7 @@ export const useHappyChart = (containerRef, data, onUpdateChartReady) => {
       .axisBottom(legendScale)
       .ticks(5)
       .tickSize(6)
-      .tickFormat((d, i, nodes) => {
+      .tickFormat(d => {
         return d3.format('.0f')(d);
       });
 

@@ -1,4 +1,7 @@
+/* eslint-env node */
+/* global process */
 // @ts-check
+
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import icon from 'astro-icon';
