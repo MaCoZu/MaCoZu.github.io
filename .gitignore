@@ -17,13 +17,12 @@ docs/
 .vscode/
 node_modules/
 public/data/
-public/fonts/
 public/img/
 src/icons/
 
 # files 
-**/*.png
-**/*.jpg
+# **/*.png
+# **/*.jpg
 
 *.local
 

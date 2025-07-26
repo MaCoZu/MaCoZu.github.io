@@ -5,6 +5,7 @@ import Layout from '../layouts/Layout.astro';
 import '../styles/font.css';
 import '../styles/global.css';
 
+import DancingLetters from '../assets/images/dancingLetters.png';
 import EcoFootprint from '../assets/images/ecological_footprint_detail.png';
 import ForroIcon from '../assets/images/forroIcon.png';
 import HappySustainable from '../assets/images/happy&sustainable_detail.png';
@@ -105,21 +106,21 @@ import HappySustainable from '../assets/images/happy&sustainable_detail.png';
     <div class="col-span-1 md:col-span-6 lg:col-span-3 mr-2">
       <a href="/design/dancing_letters">
         <div class="relative w-full h-48">
-          <img
+          <!-- <img
             src='/images/dancingLetters.png'
             alt="Dancing letters"
             width="200"
             height="200"
             class="absolute inset-0 w-full h-full object-cover rounded-sm"
             onerror="this.src='/images/dancingLetter.png'"
-          />
-          <!-- <Image
+          /> -->
+          <Image
             src={DancingLetters}
             alt="Dancing letters"
             width="300"
             height="300"
             class="absolute inset-0 w-full h-full object-contain aspect-square"
-          /> -->
+          />
         </div>
         <div class="mt-3 px-1">
           <h1 class="font-literata text-lg uppercase text-primary tracking-wide font-semibold mb-1">
