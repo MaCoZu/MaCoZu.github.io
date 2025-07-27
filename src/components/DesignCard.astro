@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets';
+const { 
+  href, 
+  imagePath, 
+  imageAlt, 
+  heading, 
+  text, 
+  objectFit = "object-cover"
+} = Astro.props;
+---
+<div class="col-span-1 md:col-span-6 lg:col-span-3 mr-2">
+  <a href={href}>
+    <div class="relative w-full h-44">
+      <Image
+        src={imagePath}
+        alt={imageAlt}
+        width="400"
+        height="400"
+        class={`absolute inset-0 w-full h-full ${objectFit} `}
+      />
+    </div>
+    <div class="mt-3 px-1">
+      <h1 class="font-literata text-lg uppercase text-primary tracking-wide font-semibold mb-1">
+        {heading}
+      </h1>
+      <p>{text}</p>
+    </div>
+  </a>
+</div> 

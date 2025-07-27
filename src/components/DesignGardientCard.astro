@@ -1,0 +1,89 @@
+---
+interface Props {
+  text?: string;
+  header?: string;
+  gradientText?: string;
+  id?: string;
+  href?: string;
+}
+
+const { text = '', header = '', gradientText = '', id = '', href = '' }: Props = Astro.props;
+---
+
+<div {id} class="col-span-1 md:col-span-6 lg:col-span-3 mr-2">
+  <a {href}>
+    <div class="w-full h-44">
+      <div class="radial-mask animated-gradient w-full h-full rounded-sm">
+        <h1 class="gradients-text">{gradientText}</h1>
+      </div>
+    </div>
+    <div class="mt-3 px-1">
+      <h1 class="font-literata text-lg uppercase text-primary tracking-wide font-semibold mb-1">
+        {header}
+      </h1>
+      <p>
+        {text}
+      </p>
+    </div>
+  </a>
+</div>
+
+<style>
+  .gradients-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    font-family: 'Bevan', sans-serif;
+    /* Use viewport-relative font size, but also scale with container using fit-content and clamp */
+    font-size: clamp(2rem, 3vw, 2rem);
+    background: linear-gradient(120deg, #ffffff, #fff943);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    /* Prevent overflow and allow shrinking */
+    overflow-wrap: normal;
+    word-break: break-word;
+    line-height: 1.1;
+    /* Optional: shrink text to fit if needed */
+    max-width: 90%;
+    max-height: 90%;
+  }
+
+  .radial-mask {
+    position: relative;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(270deg, #9708ba, #bc096e, #1812ce, #167c06);
+    background-size: 800% 800%;
+    animation: gradientMove 22s ease infinite;
+    z-index: 0;
+    /* Remove padding so bg fills the card */
+    padding: 0;
+    mask-image:
+      linear-gradient(45deg, black 10%, transparent 99%),
+      linear-gradient(black 10%, transparent 99%);
+
+    mask-composite: intersect;
+    pointer-events: none;
+  }
+
+  @keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+</style>

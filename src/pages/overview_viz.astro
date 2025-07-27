@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import Heading from '../components/Heading.astro';
 import Layout from '../layouts/Layout.astro';
 import '../styles/font.css';
@@ -9,6 +8,9 @@ import DancingLetters from '../assets/images/dancingLetters.png';
 import EcoFootprint from '../assets/images/ecological_footprint_detail.png';
 import ForroIcon from '../assets/images/forroIcon.png';
 import HappySustainable from '../assets/images/happy&sustainable_detail.png';
+import DesignCard from '../components/DesignCard.astro';
+import DesignGardientCard from '../components/DesignGardientCard.astro';
+import DesignTripCard from '../components/DesignTripCard.astro';
 ---
 
 <Layout title="Other">
@@ -17,122 +19,47 @@ import HappySustainable from '../assets/images/happy&sustainable_detail.png';
   <!-- ECONOMIC INDICATORS  -->
   <Heading id="indicators" className="mt-20 mb-10" text="Economic Indicators" />
   <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-    <div class="col-span-1 lg:col-span-3 mr-2">
-      <a href="/design/eco_footprint">
-        <div class="relative w-full h-44">
-          <Image
-            src={EcoFootprint}
-            alt="Chart detail"
-            width="400"
-            height="400"
-            class="absolute inset-0 w-full h-full object-cover rounded-sm"
-          />
-        </div>
-        <div class="mt-3 px-1">
-          <h1 class="font-literata text-lg uppercase text-primary tracking-wide font-semibold mb-1">
-            Ecological Footprint
-          </h1>
-          <p>Just two countries have high human development and a sustainable lifestyle.</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="col-span-1 md:col-span-4 lg:col-span-3 mr-2">
-      <a href="/design/happy_and_sustainable">
-        <div class="relative w-full h-44 scroll-appear">
-          <Image
-            src={HappySustainable}
-            alt="Chart detail"
-            width="400"
-            height="400"
-            class="absolute inset-0 w-full h-full object-cover aspect-square"
-          />
-        </div>
-
-        <div class="mt-3 px-1">
-          <h1 class="font-literata text-lg uppercase text-primary tracking-wide font-semibold mb-1">
-            Happy & Sustainable
-          </h1>
-          <p>Happiness score, emissions and more in one big bubble chart.</p>
-        </div>
-      </a>
-    </div>
+    <DesignCard
+      href="/design/eco_footprint"
+      imagePath={EcoFootprint}
+      imageAlt="Chart detail"
+      heading="Ecological Footprint"
+      text="Just two countries have high human development and a sustainable lifestyle."
+    />
+    <DesignCard
+      href="/design/happy_and_sustainable"
+      imagePath={HappySustainable}
+      imageAlt="Chart detail"
+      heading="Happy & Sustainable"
+      text="Happiness score, emissions and more in one big bubble chart."
+    />
   </div>
 
   <!-- DESIGN  -->
   <Heading id="design" className="link-offset mt-20 mb-10" text="DESIGN" />
 
   <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-    <div class="col-span-1 md:col-span-6 lg:col-span-3 mr-2">
-      <a href="/design/css_gradients">
-        <div class="relative w-full h-48">
-          <div
-            id="gradients"
-            class="absolute inset-0 w-full h-full object-contain rounded-sm"
-          >
-            <h1 id="gradients-text">Gradients</h1>
-          </div>
-        </div>
-        <div class="mt-3 px-1">
-          <h1 class="font-literata text-lg uppercase text-primary tracking-wide font-semibold mb-1">
-            CSS Gradients
-          </h1>
-          <p>
-            Exploration of CSS gradients with code. As a reference for myself and the accidental
-            surfer.
-          </p>
-        </div>
-      </a>
-    </div>
-    <div class="col-span-1 md:col-span-6 lg:col-span-3 mr-2">
-      <a href="/design/forrodacapita">
-        <div class="relative w-full h-48">
-          <Image
-            src={ForroIcon}
-            alt="Chart detail"
-            width="200"
-            height="200"
-            class="absolute inset-0 w-full h-full object-contain aspect-square"
-          />
-        </div>
-        <div class="mt-3 px-1">
-          <h1 class="font-literata text-lg uppercase text-primary tracking-wide font-semibold mb-1">
-            Forró Da Capita Graphics
-          </h1>
-          <p>Mascot and Logo for the finest Forró venue in the capital.</p>
-        </div>
-      </a>
-    </div>
-    <div class="col-span-1 md:col-span-6 lg:col-span-3 mr-2">
-      <a href="/design/dancing_letters">
-        <div class="relative w-full h-48">
-          <!-- <img
-            src='/images/dancingLetters.png'
-            alt="Dancing letters"
-            width="200"
-            height="200"
-            class="absolute inset-0 w-full h-full object-cover rounded-sm"
-            onerror="this.src='/images/dancingLetter.png'"
-          /> -->
-          <Image
-            src={DancingLetters}
-            alt="Dancing letters"
-            width="300"
-            height="300"
-            class="absolute inset-0 w-full h-full object-contain aspect-square"
-          />
-        </div>
-        <div class="mt-3 px-1">
-          <h1 class="font-literata text-lg uppercase text-primary tracking-wide font-semibold mb-1">
-            Dancing Letters
-          </h1>
-          <p>
-            CSS can do beautiful things and letters were my first choice. You can use CSS in logos,
-            simple text or to animate SVG's.
-          </p>
-        </div>
-      </a>
-    </div>
+    <DesignGardientCard
+      href="/design/css_gradients"
+      gradientText="CSS Gradients"
+      header="CSS Gradients"
+      text="Exploration of CSS gradients with code. As a reference for myself and the accidental surfer."
+    />
+    <DesignCard
+      href="/design/forrodacapita"
+      imagePath={ForroIcon}
+      imageAlt="Chart detail"
+      objectFit="object-contain"
+      heading="Forró Da Capita Graphics"
+      text="Graphic Design for the finest Forró venue in the capital."
+    />
+    <DesignTripCard
+      href="/design/dancing_letters"
+      imagePath={DancingLetters}
+      imageAlt="Dancing letters"
+      heading="Dancing Letters"
+      text="CSS can do beautiful things and letters were my first choice. Here are trippy letters and flickering lights along their code."
+    />
   </div>
   <!-- <Divider id="writing" text="Writing" className="link-offset my-20" /> -->
 
@@ -236,28 +163,4 @@ import HappySustainable from '../assets/images/happy&sustainable_detail.png';
                 </a>
             </div> 
     </div> -->
-  <style>
-    #gradients {
-      /* padding: 2.5rem; */
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background:
-        linear-gradient(90deg, rgba(202, 21, 243, 0.7) 10%, transparent 50%),
-        linear-gradient(45deg, rgb(255, 80, 80) 40%, transparent 100%),
-        linear-gradient(180deg, #2f82ff 0%, #8ee6ff 70%);
-    }
-    #gradients-text {
-      padding: 1.5rem;
-      font-weight: bold;
-      font-family: 'Bevan', sans-serif;
-      font-size: clamp(1.5rem, calc(1rem + 2vw), 2.5rem);
-      background: linear-gradient(120deg, #ffffff, #fff943);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-align: center;
-    }
-  </style>
 </Layout>
