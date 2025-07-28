@@ -7,6 +7,10 @@ import PrinzenrolleLogo from '../../assets/images/prinzenrolle_logo.png';
 import Prinzenruler from '../../assets/images/PrinzenRuler.png';
 import Article from '../../components/Article.astro';
 import Divider from '../../components/Dividers/Divider.astro';
+import IconBox from '../../components/ForroIcons/Icon_Box.astro';
+import IconGoogleMap from '../../components/ForroIcons/Icon_GoogleMap.astro';
+import IconImages from '../../components/ForroIcons/Icon_Images.astro';
+import IconTreasureMap from '../../components/ForroIcons/Icon_TreasureMap.astro';
 import Link from '../../components/Link.astro';
 import Layout from '../../layouts/Layout.astro';
 import '../../styles/font.css';
@@ -284,98 +288,59 @@ import '../../styles/global.css';
       </div>
     </div>
   </div>
-  <details
-    class="w-full pb-1 group p-3 mb-4 border-3 border-purple-900 rounded-md bg-gradient-to-r from-amber-50 to-amber-100"
-  >
-    <summary
-      class="text-xl font-work mb-2 tracking-wide
-  list-none cursor-pointer flex items-center
-  hover:text-purple-700 transition-colors
-  after:content-[''] after:ml-2 after:inline-block
-  after:w-2 after:h-2 after:border-r-2 after:border-b-2
-  after:border-current after:rotate-45 after:origin-center
-  after:transition-transform
-  group-open:after:rotate-[225deg]"
-      aria-expanded="false">clutterd SVG code</summary
-    >
-    <Code
-      class:list={['px-10 py-10']}
-      lang="css"
-      wrap
-      code={`<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+  <details class="w-full mt-6">
+      <summary class="text-xl font-work mb-2 tracking-wide">clutterd SVG code</summary>
+      <div class="w-full overflow-scroll resize-y rounded-md  border p-2">
+        <Code
+          class:list={['px-10 py-5']}
+          lang="js"
+          theme="one-light"
+          wrap
+          code={`<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) --> <svg width="303.98163mm" height="197.50055mm" viewBox="0 0 303.98163 197.50055" version="1.1" id="svg1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"> <defs id="defs1" /> <g id="layer1" transform="translate(65.61667,-17.72708)"> <path id="path2-4" style="fill:#000000" d="m -14.875581,105.23233 c -19.062561,0.11868 ...
 `}
-    />
-  </details>
-  <details
-    class="w-full pb-1 group p-3 mb-4 border-3 border-purple-900 rounded-md bg-gradient-to-r from-amber-50 to-amber-100"
-  >
-    <summary
-      class="text-xl font-work mb-2 tracking-wide
-  list-none cursor-pointer flex items-center
-  hover:text-purple-700 transition-colors
-  after:content-[''] after:ml-2 after:inline-block
-  after:w-2 after:h-2 after:border-r-2 after:border-b-2
-  after:border-current after:rotate-45 after:origin-center
-  after:transition-transform
-  group-open:after:rotate-[225deg]"
-      aria-expanded="false">minified SVG code</summary
-    >
-    <Code
-      class:list={['px-10 py-10']}
-      lang="css"
-      wrap
-      code={`<svg viewBox="0 0 304 197.5">
-<path d="M50.7 87.5c-19 .2-39.6 ...
-`}
-    />
-  </details>
-  <details
-    class="w-full pb-1 group p-3 mb-4 border-3 border-purple-900 rounded-md bg-gradient-to-r from-amber-50 to-amber-100"
-    open
-  >
-    <summary
-      class="text-xl font-work mb-2 tracking-wide
-  list-none cursor-pointer flex items-center
-  hover:text-purple-700 transition-colors
-  after:content-[''] after:ml-2 after:inline-block
-  after:w-2 after:h-2 after:border-r-2 after:border-b-2
-  after:border-current after:rotate-45 after:origin-center
-  after:transition-transform
-  group-open:after:rotate-[225deg]"
-      aria-expanded="false">final SVG path</summary
-    >
-    <Code
-      class:list={['px-10 py-10']}
-      lang="css"
-      wrap
-      code={`<path
-id="F"
-class="purple_glow fill-[#7f40e5]"
-stroke="transparent"
-stroke-width="20"
-d="M-34 32.9a77 77 0 0 1-26.3 ...
-`}
-    />
-  </details>
-  <details
-    class="w-full pb-1 group p-3 mb-4 border-3 border-purple-900 rounded-md bg-gradient-to-r from-amber-50 to-amber-100"
-  >
-    <summary
-      class="text-xl font-work mb-2 tracking-wide
-  list-none cursor-pointer flex items-center
-  hover:text-purple-700 transition-colors
-  after:content-[''] after:ml-2 after:inline-block
-  after:w-2 after:h-2 after:border-r-2 after:border-b-2
-  after:border-current after:rotate-45 after:origin-center
-  after:transition-transform
-  group-open:after:rotate-[225deg]"
-      aria-expanded="false">CSS glow</summary
-    >
-    <Code
-      class:list={['px-10 py-10']}
-      lang="css"
-      wrap
+        />
+      </div>
+    </details>
+
+  <details class="w-full mt-6">
+      <summary class="text-xl font-work mb-2 tracking-wide">minified SVG code</summary>
+      <div class="w-full overflow-scroll resize-y rounded-md  border p-2">
+        <Code
+          class:list={['px-10 py-0']}
+          lang="js"
+          theme="one-light"
+          wrap
+          code={`<svg viewBox="0 0 304 197.5"> <path d="M50.7 87.5c-19 .2-39.6 ... `}
+        />
+      </div>
+    </details>
+  
+    <details class="w-full mt-6">
+      <summary class="text-xl font-work mb-2 tracking-wide">final SVG path</summary>
+      <div class="w-full overflow-scroll resize-y rounded-md  border p-2">
+        <Code
+          class:list={['px-10 py-0']}
+          lang="js"
+          theme="one-light"
+          wrap
+          code={`<path id="F" 
+  class="purple_glow fill-[#7f40e5]" 
+  stroke="transparent" 
+  stroke-width="20" 
+  d="M-34 32.9a77 77 0 0 1-26.3 ... `}
+        />
+      </div>
+    </details>
+
+    <details class="w-full mt-6">
+      <summary class="text-xl font-work mb-2 tracking-wide">CSS glow</summary>
+      <div class="w-full overflow-scroll resize-y rounded-md  border p-2">
+        <Code
+          class:list={['px-10 py-0']}
+          lang="js"
+          theme="one-light"
+          wrap
       code={`
 <style>
 path {
@@ -451,8 +416,88 @@ fill: #e6e6fa;
 }
 </style>
     `}
-    />
-  </details>
+        />
+      </div>
+    </details>
+  
+
+  
+
+  <Divider id="icons" text="Icons" className="py-10" />
+  <div class="grid md:grid-cols-3 gap-10">
+    <div class="md:col-span-2 gap-10">
+      <Article>
+        <p>
+          I wanted my icons to move a little on hover and have a common thing, which turned out to be the
+          accent color. Inspiration came from the usual suspects found for example at <Link href="https://icon-sets.iconify.design/" text="Iconify" />. But I draw my own icons with Inkscape and stole some parts, mostly for the google maps sign which is a combination of two different map icons.  
+        </p>
+      </Article>
+  
+    </div>
+    <div class="md-col-span-1 items-center justify-center">
+      <div class="grid grid-cols-2 md:grid-cols-2 justify-center items-center ml-4 gap-10">
+      <IconTreasureMap id="treasure-map" className="w-8 md:w-12"  />
+      <IconBox id="box" className="w-8 md:w-12" />
+      <IconGoogleMap id="google-map" className="w-8 md:w-12" />
+      <IconImages id="images" className="w-8 md:w-12" />
+      </div>
+    </div>
+  
+  </div>
+        <details class="w-full mt-6">
+        <summary class="text-xl font-work mb-2 tracking-wide">Map Icon Code</summary>
+        <div class="w-full overflow-scroll resize-y rounded-md  border p-2">
+          <Code
+            class:list={['px-10 py-0']}
+            lang="js"
+            theme="one-light"
+            wrap
+            code={`  
+<a href="https://maps.app.goo.gl/QPQKKK7im9AfE2rz8" target="_blank">
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xml:space="preserve"
+  viewBox="0 -2 23 40"
+  transform="translate(0 -5)"
+>
+<g class="shake-vertical">
+<path
+  fill="#34a853"
+  d="M7.258 17.202a23 23 0 0 1 1.83 2.698c.466.885.66 1.484 1.002 2.55.209.59.398.765.804.765.443 0 .644-.299.799-.761.322-1.007.575-1.775.974-2.501.783-1.402 1.756-2.647 2.712-3.844.259-.34 1.932-2.313 2.685-3.87 0 0 .926-1.71.926-4.1 0-2.234-.913-3.784-.913-3.784l-2.629.704-1.596 4.204-.395.58-.079.105-.105.132-.184.21-.264.263-1.421 1.158-3.555 2.052z" >
+  </path>
+  
+  <path
+  fill="#fbbc04"
+  d="M3.59 11.952c.867 1.98 2.54 3.722 3.672 5.251l6.01-7.12s-.846 1.107-2.382 1.107A3.08 3.08 0 0 1 7.796 8.1c0-1.18.711-1.993.711-1.993l-4.08 1.094z" >
+  </path>
+
+  <path
+  fill="#4285f4"
+  d="M13.34.366c1.997.643 3.705 1.995 4.739 3.987l-4.804 5.725s.71-.826.71-2c0-1.763-1.484-3.08-3.088-3.08-1.516 0-2.387 1.105-2.387 1.105V2.497z" >
+  </path>
+
+  <path
+  fill="#1a73e8"
+  d="M4.691 2.895C5.883 1.468 7.981 0 10.874 0c1.404 0 2.461.369 2.461.369l-4.83 5.738H5.083Z" >
+  </path>
+
+  <path
+    fill="#ea4335"
+    d="M3.59 11.952s-.798-1.563-.798-3.827c0-2.14.832-4.01 1.899-5.23l3.817 3.212z">
+  </path>
+</g>
+  <path
+    fill="currentColor"
+    class="group-hover:fill-accent transition-colors duration-900 origin-center"
+    d="m16.639 21.31-1.02 1.918 4.993-.816c-1.008-.505-2.372-.867-3.973-1.101m-12.862.418C1.465 22.339 0 23.338 0 24.822a2.2 2.2 0 0 0 .205.925l8.013-1.31zm18.525 2.228L11.15 25.774l2.94 3.346c4.83-.432 8.4-1.975 8.4-4.298 0-.31-.067-.597-.188-.865M9.265 26.088 1.73 27.32c1.992 1.233 5.507 1.928 9.515 1.928.243 0 .48-.007.72-.012z" > 
+  </path>
+  </svg>
+</a>`
+  }
+          />
+        </div>
+      </details>
+
   <Divider id="mascot" text="Mascot" className="py-10" />
   <div class="grid md:grid-cols-2 gap-10">
     <div class="md-col-span-1 gap-10">
@@ -460,7 +505,7 @@ fill: #e6e6fa;
         <p>
           I recruted the prince of a well-know cookie brand called Prinzenrolle for our dance. After
           his conversion he is sporting a traditional hat from the Northeast of Brazil and changed
-          his boots for flip-flops.
+          his boots for flip-flops. But he had to move aside for more elgant designs I still honor him for giving me a challenge with many layers and detailed paths in Inkscape.
         </p>
       </Article>
       <div class="flex flex-row items-center gap-10 py-10">
@@ -472,7 +517,7 @@ fill: #e6e6fa;
           height="100"
         />
         <Image
-          class="h-full object-contain hover:scale-120 transition-all"
+          class="h-full object-contain hover:scale-120 transition-all bg-transparent"
           src={PrinzenrolleLogo}
           alt="Chart detail"
           width="350"
@@ -481,7 +526,7 @@ fill: #e6e6fa;
       </div>
       <Article>
         <p>
-          The prince is a few decades old, but has more character than his successors, he is also
+          Since the prince I used is a few decades old, but has more character than his successors, he is also
           one-dimensional which makes him easier to redraw in Inkscape. I was lucky to find a free
           SVG of the modern Prinzenrolle logo to reconstruct and hang it around the waist of our
           refreshed prince.
@@ -502,7 +547,7 @@ fill: #e6e6fa;
     <div class="md-col-span-1">
       <div class="flex justify-end">
         <Image
-          class="h-full object-contain hover:scale-120 transition-all"
+          class="h-full object-contain transition-all"
           src={Prinzenruler}
           alt="Chart detail"
           width="400"
