@@ -431,16 +431,17 @@ fill: #e6e6fa;
           I wanted my icons to move a little on hover and have a common thing, which turned out to be the
           accent color. Inspiration came from the usual suspects found for example at <Link href="https://icon-sets.iconify.design/" text="Iconify" />. But I draw my own icons with Inkscape and stole some parts, mostly for the google maps sign which is a combination of two different map icons.  
         </p>
+        <p>
+          In the SVG code you'll find a shake-vertical class which moves the upper pin of the map icon and and another path that has the tailwind CSS class <Code inline lang="css" theme="one-light" wrap code={`group-hover:fill-accent transition-colors duration-900 origin-center`} /> applied to it. The former does the moving the latter turns the map below red on mouse hover. 
+        </p>
       </Article>
   
     </div>
-    <div class="md-col-span-1 items-center justify-center">
-      <div class="grid grid-cols-2 md:grid-cols-2 justify-center items-center ml-4 gap-10">
-      <IconTreasureMap id="treasure-map" className="w-8 md:w-12"  />
-      <IconBox id="box" className="w-8 md:w-12" />
-      <IconGoogleMap id="google-map" className="w-8 md:w-12" />
-      <IconImages id="images" className="w-8 md:w-12" />
-      </div>
+    <div class="md-col-span-1 flex md:flex-col flex-row justify-center items-center gap-10 md:gap-14">
+      <IconTreasureMap id="treasure-map" className="w-10 md:w-14"  />
+      <IconBox id="box" className="w-10 md:w-14" />
+      <IconGoogleMap id="google-map" className="w-10 md:w-14" />
+      <IconImages id="images" className="w-10 md:w-14" />
     </div>
   
   </div>
@@ -492,7 +493,36 @@ fill: #e6e6fa;
     d="m16.639 21.31-1.02 1.918 4.993-.816c-1.008-.505-2.372-.867-3.973-1.101m-12.862.418C1.465 22.339 0 23.338 0 24.822a2.2 2.2 0 0 0 .205.925l8.013-1.31zm18.525 2.228L11.15 25.774l2.94 3.346c4.83-.432 8.4-1.975 8.4-4.298 0-.31-.067-.597-.188-.865M9.265 26.088 1.73 27.32c1.992 1.233 5.507 1.928 9.515 1.928.243 0 .48-.007.72-.012z" > 
   </path>
   </svg>
-</a>`
+</a>
+
+<style>
+  @keyframes shake-vertical {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    10%,
+    30%,
+    50%,
+    70% {
+      transform: translateY(-1.5px);
+    }
+    20%,
+    40%,
+    60% {
+      transform: translateY(1.5px);
+    }
+    80% {
+      transform: translateY(1px);
+    }
+    90% {
+      transform: translateY(-1px);
+    }
+  }
+
+  .group:hover .shake-vertical {
+    animation: shake-vertical 5s ease-in-out 0s infinite normal none;
+  }`
   }
           />
         </div>
