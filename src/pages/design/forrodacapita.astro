@@ -38,10 +38,10 @@ import '../../styles/global.css';
     <div class="">
       <Article>
         <p>
-          For some playful letters I stole from the cover design of the wonderful Bob Fosse movie <Link
-            text="Cabaret"
-            href="https://www.imdb.com/title/tt0068327/"
-          /> and constructed the missing letters from the six available ones.
+          I stole the inspiration for the letters from the cover design of the wonderful Bob Fosse
+          movie <Link text="Cabaret" href="https://www.imdb.com/title/tt0068327/" /> and constructed
+          the missing letters from the <span class="oldstyle-nums">6</span>
+          <span class="diagonal-fractions oldstyle-nums">1/2</span> available ones.
         </p>
         <p>
           The final logo has to be exported as a plain SVG. The SVG code is cluttered with metadata,
@@ -289,59 +289,59 @@ import '../../styles/global.css';
     </div>
   </div>
   <details class="w-full mt-6">
-      <summary class="text-xl font-work mb-2 tracking-wide">clutterd SVG code</summary>
-      <div class="w-full overflow-scroll resize-y rounded-md  border p-2">
-        <Code
-          class:list={['px-10 py-5']}
-          lang="js"
-          theme="one-light"
-          wrap
-          code={`<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) --> <svg width="303.98163mm" height="197.50055mm" viewBox="0 0 303.98163 197.50055" version="1.1" id="svg1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"> <defs id="defs1" /> <g id="layer1" transform="translate(65.61667,-17.72708)"> <path id="path2-4" style="fill:#000000" d="m -14.875581,105.23233 c -19.062561,0.11868 ...
-`}
-        />
-      </div>
-    </details>
+    <summary class="text-xl font-work mb-2 tracking-wide">clutterd SVG code</summary>
+    <div class="w-full overflow-scroll resize-y rounded-md border p-2">
+      <Code
+        class:list={['px-10 py-5']}
+        lang="js"
+        theme="one-light"
+        wrap
+        code={`<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+  <!-- Created with Inkscape (http://www.inkscape.org/) --> <svg width="303.98163mm" height="197.50055mm" viewBox="0 0 303.98163 197.50055" version="1.1" id="svg1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"> <defs id="defs1" /> <g id="layer1" transform="translate(65.61667,-17.72708)"> <path id="path2-4" style="fill:#000000" d="m -14.875581,105.23233 c -19.062561,0.11868 ...
+  `}
+      />
+    </div>
+  </details>
 
   <details class="w-full mt-6">
-      <summary class="text-xl font-work mb-2 tracking-wide">minified SVG code</summary>
-      <div class="w-full overflow-scroll resize-y rounded-md  border p-2">
-        <Code
-          class:list={['px-10 py-0']}
-          lang="js"
-          theme="one-light"
-          wrap
-          code={`<svg viewBox="0 0 304 197.5"> <path d="M50.7 87.5c-19 .2-39.6 ... `}
-        />
-      </div>
-    </details>
-  
-    <details class="w-full mt-6">
-      <summary class="text-xl font-work mb-2 tracking-wide">final SVG path</summary>
-      <div class="w-full overflow-scroll resize-y rounded-md  border p-2">
-        <Code
-          class:list={['px-10 py-0']}
-          lang="js"
-          theme="one-light"
-          wrap
-          code={`<path id="F" 
+    <summary class="text-xl font-work mb-2 tracking-wide">minified SVG code</summary>
+    <div class="w-full overflow-scroll resize-y rounded-md border p-2">
+      <Code
+        class:list={['px-10 py-0']}
+        lang="js"
+        theme="one-light"
+        wrap
+        code={`<svg viewBox="0 0 304 197.5"> <path d="M50.7 87.5c-19 .2-39.6 ... `}
+      />
+    </div>
+  </details>
+
+  <details class="w-full mt-6">
+    <summary class="text-xl font-work mb-2 tracking-wide">final SVG path</summary>
+    <div class="w-full overflow-scroll resize-y rounded-md border p-2">
+      <Code
+        class:list={['px-10 py-0']}
+        lang="js"
+        theme="one-light"
+        wrap
+        code={`<path id="F" 
   class="purple_glow fill-[#7f40e5]" 
   stroke="transparent" 
   stroke-width="20" 
   d="M-34 32.9a77 77 0 0 1-26.3 ... `}
-        />
-      </div>
-    </details>
+      />
+    </div>
+  </details>
 
-    <details class="w-full mt-6">
-      <summary class="text-xl font-work mb-2 tracking-wide">CSS glow</summary>
-      <div class="w-full overflow-scroll resize-y rounded-md  border p-2">
-        <Code
-          class:list={['px-10 py-0']}
-          lang="js"
-          theme="one-light"
-          wrap
-      code={`
+  <details class="w-full mt-6">
+    <summary class="text-xl font-work mb-2 tracking-wide">CSS glow</summary>
+    <div class="w-full overflow-scroll resize-y rounded-md border p-2">
+      <Code
+        class:list={['px-10 py-0']}
+        lang="js"
+        theme="one-light"
+        wrap
+        code={`
 <style>
 path {
 transition:
@@ -416,44 +416,58 @@ fill: #e6e6fa;
 }
 </style>
     `}
-        />
-      </div>
-    </details>
-  
-
-  
+      />
+    </div>
+  </details>
 
   <Divider id="icons" text="Icons" className="py-10" />
   <div class="grid md:grid-cols-3 gap-10">
     <div class="md:col-span-2 gap-10">
       <Article>
         <p>
-          I wanted my icons to move a little on hover and have a common thing, which turned out to be the
-          accent color. Inspiration came from the usual suspects found for example at <Link href="https://icon-sets.iconify.design/" text="Iconify" />. But I draw my own icons with Inkscape and stole some parts, mostly for the google maps sign which is a combination of two different map icons.  
+          I wanted custom icons that have something in common, which turned out to be the accent
+          color and little movement on hover. I've drawn them with Inkscape. They look a lot like
+          the usual suspects, found for example at <Link
+            href="https://icon-sets.iconify.design/"
+            text="Iconify"
+          />, but tailored to my needs.
         </p>
         <p>
-          In the SVG code you'll find a shake-vertical class which moves the upper pin of the map icon and and another path that has the tailwind CSS class <Code inline lang="css" theme="one-light" wrap code={`group-hover:fill-accent transition-colors duration-900 origin-center`} /> applied to it. The former does the moving the latter turns the map below red on mouse hover. 
+          For example the google map icon is a combination different icons, where the upper part
+          hops a little and the lower part turns into the accent color on hover. As long as you keep
+          the paths of the SVG separate you can apply different effects to each path.
+        </p>
+        <p>
+          In the SVG code below you'll find a shake-vertical class which moves the upper pin of the
+          map icon and and another path that has the tailwind CSS classes <Code
+            inline
+            lang="css"
+            theme="one-light"
+            wrap
+            code={`group-hover:fill-accent transition-colors duration-900 origin-center`}
+          /> applied which turns the map red. I used tailwind CSS here but you can always use normal
+          CSS.
         </p>
       </Article>
-  
     </div>
-    <div class="md-col-span-1 flex md:flex-col flex-row justify-center items-center gap-10 md:gap-14">
-      <IconTreasureMap id="treasure-map" className="w-10 md:w-14"  />
+    <div
+      class="md-col-span-1 flex md:flex-col flex-row justify-center items-center gap-10 md:gap-14"
+    >
+      <IconTreasureMap id="treasure-map" className="w-10 md:w-14" />
       <IconBox id="box" className="w-10 md:w-14" />
       <IconGoogleMap id="google-map" className="w-10 md:w-14" />
       <IconImages id="images" className="w-10 md:w-14" />
     </div>
-  
   </div>
-        <details class="w-full mt-6">
-        <summary class="text-xl font-work mb-2 tracking-wide">Map Icon Code</summary>
-        <div class="w-full overflow-scroll resize-y rounded-md  border p-2">
-          <Code
-            class:list={['px-10 py-0']}
-            lang="js"
-            theme="one-light"
-            wrap
-            code={`  
+  <details class="w-full mt-6">
+    <summary class="text-xl font-work mb-2 tracking-wide">Map Icon Code</summary>
+    <div class="w-full overflow-scroll resize-y rounded-md border p-2">
+      <Code
+        class:list={['px-10 py-0']}
+        lang="js"
+        theme="one-light"
+        wrap
+        code={`  
 <a href="https://maps.app.goo.gl/QPQKKK7im9AfE2rz8" target="_blank">
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -522,20 +536,24 @@ fill: #e6e6fa;
 
   .group:hover .shake-vertical {
     animation: shake-vertical 5s ease-in-out 0s infinite normal none;
-  }`
-  }
-          />
-        </div>
-      </details>
+  }`}
+      />
+    </div>
+  </details>
 
   <Divider id="mascot" text="Mascot" className="py-10" />
   <div class="grid md:grid-cols-2 gap-10">
     <div class="md-col-span-1 gap-10">
       <Article>
         <p>
-          I recruted the prince of a well-know cookie brand called Prinzenrolle for our dance. After
-          his conversion he is sporting a traditional hat from the Northeast of Brazil and changed
-          his boots for flip-flops. But he had to move aside for more elgant designs I still honor him for giving me a challenge with many layers and detailed paths in Inkscape.
+          This is the guy that kicked the project of, but he fall out of favor for more elegant
+          designs. I still hold him dear for giving me a challenge with many layers and detailed
+          paths in Inkscape.
+        </p>
+        <p>
+          He is the prince of a well-known cookie brand, called Prinzenrolle. I gave him a
+          traditional hat from the Northeast of Brazil and changed his boots for flip-flops, which
+          instantly turned him into a Forró believer.
         </p>
       </Article>
       <div class="flex flex-row items-center gap-10 py-10">
@@ -556,10 +574,9 @@ fill: #e6e6fa;
       </div>
       <Article>
         <p>
-          Since the prince I used is a few decades old, but has more character than his successors, he is also
-          one-dimensional which makes him easier to redraw in Inkscape. I was lucky to find a free
-          SVG of the modern Prinzenrolle logo to reconstruct and hang it around the waist of our
-          refreshed prince.
+          This is an old and one-dimensional mascot, which made him easier to redraw but he also has
+          more character than his predecessors. The banner he carries is a newer one from the same
+          brand with insignia adapted to his new hobby.
         </p>
         <p>
           The most important <b>Inkscape</b> skill for this were working with paths and these specific
