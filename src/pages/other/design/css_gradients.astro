@@ -1,6 +1,6 @@
 ---
-import GradientCard from '../../components/GradientCard.astro';
-import Layout from '../../layouts/Layout.astro';
+import GradientCard from '../../../components/GradientCard.astro';
+import Layout from '../../../layouts/Layout.astro';
 ---
 
 <Layout title="CSS Gradients">
@@ -355,7 +355,8 @@ import Layout from '../../layouts/Layout.astro';
     }
 
     @keyframes gradientShift {
-      0%, 100% {
+      0%,
+      100% {
         background-position: 0% 50%;
       }
       50% {

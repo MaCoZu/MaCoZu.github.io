@@ -1,0 +1,710 @@
+---
+// Astro component for Offshore Leaks Network Visualization
+---
+
+<div class="offshore-network-container">
+  <div class="header">
+    <h1>Offshore Leaks Network</h1>
+    <p>Interactive visualization of shell companies, officers, and their relationships</p>
+  </div>
+
+  <div class="controls">
+    <div class="control-group">
+      <label for="nodeTypeFilter">Filter by Node Type:</label>
+      <select id="nodeTypeFilter">
+        <option value="all">All Types</option>
+        <option value="entity">Entities</option>
+        <option value="officer">Officers</option>
+        <option value="address">Addresses</option>
+        <option value="intermediary">Intermediaries</option>
+        <option value="other">Others</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label for="relationshipFilter">Filter by Relationship:</label>
+      <select id="relationshipFilter">
+        <option value="all">All Relationships</option>
+        <option value="registered_address">Registered Address</option>
+        <option value="officer_of">Officer Of</option>
+        <option value="shareholder_of">Shareholder Of</option>
+      </select>
+    </div>
+
+    <button id="resetView">Reset View</button>
+    <button id="togglePhysics">Pause Physics</button>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value" id="nodeCount">-</div>
+        <div class="stat-label">Nodes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="edgeCount">-</div>
+        <div class="stat-label">Edges</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="network-container">
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Loading network data...</p>
+    </div>
+  </div>
+
+  <div class="legend">
+    <h3>Node Types</h3>
+    <div class="legend-items">
+      <div class="legend-item">
+        <div class="legend-color entity"></div>
+        <span>Entities (Companies)</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color officer"></div>
+        <span>Officers</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color address"></div>
+        <span>Addresses</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color intermediary"></div>
+        <span>Intermediaries</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color other"></div>
+        <span>Others</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .offshore-network-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: 300;
+  }
+
+  .header p {
+    margin: 10px 0 0 0;
+    opacity: 0.8;
+    font-size: 1.1em;
+  }
+
+  .controls {
+    padding: 20px 30px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .control-group label {
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.9em;
+  }
+
+  select,
+  input,
+  button {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 0.9em;
+  }
+
+  button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s;
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+  }
+
+  .stats {
+    display: flex;
+    gap: 20px;
+    margin-left: auto;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #667eea;
+  }
+
+  .stat-label {
+    font-size: 0.8em;
+    color: #6c757d;
+  }
+
+  #network-container {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    background: #ffffff;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 50px;
+    color: #6c757d;
+  }
+
+  .spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .legend {
+    padding: 20px 30px;
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+  }
+
+  .legend h3 {
+    margin: 0 0 15px 0;
+    color: #495057;
+    font-size: 1.1em;
+  }
+
+  .legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .legend-color.entity {
+    background-color: #ff6b6b;
+  }
+  .legend-color.officer {
+    background-color: #4ecdc4;
+  }
+  .legend-color.address {
+    background-color: #45b7d1;
+  }
+  .legend-color.intermediary {
+    background-color: #96ceb4;
+  }
+  .legend-color.other {
+    background-color: #ffeaa7;
+  }
+</style>
+
+<script type="module">
+  import * as d3 from 'd3';
+  // Inline the network visualization script for Astro
+  class OffshoreLeaksNetwork {
+    constructor() {
+      this.width = 1400;
+      this.height = 600;
+      this.nodes = [];
+      this.edges = [];
+      this.allNodes = [];
+      this.allEdges = [];
+      this.simulation = null;
+      this.svg = null;
+      this.tooltip = null;
+      this.isPhysicsPaused = false;
+
+      this.init();
+    }
+
+    async init() {
+      await this.loadData();
+      this.setupSVG();
+      this.setupTooltip();
+      this.setupControls();
+      this.render();
+      this.updateStats();
+    }
+
+    async loadData() {
+      try {
+        const typeToColor = {
+          entity: '#ff6b6b',
+          officer: '#4ecdc4',
+          address: '#45b7d1',
+          intermediary: '#96ceb4',
+          other: '#ffeaa7',
+        };
+
+        const loadFile = async path => {
+          const r = await fetch(path);
+          if (!r.ok) throw new Error(`Fetch failed ${path}: ${r.status}`);
+          return r.json();
+        };
+
+        let data = await loadFile('/data/network_data_small.json').catch(() => null);
+        if (!data || !(data.nodes || []).length) {
+          data = await loadFile('/data/network_data_small.json');
+        }
+
+        this.allNodes = (data.nodes || []).map(n => ({
+          id: n.id ?? n.uid ?? n.name,
+          name: n.name ?? String(n.id ?? n.uid ?? 'Unknown'),
+          type: n.type ?? n.group ?? 'other',
+          color: n.color ?? typeToColor[n.type ?? n.group ?? 'other'] ?? '#999',
+          jurisdiction: n.jurisdiction,
+          company_type: n.company_type,
+          status: n.status,
+          countries: n.countries,
+        }));
+
+        this.allEdges = (data.edges || []).map(e => ({
+          source: e.source,
+          target: e.target,
+          type: e.type ?? e.relation ?? 'related',
+          value: Number(e.value ?? 1) || 1,
+        }));
+
+        // If small dataset has zero edges, show nodes anyway with no links
+        this.nodes = [...this.allNodes];
+        this.edges = [...this.allEdges];
+
+        console.log(`Loaded ${this.nodes.length} nodes and ${this.edges.length} edges`);
+      } catch (error) {
+        console.error('Error loading data:', error);
+        document.getElementById('network-container').innerHTML =
+          '<div class="loading"><p style="color: #dc3545;">Error loading data. Please ensure data files exist.</p></div>';
+      }
+    }
+
+    setupSVG() {
+      const containerSel = d3.select('#network-container');
+      containerSel.select('.loading').remove();
+
+      const containerEl = containerSel.node();
+      if (containerEl) {
+        const rect = containerEl.getBoundingClientRect();
+        this.width = Math.max(400, Math.floor(rect.width));
+      }
+
+      this.svg = containerSel
+        .append('svg')
+        .attr('width', this.width)
+        .attr('height', this.height)
+        .attr('viewBox', [0, 0, this.width, this.height].join(' '))
+        .style('background', '#ffffff');
+
+      const g = this.svg.append('g').attr('class', 'network-group');
+
+      // Add zoom behavior
+      const zoom = d3
+        .zoom()
+        .scaleExtent([0.1, 10])
+        .on('zoom', event => {
+          g.attr('transform', event.transform);
+        });
+
+      this.svg.call(zoom);
+    }
+
+    setupTooltip() {
+      this.tooltip = d3.select('body').append('div').attr('class', 'tooltip').style('opacity', 0);
+    }
+
+    setupControls() {
+      // Node type filter
+      d3.select('#nodeTypeFilter').on('change', event => {
+        this.filterByNodeType(event.target.value);
+      });
+
+      // Relationship filter
+      d3.select('#relationshipFilter').on('change', event => {
+        this.filterByRelationship(event.target.value);
+      });
+
+      // Reset view button
+      d3.select('#resetView').on('click', () => {
+        this.resetView();
+      });
+
+      // Toggle physics button
+      d3.select('#togglePhysics').on('click', () => {
+        this.togglePhysics();
+      });
+    }
+
+    render() {
+      const g = this.svg.select('.network-group');
+
+      // Clear previous elements
+      g.selectAll('*').remove();
+
+      // Create links
+      const links = g
+        .append('g')
+        .attr('class', 'links')
+        .selectAll('line')
+        .data(this.edges)
+        .join('line')
+        .attr('stroke', '#999')
+        .attr('stroke-opacity', 0.6)
+        .attr('stroke-width', d => Math.sqrt(d.value || 1))
+        .attr('class', 'link');
+
+      // Create nodes
+      const nodes = g
+        .append('g')
+        .attr('class', 'nodes')
+        .selectAll('circle')
+        .data(this.nodes)
+        .join('circle')
+        .attr('r', d => this.getNodeSize(d))
+        .attr('fill', d => d.color || this.getNodeColor(d))
+        .attr('stroke', '#fff')
+        .attr('stroke-width', 2)
+        .style('cursor', 'pointer')
+        .call(this.drag());
+
+      // Add labels
+      const labels = g
+        .append('g')
+        .attr('class', 'labels')
+        .selectAll('text')
+        .data(this.nodes.filter(d => this.getNodeSize(d) > 8))
+        .join('text')
+        .text(d => this.truncateText(d.name, 20))
+        .attr('font-size', '10px')
+        .attr('font-family', 'Arial, sans-serif')
+        .attr('fill', '#333')
+        .attr('text-anchor', 'middle')
+        .attr('dy', '.35em')
+        .style('pointer-events', 'none');
+
+      // Add hover effects
+      nodes
+        .on('mouseover', (event, d) => {
+          this.showTooltip(event, d);
+          this.highlightNode(d);
+        })
+        .on('mouseout', (event, d) => {
+          this.hideTooltip();
+          this.unhighlightNode();
+        })
+        .on('click', (event, d) => {
+          this.focusNode(d);
+        });
+
+      // Setup simulation
+      this.setupSimulation(links, nodes, labels);
+    }
+
+    setupSimulation(links, nodes, labels) {
+      if (this.simulation) {
+        this.simulation.stop();
+      }
+
+      // Cap for performance on very large graphs
+      const MAX_NODES = 1200;
+      const MAX_EDGES = 2000;
+      if (this.nodes.length > MAX_NODES) {
+        this.nodes = this.nodes.slice(0, MAX_NODES);
+        const allowedIds = new Set(this.nodes.map(n => n.id));
+        this.edges = this.edges.filter(e => {
+          const { sourceId, targetId } = this.getEdgeEndpointIds(e);
+          return allowedIds.has(sourceId) && allowedIds.has(targetId);
+        });
+      }
+      if (this.edges.length > MAX_EDGES) {
+        this.edges = this.edges.slice(0, MAX_EDGES);
+      }
+
+      this.simulation = d3
+        .forceSimulation(this.nodes)
+        .force(
+          'link',
+          d3
+            .forceLink(this.edges)
+            .id(d => d.id)
+            .distance(60)
+            .strength(0.2),
+        )
+        .force('charge', d3.forceManyBody().strength(-80).distanceMin(20))
+        .force('center', d3.forceCenter(this.width / 2, this.height / 2))
+        .force('x', d3.forceX(this.width / 2).strength(0.03))
+        .force('y', d3.forceY(this.height / 2).strength(0.03))
+        .force(
+          'collision',
+          d3
+            .forceCollide()
+            .radius(d => this.getNodeSize(d) + 4)
+            .strength(0.7),
+        );
+
+      // Update positions on tick
+      this.simulation.on('tick', () => {
+        if (!this.isPhysicsPaused) {
+          links
+            .attr('x1', d => d.source.x)
+            .attr('y1', d => d.source.y)
+            .attr('x2', d => d.target.x)
+            .attr('y2', d => d.target.y);
+
+          nodes.attr('cx', d => d.x).attr('cy', d => d.y);
+
+          labels.attr('x', d => d.x).attr('y', d => d.y);
+        }
+      });
+    }
+
+    drag() {
+      return d3
+        .drag()
+        .on('start', (event, d) => {
+          if (!event.active) this.simulation.alphaTarget(0.3).restart();
+          d.fx = d.x;
+          d.fy = d.y;
+        })
+        .on('drag', (event, d) => {
+          d.fx = event.x;
+          d.fy = event.y;
+        })
+        .on('end', (event, d) => {
+          if (!event.active) this.simulation.alphaTarget(0);
+          d.fx = null;
+          d.fy = null;
+        });
+    }
+
+    getNodeSize(d) {
+      const baseSize = {
+        entity: 12,
+        officer: 8,
+        address: 6,
+        intermediary: 10,
+        other: 8,
+      };
+
+      const connections = this.edges.filter(e => {
+        const { sourceId, targetId } = this.getEdgeEndpointIds(e);
+        return sourceId === d.id || targetId === d.id;
+      }).length;
+
+      return Math.max(baseSize[d.type] || 8, baseSize[d.type] + Math.min(connections * 2, 10));
+    }
+
+    getNodeColor(d) {
+      const typeToColor = {
+        entity: '#ff6b6b',
+        officer: '#4ecdc4',
+        address: '#45b7d1',
+        intermediary: '#96ceb4',
+        other: '#ffeaa7',
+      };
+      return typeToColor[d.type] || '#999';
+    }
+
+    getEdgeEndpointIds(edge) {
+      const sourceId = typeof edge.source === 'object' ? edge.source.id : edge.source;
+      const targetId = typeof edge.target === 'object' ? edge.target.id : edge.target;
+      return { sourceId, targetId };
+    }
+
+    truncateText(text, maxLength) {
+      return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+    }
+
+    showTooltip(event, d) {
+      const tooltipContent = this.createTooltipContent(d);
+      this.tooltip
+        .html(tooltipContent)
+        .style('left', event.pageX + 10 + 'px')
+        .style('top', event.pageY - 10 + 'px')
+        .transition()
+        .duration(200)
+        .style('opacity', 0.9);
+    }
+
+    hideTooltip() {
+      this.tooltip.transition().duration(200).style('opacity', 0);
+    }
+
+    createTooltipContent(d) {
+      let content = `<strong>${d.name}</strong><br/>`;
+      content += `Type: ${d.type}<br/>`;
+      content += `ID: ${d.id}<br/>`;
+
+      if (d.jurisdiction) content += `Jurisdiction: ${d.jurisdiction}<br/>`;
+      if (d.company_type) content += `Company Type: ${d.company_type}<br/>`;
+      if (d.status) content += `Status: ${d.status}<br/>`;
+      if (d.countries) content += `Countries: ${d.countries}<br/>`;
+
+      const connections = this.edges.filter(e => {
+        const { sourceId, targetId } = this.getEdgeEndpointIds(e);
+        return sourceId === d.id || targetId === d.id;
+      }).length;
+      content += `Connections: ${connections}`;
+
+      return content;
+    }
+
+    highlightNode(d) {
+      const connectedNodeIds = new Set();
+      const connectedEdges = this.edges.filter(edge => {
+        const { sourceId, targetId } = this.getEdgeEndpointIds(edge);
+        if (sourceId === d.id || targetId === d.id) {
+          connectedNodeIds.add(sourceId);
+          connectedNodeIds.add(targetId);
+          return true;
+        }
+        return false;
+      });
+
+      this.svg
+        .selectAll('.link')
+        .style('opacity', edge => (connectedEdges.includes(edge) ? 1 : 0.1));
+
+      this.svg
+        .selectAll('.nodes circle')
+        .style('opacity', node => (connectedNodeIds.has(node.id) ? 1 : 0.3));
+    }
+
+    unhighlightNode() {
+      this.svg.selectAll('.link').style('opacity', 0.6);
+
+      this.svg.selectAll('.nodes circle').style('opacity', 1);
+    }
+
+    focusNode(d) {
+      const scale = 2;
+      const translate = [this.width / 2 - scale * d.x, this.height / 2 - scale * d.y];
+
+      this.svg
+        .transition()
+        .duration(750)
+        .call(
+          d3.zoom().transform,
+          d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale),
+        );
+    }
+
+    filterByNodeType(nodeType) {
+      if (nodeType === 'all') {
+        this.nodes = [...this.allNodes];
+      } else {
+        this.nodes = this.allNodes.filter(d => d.type === nodeType);
+      }
+
+      const visibleNodeIds = new Set(this.nodes.map(d => d.id));
+      this.edges = this.allEdges.filter(edge => {
+        const { sourceId, targetId } = this.getEdgeEndpointIds(edge);
+        return visibleNodeIds.has(sourceId) && visibleNodeIds.has(targetId);
+      });
+
+      this.render();
+      this.updateStats();
+    }
+
+    filterByRelationship(relType) {
+      if (relType === 'all') {
+        this.edges = [...this.allEdges];
+      } else {
+        this.edges = this.allEdges.filter(d => d.type === relType);
+      }
+
+      const connectedNodeIds = new Set();
+      this.edges.forEach(edge => {
+        const { sourceId, targetId } = this.getEdgeEndpointIds(edge);
+        connectedNodeIds.add(sourceId);
+        connectedNodeIds.add(targetId);
+      });
+
+      this.nodes = this.allNodes.filter(d => connectedNodeIds.has(d.id));
+
+      this.render();
+      this.updateStats();
+    }
+
+    resetView() {
+      this.svg.transition().duration(750).call(d3.zoom().transform, d3.zoomIdentity);
+    }
+
+    togglePhysics() {
+      this.isPhysicsPaused = !this.isPhysicsPaused;
+      const button = document.getElementById('togglePhysics');
+      button.textContent = this.isPhysicsPaused ? 'Resume Physics' : 'Pause Physics';
+
+      if (!this.isPhysicsPaused && this.simulation) {
+        this.simulation.alphaTarget(0.3).restart();
+      }
+    }
+
+    updateStats() {
+      document.getElementById('nodeCount').textContent = this.nodes.length;
+      document.getElementById('edgeCount').textContent = this.edges.length;
+    }
+  }
+
+  // Initialize when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.__offshoreNetworkMounted) return;
+    window.__offshoreNetworkMounted = true;
+    new OffshoreLeaksNetwork();
+  });
+</script>

@@ -1,0 +1,18 @@
+---
+import DesignCard from '../components/DesignCard.astro';
+import Heading from '../components/Heading.astro';
+import Layout from '../layouts/Layout.astro';
+
+import EcoFootprint from '../assets/images/ecological_footprint_detail.png';
+---
+
+<Layout title="Certificates">
+  <Heading id="indicators" className="mt-20 mb-10" text="Certificates" />
+  <DesignCard
+    href="/other/viz/eco_footprint"
+    imagePath={EcoFootprint}
+    imageAlt="Chart detail"
+    heading="Ecological Footprint"
+    text="Just two countries have high human development and a sustainable lifestyle."
+  />
+</Layout>

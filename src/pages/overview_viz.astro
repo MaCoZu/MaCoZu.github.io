@@ -7,7 +7,6 @@ import '../styles/global.css';
 import DancingLetters from '../assets/images/dancingLetters.png';
 import EcoFootprint from '../assets/images/ecological_footprint_detail.png';
 import ForroIcon from '../assets/images/forroIcon.png';
-import HappySustainable from '../assets/images/happy&sustainable_detail.png';
 import DesignCard from '../components/DesignCard.astro';
 import DesignGardientCard from '../components/DesignGardientCard.astro';
 import DesignTripCard from '../components/DesignTripCard.astro';
@@ -20,19 +19,33 @@ import DesignTripCard from '../components/DesignTripCard.astro';
   <Heading id="indicators" className="mt-20 mb-10" text="Economic Indicators" />
   <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
     <DesignCard
-      href="/design/eco_footprint"
+      href="/other/viz/eco_footprint"
       imagePath={EcoFootprint}
       imageAlt="Chart detail"
       heading="Ecological Footprint"
       text="Just two countries have high human development and a sustainable lifestyle."
     />
-    <DesignCard
-      href="/design/happy_and_sustainable"
+    <!-- <DesignCard
+      href="/other/viz/happy_and_sustainable"
       imagePath={HappySustainable}
       imageAlt="Chart detail"
       heading="Happy & Sustainable"
       text="Happiness score, emissions and more in one big bubble chart."
+    /> -->
+    <!-- <DesignCard
+      href="/other/viz/flourish"
+      imagePath={HappySustainable}
+      imageAlt="Chart detail"
+      heading="Unfälle Berlin "
+      text="Flourish graphs"
     />
+    <DesignCard
+      href="/other/viz/offshore"
+      imagePath={HappySustainable}
+      imageAlt="Chart detail"
+      heading="Offshore Leaks"
+      text="Flourish graphs"
+    /> -->
   </div>
 
   <!-- DESIGN  -->
@@ -40,13 +53,13 @@ import DesignTripCard from '../components/DesignTripCard.astro';
 
   <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
     <DesignGardientCard
-      href="/design/css_gradients"
+      href="/other/design/css_gradients"
       gradientText="CSS Gradients"
       header="CSS Gradients"
       text="Exploration of CSS gradients with code. As a reference for myself and the accidental surfer."
     />
     <DesignCard
-      href="/design/forrodacapita"
+      href="/other/design/forrodacapita"
       imagePath={ForroIcon}
       imageAlt="Chart detail"
       objectFit="object-contain"
@@ -54,7 +67,7 @@ import DesignTripCard from '../components/DesignTripCard.astro';
       text="Graphic Design for the finest Forró venue in the capital."
     />
     <DesignTripCard
-      href="/design/dancing_letters"
+      href="/other/design/dancing_letters"
       imagePath={DancingLetters}
       imageAlt="Dancing letters"
       heading="Dancing Letters"
