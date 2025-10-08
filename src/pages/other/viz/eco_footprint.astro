@@ -1,15 +1,14 @@
----
-import EcoChart from "../../components/Charts/EcoChart";
-import Heading from "../../components/Heading.astro";
-import Markdown from "../../components/Markdown.astro";
-import Layout from "../../layouts/Layout.astro";
-import "../../styles/font.css";
-import "../../styles/global.css";
+import EcoChart from "../../../components/Charts/EcoChart";
+import Heading from "../../../components/Heading.astro";
+import Markdown from "../../../components/Markdown.astro";
+import Layout from "../../../layouts/Layout.astro";
+import "../../../styles/font.css";
+import "../../../styles/global.css";
 const csvFilePath = "/data/footprint_clean_2019.csv";
 
 // Content
-import components from "../../components/mdxComponents"; // for Links
-import { Content } from "../../content/visualizations/eco_footprint.mdx";
+import components from "../../../components/mdxComponents"; // for Links
+import { Content } from "../../../content/visualizations/eco_footprint.mdx";
 ---
 
 <Layout title="Ecological Footprint">
