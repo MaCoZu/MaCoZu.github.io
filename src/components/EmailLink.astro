@@ -2,14 +2,28 @@
 const {
   label = 'Email',
   class: className = '',
+  email = '',
+  emailB64 = '',
+  user = '',
+  domain = '',
+  tld = '',
+  subject = '',
+  body = '',
 } = Astro.props;
+const query = new URLSearchParams({ subject, body }).toString();
 ---
 
-<button
-  type="button"
-  onclick="handleEmailClick(event); return false;"
+<a
+  href="#"
   class={`email-link flex items-center gap-3 ${className}`}
   aria-label="Email contact"
+  data-email-b64={emailB64}
+  data-user={user}
+  data-domain={domain}
+  data-tld={tld}
+  data-subject={subject}
+  data-body={body}
+  onclick="handleEmailClick(arguments[0]); return false;"
 >
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="19" height="19">
     <path
@@ -19,4 +33,32 @@ const {
   </svg>
 
   <span class="email-text">{label}</span>
-</button>
+</a>
+
+<script is:inline>
+  function decodeB64(b) {
+    try {
+      return typeof atob === 'function' ? atob(b) : Buffer.from(b, 'base64').toString('utf-8');
+    } catch (_) {
+      return '';
+    }
+  }
+  function handleEmailClick(e) {
+    const a = e.currentTarget;
+    if (!a) return false;
+    const emailB64 = a.getAttribute('data-email-b64') || '';
+    const user = a.getAttribute('data-user') || '';
+    const domain = a.getAttribute('data-domain') || '';
+    const tld = a.getAttribute('data-tld') || '';
+    let addr = '';
+    if (emailB64) addr = decodeB64(emailB64);
+    else if (user && domain) addr = user + '@' + domain + (tld ? '.' + tld : '');
+    else return false;
+    const subject = a.getAttribute('data-subject') || '';
+    const body = a.getAttribute('data-body') || '';
+    const params = new URLSearchParams({ subject, body }).toString();
+    const url = 'mailto:' + addr + (params ? '?' + params : '');
+    window.location.href = url;
+    return false;
+  }
+</script>
