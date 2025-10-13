@@ -7,17 +7,7 @@ const docs = defineCollection({
   }),
 });
 
-const models = defineCollection({
-  schema: z.object({
-    title: z.string().optional(),
-  }),
-});
-
-const model_gallery = defineCollection({
-  schema: z.object({
-    title: z.string().optional(),
-  }),
-});
+// Removed unused collections `models` and `model_gallery` to avoid warnings for missing directories
 
 const visualizations = defineCollection({
   schema: z.object({
@@ -25,4 +15,4 @@ const visualizations = defineCollection({
   }),
 });
 
-export const collections = { docs, models, model_gallery, visualizations };
+export const collections = { docs, visualizations };
