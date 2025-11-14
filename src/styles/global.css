@@ -23,6 +23,11 @@
   }
 }
 
+:root {
+	--my-min-height: 120vh;
+
+}
+
 .link-offset:target {
   padding-top: 30px;
 }
