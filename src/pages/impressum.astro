@@ -7,13 +7,21 @@ import '../styles/global.css';
 ---
 
 <Layout title="Impressum">
-  <div class="flex flex-col justify-center items-center font-semibold font-work text-xl">
-    <Heading id="impressum" className="my-10" text="Impressum" />
-    <div class="flex flex-col gap-2 text-center font-normal justify-center items-center">
+  <div class="min-h-[calc(100vh-180px)] flex flex-col justify-center items-center font-semibold font-work text-xl">
+    <Heading id="impressum" className="mb-10 md:mb-20" text="Impressum" />
+    <div class="flex flex-col gap-5 md:gap-6 text-center font-normal justify-center items-center">
       <p>Marco Zausch</p>
-      <EmailLink class="font-normal" label="Email" emailB64="bWFyY296YXVzY2hAcG9zdGVvLmRl" />
-      <p>Business Analytics</p>
-      <p>Data Science</p>
+      <p class="flex flex-col md:flex-row md:gap-3">
+        <span>Data Analytics</span>
+        <span class="hidden md:inline">|</span>
+        <span>Economic Insight</span>
+        <span class="hidden md:inline">|</span>
+        <span>Visual Communication</span>
+      </p>
+      <!-- <p>Data Analytics | Economics | Communication Design</p> -->
+      <!-- <p>Data Professional</p> -->
+      <!-- <EmailLink class="font-normal" label="Email" emailB64="bWFyY296YXVzY2hAcG9zdGVvLmRl" /> -->
+
     </div>
   </div>
 </Layout>
