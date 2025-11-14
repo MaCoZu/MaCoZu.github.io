@@ -12,14 +12,14 @@ import DesignCard from '../components/DesignCard.astro';
   <!-- <Divider id="viz" text="Visualizations" className="link-offset my-20" /> -->
 
   <!-- ECONOMIC INDICATORS  -->
-  <Heading id="indicators" className="mt-20 mb-10" text="Economic Indicators" />
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+  <!-- <Heading id="indicators" className="mt-20 mb-10" text="Economic Indicators" /> -->
+  <div class="w-1/3">
     <DesignCard
       href="/other/viz/eco_footprint"
       imagePath={EcoFootprint}
       imageAlt="Chart detail"
       heading="Ecological Footprint"
-      text="Just two countries have high human development and a sustainable lifestyle."
+      text="High HDI and a sustainable lifestyle go seldom together, this graph show that just two countries have both."
     />
     <!-- <DesignCard
       href="/other/viz/happy_and_sustainable"
@@ -72,7 +72,7 @@ import DesignCard from '../components/DesignCard.astro';
   </div> -->
   <!-- <Divider id="writing" text="Writing" className="link-offset my-20" /> -->
 
-  <!-- MODEL GALLERY 
+  <!-- MODEL GALLERY
     <Heading id="models" className="" text="Model Gallery" />
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <ModelCard
@@ -170,6 +170,6 @@ import DesignCard from '../components/DesignCard.astro';
                         Corn Model</h1>
                     <p class="text-wrap">Ricardo's three-factor economy.</p>
                 </a>
-            </div> 
+            </div>
     </div> -->
 </Layout>
