@@ -52,32 +52,30 @@ import '../styles/global.css';
       <div class="hidden md:flex justify-end col-start-3">
         <div class="flex space-x-8 uppercase text-[16px]">
           <a class="font-normal hover:text-tertiary" href="/">data</a>
+          <a class="font-normal hover:text-tertiary" href="/overview_viz#viz">Visuals</a>
 
+          <!-- Subbav commented out -->
+          {false && (
           <div class="relative group">
-            <button class="font-normal uppercase text-[16px] hover:text-tertiary">other</button>
+                <button class="font-normal uppercase text-[16px] hover:text-tertiary">other</button>
 
-            <!-- Subnav container - full width, positioned absolutely -->
-            <div
-              class="absolute right-0 top-full bg-transparent overflow-hidden h-0 group-hover:h-auto transition-all duration-900 w-fit"
-            >
-              <div class="container mx-auto">
-                <!-- Subnav content - right-aligned links -->
-                <div class="flex justify-end space-x-4 py-3">
-                  <a class="font-normal hover:text-tertiary" href="/overview_viz#viz"
-                    >Visualizations</a
-                  >
-                  <!-- <span class="text-secondary">|</span>
-                  <a class="font-normal hover:text-tertiary" href="/overview_viz#design">Design</a> -->
-                  <!-- <span class="text-secondary">|</span> -->
-
-                  <!-- <a
-                                        class="font-normal hover:text-tertiary"
-                                        href="/overview_viz#writing">Writing</a
-                                    > -->
+                <!-- Subnav container - full width, positioned absolutely -->
+                <div class="absolute right-0 top-full bg-transparent overflow-hidden h-0 group-hover:h-auto transition-all duration-900 w-fit" >
+                  <div class="container mx-auto">
+                    <!-- Subnav content - right-aligned links -->
+                    <div class="flex justify-end space-x-4 py-3">
+                      <a class="font-normal hover:text-tertiary" href="/overview_viz#viz" >Visualizations</a >
+                      <span class="text-secondary">|</span>
+                      <a class="font-normal hover:text-tertiary" href="/overview_viz#design">Design</a>
+                      <span class="text-secondary">|</span>
+                      <a class="font-normal hover:text-tertiary" href="/overview_viz#writing">Writing</a >
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+          )}
+
+
         </div>
       </div>
     </div>
