@@ -13,14 +13,14 @@
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx,.astro --fix"
   },
   "dependencies": {
-    "@astrojs/mdx": "4.3.6",
-    "@astrojs/react": "4.4.0",
+    "@astrojs/mdx": "4.3.12",
+    "@astrojs/react": "4.4.2",
     "@iconify-json/file-icons": "^1.2.1",
     "@tailwindcss/postcss": "^4.1.11",
     "@tailwindcss/vite": "^4.1.11",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "astro": "^5.14.1",
+    "astro": "^5.16.4",
     "astro-icon": "^1.1.5",
     "autoprefixer": "^10.4.21",
     "d3": "^7.9.0",
