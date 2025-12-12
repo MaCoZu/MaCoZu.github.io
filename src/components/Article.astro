@@ -5,7 +5,7 @@ const { id, className = '' } = Astro.props;
 
 // Base classes that are always applied
 const base =
-  'prose prose-stone text-xl font-literata font-normal leading-loose tracking-normal max-w-prose dark:prose-invert prose-p:text-pretty prose-img:rounded-xl';
+  'prose prose-stone text-xl font-normal leading-loose tracking-normal max-w-prose dark:prose-invert prose-p:text-pretty prose-img:rounded-xl';
 
 // Merge with any custom classes passed in
 const merged = twMerge(base, className);
