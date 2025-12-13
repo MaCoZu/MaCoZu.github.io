@@ -8,7 +8,7 @@ const { name, link } = Astro.props;
 ---
 
 <li class="!my-2">
-  <a target="_blank" href={link} class="certificate-link prose prose-stone text-xl font-normal leading-loose tracking-normal dark:prose-invert prose-p:text-pretty hover:text-slate-950">
+  <a target="_blank" href={link} class="certificate-link prose prose-stone text-xl font-normal leading-loose tracking-normal dark:prose-invert prose-p:text-pretty hover:text-link transition-colors duration-200">
     {name}
     <!-- <img src="/svg/certificate.svg" alt="certificate" class="certificate-icon" /> -->
   </a>
