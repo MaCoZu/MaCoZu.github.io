@@ -1,0 +1,29 @@
+/* Link component styles */
+.x-link {
+  display: inline-flex;
+  align-items: baseline;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.x-link-content {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.15em;
+}
+
+.x-link:hover {
+  color: var(--color-link, rgb(22, 22, 223));
+}
+
+.x-link-icon {
+  position: relative;
+  top: -0.15em;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.x-link:hover .x-link-icon {
+  opacity: 1;
+}
