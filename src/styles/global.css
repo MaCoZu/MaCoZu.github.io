@@ -7,8 +7,13 @@
   --color-primary: #141300;
   --color-secondary: #333333;
   --color-tertiary: #685c99;
-  --color-link: #333333;
+  --color-link: oklch(39.8% 0.195 277.366);
   --color-accent: rgb(169 15 43);
+
+  /* Font Families */
+  --font-family-heading: 'Bebas', sans-serif;
+  --font-family-body: 'Work', sans-serif;
+  --font-family-menu: 'Work', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,6 +31,10 @@
 :root {
 	--my-min-height: 120vh;
 
+	/* Typography System - using theme variables */
+	--font-heading: var(--font-family-heading);
+	--font-body: var(--font-family-body);
+	--font-menu: var(--font-family-menu);
 }
 
 .link-offset:target {
@@ -42,6 +51,10 @@
 }
 
 /* MENU */
+.font-menu {
+  font-family: var(--font-menu);
+}
+
 .font-work {
   font-family: 'Work', sans-serif;
 }
@@ -59,6 +72,15 @@
 /* scrolling smooth instead of abruptly  */
 html {
   scroll-behavior: smooth;
+}
+
+/* Global Typography */
+body {
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }
 
 div.vtext {

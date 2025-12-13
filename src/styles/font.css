@@ -76,3 +76,14 @@
   font-family: 'Bevan';
   src: url('/fonts/Bevan.woff2') format('woff');
 }
+
+@font-face {
+  font-family: 'Spartan';
+  src: url('/fonts/Spartan-Regular.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('/fonts/Quicksand-Regular.ttf') format('truetype');
+}

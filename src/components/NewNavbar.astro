@@ -4,7 +4,7 @@ import '../styles/global.css';
 
 <!-- NAV BAR -->
 <nav
-  class="sticks md:relative h-[4rem] md:h-[2.7rem] top-3 left-0 right-0 border-b-0 z-50 max-sm:px-5"
+  class="sticks md:relative font-menu h-[4rem] md:h-[2.7rem] top-3 left-0 right-0 border-b-0 z-50 max-sm:px-5"
 >
   <div class="container mx-auto py-2 md:py-1">
     <div class="grid grid-cols-3 items-center py-[6px]">
@@ -21,7 +21,7 @@ import '../styles/global.css';
       <div class="md:hidden col-start-3 justify-self-end">
         <button
           id="mobileMenuButton"
-          class="p-2 text-primary rounded-md hover:text-indigo-700 focus:outline-none"
+          class="p-2 text-primary rounded-md hover:text-link focus:outline-none"
         >
           <svg
             id="menuOpen"
@@ -51,23 +51,23 @@ import '../styles/global.css';
       <!-- Desktop navigation -->
       <div class="hidden md:flex justify-end col-start-3">
         <div class="flex space-x-8 uppercase text-[16px]">
-          <a class="font-normal hover:text-tertiary" href="/">data</a>
-          <a class="font-normal hover:text-tertiary" href="/overview_viz#viz">Visuals</a>
-          <a class="font-normal hover:text-tertiary" href="/certificates">Certificates</a>
+          <a class="font-normal hover:text-link" href="/">data</a>
+          <a class="font-normal hover:text-link" href="/overview_viz#viz">Visuals</a>
+          <a class="font-normal hover:text-link" href="/certificates">Certificates</a>
 
           <!-- Subbav commented out -->
           {false && (
           <div class="relative group">
-                <button class="font-normal uppercase text-[16px] hover:text-tertiary">other</button>
+                <button class="font-normal uppercase text-[16px] hover:text-link">other</button>
 
                 <!-- Subnav container - full width, positioned absolutely -->
                 <div class="absolute right-0 top-full bg-transparent overflow-hidden h-0 group-hover:h-auto transition-all duration-900 w-fit" >
                   <div class="container mx-auto">
                     <!-- Subnav content - right-aligned links -->
                     <div class="flex justify-end space-x-4 py-3">
-                      <a class="font-normal hover:text-tertiary" href="/overview_viz#viz" >Visuals</a >
+                      <a class="font-normal hover:text-link" href="/overview_viz#viz" >Visuals</a >
                       <span class="text-secondary">|</span>
-                      <a class="font-normal hover:text-tertiary" href="/overview_viz#design">Design</a>
+                      <a class="font-normal hover:text-link" href="/overview_viz#design">Design</a>
                     </div>
                   </div>
                 </div>
@@ -82,12 +82,12 @@ import '../styles/global.css';
     <!-- Mobile Subnav Row (hidden by default) -->
     <div id="mobileSubnavRow" class="md:hidden w-full hidden py-2 border-t border-gray-200">
       <div class="flex flex-wrap justify-between gap-x-2 gap-y-2 uppercase text-[10px]">
-        <a class="font-normal hover:text-tertiary" href="/">Data</a>
-        <a class="font-normal hover:text-tertiary" href="/overview_viz#viz">Viz</a>
-        <a class="font-normal hover:text-tertiary" href="/certificates">Certificates</a>
+        <a class="font-normal hover:text-link" href="/">Data</a>
+        <a class="font-normal hover:text-link" href="/overview_viz#viz">Viz</a>
+        <a class="font-normal hover:text-link" href="/certificates">Certificates</a>
 
         <!-- <a
-                    class="font-normal hover:text-tertiary"
+                    class="font-normal hover:text-link"
                     href="/overview_viz#writing">Writing</a
                 > -->
       </div>
