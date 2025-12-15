@@ -5,173 +5,334 @@ import CLink from '../components/CertificateLink.astro';
 ---
 
 <Layout title="Certificates">
- <main
-   class="mx-1 md:mx-[9.5rem] min-h-[80dvh] max-sm:px-5 flex flex-col"
- >
-   <div class="md:h-20"></div>
-	<h1 class="text-3xl md:text-4xl font-bebas font-semibold tracking-[5px] text-center mb-8">Certificates</h1>
+  <main class="mx-1 md:mx-[9.5rem] min-h-[80dvh] max-sm:px-5 flex flex-col">
+    <div class="md:h-20"></div>
+    <h1 class="text-3xl md:text-4xl font-heading font-semibold tracking-[5px] text-center mb-8">
+      Certificates
+    </h1>
 
-	<div class="w-full flex flex-col items-center">
-		<button type="button" class="collapsible w-full md:w-[50rem] rounded-t-xl text-left text-xl bg-sky-50 text-gray-800 hover:bg-sky-100 cursor-pointer my-1 p-4 transition-all duration-200 relative">
-			Data Science
-			<span class="plus-icon absolute right-4 top-1/2 -translate-y-1/2 font-bold text-2xl">+</span>
-		</button>
+    <div class="w-full flex flex-col items-center">
+      <!-- DATA SCIENCE -->
+      <button
+        type="button"
+        class="collapsible w-full md:w-[50rem] rounded-t-xl text-left text-xl bg-sky-50 text-gray-800 hover:bg-sky-100 cursor-pointer my-1 p-4 transition-all duration-200 relative"
+      >
+        Data Science
+        <span class="plus-icon absolute right-4 top-1/2 -translate-y-1/2 font-bold text-2xl">+</span
+        >
+      </button>
 
-		<div class="content w-full md:w-[50rem] max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-			<div class="px-4 py-4">
+      <div
+        class="content w-full md:w-[50rem] max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
+      >
+        <div class="px-4 py-4">
+          <ul class="list-disc px-4">
+            <CLink
+              name="LinkedIn – Python Statistics Essential Training (18.11.2025)"
+              ,
+              link="https://www.linkedin.com/learning/certificates/0e3bf06a9793e46418e55210a3ba73eadfc234e6142521a759c16685102b81af?trk=share_certificate"
+            />
 
-				<ul class="list-disc px-4">
+            <CLink
+              name="LinkedIn – Predictive Analytics Essential Training: Estimating and Ensuring ROI (31.10.2025)"
+              link="https://www.linkedin.com/learning/certificates/50926e1d198161973a7646030cc486e2e56240010ee32712a505adcab27c76c2?trk=share_certificate"
+            />
 
-					<CLink name="LinkedIn – Python Statistics Essential Training (18.11.2025)", link="https://www.linkedin.com/learning/certificates/0e3bf06a9793e46418e55210a3ba73eadfc234e6142521a759c16685102b81af?trk=share_certificate"/>
+            <CLink
+              name="LinkedIn – The NonTechnical Skills of Effective Data Scientists (23.10.2025)"
+              link="https://www.linkedin.com/learning/certificates/0a52f4b983889f4a0401015443754777475112c0e2cfa7ee1a47537cfdbbd69c?trk=share_certificate"
+            />
 
-					<CLink name="LinkedIn – Predictive Analytics Essential Training: Estimating and Ensuring ROI (31.10.2025)" link="https://www.linkedin.com/learning/certificates/50926e1d198161973a7646030cc486e2e56240010ee32712a505adcab27c76c2?trk=share_certificate"/>
+            <CLink
+              name="HPI – Profitable AI 2024 (25.07.2025)"
+              link="https://drive.google.com/file/d/15eOfdyMnSemXcau0omW57e51os1SlIDr/view?usp=sharing"
+            />
 
-					<CLink name="LinkedIn – The NonTechnical Skills of Effective Data Scientists (23.10.2025)" link="https://www.linkedin.com/learning/certificates/0a52f4b983889f4a0401015443754777475112c0e2cfa7ee1a47537cfdbbd69c?trk=share_certificate"/>
+            <CLink
+              name="Coursera – Specialization: Machine Learning (24.07.2025)"
+              link="https://coursera.org/share/5d2d965ccd8465a837d3718e7d69c5e9"
+            />
 
-					<CLink name="HPI – Profitable AI 2024 (25.07.2025)" link="https://drive.google.com/file/d/15eOfdyMnSemXcau0omW57e51os1SlIDr/view?usp=sharing"/>
-
-					<CLink name="Coursera – Specialization: Machine Learning (24.07.2025)" link="https://coursera.org/share/5d2d965ccd8465a837d3718e7d69c5e9"/>
-
-					<!-- <li><a target="_blank"  href="https://drive.google.com/file/d/1MNZeMVFG3BiDOhqUCbD7kf4WzeujK_zv/view?usp=sharing">Databricks - Databricks Lakehouse Platform (01.09.2024)</a></li>
+            <!-- <li><a target="_blank"  href="https://drive.google.com/file/d/1MNZeMVFG3BiDOhqUCbD7kf4WzeujK_zv/view?usp=sharing">Databricks - Databricks Lakehouse Platform (01.09.2024)</a></li>
 
 					<li><a target="_blank"  href="https://drive.google.com/file/d/1aBXwKnXWqvUCQAR7kVAQJZU3n5VAXLHN/view?usp=sharing">LinkedIn - Tableau Mastering Calculations (29.05.2024)</a></li> -->
 
-					<CLink name="LinkedIn – Tableau Essential Training (23.05.2024)" link="https://drive.google.com/file/d/1ruFU4TGWhiLGIPlZEGNVmYlhVLAFxTnu/view?usp=sharing"/>
+            <CLink
+              name="LinkedIn – Tableau Essential Training (23.05.2024)"
+              link="https://drive.google.com/file/d/1ruFU4TGWhiLGIPlZEGNVmYlhVLAFxTnu/view?usp=sharing"
+            />
 
-					<CLink name="HPI – Understanding Embeddings for Natural Language Processing (18.03.2024)" link="https://drive.google.com/file/d/1JCDfV6I01dkCOLFpGXm-XJ4Ng78kfAW8/view?usp=sharing"/>
+            <CLink
+              name="LinkedIn - Intermediate SQL for Data Scientists (22.05.2024)"
+              link="https://www.linkedin.com/learning/certificates/232c5a995f73e27e8b8a78246f7a7d63b05f8aba20535a5b8b30ac9af76c851d?trk=share_certificate"
+            />
 
-					<CLink name="DSR – 12-Weeks Advanced Data Science Bootcamp (19.11.2023)" link="https://drive.google.com/file/d/1ppZaNC7Ih7_1x3o8tEaAGYCrAXl5ybrb/view?usp=sharing"/>
+            <CLink
+              name="HPI – Understanding Embeddings for Natural Language Processing (18.03.2024)"
+              link="https://drive.google.com/file/d/1JCDfV6I01dkCOLFpGXm-XJ4Ng78kfAW8/view?usp=sharing"
+            />
 
-					<CLink name="Coursera – SQL Basics for Data Science (12.10.2022)" link="https://coursera.org/share/0ae7ce571aabcf32a0021ac3b9c3a971"/>
+            <CLink
+              name="DSR – 12-Weeks Advanced Data Science Bootcamp (19.11.2023)"
+              link="https://drive.google.com/file/d/1ppZaNC7Ih7_1x3o8tEaAGYCrAXl5ybrb/view?usp=sharing"
+            />
 
-					<CLink name="LinkedIn – Advanced Python (07.09.2022)" link="https://drive.google.com/file/d/1XSajv1Rt5LUi5qAOHmuzV_oh_Ic2G0yO/view"/>
+            <CLink
+              name="Coursera – SQL Basics for Data Science (12.10.2022)"
+              link="https://coursera.org/share/0ae7ce571aabcf32a0021ac3b9c3a971"
+            />
 
-					<!-- <li><a target="_blank"  href="https://drive.google.com/file/d/15eOfdyMnSemXcau0omW57e51os1SlIDr/view?usp=sharing">LinkedIn - Statistics Foundations 4 Advanced Topics (04.09.2022)</a></li> -->
+            <CLink
+              name="LinkedIn – Advanced Python (07.09.2022)"
+              link="https://drive.google.com/file/d/1XSajv1Rt5LUi5qAOHmuzV_oh_Ic2G0yO/view"
+            />
 
-					<CLink name="LinkedIn – Python for Data Science Essential Training Part 2 (01.09.2022)" link="https://drive.google.com/file/d/1R63aQqf0XRkLdVVScV858rKNXm1R-yV-/view?usp=sharing"/>
+            <!-- <li><a target="_blank"  href="https://drive.google.com/file/d/15eOfdyMnSemXcau0omW57e51os1SlIDr/view?usp=sharing">LinkedIn - Statistics Foundations 4 Advanced Topics (04.09.2022)</a></li> -->
 
-					<CLink name="LinkedIn – Python Statistics Essential Training (22.08.2022)" link="https://drive.google.com/file/d/1DtJ0BajN1U8Y2h83a1jHQKWRQ7q0_hZZ/view?usp=sharing"/>
+            <CLink
+              name="LinkedIn – Python for Data Science Essential Training Part 2 (01.09.2022)"
+              link="https://drive.google.com/file/d/1R63aQqf0XRkLdVVScV858rKNXm1R-yV-/view?usp=sharing"
+            />
 
-					<CLink name="Udemy – SQL Bootcamp: From Zero to Hero (04.06.2022)" link="https://www.udemy.com/certificate/UC-92d882cf-28dd-48e6-8f87-0024911776c1"/>
+            <CLink
+              name="LinkedIn – Python Statistics Essential Training (22.08.2022)"
+              link="https://drive.google.com/file/d/1DtJ0BajN1U8Y2h83a1jHQKWRQ7q0_hZZ/view?usp=sharing"
+            />
 
-					<CLink name="HPI – Sustainable Software Engineering 2022 (01.06.2022)" link="https://drive.google.com/file/d/1JWwJeGNSQV340qI2cvdRSDQzjdtiqMIs/view?usp=sharing"/>
+            <CLink
+              name="Udemy – SQL Bootcamp: From Zero to Hero (04.06.2022)"
+              link="https://www.udemy.com/certificate/UC-92d882cf-28dd-48e6-8f87-0024911776c1"
+            />
 
-					<CLink name="HPI – Einführung in R (12.05.2022)" link="https://drive.google.com/file/d/1waNJ6WlxywZEa4FardPiDZElP8-WQBJG/view?usp=sharing"/>
+            <CLink
+              name="HPI – Sustainable Software Engineering 2022 (01.06.2022)"
+              link="https://drive.google.com/file/d/1JWwJeGNSQV340qI2cvdRSDQzjdtiqMIs/view?usp=sharing"
+            />
 
-					<CLink name="HPI – Linux in der Kommandozeile (23.04.2022)" link="https://drive.google.com/file/d/1JGY-aMUiVT_idmz1nmMMiJyjmzHlqS4J/view?usp=sharing"/>
+            <CLink
+              name="HPI – Einführung in R (12.05.2022)"
+              link="https://drive.google.com/file/d/1waNJ6WlxywZEa4FardPiDZElP8-WQBJG/view?usp=sharing"
+            />
 
-					<CLink name="Data Camp – Introduction to R (23.12.2021)" link="https://drive.google.com/file/d/1ZOyJDHx-DHLgBiCPCdeYCR3AL5DSwmdg/view?usp=sharing"/>
+            <CLink
+              name="HPI – Linux in der Kommandozeile (23.04.2022)"
+              link="https://drive.google.com/file/d/1JGY-aMUiVT_idmz1nmMMiJyjmzHlqS4J/view?usp=sharing"
+            />
 
-					<CLink name="Data Camp – Intro to SQL (16.12.2021)" link="https://drive.google.com/file/d/1eW-PKiEw3LChTTv56i5JMQNEdeL-JYuN/view?usp=sharing"/>
+            <CLink
+              name="Data Camp – Introduction to R (23.12.2021)"
+              link="https://drive.google.com/file/d/1ZOyJDHx-DHLgBiCPCdeYCR3AL5DSwmdg/view?usp=sharing"
+            />
 
-					<CLink name="LeWagon – 10-Weeks Data Science Bootcamp (03.12.2021)" link="https://drive.google.com/file/d/1okQJEGGr2AB4ggPs8iPAEdmmGh--4Fc4/view?usp=sharing">
-				</ul>
+            <CLink
+              name="Data Camp – Intro to SQL (16.12.2021)"
+              link="https://drive.google.com/file/d/1eW-PKiEw3LChTTv56i5JMQNEdeL-JYuN/view?usp=sharing"
+            />
 
-			</div>
-		</div>
+            <CLink
+              name="LeWagon – 10-Weeks Data Science Bootcamp (03.12.2021)"
+              link="https://drive.google.com/file/d/1okQJEGGr2AB4ggPs8iPAEdmmGh--4Fc4/view?usp=sharing"
+            />
+          </ul>
+        </div>
+      </div>
 
-		<button type="button" class="collapsible w-full md:w-[50rem] text-left text-xl bg-slate-100 text-slate-800 hover:bg-slate-200 cursor-pointer my-1 p-4 text-left transition-all duration-200 relative">
-			Business & Management Skills
-			<span class="plus-icon absolute right-4 top-1/2 -translate-y-1/2 font-bold text-2xl">+</span>
-		</button>
+      <!-- Business & Management Skills -->
+      <button
+        type="button"
+        class="collapsible w-full md:w-[50rem] text-left text-xl bg-slate-100 text-slate-800 hover:bg-slate-200 cursor-pointer my-1 p-4 transition-all duration-200 relative"
+      >
+        Business & Management Skills
+        <span class="plus-icon absolute right-4 top-1/2 -translate-y-1/2 font-bold text-2xl">+</span
+        >
+      </button>
 
-		<div class="content w-full md:w-[50rem] max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-			<div class="px-4 py-4">
+      <div
+        class="content w-full md:w-[50rem] max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
+      >
+        <div class="px-4 py-4">
+          <ul class="list-disc px-4">
+            <CLink
+              name="London School of Economics  – MBA Essentials (issued: Jan. 2026)"
+              link="https://www.getsmarter.com/products/lse-mba-essentials-online-certificate-course"
+            />
+            <CLink
+              name="LinkedIn – Strategic Business Analysis Essentials (17.11.2025)"
+              link="https://www.linkedin.com/learning/certificates/0e3bf06a9793e46418e55210a3ba73eadfc234e6142521a759c16685102b81af?trk=share_certificate"
+            />
 
-				<ul class="list-disc px-4">
+            <CLink
+              name="LinkedIn – Operational Excellence (16.11.2025)"
+              link="https://www.linkedin.com/learning/certificates/e09ec5b99dbead25abf16fe7569fce9c5487726ec0e2b0e3e0c6be6f85d319d9?trk=share_certificate"
+            />
 
-					<CLink name="LinkedIn – Strategic Business Analysis Essentials (17.11.2025)" link="https://www.linkedin.com/learning/certificates/0e3bf06a9793e46418e55210a3ba73eadfc234e6142521a759c16685102b81af?trk=share_certificate"/>
+            <CLink
+              name="LinkedIn – Economic Indicators (14.11.2025)"
+              link="https://www.linkedin.com/learning/certificates/184e7a72d25c35548db63d923277c633bd57d47a08ba25579784edc9a0169cd0?trk=share_certificate"
+            />
 
-					<CLink name="LinkedIn – Operational Excellence (16.11.2025)" link="https://www.linkedin.com/learning/certificates/e09ec5b99dbead25abf16fe7569fce9c5487726ec0e2b0e3e0c6be6f85d319d9?trk=share_certificate"/>
+            <CLink
+              name="LinkedIn – Scrum: The Basics (09.11.2025)"
+              link="https://www.linkedin.com/learning/certificates/468a791d451147ba55a5d799503a943a66f46e47813b7a4d7fb1545b38ca7b10?trk=share_certificate"
+            />
 
-					<CLink name="LinkedIn – Economic Indicators (14.11.2025)" link="https://www.linkedin.com/learning/certificates/184e7a72d25c35548db63d923277c633bd57d47a08ba25579784edc9a0169cd0?trk=share_certificate"/>
+            <CLink
+              name="LinkedIn – Agile Foundations (09.11.2025)"
+              link="https://www.linkedin.com/learning/certificates/ae767c44002fe6b2bf543030e13b76f58fa00785f24270d22d8272c7f7c89610?trk=share_certificate"
+            />
 
-					<CLink name="LinkedIn – Scrum: The Basics (09.11.2025)" link="https://www.linkedin.com/learning/certificates/468a791d451147ba55a5d799503a943a66f46e47813b7a4d7fb1545b38ca7b10?trk=share_certificate"/>
+            <CLink
+              name="LinkedIn – Business Analysis Foundations (09.11.2025)"
+              link="https://www.linkedin.com/learning/certificates/55bc7a97c64947ba97b53bbf277884881378f086828bfff27b18f85129e23843?trk=share_certificate"
+            />
 
-					<CLink name="LinkedIn – Agile Foundations (09.11.2025)" link="https://www.linkedin.com/learning/certificates/ae767c44002fe6b2bf543030e13b76f58fa00785f24270d22d8272c7f7c89610?trk=share_certificate"/>
+            <CLink
+              name="LinkedIn – Project Management Foundations (05.11.2025)"
+              link="https://www.linkedin.com/learning/certificates/a2c20b33cd87419e773fe5700d2f6a6fd790f1684ad29ded667e1d4f7e3fe90d?trk=share_certificate"
+            />
+            <CLink
+              name="LinkedIn – Agile Product Owner Role: Foundations (31.10.2025)"
+              link="https://www.linkedin.com/learning/certificates/e240d2f78716725b9f40129f0801ef1ec6b9d00b334e57ebb24692356623a79a?trk=share_certificate"
+            />
 
-					<CLink name="LinkedIn – Business Analysis Foundations (09.11.2025)" link="https://www.linkedin.com/learning/certificates/55bc7a97c64947ba97b53bbf277884881378f086828bfff27b18f85129e23843?trk=share_certificate"/>
+            <CLink
+              name="Speexx – Wirtschaftsenglisch C1.2 (25.07.2025)"
+              link="https://drive.google.com/file/d/1gxYaUtOT2KGYRoeQN3C3YYOopnt0o0rA/view?usp=sharing"
+            />
 
-					<CLink name="LinkedIn – Project Management Foundations (05.11.2025)" link="https://www.linkedin.com/learning/certificates/a2c20b33cd87419e773fe5700d2f6a6fd790f1684ad29ded667e1d4f7e3fe90d?trk=share_certificate"/>
-					<CLink name="LinkedIn – Agile Product Owner Role: Foundations (31.10.2025)" link="https://www.linkedin.com/learning/certificates/e240d2f78716725b9f40129f0801ef1ec6b9d00b334e57ebb24692356623a79a?trk=share_certificate"/>
+            <CLink
+              name="Coursera – Model Thinking (25.07.2025)"
+              link="https://coursera.org/share/8af52713cf8a5ec3632a600e1be62fc5"
+            />
 
-					<CLink name="Speex – Wirtschaftsenglisch C1.2 (25.07.2025)" link="https://drive.google.com/file/d/1gxYaUtOT2KGYRoeQN3C3YYOopnt0o0rA/view?usp=sharing"/>
+            <CLink
+              name="Coursera – Specialization: Excel Skills for Data and Visualization (21.06.2023)"
+              link="https://coursera.org/share/e9ea93a61eb108ec6647dabb0e33d8fd"
+            />
 
-					<CLink name="Coursera – Model Thinking (25.07.2025)" link="https://coursera.org/share/8af52713cf8a5ec3632a600e1be62fc5"/>
+            <CLink
+              name="Coursera – Specialization: Business Statistics and Analysis (17.06.2023)"
+              link="https://coursera.org/share/006df05ba061018622e4a9af91af230b"
+            />
 
-					<CLink name="Coursera – Specialization: Excel Skills for Data and Visualization (21.06.2023)" link="https://coursera.org/share/e9ea93a61eb108ec6647dabb0e33d8fd"/>
+            <CLink
+              name="Coursera – Specialization: Excel Skills for Business -  (12.10.2022)"
+              link="https://coursera.org/share/52a56926898f409f28d1cebf8d32f04a"
+            />
 
-					<CLink name="Coursera – Specialization: Business Statistics and Analysis (17.06.2023)" link="https://coursera.org/share/006df05ba061018622e4a9af91af230b"/>
+            <CLink
+              name="CFI – Intro to Business Intelligence (07.08.2024)"
+              link="https://drive.google.com/file/d/1Zwi48VvwGuXKXrEJoDz8EiBIgs4mMCzQ/view?usp=sharing"
+            />
 
-					<CLink name="Coursera – Specialization: Excel Skills for Business -  (12.10.2022)" link="https://coursera.org/share/52a56926898f409f28d1cebf8d32f04a"/>
+            <CLink
+              name="Santander - Business English, Part 1 (01.08.2024)"
+              link="https://drive.google.com/file/d/1xxJaz8ROQc7rk_2gsYDA3rCUutVAdIkr/view?usp=sharing"
+            />
 
-					<CLink name="CFI – Intro to Business Intelligence (07.08.2024)" link="https://drive.google.com/file/d/1Zwi48VvwGuXKXrEJoDz8EiBIgs4mMCzQ/view?usp=sharing"/>
+            <!-- <li><a target="_blank"  href="https://drive.google.com/file/d/1_COH90g-x4p1CZEMA9bRl9A7wCo_UVK0/view?usp=sharing">Santander - Kritisches Denken und Problemlösung (30.07.2024)</a></li> -->
 
-					<CLink name="Santander - Business English, Part 1 (01.08.2024)" link="https://drive.google.com/file/d/1xxJaz8ROQc7rk_2gsYDA3rCUutVAdIkr/view?usp=sharing"/>
+            <CLink
+              name="Udemy - MMT für Einsteiger (04.07.2024)"
+              link="https://www.udemy.com/certificate/UC-c207e84f-d47f-47d6-8a4c-1a60755cb863"
+            />
 
-					<!-- <li><a target="_blank"  href="https://drive.google.com/file/d/1_COH90g-x4p1CZEMA9bRl9A7wCo_UVK0/view?usp=sharing">Santander - Kritisches Denken und Problemlösung (30.07.2024)</a></li> -->
+            <CLink
+              name="LinkedIn - Writing with Impact (07.05.2024)"
+              link="https://drive.google.com/file/d/1BLmZBXiTtV8Oxfxlb3CAaBP6ZzXzow27/view?usp=sharing"
+            />
 
-					<CLink name="Udemy - MMT für Einsteiger (04.07.2024)" link="https://www.udemy.com/certificate/UC-c207e84f-d47f-47d6-8a4c-1a60755cb863"/>
+            <CLink
+              name="LinkedIn - Learning Excel Data Analysis (12.08.2022)"
+              link="https://drive.google.com/file/d/1q1oCTfpwFKjprvw0wPFdUO0gycQcjDWv/view?usp=sharingg"
+            />
 
-					<CLink name="LinkedIn - Writing with Impact (07.05.2024)" link="https://drive.google.com/file/d/1BLmZBXiTtV8Oxfxlb3CAaBP6ZzXzow27/view?usp=sharing"/>
+            <CLink
+              name="LinkedIn - Excel Tips and Tricks (10.08.2022)"
+              link="https://drive.google.com/file/d/1AngzP7rvi94sn-LUFl3kJjz8ZEIi84Dm/view?usp=sharing"
+            />
 
-					<CLink name="LinkedIn - Learning Excel Data Analysis (12.08.2022)" link="https://drive.google.com/file/d/1q1oCTfpwFKjprvw0wPFdUO0gycQcjDWv/view?usp=sharingg"/>
+            <CLink
+              name="Coursera - Specialization: Excel Skills for Business (12.10.2022)"
+              link="https://coursera.org/share/52a56926898f409f28d1cebf8d32f04a"
+            />
+          </ul>
+        </div>
+      </div>
+      <!-- Design -->
+      <button
+        type="button"
+        class="collapsible w-full md:w-[50rem] text-left text-xl bg-indigo-50 text-slate-800 hover:bg-indigo-100 cursor-pointer my-1 p-4 transition-all duration-200 relative"
+      >
+        Design
+        <span class="plus-icon absolute right-4 top-1/2 -translate-y-1/2 font-bold text-2xl">+</span
+        >
+      </button>
 
-					<CLink name="LinkedIn - Excel Tips and Tricks (10.08.2022)" link="https://drive.google.com/file/d/1AngzP7rvi94sn-LUFl3kJjz8ZEIi84Dm/view?usp=sharing"/>
+      <div
+        class="content w-full md:w-[50rem] max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
+      >
+        <div class="px-4 py-4">
+          <ul class="list-disc px-4">
+            <CLink
+              name="LinkedIn – The 33 Laws of Typography (17.11.2025)"
+              link="https://www.linkedin.com/learning/certificates/b34859b7ead210e9b5e92bd463a343d3b21d58b806f7c20a33427d2d1d8f6664?trk=share_certificate"
+            />
 
-					<CLink name="Coursera - Specialization: Excel Skills for Business (12.10.2022)" link="https://coursera.org/share/52a56926898f409f28d1cebf8d32f04a"/>
+            <CLink
+              name="LinkedIn - Data Visualization: Best Practices (15.11.2025)"
+              link="https://www.linkedin.com/learning/certificates/b34859b7ead210e9b5e92bd463a343d3b21d58b806f7c20a33427d2d1d8f6664?trk=share_certificate"
+            />
 
+            <CLink
+              name="LinkedIn - Visual Communication for Business (14.11.2025)"
+              link="https://www.linkedin.com/learning/certificates/156354576cc2842e2be815707126f38640781a48f7f0ead11838da12d537e6c1?trk=share_certificate"
+            />
 
-				</ul>
+            <CLink
+              name="LinkedIn – Universal Principles of Design (04.06.2024)"
+              link="https://drive.google.com/file/d/1BQBvztrCIy2OEr9B0VRjwCngBjO5ZAKR/view?usp=sharing"
+            />
 
-			</div>
-		</div>
+            <CLink
+              name="LinkedIn – Creating Illustrator Infographics (02.06.2024)"
+              link="https://drive.google.com/file/d/1B4nQdWmR4TWlZ7sCB6nJNlWdq03A3h1I/view?usp=sharing"
+            />
 
-		<button type="button" class="collapsible w-full md:w-[50rem] text-left text-xl bg-indigo-50 text-slate-800 hover:bg-indigo-100 cursor-pointer my-1 p-4 transition-all duration-200 relative">
-			Design
-			<span class="plus-icon absolute right-4 top-1/2 -translate-y-1/2 font-bold text-2xl">+</span>
-		</button>
+            <CLink
+              name="LinkedIn – Time Saving Tips Using Illustrator (20.05.2024)"
+              link="https://www.linkedin.com/learning/certificates/fd34b0a8fd6e11ff2e6544ed79f235c927a7db06943a28a8531f4d163c8ca53d"
+            />
 
-		<div class="content w-full md:w-[50rem] max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-			<div class="px-4 py-4">
-
-				<ul class="list-disc px-4">
-
-					<CLink name="LinkedIn – The 33 Laws of Typography (17.11.2025)" link="https://www.linkedin.com/learning/certificates/b34859b7ead210e9b5e92bd463a343d3b21d58b806f7c20a33427d2d1d8f6664?trk=share_certificate"/>
-
-					<CLink name="LinkedIn – Universal Principles of Design (04.06.2024)" link="https://drive.google.com/file/d/1BQBvztrCIy2OEr9B0VRjwCngBjO5ZAKR/view?usp=sharing"/>
-
-					<CLink name="LinkedIn – Creating Illustrator Infographics (02.06.2024)" link="https://drive.google.com/file/d/1B4nQdWmR4TWlZ7sCB6nJNlWdq03A3h1I/view?usp=sharing"/>
-
-					<CLink name="LinkedIn – Time Saving Tips Using Illustrator (20.05.2024)" link="https://www.linkedin.com/learning/certificates/fd34b0a8fd6e11ff2e6544ed79f235c927a7db06943a28a8531f4d163c8ca53d"/>
-
-					<CLink name="LinkedIn – Illustrator Quick Tips (13.05.2024)" link="https://www.linkedin.com/learning/certificates/8f9cdb533f157245f63c72669d6295e6e78ba197d03c999d7c431d72b0768d24"/>
-
-				</ul>
-
-			</div>
-		</div>
-	</div>
+            <CLink
+              name="LinkedIn – Illustrator Quick Tips (13.05.2024)"
+              link="https://www.linkedin.com/learning/certificates/8f9cdb533f157245f63c72669d6295e6e78ba197d03c999d7c431d72b0768d24"
+            />
+          </ul>
+        </div>
+      </div>
+    </div>
   </main>
 
-	<script>
-	const collapsibles = document.getElementsByClassName("collapsible") as HTMLCollectionOf<HTMLButtonElement>;
+  <script>
+    const collapsibles = document.getElementsByClassName(
+      'collapsible',
+    ) as HTMLCollectionOf<HTMLButtonElement>;
 
-	for (let i = 0; i < collapsibles.length; i++) {
-	  collapsibles[i].addEventListener("click", function(this: HTMLButtonElement) {
-	    this.classList.toggle("active");
-	    const content = this.nextElementSibling as HTMLElement;
-	    const icon = this.querySelector('.plus-icon') as HTMLElement;
+    for (let i = 0; i < collapsibles.length; i++) {
+      collapsibles[i].addEventListener('click', function (this: HTMLButtonElement) {
+        this.classList.toggle('active');
+        const content = this.nextElementSibling as HTMLElement;
+        const icon = this.querySelector('.plus-icon') as HTMLElement;
 
-	    if (content.style.maxHeight) {
-	      content.style.maxHeight = '';
-	      if (icon) icon.textContent = '+';
-	    } else {
-	      content.style.maxHeight = content.scrollHeight + "px";
-	      if (icon) icon.textContent = '−';
-	    }
-	  });
-	}
-	</script>
-
+        if (content.style.maxHeight) {
+          content.style.maxHeight = '';
+          if (icon) icon.textContent = '+';
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          if (icon) icon.textContent = '−';
+        }
+      });
+    }
+  </script>
 </Layout>
