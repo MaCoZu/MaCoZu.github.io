@@ -220,7 +220,7 @@ export const useEcoChart = (containerRef, data) => {
       .attr('stroke-width', 2)
       .attr('stroke-dasharray', '3 3');
 
-    svg.append('text').attr('class', 'ref-label').attr('x', x(0.71)).attr('y', y(8.2)).text('High');
+    svg.append('text').attr('class', 'ref-label').attr('x', x(0.71)).attr('y', y(6.5)).text('High HD');
 
     svg
       .append('line')
@@ -231,7 +231,7 @@ export const useEcoChart = (containerRef, data) => {
       .attr('x1', x(0.8))
       .attr('x2', x(0.8))
       .attr('y1', y(8.5))
-      .attr('y2', y(0.1))
+      .attr('y2', y(1))
       .attr('stroke-width', 2)
       .attr('stroke-dasharray', '3 3');
 
@@ -239,9 +239,9 @@ export const useEcoChart = (containerRef, data) => {
       .append('text')
       .attr('class', 'ref-label')
       .attr('x', x(0.81))
-      .attr('y', y(8.2))
+      .attr('y', y(6.5))
       .selectAll('tspan')
-      .data(['Very high', 'human', 'development']) // Data for each line
+      .data(['Very high HD']) // Data for each line
       .enter()
       .append('tspan')
       .attr('x', x(0.81))
@@ -256,7 +256,7 @@ export const useEcoChart = (containerRef, data) => {
       .attr('y', y(1))
       .attr('width', x(0.26))
       // .attr("height", y(0.1) - y(1))
-      .attr('height', 54)
+      .attr('height', 58)
       .style('opacity', 0.3);
 
     svg
@@ -268,8 +268,9 @@ export const useEcoChart = (containerRef, data) => {
       .data(['Global Sustainable', 'Development Quadrant'])
       .enter()
       .append('tspan')
-      .attr('x', x(0.71))
+      .attr('x', x(0.73))
       .attr('dy', (d, i) => i * 20)
+      // .attr('font-size', '16px')
       .text(d => d);
 
     // Add dots
