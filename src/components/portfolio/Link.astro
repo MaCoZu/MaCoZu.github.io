@@ -7,7 +7,7 @@ const isExternal = href.startsWith("http");
 <a
     href={href}
     class={twMerge(
-        "inline-flex items-baseline no-underline text-accent dark:text-accent-dark hover:text-accent dark:hover:text-accent-dark transition-colors duration-200",
+        "inline-flex items-baseline no-underline text-[var(--color-link)] dark:text-[var(--color-link-dark)] hover:text-accent dark:hover:text-accent-dark transition-colors duration-200",
         className,
     )}
     data-external={isExternal}
