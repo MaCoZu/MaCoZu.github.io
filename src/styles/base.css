@@ -104,6 +104,23 @@
   --notes-nested-bullet-size: 1.2em;
 }
 
+/* Mobile adjustments */
+@media (max-width: 640px) {
+  :root {
+    --notes-font-size: 1rem;
+    --notes-line-height: 1.5em;
+    --notes-h1-size: 1.8rem;
+    --notes-h2-size: 1.5rem;
+    --notes-h3-size: 1.25rem;
+    --notes-h4-size: 1.1rem;
+    --notes-heading-top-margin: 1.5em;
+    --notes-paragraph-gap: 1em;
+    --notes-figure-gap: 1em;
+    --notes-list-bullet-size: 1em;
+    --notes-nested-bullet-size: 1em;
+  }
+}
+
 :root {
   --svg-link: var(--color-accent);
   --current-bg: var(--color-bg);

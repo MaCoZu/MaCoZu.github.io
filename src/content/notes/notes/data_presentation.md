@@ -31,9 +31,9 @@ A major barrier in data presentation is information overload. Use these techniqu
 
 - _Get to the point quickly_ to keep the audience engaged.
 - _Add detail sparingly_, gradually or only on demand.
-- _Use a visual hierarchy and clean designs._ White space, short paragraphs, alignment and other [Design Principles](/Notes/notes/principles) help with information processing and respect the recipient's time.
-- Turn math into something memorable. E.g. tangible things and common knowledge. → [Memorable Math](/Notes/notes/communicate_numbers_1)
-- Make your graphs with consideration for your audiences time and attention. → [Charitable Charts](/Notes/notes/communicating_numbers_2)
+- _Use a visual hierarchy and clean designs._ White space, short paragraphs, alignment and other [Design Principles](principles) help with information processing and respect the recipient's time.
+- Turn math into something memorable. E.g. tangible things and common knowledge. → [Memorable Math](communicate_numbers_1)
+- Make your graphs with consideration for your audiences time and attention. → [Charitable Charts](communicating_numbers_2.mdx)
 
 ### 4. Speech and Presence
 How you deliver the data is as important as the data itself:
@@ -46,7 +46,7 @@ How you deliver the data is as important as the data itself:
 ### 5. Engagement
 Make your presentation a two-way transaction. Facilitate sense-making and exploring the topic for your audience.
 
-- People grasp data better when it is described in terms of situations they can imagine or people they can relate to. → [Memorable Math](/Notes/notes/communicate_numbers_1)
+- People grasp data better when it is described in terms of situations they can imagine or people they can relate to. → [Memorable Math](communicate_numbers_1)
 - Provide a high-level overview first, then allow the audience to zoom and filter, and finally provide details on demand. → [Schneiderman's Mantra](https://www.cs.umd.edu/~ben/papers/Shneiderman1996eyes.pdf) 
 - [Induce critical thinking](https://www.thinkinghabitats.com/blog/educational-tools-and-techniques-for-promoting-critical-thinking) with Socratic questions, undermining expectations or even using hard-to-read fonts. 
 
