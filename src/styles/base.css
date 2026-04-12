@@ -64,7 +64,7 @@
   --my-min-height: 120vh;
   --spacing-page-x: 1.5rem;
   --spacing-page-x-md: 9.5rem;
-  --spacing-page-y: 5rem;
+  --spacing-page-y: 3rem;
   --spacing-page-y-md: 5rem;
 }
 
@@ -113,7 +113,7 @@
     --notes-h2-size: 1.5rem;
     --notes-h3-size: 1.25rem;
     --notes-h4-size: 1.1rem;
-    --notes-heading-top-margin: 1.5em;
+    --notes-heading-top-margin: 1.7em;
     --notes-paragraph-gap: 1em;
     --notes-figure-gap: 1em;
     --notes-list-bullet-size: 1em;
