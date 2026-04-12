@@ -1,0 +1,19 @@
+---
+import CardDivider from "./CardDivider.astro";
+
+const { title, description, link } = Astro.props;
+---
+
+<div class="flex-1">
+    <div class="min-h-40">
+        <a href={link}>
+            <h1 class="page-header text-xl mb-2">
+                {title}
+            </h1>
+            <h2 class="text-text mt-3">
+                {description}
+            </h2>
+        </a>
+    </div>
+    <CardDivider />
+</div>

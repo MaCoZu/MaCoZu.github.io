@@ -1,0 +1,116 @@
+---
+import EmailLink from "./EmailLink.astro";
+---
+
+<hr class="mt-20 opacity-20" />
+
+<footer class="bg-transparent">
+  <div class="container">
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center mt-3 md:mt-5">
+      <!-- Logo -->
+      <div class="hidden md:block">
+        <a href="/" class="flex gap-x-3 items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 300 300"
+            width="40"
+            height="40"
+          >
+            <path
+              class="fill-current text-current"
+              d="M273.3 50.5 38 285.9a1.8 1.8 0 0 0 1.3 3h235.3q1.6-.1 1.8-1.7V51.8c0-1.6-2-2.5-3-1.3m-36 199.5H129l108.5-108.4zm-212.7-2.5L260 12c1-1 .6-2.6-.6-3h-1L111 78.2c-7.8 3.6-17 2-23.1-4.2L24.2 10c-.9-1-2.6-.5-2.7.8v235.5c0 1.6 2 2.4 3.2 1.2"
+            ></path>
+          </svg>
+          <div
+            class="text-[14px] font-black tracking-widest uppercase -space-y-0.5"
+          >
+            <p class="tracking-[2.55px]">Marco</p>
+            <p class="tracking-[1px]">Zausch</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Information -->
+      <div
+        class="flex flex-col sm:flex-row sm:gap-12 md:gap-16 lg:gap-24 gap-y-8 md:justify-between text-[11px]"
+      >
+        <div class="flex-1">
+          <div class="font-bold uppercase">Contact</div>
+          <div class="mt-2">
+            <EmailLink
+              class=""
+              label="Email"
+              emailB64="bWFyY296YXVzY2hAcG9zdGVvLmRl"
+              size={18}
+            />
+          </div>
+        </div>
+
+        <div class="flex-1">
+          <div class="font-bold uppercase">Work</div>
+          <p class="mt-2 flex items-center">
+            <div
+              class="flex items-center gap-3 hover:text-accent dark:hover:text-accent-dark"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                width="14"
+                height="14"
+              >
+                <path
+                  class="text-current"
+                  fill="currentColor"
+                  d="M17.04 17.04h-2.96V12.4c0-1.1-.03-2.53-1.55-2.53-1.54 0-1.78 1.2-1.78 2.45v4.72H7.8V7.5h2.85v1.3h.04a3.1 3.1 0 0 1 2.8-1.54c3 0 3.56 1.97 3.56 4.55zM4.44 6.2a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44m1.5 10.85H2.95V7.5h2.97zM18.51 0H1.48C.66 0 0 .65 0 1.44v17.12C0 19.36.66 20 1.48 20h17.04c.81 0 1.48-.64 1.48-1.44V1.44C20 .64 19.33 0 18.52 0z"
+                ></path>
+              </svg>
+              <a
+                href="https://www.linkedin.com/in/marcozausch"
+                target="_blank"
+                class="hover:text-accent dark:hover:text-accent-dark text-text dark:text-text-dark"
+                >LinkedIn</a
+              >
+            </div>
+          </p>
+          <p class="mt-2 flex items-center">
+            <div
+              class="flex items-center gap-3 hover:text-accent dark:hover:text-accent-dark"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                width="15"
+                height="15"
+              >
+                <path
+                  class="text-current"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  d="M7.976 0A7.977 7.977 0 0 0 0 7.976c0 3.522 2.3 6.507 5.431 7.584.392.049.538-.196.538-.392v-1.37c-2.201.49-2.69-1.076-2.69-1.076-.343-.93-.881-1.175-.881-1.175-.734-.489.048-.489.048-.489.783.049 1.224.832 1.224.832.734 1.223 1.859.88 2.3.685.048-.538.293-.88.489-1.076-1.762-.196-3.621-.881-3.621-3.964 0-.88.293-1.566.832-2.153-.05-.147-.343-.978.098-2.055 0 0 .685-.196 2.201.832.636-.196 1.322-.245 2.007-.245s1.37.098 2.006.245c1.517-1.027 2.202-.832 2.202-.832.44 1.077.146 1.908.097 2.104a3.16 3.16 0 0 1 .832 2.153c0 3.083-1.86 3.719-3.62 3.915.293.244.538.733.538 1.467v2.202c0 .196.146.44.538.392A7.98 7.98 0 0 0 16 7.976C15.951 3.572 12.38 0 7.976 0"
+                ></path>
+              </svg>
+              <a
+                href="https://github.com/MaCoZu"
+                target="_blank"
+                class="hover:text-accent dark:hover:text-accent-dark text-text dark:text-text-dark"
+                >Github</a
+              >
+            </div>
+          </p>
+        </div>
+
+        <div class="flex-1">
+          <div class="font-bold uppercase">Legal</div>
+          <a
+            class="mt-2 block hover:text-accent dark:hover:text-accent-dark text-text dark:text-text-dark"
+            href="/impressum">Impressum</a
+          >
+          <a
+            class="mt-2 block hover:text-accent dark:hover:text-accent-dark text-text dark:text-text-dark"
+            href="/privacypolicy">Privacy Policy</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

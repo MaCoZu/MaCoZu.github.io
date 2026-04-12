@@ -1,0 +1,21 @@
+---
+interface Props {
+  class?: string;
+  label: string;
+  emailB64: string;
+  size?: number;
+}
+
+const { class: className, label, emailB64, size = 14 } = Astro.props;
+const email = atob(emailB64);
+---
+
+<a href={`mailto:${email}`} class={`flex items-center gap-3 hover:text-accent dark:hover:text-accent-dark text-current ${className || ''}`}>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size} class="text-current">
+    <path
+      fill="currentColor"
+      d="M4 20q-.8 0-1.4-.6T2 18V6q0-.8.6-1.4T4 4h16q.8 0 1.4.6T22 6v12q0 .8-.6 1.4T20 20zm8-7 8-5V6l-8 5-8-5v2z"
+    ></path>
+  </svg>
+  {label}
+</a>
