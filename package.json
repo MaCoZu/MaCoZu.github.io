@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "rm -rf docs && pnpm exec astro build && mv dist docs",
+    "build": "rm -rf docs ./_astro && pnpm exec astro build && cp -r dist/. . && rm -rf dist",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint src/",
