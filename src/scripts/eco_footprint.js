@@ -357,7 +357,7 @@ export function EcoChart(container, data_path) {
 
         #heading {
             font-size: 30px;
-            font-family: "Literata", sans-serif;
+            font-family: sans-serif;
             margin-bottom: 0px;
             position: absolute;
             top: 20px;

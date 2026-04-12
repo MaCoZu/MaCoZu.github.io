@@ -1,7 +1,7 @@
 ---
 // src/components/GradientCard.astro
-import { Code } from 'astro/components';
-import { twMerge } from 'tailwind-merge';
+import { Code } from "astro/components";
+import { twMerge } from "tailwind-merge";
 
 const { title, gradientClass, cssCode, codeButtonClass } = Astro.props;
 ---
@@ -18,15 +18,23 @@ const { title, gradientClass, cssCode, codeButtonClass } = Astro.props;
 
     <button
       class={twMerge(
-        'gradient-text absolute top-4 right-8 bg-gray-100 text-gray-800 px-5 py-1 rounded-md text-sm z-10',
+        "gradient-text absolute top-4 right-8 bg-gray-100 text-gray-800 px-5 py-1 rounded-md text-sm z-10",
         codeButtonClass,
       )}
     >
       Code
     </button>
 
-    <div class="code-display hidden absolute inset-0 bg-gray-50 p-0 overflow-auto">
-      <Code class:list={['px-10 py-5']} lang="css" theme="one-light" wrap code={cssCode} />
+    <div
+      class="code-display hidden absolute inset-0 bg-gray-50 p-0 overflow-auto"
+    >
+      <Code
+        class:list={["px-10 py-5"]}
+        lang="css"
+        theme="one-light"
+        wrap
+        code={cssCode}
+      />
 
       <!-- Copy and Close buttons container -->
       <div class="button-container absolute top-4 right-8 flex gap-2 z-10">
@@ -47,54 +55,56 @@ const { title, gradientClass, cssCode, codeButtonClass } = Astro.props;
   </div>
 
   <script is:inline define:vars={{ gradientClass, cssCode }}>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener("DOMContentLoaded", () => {
       const card = document
-        .querySelector(`.card .gradient-display[data-gradient-class="${gradientClass}"]`)
-        .closest('.card');
+        .querySelector(
+          `.card .gradient-display[data-gradient-class="${gradientClass}"]`,
+        )
+        .closest(".card");
 
       if (!card) {
-        console.error('ERROR: Card element not found for:', gradientClass);
+        console.error("ERROR: Card element not found for:", gradientClass);
         return;
       }
 
-      const gradientDisplay = card.querySelector('.gradient-display');
-      const codeDisplay = card.querySelector('.code-display');
-      const closeButton = card.querySelector('.close-code-button');
-      const codeToggleButton = card.querySelector('.gradient-text');
-      const copyButton = card.querySelector('.copy-button');
+      const gradientDisplay = card.querySelector(".gradient-display");
+      const codeDisplay = card.querySelector(".code-display");
+      const closeButton = card.querySelector(".close-code-button");
+      const codeToggleButton = card.querySelector(".gradient-text");
+      const copyButton = card.querySelector(".copy-button");
 
       const showCodeView = () => {
-        gradientDisplay.classList.add('hidden');
+        gradientDisplay.classList.add("hidden");
         if (codeToggleButton) {
-          codeToggleButton.classList.add('hidden');
+          codeToggleButton.classList.add("hidden");
         }
-        codeDisplay.classList.remove('hidden');
+        codeDisplay.classList.remove("hidden");
       };
 
       const showGradientView = () => {
-        codeDisplay.classList.add('hidden');
-        gradientDisplay.classList.remove('hidden');
+        codeDisplay.classList.add("hidden");
+        gradientDisplay.classList.remove("hidden");
         if (codeToggleButton) {
-          codeToggleButton.classList.remove('hidden');
+          codeToggleButton.classList.remove("hidden");
         }
       };
 
-      const copyToClipboard = async text => {
+      const copyToClipboard = async (text) => {
         try {
           await navigator.clipboard.writeText(text);
           return true;
         } catch {
-          const textArea = document.createElement('textarea');
+          const textArea = document.createElement("textarea");
           textArea.value = text;
-          textArea.style.position = 'fixed';
-          textArea.style.left = '-999999px';
-          textArea.style.top = '-999999px';
+          textArea.style.position = "fixed";
+          textArea.style.left = "-999999px";
+          textArea.style.top = "-999999px";
           document.body.appendChild(textArea);
           textArea.focus();
           textArea.select();
 
           try {
-            document.execCommand('copy');
+            document.execCommand("copy");
             document.body.removeChild(textArea);
             return true;
           } catch {
@@ -104,64 +114,70 @@ const { title, gradientClass, cssCode, codeButtonClass } = Astro.props;
         }
       };
 
-      const showCopyFeedback = button => {
+      const showCopyFeedback = (button) => {
         const originalText = button.textContent;
-        button.textContent = 'Copied!';
-        button.classList.add('bg-green-600');
-        button.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+        button.textContent = "Copied!";
+        button.classList.add("bg-green-600");
+        button.classList.remove("bg-blue-600", "hover:bg-blue-700");
 
         setTimeout(() => {
           button.textContent = originalText;
-          button.classList.remove('bg-green-600');
-          button.classList.add('bg-blue-600', 'hover:bg-blue-700');
+          button.classList.remove("bg-green-600");
+          button.classList.add("bg-blue-600", "hover:bg-blue-700");
         }, 2000);
       };
 
       if (codeToggleButton) {
-        codeToggleButton.addEventListener('click', event => {
+        codeToggleButton.addEventListener("click", (event) => {
           event.stopPropagation();
           showCodeView();
         });
       }
 
       if (gradientDisplay) {
-        gradientDisplay.addEventListener('click', event => {
-          if (codeDisplay.classList.contains('hidden') && event.target !== closeButton) {
+        gradientDisplay.addEventListener("click", (event) => {
+          if (
+            codeDisplay.classList.contains("hidden") &&
+            event.target !== closeButton
+          ) {
             showCodeView();
           }
         });
       }
 
       if (closeButton) {
-        closeButton.addEventListener('click', event => {
+        closeButton.addEventListener("click", (event) => {
           event.stopPropagation();
           showGradientView();
         });
       }
 
       if (copyButton) {
-        copyButton.addEventListener('click', async event => {
+        copyButton.addEventListener("click", async (event) => {
           event.stopPropagation();
           const success = await copyToClipboard(cssCode);
           if (success) {
             showCopyFeedback(copyButton);
           } else {
             const originalText = copyButton.textContent;
-            copyButton.textContent = 'Failed';
-            copyButton.classList.add('bg-red-600');
-            copyButton.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+            copyButton.textContent = "Failed";
+            copyButton.classList.add("bg-red-600");
+            copyButton.classList.remove("bg-blue-600", "hover:bg-blue-700");
 
             setTimeout(() => {
               copyButton.textContent = originalText;
-              copyButton.classList.remove('bg-red-600');
-              copyButton.classList.add('bg-blue-600', 'hover:bg-blue-700');
+              copyButton.classList.remove("bg-red-600");
+              copyButton.classList.add("bg-blue-600", "hover:bg-blue-700");
             }, 2000);
           }
         });
       }
 
-      document.addEventListener('click', event => {
-        if (!card.contains(event.target) && !codeDisplay.classList.contains('hidden')) {
+      document.addEventListener("click", (event) => {
+        if (
+          !card.contains(event.target) &&
+          !codeDisplay.classList.contains("hidden")
+        ) {
           showGradientView();
         }
       });
@@ -221,7 +237,7 @@ const { title, gradientClass, cssCode, codeButtonClass } = Astro.props;
       width: 95%;
       height: 90%;
       overflow: auto;
-      flex-shrink: 0;
+      shrink: 0;
       display: flex;
       flex-direction: column;
       justify-content: top;
