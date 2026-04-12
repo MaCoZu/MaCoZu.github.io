@@ -1,6 +1,7 @@
 ---
 title: Presenting Data
-description: Techniques for making numbers visceral and memorable
+description: Techniques for making numbers visceral and memorable.
+draft: false
 date: 2026-03-30
 ---
 
@@ -10,12 +11,12 @@ Before presenting any data, you must establish a solid foundation for your messa
 - Decide if you are leading the audience to a specific conclusion (explanatory) or if you're providing them with neutral information to discover their own insights (exploratory).
 - Tailor your message to their specific issue, data literacy, time constraints, and required level of detail. Use the “Elevator Pitch” test: can you explain your core finding in 30–60 seconds?
 
-- Structure your presentation using a framework, like:
+- Structure your presentation using a [framework](https://benjaminball.com/blog/guide-to-powerful-presentation-frameworks/), like:
     - What? → So What? → Now What?
     - PREP (Point, Reason, Example, Point)
     - AMEN (Audience, Message, Examples, Negatives)
 
-[17 Presentation Frameworks](https://benjaminball.com/blog/guide-to-powerful-presentation-frameworks/)
+
 
 
 ### 2. Open with Impact
@@ -60,5 +61,6 @@ Do one or more of the following:
 
 
 ### Links
+- [17 Presentation Frameworks](https://benjaminball.com/blog/guide-to-powerful-presentation-frameworks/)
 - [26 Public Speaking Tips](https://www.scienceofpeople.com/public-speaking-tips/)
 - [Schneiderman - The Eyes Have It \(1996\)](https://www.cs.umd.edu/~ben/papers/Shneiderman1996eyes.pdf)

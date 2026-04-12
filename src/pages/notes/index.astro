@@ -2,13 +2,14 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 
-const notes = (await getCollection("notes")).sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
-).filter((note) => {
-  const isDraft = note.data.draft === true;
-  const isUnderscore = note.id.startsWith("notes/_") || note.id.match(/^\/notes\/_[^\/]+$/);
-  return !isDraft && !isUnderscore;
-});
+const notes = (await getCollection("notes"))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .filter((note) => {
+    const isDraft = note.data.draft === true;
+    const isUnderscore =
+      note.id.startsWith("notes/_") || note.id.match(/^\/notes\/_[^\/]+$/);
+    return !isDraft && !isUnderscore;
+  });
 
 const getNoteUrl = (id: string) => {
   return `/notes/${id.replace(/^notes\//, "").replace(/\.(mdx?|md)$/, "")}/`;
@@ -23,7 +24,7 @@ const getNoteUrl = (id: string) => {
         notes.map((note) => (
           <li class="mb-4">
             <a href={getNoteUrl(note.id)} class=" text-md flex justify-between">
-              <span class="text-text dark:text-text-dark">
+              <span class="text-text page-header text-xl dark:text-text-dark">
                 {note.data.title}
               </span>
               <span class="text-sm whitespace-nowrap text-text dark:text-text-dark opacity-60">

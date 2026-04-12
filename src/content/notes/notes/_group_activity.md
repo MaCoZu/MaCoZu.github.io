@@ -1,6 +1,7 @@
 ---
 title: Communicating Numbers - Group Activity
 description: How to tackle cognitive biases and data literacy issues.
+draft: true
 date: 2026-03-31
 ---
 
