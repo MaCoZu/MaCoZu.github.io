@@ -1,0 +1,31 @@
+---
+import EcoChart from "../../components/Charts/EcoChart/index.jsx";
+import Heading from "../../components/portfolio/Heading.astro";
+import Layout from "../../layouts/Layout.astro";
+const csvFilePath = "/data/footprint_clean_2019.csv";
+
+// Content
+import { Content } from "../../content/visualizations/eco_footprint.mdx";
+---
+
+<Layout title="Ecological Footprint">
+  <div class="max-w-[1000px] mx-auto">
+    <Heading
+      className="font-heading mt-0 mb-0 font-bold"
+      text="Ecological Footprint 2019"
+    />
+
+    <Heading
+      className="font-heading text-xl my-3"
+      text="60% of the world's population lives unsustainably."
+    />
+
+    <div class="mt-4 flex justify-center items-start gap-x-4">
+      <EcoChart client:load csvPath={csvFilePath} />
+    </div>
+
+    <article class="prose max-w-3xl mx-auto">
+      <Content />
+    </article>
+  </div>
+</Layout>

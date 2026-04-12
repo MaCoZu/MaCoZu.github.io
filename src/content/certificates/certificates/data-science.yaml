@@ -1,0 +1,63 @@
+category: "Data Science"
+order: 1
+colorClasses: "bg-sky-50 text-gray-800 hover:bg-sky-100"
+certificates:
+  - name: "Python Statistics Essential Training – LinkedIn (18.11.2025)"
+    link: "https://www.linkedin.com/learning/certificates/0e3bf06a9793e46418e55210a3ba73eadfc234e6142521a759c16685102b81af?trk=share_certificate"
+
+  - name: "Predictive Analytics Essential Training: Estimating and Ensuring ROI – LinkedIn (31.10.2025)"
+    link: "https://www.linkedin.com/learning/certificates/50926e1d198161973a7646030cc486e2e56240010ee32712a505adcab27c76c2?trk=share_certificate"
+
+  - name: "The Non-Technical Skills of Effective Data Scientists – LinkedIn (23.10.2025)"
+    link: "https://www.linkedin.com/learning/certificates/0a52f4b983889f4a0401015443754777475112c0e2cfa7ee1a47537cfdbbd69c?trk=share_certificate"
+
+  - name: "Profitable AI – Hasso Plattner Institute Potsdam (25.07.2025)"
+    link: "https://drive.google.com/file/d/15eOfdyMnSemXcau0omW57e51os1SlIDr/view?usp=sharing"
+
+  - name: "Machine Learning Specialization – Stanford University & DeepLearning.AI on Coursera (30.01.2024)"
+    link: "https://coursera.org/share/5d2d965ccd8465a837d3718e7d69c5e9"
+
+  - name: "Tableau Essential Training – LinkedIn (23.05.2024)"
+    link: "https://drive.google.com/file/d/1ruFU4TGWhiLGIPlZEGNVmYlhVLAFxTnu/view?usp=sharing"
+
+  - name: "Intermediate SQL for Data Scientists – LinkedIn (22.05.2024)"
+    link: "https://www.linkedin.com/learning/certificates/232c5a995f73e27e8b8a78246f7a7d63b05f8aba20535a5b8b30ac9af76c851d?trk=share_certificate"
+
+  - name: "Understanding Embeddings for Natural Language Processing – Hasso Plattner Institute (18.03.2024)"
+    link: "https://drive.google.com/file/d/1JCDfV6I01dkCOLFpGXm-XJ4Ng78kfAW8/view?usp=sharing"
+
+  - name: "Advanced Data Science, 12-Weeks Class Room Program – Data Science Retreat (19.11.2023)"
+    link: "https://drive.google.com/file/d/1ppZaNC7Ih7_1x3o8tEaAGYCrAXl5ybrb/view?usp=sharing"
+
+  - name: "SQL Basics for Data Science – University of California, Davis on Coursera (12.10.2022)"
+    link: "https://coursera.org/share/0ae7ce571aabcf32a0021ac3b9c3a971"
+
+  - name: "Advanced Python – LinkedIn (07.09.2022)"
+    link: "https://drive.google.com/file/d/1XSajv1Rt5LUi5qAOHmuzV_oh_Ic2G0yO/view"
+
+  - name: "Python for Data Science Essential Training Part 2 – LinkedIn (01.09.2022)"
+    link: "https://drive.google.com/file/d/1R63aQqf0XRkLdVVScV858rKNXm1R-yV-/view?usp=sharing"
+
+  - name: "Python Statistics Essential Training – LinkedIn (22.08.2022)"
+    link: "https://drive.google.com/file/d/1DtJ0BajN1U8Y2h83a1jHQKWRQ7q0_hZZ/view?usp=sharing"
+
+  - name: "SQL Bootcamp: From Zero to Hero – Udemy (04.06.2022)"
+    link: "https://www.udemy.com/certificate/UC-92d882cf-28dd-48e6-8f87-0024911776c1"
+
+  - name: "Sustainable Software Engineering 2022 – Hasso Plattner Institute (01.06.2022)"
+    link: "https://drive.google.com/file/d/1JWwJeGNSQV340qI2cvdRSDQzjdtiqMIs/view?usp=sharing"
+
+  - name: "Programmieren mit R für Einsteiger – Hasso Plattner Institute (12.05.2022)"
+    link: "https://drive.google.com/file/d/1waNJ6WlxywZEa4FardPiDZElP8-WQBJG/view?usp=sharing"
+
+  - name: "Linux in der Kommandozeile – Hasso Plattner Institute (23.04.2022)"
+    link: "https://drive.google.com/file/d/1JGY-aMUiVT_idmz1nmMMiJyjmzHlqS4J/view?usp=sharing"
+
+  - name: "Introduction to R – Data Camp (23.12.2021)"
+    link: "https://drive.google.com/file/d/1ZOyJDHx-DHLgBiCPCdeYCR3AL5DSwmdg/view?usp=sharing"
+
+  - name: "Introduction to SQL – Data Camp (16.12.2021)"
+    link: "https://drive.google.com/file/d/1eW-PKiEw3LChTTv56i5JMQNEdeL-JYuN/view?usp=sharing"
+
+  - name: "Data Science Bootcamp, 10-Weeks Class Room Program – LeWagon (03.12.2021)"
+    link: "https://drive.google.com/file/d/1okQJEGGr2AB4ggPs8iPAEdmmGh--4Fc4/view?usp=sharing"
