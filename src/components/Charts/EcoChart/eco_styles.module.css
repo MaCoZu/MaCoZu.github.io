@@ -32,7 +32,7 @@
 
 #heading {
   font-size: 30px;
-  font-family: 'typewriter';
+  font-family: 'sans-serif', sans-serif;
   margin-bottom: 0px;
   position: absolute;
   top: 20px;

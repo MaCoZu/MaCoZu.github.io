@@ -142,7 +142,7 @@ circle {
 }
 
 /* Checked state (change color when active) */
-.country-checkbox input[type='checkbox']:checked + label {
+.country-checkbox input[type='checkbox']:checked+label {
   color: #28a745;
   /* Green when checked */
 }
@@ -231,7 +231,7 @@ circle {
 
 #heading {
   font-size: 40px;
-  font-family: 'typewriter';
+  font-family: 'sans-serif', sans-serif;
   margin-bottom: 0px;
   position: absolute;
   top: 50px;

@@ -6,7 +6,17 @@
     "dev": "astro dev",
     "build": "rm -rf docs && pnpm exec astro build && mv dist docs",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix"
+  },
+  "eslintConfig": {
+    "extends": [
+      "astro/recommended"
+    ],
+    "rules": {
+      "no-unused-vars": "warn"
+    }
   },
   "packageManager": "pnpm@10.25.0",
   "dependencies": {
@@ -27,7 +37,10 @@
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6"
+    "@types/react-dom": "^19.1.6",
+    "eslint": "^10.2.0",
+    "eslint-plugin-astro": "^1.7.0"
   }
 }
