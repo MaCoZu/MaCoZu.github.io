@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const notes = (await getCollection("notes")).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+).filter((note) => {
+  const isDraft = note.data.draft === true;
+  const isUnderscore = note.id.startsWith("notes/_") || note.id.match(/^\/notes\/_[^\/]+$/);
+  return !isDraft && !isUnderscore;
+});
+
+const getNoteUrl = (id: string) => {
+  return `/notes/${id.replace(/^notes\//, "").replace(/\.(mdx?|md)$/, "")}/`;
+};
+---
+
+<Layout title="Notes">
+  <div class="max-w-3xl mx-auto text-left">
+    <h1 class="page-header text-3xl md:text-4xl mb-8">Notes</h1>
+    <ul class="list-none p-0 mt-4">
+      {
+        notes.map((note) => (
+          <li class="mb-4">
+            <a href={getNoteUrl(note.id)} class=" text-md flex justify-between">
+              <span class="text-text dark:text-text-dark">
+                {note.data.title}
+              </span>
+              <span class="text-sm whitespace-nowrap text-text dark:text-text-dark opacity-60">
+                {note.data.date.toISOString().split("T")[0]}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Layout>

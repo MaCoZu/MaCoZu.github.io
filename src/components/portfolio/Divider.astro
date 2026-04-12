@@ -1,0 +1,14 @@
+---
+import { twMerge } from "tailwind-merge";
+const { id, text, className = "" } = Astro.props;
+
+const baseClasses = "relative items-center py-30";
+
+const mergedClasses = twMerge(baseClasses, className);
+---
+
+<div id={id} class={mergedClasses}>
+  <div class="grow border-t border-gray-400"></div>
+  <span class="shrink mx-4 text-text dark:text-text-dark">{text}</span>
+  <div class="grow border-t border-gray-400"></div>
+</div>

@@ -1,0 +1,36 @@
+@import "./base.css";
+
+/* Portfolio-specific styles */
+.container {
+  @apply mx-auto;
+}
+
+/* Portfolio page headers - use page header variables */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--page-header-font);
+  font-weight: var(--page-header-weight);
+  text-transform: var(--page-header-transform);
+  letter-spacing: var(--page-header-tracking);
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+/* Card styling */
+.project-card {
+  @apply border rounded-lg p-4;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(79, 70, 85, 0.25);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(226, 202, 213, 0.2);
+}
