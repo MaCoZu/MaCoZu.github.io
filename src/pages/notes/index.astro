@@ -24,7 +24,7 @@ const getNoteUrl = (id: string) => {
         notes.map((note) => (
           <li class="mb-4">
             <a href={getNoteUrl(note.id)} class=" text-md flex justify-between">
-              <span class="text-text page-header text-xl dark:text-text-dark">
+              <span class="page-header text-xl text-text  dark:text-text-dark">
                 {note.data.title}
               </span>
               <span class="text-sm whitespace-nowrap text-text dark:text-text-dark opacity-60">
