@@ -776,6 +776,20 @@ nav a {
   .font-weight-variable {
     font-weight: 450;
   }
+
+  .svg-accent {
+    fill: var(--svg-link);
+  }
+}
+
+@layer base {
+
+  svg line,
+  svg polyline,
+  svg path,
+  svg circle {
+    vector-effect: non-scaling-stroke;
+  }
 }
 
 /* ===== Optical Sizing on HTML ===== */

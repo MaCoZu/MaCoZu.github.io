@@ -5,53 +5,219 @@ draft: false
 date: 2026-03-31
 ---
 
-Selecting the correct medium and formatting visualizations to ensure accuracy and clarity.
-
-Source: [Few, S. (2005). Effectively Communicating Numbers: Selecting the Best Means and Manner of Display, Perceptual Edge.](https://perceptualedge.com/articles/Whitepapers/Communicating_Numbers.pdf)
-
 ### Tables vs. Graphs:
-*Tables* work best when the display will be used to look up individual values.
+*Tables* are ideal to look up individual values. The ‘tabular’ format of rows and columns facilitates tracing the information. 
 
-*Graphs* work best when the message you wish to communicate resides in the shape of the data(patterns, trends, and exceptions).
+*Graphs* however reveal the shape of the data, which can not easily be gleaned by looking at a table.
 
 ### Quantitative vs. Categorical Data
-*Quantitative data* consists of numbers and the corresponding category, like a country (category) and it's population (number).
+*Quantitative data* is numerical information that can be measured or counted.
 
-*Categories* come in three scales: nominal, ordinal, and interval.
-- _nominal_ → difference only in name (nominally).
-- _ordinal_ → have a natural order ("A, B, C") but do not represent numbers.
-- _interval_ → intrinsic order, representing intervals of quantitative series, like $\leq 50$ or $[20-49]$.
+*Qualitative data* is descriptive information about characteristics that are difficult to describe numerically. These qualities may be represented by a name, symbol, or a number code.
 
-### Common Relationships in Business Data
-The first question that you should always ask about a number is “Compared to what?”
+Quantitative and qualitative data are often used together to get a full picture of a population. For example in a survey information about occupation (quality) and income (quantity) complement each other.
 
-    - _Time-Series:_ → Line
-    - _Ranking:_ → Bars
-    - _Part-to-Whole:_ → Bars. 
-    _Avoid pie charts_ because area is harder to compare than length.
-    - _Deviation:_ → Bars & Lines or Points to show differences from a target.
-    - _Distribution:_ → Histograms (vertical bars) or Frequency Polygons (lines).
-    - _Correlation:_ → Scatter plots with points and trend lines.
-    - _Nominal Comparison:_ → Bars.
+*Qualitative data* can still be categorized by its [level of measurement](https://en.wikipedia.org/wiki/Level_of_measurement). 
+
+- _Nominal data_ → are categories without order, like colors or names. They are differentiated by their name (nominally) and analysis is limited to recording the types and frequency.
+
+- _Ordinal data_ → has a natural order or ranking (unsatisfied, neutral, satisfied). But the difference between these ranks is either not measurable, unequal or meaningless.
+
+- _Interval data_ → consists of quantitative data but collected into equal intervals like $[10°C-20°C], [20°C-30°C]$. Interval data can be ranked and the difference between data points is measurable. But intervals lack a true zero point, in the case of degrees $0°C$ does not mean the absence of temperature. Also, a multiplication or division is not meaningful, $20°C\,(68°F)$ is not twice as much as $10°C\,(50°F)$, because the ratio changes depending on the scale.
+
+### Data Display
+Numbers become meaningful when compare to related numbers. Different types of data go well together with certain modes of  display. 
+
+- _Time-Series:_ → Line chart: shows the variations (trends & patterns) over time.
+
+{/* Line Chart */}
+<div class="flex justify-center items-center w-full">
+  <svg 
+    viewBox="0 0 500 250" 
+    class="w-full md:w-4/5 h-auto font-sans font-extralight tracking-widest text-sm"
+  >
+  <g fill="none" stroke="currentColor">
+    <line x1="50" x2="400" y1="220" y2="220" opacity="0.5" stroke-width="1" />
+    <line x1="50" x2="50" y1="220" y2="20" opacity="0.5" stroke-width="1" />
+    
+    <polyline 
+      points="50,200 70,100 100,120 130,80 170,160 210,50 240,110 270,100 300,70 320,100 340,80 360,110 400,20" 
+      stroke-width="1"
+    />
+  </g>
+  <g fill="currentColor">
+    <text x="360" y="240">Time</text>
+    <text x="30" y="30">Y</text>
+  </g>
+</svg>
+</div>
+
+- _Rankings:_ → Bar chart: facilitates comparison between frequencies and amounts.
+
+- _Nominal Comparison:_ → Bars can represent categories and display the corresponding quantitative values as the length of the bars. A nominal comparison may be ordered by their values to create a ranking, but the categories can also require their specific arrangement. 
+
+- _Part-to-Whole:_ → Bar chart: bars can also represent percentages and thus show the division of a whole into parts. Bars charts are preferred to pie charts because areas are harder to compare than the length of bars.
+
+{/* Bar Charts */}
+<div class="flex justify-center items-center w-full">
+  <svg 
+    viewBox="0 0 500 250" 
+    class="w-full md:w-4/5 h-auto font-sans font-extralight tracking-widest text-sm"
+  >
+    <g stroke="currentColor" stroke-width="1">
+      <rect x="80" y="140" width="30" height="80" fill="currentColor" fill-opacity="0.1" />
+      <rect x="120" y="160" width="30" height="60" fill="currentColor" fill-opacity="0.3" />
+      <rect x="160" y="180" width="30" height="40" fill="currentColor" fill-opacity="0.6" />
+    </g>
+
+    <g stroke="currentColor" stroke-width="1">
+      <rect x="350" y="40" width="40" height="80" fill="currentColor" fill-opacity="0.1" />
+      <rect x="350" y="120" width="40" height="60" fill="currentColor" fill-opacity="0.3" />
+      <rect x="350" y="180" width="40" height="40" fill="currentColor" fill-opacity="0.6" />
+    </g>
+
+    <g fill="currentColor">
+      <text x="90" y="240" class="">Comparison</text>
+      <text x="325" y="240" class="">Composition</text>
+    </g>
+  </svg>
+</div>
+
+- _Deviation:_ → Bars & Lines or Points that show the deviation/distance from a target.
+
+{/* Net Deviation Analysis */}
+<div class="flex justify-center items-center w-full">
+  <svg 
+    viewBox="0 0 500 250" 
+    class="w-full md:w-4/5 h-auto font-sans font-extralight tracking-widest text-sm"
+  >
+    <g fill="none" stroke="currentColor" opacity="0.5" stroke-width="1">
+      <line x1="40" x2="410" y1="125" y2="125" />
+    </g>
+
+    <g stroke="currentColor" stroke-width="1">
+      <rect x="50" y="65" width="40" height="60" fill="currentColor" fill-opacity="0.6" />
+      <rect x="160" y="45" width="40" height="80" fill="currentColor" fill-opacity="0.8" />
+      <rect x="310" y="105" width="44" height="20" fill="currentColor" fill-opacity="0.2" />
+      <rect x="360" y="75" width="40" height="50" fill="currentColor" fill-opacity="0.5" />
+
+      <rect x="110" y="125" width="40" height="40" fill="red" fill-opacity="0.5" />
+      <rect x="210" y="125" width="40" height="90" fill="red" fill-opacity="0.9" />
+      <rect x="260" y="125" width="40" height="10" fill="red" fill-opacity="0.2" />
+    </g>
+
+    <g fill="currentColor">
+      <text x="220" y="245" text-anchor="middle">Net Deviations</text>
+    </g>
+    <g fill="currentColor">
+      {/* <text x="20" y="129" text-anchor="middle">0</text> */}
+    </g>
+  </svg>
+</div>
+
+_Distributions:_ → Histograms (vertical bars) or Frequency Polygons (lines) reveal the shape of the data, where the mass of the data rests and how far away the outliers sprawl.
+
+<div class="flex justify-center items-center w-full">
+  <svg 
+    viewBox="0 0 500 250" 
+    class="w-full md:w-4/5 h-auto font-sans font-extralight tracking-widest text-sm"
+  >
+    <g fill="none" stroke="currentColor" opacity="0.5" stroke-width="1">
+      <line x1="40" x2="410" y1="220" y2="220" />
+      <line x1="40" x2="40" y1="20" y2="220" />
+    </g>
+
+    <g fill="none" opacity="0.9" stroke-width="2.5" stroke="var(--svg-link)">
+      <path d="M 40 220 Q 225 -90 410 220" />
+    </g>
+
+    <g stroke="currentColor" stroke-width="1">
+      <rect x="50" y="180" width="50" height="40" fill="currentColor" fill-opacity="0.1" />
+      <rect x="110" y="120" width="50" height="100" fill="currentColor" fill-opacity="0.2" />
+      <rect x="170" y="60" width="50" height="160" fill="currentColor" fill-opacity="0.6" />
+      <rect x="230" y="90" width="50" height="130" fill="currentColor" fill-opacity="0.4" />
+      <rect x="290" y="160" width="50" height="60" fill="currentColor" fill-opacity="0.2" />
+      <rect x="350" y="200" width="50" height="20" fill="currentColor" fill-opacity="0.1" />
+    </g>
+
+    <g fill="currentColor">
+      <text x="8" y="10">Frequency</text>
+      <text x="250" y="245" text-anchor="middle">Frequency Distribution</text>
+    </g>
+  </svg>
+</div>
+
+- _Correlation:_ → Scatter plots with points and trend lines, show the relationship between two variables. Where the combined data points cluster, how both variables are distributed and how they move together. 
+
+<div class="flex justify-center items-center w-full">
+  <svg 
+    viewBox="0 0 500 255" 
+    class="w-full md:w-4/5 h-auto font-sans font-extralight tracking-widest text-sm"
+  >
+    <g fill="none" stroke="currentColor" opacity="0.5" stroke-width="1">
+      <line x1="40" x2="410" y1="220" y2="220" />
+      <line x1="40" x2="40" y1="20" y2="220" />
+    </g>
+
+    <g fill="currentColor" stroke-width="1">
+      <circle cx="80" cy="100" r="5" fill-opacity="0.5" />
+      <circle cx="120" cy="120" r="5" fill-opacity="0.5" />
+      <circle cx="160" cy="80" r="5" fill-opacity="0.5" />
+      <circle cx="200" cy="50" r="5" fill-opacity="0.5" />
+      <circle cx="240" cy="110" r="5" fill-opacity="0.5" />
+      <circle cx="255" cy="70" r="5" fill-opacity="0.5" />
+      <circle cx="255" cy="100" r="5" fill-opacity="0.5" />
+      <circle cx="280" cy="100" r="5" fill-opacity="0.5" />
+      <circle cx="320" cy="70" r="5" fill-opacity="0.5" />
+      <circle cx="360" cy="100" r="5" fill-opacity="0.5" />
+      <circle cx="400" cy="20" r="5" fill-opacity="0.5" />
+    </g>
+
+    <g fill="none" opacity="0.9" stroke-width="2.5" stroke="var(--svg-link)">
+      <line x1="40" x2="410" y1="125" y2="30" />
+
+    </g>
+
+    <g fill="currentColor">
+      <text x="8" y="30">Y</text>
+      <text x="400" y="245" text-anchor="middle">X</text>
+      {/* <text x="225" y="255" text-anchor="middle">Scatter Plot</text> */}
+    </g>
+  </svg>
+</div>
+
 
 ### Encoding Quantitative Data
 The two most powerful attributes of visual perception are line length and 2-D position. Color, shape, and size, do a less effective job of graphically representing quantitative values. For example the larger circle has 16 times the area of the smaller circle.
 
-<svg viewBox="0 0 500 250" style="width: 100%; height: auto;">
-  <g transform="translate(10, 10)">
-    <circle cx="50" cy="170" r="10" fill="var(--svg-link)" opacity="0.6"/>
-    <text x="50" y="220" font-family="Arial" font-size="12" text-anchor="middle" fill="currentColor">1x Area</text>
-    <circle cx="150" cy="150" r="40" fill="var(--svg-link)" />
-    <text x="150" y="220" font-family="Arial" font-size="12" fill="currentColor" text-anchor="middle">16x Area</text>
-  </g>
-  <g transform="translate(300, 10)">
-    <line x1="0" y1="220" x2="90" y2="220" stroke="currentColor" stroke-width="1" />
-    <rect x="10" y="210" width="30" height="10" fill="var(--svg-link)" opacity="0.6" />
-    <text x="30.5" y="190" font-family="Arial" font-size="12" fill="currentColor" text-anchor="end">1x</text>
-    <rect x="50" y="60" width="30" height="160" fill="var(--svg-link)"/>
-    <text x="75" y="40" font-family="Arial" font-size="12" fill="currentColor" text-anchor="end">16x</text>
-  </g>
-</svg>
+<div class="flex justify-center items-center w-full">
+  <svg 
+    viewBox="0 0 500 250" 
+    class="w-full md:w-4/5 h-auto font-sans font-extralight tracking-widest text-sm"
+  >
+    <g fill="currentColor" stroke="none">
+      <circle cx="80" cy="150" r="10" fill-opacity="0.3" />
+      <circle cx="180" cy="120" r="40" fill-opacity="0.7" />
+      
+      <text x="80" y="210" text-anchor="middle" class="font-sans">1x</text>
+      <text x="180" y="210" text-anchor="middle" class="font-sans">16x</text>
+      
+      <text x="130" y="240" font-family="Literata" text-anchor="middle" class="font-sans">Area Scaling</text>
+    </g>
+
+    <g fill="currentColor" stroke="none">
+      <line x1="320" x2="460" y1="220" y2="220" stroke="currentColor" stroke-width="1" opacity="0.3" />
+      
+      <rect x="350" y="210" width="30" height="10" fill-opacity="0.3" />
+      <rect x="410" y="60" width="30" height="160" fill-opacity="0.7" />
+      
+      <text x="365" y="200" text-anchor="middle" class="font-sans">1x</text>
+      <text x="425" y="50" text-anchor="middle" class="font-sans">16x</text>
+
+      <text x="395" y="240" font-family="Literata" text-anchor="middle" class="font-sans">Linear Growth</text>
+    </g>
+  </svg>
+</div>
 
 Most viewers will underestimate the difference because our ability to accurately compare 2-D areas is not well-developed. In pie and doughnut charts, curved edges and the lack of a base-line lead to a consistent underestimation of the actual percentages (Cleveland & McGill, 1984). Bar charts are much easier to compare.
 
@@ -103,3 +269,7 @@ Hide distracting data series, while keeping the accessible on demand, use filter
 - On very large graphs, place _scales on both sides_ to help the eye identify values accurately.
 - Let your _axis scale to extend slightly below the lowest and above the highest value_.
 - For scales involving positive and negative numbers, _position the axis line at zero_.
+
+
+### Sources
+- Source: [Few, S. (2005). Effectively Communicating Numbers: Selecting the Best Means and Manner of Display, Perceptual Edge.](https://perceptualedge.com/articles/Whitepapers/Communicating_Numbers.pdf)

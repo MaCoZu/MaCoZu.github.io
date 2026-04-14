@@ -8,7 +8,7 @@ const { currentPath = "/" } = Astro.props;
 
 <nav class="h-16 md:h-[2.7rem] top-3 z-50">
   <div class="container mx-auto py-2 md:py-1">
-    <div class="grid grid-cols-3 items-center pb-3">
+    <div class="grid grid-cols-3 items-center py-3">
       <a href="/" class="flex items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -28,10 +28,26 @@ const { currentPath = "/" } = Astro.props;
           class="flex items-center space-x-8 uppercase text-current text-[16px]"
           style="font-weight: 700 !important"
         >
-          <a class="text-current page-menu" href="/portfolio/" style="font-weight: 700 !important">Portfolio</a>
-          <a class="text-current page-menu" href="/viz/" style="font-weight: 700 !important">Visuals</a>
-          <a class="text-current page-menu" href="/notes/" style="font-weight: 700 !important">Notes</a>
-          <a class="text-current page-menu" href="/certificates/" style="font-weight: 700 !important">Certificates</a>
+          <a
+            class="text-current page-menu"
+            href="/portfolio/"
+            style="font-weight: 700 !important">Portfolio</a
+          >
+          <a
+            class="text-current page-menu"
+            href="/viz/"
+            style="font-weight: 700 !important">Visuals</a
+          >
+          <a
+            class="text-current page-menu"
+            href="/notes/"
+            style="font-weight: 700 !important">Notes</a
+          >
+          <a
+            class="text-current page-menu"
+            href="/certificates/"
+            style="font-weight: 700 !important">Certificates</a
+          >
           <button
             id="themeToggle"
             aria-label="Toggle theme"
@@ -90,13 +106,27 @@ const { currentPath = "/" } = Astro.props;
       id="mobileSubnavRow"
       class="md:hidden w-full hidden py-3 border-t border-text/20"
     >
-<div
-          class="flex flex-wrap justify-between gap-x-2 gap-y-2 uppercase text-current text-[12px]"
+      <div
+        class="flex flex-wrap justify-between gap-x-2 gap-y-2 uppercase text-current text-[12px]"
+      >
+        <a
+          class="text-current"
+          href="/portfolio/"
+          style="font-weight: 700 !important">Portfolio</a
         >
-        <a class="text-current" href="/portfolio/" style="font-weight: 700 !important">Portfolio</a>
-        <a class="text-current" href="/viz/" style="font-weight: 700 !important">Visuals</a>
-        <a class="text-current" href="/notes/" style="font-weight: 700 !important">Notes</a>
-        <a class="text-current" href="/certificates/" style="font-weight: 700 !important">Certificates</a>
+        <a class="text-current" href="/viz/" style="font-weight: 700 !important"
+          >Visuals</a
+        >
+        <a
+          class="text-current"
+          href="/notes/"
+          style="font-weight: 700 !important">Notes</a
+        >
+        <a
+          class="text-current"
+          href="/certificates/"
+          style="font-weight: 700 !important">Certificates</a
+        >
       </div>
     </div>
   </div>
