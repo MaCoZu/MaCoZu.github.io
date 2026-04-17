@@ -1,0 +1,28 @@
+---
+// You can pass the JSON file path or the object itself as a prop
+const { specPath } = Astro.props;
+---
+
+<div class="w-full max-w-4xl mx-auto p-4">
+    <div id="vis" class="w-full h-150"></div>
+</div>
+
+<script>
+    import embed from "vega-embed";
+
+    async function renderChart() {
+        const spec = "/chart_spec.json"; // Path to your JSON in the 'public' folder
+
+        try {
+            await embed("#vis", spec, {
+                actions: false, // Set to true if you want 'Export to PNG/SVG' buttons
+                theme: "custom", // You can tweak this to match Tailwind colors
+                mode: "vega-lite",
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    renderChart();
+</script>

@@ -11,8 +11,12 @@ const notes = defineCollection({
 });
 
 const visualizations = defineCollection({
+  type: 'content',
   schema: z.object({
-    title: z.string().optional(),
+    title: z.string(),
+    description: z.string(),
+    draft: z.boolean().optional(),
+    date: z.date(),
   }),
 });
 

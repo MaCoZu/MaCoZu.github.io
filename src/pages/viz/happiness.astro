@@ -1,0 +1,15 @@
+---
+import Chart from "../../components/Charts/HappinessVega/Chart.astro";
+import { Content } from "../../content/visualizations/happiness.mdx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Global Happiness Analysis">
+  <div class="mt-4 flex justify-center items-start gap-x-4">
+    <Chart id="happiness-chart" specPath="/chart_spec.json" />
+  </div>
+
+  <article class="prose max-w-3xl mx-auto">
+    <Content />
+  </article>
+</Layout>
