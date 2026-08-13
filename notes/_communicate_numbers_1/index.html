@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/mz_logo.svg"><title>Communicating Numbers I - Memorable Math</title><link rel="stylesheet" href="/_astro/Layout.pTXwLsIY.css"></head><body class="flex flex-col min-h-screen px-(--spacing-page-x) md:px-page-x-md scroll-smooth"><nav class="h-16 md:h-[2.7rem] top-3 z-50" data-astro-cid-ae4rfkak><div class="container mx-auto py-2 md:py-1" data-astro-cid-ae4rfkak><div class="grid grid-cols-3 items-center py-3" data-astro-cid-ae4rfkak><a href="/" class="flex items-center" data-astro-cid-ae4rfkak><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="24" height="24" data-astro-cid-ae4rfkak><path class="fill-current text-current" d="M273.3 50.5 38 285.9a1.8 1.8 0 0 0 1.3 3h235.3q1.6-.1 1.8-1.7V51.8c0-1.6-2-2.5-3-1.3m-36 199.5H129l108.5-108.4zm-212.7-2.5L260 12c1-1 .6-2.6-.6-3h-1L111 78.2c-7.8 3.6-17 2-23.1-4.2L24.2 10c-.9-1-2.6-.5-2.7.8v235.5c0 1.6 2 2.4 3.2 1.2" data-astro-cid-ae4rfkak></path></svg></a><div class="hidden md:flex justify-end col-start-3" data-astro-cid-ae4rfkak><div class="flex items-center space-x-8 uppercase text-current text-[16px]" style="font-weight: 700 !important" data-astro-cid-ae4rfkak><a class="text-current page-menu" href="/portfolio/" style="font-weight: 700 !important" data-astro-cid-ae4rfkak>Portfolio</a><a class="text-current page-menu" href="/viz/" style="font-weight: 700 !important" data-astro-cid-ae4rfkak>Visuals</a><!-- <a
+            class="text-current page-menu"
+            href="/notes/"
+            style="font-weight: 700 !important">Notes</a
+          > --><a class="text-current page-menu" href="/certificates/" style="font-weight: 700 !important" data-astro-cid-ae4rfkak>Certificates</a><button id="themeToggle" aria-label="Toggle theme" class="theme-toggle p-1" data-astro-cid-ae4rfkak><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" data-astro-cid-ae4rfkak><path class="sun" fill="currentColor" d="M12 17.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zm0 1.5a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm12-7a.8.8 0 0 1-.8.8h-2.4a.8.8 0 0 1 0-1.6h2.4a.8.8 0 0 1 .8.8zM4 12a.8.8 0 0 1-.8.8H.8a.8.8 0 0 1 0-1.6h2.5a.8.8 0 0 1 .8.8zm16.5-8.5a.8.8 0 0 1 0 1l-1.8 1.8a.8.8 0 1 1-1-1l1.7-1.8a.8.8 0 0 1 1 0zM6.3 17.7a.8.8 0 0 1 0 1l-1.7 1.8a.8.8 0 1 1-1-1l1.7-1.8a.8.8 0 0 1 1 0zM12 0a.8.8 0 0 1 .8.8v2.5a.8.8 0 0 1-1.6 0V.8A.8.8 0 0 1 12 0zm0 20a.8.8 0 0 1 .8.8v2.4a.8.8 0 0 1-1.6 0v-2.4a.8.8 0 0 1 .8-.8zM3.5 3.5a.8.8 0 0 1 1 0l1.8 1.8a.8.8 0 1 1-1 1L3.5 4.6a.8.8 0 0 1 0-1zm14.2 14.2a.8.8 0 0 1 1 0l1.8 1.7a.8.8 0 0 1-1 1l-1.8-1.7a.8.8 0 0 1 0-1z" data-astro-cid-ae4rfkak></path><path class="moon" fill="currentColor" d="M16.5 6A10.5 10.5 0 0 1 4.7 16.4 8.5 8.5 0 1 0 16.4 4.7l.1 1.3zm-1.7-2a9 9 0 0 1 .2 2 9 9 0 0 1-11 8.8 9.4 9.4 0 0 1-.8-.3c-.4 0-.8.3-.7.7a10 10 0 0 0 .3.8 10 10 0 0 0 9.2 6 10 10 0 0 0 4-19.2 9.7 9.7 0 0 0-.9-.3c-.3-.1-.7.3-.6.7a9 9 0 0 1 .3.8z" data-astro-cid-ae4rfkak></path></svg></button></div></div><div class="md:hidden col-start-3 justify-self-end flex items-center gap-10" data-astro-cid-ae4rfkak><button id="themeToggleMobile" aria-label="Toggle theme" class="theme-toggle p-2" data-astro-cid-ae4rfkak><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" data-astro-cid-ae4rfkak><path class="sun" fill="currentColor" d="M12 17.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zm0 1.5a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm12-7a.8.8 0 0 1-.8.8h-2.4a.8.8 0 0 1 0-1.6h2.4a.8.8 0 0 1 .8.8zM4 12a.8.8 0 0 1-.8.8H.8a.8.8 0 0 1 0-1.6h2.5a.8.8 0 0 1 .8.8zm16.5-8.5a.8.8 0 0 1 0 1l-1.8 1.8a.8.8 0 1 1-1-1l1.7-1.8a.8.8 0 0 1 1 0zM6.3 17.7a.8.8 0 0 1 0 1l-1.7 1.8a.8.8 0 1 1-1-1l1.7-1.8a.8.8 0 0 1 1 0zM12 0a.8.8 0 0 1 .8.8v2.5a.8.8 0 0 1-1.6 0V.8A.8.8 0 0 1 12 0zm0 20a.8.8 0 0 1 .8.8v2.4a.8.8 0 0 1-1.6 0v-2.4a.8.8 0 0 1 .8-.8zM3.5 3.5a.8.8 0 0 1 1 0l1.8 1.8a.8.8 0 1 1-1 1L3.5 4.6a.8.8 0 0 1 0-1zm14.2 14.2a.8.8 0 0 1 1 0l1.8 1.7a.8.8 0 0 1-1 1l-1.8-1.7a.8.8 0 0 1 0-1z" data-astro-cid-ae4rfkak></path><path class="moon" fill="currentColor" d="M16.5 6A10.5 10.5 0 0 1 4.7 16.4 8.5 8.5 0 1 0 16.4 4.7l.1 1.3zm-1.7-2a9 9 0 0 1 .2 2 9 9 0 0 1-11 8.8 9.4 9.4 0 0 1-.8-.3c-.4 0-.8.3-.7.7a10 10 0 0 0 .3.8 10 10 0 0 0 9.2 6 10 10 0 0 0 4-19.2 9.7 9.7 0 0 0-.9-.3c-.3-.1-.7.3-.6.7a9 9 0 0 1 .3.8z" data-astro-cid-ae4rfkak></path></svg></button><button class="menu-trigger" id="mobileMenuButton" aria-label="Toggle menu" data-astro-cid-ae4rfkak><span data-astro-cid-ae4rfkak></span><span data-astro-cid-ae4rfkak></span><span data-astro-cid-ae4rfkak></span></button></div></div><div id="mobileSubnavRow" class="md:hidden w-full hidden py-3 border-t border-text/20" data-astro-cid-ae4rfkak><div class="flex flex-wrap justify-between gap-x-2 gap-y-2 uppercase text-current text-[12px]" data-astro-cid-ae4rfkak><a class="text-current" href="/portfolio/" style="font-weight: 700 !important" data-astro-cid-ae4rfkak>Portfolio</a><a class="text-current" href="/viz/" style="font-weight: 700 !important" data-astro-cid-ae4rfkak>Visuals</a><a class="text-current" href="/notes/" style="font-weight: 700 !important" data-astro-cid-ae4rfkak>Notes</a><a class="text-current" href="/certificates/" style="font-weight: 700 !important" data-astro-cid-ae4rfkak>Certificates</a></div></div></div></nav><script type="module">document.addEventListener(`DOMContentLoaded`,()=>{let e=document.getElementById(`mobileMenuButton`),t=document.getElementById(`mobileSubnavRow`);e&&t&&e.addEventListener(`click`,()=>{e.classList.toggle(`active`),t.classList.toggle(`hidden`)})});</script><main class="grow py-(--spacing-page-y) md:py-(--spacing-page-y-md)"><article class="max-w-3xl mx-auto"><h1 class="text-[2rem] md:text-[2.6rem] mb-5 font-serif font-semibold">Communicating Numbers I - Memorable Math</h1><p class="font-serif text-sm mb-8 text-text dark:text-text-dark opacity-60">2026-03-31</p><div class="prose"><p>Humans were not made to juggle numbers. But we have surrounded ourselves with math and data lately. Circumstances that our brains rebel against. The human brain evolved to handle small numbers. Our short-term memory can hold <a href="https://labs.la.utexas.edu/gilden/files/2016/04/MagicNumberSeven-Miller1956.pdf">7<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>±</mo></mrow><annotation encoding="application/x-tex">\pm</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord">±</span></span></span></span>2</a> digits, which is roughly the same number of items we can ‘subitize’, that is, grasp a quantity without counting.</p>
+<p>But confronted with larger numbers and more details, the brain starts conserving energy. The above corresponds with two types of ‘numbing’ in relation to large quantities.</p>
+<ol>
+<li><strong>Psychophysical numbing:</strong> We become less sensitive to changes in larger numbers. While the jump from 10 to 20 feels significant, an equal jump from 340 to 350 doesn’t.</li>
+<li><strong>Psychic Numbing:</strong> Our empathy diminishes as soon as we consider more than one victim. The fate of one individual feels weighty, but the suffering of thousands blurs into the abstract.</li>
+</ol>
+<p>Our Stone Age brains favor concrete, whole objects, thing one can count with one’s fingers and sometimes toes too. Reflected by the fact that many number systems are 5-based or 10-based. Language hints in the same direction. While in many cultures there were names for small numbers, beyond 5 it often became just ‘lots’.</p>
+<p>So if you’re a person trying to communicate statistics to your contemporaries you have to consider that you’re talking to their hunter-gather brains, who are averse to decimals, percentages, and numbers that do not behoove a finger-and-toe count.</p>
+<p>As people working with numbers we tend to forget this and get ahead of ourselves, something called the ‘curse of knowledge’ besets us, where we report detailed numbers that only the adept can make sense of.</p>
+<p>This is unfortunate since we usually want to convey something important with our statistic. Be it the <a href="https://flyfright.com/plane-crash-statistics/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.000001</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">0.000001\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em"></span><span class="mord">0.000001%</span></span></span></span> chance of dying in an airplane crash</a> or the 92 billion light-years diameter of the observable universe. As you can notice yourself these figure don’t carry much weight.</p>
+<p>Putting the chance of a death by plane crash into perspective may help. For example, you are about 1,000 times more likely to die driving to the terminal than you are on the actual flight. Since the odds of dying in a car crash are roughly 1 in 100,000. Or you could fly every day for approximately 270,000 years to get a fair chance of dying by plane if you don’t die before.</p>
+<p>To grasp the extent of the observable universe, we could imagine a car drive across its diameter at 95 km/h. Well, the trip would take 75 millions times longer than the universe is old. This is still inconceivable but maybe a bit catchier than 92 billion light-years, notwithstanding that the universe is expanding faster than you can drive.</p>
+<p>Those two techniques to illustrate your numbers make them digestible. Chip Heath and Karla Starr collected a few of these in their book <a href="https://www.amazon.com/Making-Numbers-Count-Science-Communicating/dp/1982165448"><em>Making numbers count: the art and science of communicating numbers</em></a>, which I will shortly present to you.</p>
+<p>One set of techniques caters to our tendency to favor whole and concrete objects over abstract and fractured numbers. Heath and Starr suggest to ‘round with enthusiasm’, throw percentages in baskets and come up with formulations like ‘2 in 500’ instead of  <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.4</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">0.4\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em"></span><span class="mord">0.4%</span></span></span></span> and count in concrete whole numbers rather than decimals. If you can cast data into a single chunk of one, like one day, game or person the data becomes more concrete. ‘Every day, 50 people are murdered.’ is more concrete than ‘1 murder every 30 minutes’.</p>
+<p>To come to grips with large numbers, one can dissect them into digestible morsels. We already used time to measure space above with the universe’s diameter. And we recast a processes into calendar time as with the murders. Similarly, you could convert an activity into the unit of ‘lifetime spent’, and again translate lifetime to money lost, say for the time you spent stuck in traffic.</p>
+<p>Comparisons are an invaluable tool for the bearer of quantitative facts. A number without something to compare it with, is quickly forgotten if not meaningless. So is the cost of one  F-22 Raptor high-end fighter jet of approximately $143 million. The cost become more vivid if you knew that 2.8 million children could be vaccinated with that money or 4 apartment complexes could be build, providing homes for 400 families. And this is the <a href="https://militarymachine.com/f-22-cost">price for a F-22 Raptor excluding the R&amp;D cost and inflation adjustment</a>.</p>
+<p>Putting things into perspective always helps, comparing countries, competitors, categories and others connects synapses and yields surprising contrasts that have the potential to wake people up to otherwise foggy facts.</p>
+<h3 id="translation">Translation</h3>
+<p>Math is no one’s native tongue. Translate numbers into concrete, vivid, meaningful messages that are clear enough to make the numbers unnecessary. The following message will likely be remembered better than the actual percentages:</p>
+<blockquote>
+<p>Among Fortune 500 CEOs, there are more men named James than there are women.</p>
+</blockquote>
+<h3 id="perspective-phrases">Perspective Phrases</h3>
+<p>Add brief contextual phrases (e.g., “that’s about the size of 2 California’s”) to improve recall accuracy.</p>
+<h3 id="thought-experiments">Thought Experiments</h3>
+<p>Use simple, concrete analogies.</p>
+<p>To explain water scarcity, imagine a gallon jug (salt water) and three ice cubes (fresh water); humans can only drink the drops melting off the cubes. That is only 0.025% of the globe’s water which is actually drinkable.</p>
+<h3 id="the-power-of-1">The Power of 1</h3>
+<p>Focus on a single concrete chunk like <em>1 employee, 1 day, or 1 game</em>, to avoid the confusion of “big-ism”.</p>
+<h3 id="prototype-scenarios">Prototype Scenarios</h3>
+<p>In the same vein, use stories of a single, representative person, like the young mother you talked to, to make abstract problems relatable.</p>
+<h3 id="favor-user-friendly-numbers">Favor User-Friendly Numbers</h3>
+<p>Use small, whole, and rounded numbers which are catchier.</p>
+<p>Precision often distracts, “ballpark” numbers on the other hand help the audience grasp the bigger picture.</p>
+<h3 id="psychophysical-numbing">Psychophysical Numbing</h3>
+<p>Our emotional response to numbers decreases as they become larger. While we may feel deeply about the suffering of one specific person, the suffering of thousands drowns into the abstract. The reduction of empathy starts as soon as we consider two persons instead of one.</p>
+<h3 id="concrete-counting">Concrete Counting</h3>
+<p>Count real things as whole numbers rather than fractions, or percentages, to make the statistics felt.</p>
+<p>Instead of “40% of adults,” say “2 out of every 5 people”</p>
+<p>Put small percentages into a basket size: “1 out of 500”, feels more real than “0.2% of the population”.</p>
+<p>The above applies also to processes over time.</p>
+<p>Abstract:</p>
+<blockquote>
+<p>1 murder occurs every 30 minutes in the US.</p>
+</blockquote>
+<p>Concrete:</p>
+<blockquote>
+<p>Every day, 50 people are murdered.</p>
+</blockquote>
+<h3 id="concrete-units">Concrete Units</h3>
+<p>Also units can be too abstract sometimes. A “microsecond” for example could be transformed into something more demonstrable.</p>
+<p>Like 984 feet (0.3 km) of copper wire, which is the length of copper wire a signal travels in a microsecond.</p>
+<h3 id="spread-big-numbers">Spread Big Numbers</h3>
+<p>Big numbers become more digestible if it is explained how they would allocate over time.</p>
+<blockquote>
+<p>There are more than 400 million firearms in the U.S. That’s enough for every man, woman, and child to own one, with enough left over that you could give one to every baby born in America for the next 20 years.</p>
+</blockquote>
+<h3 id="village-of-100">Village of 100</h3>
+<p>People make more logical mistakes when reasoning from percentages than whole numbers.
+If you want to keep the comparative precision of percentages but avoid the limits of intangibility, make a “basket” of 100 of whatever you’re sampling, and convert the
+percentages to whole numbers.</p>
+<h3 id="defer-to-expertise">Defer to Expertise</h3>
+<p>Speak your audience’s language. If your audience knows how to work with one kind of
+number, use it. Baseball fans understand hit rates like “batting .300” and scientist are used to work with powers of 10 for example.</p>
+<h3 id="the-macgyver-principle">The MacGyver Principle</h3>
+<p>Use familiar comparisons, local references, objects used in your field, items in the news.</p>
+<p>A Fathom was a maritime measure of depth equal to 6 feet (1.8288 m) one could also describe it as the length of:</p>
+<ul>
+<li>1 hockey stick—Canada</li>
+<li>1 tatami mat—Japan</li>
+<li>1 surfboard—San Diego</li>
+<li>2 baguettes—France</li>
+</ul>
+<h3 id="simple-multipliers">Simple Multipliers</h3>
+<p>Favor simple multipliers like 1, 2, or one half. Research showed people understood and recalled number translations best when the multiplier was 1. Precise numbers are forgotten very fast, while simple ones stick.</p>
+<h3 id="target-the-counterintuitive">Target the Counterintuitive</h3>
+<p>Use comparisons to highlight surprising disparities:</p>
+<blockquote>
+<p>The video game industry is more than 4 times the size of the movie industry, and about 9 times the size of the music industry.</p>
+</blockquote>
+<h3 id="vividness">Vividness</h3>
+<p>Move numbers into the domain of sight, taste, or touch (e.g., comparing tumor sizes to fruit).</p>
+<p>Create active, colorful, and sensory images that are “close to you,” such as imagining the Empire State Building tipped over to block a canal.</p>
+<h3 id="shrinkgrow-to-human-scale">Shrink/Grow to Human Scale</h3>
+<p>Bring vast (Mt. Everest) or tiny (nanoparticles) dimensions into the realm of human experience where we are trained to notice things.</p>
+<p>Or blow up tiny achievements (like ant navigation) to human sizes to build deep respect.</p>
+<h3 id="personalization">Personalization</h3>
+<p>Frame statistics as a personal threat or opportunity (e.g., “toxins in your own tap water”) to wake up the “self” network (concern / egoism) in the brain.</p>
+<h3 id="interdimensional-recasting">Interdimensional Recasting</h3>
+<p>If a number doesn’t make sense, convert it into a different type of quantity like time, space, distance, or even cookies.</p>
+<h3 id="convert-to-time">Convert to Time</h3>
+<p>Use the audience’s experience with clock and calendar time to explain multipliers.</p>
+<blockquote>
+<p>“A million seconds is 12 days; a billion seconds is 32 years”</p>
+</blockquote>
+<h3 id="trade-time-for-money">Trade Time for Money</h3>
+<p>Explain costs by showing how much “lifetime” is lost to a current inefficient system.</p>
+<h3 id="accumulate-small-gains">Accumulate Small Gains</h3>
+<p>Add up tiny daily time savings over a year to show they equal massive achievements (e.g., “3 weeks of extra class time”).</p>
+<h3 id="ratios-to-life-scenarios">Ratios to Life Scenarios</h3>
+<p>Magnify ratios to show real-world financial consequences, such as the difference between having $2,000 in savings vs. $20.</p>
+<h3 id="probability-as-countable-things">Probability as Countable Things</h3>
+<p>Express risk in terms of things people can see.</p>
+<p>The chance of dying in a skydiving accident is roughly 7 in a million. This may scare people away from skydiving, but this is equivalent to seven words in the whole Harry Potter series. Something that is more tangible.</p>
+<h3 id="statistics-in-action">Statistics in Action</h3>
+<p>You can translate nutritional counts into well-understood physical actions, like walking two flights of stairs to burn one M&amp;M.</p>
+<p>And the “distance to the moon” as “3,871 flights of stairs”.</p>
+<h3 id="life-milestones">Life Milestones</h3>
+<p>Use milestones like a child learning to walk or taking driver’s ed to explain long-term durations.</p>
+<h3 id="transferred-emotion">Transferred Emotion</h3>
+<p>Identify preexisting pools of emotion and use numbers to justify transferring that emotion to your data.</p>
+<p>Florence Nightingale compared hospital mortality to the “Great Plague of London” to spark immediate horror in her audience.</p>
+<p>You may also use local landmarks to make a statistic feel active and nearby rather than distant.</p>
+<h3 id="emotional-symphonies">Emotional symphonies</h3>
+<p>Hit multiple harmonious notes (e.g., different infrastructure costs) to build a fuller resonance than one note alone.</p>
+<h3 id="incomparables-summing-competitors">Incomparables (Summing Competitors)</h3>
+<p>To show total dominance, add up all competitors and show that your item is still larger than the whole group.</p>
+<h3 id="category-jumping">Category Jumping</h3>
+<p>Move your comparison to a different class entirely, such as comparing a state’s economy to a nation’s.</p>
+<blockquote>
+<p>“If cows were a country, they would be the 3rd-highest producer of greenhouse gases”</p>
+</blockquote>
+<h3 id="mentally-walking-the-staircase">Mentally Walking the Staircase</h3>
+<p>Use an unfolding story where the audience imagines themselves physically moving through the data.</p>
+<h3 id="sense-based-demonstrations">Sense-Based Demonstrations</h3>
+<p>Bring numbers into the room using music, smells, or physical items to create an immersive experience.</p>
+<blockquote>
+<p>A manufacturing company was buying 424 different kinds of gloves. Jon Stegner had an intern collect one of each glove. He put all 424 pairs on the executive conference table. That hit harder than any statistic could. Procurement got centralized. Massive savings followed.</p>
+</blockquote>
+<h3 id="interactive-games">Interactive Games</h3>
+<p>Use physical actions like clapping to explain sub-second margins in sports.</p>
+<h3 id="role-playingsubstitution">Role-Playing/Substitution</h3>
+<p>Pick specific people in the room to represent statistics to give them “skin in the game”.</p>
+<h3 id="the-encore">The Encore</h3>
+<p>Deliver a strong impression with part of your figure, then reveal the remaining reserve as a surprising second punch.</p>
+<h3 id="crystallize-break">Crystallize-Break</h3>
+<p>First build a pattern of expectations, then shatter it with a surprising “break”.</p>
+<p>Steve Jobs showed the competition’s thinnest laptop (0.8 inches / 2.03 cm) then revealed that the MacBook Air’s thickest part was thinner than the competition’s thinnest</p>
+<h3 id="orientation-landmarks">Orientation Landmarks</h3>
+<p>Provide a few key “landmark” numbers to orient people to unfamiliar scales (e.g., hypothermia zones).</p>
+<h3 id="existing-maps">Existing Maps</h3>
+<p>Put data onto familiar structures like a 24-hour day or a calendar year.</p>
+<blockquote>
+<p>If the history of the universe were one day, humans don’t appear until the final second.</p>
+</blockquote>
+<h3 id="flexible-analogies">Flexible Analogies</h3>
+<p>Use simple, well-understood systems (like a soccer team) to model complex workplace dynamics.</p>
+<p>Source:
+<a href="https://www.amazon.com/Making-Numbers-Count-Science-Communicating/dp/1982165448">Heath, C., &amp; Starr, K. (2022). <em>Making numbers count: the art and science of communicating numbers</em>. Avid Reader Press.</a></p></div></article></main><hr class="mt-20 opacity-20"><footer class="bg-transparent my-3 md:my-5"><div class="container"><div class="grid grid-cols-1 md:grid-cols-2 items-center"><!-- Logo --><div class="hidden md:block"><a href="/" class="flex gap-x-3 items-center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="40" height="40"><path class="fill-current text-current" d="M273.3 50.5 38 285.9a1.8 1.8 0 0 0 1.3 3h235.3q1.6-.1 1.8-1.7V51.8c0-1.6-2-2.5-3-1.3m-36 199.5H129l108.5-108.4zm-212.7-2.5L260 12c1-1 .6-2.6-.6-3h-1L111 78.2c-7.8 3.6-17 2-23.1-4.2L24.2 10c-.9-1-2.6-.5-2.7.8v235.5c0 1.6 2 2.4 3.2 1.2"></path></svg><div class="text-[14px] font-black tracking-widest uppercase -space-y-0.5"><p class="tracking-[2.55px]">Marco</p><p class="tracking-[1px]">Zausch</p></div></a></div><!-- Information --><div class="flex flex-col sm:flex-row sm:gap-12 md:gap-16 lg:gap-24 gap-y-8 md:justify-between text-[11px]"><div class="flex-1"><div class="page-menu" style="font-weight: 700 !important">Contact</div><div class="mt-2"><a href="mailto:marcozausch@posteo.de" class="flex items-center gap-3 hover:text-accent dark:hover:text-accent-dark text-current "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" class="text-current"><path fill="currentColor" d="M4 20q-.8 0-1.4-.6T2 18V6q0-.8.6-1.4T4 4h16q.8 0 1.4.6T22 6v12q0 .8-.6 1.4T20 20zm8-7 8-5V6l-8 5-8-5v2z"></path></svg>Email</a></div></div><div class="flex-1"><div class="page-menu" style="font-weight: 700 !important">Work</div><p class="mt-2 flex items-center"><div class="flex items-center gap-3 hover:text-accent dark:hover:text-accent-dark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="14" height="14"><path class="text-current" fill="currentColor" d="M17.04 17.04h-2.96V12.4c0-1.1-.03-2.53-1.55-2.53-1.54 0-1.78 1.2-1.78 2.45v4.72H7.8V7.5h2.85v1.3h.04a3.1 3.1 0 0 1 2.8-1.54c3 0 3.56 1.97 3.56 4.55zM4.44 6.2a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44m1.5 10.85H2.95V7.5h2.97zM18.51 0H1.48C.66 0 0 .65 0 1.44v17.12C0 19.36.66 20 1.48 20h17.04c.81 0 1.48-.64 1.48-1.44V1.44C20 .64 19.33 0 18.52 0z"></path></svg><a href="https://www.linkedin.com/in/marcozausch" target="_blank" class="hover:text-accent dark:hover:text-accent-dark text-text dark:text-text-dark">LinkedIn</a></div></p><p class="mt-2 flex items-center"><div class="flex items-center gap-3 hover:text-accent dark:hover:text-accent-dark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="15" height="15"><path class="text-current" fill="currentColor" fill-rule="evenodd" d="M7.976 0A7.977 7.977 0 0 0 0 7.976c0 3.522 2.3 6.507 5.431 7.584.392.049.538-.196.538-.392v-1.37c-2.201.49-2.69-1.076-2.69-1.076-.343-.93-.881-1.175-.881-1.175-.734-.489.048-.489.048-.489.783.049 1.224.832 1.224.832.734 1.223 1.859.88 2.3.685.048-.538.293-.88.489-1.076-1.762-.196-3.621-.881-3.621-3.964 0-.88.293-1.566.832-2.153-.05-.147-.343-.978.098-2.055 0 0 .685-.196 2.201.832.636-.196 1.322-.245 2.007-.245s1.37.098 2.006.245c1.517-1.027 2.202-.832 2.202-.832.44 1.077.146 1.908.097 2.104a3.16 3.16 0 0 1 .832 2.153c0 3.083-1.86 3.719-3.62 3.915.293.244.538.733.538 1.467v2.202c0 .196.146.44.538.392A7.98 7.98 0 0 0 16 7.976C15.951 3.572 12.38 0 7.976 0"></path></svg><a href="https://github.com/MaCoZu" target="_blank" class="hover:text-accent dark:hover:text-accent-dark text-text dark:text-text-dark">Github</a></div></p></div><div class="flex-1"><div class="page-menu" style="font-weight: 700 !important">Legal</div><a class="mt-2 block hover:text-accent dark:hover:text-accent-dark text-text dark:text-text-dark" href="/impressum">Impressum</a><a class="mt-2 block hover:text-accent dark:hover:text-accent-dark text-text dark:text-text-dark" href="/privacypolicy">Privacy Policy</a></div></div></div></div></footer></body></html><script>
+  const theme = (() => {
+    const stored = localStorage.getItem("theme");
+    if (stored === "dark" || stored === "light") return stored;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  })();
+
+  if (theme === "dark") document.documentElement.classList.add("dark");
+  localStorage.setItem("theme", theme);
+
+  function toggleTheme() {
+    document.documentElement.classList.toggle("dark");
+    localStorage.setItem(
+      "theme",
+      document.documentElement.classList.contains("dark") ? "dark" : "light",
+    );
+  }
+
+  document
+    .getElementById("themeToggle")
+    ?.addEventListener("click", toggleTheme);
+  document
+    .getElementById("themeToggleMobile")
+    ?.addEventListener("click", toggleTheme);
+</script>
