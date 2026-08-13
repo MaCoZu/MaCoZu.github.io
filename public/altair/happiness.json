@@ -90,7 +90,7 @@
       },
       "field": "value",
       "scale": { "padding": 5, "zero": false },
-      "title": "Wealth Metric",
+      "title": "",
       "type": "quantitative"
     },
     "y": {
@@ -112,6 +112,7 @@
       "select": { "type": "point", "fields": ["column"], "toggle": false },
       "bind": {
         "input": "select",
+        "name": "Choose a second index",
         "options": [
           "HDI",
           "GNI pc",
@@ -123,8 +124,7 @@
           "SPI Score",
           "SPI Rank",
           "Working hours per worker"
-        ],
-        "name": "Choose an index to plot against vs. the Happiness Score: "
+        ]
       },
       "value": [{ "column": "HDI" }]
     },
@@ -139,8 +139,8 @@
     }
   ],
   "title": {
-    "text": "Wealth vs Happiness",
-    "subtitle": ["GDP pc & GNI pc  "],
+    "text": "Happiness vs. ",
+    "subtitle": ["Choose an indicator from the dropdown"],
     "anchor": "start",
     "offset": 30
   },
