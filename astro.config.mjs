@@ -1,3 +1,4 @@
+import { unified } from '@astrojs/markdown-remark';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
@@ -15,18 +16,17 @@ export default defineConfig({
     outDir: 'docs',
   },
   integrations: [
-    mdx({
-      remarkPlugins: [remarkToc, remarkGfm, remarkMath],
-      rehypePlugins: [rehypeKatex],
-    }),
+    mdx(),
     react(),
   ],
   vite: {
     plugins: [tailwindcss()],
   },
   markdown: {
-    remarkPlugins: [remarkToc, remarkGfm, remarkMath],
-    rehypePlugins: [rehypeKatex],
+    processor: unified({
+      remarkPlugins: [remarkToc, remarkGfm, remarkMath],
+      rehypePlugins: [rehypeKatex],
+    }),
     shikiConfig: {
       themes: {
         light: 'one-light',
