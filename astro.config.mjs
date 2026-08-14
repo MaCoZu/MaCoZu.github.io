@@ -1,24 +1,21 @@
-import { unified } from '@astrojs/markdown-remark';
-import mdx from '@astrojs/mdx';
-import react from '@astrojs/react';
-import tailwindcss from '@tailwindcss/vite';
-import { defineConfig } from 'astro/config';
-import rehypeKatex from 'rehype-katex';
-import remarkGfm from 'remark-gfm';
-import remarkMath from 'remark-math';
-import remarkToc from 'remark-toc';
+import { unified } from "@astrojs/markdown-remark";
+import mdx from "@astrojs/mdx";
+import react from "@astrojs/react";
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
+import rehypeKatex from "rehype-katex";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import remarkToc from "remark-toc";
 
 export default defineConfig({
-  site: 'https://macozu.github.io',
-  base: '/',
-  output: 'static',
+  site: "https://macozu.github.io",
+  base: "/",
+  output: "static",
   build: {
-    outDir: 'docs',
+    outDir: "docs",
   },
-  integrations: [
-    mdx(),
-    react(),
-  ],
+  integrations: [mdx(), react()],
   vite: {
     plugins: [tailwindcss()],
   },
@@ -29,8 +26,8 @@ export default defineConfig({
     }),
     shikiConfig: {
       themes: {
-        light: 'one-light',
-        dark: 'gruvbox-dark-medium',
+        light: "one-light",
+        dark: "gruvbox-dark-medium",
       },
       wrap: true,
     },
