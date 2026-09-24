@@ -14,8 +14,8 @@ certificates:
   - name: "MBA Essentials – London School of Economics (08.01.2026)"
     link: "https://drive.google.com/file/d/1cL3-Ks1nbUDbM1eC-tmcJe7gn9Q7KwM2/view"
 
-  - name: "Strategic Business Analysis Essentials – LinkedIn (17.11.2025)"
-    link: "https://www.linkedin.com/learning/certificates/0e3bf06a9793e46418e55210a3ba73eadfc234e6142521a759c16685102b81af?trk=share_certificate"
+  # - name: "Strategic Business Analysis Essentials – LinkedIn (17.11.2025)"
+  #   link: "https://www.linkedin.com/learning/certificates/0e3bf06a9793e46418e55210a3ba73eadfc234e6142521a759c16685102b81af?trk=share_certificate"
 
   # - name: "Operational Excellence – LinkedIn (16.11.2025)"
   #   link: "https://www.linkedin.com/learning/certificates/e09ec5b99dbead25abf16fe7569fce9c5487726ec0e2b0e3e0c6be6f85d319d9?trk=share_certificate"

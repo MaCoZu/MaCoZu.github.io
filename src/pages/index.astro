@@ -1,3 +1,8 @@
 ---
-return Astro.redirect('/portfolio/');
+import PortfolioProjects from "../components/portfolio/PortfolioProjects.astro";
+import Layout from "../layouts/Layout.astro";
 ---
+
+<Layout title="Portfolio">
+  <PortfolioProjects />
+</Layout>
