@@ -36,4 +36,21 @@ const certificates = defineCollection({
   }),
 });
 
-export const collections = { notes, visualizations, certificates };
+const projects = defineCollection({
+  loader: glob({ base: "./src/content/projects", pattern: "**/*.{yaml,yml,json}" }),
+  schema: z.object({
+    projects: z.array(
+      z.object({
+        title: z.string(),
+        subtitle: z.string(),
+        link: z.string().url(),
+        iconName: z.string().optional(),
+        iconSize: z.string().optional(),
+        tech: z.array(z.string()),
+        description: z.string(),
+      }),
+    ),
+  }),
+});
+
+export const collections = { notes, visualizations, certificates, projects };

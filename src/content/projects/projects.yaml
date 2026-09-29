@@ -1,0 +1,54 @@
+projects:
+  - title: Forró Lyrics
+    subtitle: Self improving Forró lyrics translator.
+    link: https://twitter-analysis-six.vercel.app/
+    iconName: 
+    iconSize: large
+    tech: [LangGraph, OpenRouter, RAG, Typer]
+    description: |
+      Given the lyrics of a Brazilian forró song as structured YAML, a chain of LLM agents research cultural and slang terms across several sources (a curated dictionary, past translations, a vector-database search over reference literature, and live web search) and adds footnotes for specific words. With each translation the references grow and the available cultural context improves.  
+  - title: Congressional Tweeting
+    subtitle: Big data analysis of tweets from US congress members.
+    link: https://twitter-analysis-six.vercel.app/
+    iconName: twitter-bird2
+    iconSize: large
+    tech: [Pyspark, Databricks, SQL]
+    description: |
+      Data analysis of tweets from US congress members between 2008–2017 to
+      identify key topics and relationships, providing actionable insights for
+      political strategists.
+
+  - title: World Bank Commander
+    subtitle: Compare all world bank indicators on a 2x2 chart grid.
+    link: https://world-bankcommander.onrender.com/
+    iconName: worldbank_logo
+    iconSize: medium
+    tech: [Python, Dash, Plotly]
+    description: |
+      I created a tool to compare World Bank indicators, enabling analysts to
+      identify unexpected relationships. The idea was to have a clean overview
+      of the different indicators avoiding the cluttered World Bank
+      [interface](https://databank.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG/1ff4a498/Popular-Indicators).
+
+  - title: Forró Da Capitá Website
+    subtitle: Webpage for Forró Da Capitá.
+    link: https://forrodacapita.vercel.app/
+    iconSize: large
+    tech: [Astro, DatoCMS, Supabase, FullCalendar]
+    description: |
+      I've built a website for Forró Da Capitá e.V. While a design playground
+      for myself, every team member can add content through DatoCMS. I tried
+      some CSS tricks: glowing logo & dynamic icons. Additionally there is a
+      metacalendar combining event dates from several public calendars. And a
+      guestbook will be reactivated once we deploy on our own server.
+
+  - title: Tableau Dashboards
+    subtitle: Some of my data dashboard on Tableau Public.
+    link: https://public.tableau.com/app/profile/marco.zausch8856/vizzes
+    iconName: tableau-software
+    iconSize: medium
+    tech: [Tableau]
+    description: |
+      Tableau is a BI tool that creates visually appealing and informative
+      dashboards. Here are my public
+      [dashboards](https://public.tableau.com/app/profile/marco.zausch8856/vizzes).
