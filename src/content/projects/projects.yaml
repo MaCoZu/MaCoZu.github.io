@@ -6,7 +6,7 @@ projects:
     iconSize: large
     tech: [Python, LangChain, OpenRouter, RAG, Typst]
     description: |
-      Given the lyrics of a Brazilian forró song as structured YAML, a multi-stage LLM pipeline researches cultural and slang terms across several sources (a curated dictionary, past translations, a vector-database search over reference literature, and live web search) and adds footnotes for specific words. With each translation the references grow and the cultural context available for the next song improves. The result is a cleanly formatted Typst PDF with side-by-side lyrics and well-informed footnotes.
+      Given the lyrics of a Brazilian forró song as structured YAML, a multi-stage LLM pipeline researches cultural and slang terms across several sources (a curated dictionary, past translations, a vector-database search over reference literature, and live web search) and adds footnotes for specific words. With each translation the references grow and the cultural context available for the next song improves. The result is a cleanly formatted [Typst PDF](https://drive.google.com/uc?export=download&id=10uZJu6TPePnrTd0Q3o_yaf3HppQBMDF0) with side-by-side lyrics and well-informed footnotes.
   - title: Congressional Tweeting
     subtitle: Big data analysis of tweets from US congress members.
     link: https://twitter-analysis-six.vercel.app/
