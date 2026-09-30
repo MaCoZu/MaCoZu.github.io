@@ -1,16 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
-const notes = defineCollection({
-  loader: glob({ base: "./src/content/notes", pattern: "**/*.{md,mdx}" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    draft: z.boolean().optional(),
-    date: z.date(),
-  }),
-});
-
 const visualizations = defineCollection({
   loader: glob({ base: "./src/content/visualizations", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
@@ -44,7 +34,7 @@ const projects = defineCollection({
         title: z.string(),
         subtitle: z.string(),
         link: z.string().url(),
-        iconName: z.string().optional(),
+        iconName: z.string().nullish(),
         iconSize: z.string().optional(),
         tech: z.array(z.string()),
         description: z.string(),
@@ -53,4 +43,4 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { notes, visualizations, certificates, projects };
+export const collections = { visualizations, certificates, projects };
