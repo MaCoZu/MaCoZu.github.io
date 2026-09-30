@@ -23,7 +23,7 @@ const projects = await Promise.all(
         title={project.title}
         subtitle={project.subtitle}
         link={project.link}
-        iconName={project.iconName}
+        iconName={project.iconName ?? undefined}
         iconSize={project.iconSize}
         techList={project.tech}
       >
