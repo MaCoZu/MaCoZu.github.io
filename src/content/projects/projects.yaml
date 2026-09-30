@@ -1,12 +1,12 @@
 projects:
   - title: Forró Lyrics
-    subtitle: Self improving Forró lyrics translator.
+    subtitle: Self-improving Forró lyrics translator.
     link: https://github.com/MaCoZu/ForroLyrics
     iconName: 
     iconSize: large
-    tech: [LangGraph, OpenRouter, RAG, Typer, Typst]
+    tech: [Python, LangChain, OpenRouter, RAG, Typst]
     description: |
-      Given the lyrics of a Brazilian forró song as structured YAML, a chain of LLM agents research cultural and slang terms across several sources (a curated dictionary, past translations, a vector-database search over reference literature, and live web search) and adds footnotes for specific words. With each translation the references grow and the available cultural context improves. The result is a cleanly formatted Typst PDF with side by side lyrics and well-informend footnotes.
+      Given the lyrics of a Brazilian forró song as structured YAML, a multi-stage LLM pipeline researches cultural and slang terms across several sources (a curated dictionary, past translations, a vector-database search over reference literature, and live web search) and adds footnotes for specific words. With each translation the references grow and the cultural context available for the next song improves. The result is a cleanly formatted Typst PDF with side-by-side lyrics and well-informed footnotes.
   - title: Congressional Tweeting
     subtitle: Big data analysis of tweets from US congress members.
     link: https://twitter-analysis-six.vercel.app/
